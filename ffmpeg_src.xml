@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse.ant.import?>
+<project default="ffmpeg-src" basedir="." name="ffmpeg-src">
+
+	<property name="src.dir" location="src"/>
+	<property name="exec.dir" location="exec"/>
+	<property name="ffmpeg-config" value="../libffmpeg.jnaerator"/>
+	<property name="avutil-config" value="../libavutil.jnaerator"/>
+	<property name="avcodec-config" value="../libavcodec.jnaerator"/>
+	<property name="avformat-config" value="../libavformat.jnaerator"/>
+	<property name="swscale-config" value="../libswscale.jnaerator"/>
+	<property name="jnaerator" location="/home/fschuett/prog/jna/jnaerator-0.11-shaded.jar"/>
+    <target name="clean-ffmpeg">
+        <delete dir="src/org/ffmpeg"/>
+        <delete dir="exec"/>
+    </target>
+    <target name="init-ffmpeg">
+        <mkdir dir="src/org/ffmpeg"/>
+        <mkdir dir="exec"/>
+    </target>
+	<target name="ffmpeg-src" depends="">
+		<!-- erzeuge Java-Quelldateien zu ffmpeg -->
+		<java dir="${exec.dir}" classpath="${jnaerator}" jar="${jnaerator}" fork="true">
+			<jvmarg value="-Xmx2g"/>
+			<arg value="${ffmpeg-config}"/>
+		</java>
+    </target>
+	<target name="avutil" depends="">
+		<!-- erzeuge Java-Quelldateien zu ffmpeg -->
+		<java dir="${exec.dir}" classpath="${jnaerator}" jar="${jnaerator}" fork="true">
+			<jvmarg value="-Xmx1g"/>
+			<arg value="${avutil-config}"/>
+		</java>
+    </target>
+	<target name="swscale" depends="">
+		<!-- erzeuge Java-Quelldateien zu ffmpeg -->
+		<java dir="${exec.dir}" classpath="${jnaerator}" jar="${jnaerator}" fork="true">
+			<jvmarg value="-Xmx1g"/>
+			<arg value="${swscale-config}"/>
+		</java>
+    </target>
+	<target name="avcodec" depends="">
+		<!-- erzeuge Java-Quelldateien zu ffmpeg -->
+		<java dir="${exec.dir}" classpath="${jnaerator}" jar="${jnaerator}" fork="true">
+			<jvmarg value="-Xmx1g"/>
+			<arg value="${avcodec-config}"/>
+		</java>
+    </target>
+	<target name="avformat" depends="">
+		<!-- erzeuge Java-Quelldateien zu ffmpeg -->
+		<java dir="${exec.dir}" classpath="${jnaerator}" jar="${jnaerator}" fork="true">
+			<jvmarg value="-Xmx1g"/>
+			<arg value="${avformat-config}"/>
+		</java>
+    </target>
+</project>
