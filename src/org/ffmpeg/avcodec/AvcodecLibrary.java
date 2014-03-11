@@ -1,6 +1,7 @@
 package org.ffmpeg.avcodec;
 import java.util.Collections;
 import java.util.Iterator;
+
 import org.bridj.BridJ;
 import org.bridj.CRuntime;
 import org.bridj.FlagSet;

@@ -11,7 +11,7 @@
         <delete dir="exec"/>
     </target>
     <target name="init-ffmpeg" depends="clean-ffmpeg">
-        <mkdir dir="generated/src/org/ffmpeg"/>
+        <mkdir dir="generated/org/ffmpeg"/>
         <mkdir dir="exec"/>
     </target>
 	<target name="ffmpeg-src" depends="clean-ffmpeg,init-ffmpeg">

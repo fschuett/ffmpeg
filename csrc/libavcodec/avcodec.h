@@ -971,7 +971,6 @@ typedef struct AVCodecDescriptor {
     int             props;
 } AVCodecDescriptor;
 
-
 typedef struct AVCodecContext {
     const AVClass *av_class;
     int log_level_offset;
@@ -982,7 +981,7 @@ typedef struct AVCodecContext {
     unsigned int codec_tag;
     unsigned int stream_codec_tag;
     void *priv_data;
-    struct AVCodecInternal *internal;
+    void *internal;
     void *opaque;
     int bit_rate;
     int bit_rate_tolerance;
@@ -1128,7 +1127,7 @@ typedef struct AVCodecContext {
     int debug_mv;
     int err_recognition;
     int64_t reordered_opaque;
-    struct AVHWAccel *hwaccel;
+    void *hwaccel;
     void *hwaccel_context;
     uint64_t error[AV_NUM_DATA_POINTERS];
     int dct_algo;
