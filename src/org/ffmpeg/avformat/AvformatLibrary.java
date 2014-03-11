@@ -1,6 +1,8 @@
 package org.ffmpeg.avformat;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.logging.Level;
+
 import org.bridj.BridJ;
 import org.bridj.CRuntime;
 import org.bridj.Callback;
@@ -86,6 +88,9 @@ public class AvformatLibrary {
 			return FlagSet.fromValue(value, values());
 		}
 	};
+	
+	public native void av_register_all();
+	
 	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/avformat.h</i> */
 	public static final int AVFMT_FLAG_NOBUFFER = (int)0x0040;
 	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/avio.h</i> */
@@ -225,11 +230,11 @@ public class AvformatLibrary {
 	 * Original signature : <code>AVFormatContext* avformat_alloc_context()</code><br>
 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/avformat.h:226</i>
 	 */
-	public Pointer<AVFormatContext > avformat_alloc_context() {
-		return Pointer.pointerToAddress(avformat_alloc_context$2(), AVFormatContext.class);
+	public Pointer<AVFormatContext > alloc_context() {
+		return Pointer.pointerToAddress(avformat_alloc_context(), AVFormatContext.class);
 	}
 	@Ptr 
-	public native long avformat_alloc_context$2();
+	public native long avformat_alloc_context();
 	/**
 	 * Original signature : <code>void avformat_free_context(AVFormatContext*)</code><br>
 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/avformat.h:228</i>
@@ -304,6 +309,14 @@ public class AvformatLibrary {
 	}
 	public native int avformat_write_header(@Ptr long s, @Ptr long options);
 	/**
+	 * Original signature : <code>int avformat_find_stream_info(AVFormatContext*, AVDictionary**)</code><br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/avformat.h:244</i>
+	 */
+	public int avformat_find_stream_info(Pointer<AVFormatContext > s, Pointer<Pointer<AVDictionary > > options) {
+		return avformat_find_stream_info(Pointer.getPeer(s), Pointer.getPeer(options));
+	}
+	public native int avformat_find_stream_info(@Ptr long s, @Ptr long options);
+	/**
 	 * Original signature : <code>int av_write_frame(AVFormatContext*, AVPacket*)</code><br>
 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/avformat.h:246</i>
 	 */
@@ -344,6 +357,30 @@ public class AvformatLibrary {
 		return FlagSet.fromValue(av_guess_codec(Pointer.getPeer(fmt), Pointer.getPeer(short_name), Pointer.getPeer(filename), Pointer.getPeer(mime_type), (int)type.value()), AVCodecID.class);
 	}
 	public native int av_guess_codec(@Ptr long fmt, @Ptr long short_name, @Ptr long filename, @Ptr long mime_type, int type);
+	/**
+	 * Original signature : <code>int av_find_best_stream(AVFormatContext* ic, enum AVMediaType type, <br>
+	 *                      int wanted_stream_nb, int related_stream, AVCodec **codec_ret, int flags)</code><br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/avformat.h:1675</i>
+	 */
+	public int av_find_best_stream(Pointer<AVFormatContext> ic, IntValuedEnum<AVMediaType> type, int wanted_stream_nb, int related_stream, Pointer<Pointer<AVCodec>> codec_ret, int flags) {
+		return av_find_best_stream(Pointer.getPeer(ic), (int)type.value(), wanted_stream_nb, related_stream, Pointer.getPeer(codec_ret), flags);
+	}
+	public native int av_find_best_stream(@Ptr long ic, int type, int wanted_stream_nb, int related_stream,@Ptr long decoder_ret, int flags);
+	/** Original signature : <code>const char *av_get_media_type_string(enum AVMediaType media_type)</code><br>
+	 * <i>native declaration : avformat.h:255</i>
+	 */
+	public Pointer<Byte> av_get_media_type_string(IntValuedEnum<AVMediaType> media_type) {
+		return Pointer.pointerToAddress(av_get_media_type_string((int) media_type.value()),Byte.class);
+	}
+	/** Original signature : <code>void av_dump_format(AVFormatContext *ic, int index, const char *url, int is_output)</code><br>
+	 * <i>native declaration : avformat.h:256</i>
+	 */
+	public void av_dump_format(Pointer<AVFormatContext> ic, int index, Pointer<Byte> url, int is_output) {
+		av_dump_format(Pointer.getPeer(ic), index, Pointer.getPeer(url), is_output);
+	}
+	public native void av_dump_format(@Ptr long ic, int index, @Ptr long url, int is_output);
+	@Ptr
+	public native long av_get_media_type_string(int media_type); 
 	/** Undefined type */
 	public static interface AVProgram {
 		

@@ -5,7 +5,7 @@
 
 -T__signed__:=int
 
--library avutil ../csrc/libavutil/avutil.h ../csrc/libavutil/dict.h ../csrc/libavutil/frame.h ../csrc/libavutil/log.h ../csrc/libavutil/mem.h ../csrc/libavutil/opt.h ../csrc/libavutil/pixfmt.h ../csrc/libavutil/mathematics.h ../csrc/libavutil/samplefmt.h
+-library avutil ../csrc/libavutil/avutil.h ../csrc/libavutil/dict.h ../csrc/libavutil/frame.h ../csrc/libavutil/log.h ../csrc/libavutil/mem.h ../csrc/libavutil/opt.h ../csrc/libavutil/pixfmt.h ../csrc/libavutil/mathematics.h ../csrc/libavutil/samplefmt.h ../csrc/libavutil/timestamp.h ../csrc/libavutil/imgutils.h ../csrc/libavutil/pixdesc.h
 
 -runtime BridJ
 -reification

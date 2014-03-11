@@ -1208,11 +1208,16 @@ void av_free_packet(AVPacket *pkt);
 int avcodec_decode_video2(AVCodecContext *avctx, AVFrame *picture,
                          int *got_picture_ptr,
                          const AVPacket *avpkt);
+int avcodec_decode_audio4(AVCodecContext *avctx, AVFrame *frame,
+                          int *got_frame_ptr, const AVPacket *avpkt);
+AVCodec *avcodec_find_decoder(enum AVCodecID id);
 AVCodec *avcodec_find_encoder(enum AVCodecID id);
 int avcodec_encode_video2(AVCodecContext *avctx, AVPacket *avpkt,
                           const AVFrame *frame, int *got_packet_ptr);
 int avpicture_fill(AVPicture *picture, const uint8_t *ptr,
                    enum AVPixelFormat pix_fmt, int width, int height);
 int avpicture_get_size(enum AVPixelFormat pix_fmt, int width, int height);
+int av_image_alloc(uint8_t *pointers[4], int linesizes[4],
+                   int w, int h, enum AVPixelFormat pix_fmt, int align);
 
 #endif

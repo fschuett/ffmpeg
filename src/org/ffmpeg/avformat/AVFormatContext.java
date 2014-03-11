@@ -19,7 +19,7 @@ import org.ffmpeg.avutil.AVRational;
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> or <a href="http://bridj.googlecode.com/">BridJ</a> .
  */
 @Library("avformat") 
-public abstract class AVFormatContext extends StructObject {
+public class AVFormatContext extends StructObject {
 	static {
 		BridJ.register();
 	}

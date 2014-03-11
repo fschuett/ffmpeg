@@ -1222,11 +1222,11 @@ public class AvcodecLibrary {
 	 * Original signature : <code>AVFrame* avcodec_alloc_frame()</code><br>
 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1148</i>
 	 */
-	public Pointer<AVFrame > avcodec_alloc_frame() {
-		return Pointer.pointerToAddress(avcodec_alloc_frame$2(), AVFrame.class);
+	public Pointer<AVFrame > alloc_frame() {
+		return Pointer.pointerToAddress(avcodec_alloc_frame(), AVFrame.class);
 	}
 	@Ptr 
-	public native long avcodec_alloc_frame$2();
+	public native long avcodec_alloc_frame();
 	/**
 	 * Original signature : <code>int avcodec_open2(AVCodecContext*, const AVCodec*, AVDictionary**)</code><br>
 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1150</i>
@@ -1268,6 +1268,23 @@ public class AvcodecLibrary {
 	}
 	public native int avcodec_decode_video2(@Ptr long avctx, @Ptr long picture, @Ptr long got_picture_ptr, @Ptr long avpkt);
 	/**
+	 * Original signature : <code>int avcodec_decode_audio4(AVCodecContext*, AVFrame*, int*, const AVPacket*)</code><br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1159</i>
+	 */
+	public int avcodec_decode_audio4(Pointer<AVCodecContext > avctx, Pointer<AVFrame > picture, Pointer<Integer > got_picture_ptr, Pointer<AVPacket > avpkt) {
+		return avcodec_decode_audio4(Pointer.getPeer(avctx), Pointer.getPeer(picture), Pointer.getPeer(got_picture_ptr), Pointer.getPeer(avpkt));
+	}
+	public native int avcodec_decode_audio4(@Ptr long avctx, @Ptr long picture, @Ptr long got_picture_ptr, @Ptr long avpkt);
+	/**
+	 * Original signature : <code>AVCodec* avcodec_find_decoder(AVCodecID)</code><br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1160</i>
+	 */
+	public Pointer<AVCodec > avcodec_find_decoder(IntValuedEnum<AvcodecLibrary.AVCodecID > id) {
+		return Pointer.pointerToAddress(avcodec_find_decoder((int)id.value()), AVCodec.class);
+	}
+	@Ptr 
+	public native long avcodec_find_decoder(int id);
+	/**
 	 * Original signature : <code>AVCodec* avcodec_find_encoder(AVCodecID)</code><br>
 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1160</i>
 	 */
@@ -1296,10 +1313,20 @@ public class AvcodecLibrary {
 	 * Original signature : <code>int avpicture_get_size(AVPixelFormat, int, int)</code><br>
 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1166</i>
 	 */
-	public int avpicture_get_size(IntValuedEnum<AVPixelFormat > pix_fmt, int width, int height) {
+	public int avpicture_get_size(IntValuedEnum<AVPixelFormat> pix_fmt, int width, int height) {
 		return avpicture_get_size((int)pix_fmt.value(), width, height);
 	}
 	public native int avpicture_get_size(int pix_fmt, int width, int height);
+	/**
+	 * Original signature : <code>int av_image_alloc(uint8_t *pointers[4], int linesize[4],<br>
+	 *                                      	int w, int h, enum AVPixelFormat pxl_fmt,int align)</code><br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1166</i>
+	 */
+	public int av_image_alloc(Pointer<Pointer<Byte>> pointers, Pointer<Integer> linesize,
+			int w, int h, IntValuedEnum<AVPixelFormat> pxl_fmt, int align) {
+		return av_image_alloc(Pointer.getPeer(pointers), Pointer.getPeer(linesize), w, h, (int)pxl_fmt.value(), align);
+	}
+	public native int av_image_alloc(@Ptr long pointers,@Ptr long linesize, int w, int h, int pxl_fmt, int align);
 	/** C type : const AVClass* */
 	public Pointer<AVClass > av_class() {
 		try {

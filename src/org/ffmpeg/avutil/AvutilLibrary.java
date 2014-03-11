@@ -609,6 +609,33 @@ public class AvutilLibrary {
 			return FlagSet.fromValue(value, values());
 		}
 	};
+	
+	/** 
+	 * Original signature : <code>const char *av_get_sample_fmt_name(enum AVSampleFormat sample_fmt)</code><br> 
+	 * <i>native declaration : samplefmt.h:12
+	 */
+	public Pointer<Byte> av_get_sample_fmt_name(IntValuedEnum<AVSampleFormat> sample_fmt) {
+		return Pointer.pointerToAddress(av_get_sample_fmt_name((int)sample_fmt.value()),Byte.class);
+	}
+	@Ptr
+	public native long av_get_sample_fmt_name(int sample_fmt); 
+	/** Originial source : int av_sample_fmt_is_planar(enum AVSampleFormat sample_fmt) */
+	public int av_sample_fmt_is_planar(IntValuedEnum<AVSampleFormat> sample_fmt) {
+		return av_sample_fmt_is_planar((int)sample_fmt.value());
+	}
+	public native int av_sample_fmt_is_planar(int sample_fmt);
+	/** Originial source : int av_get_bytes_per_sample(enum AVSampleFormat sample_fmt) */
+	public int av_get_bytes_per_sample(IntValuedEnum<AVSampleFormat> sample_fmt) {
+		return av_get_bytes_per_sample((int)sample_fmt.value());
+	}
+	public native int av_get_bytes_per_sample(int sample_fmt);
+	/** Original source : <code>enum AVSampleFormat av_get_packed_sample_fmt(enum AVSampleFormat sample_fmt)</code><br>
+	 * <i>native declaration : samplefmt.h</i>
+	 */
+	public IntValuedEnum<AVSampleFormat> av_get_packed_sample_fmt(IntValuedEnum<AVSampleFormat> sample_fmt) {
+		return AVSampleFormat.fromValue(av_get_packed_sample_fmt((int)sample_fmt.value()));
+	}
+	public native int av_get_packed_sample_fmt(int sample_fmt);
 	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavutil/dict.h</i> */
 	public static final int AV_DICT_DONT_STRDUP_KEY = (int)4;
 	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavutil/dict.h</i> */
@@ -652,6 +679,11 @@ public class AvutilLibrary {
 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavutil/rational.h:13</i>
 	 */
 	public native AVRational av_d2q(double d, int max);
+	/** Inline-Funktion rational.h */
+	public double av_q2d(AVRational a) {
+		return a.num() / (double)a.den();
+	}
+	
 	/**
 	 * Original signature : <code>void av_opt_set_defaults(void*)</code><br>
 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavutil/opt.h:61</i>
@@ -692,4 +724,65 @@ public class AvutilLibrary {
 		av_freep(Pointer.getPeer(ptr));
 	}
 	public native void av_freep(@Ptr long ptr);
+	
+	
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavutil/timestamp.h</i> */
+	public static final int AV_TS_MAX_STRING_SIZE = (int)32;
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavutil/avutil.h</i> */
+	public static final long AV_NOPTS_VALUE = 0x8000000000000000L;
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavutil/avutil.h</i> */
+	public static final int AV_TIME_BASE =(int)1000000;
+
+	public Pointer<Byte> av_ts_make_string(Pointer<Byte> buf, long ts) {
+		buf = Pointer.allocateBytes(AV_TS_MAX_STRING_SIZE);
+    if (ts == AV_NOPTS_VALUE) System.arraycopy("NOPTS", 0, buf, 0, "NOPTS".length());
+    else                      System.arraycopy(Long.toHexString(ts), 0, buf, 0, Long.toHexString(ts).length());
+    return buf;
+	}
+
+	/** Original signaturre : #define av_ts2str(ts) av_ts_make_string((char[AV_TS_MAX_STRING_SIZE]){0}, ts) */
+	public Pointer<Byte> av_ts2str(long ts) {
+		Pointer<Byte> buf = null;
+		return av_ts_make_string(buf, ts);
+	}
+	
+
+	public Pointer<Byte> av_ts_make_time_string(Pointer<Byte> buf, long ts, AVRational tb)
+{
+    if (ts == AV_NOPTS_VALUE) System.arraycopy("NOPTS", 0, buf, 0, "NOPTS".length());
+    else	{
+    	String s = String.format("%.6g",av_q2d(tb) * ts);
+    	System.arraycopy(s.toCharArray(), 0, buf, 0, s.length());                      
+    }
+    return buf;
+}
+
+	/** Original signature : #define av_ts2timestr(ts, tb) av_ts_make_time_string((char[AV_TS_MAX_STRING_SIZE]){0}, ts, tb) */
+	public Pointer<Byte> av_ts2timestr(long ts, AVRational tb) {
+		Pointer<Byte> buf = null;
+		return av_ts_make_time_string(buf, ts, tb);
+	}
+	
+	/** Original signature : <code>void av_image_copy(uint8_t *dst_data[4], int dst_linesizes[4],<br>
+     *      const uint8_t *src_data[4], const int src_linesizes[4],<br>
+     *      enum AVPixelFormat pix_fmt, int width, int height);</code><br>
+     *  <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavutil/imgutils.h:5</i>
+     */
+	public void av_image_copy(Pointer<Pointer<Byte>> dst_data, Pointer<Integer> dst_linesizes,
+			Pointer<Pointer<Byte>> src_data, Pointer<Integer> src_linesizes,
+			IntValuedEnum<AVPixelFormat> pix_fmt, int width, int height) {
+		av_image_copy(Pointer.getPeer(dst_data), Pointer.getPeer(dst_linesizes),
+				Pointer.getPeer(src_data), Pointer.getPeer(src_linesizes), (int)pix_fmt.value(), width, height);
+	}
+	public native void av_image_copy(@Ptr long dst_data, @Ptr long dst_linesizes,
+			@Ptr long src_data, @Ptr long src_linesizes, int pix_fmt, int width, int height);
+	/** Original signature : <code>const char *av_get_pix_fmt_name(IntValuedEnum<AVPixelFormat> pix_fmt)</code><br>
+	 * <i>native declaration : pixdesc.h</i>
+	 */
+	public Pointer<Byte> av_get_pix_fmt_name(IntValuedEnum<AVPixelFormat> pix_fmt) {
+		return Pointer.pointerToAddress(av_get_pix_fmt_name((int)pix_fmt.value()), Byte.class);
+	}
+	@Ptr
+	public native long av_get_pix_fmt_name(int pix_fmt);
+
 }

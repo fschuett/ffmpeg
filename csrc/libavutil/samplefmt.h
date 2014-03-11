@@ -19,4 +19,14 @@ enum AVSampleFormat {
     AV_SAMPLE_FMT_NB           ///< Number of sample formats. DO NOT USE if linking dynamically
 };
 
+const char *av_get_sample_fmt_name(enum AVSampleFormat sample_fmt);
+
+int av_sample_fmt_is_planar(enum AVSampleFormat sample_fmt);
+
+int av_get_bytes_per_sample(enum AVSampleFormat sample_fmt);
+
+enum AVSampleFormat av_get_sample_fmt(const char *name);
+
+enum AVSampleFormat av_get_packed_sample_fmt(enum AVSampleFormat sample_fmt);
+
 #endif /* AVUTIL_SAMPLEFMT_H */

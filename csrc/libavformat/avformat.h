@@ -10,7 +10,12 @@
 
 #include "avio.h"
 
+
 struct AVFormatContext;
+
+typedef struct AVFrac {
+    int64_t val, num, den;
+} AVFrac;
 
 typedef struct AVOutputFormat {
     const char *name;
@@ -226,6 +231,7 @@ typedef struct AVFormatContext {
     AVCodec *subtitle_codec;
 } AVFormatContext;
 
+void av_register_all(void);
 unsigned avformat_version(void);
 AVFormatContext *avformat_alloc_context(void);
 void avformat_free_context(AVFormatContext *s);
@@ -253,5 +259,17 @@ AVOutputFormat *av_guess_format(const char *short_name,
 enum AVCodecID av_guess_codec(AVOutputFormat *fmt, const char *short_name,
                             const char *filename, const char *mime_type,
                             enum AVMediaType type);
+int av_find_best_stream(AVFormatContext *ic,
+                        enum AVMediaType type,
+                        int wanted_stream_nb,
+                        int related_stream,
+                        AVCodec **decoder_ret,
+                        int flags);
+const char *av_get_media_type_string(enum AVMediaType media_type);
+int avformat_find_stream_info(AVFormatContext *ic, AVDictionary **options);
+void av_dump_format(AVFormatContext *ic,
+                    int index,
+                    const char *url,
+                    int is_output);
 
 #endif /* AVFORMAT_AVFORMAT_H */
