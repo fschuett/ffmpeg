@@ -995,8 +995,10 @@ typedef struct AVCodecContext {
     AVRational time_base;
     int ticks_per_frame;
     int delay;
-    int width, height;
-    int coded_width, coded_height;
+    int width;
+    int height;
+    int coded_width;
+    int coded_height;
     int gop_size;
     enum AVPixelFormat pix_fmt;
     int me_method;
@@ -1070,7 +1072,7 @@ typedef struct AVCodecContext {
     int frame_number;
     int block_align;
     int cutoff;
-    attribute_deprecated int request_channels;
+    int request_channels;
     uint64_t channel_layout;
     uint64_t request_channel_layout;
     enum AVAudioServiceType audio_service_type;
@@ -1086,7 +1088,7 @@ typedef struct AVCodecContext {
     int rc_qmod_freq;
     int rc_buffer_size;
     int rc_override_count;
-    RcOverride *rc_override;
+    void *rc_override;
     const char *rc_eq;
     int rc_max_rate;
     int rc_min_rate;

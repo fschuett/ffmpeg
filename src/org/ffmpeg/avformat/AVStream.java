@@ -17,9 +17,15 @@ import org.ffmpeg.avutil.AVRational;
  * Manuell korrigierte Bibliothek.
  */
 @Library("avformat") 
-public abstract class AVStream extends StructObject {
+public class AVStream extends StructObject {
 	static {
 		BridJ.register();
+	}
+	public AVStream() {
+		super();
+	}
+	public AVStream(Pointer pointer) {
+		super(pointer);
 	}
 	/** < stream index in AVFormatContext */
 	@Field(0) 

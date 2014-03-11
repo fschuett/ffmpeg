@@ -1109,8 +1109,6 @@ public class AvutilLibrary {
 
 	public native void av_freep(@Ptr long ptr);
 
-	void av_freep(@Ptr long ptr);
-
 	/**
 	 * Original signature :
 	 * <code>char* av_get_sample_fmt_name(AVSampleFormat)</code><br>
@@ -1126,9 +1124,6 @@ public class AvutilLibrary {
 	@Ptr
 	public native long av_get_sample_fmt_name(int sample_fmt);
 
-	@Ptr
-	long av_get_sample_fmt_name(int sample_fmt);
-
 	/**
 	 * Original signature :
 	 * <code>int av_sample_fmt_is_planar(AVSampleFormat)</code><br>
@@ -1142,8 +1137,6 @@ public class AvutilLibrary {
 
 	public native int av_sample_fmt_is_planar(int sample_fmt);
 
-	int av_sample_fmt_is_planar(int sample_fmt);
-
 	/**
 	 * Original signature :
 	 * <code>int av_get_bytes_per_sample(AVSampleFormat)</code><br>
@@ -1156,8 +1149,6 @@ public class AvutilLibrary {
 	}
 
 	public native int av_get_bytes_per_sample(int sample_fmt);
-
-	int av_get_bytes_per_sample(int sample_fmt);
 
 	/**
 	 * Original signature :
@@ -1173,8 +1164,6 @@ public class AvutilLibrary {
 
 	public native int av_get_sample_fmt(@Ptr long name);
 
-	int av_get_sample_fmt(@Ptr long name);
-
 	/**
 	 * Original signature :
 	 * <code>AVSampleFormat av_get_packed_sample_fmt(AVSampleFormat)</code><br>
@@ -1189,8 +1178,6 @@ public class AvutilLibrary {
 	}
 
 	public native int av_get_packed_sample_fmt(int sample_fmt);
-
-	int av_get_packed_sample_fmt(int sample_fmt);
 
 	/**
 	 * Original signature :
@@ -1213,10 +1200,6 @@ public class AvutilLibrary {
 	public native void av_image_copy(@Ptr long dst_data,
 			@Ptr long dst_linesizes, @Ptr long src_data,
 			@Ptr long src_linesizes, int pix_fmt, int width, int height);
-
-	void av_image_copy(@Ptr long dst_data, @Ptr long dst_linesizes,
-			@Ptr long src_data, @Ptr long src_linesizes, int pix_fmt,
-			int width, int height);
 
 	/**
 	 * Original signature :

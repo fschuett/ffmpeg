@@ -29,11 +29,6 @@ public class SwscaleLibrary {
 	 */
 	public native int swscale_version();
 	/**
-	 * Original signature : <code>int swscale_version()</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libswscale/swscale.h:1</i>
-	 */
-	int swscale_version();
-	/**
 	 * Original signature : <code>int sws_scale(SwsContext*, const const uint8_t*[], const int[], int, int, const uint8_t*[], const int[])</code><br>
 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libswscale/swscale.h:6</i>
 	 */

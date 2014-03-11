@@ -1,6 +1,5 @@
 package test;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -10,14 +9,14 @@ import org.ffmpeg.avcodec.AVCodec;
 import org.ffmpeg.avcodec.AVCodecContext;
 import org.ffmpeg.avcodec.AVPacket;
 import org.ffmpeg.avcodec.AvcodecLibrary;
+import org.ffmpeg.avcodec.AvcodecLibrary.AVCodecID;
 import org.ffmpeg.avformat.AVFormatContext;
 import org.ffmpeg.avformat.AVStream;
 import org.ffmpeg.avformat.AvformatLibrary;
 import org.ffmpeg.avutil.AVFrame;
 import org.ffmpeg.avutil.AvutilLibrary;
+import org.ffmpeg.avutil.AvutilLibrary.AVMediaType;
 import org.ffmpeg.avutil.AvutilLibrary.AVSampleFormat;
-
-import static org.ffmpeg.avutil.AvutilLibrary.*;
 
 /**
  * @file libavformat demuxing API use example.
@@ -145,16 +144,21 @@ public class Demuxing {
 
 			/* find decoder for the stream */
 			dec_ctx = st.codec().get();
-			dec = avcodec.avcodec_find_decoder(dec_ctx.codec_id()).get();
+			AVCodecID cid = (AVCodecID) dec_ctx.codec_id();
+			if(cid.value() == 0) {
+				System.err.printf("Codec ID is 0\n");
+				return ret;
+			}
+			dec = avcodec.avcodec_find_decoder(cid).get();
 			if (dec != null) {
 				System.err.printf("Failed to find %s codec\n",
-						avformat.av_get_media_type_string(type));
+						avformat.av_get_media_type_string(type).getCString());
 				return ret;
 			}
 
 			if ((ret = avcodec.avcodec_open2(Pointer.getPointer(dec_ctx), Pointer.getPointer(dec), null)) < 0) {
 				System.err.printf("Failed to open %s codec\n",
-						avformat.av_get_media_type_string(type));
+						avformat.av_get_media_type_string(type).getCString());
 				return ret;
 			}
 		}
