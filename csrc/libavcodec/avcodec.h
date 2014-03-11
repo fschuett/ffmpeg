@@ -1181,7 +1181,7 @@ typedef struct AVCodec {
     struct AVCodec *next;
     int (*init_thread_copy)(AVCodecContext *);
     int (*update_thread_context)(AVCodecContext *dst, const AVCodecContext *src);
-    const AVCodecDefault *defaults;
+    void *defaults;
     void (*init_static_data)(struct AVCodec *codec);
     int (*init)(AVCodecContext *);
     int (*encode_sub)(AVCodecContext *, uint8_t *buf, int buf_size,

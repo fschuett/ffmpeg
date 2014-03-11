@@ -23,7 +23,7 @@ import org.ffmpeg.avutil.AvutilLibrary.AVSampleFormat;
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> or <a href="http://bridj.googlecode.com/">BridJ</a> .
  */
 @Library("avcodec") 
-public abstract class AVCodec extends StructObject {
+public class AVCodec extends StructObject {
 	static {
 		BridJ.register();
 	}
@@ -241,7 +241,16 @@ public abstract class AVCodec extends StructObject {
 		this.io.setPointerField(this, 15, update_thread_context);
 		return this;
 	}
-	/** Conversion Error : const AVCodecDefault* (failed to convert type to Java (undefined type)) */
+	/** C type : void* defaults */
+	@Field(16)
+	public Pointer defaults() {
+		return this.io.getPointerField(this, 16);
+	}
+	@Field(16)
+	public AVCodec defaults(Pointer defaults) {
+		this.io.setPointerField(this, 16, defaults);
+		return this;
+	}
 	/** C type : init_static_data_callback* */
 	@Field(17) 
 	public Pointer<AVCodec.init_static_data_callback > init_static_data() {

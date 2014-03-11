@@ -144,13 +144,8 @@ public class Demuxing {
 
 			/* find decoder for the stream */
 			dec_ctx = st.codec().get();
-			AVCodecID cid = (AVCodecID) dec_ctx.codec_id();
-			if(cid.value() == 0) {
-				System.err.printf("Codec ID is 0\n");
-				return ret;
-			}
-			dec = avcodec.avcodec_find_decoder(cid).get();
-			if (dec != null) {
+			dec = avcodec.avcodec_find_decoder(dec_ctx.codec_id()).get();
+			if (dec == null) {
 				System.err.printf("Failed to find %s codec\n",
 						avformat.av_get_media_type_string(type).getCString());
 				return ret;
