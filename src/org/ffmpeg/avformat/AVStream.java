@@ -6,6 +6,7 @@ import org.bridj.StructObject;
 import org.bridj.ann.Array;
 import org.bridj.ann.Field;
 import org.bridj.ann.Library;
+import org.ffmpeg.avcodec.AVCodecParserContext;
 import org.ffmpeg.avcodec.AVPacket;
 import org.ffmpeg.avcodec.AVCodecContext;
 import org.ffmpeg.avcodec.AvcodecLibrary.AVDiscard;
@@ -16,7 +17,7 @@ import org.ffmpeg.avutil.AVRational;
  * Manuell korrigierte Bibliothek.
  */
 @Library("avformat") 
-public class AVStream extends StructObject {
+public abstract class AVStream extends StructObject {
 	static {
 		BridJ.register();
 	}
@@ -63,7 +64,17 @@ public class AVStream extends StructObject {
 		this.io.setPointerField(this, 3, priv_data);
 		return this;
 	}
-	/** Conversion Error : AVFrac (failed to convert type to Java (undefined type)) */
+	/** C type : AVFrac */
+	@Field(4) 
+	public AVFrac pts() {
+		return this.io.getNativeObjectField(this, 4);
+	}
+	/** C type : AVFrac */
+	@Field(4) 
+	public AVStream pts(AVFrac pts) {
+		this.io.setNativeObjectField(this, 4, pts);
+		return this;
+	}
 	/** C type : AVRational */
 	@Field(5) 
 	public AVRational time_base() {
@@ -272,16 +283,64 @@ public class AVStream extends StructObject {
 		this.io.setEnumField(this, 24, need_parsing);
 		return this;
 	}
-	/** Conversion Error : AVCodecParserContext* (failed to convert type to Java (undefined type)) */
-	/** Conversion Error : AVPacketList* (failed to convert type to Java (undefined type)) */
-	/** Conversion Error : AVProbeData (failed to convert type to Java (undefined type)) */
+	/** C type : AVCodecParserContext* */
+	@Field(25) 
+	public Pointer<AVCodecParserContext > parser() {
+		return this.io.getPointerField(this, 25);
+	}
+	/** C type : AVCodecParserContext* */
+	@Field(25) 
+	public AVStream parser(Pointer<AVCodecParserContext > parser) {
+		this.io.setPointerField(this, 25, parser);
+		return this;
+	}
+	/** C type : AVPacketList* */
+	@Field(26) 
+	public Pointer<AVPacketList > last_in_packet_buffer() {
+		return this.io.getPointerField(this, 26);
+	}
+	/** C type : AVPacketList* */
+	@Field(26) 
+	public AVStream last_in_packet_buffer(Pointer<AVPacketList > last_in_packet_buffer) {
+		this.io.setPointerField(this, 26, last_in_packet_buffer);
+		return this;
+	}
+	/** C type : AVProbeData */
+	@Field(27) 
+	public AVProbeData probe_data() {
+		return this.io.getNativeObjectField(this, 27);
+	}
+	/** C type : AVProbeData */
+	@Field(27) 
+	public AVStream probe_data(AVProbeData probe_data) {
+		this.io.setNativeObjectField(this, 27, probe_data);
+		return this;
+	}
 	/** C type : int64_t[16 + 1] */
 	@Array({16 + 1}) 
 	@Field(28) 
 	public Pointer<Long > pts_buffer() {
 		return this.io.getPointerField(this, 28);
 	}
-	/** Conversion Error : AVIndexEntry* (failed to convert type to Java (undefined type)) */
+	/**
+	 * < Only used if the format does not<br>
+	 * support seeking natively.<br>
+	 * C type : AVIndexEntry*
+	 */
+	@Field(29) 
+	public Pointer<AVIndexEntry > index_entries() {
+		return this.io.getPointerField(this, 29);
+	}
+	/**
+	 * < Only used if the format does not<br>
+	 * support seeking natively.<br>
+	 * C type : AVIndexEntry*
+	 */
+	@Field(29) 
+	public AVStream index_entries(Pointer<AVIndexEntry > index_entries) {
+		this.io.setPointerField(this, 29, index_entries);
+		return this;
+	}
 	@Field(30) 
 	public int nb_index_entries() {
 		return this.io.getIntField(this, 30);
@@ -401,7 +460,7 @@ public class AVStream extends StructObject {
 		this.io.setIntField(this, 42, pts_wrap_behavior);
 		return this;
 	}
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/avformat.h:140</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/avformat.h:158</i> */
 	public static class info_struct extends StructObject {
 		static {
 			BridJ.register();

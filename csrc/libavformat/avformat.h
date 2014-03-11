@@ -17,6 +17,12 @@ typedef struct AVFrac {
     int64_t val, num, den;
 } AVFrac;
 
+typedef struct AVProbeData {
+    const char *filename;
+    unsigned char *buf; /**< Buffer must have AVPROBE_PADDING_SIZE of extra allocated bytes filled with zero. */
+    int buf_size;       /**< Size of buf except extra allocated bytes */
+} AVProbeData;
+
 typedef struct AVOutputFormat {
     const char *name;
     const char *long_name;
@@ -74,6 +80,16 @@ enum AVStreamParseType {
                                                              this assumes that each packet in the file contains no demuxer level headers and
                                                              just codec level data, otherwise position generation would fail */
 };
+
+typedef struct AVIndexEntry {
+    int64_t pos;
+    int64_t timestamp;
+#define AVINDEX_KEYFRAME 0x0001
+    int flags:2;
+    int size:30; //Yeah, trying to keep the size of this small to reduce memory requirements (it is 24 vs. 32 bytes due to possible 8-byte alignment).
+    int min_distance;         /**< Minimum distance between this and the previous keyframe, used to avoid unneeded searching. */
+} AVIndexEntry;
+
 
 typedef struct AVStream {
     int index;    /**< stream index in AVFormatContext */
@@ -230,6 +246,11 @@ typedef struct AVFormatContext {
     AVCodec *audio_codec;
     AVCodec *subtitle_codec;
 } AVFormatContext;
+
+typedef struct AVPacketList {
+    AVPacket pkt;
+    struct AVPacketList *next;
+} AVPacketList;
 
 void av_register_all(void);
 unsigned avformat_version(void);

@@ -5,52 +5,20 @@
 	<property name="src.dir" location="src"/>
 	<property name="exec.dir" location="exec"/>
 	<property name="ffmpeg-config" value="../libffmpeg.jnaerator"/>
-	<property name="avutil-config" value="../libavutil.jnaerator"/>
-	<property name="avcodec-config" value="../libavcodec.jnaerator"/>
-	<property name="avformat-config" value="../libavformat.jnaerator"/>
-	<property name="swscale-config" value="../libswscale.jnaerator"/>
-	<property name="jnaerator" location="/home/fschuett/prog/jna/jnaerator-0.11-shaded.jar"/>
+	<property name="jnaerator" location="/home/fschuett/prog/jna/jnaerator-0.12-SNAPSHOT-shaded.jar"/>
     <target name="clean-ffmpeg">
-        <delete dir="src/org/ffmpeg"/>
+        <delete dir="generated"/>
         <delete dir="exec"/>
     </target>
-    <target name="init-ffmpeg">
-        <mkdir dir="src/org/ffmpeg"/>
+    <target name="init-ffmpeg" depends="clean-ffmpeg">
+        <mkdir dir="generated/src/org/ffmpeg"/>
         <mkdir dir="exec"/>
     </target>
-	<target name="ffmpeg-src" depends="">
+	<target name="ffmpeg-src" depends="clean-ffmpeg,init-ffmpeg">
 		<!-- erzeuge Java-Quelldateien zu ffmpeg -->
 		<java dir="${exec.dir}" classpath="${jnaerator}" jar="${jnaerator}" fork="true">
-			<jvmarg value="-Xmx2g"/>
+			<jvmarg value="-Xmx4g"/>
 			<arg value="${ffmpeg-config}"/>
-		</java>
-    </target>
-	<target name="avutil" depends="">
-		<!-- erzeuge Java-Quelldateien zu ffmpeg -->
-		<java dir="${exec.dir}" classpath="${jnaerator}" jar="${jnaerator}" fork="true">
-			<jvmarg value="-Xmx1g"/>
-			<arg value="${avutil-config}"/>
-		</java>
-    </target>
-	<target name="swscale" depends="">
-		<!-- erzeuge Java-Quelldateien zu ffmpeg -->
-		<java dir="${exec.dir}" classpath="${jnaerator}" jar="${jnaerator}" fork="true">
-			<jvmarg value="-Xmx1g"/>
-			<arg value="${swscale-config}"/>
-		</java>
-    </target>
-	<target name="avcodec" depends="">
-		<!-- erzeuge Java-Quelldateien zu ffmpeg -->
-		<java dir="${exec.dir}" classpath="${jnaerator}" jar="${jnaerator}" fork="true">
-			<jvmarg value="-Xmx1g"/>
-			<arg value="${avcodec-config}"/>
-		</java>
-    </target>
-	<target name="avformat" depends="">
-		<!-- erzeuge Java-Quelldateien zu ffmpeg -->
-		<java dir="${exec.dir}" classpath="${jnaerator}" jar="${jnaerator}" fork="true">
-			<jvmarg value="-Xmx1g"/>
-			<arg value="${avformat-config}"/>
 		</java>
     </target>
 </project>

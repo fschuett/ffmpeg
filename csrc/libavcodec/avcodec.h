@@ -1210,6 +1210,75 @@ int avcodec_decode_video2(AVCodecContext *avctx, AVFrame *picture,
                          const AVPacket *avpkt);
 int avcodec_decode_audio4(AVCodecContext *avctx, AVFrame *frame,
                           int *got_frame_ptr, const AVPacket *avpkt);
+
+enum AVPictureStructure {
+    AV_PICTURE_STRUCTURE_UNKNOWN,      //< unknown
+    AV_PICTURE_STRUCTURE_TOP_FIELD,    //< coded as top field
+    AV_PICTURE_STRUCTURE_BOTTOM_FIELD, //< coded as bottom field
+    AV_PICTURE_STRUCTURE_FRAME,        //< coded as frame
+};
+
+typedef struct AVCodecParserContext {
+    void *priv_data;
+    struct AVCodecParser *parser;
+    int64_t frame_offset; /* offset of the current frame */
+    int64_t cur_offset; /* current offset
+                           (incremented by each av_parser_parse()) */
+    int64_t next_frame_offset; /* offset of the next frame */
+    int pict_type; /* XXX: Put it back in AVCodecContext. */
+    int repeat_pict; /* XXX: Put it back in AVCodecContext. */
+    int64_t pts;     /* pts of the current frame */
+    int64_t dts;     /* dts of the current frame */
+
+    /* private data */
+    int64_t last_pts;
+    int64_t last_dts;
+    int fetch_timestamp;
+
+#define AV_PARSER_PTS_NB 4
+    int cur_frame_start_index;
+    int64_t cur_frame_offset[AV_PARSER_PTS_NB];
+    int64_t cur_frame_pts[AV_PARSER_PTS_NB];
+    int64_t cur_frame_dts[AV_PARSER_PTS_NB];
+
+    int flags;
+#define PARSER_FLAG_COMPLETE_FRAMES           0x0001
+#define PARSER_FLAG_ONCE                      0x0002
+/// Set if the parser has a valid file offset
+#define PARSER_FLAG_FETCHED_OFFSET            0x0004
+#define PARSER_FLAG_USE_CODEC_TS              0x1000
+
+    int64_t offset;      ///< byte offset from starting packet start
+    int64_t cur_frame_end[AV_PARSER_PTS_NB];
+
+    int key_frame;
+    int64_t convergence_duration;
+    int dts_sync_point;
+    int dts_ref_dts_delta;
+    int pts_dts_delta;
+    int64_t cur_frame_pos[AV_PARSER_PTS_NB];
+    int64_t pos;
+    int64_t last_pos;
+    int duration;
+    enum AVFieldOrder field_order;
+    enum AVPictureStructure picture_structure;
+    int output_picture_number;
+} AVCodecParserContext;
+
+typedef struct AVCodecParser {
+    int codec_ids[5]; /* several codec IDs are permitted */
+    int priv_data_size;
+    int (*parser_init)(AVCodecParserContext *s);
+    int (*parser_parse)(AVCodecParserContext *s,
+                        AVCodecContext *avctx,
+                        const uint8_t **poutbuf, int *poutbuf_size,
+                        const uint8_t *buf, int buf_size);
+    void (*parser_close)(AVCodecParserContext *s);
+    int (*split)(AVCodecContext *avctx, const uint8_t *buf, int buf_size);
+    struct AVCodecParser *next;
+} AVCodecParser;
+
+
 AVCodec *avcodec_find_decoder(enum AVCodecID id);
 AVCodec *avcodec_find_encoder(enum AVCodecID id);
 int avcodec_encode_video2(AVCodecContext *avctx, AVPacket *avpkt,

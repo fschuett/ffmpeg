@@ -34,7 +34,7 @@ public class AvcodecLibrary {
 	}
 	/**
 	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:768</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:768</i>
 	 */
 	public enum AVCodecID implements IntValuedEnum<AVCodecID > {
 		AV_CODEC_ID_NONE(0),
@@ -846,7 +846,7 @@ public class AvcodecLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:786</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:786</i>
 	 */
 	public enum AVDiscard implements IntValuedEnum<AVDiscard > {
 		/**
@@ -881,7 +881,7 @@ public class AvcodecLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:801</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:801</i>
 	 */
 	public enum AVColorPrimaries implements IntValuedEnum<AVColorPrimaries > {
 		/** < also ITU-R BT1361 / IEC 61966-2-4 / SMPTE RP177 Annex B */
@@ -913,7 +913,7 @@ public class AvcodecLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:813</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:813</i>
 	 */
 	public enum AVColorTransferCharacteristic implements IntValuedEnum<AVColorTransferCharacteristic > {
 		/** < also ITU-R BT1361 */
@@ -942,7 +942,7 @@ public class AvcodecLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:827</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:827</i>
 	 */
 	public enum AVChromaLocation implements IntValuedEnum<AVChromaLocation > {
 		AVCHROMA_LOC_UNSPECIFIED(0),
@@ -973,7 +973,7 @@ public class AvcodecLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:840</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:840</i>
 	 */
 	public enum AVAudioServiceType implements IntValuedEnum<AVAudioServiceType > {
 		AV_AUDIO_SERVICE_TYPE_MAIN(0),
@@ -1003,7 +1003,7 @@ public class AvcodecLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:852</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:852</i>
 	 */
 	public enum AVFieldOrder implements IntValuedEnum<AVFieldOrder > {
 		AV_FIELD_UNKNOWN(0),
@@ -1030,180 +1030,217 @@ public class AvcodecLibrary {
 			return FlagSet.fromValue(value, values());
 		}
 	};
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/**
+	 * enum values<br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1170</i>
+	 */
+	public enum AVPictureStructure implements IntValuedEnum<AVPictureStructure > {
+		/** < unknown */
+		AV_PICTURE_STRUCTURE_UNKNOWN(0),
+		/** < coded as top field */
+		AV_PICTURE_STRUCTURE_TOP_FIELD(1),
+		/** < coded as bottom field */
+		AV_PICTURE_STRUCTURE_BOTTOM_FIELD(2),
+		/** < coded as frame */
+		AV_PICTURE_STRUCTURE_FRAME(3);
+		AVPictureStructure(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVPictureStructure > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVPictureStructure > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_CBP = (int)0x00020000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_CLOSED_GOP = (int)0x80000000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_LOSSLESS = (int)0x80000000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int AV_PKT_FLAG_KEY = (int)0x0001;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_FRAME_THREADS = (int)0x1000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_NEG_LINESIZES = (int)0x0800;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG2_NO_OUTPUT = (int)0x00000004;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_QPEL = (int)0x0010;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_NORMALIZE_AQP = (int)0x00020000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_BITEXACT = (int)0x00800000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_L0 = (int)(0x1000 | 0x2000);
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_HWACCEL = (int)0x0010;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_QUANT = (int)0x00010000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int FF_QSCALE_TYPE_H264 = (int)2;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_L1 = (int)(0x4000 | 0x8000);
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_VARIABLE_FRAME_SIZE = (int)0x10000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_TRUNCATED = (int)0x0008;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int FF_BUFFER_TYPE_SHARED = (int)4;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_DELAY = (int)0x0020;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_INTERLACED_DCT = (int)0x00040000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_CHANNEL_CONF = (int)0x0400;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_LOW_DELAY = (int)0x00080000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
+	public static final int AV_PARSER_PTS_NB = (int)4;
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_L0L1 = (int)((0x1000 | 0x2000) | (0x4000 | 0x8000));
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_GRAY = (int)0x2000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_16x8 = (int)0x0010;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_INTRA16x16 = (int)0x0002;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int FF_QSCALE_TYPE_VP56 = (int)3;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_P0L0 = (int)0x1000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_LOOP_FILTER = (int)0x00000800;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_EMU_EDGE = (int)0x4000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_DRAW_HORIZ_BAND = (int)0x0001;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_INTERLACED_ME = (int)0x20000000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_8x8 = (int)0x0040;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_PASS2 = (int)0x0400;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_PASS1 = (int)0x0200;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_16x16 = (int)0x0008;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
-	public static final int CODEC_CAP_SLICE_THREADS = (int)0x2000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_PARAM_CHANGE = (int)0x4000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
+	public static final int CODEC_CAP_SLICE_THREADS = (int)0x2000;
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int AV_GET_BUFFER_FLAG_REF = (int)(1 << 0);
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_GMC = (int)0x0400;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_AUTO_THREADS = (int)0x8000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_SUBFRAMES = (int)0x0100;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_INTRA_PCM = (int)0x0004;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_HWACCEL_VDPAU = (int)0x0080;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG2_FAST = (int)0x00000001;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int FF_BUFFER_TYPE_USER = (int)2;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG2_CHUNKS = (int)0x00008000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_GLOBAL_HEADER = (int)0x00400000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_P1L1 = (int)0x8000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_UNALIGNED = (int)0x0001;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG2_DROP_FRAME_TIMECODE = (int)0x00002000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int AV_PKT_FLAG_CORRUPT = (int)0x0002;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_P1L0 = (int)0x2000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG2_IGNORE_CROP = (int)0x00010000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
+	public static final int PARSER_FLAG_ONCE = (int)0x0002;
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_4MV = (int)0x0004;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_PSNR = (int)0x8000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_AC_PRED = (int)0x01000000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_DR1 = (int)0x0002;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_QSCALE = (int)0x0002;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_ACPRED = (int)0x0200;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_SMALL_LAST_FRAME = (int)0x0040;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int FF_BUFFER_TYPE_INTERNAL = (int)1;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_SKIP = (int)0x0800;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_P0L1 = (int)0x4000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_8x16 = (int)0x0020;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_MV0 = (int)0x0040;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_INTERLACED = (int)0x0080;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG2_LOCAL_HEADER = (int)0x00000008;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int FF_BUFFER_TYPE_COPY = (int)8;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_EXPERIMENTAL = (int)0x0200;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_GMC = (int)0x0020;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int FF_BUFFER_HINTS_VALID = (int)0x01;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_DIRECT2 = (int)0x0100;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int FF_QSCALE_TYPE_MPEG1 = (int)0;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
+	public static final int PARSER_FLAG_USE_CODEC_TS = (int)0x1000;
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int FF_QSCALE_TYPE_MPEG2 = (int)1;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int FF_BUFFER_HINTS_REUSABLE = (int)0x08;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG2_SHOW_ALL = (int)0x00400000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
+	public static final int PARSER_FLAG_FETCHED_OFFSET = (int)0x0004;
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_INPUT_PRESERVED = (int)0x0100;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_TRUNCATED = (int)0x00010000;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int FF_BUFFER_HINTS_PRESERVE = (int)0x04;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
+	public static final int PARSER_FLAG_COMPLETE_FRAMES = (int)0x0001;
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_INTRA4x4 = (int)0x0001;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int FF_BUFFER_HINTS_READABLE = (int)0x02;
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_INTRA_ONLY = (int)0x40000000;
 	/**
 	 * Original signature : <code>int avcodec_version()</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1142</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1142</i>
 	 */
 	public native int avcodec_version();
 	/**
 	 * Original signature : <code>AVCodecContext* avcodec_alloc_context3(const AVCodec*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1144</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1144</i>
 	 */
 	public Pointer<AVCodecContext > avcodec_alloc_context3(Pointer<AVCodec > codec) {
 		return Pointer.pointerToAddress(avcodec_alloc_context3(Pointer.getPeer(codec)), AVCodecContext.class);
@@ -1212,7 +1249,7 @@ public class AvcodecLibrary {
 	public native long avcodec_alloc_context3(@Ptr long codec);
 	/**
 	 * Original signature : <code>int avcodec_get_context_defaults3(AVCodecContext*, const AVCodec*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1146</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1146</i>
 	 */
 	public int avcodec_get_context_defaults3(Pointer<AVCodecContext > s, Pointer<AVCodec > codec) {
 		return avcodec_get_context_defaults3(Pointer.getPeer(s), Pointer.getPeer(codec));
@@ -1220,7 +1257,7 @@ public class AvcodecLibrary {
 	public native int avcodec_get_context_defaults3(@Ptr long s, @Ptr long codec);
 	/**
 	 * Original signature : <code>AVFrame* avcodec_alloc_frame()</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1148</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1148</i>
 	 */
 	public Pointer<AVFrame > alloc_frame() {
 		return Pointer.pointerToAddress(avcodec_alloc_frame(), AVFrame.class);
@@ -1229,7 +1266,7 @@ public class AvcodecLibrary {
 	public native long avcodec_alloc_frame();
 	/**
 	 * Original signature : <code>int avcodec_open2(AVCodecContext*, const AVCodec*, AVDictionary**)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1150</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1150</i>
 	 */
 	public int avcodec_open2(Pointer<AVCodecContext > avctx, Pointer<AVCodec > codec, Pointer<Pointer<AVDictionary > > options) {
 		return avcodec_open2(Pointer.getPeer(avctx), Pointer.getPeer(codec), Pointer.getPeer(options));
@@ -1237,7 +1274,7 @@ public class AvcodecLibrary {
 	public native int avcodec_open2(@Ptr long avctx, @Ptr long codec, @Ptr long options);
 	/**
 	 * Original signature : <code>int avcodec_close(AVCodecContext*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1152</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1152</i>
 	 */
 	public int avcodec_close(Pointer<AVCodecContext > avctx) {
 		return avcodec_close(Pointer.getPeer(avctx));
@@ -1245,7 +1282,7 @@ public class AvcodecLibrary {
 	public native int avcodec_close(@Ptr long avctx);
 	/**
 	 * Original signature : <code>void av_init_packet(AVPacket*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1154</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1154</i>
 	 */
 	public void av_init_packet(Pointer<AVPacket > pkt) {
 		av_init_packet(Pointer.getPeer(pkt));
@@ -1253,7 +1290,7 @@ public class AvcodecLibrary {
 	public native void av_init_packet(@Ptr long pkt);
 	/**
 	 * Original signature : <code>void av_free_packet(AVPacket*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1156</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1156</i>
 	 */
 	public void av_free_packet(Pointer<AVPacket > pkt) {
 		av_free_packet(Pointer.getPeer(pkt));
@@ -1261,7 +1298,7 @@ public class AvcodecLibrary {
 	public native void av_free_packet(@Ptr long pkt);
 	/**
 	 * Original signature : <code>int avcodec_decode_video2(AVCodecContext*, AVFrame*, int*, const AVPacket*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1158</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1158</i>
 	 */
 	public int avcodec_decode_video2(Pointer<AVCodecContext > avctx, Pointer<AVFrame > picture, Pointer<Integer > got_picture_ptr, Pointer<AVPacket > avpkt) {
 		return avcodec_decode_video2(Pointer.getPeer(avctx), Pointer.getPeer(picture), Pointer.getPeer(got_picture_ptr), Pointer.getPeer(avpkt));
@@ -1269,7 +1306,7 @@ public class AvcodecLibrary {
 	public native int avcodec_decode_video2(@Ptr long avctx, @Ptr long picture, @Ptr long got_picture_ptr, @Ptr long avpkt);
 	/**
 	 * Original signature : <code>int avcodec_decode_audio4(AVCodecContext*, AVFrame*, int*, const AVPacket*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1159</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1160</i>
 	 */
 	public int avcodec_decode_audio4(Pointer<AVCodecContext > avctx, Pointer<AVFrame > picture, Pointer<Integer > got_picture_ptr, Pointer<AVPacket > avpkt) {
 		return avcodec_decode_audio4(Pointer.getPeer(avctx), Pointer.getPeer(picture), Pointer.getPeer(got_picture_ptr), Pointer.getPeer(avpkt));
@@ -1277,7 +1314,7 @@ public class AvcodecLibrary {
 	public native int avcodec_decode_audio4(@Ptr long avctx, @Ptr long picture, @Ptr long got_picture_ptr, @Ptr long avpkt);
 	/**
 	 * Original signature : <code>AVCodec* avcodec_find_decoder(AVCodecID)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1160</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1225</i>
 	 */
 	public Pointer<AVCodec > avcodec_find_decoder(IntValuedEnum<AvcodecLibrary.AVCodecID > id) {
 		return Pointer.pointerToAddress(avcodec_find_decoder((int)id.value()), AVCodec.class);
@@ -1286,7 +1323,7 @@ public class AvcodecLibrary {
 	public native long avcodec_find_decoder(int id);
 	/**
 	 * Original signature : <code>AVCodec* avcodec_find_encoder(AVCodecID)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1160</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1227</i>
 	 */
 	public Pointer<AVCodec > avcodec_find_encoder(IntValuedEnum<AvcodecLibrary.AVCodecID > id) {
 		return Pointer.pointerToAddress(avcodec_find_encoder((int)id.value()), AVCodec.class);
@@ -1295,7 +1332,7 @@ public class AvcodecLibrary {
 	public native long avcodec_find_encoder(int id);
 	/**
 	 * Original signature : <code>int avcodec_encode_video2(AVCodecContext*, AVPacket*, const AVFrame*, int*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1162</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1229</i>
 	 */
 	public int avcodec_encode_video2(Pointer<AVCodecContext > avctx, Pointer<AVPacket > avpkt, Pointer<AVFrame > frame, Pointer<Integer > got_packet_ptr) {
 		return avcodec_encode_video2(Pointer.getPeer(avctx), Pointer.getPeer(avpkt), Pointer.getPeer(frame), Pointer.getPeer(got_packet_ptr));
@@ -1303,7 +1340,7 @@ public class AvcodecLibrary {
 	public native int avcodec_encode_video2(@Ptr long avctx, @Ptr long avpkt, @Ptr long frame, @Ptr long got_packet_ptr);
 	/**
 	 * Original signature : <code>int avpicture_fill(AVPicture*, const uint8_t*, AVPixelFormat, int, int)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1164</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1231</i>
 	 */
 	public int avpicture_fill(Pointer<AVPicture > picture, Pointer<Byte > ptr, IntValuedEnum<AVPixelFormat > pix_fmt, int width, int height) {
 		return avpicture_fill(Pointer.getPeer(picture), Pointer.getPeer(ptr), (int)pix_fmt.value(), width, height);
@@ -1311,20 +1348,18 @@ public class AvcodecLibrary {
 	public native int avpicture_fill(@Ptr long picture, @Ptr long ptr, int pix_fmt, int width, int height);
 	/**
 	 * Original signature : <code>int avpicture_get_size(AVPixelFormat, int, int)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1166</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1233</i>
 	 */
 	public int avpicture_get_size(IntValuedEnum<AVPixelFormat> pix_fmt, int width, int height) {
 		return avpicture_get_size((int)pix_fmt.value(), width, height);
 	}
 	public native int avpicture_get_size(int pix_fmt, int width, int height);
 	/**
-	 * Original signature : <code>int av_image_alloc(uint8_t *pointers[4], int linesize[4],<br>
-	 *                                      	int w, int h, enum AVPixelFormat pxl_fmt,int align)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodec.h:1166</i>
+	 * Original signature : <code>int av_image_alloc(uint8_t*[4], int[4], int, int, AVPixelFormat, int)</code><br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1235</i>
 	 */
-	public int av_image_alloc(Pointer<Pointer<Byte>> pointers, Pointer<Integer> linesize,
-			int w, int h, IntValuedEnum<AVPixelFormat> pxl_fmt, int align) {
-		return av_image_alloc(Pointer.getPeer(pointers), Pointer.getPeer(linesize), w, h, (int)pxl_fmt.value(), align);
+	public int av_image_alloc(Pointer<Pointer<Byte > > pointers, Pointer<Integer > linesizes, int w, int h, IntValuedEnum<AVPixelFormat > pix_fmt, int align) {
+		return av_image_alloc(Pointer.getPeer(pointers), Pointer.getPeer(linesizes), w, h, (int)pix_fmt.value(), align);
 	}
 	public native int av_image_alloc(@Ptr long pointers,@Ptr long linesize, int w, int h, int pxl_fmt, int align);
 	/** C type : const AVClass* */
