@@ -9,7 +9,6 @@ import org.ffmpeg.avcodec.AVCodec;
 import org.ffmpeg.avcodec.AVCodecContext;
 import org.ffmpeg.avcodec.AVPacket;
 import org.ffmpeg.avcodec.AvcodecLibrary;
-import org.ffmpeg.avcodec.AvcodecLibrary.AVCodecID;
 import org.ffmpeg.avformat.AVFormatContext;
 import org.ffmpeg.avformat.AVStream;
 import org.ffmpeg.avformat.AvformatLibrary;
@@ -27,9 +26,6 @@ import org.ffmpeg.avutil.AvutilLibrary.AVSampleFormat;
  */
 
 public class Demuxing {
-	static AvcodecLibrary avcodec = new AvcodecLibrary();
-	static AvutilLibrary avutil = new AvutilLibrary();
-	static AvformatLibrary avformat = new AvformatLibrary();
 	static AVFormatContext fmt_ctx = null;
 	static AVCodecContext video_dec_ctx = null, audio_dec_ctx;
 	static AVStream video_stream = null, audio_stream = null;
@@ -39,7 +35,7 @@ public class Demuxing {
 	static FileOutputStream video_dst_file = null;
 	static FileOutputStream audio_dst_file = null;
 
-	static Pointer<Pointer<Byte>> video_dst_data = Pointer.allocateBytes(4, 0);
+	static Pointer<Pointer<Byte>> video_dst_data = Pointer.allocatePointer(Byte.class);
 	static Pointer<Integer> video_dst_linesize = Pointer.allocateInts(4);
 	static int video_dst_bufsize;
 
@@ -57,7 +53,7 @@ public class Demuxing {
 
 		if (pkt.stream_index() == video_stream_idx.get()) {
 			/* decode video frame */
-			ret = avcodec.avcodec_decode_video2(Pointer.getPointer(video_dec_ctx), Pointer.getPointer(frame),
+			ret = AvcodecLibrary.avcodec_decode_video2(Pointer.getPointer(video_dec_ctx), Pointer.getPointer(frame),
 					got_frame, Pointer.getPointer(pkt));
 			if (ret < 0) {
 				System.err.printf("Error decoding video frame\n");
@@ -67,7 +63,7 @@ public class Demuxing {
 			if (got_frame.get() != 0) {
 				System.out.printf("video_frame%s n:%d coded_n:%d pts:%s\n",
 						cached != 0 ? "(cached)" : "", video_frame_count++,
-						frame.coded_picture_number(), avutil
+						frame.coded_picture_number(), AvutilLibrary
 								.av_ts2timestr(frame.pts(), video_dec_ctx
 										.time_base()));
 
@@ -75,7 +71,7 @@ public class Demuxing {
 				 * copy decoded frame to destination buffer: this is required
 				 * since rawvideo expects non aligned data
 				 */
-				avutil.av_image_copy(video_dst_data, video_dst_linesize, frame
+				AvutilLibrary.av_image_copy(video_dst_data, video_dst_linesize, frame
 						.data(), frame.linesize(), video_dec_ctx
 						.pix_fmt(), video_dec_ctx.width(),
 						video_dec_ctx.height());
@@ -85,7 +81,7 @@ public class Demuxing {
 			}
 		} else if (pkt.stream_index() == audio_stream_idx.get()) {
 			/* decode audio frame */
-			ret = avcodec.avcodec_decode_audio4(Pointer.getPointer(audio_dec_ctx), Pointer.getPointer(frame),
+			ret = AvcodecLibrary.avcodec_decode_audio4(Pointer.getPointer(audio_dec_ctx), Pointer.getPointer(frame),
 					got_frame, Pointer.getPointer(pkt));
 			if (ret < 0) {
 				System.err.printf("Error decoding audio frame\n");
@@ -101,10 +97,10 @@ public class Demuxing {
 
 			if (got_frame.get() != 0) {
 				int unpadded_linesize = frame.nb_samples()
-						* avutil.av_get_bytes_per_sample(frame.format());
+						* AvutilLibrary.av_get_bytes_per_sample(AVSampleFormat.fromValue(frame.format()));
 				System.out.printf("audio_frame%s n:%d nb_samples:%d pts:%s\n",
 						cached != 0 ? "(cached)" : "", audio_frame_count++,
-						frame.nb_samples(), avutil.av_ts2timestr(frame
+						frame.nb_samples(), AvutilLibrary.av_ts2timestr(frame
 								.pts(), audio_dec_ctx.time_base()));
 
 				/*
@@ -117,7 +113,7 @@ public class Demuxing {
 				 * libswresample or libavfilter to convert the frame to packed
 				 * data.
 				 */
-				audio_dst_file.write(frame.extended_data().getBytes());
+				audio_dst_file.write(frame.extended_data().getBytes(unpadded_linesize));
 			}
 		}
 
@@ -132,10 +128,10 @@ public class Demuxing {
 		AVCodecContext dec_ctx = null;
 		AVCodec dec = null;
 
-		ret = avformat.av_find_best_stream(Pointer.getPointer(fmt_ctx), type, -1, -1, null, 0);
+		ret = AvformatLibrary.av_find_best_stream(Pointer.getPointer(fmt_ctx), type, -1, -1, null, 0);
 		if (ret < 0) {
 			System.err.printf("Could not find %s stream in input file '%s'\n",
-					avformat.av_get_media_type_string(type).getCString(),
+					AvformatLibrary.av_get_media_type_string(type).getCString(),
 					src_filename);
 			return ret;
 		} else {
@@ -144,16 +140,16 @@ public class Demuxing {
 
 			/* find decoder for the stream */
 			dec_ctx = st.codec().get();
-			dec = avcodec.avcodec_find_decoder(dec_ctx.codec_id()).get();
+			dec = AvcodecLibrary.avcodec_find_decoder(dec_ctx.codec_id()).get();
 			if (dec == null) {
 				System.err.printf("Failed to find %s codec\n",
-						avformat.av_get_media_type_string(type).getCString());
+						AvformatLibrary.av_get_media_type_string(type).getCString());
 				return ret;
 			}
 
-			if ((ret = avcodec.avcodec_open2(Pointer.getPointer(dec_ctx), Pointer.getPointer(dec), null)) < 0) {
+			if ((ret = AvcodecLibrary.avcodec_open2(Pointer.getPointer(dec_ctx), Pointer.getPointer(dec), null)) < 0) {
 				System.err.printf("Failed to open %s codec\n",
-						avformat.av_get_media_type_string(type).getCString());
+						AvformatLibrary.av_get_media_type_string(type).getCString());
 				return ret;
 			}
 		}
@@ -161,38 +157,25 @@ public class Demuxing {
 		return 0;
 	}
 
-	static int get_format_from_sample_fmt(Pointer<Pointer<Byte>> fmt,
-			AVSampleFormat sample_fmt) {
-		fmt = null;
+	static String get_format_from_sample_fmt(AVSampleFormat sample_fmt) {
 		switch (sample_fmt) {
-		default:
 		case AV_SAMPLE_FMT_U8:
-			fmt = Pointer.pointerToPointer(Pointer.pointerToBytes("u8"
-					.getBytes()));
-			break;
+			return "u8";
 		case AV_SAMPLE_FMT_S16:
-			fmt = Pointer.pointerToPointer(Pointer.pointerToBytes("s16le"
-					.getBytes()));
-			break;
+			return "s16le";
 		case AV_SAMPLE_FMT_S32:
-			fmt = Pointer.pointerToPointer(Pointer.pointerToBytes("s32le"
-					.getBytes()));
-			break;
+			return "s32le";
 		case AV_SAMPLE_FMT_FLT:
-			fmt = Pointer.pointerToPointer(Pointer.pointerToBytes("f32le"
-					.getBytes()));
-			break;
+			return "f32le";
 		case AV_SAMPLE_FMT_DBL:
-			fmt = Pointer.pointerToPointer(Pointer.pointerToBytes("f64le"
-					.getBytes()));
+			return "f64le";
+		default:
 			break;
 		}
-		if (fmt != null)
-			return 0;
 		System.err.printf(
 				"sample format %s is not supported as output format\n",
-				avutil.av_get_sample_fmt_name(sample_fmt));
-		return -1;
+				AvutilLibrary.av_get_sample_fmt_name(sample_fmt));
+		return null;
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -216,11 +199,11 @@ public class Demuxing {
 
 		try {
 			/* register all formats and codecs */
-			avformat.av_register_all();
+			AvformatLibrary.av_register_all();
 
 			/* open input file, and allocate format context */
 			Pointer<Pointer<AVFormatContext>> pfmt_ctx = Pointer.pointerToPointer(null);
-			if (avformat.avformat_open_input(pfmt_ctx, (Pointer<Byte>) Pointer
+			if (AvformatLibrary.avformat_open_input(pfmt_ctx, (Pointer<Byte>) Pointer
 					.pointerToCString(src_filename),
 					null, null) < 0) {
 				System.err.printf("Could not open source file %s\n",
@@ -229,7 +212,7 @@ public class Demuxing {
 			}
 			fmt_ctx = pfmt_ctx.get().as(AVFormatContext.class).get();
 			/* retrieve stream information */
-			if (avformat.avformat_find_stream_info(Pointer.getPointer(fmt_ctx), null) < 0) {
+			if (AvformatLibrary.avformat_find_stream_info(Pointer.getPointer(fmt_ctx), null) < 0) {
 				System.err.printf("Could not find stream information\n");
 				System.exit(1);
 			}
@@ -250,7 +233,7 @@ public class Demuxing {
 				}
 
 				/* allocate image where the decoded image will be put */
-				ret = avcodec.av_image_alloc(video_dst_data,
+				ret = AvcodecLibrary.av_image_alloc(video_dst_data,
 						video_dst_linesize, video_dec_ctx.width(),
 						video_dec_ctx.height(), video_dec_ctx
 								.pix_fmt(), 1);
@@ -276,7 +259,7 @@ public class Demuxing {
 			}
 
 			/* dump input information to stderr */
-			avformat.av_dump_format(Pointer.getPointer(fmt_ctx), 0,
+			AvformatLibrary.av_dump_format(Pointer.getPointer(fmt_ctx), 0,
 					Pointer.pointerToBytes(src_filename.getBytes()), 0);
 
 			if (audio_stream == null && video_stream == null) {
@@ -285,16 +268,16 @@ public class Demuxing {
 				System.exit(1);
 			}
 
-			frame = avcodec.alloc_frame().get();
+			frame = AvcodecLibrary.alloc_frame().get();
 			if (frame == null) {
 				System.err.printf("Could not allocate frame\n");
 				System.exit(1);
 			}
 
 			/* initialize packet, set data to null, let the demuxer fill it */
-			Pointer<AVPacket> ppkt = Pointer.NULL;
-			avcodec.av_init_packet(ppkt);
-			pkt.data().set(null);
+			pkt = new AVPacket();
+			AvcodecLibrary.av_init_packet(Pointer.getPointer(pkt));
+			pkt.data(null);
 			pkt.size(0);
 
 			if (video_stream != null)
@@ -305,23 +288,28 @@ public class Demuxing {
 						src_filename, audio_dst_filename);
 
 			/* read frames from the file */
-			while (avformat.av_read_frame(Pointer.getPointer(fmt_ctx), Pointer.getPointer(pkt)) >= 0) {
+			while (AvformatLibrary.av_read_frame(Pointer.getPointer(fmt_ctx), Pointer.getPointer(pkt)) >= 0) {
 				AVPacket orig_pkt = pkt;
 				do {
+					System.err.println("decode_packet");
 					ret = decode_packet(got_frame, 0);
 					if (ret < 0)
 						break;
+					System.err.println("modify data ptr");
 					pkt.data(
 							Pointer.pointerToAddress(
 									Pointer.getPeer(pkt.data()) + ret,
 									Byte.class));
 					pkt.size(pkt.size() - ret);
+					System.err.println("modify data ptr completed");
 				} while (pkt.size() > 0);
-				avcodec.av_free_packet(Pointer.getPointer(orig_pkt));
+				System.err.println("av_free_packet");
+				AvcodecLibrary.av_free_packet(Pointer.getPointer(orig_pkt));
+				System.err.println("av_free_packet completed");
 			}
 
 			/* flush cached frames */
-			pkt.data().set(null);
+			pkt.data(Pointer.NULL);
 			pkt.size(0);
 			do {
 				decode_packet(got_frame, 1);
@@ -333,7 +321,7 @@ public class Demuxing {
 				System.out
 						.printf("Play the output video file with the command:\n"
 								+ "ffplay -f rawvideo -pix_fmt %s -video_size %dx%d %s\n",
-								avutil.av_get_pix_fmt_name(
+								AvutilLibrary.av_get_pix_fmt_name(
 										video_dec_ctx.pix_fmt())
 										.getCString(), video_dec_ctx
 										.width(), video_dec_ctx.height(),
@@ -344,23 +332,22 @@ public class Demuxing {
 				AVSampleFormat sfmt = (AVSampleFormat) audio_dec_ctx
 						.sample_fmt();
 				int n_channels = audio_dec_ctx.channels();
-				Pointer<Pointer<Byte>> fmt;
+				String fmt;
 
-				if (avutil.av_sample_fmt_is_planar(sfmt) != 0) {
-					Pointer<Byte> packed = avutil.av_get_sample_fmt_name(sfmt);
+				if (AvutilLibrary.av_sample_fmt_is_planar(sfmt) != 0) {
+					Pointer<Byte> packed = AvutilLibrary.av_get_sample_fmt_name(sfmt);
 					System.out
 							.printf("Warning: the sample format the decoder produced is planar "
 									+ "(%s). This example will output the first channel only.\n",
 									packed != null ? packed : "?");
-					sfmt = (AVSampleFormat) avutil
+					sfmt = (AVSampleFormat) AvutilLibrary
 							.av_get_packed_sample_fmt(sfmt);
 					n_channels = 1;
 				}
 
-				fmt = null;
-				if ((ret = get_format_from_sample_fmt(fmt, sfmt)) < 0)
-					System.exit(ret);
-
+				if ((fmt = get_format_from_sample_fmt(sfmt)) == null)
+					System.exit(-1);
+				ret = 0;
 				System.out.printf(
 						"Play the output audio file with the command:\n"
 								+ "ffplay -f %s -ac %d -ar %d %s\n", fmt,
@@ -372,17 +359,27 @@ public class Demuxing {
 			e.printStackTrace();
 			System.exit(1);
 		} finally {
+			System.err.print("freeing video_dec_ctx..");
 			if (video_dec_ctx != null)
-				avcodec.avcodec_close(Pointer.getPointer(video_dec_ctx));
+				AvcodecLibrary.avcodec_close(Pointer.getPointer(video_dec_ctx));
+			System.err.println("freed");
+			System.err.print("freeing audio_dec_ctx...");
 			if (audio_dec_ctx != null)
-				avcodec.avcodec_close(Pointer.getPointer(audio_dec_ctx));
-			avformat.avformat_close_input(Pointer.pointerToPointer(Pointer.getPointer(fmt_ctx)));
+				AvcodecLibrary.avcodec_close(Pointer.getPointer(audio_dec_ctx));
+			System.err.println("freed");
+			System.err.print("freeing fmt_ctx...");
+			AvformatLibrary.avformat_close_input(Pointer.pointerToPointer(Pointer.getPointer(fmt_ctx)));
+			System.err.println("freed");
 			if (video_dst_file != null)
 				video_dst_file.close();
 			if (audio_dst_file != null)
 				audio_dst_file.close();
-			avutil.av_free(Pointer.getPointer(frame));
-			avutil.av_free(video_dst_data);
+			System.err.print("freeing frame...");
+			AvutilLibrary.av_free(Pointer.getPointer(frame));
+			System.err.println("freed");
+			System.err.print("freeing video_dst_data...");
+			AvutilLibrary.av_free(video_dst_data.get());
+			System.err.println("freed");
 		}
 		System.exit(ret);
 	}

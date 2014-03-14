@@ -6,6 +6,11 @@
 #include "../libavutil/dict.h"
 #include "../libavutil/log.h"
 
+typedef struct AVIOInterruptCB {
+    int (*callback)(void*);
+    void *opaque;
+} AVIOInterruptCB;
+
 typedef struct AVIOContext {
     const AVClass *av_class;
     unsigned char *buffer;  /**< Start of the buffer. */

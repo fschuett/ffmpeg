@@ -3,15 +3,13 @@
 -I /usr/include/c++/4.8/x86_64-suse-linux 
 -DTARGET_OS_LINUX=1
 
--T__signed__:=int
-
 -library avutil ../csrc/libavutil/avutil.h ../csrc/libavutil/dict.h ../csrc/libavutil/frame.h ../csrc/libavutil/log.h ../csrc/libavutil/mem.h ../csrc/libavutil/opt.h ../csrc/libavutil/pixfmt.h ../csrc/libavutil/mathematics.h ../csrc/libavutil/samplefmt.h ../csrc/libavutil/timestamp.h ../csrc/libavutil/imgutils.h ../csrc/libavutil/pixdesc.h
 -library swscale ../csrc/libswscale/swscale.h ../csrc/libswscale/version.h
 -library avformat ../csrc/libavformat/avformat.h ../csrc/libavformat/avio.h ../csrc/libavformat/version.h
 -library avcodec ../csrc/libavcodec/avcodec.h
 
 -runtime BridJ
--reification
+//-reification
 
 -root org.ffmpeg
 -parseChunks

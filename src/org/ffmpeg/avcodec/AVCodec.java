@@ -7,7 +7,6 @@ import org.bridj.StructObject;
 import org.bridj.ann.Field;
 import org.bridj.ann.Library;
 import org.bridj.ann.Ptr;
-import org.ffmpeg.avcodec.AVCodecContext;
 import org.ffmpeg.avcodec.AvcodecLibrary.AVCodecID;
 import org.ffmpeg.avcodec.AvcodecLibrary.AVSubtitle;
 import org.ffmpeg.avutil.AVClass;
@@ -241,13 +240,14 @@ public class AVCodec extends StructObject {
 		this.io.setPointerField(this, 15, update_thread_context);
 		return this;
 	}
-	/** C type : void* defaults */
-	@Field(16)
-	public Pointer defaults() {
+	/** C type : void* */
+	@Field(16) 
+	public Pointer<? > defaults() {
 		return this.io.getPointerField(this, 16);
 	}
-	@Field(16)
-	public AVCodec defaults(Pointer defaults) {
+	/** C type : void* */
+	@Field(16) 
+	public AVCodec defaults(Pointer<? > defaults) {
 		this.io.setPointerField(this, 16, defaults);
 		return this;
 	}
@@ -328,7 +328,7 @@ public class AVCodec extends StructObject {
 		this.io.setPointerField(this, 23, flush);
 		return this;
 	}
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1125</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1155</i> */
 	public static abstract class init_thread_copy_callback extends Callback<init_thread_copy_callback > {
 		public int apply(Pointer<AVCodecContext > AVCodecContextPtr1) {
 			return apply(Pointer.getPeer(AVCodecContextPtr1));
@@ -346,7 +346,7 @@ public class AVCodec extends StructObject {
 			return apply(Pointer.pointerToAddress(dst, AVCodecContext.class), Pointer.pointerToAddress(src, AVCodecContext.class));
 		}
 	};
-	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1127</i> */
+	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1157</i> */
 	public static abstract class init_static_data_callback extends Callback<init_static_data_callback > {
 		public void apply(Pointer<AVCodec > codec) {
 			apply(Pointer.getPeer(codec));
@@ -409,4 +409,10 @@ public class AVCodec extends StructObject {
 			apply(Pointer.pointerToAddress(AVCodecContextPtr1, AVCodecContext.class));
 		}
 	};
+	public AVCodec() {
+		super();
+	}
+	public AVCodec(Pointer pointer) {
+		super(pointer);
+	}
 }

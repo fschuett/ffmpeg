@@ -27,13 +27,13 @@ public class SwscaleLibrary {
 	 * Original signature : <code>int swscale_version()</code><br>
 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libswscale/swscale.h:1</i>
 	 */
-	public native int swscale_version();
+	public static native int swscale_version();
 	/**
 	 * Original signature : <code>int sws_scale(SwsContext*, const const uint8_t*[], const int[], int, int, const uint8_t*[], const int[])</code><br>
 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libswscale/swscale.h:6</i>
 	 */
-	public int sws_scale(Pointer<SwsContext > c, Pointer<Pointer<Byte > > srcSlice, Pointer<Integer > srcStride, int srcSliceY, int srcSliceH, Pointer<Pointer<Byte > > dst, Pointer<Integer > dstStride) {
+	public static int sws_scale(Pointer<SwsContext > c, Pointer<Pointer<Byte > > srcSlice, Pointer<Integer > srcStride, int srcSliceY, int srcSliceH, Pointer<Pointer<Byte > > dst, Pointer<Integer > dstStride) {
 		return sws_scale(Pointer.getPeer(c), Pointer.getPeer(srcSlice), Pointer.getPeer(srcStride), srcSliceY, srcSliceH, Pointer.getPeer(dst), Pointer.getPeer(dstStride));
 	}
-	public native int sws_scale(@Ptr long c, @Ptr long srcSlice, @Ptr long srcStride, int srcSliceY, int srcSliceH, @Ptr long dst, @Ptr long dstStride);
+	protected native static int sws_scale(@Ptr long c, @Ptr long srcSlice, @Ptr long srcStride, int srcSliceY, int srcSliceH, @Ptr long dst, @Ptr long dstStride);
 }

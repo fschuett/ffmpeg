@@ -2,7 +2,6 @@
 #ifndef AVUTIL_AVUTIL_H
 #define AVUTIL_AVUTIL_H
 
-#define AV_NOPTS_VALUE          ((int64_t)UINT64_C(0x8000000000000000))
 #define AV_TIME_BASE            1000000
 
 enum AVMediaType {

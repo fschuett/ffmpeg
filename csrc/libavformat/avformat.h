@@ -160,6 +160,30 @@ typedef struct AVStream {
     int pts_wrap_behavior;
 } AVStream;
 
+typedef struct AVProgram {
+    int            id;
+    int            flags;
+    enum AVDiscard discard;        ///< selects which program to discard and which to feed to the caller
+    unsigned int   *stream_index;
+    unsigned int   nb_stream_indexes;
+    AVDictionary *metadata;
+    int program_num;
+    int pmt_pid;
+    int pcr_pid;
+    int64_t start_time;
+    int64_t end_time;
+
+    int64_t pts_wrap_reference;    ///< reference dts for wrap detection
+    int pts_wrap_behavior;         ///< behavior on wrap detection
+} AVProgram;
+
+typedef struct AVChapter {
+    int id;                 ///< unique ID to identify the chapter
+    AVRational time_base;   ///< time base in which the start/end timestamps are specified
+    int64_t start, end;     ///< chapter start/end time in time_base units
+    AVDictionary *metadata;
+} AVChapter;
+
 enum AVDurationEstimationMethod {
     AVFMT_DURATION_FROM_PTS,    ///< Duration accurately estimated from PTSes
     AVFMT_DURATION_FROM_STREAM, ///< Duration estimated from a stream with a known duration
