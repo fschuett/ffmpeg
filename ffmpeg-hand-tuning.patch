@@ -1,0 +1,536 @@
+diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcodec/AvcodecLibrary.java
+--- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-03-13 16:18:58.751592767 +0100
++++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-03-13 16:07:50.079385443 +0100
+@@ -1251,11 +1251,11 @@ public class AvcodecLibrary {
+ 	 * Original signature : <code>AVFrame* avcodec_alloc_frame()</code><br>
+ 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1178</i>
+ 	 */
+-	public static Pointer<AVFrame > avcodec_alloc_frame() {
+-		return Pointer.pointerToAddress(avcodec_alloc_frame$2(), AVFrame.class);
++	public static Pointer<AVFrame > alloc_frame() {
++		return Pointer.pointerToAddress(avcodec_alloc_frame(), AVFrame.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avcodec_alloc_frame$2();
++	protected native static long avcodec_alloc_frame();
+ 	/**
+ 	 * Original signature : <code>int avcodec_open2(AVCodecContext*, const AVCodec*, AVDictionary**)</code><br>
+ 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1180</i>
+diff -pruN generated/org/ffmpeg/avcodec/AVCodecParser.java src/org/ffmpeg/avcodec/AVCodecParser.java
+--- generated/org/ffmpeg/avcodec/AVCodecParser.java	2014-03-13 16:18:58.414593674 +0100
++++ src/org/ffmpeg/avcodec/AVCodecParser.java	2014-03-13 15:54:57.189406017 +0100
+@@ -103,11 +103,11 @@ public class AVCodecParser extends Struc
+ 	};
+ 	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1250</i> */
+ 	public static abstract class parser_parse_callback extends Callback<parser_parse_callback > {
+-		public int apply(Pointer<AVCodecParserContext > s, Pointer<AVCodecContext > avctx, Pointer<Pointer<Byte > > poutbuf, Pointer<Integer > poutbuf_size, Pointer<Byte > buf, int buf_size) {
++		public int apply(Pointer<AVCodecParserContext > s, Pointer<AVCodecContext > avctx, Pointer<Byte > poutbuf, Pointer<Integer > poutbuf_size, Pointer<Byte > buf, int buf_size) {
+ 			return apply(Pointer.getPeer(s), Pointer.getPeer(avctx), Pointer.getPeer(poutbuf), Pointer.getPeer(poutbuf_size), Pointer.getPeer(buf), buf_size);
+ 		}
+ 		public int apply(@Ptr long s, @Ptr long avctx, @Ptr long poutbuf, @Ptr long poutbuf_size, @Ptr long buf, int buf_size) {
+-			return apply(Pointer.pointerToAddress(s, AVCodecParserContext.class), Pointer.pointerToAddress(avctx, AVCodecContext.class), Pointer.pointerToAddress(poutbuf, DefaultParameterizedType.paramType(Pointer.class, Byte.class)), Pointer.pointerToAddress(poutbuf_size, Integer.class), Pointer.pointerToAddress(buf, Byte.class), buf_size);
++			return apply(Pointer.pointerToAddress(s, AVCodecParserContext.class), Pointer.pointerToAddress(avctx, AVCodecContext.class), Pointer.pointerToAddress(poutbuf, Byte.class), Pointer.pointerToAddress(poutbuf_size, Integer.class), Pointer.pointerToAddress(buf, Byte.class), buf_size);
+ 		}
+ 	};
+ 	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1251</i> */
+diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avformat/AvformatLibrary.java
+--- generated/org/ffmpeg/avformat/AvformatLibrary.java	2014-03-13 16:18:59.750590078 +0100
++++ src/org/ffmpeg/avformat/AvformatLibrary.java	2014-03-13 16:20:57.000000000 +0100
+@@ -232,11 +232,11 @@ public class AvformatLibrary {
+ 	 * Original signature : <code>AVFormatContext* avformat_alloc_context()</code><br>
+ 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/avformat.h:281</i>
+ 	 */
+-	public static Pointer<AVFormatContext > avformat_alloc_context() {
+-		return Pointer.pointerToAddress(avformat_alloc_context$2(), AVFormatContext.class);
++	public static Pointer<AVFormatContext > alloc_context() {
++		return Pointer.pointerToAddress(avformat_alloc_context(), AVFormatContext.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avformat_alloc_context$2();
++	protected native static long avformat_alloc_context();
+ 	/**
+ 	 * Original signature : <code>void avformat_free_context(AVFormatContext*)</code><br>
+ 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/avformat.h:283</i>
+diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/AvutilLibrary.java
+--- generated/org/ffmpeg/avutil/AvutilLibrary.java	2014-03-13 16:18:57.293596691 +0100
++++ src/org/ffmpeg/avutil/AvutilLibrary.java	2014-03-13 17:15:04.558343062 +0100
+@@ -754,4 +754,54 @@ public class AvutilLibrary {
+ 	}
+ 	@Ptr 
+ 	protected native static long av_get_pix_fmt_name(int pix_fmt);
++
++	public static final long AV_NOPTS_VALUE = 0x8000000000000000L;
++
++	/** Inline-Funktion rational.h */
++	public double av_q2d(AVRational a) {
++		return a.num() / (double) a.den();
++	}
++
++	public Pointer<Byte> av_ts_make_string(Pointer<Byte> buf, long ts) {
++		if(buf == null)
++			buf = Pointer.allocateBytes(AV_TS_MAX_STRING_SIZE);
++		if (ts == AV_NOPTS_VALUE)
++			System.arraycopy("NOPTS", 0, buf, 0, "NOPTS".length());
++		else
++			System.arraycopy(Long.toHexString(ts), 0, buf, 0,
++					Long.toHexString(ts).length());
++		return buf;
++	}
++
++	/**
++	 * Original signaturre : #define av_ts2str(ts)
++	 * av_ts_make_string((char[AV_TS_MAX_STRING_SIZE]){0}, ts)
++	 */
++	public Pointer<Byte> av_ts2str(long ts) {
++		Pointer<Byte> buf = null;
++		return av_ts_make_string(buf, ts);
++	}
++
++	public Pointer<Byte> av_ts_make_time_string(Pointer<Byte> buf, long ts,
++			AVRational tb) {
++		if(buf == null)
++			buf = Pointer.allocateBytes(AV_TS_MAX_STRING_SIZE);
++		if (ts == AV_NOPTS_VALUE)
++			System.arraycopy("NOPTS", 0, buf, 0, "NOPTS".length());
++		else {
++			String s = String.format("%.6g", av_q2d(tb) * ts);
++			System.arraycopy(s.toCharArray(), 0, buf, 0, s.length());
++		}
++		return buf;
++	}
++
++	/**
++	 * Original signature : #define av_ts2timestr(ts, tb)
++	 * av_ts_make_time_string((char[AV_TS_MAX_STRING_SIZE]){0}, ts, tb)
++	 */
++	public Pointer<Byte> av_ts2timestr(long ts, AVRational tb) {
++		Pointer<Byte> buf = null;
++		return av_ts_make_time_string(buf, ts, tb);
++	}
++
+ }
+diff -pruN generated/org/ffmpeg/FFMPeg.java src/org/ffmpeg/FFMPeg.java
+--- generated/org/ffmpeg/FFMPeg.java	1970-01-01 01:00:00.000000000 +0100
++++ src/org/ffmpeg/FFMPeg.java	2014-03-11 18:17:33.000000000 +0100
+@@ -0,0 +1,27 @@
++package org.ffmpeg;
++
++import org.ffmpeg.avformat.AVStream;
++import org.ffmpeg.avcodec.AvcodecLibrary;
++
++public class FFMPeg {
++
++	private static AvcodecLibrary avcodec;
++	
++	public static void main(String[] args) {
++		System.out.println("Java-Bibliothek ffmpeg.jar");
++		System.out.println("==========================");
++		System.out.println("Die Bibliothek ffmpeg ist nur in den Bruchteilen implementiert, die für\n"
++				+ "Open Source Physics tracker benötigt werden.");
++		System.out.println("Bestandteile:");
++		System.out.println("avutil in Version ...");
++		System.out.println("avcodec in Version ...");
++		System.out.println("avformat in Version ...");
++		System.out.println("swscale in Version ...");
++		avcodec = new AvcodecLibrary();
++	}
++	
++	public void stream_close(AVStream stream) {
++		avcodec.avcodec_close(stream.codec());
++	}
++
++}
+diff -pruN generated/test/Demuxing.java src/test/Demuxing.java
+--- generated/test/Demuxing.java	1970-01-01 01:00:00.000000000 +0100
++++ src/test/Demuxing.java	2014-03-13 16:34:21.868046052 +0100
+@@ -0,0 +1,390 @@
++package test;
++
++import java.io.FileOutputStream;
++import java.io.IOException;
++
++import org.bridj.IntValuedEnum;
++import org.bridj.Pointer;
++import org.ffmpeg.avcodec.AVCodec;
++import org.ffmpeg.avcodec.AVCodecContext;
++import org.ffmpeg.avcodec.AVPacket;
++import org.ffmpeg.avcodec.AvcodecLibrary;
++import org.ffmpeg.avcodec.AvcodecLibrary.AVCodecID;
++import org.ffmpeg.avformat.AVFormatContext;
++import org.ffmpeg.avformat.AVStream;
++import org.ffmpeg.avformat.AvformatLibrary;
++import org.ffmpeg.avutil.AVFrame;
++import org.ffmpeg.avutil.AvutilLibrary;
++import org.ffmpeg.avutil.AvutilLibrary.AVMediaType;
++import org.ffmpeg.avutil.AvutilLibrary.AVSampleFormat;
++
++/**
++ * @file libavformat demuxing API use example.
++ * 
++ *       Show how to use the libavformat and libavcodec API to demux and decode
++ *       audio and video data.
++ * @example doc/examples/demuxing.c
++ */
++
++public class Demuxing {
++	static AvcodecLibrary avcodec = new AvcodecLibrary();
++	static AvutilLibrary avutil = new AvutilLibrary();
++	static AvformatLibrary avformat = new AvformatLibrary();
++	static AVFormatContext fmt_ctx = null;
++	static AVCodecContext video_dec_ctx = null, audio_dec_ctx;
++	static AVStream video_stream = null, audio_stream = null;
++	static String src_filename = null;
++	static String video_dst_filename = null;
++	static String audio_dst_filename = null;
++	static FileOutputStream video_dst_file = null;
++	static FileOutputStream audio_dst_file = null;
++
++	static Pointer<Pointer<Byte>> video_dst_data = Pointer.allocateBytes(4, 0);
++	static Pointer<Integer> video_dst_linesize = Pointer.allocateInts(4);
++	static int video_dst_bufsize;
++
++	static Pointer<Integer> video_stream_idx = Pointer.allocateInt(),
++			audio_stream_idx = Pointer.allocateInt();
++	static AVFrame frame = null;
++	static AVPacket pkt = null;
++	static int video_frame_count = 0;
++	static int audio_frame_count = 0;
++
++	static int decode_packet(Pointer<Integer> got_frame, int cached)
++			throws IOException {
++		int ret = 0;
++		int decoded = pkt.size();
++
++		if (pkt.stream_index() == video_stream_idx.get()) {
++			/* decode video frame */
++			ret = avcodec.avcodec_decode_video2(Pointer.getPointer(video_dec_ctx), Pointer.getPointer(frame),
++					got_frame, Pointer.getPointer(pkt));
++			if (ret < 0) {
++				System.err.printf("Error decoding video frame\n");
++				return ret;
++			}
++
++			if (got_frame.get() != 0) {
++				System.out.printf("video_frame%s n:%d coded_n:%d pts:%s\n",
++						cached != 0 ? "(cached)" : "", video_frame_count++,
++						frame.coded_picture_number(), avutil
++								.av_ts2timestr(frame.pts(), video_dec_ctx
++										.time_base()));
++
++				/*
++				 * copy decoded frame to destination buffer: this is required
++				 * since rawvideo expects non aligned data
++				 */
++				avutil.av_image_copy(video_dst_data, video_dst_linesize, frame
++						.data(), frame.linesize(), video_dec_ctx
++						.pix_fmt(), video_dec_ctx.width(),
++						video_dec_ctx.height());
++
++				/* write to rawvideo file */
++				video_dst_file.write(video_dst_data.getBytes());
++			}
++		} else if (pkt.stream_index() == audio_stream_idx.get()) {
++			/* decode audio frame */
++			ret = avcodec.avcodec_decode_audio4(Pointer.getPointer(audio_dec_ctx), Pointer.getPointer(frame),
++					got_frame, Pointer.getPointer(pkt));
++			if (ret < 0) {
++				System.err.printf("Error decoding audio frame\n");
++				return ret;
++			}
++			/*
++			 * Some audio decoders decode only part of the packet, and have to
++			 * be called again with the remainder of the packet data. Sample:
++			 * fate-suite/lossless-audio/luckynight-partial.shn Also, some
++			 * decoders might over-read the packet.
++			 */
++			decoded = Math.min(ret, pkt.size());
++
++			if (got_frame.get() != 0) {
++				int unpadded_linesize = frame.nb_samples()
++						* avutil.av_get_bytes_per_sample(AVSampleFormat.fromValue(frame.format()));
++				System.out.printf("audio_frame%s n:%d nb_samples:%d pts:%s\n",
++						cached != 0 ? "(cached)" : "", audio_frame_count++,
++						frame.nb_samples(), avutil.av_ts2timestr(frame
++								.pts(), audio_dec_ctx.time_base()));
++
++				/*
++				 * Write the raw audio data samples of the first plane. This
++				 * works fine for packed formats (e.g. AV_SAMPLE_FMT_S16).
++				 * However, most audio decoders output planar audio, which uses
++				 * a separate plane of audio samples for each channel (e.g.
++				 * AV_SAMPLE_FMT_S16P). In other words, this code will write
++				 * only the first audio channel in these cases. You should use
++				 * libswresample or libavfilter to convert the frame to packed
++				 * data.
++				 */
++				audio_dst_file.write(frame.extended_data().getBytes());
++			}
++		}
++
++		return decoded;
++	}
++
++	static int open_codec_context(Pointer<Integer> stream_idx,
++			AVFormatContext fmt_ctx,
++			IntValuedEnum<AvutilLibrary.AVMediaType> type) {
++		int ret;
++		AVStream st;
++		AVCodecContext dec_ctx = null;
++		AVCodec dec = null;
++
++		ret = avformat.av_find_best_stream(Pointer.getPointer(fmt_ctx), type, -1, -1, null, 0);
++		if (ret < 0) {
++			System.err.printf("Could not find %s stream in input file '%s'\n",
++					avformat.av_get_media_type_string(type).getCString(),
++					src_filename);
++			return ret;
++		} else {
++			stream_idx.set(ret);
++			st = fmt_ctx.streams().get(stream_idx.get()).get();
++
++			/* find decoder for the stream */
++			dec_ctx = st.codec().get();
++			dec = avcodec.avcodec_find_decoder(dec_ctx.codec_id()).get();
++			if (dec == null) {
++				System.err.printf("Failed to find %s codec\n",
++						avformat.av_get_media_type_string(type).getCString());
++				return ret;
++			}
++
++			if ((ret = avcodec.avcodec_open2(Pointer.getPointer(dec_ctx), Pointer.getPointer(dec), null)) < 0) {
++				System.err.printf("Failed to open %s codec\n",
++						avformat.av_get_media_type_string(type).getCString());
++				return ret;
++			}
++		}
++
++		return 0;
++	}
++
++	static int get_format_from_sample_fmt(Pointer<Pointer<Byte>> fmt,
++			AVSampleFormat sample_fmt) {
++		fmt = null;
++		switch (sample_fmt) {
++		default:
++		case AV_SAMPLE_FMT_U8:
++			fmt = Pointer.pointerToPointer(Pointer.pointerToBytes("u8"
++					.getBytes()));
++			break;
++		case AV_SAMPLE_FMT_S16:
++			fmt = Pointer.pointerToPointer(Pointer.pointerToBytes("s16le"
++					.getBytes()));
++			break;
++		case AV_SAMPLE_FMT_S32:
++			fmt = Pointer.pointerToPointer(Pointer.pointerToBytes("s32le"
++					.getBytes()));
++			break;
++		case AV_SAMPLE_FMT_FLT:
++			fmt = Pointer.pointerToPointer(Pointer.pointerToBytes("f32le"
++					.getBytes()));
++			break;
++		case AV_SAMPLE_FMT_DBL:
++			fmt = Pointer.pointerToPointer(Pointer.pointerToBytes("f64le"
++					.getBytes()));
++			break;
++		}
++		if (fmt != null)
++			return 0;
++		System.err.printf(
++				"sample format %s is not supported as output format\n",
++				avutil.av_get_sample_fmt_name(sample_fmt));
++		return -1;
++	}
++
++	public static void main(String[] args) throws IOException {
++		int ret = 0;
++		Pointer<Integer> got_frame = Pointer.allocateInt();
++		video_stream_idx.set(-1);
++		audio_stream_idx.set(-1);
++		if (args.length != 3) {
++			System.err
++					.printf("usage: Demuxing input_file video_output_file audio_output_file\n"
++							+ "API example program to show how to read frames from an input file.\n"
++							+ "This program reads frames from a file, decodes them, and writes decoded\n"
++							+ "video frames to a rawvideo file named video_output_file, and decoded\n"
++							+ "audio frames to a rawaudio file named audio_output_file.\n"
++							+ "\n");
++			System.exit(1);
++		}
++		src_filename = args[0];
++		video_dst_filename = args[1];
++		audio_dst_filename = args[2];
++
++		try {
++			/* register all formats and codecs */
++			avformat.av_register_all();
++
++			/* open input file, and allocate format context */
++			Pointer<Pointer<AVFormatContext>> pfmt_ctx = Pointer.pointerToPointer(null);
++			if (avformat.avformat_open_input(pfmt_ctx, (Pointer<Byte>) Pointer
++					.pointerToCString(src_filename),
++					null, null) < 0) {
++				System.err.printf("Could not open source file %s\n",
++						src_filename);
++				System.exit(1);
++			}
++			fmt_ctx = pfmt_ctx.get().as(AVFormatContext.class).get();
++			/* retrieve stream information */
++			if (avformat.avformat_find_stream_info(Pointer.getPointer(fmt_ctx), null) < 0) {
++				System.err.printf("Could not find stream information\n");
++				System.exit(1);
++			}
++
++			if (open_codec_context(video_stream_idx, fmt_ctx,
++					AVMediaType.AVMEDIA_TYPE_VIDEO) >= 0) {
++				video_stream = fmt_ctx.streams()
++						.get(video_stream_idx.get()).get();
++				video_dec_ctx = video_stream.codec().get();
++
++				try {
++					video_dst_file = new FileOutputStream(video_dst_filename);
++				} catch (IOException e) {
++					System.err.printf("Could not open destination file %s\n",
++							video_dst_filename);
++					ret = 1;
++					System.exit(1);
++				}
++
++				/* allocate image where the decoded image will be put */
++				ret = avcodec.av_image_alloc(video_dst_data,
++						video_dst_linesize, video_dec_ctx.width(),
++						video_dec_ctx.height(), video_dec_ctx
++								.pix_fmt(), 1);
++				if (ret < 0) {
++					System.err.printf("Could not allocate raw video buffer\n");
++					System.exit(ret);
++				}
++				video_dst_bufsize = ret;
++			}
++
++			if (open_codec_context(audio_stream_idx, fmt_ctx,
++					AVMediaType.AVMEDIA_TYPE_AUDIO) >= 0) {
++				audio_stream = fmt_ctx.streams()
++						.get(audio_stream_idx.get()).get();
++				audio_dec_ctx = audio_stream.codec().get();
++				try {
++					audio_dst_file = new FileOutputStream(audio_dst_filename);
++				} catch (IOException e) {
++					System.err.printf("Could not open destination file %s\n",
++							video_dst_filename);
++					System.exit(1);
++				}
++			}
++
++			/* dump input information to stderr */
++			avformat.av_dump_format(Pointer.getPointer(fmt_ctx), 0,
++					Pointer.pointerToBytes(src_filename.getBytes()), 0);
++
++			if (audio_stream == null && video_stream == null) {
++				System.err
++						.printf("Could not find audio or video stream in the input, aborting\n");
++				System.exit(1);
++			}
++
++			frame = avcodec.alloc_frame().get();
++			if (frame == null) {
++				System.err.printf("Could not allocate frame\n");
++				System.exit(1);
++			}
++
++			/* initialize packet, set data to null, let the demuxer fill it */
++			Pointer<AVPacket> ppkt = Pointer.allocate(AVPacket.class);
++			avcodec.av_init_packet(ppkt);
++			pkt = ppkt.get();
++			//pkt.data().set(null);
++			pkt.size(0);
++
++			if (video_stream != null)
++				System.out.printf("Demuxing video from file '%s' into '%s'\n",
++						src_filename, video_dst_filename);
++			if (audio_stream != null)
++				System.out.printf("Demuxing audio from file '%s' into '%s'\n",
++						src_filename, audio_dst_filename);
++
++			/* read frames from the file */
++			while (avformat.av_read_frame(Pointer.getPointer(fmt_ctx), Pointer.getPointer(pkt)) >= 0) {
++				AVPacket orig_pkt = pkt;
++				do {
++					ret = decode_packet(got_frame, 0);
++					if (ret < 0)
++						break;
++					pkt.data(
++							Pointer.pointerToAddress(
++									Pointer.getPeer(pkt.data()) + ret,
++									Byte.class));
++					pkt.size(pkt.size() - ret);
++				} while (pkt.size() > 0);
++				avcodec.av_free_packet(Pointer.getPointer(orig_pkt));
++			}
++
++			/* flush cached frames */
++			pkt.data().set(null);
++			pkt.size(0);
++			do {
++				decode_packet(got_frame, 1);
++			} while (got_frame.get() != 0);
++
++			System.out.printf("Demuxing succeeded.\n");
++
++			if (video_stream != null) {
++				System.out
++						.printf("Play the output video file with the command:\n"
++								+ "ffplay -f rawvideo -pix_fmt %s -video_size %dx%d %s\n",
++								avutil.av_get_pix_fmt_name(
++										video_dec_ctx.pix_fmt())
++										.getCString(), video_dec_ctx
++										.width(), video_dec_ctx.height(),
++								video_dst_filename);
++			}
++
++			if (audio_stream != null) {
++				AVSampleFormat sfmt = (AVSampleFormat) audio_dec_ctx
++						.sample_fmt();
++				int n_channels = audio_dec_ctx.channels();
++				Pointer<Pointer<Byte>> fmt;
++
++				if (avutil.av_sample_fmt_is_planar(sfmt) != 0) {
++					Pointer<Byte> packed = avutil.av_get_sample_fmt_name(sfmt);
++					System.out
++							.printf("Warning: the sample format the decoder produced is planar "
++									+ "(%s). This example will output the first channel only.\n",
++									packed != null ? packed : "?");
++					sfmt = (AVSampleFormat) avutil
++							.av_get_packed_sample_fmt(sfmt);
++					n_channels = 1;
++				}
++
++				fmt = null;
++				if ((ret = get_format_from_sample_fmt(fmt, sfmt)) < 0)
++					System.exit(ret);
++
++				System.out.printf(
++						"Play the output audio file with the command:\n"
++								+ "ffplay -f %s -ac %d -ar %d %s\n", fmt,
++						n_channels, audio_dec_ctx.sample_rate(),
++						audio_dst_filename);
++			}
++
++		} catch (IOException e) {
++			e.printStackTrace();
++			System.exit(1);
++		} finally {
++			if (video_dec_ctx != null)
++				avcodec.avcodec_close(Pointer.getPointer(video_dec_ctx));
++			if (audio_dec_ctx != null)
++				avcodec.avcodec_close(Pointer.getPointer(audio_dec_ctx));
++			avformat.avformat_close_input(Pointer.pointerToPointer(Pointer.getPointer(fmt_ctx)));
++			if (video_dst_file != null)
++				video_dst_file.close();
++			if (audio_dst_file != null)
++				audio_dst_file.close();
++			avutil.av_free(Pointer.getPointer(frame));
++			avutil.av_free(video_dst_data);
++		}
++		System.exit(ret);
++	}
++}
