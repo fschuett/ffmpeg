@@ -1,9 +1,9 @@
 diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcodec/AvcodecLibrary.java
---- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-03-13 16:18:58.751592767 +0100
-+++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-03-13 16:07:50.079385443 +0100
+--- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-03-14 19:07:39.624354597 +0100
++++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-03-14 19:12:50.000000000 +0100
 @@ -1251,11 +1251,11 @@ public class AvcodecLibrary {
  	 * Original signature : <code>AVFrame* avcodec_alloc_frame()</code><br>
- 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1178</i>
+ 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:409</i>
  	 */
 -	public static Pointer<AVFrame > avcodec_alloc_frame() {
 -		return Pointer.pointerToAddress(avcodec_alloc_frame$2(), AVFrame.class);
@@ -15,13 +15,13 @@ diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcod
 +	protected native static long avcodec_alloc_frame();
  	/**
  	 * Original signature : <code>int avcodec_open2(AVCodecContext*, const AVCodec*, AVDictionary**)</code><br>
- 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1180</i>
+ 	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:411</i>
 diff -pruN generated/org/ffmpeg/avcodec/AVCodecParser.java src/org/ffmpeg/avcodec/AVCodecParser.java
---- generated/org/ffmpeg/avcodec/AVCodecParser.java	2014-03-13 16:18:58.414593674 +0100
-+++ src/org/ffmpeg/avcodec/AVCodecParser.java	2014-03-13 15:54:57.189406017 +0100
+--- generated/org/ffmpeg/avcodec/AVCodecParser.java	2014-03-14 19:07:39.294355486 +0100
++++ src/org/ffmpeg/avcodec/AVCodecParser.java	2014-03-14 19:12:50.000000000 +0100
 @@ -103,11 +103,11 @@ public class AVCodecParser extends Struc
  	};
- 	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1250</i> */
+ 	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:481</i> */
  	public static abstract class parser_parse_callback extends Callback<parser_parse_callback > {
 -		public int apply(Pointer<AVCodecParserContext > s, Pointer<AVCodecContext > avctx, Pointer<Pointer<Byte > > poutbuf, Pointer<Integer > poutbuf_size, Pointer<Byte > buf, int buf_size) {
 +		public int apply(Pointer<AVCodecParserContext > s, Pointer<AVCodecContext > avctx, Pointer<Byte > poutbuf, Pointer<Integer > poutbuf_size, Pointer<Byte > buf, int buf_size) {
@@ -32,9 +32,9 @@ diff -pruN generated/org/ffmpeg/avcodec/AVCodecParser.java src/org/ffmpeg/avcode
 +			return apply(Pointer.pointerToAddress(s, AVCodecParserContext.class), Pointer.pointerToAddress(avctx, AVCodecContext.class), Pointer.pointerToAddress(poutbuf, Byte.class), Pointer.pointerToAddress(poutbuf_size, Integer.class), Pointer.pointerToAddress(buf, Byte.class), buf_size);
  		}
  	};
- 	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1251</i> */
+ 	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:482</i> */
 diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avformat/AvformatLibrary.java
---- generated/org/ffmpeg/avformat/AvformatLibrary.java	2014-03-13 16:18:59.750590078 +0100
+--- generated/org/ffmpeg/avformat/AvformatLibrary.java	2014-03-14 19:07:40.605351953 +0100
 +++ src/org/ffmpeg/avformat/AvformatLibrary.java	2014-03-14 17:08:51.859651482 +0100
 @@ -232,11 +232,11 @@ public class AvformatLibrary {
  	 * Original signature : <code>AVFormatContext* avformat_alloc_context()</code><br>
@@ -64,7 +64,7 @@ diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avf
  	protected native static int av_read_frame(@Ptr long s, @Ptr long pkt);
  	/**
 diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/AvutilLibrary.java
---- generated/org/ffmpeg/avutil/AvutilLibrary.java	2014-03-13 16:18:57.293596691 +0100
+--- generated/org/ffmpeg/avutil/AvutilLibrary.java	2014-03-14 19:07:38.196358446 +0100
 +++ src/org/ffmpeg/avutil/AvutilLibrary.java	2014-03-14 18:04:50.810367903 +0100
 @@ -754,4 +754,45 @@ public class AvutilLibrary {
  	}

@@ -26,7 +26,220 @@ public class AvcodecLibrary {
 	}
 	/**
 	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:768</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:17</i>
+	 */
+	public enum AVDiscard implements IntValuedEnum<AVDiscard > {
+		/**
+		 * We leave some space between them for extensions (drop some<br>
+		 * keyframes for intra-only or drop just some bidir frames).<br>
+		 * < discard nothing
+		 */
+		AVDISCARD_NONE(-16),
+		/** < discard useless packets like 0 size packets in avi */
+		AVDISCARD_DEFAULT(0),
+		/** < discard all non reference */
+		AVDISCARD_NONREF(8),
+		/** < discard all bidirectional frames */
+		AVDISCARD_BIDIR(16),
+		/** < discard all frames except keyframes */
+		AVDISCARD_NONKEY(32),
+		/** < discard all */
+		AVDISCARD_ALL(48);
+		AVDiscard(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVDiscard > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVDiscard > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:32</i>
+	 */
+	public enum AVColorPrimaries implements IntValuedEnum<AVColorPrimaries > {
+		/** < also ITU-R BT1361 / IEC 61966-2-4 / SMPTE RP177 Annex B */
+		AVCOL_PRI_BT709(1),
+		AVCOL_PRI_UNSPECIFIED(2),
+		AVCOL_PRI_BT470M(4),
+		/** < also ITU-R BT601-6 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL & SECAM */
+		AVCOL_PRI_BT470BG(5),
+		/** < also ITU-R BT601-6 525 / ITU-R BT1358 525 / ITU-R BT1700 NTSC */
+		AVCOL_PRI_SMPTE170M(6),
+		/** < functionally identical to above */
+		AVCOL_PRI_SMPTE240M(7),
+		AVCOL_PRI_FILM(8),
+		/** < Not part of ABI */
+		AVCOL_PRI_NB(9);
+		AVColorPrimaries(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVColorPrimaries > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVColorPrimaries > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:44</i>
+	 */
+	public enum AVColorTransferCharacteristic implements IntValuedEnum<AVColorTransferCharacteristic > {
+		/** < also ITU-R BT1361 */
+		AVCOL_TRC_BT709(1),
+		AVCOL_TRC_UNSPECIFIED(2),
+		/** < also ITU-R BT470M / ITU-R BT1700 625 PAL & SECAM */
+		AVCOL_TRC_GAMMA22(4),
+		/** < also ITU-R BT470BG */
+		AVCOL_TRC_GAMMA28(5),
+		AVCOL_TRC_SMPTE240M(7),
+		/** < Not part of ABI */
+		AVCOL_TRC_NB(8);
+		AVColorTransferCharacteristic(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVColorTransferCharacteristic > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVColorTransferCharacteristic > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:58</i>
+	 */
+	public enum AVChromaLocation implements IntValuedEnum<AVChromaLocation > {
+		AVCHROMA_LOC_UNSPECIFIED(0),
+		/** < mpeg2/4, h264 default */
+		AVCHROMA_LOC_LEFT(1),
+		/** < mpeg1, jpeg, h263 */
+		AVCHROMA_LOC_CENTER(2),
+		/** < DV */
+		AVCHROMA_LOC_TOPLEFT(3),
+		AVCHROMA_LOC_TOP(4),
+		AVCHROMA_LOC_BOTTOMLEFT(5),
+		AVCHROMA_LOC_BOTTOM(6),
+		/** < Not part of ABI */
+		AVCHROMA_LOC_NB(7);
+		AVChromaLocation(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVChromaLocation > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVChromaLocation > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:71</i>
+	 */
+	public enum AVAudioServiceType implements IntValuedEnum<AVAudioServiceType > {
+		AV_AUDIO_SERVICE_TYPE_MAIN(0),
+		AV_AUDIO_SERVICE_TYPE_EFFECTS(1),
+		AV_AUDIO_SERVICE_TYPE_VISUALLY_IMPAIRED(2),
+		AV_AUDIO_SERVICE_TYPE_HEARING_IMPAIRED(3),
+		AV_AUDIO_SERVICE_TYPE_DIALOGUE(4),
+		AV_AUDIO_SERVICE_TYPE_COMMENTARY(5),
+		AV_AUDIO_SERVICE_TYPE_EMERGENCY(6),
+		AV_AUDIO_SERVICE_TYPE_VOICE_OVER(7),
+		AV_AUDIO_SERVICE_TYPE_KARAOKE(8),
+		/** < Not part of ABI */
+		AV_AUDIO_SERVICE_TYPE_NB(9);
+		AVAudioServiceType(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVAudioServiceType > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVAudioServiceType > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:83</i>
+	 */
+	public enum AVFieldOrder implements IntValuedEnum<AVFieldOrder > {
+		AV_FIELD_UNKNOWN(0),
+		AV_FIELD_PROGRESSIVE(1),
+		/** < Top coded_first, top displayed first */
+		AV_FIELD_TT(2),
+		/** < Bottom coded first, bottom displayed first */
+		AV_FIELD_BB(3),
+		/** < Top coded first, bottom displayed first */
+		AV_FIELD_TB(4),
+		/** < Bottom coded first, top displayed first */
+		AV_FIELD_BT(5);
+		AVFieldOrder(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVFieldOrder > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVFieldOrder > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:431</i>
+	 */
+	public enum AVPictureStructure implements IntValuedEnum<AVPictureStructure > {
+		/** < unknown */
+		AV_PICTURE_STRUCTURE_UNKNOWN(0),
+		/** < coded as top field */
+		AV_PICTURE_STRUCTURE_TOP_FIELD(1),
+		/** < coded as bottom field */
+		AV_PICTURE_STRUCTURE_BOTTOM_FIELD(2),
+		/** < coded as frame */
+		AV_PICTURE_STRUCTURE_FRAME(3);
+		AVPictureStructure(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVPictureStructure > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVPictureStructure > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavcodec/avcodecid.h:768</i>
 	 */
 	public enum AVCodecID implements IntValuedEnum<AVCodecID > {
 		AV_CODEC_ID_NONE(0),
@@ -836,219 +1049,6 @@ public class AvcodecLibrary {
 			return FlagSet.fromValue(value, values());
 		}
 	};
-	/**
-	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:786</i>
-	 */
-	public enum AVDiscard implements IntValuedEnum<AVDiscard > {
-		/**
-		 * We leave some space between them for extensions (drop some<br>
-		 * keyframes for intra-only or drop just some bidir frames).<br>
-		 * < discard nothing
-		 */
-		AVDISCARD_NONE(-16),
-		/** < discard useless packets like 0 size packets in avi */
-		AVDISCARD_DEFAULT(0),
-		/** < discard all non reference */
-		AVDISCARD_NONREF(8),
-		/** < discard all bidirectional frames */
-		AVDISCARD_BIDIR(16),
-		/** < discard all frames except keyframes */
-		AVDISCARD_NONKEY(32),
-		/** < discard all */
-		AVDISCARD_ALL(48);
-		AVDiscard(long value) {
-			this.value = value;
-		}
-		public final long value;
-		public long value() {
-			return this.value;
-		}
-		public Iterator<AVDiscard > iterator() {
-			return Collections.singleton(this).iterator();
-		}
-		public static IntValuedEnum<AVDiscard > fromValue(int value) {
-			return FlagSet.fromValue(value, values());
-		}
-	};
-	/**
-	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:801</i>
-	 */
-	public enum AVColorPrimaries implements IntValuedEnum<AVColorPrimaries > {
-		/** < also ITU-R BT1361 / IEC 61966-2-4 / SMPTE RP177 Annex B */
-		AVCOL_PRI_BT709(1),
-		AVCOL_PRI_UNSPECIFIED(2),
-		AVCOL_PRI_BT470M(4),
-		/** < also ITU-R BT601-6 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL & SECAM */
-		AVCOL_PRI_BT470BG(5),
-		/** < also ITU-R BT601-6 525 / ITU-R BT1358 525 / ITU-R BT1700 NTSC */
-		AVCOL_PRI_SMPTE170M(6),
-		/** < functionally identical to above */
-		AVCOL_PRI_SMPTE240M(7),
-		AVCOL_PRI_FILM(8),
-		/** < Not part of ABI */
-		AVCOL_PRI_NB(9);
-		AVColorPrimaries(long value) {
-			this.value = value;
-		}
-		public final long value;
-		public long value() {
-			return this.value;
-		}
-		public Iterator<AVColorPrimaries > iterator() {
-			return Collections.singleton(this).iterator();
-		}
-		public static IntValuedEnum<AVColorPrimaries > fromValue(int value) {
-			return FlagSet.fromValue(value, values());
-		}
-	};
-	/**
-	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:813</i>
-	 */
-	public enum AVColorTransferCharacteristic implements IntValuedEnum<AVColorTransferCharacteristic > {
-		/** < also ITU-R BT1361 */
-		AVCOL_TRC_BT709(1),
-		AVCOL_TRC_UNSPECIFIED(2),
-		/** < also ITU-R BT470M / ITU-R BT1700 625 PAL & SECAM */
-		AVCOL_TRC_GAMMA22(4),
-		/** < also ITU-R BT470BG */
-		AVCOL_TRC_GAMMA28(5),
-		AVCOL_TRC_SMPTE240M(7),
-		/** < Not part of ABI */
-		AVCOL_TRC_NB(8);
-		AVColorTransferCharacteristic(long value) {
-			this.value = value;
-		}
-		public final long value;
-		public long value() {
-			return this.value;
-		}
-		public Iterator<AVColorTransferCharacteristic > iterator() {
-			return Collections.singleton(this).iterator();
-		}
-		public static IntValuedEnum<AVColorTransferCharacteristic > fromValue(int value) {
-			return FlagSet.fromValue(value, values());
-		}
-	};
-	/**
-	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:827</i>
-	 */
-	public enum AVChromaLocation implements IntValuedEnum<AVChromaLocation > {
-		AVCHROMA_LOC_UNSPECIFIED(0),
-		/** < mpeg2/4, h264 default */
-		AVCHROMA_LOC_LEFT(1),
-		/** < mpeg1, jpeg, h263 */
-		AVCHROMA_LOC_CENTER(2),
-		/** < DV */
-		AVCHROMA_LOC_TOPLEFT(3),
-		AVCHROMA_LOC_TOP(4),
-		AVCHROMA_LOC_BOTTOMLEFT(5),
-		AVCHROMA_LOC_BOTTOM(6),
-		/** < Not part of ABI */
-		AVCHROMA_LOC_NB(7);
-		AVChromaLocation(long value) {
-			this.value = value;
-		}
-		public final long value;
-		public long value() {
-			return this.value;
-		}
-		public Iterator<AVChromaLocation > iterator() {
-			return Collections.singleton(this).iterator();
-		}
-		public static IntValuedEnum<AVChromaLocation > fromValue(int value) {
-			return FlagSet.fromValue(value, values());
-		}
-	};
-	/**
-	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:840</i>
-	 */
-	public enum AVAudioServiceType implements IntValuedEnum<AVAudioServiceType > {
-		AV_AUDIO_SERVICE_TYPE_MAIN(0),
-		AV_AUDIO_SERVICE_TYPE_EFFECTS(1),
-		AV_AUDIO_SERVICE_TYPE_VISUALLY_IMPAIRED(2),
-		AV_AUDIO_SERVICE_TYPE_HEARING_IMPAIRED(3),
-		AV_AUDIO_SERVICE_TYPE_DIALOGUE(4),
-		AV_AUDIO_SERVICE_TYPE_COMMENTARY(5),
-		AV_AUDIO_SERVICE_TYPE_EMERGENCY(6),
-		AV_AUDIO_SERVICE_TYPE_VOICE_OVER(7),
-		AV_AUDIO_SERVICE_TYPE_KARAOKE(8),
-		/** < Not part of ABI */
-		AV_AUDIO_SERVICE_TYPE_NB(9);
-		AVAudioServiceType(long value) {
-			this.value = value;
-		}
-		public final long value;
-		public long value() {
-			return this.value;
-		}
-		public Iterator<AVAudioServiceType > iterator() {
-			return Collections.singleton(this).iterator();
-		}
-		public static IntValuedEnum<AVAudioServiceType > fromValue(int value) {
-			return FlagSet.fromValue(value, values());
-		}
-	};
-	/**
-	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:852</i>
-	 */
-	public enum AVFieldOrder implements IntValuedEnum<AVFieldOrder > {
-		AV_FIELD_UNKNOWN(0),
-		AV_FIELD_PROGRESSIVE(1),
-		/** < Top coded_first, top displayed first */
-		AV_FIELD_TT(2),
-		/** < Bottom coded first, bottom displayed first */
-		AV_FIELD_BB(3),
-		/** < Top coded first, bottom displayed first */
-		AV_FIELD_TB(4),
-		/** < Bottom coded first, top displayed first */
-		AV_FIELD_BT(5);
-		AVFieldOrder(long value) {
-			this.value = value;
-		}
-		public final long value;
-		public long value() {
-			return this.value;
-		}
-		public Iterator<AVFieldOrder > iterator() {
-			return Collections.singleton(this).iterator();
-		}
-		public static IntValuedEnum<AVFieldOrder > fromValue(int value) {
-			return FlagSet.fromValue(value, values());
-		}
-	};
-	/**
-	 * enum values<br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1200</i>
-	 */
-	public enum AVPictureStructure implements IntValuedEnum<AVPictureStructure > {
-		/** < unknown */
-		AV_PICTURE_STRUCTURE_UNKNOWN(0),
-		/** < coded as top field */
-		AV_PICTURE_STRUCTURE_TOP_FIELD(1),
-		/** < coded as bottom field */
-		AV_PICTURE_STRUCTURE_BOTTOM_FIELD(2),
-		/** < coded as frame */
-		AV_PICTURE_STRUCTURE_FRAME(3);
-		AVPictureStructure(long value) {
-			this.value = value;
-		}
-		public final long value;
-		public long value() {
-			return this.value;
-		}
-		public Iterator<AVPictureStructure > iterator() {
-			return Collections.singleton(this).iterator();
-		}
-		public static IntValuedEnum<AVPictureStructure > fromValue(int value) {
-			return FlagSet.fromValue(value, values());
-		}
-	};
 	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
 	public static final int MB_TYPE_CBP = (int)0x00020000;
 	/** <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h</i> */
@@ -1227,12 +1227,12 @@ public class AvcodecLibrary {
 	public static final int CODEC_CAP_INTRA_ONLY = (int)0x40000000;
 	/**
 	 * Original signature : <code>int avcodec_version()</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1172</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:403</i>
 	 */
 	public static native int avcodec_version();
 	/**
 	 * Original signature : <code>AVCodecContext* avcodec_alloc_context3(const AVCodec*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1174</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:405</i>
 	 */
 	public static Pointer<AVCodecContext > avcodec_alloc_context3(Pointer<AVCodec > codec) {
 		return Pointer.pointerToAddress(avcodec_alloc_context3(Pointer.getPeer(codec)), AVCodecContext.class);
@@ -1241,7 +1241,7 @@ public class AvcodecLibrary {
 	protected native static long avcodec_alloc_context3(@Ptr long codec);
 	/**
 	 * Original signature : <code>int avcodec_get_context_defaults3(AVCodecContext*, const AVCodec*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1176</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:407</i>
 	 */
 	public static int avcodec_get_context_defaults3(Pointer<AVCodecContext > s, Pointer<AVCodec > codec) {
 		return avcodec_get_context_defaults3(Pointer.getPeer(s), Pointer.getPeer(codec));
@@ -1249,7 +1249,7 @@ public class AvcodecLibrary {
 	protected native static int avcodec_get_context_defaults3(@Ptr long s, @Ptr long codec);
 	/**
 	 * Original signature : <code>AVFrame* avcodec_alloc_frame()</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1178</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:409</i>
 	 */
 	public static Pointer<AVFrame > alloc_frame() {
 		return Pointer.pointerToAddress(avcodec_alloc_frame(), AVFrame.class);
@@ -1258,7 +1258,7 @@ public class AvcodecLibrary {
 	protected native static long avcodec_alloc_frame();
 	/**
 	 * Original signature : <code>int avcodec_open2(AVCodecContext*, const AVCodec*, AVDictionary**)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1180</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:411</i>
 	 */
 	public static int avcodec_open2(Pointer<AVCodecContext > avctx, Pointer<AVCodec > codec, Pointer<Pointer<AVDictionary > > options) {
 		return avcodec_open2(Pointer.getPeer(avctx), Pointer.getPeer(codec), Pointer.getPeer(options));
@@ -1266,7 +1266,7 @@ public class AvcodecLibrary {
 	protected native static int avcodec_open2(@Ptr long avctx, @Ptr long codec, @Ptr long options);
 	/**
 	 * Original signature : <code>int avcodec_close(AVCodecContext*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1182</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:413</i>
 	 */
 	public static int avcodec_close(Pointer<AVCodecContext > avctx) {
 		return avcodec_close(Pointer.getPeer(avctx));
@@ -1274,7 +1274,7 @@ public class AvcodecLibrary {
 	protected native static int avcodec_close(@Ptr long avctx);
 	/**
 	 * Original signature : <code>void av_init_packet(AVPacket*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1184</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:415</i>
 	 */
 	public static void av_init_packet(Pointer<AVPacket > pkt) {
 		av_init_packet(Pointer.getPeer(pkt));
@@ -1282,7 +1282,7 @@ public class AvcodecLibrary {
 	protected native static void av_init_packet(@Ptr long pkt);
 	/**
 	 * Original signature : <code>void av_free_packet(AVPacket*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1186</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:417</i>
 	 */
 	public static void av_free_packet(Pointer<AVPacket > pkt) {
 		av_free_packet(Pointer.getPeer(pkt));
@@ -1290,7 +1290,7 @@ public class AvcodecLibrary {
 	protected native static void av_free_packet(@Ptr long pkt);
 	/**
 	 * Original signature : <code>int avcodec_decode_video2(AVCodecContext*, AVFrame*, int*, const AVPacket*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1188</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:419</i>
 	 */
 	public static int avcodec_decode_video2(Pointer<AVCodecContext > avctx, Pointer<AVFrame > picture, Pointer<Integer > got_picture_ptr, Pointer<AVPacket > avpkt) {
 		return avcodec_decode_video2(Pointer.getPeer(avctx), Pointer.getPeer(picture), Pointer.getPeer(got_picture_ptr), Pointer.getPeer(avpkt));
@@ -1298,7 +1298,7 @@ public class AvcodecLibrary {
 	protected native static int avcodec_decode_video2(@Ptr long avctx, @Ptr long picture, @Ptr long got_picture_ptr, @Ptr long avpkt);
 	/**
 	 * Original signature : <code>int avcodec_decode_audio4(AVCodecContext*, AVFrame*, int*, const AVPacket*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1190</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:421</i>
 	 */
 	public static int avcodec_decode_audio4(Pointer<AVCodecContext > avctx, Pointer<AVFrame > frame, Pointer<Integer > got_frame_ptr, Pointer<AVPacket > avpkt) {
 		return avcodec_decode_audio4(Pointer.getPeer(avctx), Pointer.getPeer(frame), Pointer.getPeer(got_frame_ptr), Pointer.getPeer(avpkt));
@@ -1306,7 +1306,7 @@ public class AvcodecLibrary {
 	protected native static int avcodec_decode_audio4(@Ptr long avctx, @Ptr long frame, @Ptr long got_frame_ptr, @Ptr long avpkt);
 	/**
 	 * Original signature : <code>AVCodec* avcodec_find_decoder(AVCodecID)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1255</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:486</i>
 	 */
 	public static Pointer<AVCodec > avcodec_find_decoder(IntValuedEnum<AvcodecLibrary.AVCodecID > id) {
 		return Pointer.pointerToAddress(avcodec_find_decoder((int)id.value()), AVCodec.class);
@@ -1315,7 +1315,7 @@ public class AvcodecLibrary {
 	protected native static long avcodec_find_decoder(int id);
 	/**
 	 * Original signature : <code>AVCodec* avcodec_find_encoder(AVCodecID)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1257</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:488</i>
 	 */
 	public static Pointer<AVCodec > avcodec_find_encoder(IntValuedEnum<AvcodecLibrary.AVCodecID > id) {
 		return Pointer.pointerToAddress(avcodec_find_encoder((int)id.value()), AVCodec.class);
@@ -1324,7 +1324,7 @@ public class AvcodecLibrary {
 	protected native static long avcodec_find_encoder(int id);
 	/**
 	 * Original signature : <code>int avcodec_encode_video2(AVCodecContext*, AVPacket*, const AVFrame*, int*)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1259</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:490</i>
 	 */
 	public static int avcodec_encode_video2(Pointer<AVCodecContext > avctx, Pointer<AVPacket > avpkt, Pointer<AVFrame > frame, Pointer<Integer > got_packet_ptr) {
 		return avcodec_encode_video2(Pointer.getPeer(avctx), Pointer.getPeer(avpkt), Pointer.getPeer(frame), Pointer.getPeer(got_packet_ptr));
@@ -1332,7 +1332,7 @@ public class AvcodecLibrary {
 	protected native static int avcodec_encode_video2(@Ptr long avctx, @Ptr long avpkt, @Ptr long frame, @Ptr long got_packet_ptr);
 	/**
 	 * Original signature : <code>int avpicture_fill(AVPicture*, const uint8_t*, AVPixelFormat, int, int)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1261</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:492</i>
 	 */
 	public static int avpicture_fill(Pointer<AVPicture > picture, Pointer<Byte > ptr, IntValuedEnum<AVPixelFormat > pix_fmt, int width, int height) {
 		return avpicture_fill(Pointer.getPeer(picture), Pointer.getPeer(ptr), (int)pix_fmt.value(), width, height);
@@ -1340,7 +1340,7 @@ public class AvcodecLibrary {
 	protected native static int avpicture_fill(@Ptr long picture, @Ptr long ptr, int pix_fmt, int width, int height);
 	/**
 	 * Original signature : <code>int avpicture_get_size(AVPixelFormat, int, int)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1263</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:494</i>
 	 */
 	public static int avpicture_get_size(IntValuedEnum<AVPixelFormat > pix_fmt, int width, int height) {
 		return avpicture_get_size((int)pix_fmt.value(), width, height);
@@ -1348,7 +1348,7 @@ public class AvcodecLibrary {
 	protected native static int avpicture_get_size(int pix_fmt, int width, int height);
 	/**
 	 * Original signature : <code>int av_image_alloc(uint8_t*[4], int[4], int, int, AVPixelFormat, int)</code><br>
-	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:1265</i>
+	 * <i>native declaration : /home/fschuett/prog/java/eclipse/ffmpeg/csrc/libavformat/../libavcodec/avcodec.h:496</i>
 	 */
 	public static int av_image_alloc(Pointer<Pointer<Byte > > pointers, Pointer<Integer > linesizes, int w, int h, IntValuedEnum<AVPixelFormat > pix_fmt, int align) {
 		return av_image_alloc(Pointer.getPeer(pointers), Pointer.getPeer(linesizes), w, h, (int)pix_fmt.value(), align);
