@@ -2,7 +2,7 @@
 #ifndef AVUTIL_AVUTIL_H
 #define AVUTIL_AVUTIL_H
 
-#define AV_TIME_BASE            1000000
+unsigned avutil_version(void);
 
 enum AVMediaType {
     AVMEDIA_TYPE_UNKNOWN = -1,  ///< Usually treated as AVMEDIA_TYPE_DATA
@@ -13,6 +13,8 @@ enum AVMediaType {
     AVMEDIA_TYPE_ATTACHMENT,    ///< Opaque data information usually sparse
     AVMEDIA_TYPE_NB
 };
+
+const char *av_get_media_type_string(enum AVMediaType media_type);
 
 enum AVPictureType {
     AV_PICTURE_TYPE_NONE = 0, ///< Undefined

@@ -2,17 +2,17 @@
 <?eclipse.ant.import?>
 <project default="ffmpeg-src" basedir="." name="ffmpeg-src">
 
-	<property name="src.dir" location="src"/>
-	<property name="exec.dir" location="exec"/>
+	<property name="exec.dir" location="csrc"/>
+	<property name="log.dir" location="exec"/>
 	<property name="ffmpeg-config" value="../libffmpeg.jnaerator"/>
 	<property name="jnaerator" location="/home/fschuett/prog/jna/jnaerator-0.12-SNAPSHOT-shaded.jar"/>
     <target name="clean-ffmpeg">
         <delete dir="generated"/>
-        <delete dir="exec"/>
+        <delete dir="${log.dir}"/>
     </target>
     <target name="init-ffmpeg" depends="clean-ffmpeg">
         <mkdir dir="generated/org/ffmpeg"/>
-        <mkdir dir="exec"/>
+        <mkdir dir="${log.dir}"/>
     </target>
 	<target name="ffmpeg-src" depends="clean-ffmpeg,init-ffmpeg">
 		<!-- erzeuge Java-Quelldateien zu ffmpeg -->
@@ -20,5 +20,10 @@
 			<jvmarg value="-Xmx4g"/>
 			<arg value="${ffmpeg-config}"/>
 		</java>
+		<move todir="${log.dir}">
+		  <fileset dir="${exec.dir}">
+			<include name="_naerator.*"/>
+		  </fileset>
+		</move>
     </target>
 </project>

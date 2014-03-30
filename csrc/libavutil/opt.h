@@ -39,7 +39,19 @@ typedef struct AVOption {
     } default_val;
     double min;                 ///< minimum valid value for the option
     double max;                 ///< maximum valid value for the option
+
     int flags;
+#define AV_OPT_FLAG_ENCODING_PARAM  1   ///< a generic parameter which can be set by the user for muxing or encoding
+#define AV_OPT_FLAG_DECODING_PARAM  2   ///< a generic parameter which can be set by the user for demuxing or decoding
+#if FF_API_OPT_TYPE_METADATA
+#define AV_OPT_FLAG_METADATA        4   ///< some data extracted or inserted into the file like title, comment, ...
+#endif
+#define AV_OPT_FLAG_AUDIO_PARAM     8
+#define AV_OPT_FLAG_VIDEO_PARAM     16
+#define AV_OPT_FLAG_SUBTITLE_PARAM  32
+#define AV_OPT_FLAG_EXPORT          64
+#define AV_OPT_FLAG_READONLY        128
+#define AV_OPT_FLAG_FILTERING_PARAM (1<<16) ///< a generic parameter which can be set by the user for filtering
     const char *unit;
 } AVOption;
 

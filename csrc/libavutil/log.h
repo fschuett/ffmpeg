@@ -19,10 +19,12 @@ typedef enum {
     AV_CLASS_CATEGORY_NB, ///< not part of ABI/API
 }AVClassCategory;
 
+struct AVOptionRanges;
+
 typedef struct AVClass {
     const char* class_name;
     const char* (*item_name)(void* ctx);
-    const void *option;
+    const struct AVOption *option;
     int version;
     int log_level_offset_offset;
     int parent_log_context_offset;
@@ -30,7 +32,7 @@ typedef struct AVClass {
     const struct AVClass* (*child_class_next)(const struct AVClass *prev);
     AVClassCategory category;
     AVClassCategory (*get_category)(void* ctx);
-    int (*query_ranges)(void *avor, void *obj, const char *key, int flags);
+    int (*query_ranges)(struct AVOptionRanges **, void *obj, const char *key, int flags);
 } AVClass;
 
-#endif
+#endif /* AVUTIL_LOG_H */

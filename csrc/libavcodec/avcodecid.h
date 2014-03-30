@@ -2,22 +2,15 @@
 #ifndef AVCODEC_AVCODECID_H
 #define AVCODEC_AVCODECID_H
 
-#include "../libavutil/common.h"
-#include "../libavutil/rational.h"
-#include "../libavutil/log.h"
-#include "../libavutil/avutil.h"
-#include "../libavutil/frame.h"
-#include "../libavutil/dict.h"
-#include "../libavutil/pixfmt.h"
-#include "../libavutil/samplefmt.h"
-
 enum AVCodecID {
     AV_CODEC_ID_NONE,
 
     /* video codecs */
     AV_CODEC_ID_MPEG1VIDEO,
     AV_CODEC_ID_MPEG2VIDEO, ///< preferred ID for MPEG-1/2 video decoding
+#if FF_API_XVMC
     AV_CODEC_ID_MPEG2VIDEO_XVMC,
+#endif /* FF_API_XVMC */
     AV_CODEC_ID_H261,
     AV_CODEC_ID_H263,
     AV_CODEC_ID_RV10,
@@ -188,6 +181,9 @@ enum AVCodecID {
     AV_CODEC_ID_ESCAPE130_DEPRECATED,
     AV_CODEC_ID_G2M_DEPRECATED,
     AV_CODEC_ID_WEBP_DEPRECATED,
+    AV_CODEC_ID_HNM4_VIDEO,
+    AV_CODEC_ID_HEVC_DEPRECATED,
+    AV_CODEC_ID_FIC,
 
     AV_CODEC_ID_BRENDER_PIX= MKBETAG('B','P','I','X'),
     AV_CODEC_ID_Y41P       = MKBETAG('Y','4','1','P'),
@@ -215,6 +211,7 @@ enum AVCodecID {
     AV_CODEC_ID_WEBP       = MKBETAG('W','E','B','P'),
     AV_CODEC_ID_SMVJPEG    = MKBETAG('S','M','V','J'),
     AV_CODEC_ID_HEVC       = MKBETAG('H','2','6','5'),
+#define AV_CODEC_ID_H265 AV_CODEC_ID_HEVC
 
     /* various PCM "codecs" */
     AV_CODEC_ID_FIRST_AUDIO = 0x10000,     ///< A dummy id pointing at the start of audio codecs
@@ -337,7 +334,9 @@ enum AVCodecID {
     AV_CODEC_ID_MLP,
     AV_CODEC_ID_GSM_MS, /* as found in WAV */
     AV_CODEC_ID_ATRAC3,
+#if FF_API_VOXWARE
     AV_CODEC_ID_VOXWARE,
+#endif
     AV_CODEC_ID_APE,
     AV_CODEC_ID_NELLYMOSER,
     AV_CODEC_ID_MUSEPACK8,
@@ -413,6 +412,7 @@ enum AVCodecID {
     AV_CODEC_ID_OTF        = MKBETAG( 0 ,'O','T','F'),
     AV_CODEC_ID_SMPTE_KLV  = MKBETAG('K','L','V','A'),
     AV_CODEC_ID_DVD_NAV    = MKBETAG('D','N','A','V'),
+    AV_CODEC_ID_TIMED_ID3  = MKBETAG('T','I','D','3'),
 
 
     AV_CODEC_ID_PROBE = 0x19000, ///< codec_id is not known (like AV_CODEC_ID_NONE) but lavf should attempt to identify it
@@ -423,12 +423,15 @@ enum AVCodecID {
                                 * stream (only used by libavformat) */
     AV_CODEC_ID_FFMETADATA = 0x21000,   ///< Dummy codec for streams containing only metadata information.
 
+#if FF_API_CODEC_ID
     CODEC_ID_NONE = AV_CODEC_ID_NONE,
 
     /* video codecs */
     CODEC_ID_MPEG1VIDEO,
     CODEC_ID_MPEG2VIDEO, ///< preferred ID for MPEG-1/2 video decoding
+#if FF_API_XVMC
     CODEC_ID_MPEG2VIDEO_XVMC,
+#endif
     CODEC_ID_H261,
     CODEC_ID_H263,
     CODEC_ID_RV10,
@@ -787,6 +790,7 @@ enum AVCodecID {
     CODEC_ID_MPEG4SYSTEMS = 0x20001, /**< _FAKE_ codec to indicate a MPEG-4 Systems
                                 * stream (only used by libavformat) */
     CODEC_ID_FFMETADATA = 0x21000,   ///< Dummy codec for streams containing only metadata information.
+#endif
 };
 
 
