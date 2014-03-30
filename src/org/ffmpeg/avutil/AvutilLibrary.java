@@ -1305,17 +1305,29 @@ public interface AvutilLibrary extends Library {
 	 */
 	void av_freep(Pointer ptr);
 	/**
-	 * Original signature : <code>void av_image_copy(uint8_t*[4], int[4], const uint8_t*[4], const int[4], AVPixelFormat, int, int)</code><br>
+	 * Original signature : <code>int av_image_alloc(uint8_t*[4], int[4], int, int, AVPixelFormat, int)</code><br>
 	 * <i>native declaration : libavutil/imgutils.h:1</i><br>
+	 * @deprecated use the safer methods {@link #av_image_alloc(java.nio.ByteBuffer[], java.nio.IntBuffer, int, int, int, int)} and {@link #av_image_alloc(com.sun.jna.ptr.PointerByReference, com.sun.jna.ptr.IntByReference, int, int, int, int)} instead
+	 */
+	@Deprecated 
+	int av_image_alloc(PointerByReference pointers, IntByReference linesizes, int w, int h, int pix_fmt, int align);
+	/**
+	 * Original signature : <code>int av_image_alloc(uint8_t*[4], int[4], int, int, AVPixelFormat, int)</code><br>
+	 * <i>native declaration : libavutil/imgutils.h:1</i>
+	 */
+	int av_image_alloc(ByteBuffer pointers[], IntBuffer linesizes, int w, int h, int pix_fmt, int align);
+	/**
+	 * Original signature : <code>void av_image_copy(uint8_t*[4], int[4], const uint8_t*[4], const int[4], AVPixelFormat, int, int)</code><br>
+	 * <i>native declaration : libavutil/imgutils.h:3</i><br>
 	 * @deprecated use the safer methods {@link #av_image_copy(java.nio.ByteBuffer[], java.nio.IntBuffer, byte[], int[], int, int, int)} and {@link #av_image_copy(com.sun.jna.ptr.PointerByReference, com.sun.jna.ptr.IntByReference, com.sun.jna.ptr.PointerByReference, com.sun.jna.ptr.IntByReference, int, int, int)} instead
 	 */
 	@Deprecated 
 	void av_image_copy(PointerByReference dst_data, IntByReference dst_linesizes, PointerByReference src_data, IntByReference src_linesizes, int pix_fmt, int width, int height);
 	/**
 	 * Original signature : <code>void av_image_copy(uint8_t*[4], int[4], const uint8_t*[4], const int[4], AVPixelFormat, int, int)</code><br>
-	 * <i>native declaration : libavutil/imgutils.h:1</i>
+	 * <i>native declaration : libavutil/imgutils.h:3</i>
 	 */
-	void av_image_copy(ByteBuffer dst_data[], IntBuffer dst_linesizes, byte src_data[], int src_linesizes[], int pix_fmt, int width, int height);
+	void av_image_copy(ByteBuffer dst_data[], IntBuffer dst_linesizes, Pointer src_data[], int src_linesizes[], int pix_fmt, int width, int height);
 	/**
 	 * Original signature : <code>char* av_get_pix_fmt_name(AVPixelFormat)</code><br>
 	 * <i>native declaration : libavutil/pixdesc.h:1</i>

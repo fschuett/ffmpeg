@@ -22,7 +22,7 @@
 		</java>
 		<move todir="${log.dir}">
 		  <fileset dir="${exec.dir}">
-			<include name="_naerator.*"/>
+			<include name="_jnaerator.*"/>
 		  </fileset>
 		</move>
     </target>
