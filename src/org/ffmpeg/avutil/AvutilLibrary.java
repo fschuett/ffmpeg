@@ -620,15 +620,11 @@ public class AvutilLibrary {
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_CONTEXT_SIZE = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_VERSION_INT = (int)(52 << 16 | 66 << 8 | 100);
-	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_OLD_AVOPTIONS = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_SAMPLES_UTILS_RETURN_ZERO = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/dict.h</i> */
 	public static final int AV_DICT_IGNORE_SUFFIX = (int)2;
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_PIX_FMT = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/frame.h</i> */
 	public static final int FF_DECODE_ERROR_INVALID_BITSTREAM = (int)1;
 	/** <i>native declaration : libavutil/dict.h</i> */
@@ -636,47 +632,23 @@ public class AvutilLibrary {
 	/** <i>native declaration : libavutil/frame.h</i> */
 	public static final int AV_NUM_DATA_POINTERS = (int)8;
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_LLS1 = (boolean)(52 < 54);
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_BUILD = (int)(52 << 16 | 66 << 8 | 100);
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_GET_CHANNEL_LAYOUT_COMPAT = (boolean)(52 < 54);
-	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_CPU_FLAG_MMX2 = (boolean)(52 < 54);
-	/** <i>native declaration : libavutil/frame.h</i> */
-	public static final int FF_DECODE_ERROR_MISSING_REFERENCE = (int)2;
-	/** <i>native declaration : libavutil/dict.h</i> */
-	public static final int AV_DICT_MATCH_CASE = (int)1;
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final int LIBAVUTIL_VERSION_MICRO = (int)100;
-	/** <i>native declaration : libavutil/dict.h</i> */
-	public static final int AV_DICT_DONT_OVERWRITE = (int)16;
 	/** <i>native declaration : libavutil/frame.h</i> */
 	public static final int AV_FRAME_FLAG_CORRUPT = (int)(1 << 0);
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_AUDIOCONVERT = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_OPT_TYPE_METADATA = (boolean)(52 < 54);
-	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_OLD_OPENCL = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_LLS_PRIVATE = (boolean)(52 < 54);
-	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_XVMC = (boolean)(52 < 54);
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_PIX_FMT_DESC = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/dict.h</i> */
 	public static final int AV_DICT_DONT_STRDUP_KEY = (int)4;
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_AV_REVERSE = (boolean)(52 < 54);
-	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_INTFLOAT = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_AVFRAME_LAVC = (boolean)(52 < 54);
-	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_GET_BITS_PER_SAMPLE_FMT = (boolean)(52 < 54);
-	/** <i>native declaration : libavutil/dict.h</i> */
-	public static final int AV_DICT_DONT_STRDUP_VAL = (int)8;
 	/**
 	 * define<br>
 	 * Conversion Error : 52.66.<br>
@@ -685,13 +657,41 @@ public class AvutilLibrary {
 	 * 52.66.
 	 */
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_VERSION_MINOR = (int)66;
-	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_VDPAU = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final String LIBAVUTIL_IDENT = (String)"Lavu52.66.100";
-	/** <i>native declaration : libavutil/version.h</i> */
 	public static final int LIBAVUTIL_VERSION_MAJOR = (int)52;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final int LIBAVUTIL_VERSION_INT = (int)(52 << 16 | 66 << 8 | 100);
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_PIX_FMT = (boolean)(52 < 54);
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_LLS1 = (boolean)(52 < 54);
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final int LIBAVUTIL_BUILD = (int)(52 << 16 | 66 << 8 | 100);
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_GET_CHANNEL_LAYOUT_COMPAT = (boolean)(52 < 54);
+	/** <i>native declaration : libavutil/frame.h</i> */
+	public static final int FF_DECODE_ERROR_MISSING_REFERENCE = (int)2;
+	/** <i>native declaration : libavutil/dict.h</i> */
+	public static final int AV_DICT_MATCH_CASE = (int)1;
+	/** <i>native declaration : libavutil/dict.h</i> */
+	public static final int AV_DICT_DONT_OVERWRITE = (int)16;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_OPT_TYPE_METADATA = (boolean)(52 < 54);
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_LLS_PRIVATE = (boolean)(52 < 54);
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_PIX_FMT_DESC = (boolean)(52 < 54);
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_AV_REVERSE = (boolean)(52 < 54);
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_AVFRAME_LAVC = (boolean)(52 < 54);
+	/** <i>native declaration : libavutil/dict.h</i> */
+	public static final int AV_DICT_DONT_STRDUP_VAL = (int)8;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final int LIBAVUTIL_VERSION_MINOR = (int)66;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final String LIBAVUTIL_IDENT = (String)"Lavu52.66.100";
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_FIND_OPT = (boolean)(52 < 54);
 	/**

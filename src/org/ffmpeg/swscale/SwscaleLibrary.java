@@ -17,6 +17,8 @@ public class SwscaleLibrary {
 	static {
 		BridJ.register();
 	}
+	/** <i>native declaration : libswscale/version.h</i> */
+	public static final String LIBSWSCALE_IDENT = (String)"SwS2.5.102";
 	/**
 	 * define<br>
 	 * Conversion Error : 2.5.<br>
@@ -30,8 +32,6 @@ public class SwscaleLibrary {
 	public static final boolean FF_API_SWS_CPU_CAPS = (boolean)(2 < 3);
 	/** <i>native declaration : libswscale/version.h</i> */
 	public static final int LIBSWSCALE_VERSION_MAJOR = (int)2;
-	/** <i>native declaration : libswscale/version.h</i> */
-	public static final String LIBSWSCALE_IDENT = (String)"SwS2.5.102";
 	/** <i>native declaration : libswscale/version.h</i> */
 	public static final int LIBSWSCALE_BUILD = (int)(2 << 16 | 5 << 8 | 102);
 	/** <i>native declaration : libswscale/version.h</i> */

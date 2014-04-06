@@ -87,8 +87,6 @@ public class AvformatLibrary {
 			return FlagSet.fromValue(value, values());
 		}
 	};
-	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVFMT_FLAG_NOBUFFER = (int)0x0040;
 	/** <i>native declaration : libavformat/avio.h</i> */
 	public static final int AVIO_FLAG_DIRECT = (int)0x8000;
 	/** <i>native declaration : libavformat/avformat.h</i> */
@@ -104,8 +102,6 @@ public class AvformatLibrary {
 	/** <i>native declaration : libavformat/avio.h</i> */
 	public static final int AVIO_FLAG_WRITE = (int)2;
 	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVFMT_SEEK_TO_PTS = (int)0x4000000;
-	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_NOFILE = (int)0x0001;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int RAW_PACKET_BUFFER_SIZE = (int)2500000;
@@ -120,46 +116,23 @@ public class AvformatLibrary {
 	/** <i>native declaration : ./libavformat/version.h</i> */
 	public static final boolean FF_API_ASS_SSA = (boolean)(55 < 56);
 	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVPROBE_SCORE_STREAM_RETRY = (int)(100 / 4 - 1);
-	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_FLAG_NONBLOCK = (int)0x0004;
 	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVFMT_SHOW_IDS = (int)0x0008;
-	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_FLAG_DISCARD_CORRUPT = (int)0x0100;
-	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVFMT_TS_DISCONT = (int)0x0200;
 	/** <i>native declaration : ./libavformat/version.h</i> */
 	public static final int LIBAVFORMAT_VERSION_MICRO = (int)100;
 	/** <i>native declaration : ./libavformat/version.h</i> */
 	public static final boolean FF_API_FORMAT_PARAMETERS = (boolean)(55 < 56);
 	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVFMT_FLAG_NOPARSE = (int)0x0020;
-	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_FLAG_PRIV_OPT = (int)0x20000;
 	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVPROBE_SCORE_MAX = (int)100;
-	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int FF_FDEBUG_TS = (int)0x0001;
-	/** <i>native declaration : libavformat/avio.h</i> */
-	public static final int AVIO_FLAG_READ_WRITE = (int)(1 | 2);
-	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_NOSTREAMS = (int)0x1000;
-	/** <i>native declaration : ./libavformat/version.h</i> */
-	public static final int LIBAVFORMAT_VERSION_MINOR = (int)33;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVSEEK_FLAG_ANY = (int)4;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int MAX_STD_TIMEBASES = (int)(60 * 12 + 6);
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AV_PROGRAM_RUNNING = (int)1;
-	/**
-	 * define<br>
-	 * Conversion Error : 55.33.<br>
-	 * SKIPPED:<br>
-	 * <i>native declaration : ./libavformat/version.h:0</i><br>
-	 * 55.33.
-	 */
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVSEEK_FLAG_BYTE = (int)2;
 	/** <i>native declaration : libavformat/avformat.h</i> */
@@ -167,43 +140,21 @@ public class AvformatLibrary {
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_NOGENSEARCH = (int)0x4000;
 	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVFMT_FLAG_IGNDTS = (int)0x0008;
-	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_VARIABLE_FPS = (int)0x0400;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_FLAG_KEEP_SIDE_DATA = (int)0x40000;
-	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVPROBE_PADDING_SIZE = (int)32;
-	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVFMT_NOTIMESTAMPS = (int)0x0080;
-	/** <i>native declaration : ./libavformat/version.h</i> */
-	public static final boolean FF_API_NEW_STREAM = (boolean)(55 < 56);
 	/** <i>native declaration : ./libavformat/version.h</i> */
 	public static final int LIBAVFORMAT_VERSION_INT = (int)(55 << 16 | 33 << 8 | 100);
 	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVFMT_NOBINSEARCH = (int)0x2000;
-	/** <i>native declaration : ./libavformat/version.h</i> */
-	public static final boolean FF_API_ALLOC_OUTPUT_CONTEXT = (boolean)(55 < 56);
-	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_FLAG_NOFILLIN = (int)0x0010;
-	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVFMT_FLAG_FLUSH_PACKETS = (int)0x0200;
-	/** <i>native declaration : ./libavformat/version.h</i> */
-	public static final int LIBAVFORMAT_BUILD = (int)(55 << 16 | 33 << 8 | 100);
 	/** <i>native declaration : ./libavformat/version.h</i> */
 	public static final String LIBAVFORMAT_IDENT = (String)"Lavf55.33.100";
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_FLAG_IGNIDX = (int)0x0002;
-	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVFMT_NODIMENSIONS = (int)0x0800;
-	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVPROBE_SCORE_EXTENSION = (int)50;
 	/** <i>native declaration : ./libavformat/version.h</i> */
 	public static final int LIBAVFORMAT_VERSION_MAJOR = (int)55;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int MAX_PROBE_PACKETS = (int)2500;
-	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int MAX_REORDER_DELAY = (int)16;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_NO_BYTE_SEEK = (int)0x8000;
 	/** <i>native declaration : libavformat/avformat.h</i> */
@@ -212,18 +163,67 @@ public class AvformatLibrary {
 	public static final int AVIO_FLAG_READ = (int)1;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_FLAG_GENPTS = (int)0x0001;
+	/** <i>native declaration : ./libavformat/version.h</i> */
+	public static final int FF_API_R_FRAME_RATE = (int)1;
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVFMT_TS_NEGATIVE = (int)0x40000;
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVFMT_FLAG_SORT_DTS = (int)0x10000;
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVFMT_FLAG_NOBUFFER = (int)0x0040;
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVFMT_SEEK_TO_PTS = (int)0x4000000;
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVPROBE_SCORE_STREAM_RETRY = (int)(100 / 4 - 1);
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVFMT_SHOW_IDS = (int)0x0008;
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVFMT_TS_DISCONT = (int)0x0200;
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVFMT_FLAG_NOPARSE = (int)0x0020;
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVPROBE_SCORE_MAX = (int)100;
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int FF_FDEBUG_TS = (int)0x0001;
+	/** <i>native declaration : libavformat/avio.h</i> */
+	public static final int AVIO_FLAG_READ_WRITE = (int)(1 | 2);
+	/** <i>native declaration : ./libavformat/version.h</i> */
+	public static final int LIBAVFORMAT_VERSION_MINOR = (int)33;
+	/**
+	 * define<br>
+	 * Conversion Error : 55.33.<br>
+	 * SKIPPED:<br>
+	 * <i>native declaration : ./libavformat/version.h:0</i><br>
+	 * 55.33.
+	 */
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVFMT_FLAG_IGNDTS = (int)0x0008;
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVPROBE_PADDING_SIZE = (int)32;
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVFMT_NOTIMESTAMPS = (int)0x0080;
+	/** <i>native declaration : ./libavformat/version.h</i> */
+	public static final boolean FF_API_NEW_STREAM = (boolean)(55 < 56);
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVFMT_NOBINSEARCH = (int)0x2000;
+	/** <i>native declaration : ./libavformat/version.h</i> */
+	public static final boolean FF_API_ALLOC_OUTPUT_CONTEXT = (boolean)(55 < 56);
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVFMT_FLAG_FLUSH_PACKETS = (int)0x0200;
+	/** <i>native declaration : ./libavformat/version.h</i> */
+	public static final int LIBAVFORMAT_BUILD = (int)(55 << 16 | 33 << 8 | 100);
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVFMT_NODIMENSIONS = (int)0x0800;
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVPROBE_SCORE_EXTENSION = (int)50;
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int MAX_REORDER_DELAY = (int)16;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_RAWPICTURE = (int)0x0020;
 	/** <i>native declaration : ./libavformat/version.h</i> */
-	public static final int FF_API_R_FRAME_RATE = (int)1;
-	/** <i>native declaration : ./libavformat/version.h</i> */
 	public static final boolean FF_API_CLOSE_INPUT_FILE = (boolean)(55 < 56);
-	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVFMT_TS_NEGATIVE = (int)0x40000;
 	/** <i>native declaration : libavformat/avio.h</i> */
 	public static final int AVIO_FLAG_NONBLOCK = (int)8;
-	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int AVFMT_FLAG_SORT_DTS = (int)0x10000;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_TS_NONSTRICT = (int)0x20000;
 	/** <i>native declaration : libavformat/avformat.h</i> */
