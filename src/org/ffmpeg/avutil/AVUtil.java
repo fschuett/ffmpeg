@@ -5,7 +5,7 @@ public class AVUtil {
 
 	/** Inline-Funktion rational.h */
 	public static double av_q2d(AVRational a) {
-               return a.num / (double) a.den;
+               return a.num() / (double) a.den();
        }
 
 	public static String av_ts_make_string(long ts) {

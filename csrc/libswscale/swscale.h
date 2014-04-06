@@ -11,9 +11,7 @@
 
 unsigned swscale_version(void);
 
-typedef struct SwsContext {
-    int dummy;
-} SwsContext;
+typedef struct SwsContext;
 
 int sws_scale(struct SwsContext *c, const uint8_t *const srcSlice[],
               const int srcStride[], int srcSliceY, int srcSliceH,

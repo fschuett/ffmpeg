@@ -43,12 +43,8 @@ enum AVFrameSideDataType {
 };
 
 typedef struct AVFrameSideData {
-    enum AVFrameSideDataType type;
-    uint8_t *data;
-    int      size;
-    AVDictionary *metadata;
+    int dummy;
 } AVFrameSideData;
-
 
 typedef struct AVFrame {
 #define AV_NUM_DATA_POINTERS 8
@@ -71,6 +67,7 @@ typedef struct AVFrame {
     int coded_picture_number;
     int display_picture_number;
     int quality;
+
 #if FF_API_AVFRAME_LAVC
     int reference;
     int8_t *qscale_table;
@@ -107,7 +104,6 @@ typedef struct AVFrame {
     AVBufferRef *buf[AV_NUM_DATA_POINTERS];
     AVBufferRef **extended_buf;
     int        nb_extended_buf;
-
     AVFrameSideData **side_data;
     int            nb_side_data;
 #define AV_FRAME_FLAG_CORRUPT       (1 << 0)

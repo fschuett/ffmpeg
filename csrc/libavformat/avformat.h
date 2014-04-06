@@ -23,9 +23,7 @@ typedef struct AVFrac {
 struct AVCodecTag;
 
 typedef struct AVProbeData {
-    const char *filename;
-    unsigned char *buf; /**< Buffer must have AVPROBE_PADDING_SIZE of extra allocated bytes filled with zero. */
-    int buf_size;       /**< Size of buf except extra allocated bytes */
+    int dummy;
 } AVProbeData;
 
 #define AVPROBE_SCORE_RETRY (AVPROBE_SCORE_MAX/4)
@@ -73,55 +71,11 @@ typedef struct AVProbeData {
 #define AVFMT_SEEK_TO_PTS   0x4000000 /**< Seeking is based on PTS */
 
 typedef struct AVOutputFormat {
-    const char *name;
-    const char *long_name;
-    const char *mime_type;
-    const char *extensions; /**< comma-separated filename extensions */
-    enum AVCodecID audio_codec;    /**< default audio codec */
-    enum AVCodecID video_codec;    /**< default video codec */
-    enum AVCodecID subtitle_codec; /**< default subtitle codec */
-    int flags;
-    const struct AVCodecTag * const *codec_tag;
-    const AVClass *priv_class; ///< AVClass for the private context
-    struct AVOutputFormat *next;
-    int priv_data_size;
-    int (*write_header)(struct AVFormatContext *);
-    int (*write_packet)(struct AVFormatContext *, AVPacket *pkt);
-    int (*write_trailer)(struct AVFormatContext *);
-    int (*interleave_packet)(struct AVFormatContext *, AVPacket *out,
-                             AVPacket *in, int flush);
-    int (*query_codec)(enum AVCodecID id, int std_compliance);
-    void (*get_output_timestamp)(struct AVFormatContext *s, int stream,
-                                 int64_t *dts, int64_t *wall);
-    int (*control_message)(struct AVFormatContext *s, int type,
-                           void *data, size_t data_size);
-    int (*write_uncoded_frame)(struct AVFormatContext *, int stream_index,
-                               AVFrame **frame, unsigned flags);
-    int (*get_device_list)(struct AVFormatContext *s, struct AVDeviceInfoList *device_list);
+    int dummy;
 } AVOutputFormat;
 
 typedef struct AVInputFormat {
-    const char *name;
-    const char *long_name;
-    int flags;
-    const char *extensions;
-    const struct AVCodecTag * const *codec_tag;
-    const AVClass *priv_class; ///< AVClass for the private context
-    struct AVInputFormat *next;
-    int raw_codec_id;
-    int priv_data_size;
-    int (*read_probe)(AVProbeData *);
-    int (*read_header)(struct AVFormatContext *);
-    int (*read_packet)(struct AVFormatContext *, AVPacket *pkt);
-    int (*read_close)(struct AVFormatContext *);
-    int (*read_seek)(struct AVFormatContext *,
-                     int stream_index, int64_t timestamp, int flags);
-    int64_t (*read_timestamp)(struct AVFormatContext *s, int stream_index,
-                              int64_t *pos, int64_t pos_limit);
-    int (*read_play)(struct AVFormatContext *);
-    int (*read_pause)(struct AVFormatContext *);
-    int (*read_seek2)(struct AVFormatContext *s, int stream_index, int64_t min_ts, int64_t ts, int64_t max_ts, int flags);
-    int (*get_device_list)(struct AVFormatContext *s, struct AVDeviceInfoList *device_list);
+    int dummy;
 } AVInputFormat;
 
 enum AVStreamParseType {
@@ -136,12 +90,7 @@ enum AVStreamParseType {
 };
 
 typedef struct AVIndexEntry {
-    int64_t pos;
-    int64_t timestamp;
-#define AVINDEX_KEYFRAME 0x0001
-    int flags:2;
-    int size:30; //Yeah, trying to keep the size of this small to reduce memory requirements (it is 24 vs. 32 bytes due to possible 8-byte alignment).
-    int min_distance;         /**< Minimum distance between this and the previous keyframe, used to avoid unneeded searching. */
+    int dummy;
 } AVIndexEntry;
 
 
@@ -171,14 +120,18 @@ typedef struct AVStream {
         int64_t codec_info_duration;
         int64_t codec_info_duration_fields;
         int found_decoder;
+
         int64_t last_duration;
+
+        /**
+         * Those are used for average framerate estimation.
+         */
         int64_t fps_first_dts;
         int     fps_first_dts_idx;
         int64_t fps_last_dts;
         int     fps_last_dts_idx;
 
     } *info;
-
     int pts_wrap_bits; /**< number of bits in pts (used for wrapping control) */
 #if FF_API_REFERENCE_DTS
     int64_t do_not_use;
@@ -202,7 +155,6 @@ typedef struct AVStream {
     unsigned int index_entries_allocated_size;
     AVRational r_frame_rate;
     int stream_identifier;
-
     int64_t interleaver_chunk_size;
     int64_t interleaver_chunk_duration;
     int request_probe;
@@ -218,35 +170,20 @@ typedef struct AVStream {
     int64_t last_dts_for_order_check;
     uint8_t dts_ordered;
     uint8_t dts_misordered;
-
 } AVStream;
 
 #define AV_PROGRAM_RUNNING 1
 
 typedef struct AVProgram {
-    int            id;
-    int            flags;
-    enum AVDiscard discard;        ///< selects which program to discard and which to feed to the caller
-    unsigned int   *stream_index;
-    unsigned int   nb_stream_indexes;
-    AVDictionary *metadata;
-    int program_num;
-    int pmt_pid;
-    int pcr_pid;
-    int64_t start_time;
-    int64_t end_time;
-
-    int64_t pts_wrap_reference;    ///< reference dts for wrap detection
-    int pts_wrap_behavior;         ///< behavior on wrap detection
+    int dummy;
 } AVProgram;
 
 typedef struct AVChapter {
-    int id;                 ///< unique ID to identify the chapter
-    AVRational time_base;   ///< time base in which the start/end timestamps are specified
-    int64_t start, end;     ///< chapter start/end time in time_base units
-    AVDictionary *metadata;
+    int dummy;
 } AVChapter;
 
+typedef int (*av_format_control_message)(struct AVFormatContext *s, int type,
+                                         void *data, size_t data_size);
 
 enum AVDurationEstimationMethod {
     AVFMT_DURATION_FROM_PTS,    ///< Duration accurately estimated from PTSes
@@ -349,8 +286,7 @@ typedef struct AVFormatContext {
 } AVFormatContext;
 
 typedef struct AVPacketList {
-    AVPacket pkt;
-    struct AVPacketList *next;
+    int dummy;
 } AVPacketList;
 
 unsigned avformat_version(void);

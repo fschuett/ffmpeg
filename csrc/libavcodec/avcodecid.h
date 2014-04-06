@@ -1,6 +1,7 @@
 
 #ifndef AVCODEC_AVCODECID_H
 #define AVCODEC_AVCODECID_H
+#define AVCODEC_OLD_CODEC_IDS_H
 
 enum AVCodecID {
     AV_CODEC_ID_NONE,
