@@ -281,7 +281,7 @@ typedef struct AVCodecContext {
     void (*draw_horiz_band)(struct AVCodecContext *s,
                             const AVFrame *src, int offset[AV_NUM_DATA_POINTERS],
                             int y, int type, int height);
-    enum AVPixelFormat (*get_format)(struct AVCodecContext *s, const enum AVPixelFormat * fmt);
+    void *get_format;
     int max_b_frames;
     float b_quant_factor;
     int rc_strategy;

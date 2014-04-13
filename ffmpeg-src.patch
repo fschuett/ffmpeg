@@ -1,26 +1,9 @@
-diff -pruN generated/org/ffmpeg/avcodec/AVCodecContext.java src/org/ffmpeg/avcodec/AVCodecContext.java
---- generated/org/ffmpeg/avcodec/AVCodecContext.java	2014-04-06 17:36:34.517144313 +0200
-+++ src/org/ffmpeg/avcodec/AVCodecContext.java	2014-04-06 18:26:51.271417593 +0200
-@@ -1975,11 +1975,11 @@ public class AVCodecContext extends Stru
- 	};
- 	/** <i>native declaration : ./libavcodec/avcodec.h:372</i> */
- 	public static abstract class get_format_callback extends Callback<get_format_callback > {
--		public IntValuedEnum<AVPixelFormat > apply(Pointer<AVCodecContext > s, Pointer<IntValuedEnum<AVPixelFormat > > fmt) {
-+		public IntValuedEnum<AVPixelFormat > apply(Pointer<AVCodecContext > s, Pointer<Integer> fmt) {
- 			return FlagSet.fromValue(apply(Pointer.getPeer(s), Pointer.getPeer(fmt)), AVPixelFormat.class);
- 		}
- 		public int apply(@Ptr long s, @Ptr long fmt) {
--			return (int)apply(Pointer.pointerToAddress(s, AVCodecContext.class), Pointer.pointerToAddress(fmt, DefaultParameterizedType.paramType(IntValuedEnum.class, AVPixelFormat.class))).value();
-+			return (int)apply(Pointer.pointerToAddress(s, AVCodecContext.class), Pointer.pointerToAddress(fmt, Integer.class)).value();
- 		}
- 	};
- 	/** <i>native declaration : ./libavcodec/avcodec.h:391</i> */
 diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcodec/AvcodecLibrary.java
---- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-04-06 17:36:35.063142915 +0200
-+++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-04-06 16:59:30.000000000 +0200
+--- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-04-13 17:23:16.173679121 +0200
++++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-04-13 17:24:07.044555385 +0200
 @@ -1743,11 +1743,11 @@ public class AvcodecLibrary {
  	 * Original signature : <code>AVFrame* avcodec_alloc_frame()</code><br>
- 	 * <i>native declaration : ./libavcodec/avcodec.h:424</i>
+ 	 * <i>native declaration : ./libavcodec/avcodec.h:419</i>
  	 */
 -	public static Pointer<AVFrame > avcodec_alloc_frame() {
 -		return Pointer.pointerToAddress(avcodec_alloc_frame$2(), AVFrame.class);
@@ -32,10 +15,10 @@ diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcod
 +	protected native static long avcodec_alloc_frame();
  	/**
  	 * Original signature : <code>int avcodec_open2(AVCodecContext*, const AVCodec*, AVDictionary**)</code><br>
- 	 * <i>native declaration : ./libavcodec/avcodec.h:426</i>
+ 	 * <i>native declaration : ./libavcodec/avcodec.h:421</i>
 diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avformat/AvformatLibrary.java
---- generated/org/ffmpeg/avformat/AvformatLibrary.java	2014-04-06 17:36:35.527141726 +0200
-+++ src/org/ffmpeg/avformat/AvformatLibrary.java	2014-04-06 16:59:30.000000000 +0200
+--- generated/org/ffmpeg/avformat/AvformatLibrary.java	2014-04-13 17:23:16.637677992 +0200
++++ src/org/ffmpeg/avformat/AvformatLibrary.java	2014-04-13 17:24:07.044555385 +0200
 @@ -319,11 +319,11 @@ public class AvformatLibrary {
  	 * Original signature : <code>AVFormatContext* avformat_alloc_context()</code><br>
  	 * <i>native declaration : libavformat/avformat.h:207</i>
@@ -53,7 +36,7 @@ diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avf
  	 * <i>native declaration : libavformat/avformat.h:209</i>
 diff -pruN generated/org/ffmpeg/avutil/AVUtil.java src/org/ffmpeg/avutil/AVUtil.java
 --- generated/org/ffmpeg/avutil/AVUtil.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/ffmpeg/avutil/AVUtil.java	2014-04-06 16:59:30.000000000 +0200
++++ src/org/ffmpeg/avutil/AVUtil.java	2014-04-13 17:24:07.045555382 +0200
 @@ -0,0 +1,44 @@
 +package org.ffmpeg.avutil;
 +
@@ -100,8 +83,8 @@ diff -pruN generated/org/ffmpeg/avutil/AVUtil.java src/org/ffmpeg/avutil/AVUtil.
 +
 +}
 diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/AvutilLibrary.java
---- generated/org/ffmpeg/avutil/AvutilLibrary.java	2014-04-06 17:36:33.470146995 +0200
-+++ src/org/ffmpeg/avutil/AvutilLibrary.java	2014-04-06 16:59:30.000000000 +0200
+--- generated/org/ffmpeg/avutil/AvutilLibrary.java	2014-04-13 17:23:14.717682663 +0200
++++ src/org/ffmpeg/avutil/AvutilLibrary.java	2014-04-13 17:24:07.046555380 +0200
 @@ -801,11 +801,11 @@ public class AvutilLibrary {
  	 * Original signature : <code>void* av_malloc(size_t)</code><br>
  	 * <i>native declaration : libavutil/mem.h:1</i>
@@ -119,7 +102,7 @@ diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/
  	 * <i>native declaration : libavutil/mem.h:3</i>
 diff -pruN generated/org/ffmpeg/FFMPeg.java src/org/ffmpeg/FFMPeg.java
 --- generated/org/ffmpeg/FFMPeg.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/ffmpeg/FFMPeg.java	2014-04-06 16:59:30.000000000 +0200
++++ src/org/ffmpeg/FFMPeg.java	2014-04-13 17:24:07.046555380 +0200
 @@ -0,0 +1,28 @@
 +package org.ffmpeg;
 +
@@ -219,7 +202,7 @@ diff -pruN generated/test/AVInfo.java src/test/AVInfo.java
 +}
 diff -pruN generated/test/Demuxing.java src/test/Demuxing.java
 --- generated/test/Demuxing.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/test/Demuxing.java	2014-04-06 17:30:00.666153072 +0200
++++ src/test/Demuxing.java	2014-04-07 11:34:27.270173613 +0200
 @@ -0,0 +1,385 @@
 +package test;
 +
@@ -360,7 +343,7 @@ diff -pruN generated/test/Demuxing.java src/test/Demuxing.java
 +		ret = av_find_best_stream(fmt_ctx, type, -1, -1, null, 0);
 +		if (ret < 0) {
 +			System.err.printf("Could not find %s stream in input file '%s'\n",
-+					av_get_media_type_string(type), src_filename);
++					av_get_media_type_string(type).getCString(), src_filename);
 +			return ret;
 +		} else {
 +			stream_idx.set(ret);

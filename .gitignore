@@ -3,3 +3,5 @@ dist/
 testfile.mp3
 exec/
 generated/
+/Test.ogg
+/testfile.flv
