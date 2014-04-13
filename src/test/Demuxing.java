@@ -137,7 +137,7 @@ public class Demuxing {
 		ret = av_find_best_stream(fmt_ctx, type, -1, -1, null, 0);
 		if (ret < 0) {
 			System.err.printf("Could not find %s stream in input file '%s'\n",
-					av_get_media_type_string(type), src_filename);
+					av_get_media_type_string(type).getCString(), src_filename);
 			return ret;
 		} else {
 			stream_idx.set(ret);
