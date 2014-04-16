@@ -223,7 +223,7 @@ typedef struct AVPacket {
     int side_data_elems;
     int   duration;
 #if FF_API_DESTRUCT_PACKET
-    void  (*destruct)(struct AVPacket *);
+    void  *destruct;
     void  *priv;
 #endif
     int64_t pos;                            ///< byte position in stream, -1 if unknown

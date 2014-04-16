@@ -759,7 +759,7 @@ diff -pruN /usr/include/ffmpeg/libavc1394/rom1394.h csrc/libavc1394/rom1394.h
 -
 diff -pruN /usr/include/ffmpeg/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
 --- /usr/include/ffmpeg/libavcodec/avcodec.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavcodec/avcodec.h	2014-04-06 16:54:57.817539033 +0200
++++ csrc/libavcodec/avcodec.h	2014-04-14 08:21:16.631770992 +0200
 @@ -1,39 +1,10 @@
 -/*
 - * copyright (c) 2001 Fabrice Bellard
@@ -1822,8 +1822,9 @@ diff -pruN /usr/include/ffmpeg/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
      int   duration;
  #if FF_API_DESTRUCT_PACKET
 -    attribute_deprecated
-     void  (*destruct)(struct AVPacket *);
+-    void  (*destruct)(struct AVPacket *);
 -    attribute_deprecated
++    void  *destruct;
      void  *priv;
  #endif
      int64_t pos;                            ///< byte position in stream, -1 if unknown
@@ -2126,7 +2127,7 @@ diff -pruN /usr/include/ffmpeg/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
 -     * - encoding: unused
 -     * - decoding: Set by user, if not set the native format will be chosen.
 -     */
-     enum AVPixelFormat (*get_format)(struct AVCodecContext *s, const enum AVPixelFormat * fmt);
+-    enum AVPixelFormat (*get_format)(struct AVCodecContext *s, const enum AVPixelFormat * fmt);
 -
 -    /**
 -     * maximum number of B-frames between non-B-frames
@@ -2134,6 +2135,7 @@ diff -pruN /usr/include/ffmpeg/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
 -     * - encoding: Set by user.
 -     * - decoding: unused
 -     */
++    void *get_format;
      int max_b_frames;
 -
 -    /**
@@ -3575,11 +3577,11 @@ diff -pruN /usr/include/ffmpeg/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
 -
 -const AVCodecDescriptor *av_codec_get_codec_descriptor(const AVCodecContext *avctx);
 -void                     av_codec_set_codec_descriptor(AVCodecContext *avctx, const AVCodecDescriptor *desc);
-+typedef struct AVProfile;
- 
+-
 -int  av_codec_get_lowres(const AVCodecContext *avctx);
 -void av_codec_set_lowres(AVCodecContext *avctx, int val);
--
++typedef struct AVProfile;
+ 
 -int  av_codec_get_seek_preroll(const AVCodecContext *avctx);
 -void av_codec_set_seek_preroll(AVCodecContext *avctx, int val);
 -

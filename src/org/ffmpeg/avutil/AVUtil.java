@@ -1,7 +1,7 @@
 package org.ffmpeg.avutil;
 
 public class AVUtil {
-	public static final long AV_NOPTS_VALUE = 0;
+	public static final long AV_NOPTS_VALUE = Long.MIN_VALUE;
 
 	/** Inline-Funktion rational.h */
 	public static double av_q2d(AVRational a) {

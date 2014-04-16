@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
+import org.bridj.IntValuedEnum;
 import org.bridj.Pointer;
 import org.ffmpeg.avcodec.AVCodec;
 import org.ffmpeg.avcodec.AVCodecContext;
@@ -22,6 +23,7 @@ import static org.ffmpeg.avcodec.AvcodecLibrary.*;
 import static org.ffmpeg.avutil.AvutilLibrary.*;
 import static org.ffmpeg.avformat.AvformatLibrary.*;
 import static org.ffmpeg.avutil.AVUtil.*;
+import static org.ffmpeg.avutil.AvutilLibrary.AVSampleFormat.*;
 
 /**
  * @file libavformat demuxing API use example.
@@ -35,13 +37,14 @@ public class Demuxing {
 	static Pointer<AVFormatContext> fmt_ctx = null;
 	static Pointer<AVCodecContext> video_dec_ctx = null, audio_dec_ctx;
 	static Pointer<AVStream> video_stream = null, audio_stream = null;
+	static Pointer<Byte> streamptr = null; 
 	static String src_filename = null;
 	static String video_dst_filename = null;
 	static String audio_dst_filename = null;
 	static FileOutputStream video_dst_file = null;
 	static FileOutputStream audio_dst_file = null;
 
-	static Pointer<Pointer<Byte>> video_dst_data = null;
+	static Pointer<Pointer<Byte>> video_dst_data = Pointer.allocatePointers(Byte.class, 4);
 	static Pointer<Integer> video_dst_linesize = Pointer.allocateInts(4);
 	static int video_dst_bufsize;
 
@@ -84,7 +87,8 @@ public class Demuxing {
 						video_dec_ctx.get().width(), video_dec_ctx.get().height());
 
 				/* write to rawvideo file */
-				video_dst_file.write(video_dst_data.getBytes());
+				streamptr = video_dst_data.get();
+				video_dst_file.write(streamptr.getBytes(video_dst_bufsize));
 			}
 		} else if (pkt.get().stream_index() == audio_stream_idx.get()) {
 			/* decode audio frame */
@@ -120,7 +124,8 @@ public class Demuxing {
 				 * libswresample or libavfilter to convert the frame to packed
 				 * data.
 				 */
-				audio_dst_file.write(frame.get().extended_data().getBytes(unpadded_linesize));
+				streamptr = frame.get().extended_data().get();
+				audio_dst_file.write(streamptr.getBytes(unpadded_linesize));
 			}
 		}
 
@@ -162,21 +167,17 @@ public class Demuxing {
 		return 0;
 	}
 
-	static String get_format_from_sample_fmt(AVSampleFormat sample_fmt) {
-		switch (sample_fmt) {
-		case AV_SAMPLE_FMT_U8:
+	static String get_format_from_sample_fmt(IntValuedEnum<AVSampleFormat> sample_fmt) {
+		if(sample_fmt.value() == AV_SAMPLE_FMT_U8.value())
 			return "u8";
-		case AV_SAMPLE_FMT_S16:
+		else if(sample_fmt.value() == AV_SAMPLE_FMT_S16.value())
 			return "s16le";
-		case AV_SAMPLE_FMT_S32:
+		else if(sample_fmt.value() == AV_SAMPLE_FMT_S32.value())
 			return "s32le";
-		case AV_SAMPLE_FMT_FLT:
+		else if(sample_fmt.value() == AV_SAMPLE_FMT_FLT.value())
 			return "f32le";
-		case AV_SAMPLE_FMT_DBL:
+		else if(sample_fmt.value() == AV_SAMPLE_FMT_DBL.value())
 			return "f64le";
-		default:
-			break;
-		}
 		System.err.printf(
 				"sample format %s is not supported as output format\n",
 				av_get_sample_fmt_name(sample_fmt));
@@ -291,20 +292,15 @@ public class Demuxing {
 			while (av_read_frame(fmt_ctx, pkt) >= 0) {
 				Pointer<AVPacket> orig_pkt = pkt;
 				do {
-					System.err.println("decode_packet");
 					ret = decode_packet(got_frame, 0);
 					if (ret < 0)
 						break;
-					System.err.println("modify data ptr");
 					long ptr = pkt.get().data().getPeer();
 					ptr+=ret;
 					pkt.get().data((Pointer<Byte>)Pointer.pointerToAddress(ptr));
 					pkt.get().size(pkt.get().size()-ret);
-					System.err.println("modify data ptr completed");
 				} while (pkt.get().size() > 0);
-				System.err.println("av_free_packet");
 				av_free_packet(orig_pkt);
-				System.err.println("av_free_packet completed");
 			}
 
 			/* flush cached frames */
@@ -320,13 +316,13 @@ public class Demuxing {
 				System.out
 						.printf("Play the output video file with the command:\n"
 								+ "ffplay -f rawvideo -pix_fmt %s -video_size %dx%d %s\n",
-								av_get_pix_fmt_name(video_dec_ctx.get().pix_fmt()),
+								av_get_pix_fmt_name(video_dec_ctx.get().pix_fmt()).getCString(),
 								video_dec_ctx.get().width(), video_dec_ctx.get().height(),
 								video_dst_filename);
 			}
 
 			if (audio_stream != null) {
-				AVSampleFormat sfmt = (AVSampleFormat) audio_dec_ctx.get().sample_fmt();
+				IntValuedEnum<AVSampleFormat> sfmt = audio_dec_ctx.get().sample_fmt();
 				int n_channels = audio_dec_ctx.get().channels();
 				String fmt;
 
@@ -336,7 +332,7 @@ public class Demuxing {
 							.printf("Warning: the sample format the decoder produced is planar "
 									+ "(%s). This example will output the first channel only.\n",
 									packed != null ? packed : "?");
-					sfmt = (AVSampleFormat) av_get_packed_sample_fmt(sfmt);
+					sfmt = av_get_packed_sample_fmt(sfmt);
 					n_channels = 1;
 				}
 
