@@ -24042,7 +24042,7 @@ diff -pruN /usr/include/ffmpeg/libswresample/version.h csrc/libswresample/versio
 -#endif /* SWR_VERSION_H */
 diff -pruN /usr/include/ffmpeg/libswscale/swscale.h csrc/libswscale/swscale.h
 --- /usr/include/ffmpeg/libswscale/swscale.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libswscale/swscale.h	2014-04-06 12:23:04.454321948 +0200
++++ csrc/libswscale/swscale.h	2014-04-18 18:17:41.333215388 +0200
 @@ -1,32 +1,7 @@
 -/*
 - * Copyright (C) 2001-2011 Michael Niedermayer <michaelni@gmx.at>
@@ -24076,7 +24076,7 @@ diff -pruN /usr/include/ffmpeg/libswscale/swscale.h csrc/libswscale/swscale.h
  #include <stdint.h>
  
  #include "libavutil/avutil.h"
-@@ -34,327 +9,12 @@
+@@ -34,25 +9,12 @@
  #include "libavutil/pixfmt.h"
  #include "version.h"
  
@@ -24091,67 +24091,43 @@ diff -pruN /usr/include/ffmpeg/libswscale/swscale.h csrc/libswscale/swscale.h
 -/**
 - * Return the libswscale build-time configuration.
 - */
--const char *swscale_configuration(void);
--
+ const char *swscale_configuration(void);
+ 
 -/**
 - * Return the libswscale license.
 - */
--const char *swscale_license(void);
--
+ const char *swscale_license(void);
+ 
 -/* values for the flags, the stuff on the command line is different */
--#define SWS_FAST_BILINEAR     1
--#define SWS_BILINEAR          2
--#define SWS_BICUBIC           4
--#define SWS_X                 8
--#define SWS_POINT          0x10
--#define SWS_AREA           0x20
--#define SWS_BICUBLIN       0x40
--#define SWS_GAUSS          0x80
--#define SWS_SINC          0x100
--#define SWS_LANCZOS       0x200
--#define SWS_SPLINE        0x400
--
--#define SWS_SRC_V_CHR_DROP_MASK     0x30000
--#define SWS_SRC_V_CHR_DROP_SHIFT    16
--
--#define SWS_PARAM_DEFAULT           123456
--
--#define SWS_PRINT_INFO              0x1000
--
+ #define SWS_FAST_BILINEAR     1
+ #define SWS_BILINEAR          2
+ #define SWS_BICUBIC           4
+@@ -72,10 +34,7 @@ const char *swscale_license(void);
+ 
+ #define SWS_PRINT_INFO              0x1000
+ 
 -//the following 3 flags are not completely implemented
 -//internal chrominace subsampling info
--#define SWS_FULL_CHR_H_INT    0x2000
+ #define SWS_FULL_CHR_H_INT    0x2000
 -//input subsampling info
--#define SWS_FULL_CHR_H_INP    0x4000
--#define SWS_DIRECT_BGR        0x8000
--#define SWS_ACCURATE_RND      0x40000
--#define SWS_BITEXACT          0x80000
--#define SWS_ERROR_DIFFUSION  0x800000
--
--#if FF_API_SWS_CPU_CAPS
+ #define SWS_FULL_CHR_H_INP    0x4000
+ #define SWS_DIRECT_BGR        0x8000
+ #define SWS_ACCURATE_RND      0x40000
+@@ -83,10 +42,6 @@ const char *swscale_license(void);
+ #define SWS_ERROR_DIFFUSION  0x800000
+ 
+ #if FF_API_SWS_CPU_CAPS
 -/**
 - * CPU caps are autodetected now, those flags
 - * are only provided for API compatibility.
 - */
--#define SWS_CPU_CAPS_MMX      0x80000000
--#define SWS_CPU_CAPS_MMXEXT   0x20000000
--#define SWS_CPU_CAPS_MMX2     0x20000000
--#define SWS_CPU_CAPS_3DNOW    0x40000000
--#define SWS_CPU_CAPS_ALTIVEC  0x10000000
--#define SWS_CPU_CAPS_BFIN     0x01000000
--#define SWS_CPU_CAPS_SSE2     0x02000000
--#endif
--
--#define SWS_MAX_REDUCE_CUTOFF 0.002
--
--#define SWS_CS_ITU709         1
--#define SWS_CS_FCC            4
--#define SWS_CS_ITU601         5
--#define SWS_CS_ITU624         5
--#define SWS_CS_SMPTE170M      5
--#define SWS_CS_SMPTE240M      7
--#define SWS_CS_DEFAULT        5
--
+ #define SWS_CPU_CAPS_MMX      0x80000000
+ #define SWS_CPU_CAPS_MMXEXT   0x20000000
+ #define SWS_CPU_CAPS_MMX2     0x20000000
+@@ -106,255 +61,18 @@ const char *swscale_license(void);
+ #define SWS_CS_SMPTE240M      7
+ #define SWS_CS_DEFAULT        5
+ 
 -/**
 - * Return a pointer to yuv<->rgb coefficients for the given colorspace
 - * suitable for sws_setColorspaceDetails().
@@ -24211,15 +24187,15 @@ diff -pruN /usr/include/ffmpeg/libswscale/swscale.h csrc/libswscale/swscale.h
 - * error
 - */
 -int sws_init_context(struct SwsContext *sws_context, SwsFilter *srcFilter, SwsFilter *dstFilter);
-+typedef struct SwsContext;
- 
+-
 -/**
 - * Free the swscaler context swsContext.
 - * If swsContext is NULL, then does nothing.
 - */
--void sws_freeContext(struct SwsContext *swsContext);
--
--#if FF_API_SWS_GETCONTEXT
++typedef struct SwsContext;
+ void sws_freeContext(struct SwsContext *swsContext);
+ 
+ #if FF_API_SWS_GETCONTEXT
 -/**
 - * Allocate and return an SwsContext. You need it to perform
 - * scaling/conversion operations using sws_scale().
@@ -24236,12 +24212,12 @@ diff -pruN /usr/include/ffmpeg/libswscale/swscale.h csrc/libswscale/swscale.h
 - *       written
 - * @deprecated Use sws_getCachedContext() instead.
 - */
--struct SwsContext *sws_getContext(int srcW, int srcH, enum AVPixelFormat srcFormat,
--                                  int dstW, int dstH, enum AVPixelFormat dstFormat,
--                                  int flags, SwsFilter *srcFilter,
--                                  SwsFilter *dstFilter, const double *param);
--#endif
--
+ struct SwsContext *sws_getContext(int srcW, int srcH, enum AVPixelFormat srcFormat,
+                                   int dstW, int dstH, enum AVPixelFormat dstFormat,
+                                   int flags, SwsFilter *srcFilter,
+                                   SwsFilter *dstFilter, const double *param);
+ #endif
+ 
 -/**
 - * Scale the image slice in srcSlice and put the resulting scaled
 - * slice in the image in dst. A slice is a sequence of consecutive
