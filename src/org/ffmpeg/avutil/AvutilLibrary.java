@@ -664,6 +664,8 @@ public class AvutilLibrary {
 	public static final int LIBAVUTIL_VERSION_INT = (int)(52 << 16 | 66 << 8 | 100);
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_PIX_FMT = (boolean)(52 < 54);
+	/** <i>native declaration : libavutil/ffversion.h</i> */
+	public static final String FFMPEG_VERSION = (String)"2.2";
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_LLS1 = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/version.h</i> */
@@ -847,4 +849,5 @@ public class AvutilLibrary {
 	}
 	@Ptr 
 	protected native static long av_get_pix_fmt_name(int pix_fmt);
+	
 }

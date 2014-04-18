@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jardesc>
-    <jar path="ffmpeg/dist/ffmpeg.jar"/>
+    <jar path="ffmpeg/ffmpeg.jar"/>
     <options buildIfNeeded="true" compress="false" descriptionLocation="/ffmpeg/ffmpeg.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
@@ -10,20 +10,7 @@
             <packagesToUnSeal/>
         </sealing>
     </manifest>
-    <selectedElements exportClassFiles="true" exportJavaFiles="true" exportOutputFolder="false">
-        <file path="/ffmpeg/libffmpeg.jnaerator"/>
-        <file path="/ffmpeg/build.xml"/>
-        <file path="/ffmpeg/libswscale.jnaerator"/>
-        <file path="/ffmpeg/libavutil.jnaerator"/>
-        <javaElement handleIdentifier="=ffmpeg/src&lt;org.ffmpeg.avcodec"/>
-        <javaElement handleIdentifier="=ffmpeg/src&lt;org.ffmpeg.avformat"/>
-        <file path="/ffmpeg/libavcodec.jnaerator"/>
-        <javaElement handleIdentifier="=ffmpeg/src&lt;org.ffmpeg.avutil"/>
-        <file path="/ffmpeg/libavformat.jnaerator"/>
-        <file path="/ffmpeg/.classpath"/>
-        <file path="/ffmpeg/ffmpeg_src.xml"/>
-        <file path="/ffmpeg/.project"/>
-        <folder path="/ffmpeg/lib"/>
-        <javaElement handleIdentifier="=ffmpeg/src&lt;org.ffmpeg.swscale"/>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=ffmpeg/src"/>
     </selectedElements>
 </jardesc>
