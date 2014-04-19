@@ -125,20 +125,20 @@ public class SwscaleLibrary {
 	 * Original signature : <code>char* swscale_configuration()</code><br>
 	 * <i>native declaration : libswscale/swscale.h:3</i>
 	 */
-	public static Pointer<Byte > swscale_configuration() {
-		return Pointer.pointerToAddress(swscale_configuration$2(), Byte.class);
+	public static Pointer<Byte > swscale__configuration() {
+		return Pointer.pointerToAddress(swscale_configuration(), Byte.class);
 	}
 	@Ptr 
-	protected native static long swscale_configuration$2();
+	protected native static long swscale_configuration();
 	/**
 	 * Original signature : <code>char* swscale_license()</code><br>
 	 * <i>native declaration : libswscale/swscale.h:5</i>
 	 */
-	public static Pointer<Byte > swscale_license() {
-		return Pointer.pointerToAddress(swscale_license$2(), Byte.class);
+	public static Pointer<Byte > swscale__license() {
+		return Pointer.pointerToAddress(swscale_license(), Byte.class);
 	}
 	@Ptr 
-	protected native static long swscale_license$2();
+	protected native static long swscale_license();
 	/**
 	 * Original signature : <code>void sws_freeContext(SwsContext*)</code><br>
 	 * <i>native declaration : libswscale/swscale.h:8</i>
