@@ -10,8 +10,10 @@
     <property name="target" value="1.7"/>
     <property name="source" value="1.7"/>
     <import file="ffmpeg_src.xml"/>
+    <import file="build-jar.xml"/>
     <path id="ffmpeg.classpath">
         <pathelement location="bin"/>
+        <pathelement location="lib/bridj-0.7-SNAPSHOT-unix-only.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -47,5 +49,23 @@
     <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
+    </target>
+    <target name="Demuxing">
+        <java classname="test.Demuxing" failonerror="true" fork="yes">
+            <jvmarg line="-Djna.dump_memory=true"/>
+            <arg line="testfile.flv testfile.v testfile.a"/>
+            <classpath refid="ffmpeg.classpath"/>
+        </java>
+    </target>
+    <target name="FFMPeg">
+        <java classname="org.ffmpeg.FFMPeg" failonerror="true" fork="yes">
+            <classpath refid="ffmpeg.classpath"/>
+        </java>
+    </target>
+    <target name="AVInfo">
+        <java classname="test.AVInfo" failonerror="true" fork="yes">
+            <arg line="testfile.flv"/>
+            <classpath refid="ffmpeg.classpath"/>
+        </java>
     </target>
 </project>

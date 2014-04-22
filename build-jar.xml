@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse.ant.import?>
+<project default="build-jar" name="Create Runnable Jar for Project ffmpeg with libraries in folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+	<property name="bridj.jar" value="bridj-0.7-SNAPSHOT-unix-only.jar"/>
+    <property name="jar.class.path" value=". ./* /usr/share/java/ffmpeg/*"/>
+	<target name="clean-jar">
+		<delete dir="dist/"/>
+		<mkdir dir="dist/"/>
+	</target>
+	
+	<target name="copy-lib">
+        <copy file="lib/${bridj.jar}" todir="dist/"/>
+	</target>
+	
+	<target name="build-jar" depends="clean-jar,copy-lib">
+	    <jar destfile="dist/ffmpeg-2.2.jar">
+	        <manifest>
+	            <attribute name="Main-Class" value="org.ffmpeg.FFMPeg"/>
+	        	<attribute name="Class-Path" value="${jar.class.path}"/>
+	        </manifest>
+	        <fileset dir="bin"/>
+	    </jar>
+    </target>
+
+	<!--docs: generate javadoc documentation-->
+	<target name="docs-jar" depends="build-jar">
+		<delete dir="dist/docs"/>
+		<mkdir dir="dist/docs"/>
+		<javadoc packagenames="org.ffmpeg.*" sourcepath="src/" destdir="dist/docs" encoding="utf8">
+		</javadoc>
+	</target>
+</project>
