@@ -62,7 +62,8 @@ public class Demuxing {
 			throws IOException {
 		int ret = 0;
 		int decoded = pkt.get().size();
-
+		got_frame.setInt(0);
+		
 		if (pkt.get().stream_index() == video_stream_idx.get()) {
 			/* decode video frame */
 			ret = avcodec_decode_video2(video_dec_ctx, frame, got_frame,
@@ -187,6 +188,7 @@ public class Demuxing {
 	public static void main(String[] args) throws IOException {
 		int ret = 0;
 		Pointer<Integer> got_frame = Pointer.allocateInt();
+		got_frame.set(0);
 		video_stream_idx.set(-1);
 		audio_stream_idx.set(-1);
 		if (args.length != 3) {
@@ -307,6 +309,7 @@ public class Demuxing {
 			pkt.get().data(null);
 			pkt.get().size(0);
 			do {
+				got_frame.set(0);
 				decode_packet(got_frame, 1);
 			} while (got_frame.get() != 0);
 

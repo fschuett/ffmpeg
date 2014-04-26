@@ -13,8 +13,10 @@ to the dist/ directory.
 
 usage
 =====
-You need ffmpeg-2.2.jar, bridj-...jar installed in /usr/share/java/ffmpeg,
+You need ffmpeg-2.2.jar, bridj-0.7-SNAPSHOT.jar installed in /usr/share/java/ffmpeg,
 which are in the dist directory.
+Set the environment variable f.e. FFMPEG_HOME=/usr/share/java/ffmpeg
+for use with tracker.
 
 You need the ffmpeg c libraries
 libavformat55, libavcodec55, libavutil52, libswscale2, which all belong to ffmpeg 2.2.
