@@ -3,7 +3,7 @@
 <project default="build-jar" name="Create Runnable Jar for Project ffmpeg with libraries in folder">
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
-	<property name="bridj.jar" value="bridj-0.7-SNAPSHOT-unix-only.jar"/>
+	<property name="bridj.jar" value="bridj-0.7-SNAPSHOT.jar"/>
     <property name="jar.class.path" value=". ./* /usr/share/java/ffmpeg/*"/>
 	<target name="clean-jar">
 		<delete dir="dist/"/>

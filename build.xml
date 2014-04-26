@@ -13,7 +13,7 @@
     <import file="build-jar.xml"/>
     <path id="ffmpeg.classpath">
         <pathelement location="bin"/>
-        <pathelement location="lib/bridj-0.7-SNAPSHOT-unix-only.jar"/>
+        <pathelement location="lib/bridj-0.7-SNAPSHOT.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
