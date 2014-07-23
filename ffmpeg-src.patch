@@ -1,6 +1,6 @@
 diff -pruN generated/org/ffmpeg/avcodec/AVCodecContext.java src/org/ffmpeg/avcodec/AVCodecContext.java
---- generated/org/ffmpeg/avcodec/AVCodecContext.java	2014-04-18 20:58:04.923666944 +0200
-+++ src/org/ffmpeg/avcodec/AVCodecContext.java	2014-04-13 17:23:15.000000000 +0200
+--- generated/org/ffmpeg/avcodec/AVCodecContext.java	2014-07-23 18:19:08.966653989 +0200
++++ src/org/ffmpeg/avcodec/AVCodecContext.java	2014-07-23 18:21:39.223073220 +0200
 @@ -24,7 +24,7 @@ import org.ffmpeg.avutil.AvutilLibrary.A
  import org.ffmpeg.avutil.AvutilLibrary.AVPixelFormat;
  import org.ffmpeg.avutil.AvutilLibrary.AVSampleFormat;
@@ -101,8 +101,8 @@ diff -pruN generated/org/ffmpeg/avcodec/AVCodecContext.java src/org/ffmpeg/avcod
  		public int apply(Pointer<AVCodecContext > c, Pointer<AVCodecContext.execute2_callback_func_callback > func, Pointer<? > arg2, Pointer<Integer > ret, int count) {
  			return apply(Pointer.getPeer(c), Pointer.getPeer(func), Pointer.getPeer(arg2), Pointer.getPeer(ret), count);
 diff -pruN generated/org/ffmpeg/avcodec/AVCodecInternal.java src/org/ffmpeg/avcodec/AVCodecInternal.java
---- generated/org/ffmpeg/avcodec/AVCodecInternal.java	2014-04-18 20:58:04.093669487 +0200
-+++ src/org/ffmpeg/avcodec/AVCodecInternal.java	2014-04-13 17:23:14.000000000 +0200
+--- generated/org/ffmpeg/avcodec/AVCodecInternal.java	2014-07-23 18:19:08.188655894 +0200
++++ src/org/ffmpeg/avcodec/AVCodecInternal.java	2014-07-23 18:21:39.223073220 +0200
 @@ -5,7 +5,7 @@ import org.bridj.StructObject;
  import org.bridj.ann.Field;
  import org.bridj.ann.Library;
@@ -113,8 +113,8 @@ diff -pruN generated/org/ffmpeg/avcodec/AVCodecInternal.java src/org/ffmpeg/avco
   * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
   * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> or <a href="http://bridj.googlecode.com/">BridJ</a> .
 diff -pruN generated/org/ffmpeg/avcodec/AVCodec.java src/org/ffmpeg/avcodec/AVCodec.java
---- generated/org/ffmpeg/avcodec/AVCodec.java	2014-04-18 20:58:04.926666935 +0200
-+++ src/org/ffmpeg/avcodec/AVCodec.java	2014-04-13 17:23:15.000000000 +0200
+--- generated/org/ffmpeg/avcodec/AVCodec.java	2014-07-23 18:19:08.970653979 +0200
++++ src/org/ffmpeg/avcodec/AVCodec.java	2014-07-23 18:21:39.225073209 +0200
 @@ -5,7 +5,7 @@ import org.bridj.StructObject;
  import org.bridj.ann.Field;
  import org.bridj.ann.Library;
@@ -125,8 +125,8 @@ diff -pruN generated/org/ffmpeg/avcodec/AVCodec.java src/org/ffmpeg/avcodec/AVCo
   * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
   * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> or <a href="http://bridj.googlecode.com/">BridJ</a> .
 diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcodec/AvcodecLibrary.java
---- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-04-18 20:58:05.343665658 +0200
-+++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-04-18 18:21:45.128754698 +0200
+--- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-07-23 18:19:09.366653010 +0200
++++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-07-23 18:21:39.226073203 +0200
 @@ -1743,11 +1743,11 @@ public class AvcodecLibrary {
  	 * Original signature : <code>AVFrame* avcodec_alloc_frame()</code><br>
  	 * <i>native declaration : ./libavcodec/avcodec.h:418</i>
@@ -143,8 +143,8 @@ diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcod
  	 * Original signature : <code>int avcodec_open2(AVCodecContext*, const AVCodec*, AVDictionary**)</code><br>
  	 * <i>native declaration : ./libavcodec/avcodec.h:420</i>
 diff -pruN generated/org/ffmpeg/avcodec/AVCodecParserContext.java src/org/ffmpeg/avcodec/AVCodecParserContext.java
---- generated/org/ffmpeg/avcodec/AVCodecParserContext.java	2014-04-18 20:58:04.933666914 +0200
-+++ src/org/ffmpeg/avcodec/AVCodecParserContext.java	2014-04-13 17:23:15.000000000 +0200
+--- generated/org/ffmpeg/avcodec/AVCodecParserContext.java	2014-07-23 18:19:08.977653962 +0200
++++ src/org/ffmpeg/avcodec/AVCodecParserContext.java	2014-07-23 18:21:39.227073197 +0200
 @@ -5,7 +5,7 @@ import org.bridj.StructObject;
  import org.bridj.ann.Field;
  import org.bridj.ann.Library;
@@ -155,8 +155,8 @@ diff -pruN generated/org/ffmpeg/avcodec/AVCodecParserContext.java src/org/ffmpeg
   * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
   * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> or <a href="http://bridj.googlecode.com/">BridJ</a> .
 diff -pruN generated/org/ffmpeg/avcodec/AVHWAccel.java src/org/ffmpeg/avcodec/AVHWAccel.java
---- generated/org/ffmpeg/avcodec/AVHWAccel.java	2014-04-18 20:58:04.930666923 +0200
-+++ src/org/ffmpeg/avcodec/AVHWAccel.java	2014-04-13 17:23:15.000000000 +0200
+--- generated/org/ffmpeg/avcodec/AVHWAccel.java	2014-07-23 18:19:08.973653972 +0200
++++ src/org/ffmpeg/avcodec/AVHWAccel.java	2014-07-23 18:21:39.227073197 +0200
 @@ -5,7 +5,7 @@ import org.bridj.StructObject;
  import org.bridj.ann.Field;
  import org.bridj.ann.Library;
@@ -167,11 +167,11 @@ diff -pruN generated/org/ffmpeg/avcodec/AVHWAccel.java src/org/ffmpeg/avcodec/AV
   * a tool written by <a href="http://ochafik.com/">Olivier Chafik</a> that <a href="http://code.google.com/p/jnaerator/wiki/CreditsAndLicense">uses a few opensource projects.</a>.<br>
   * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> or <a href="http://bridj.googlecode.com/">BridJ</a> .
 diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avformat/AvformatLibrary.java
---- generated/org/ffmpeg/avformat/AvformatLibrary.java	2014-04-18 20:58:05.821664193 +0200
-+++ src/org/ffmpeg/avformat/AvformatLibrary.java	2014-04-13 17:24:07.044555385 +0200
+--- generated/org/ffmpeg/avformat/AvformatLibrary.java	2014-07-23 18:19:09.828651879 +0200
++++ src/org/ffmpeg/avformat/AvformatLibrary.java	2014-07-23 18:21:39.228073192 +0200
 @@ -319,11 +319,11 @@ public class AvformatLibrary {
  	 * Original signature : <code>AVFormatContext* avformat_alloc_context()</code><br>
- 	 * <i>native declaration : libavformat/avformat.h:207</i>
+ 	 * <i>native declaration : libavformat/avformat.h:212</i>
  	 */
 -	public static Pointer<AVFormatContext > avformat_alloc_context() {
 -		return Pointer.pointerToAddress(avformat_alloc_context$2(), AVFormatContext.class);
@@ -183,10 +183,10 @@ diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avf
 +	protected native static long avformat_alloc_context();
  	/**
  	 * Original signature : <code>void avformat_free_context(AVFormatContext*)</code><br>
- 	 * <i>native declaration : libavformat/avformat.h:209</i>
+ 	 * <i>native declaration : libavformat/avformat.h:214</i>
 diff -pruN generated/org/ffmpeg/avutil/AVUtil.java src/org/ffmpeg/avutil/AVUtil.java
 --- generated/org/ffmpeg/avutil/AVUtil.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/ffmpeg/avutil/AVUtil.java	2014-04-14 07:55:02.801154029 +0200
++++ src/org/ffmpeg/avutil/AVUtil.java	2014-07-23 18:21:39.229073186 +0200
 @@ -0,0 +1,44 @@
 +package org.ffmpeg.avutil;
 +
@@ -233,8 +233,8 @@ diff -pruN generated/org/ffmpeg/avutil/AVUtil.java src/org/ffmpeg/avutil/AVUtil.
 +
 +}
 diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/AvutilLibrary.java
---- generated/org/ffmpeg/avutil/AvutilLibrary.java	2014-04-18 20:58:03.792670410 +0200
-+++ src/org/ffmpeg/avutil/AvutilLibrary.java	2014-04-18 21:04:38.393470128 +0200
+--- generated/org/ffmpeg/avutil/AvutilLibrary.java	2014-07-23 18:19:07.959656454 +0200
++++ src/org/ffmpeg/avutil/AvutilLibrary.java	2014-07-23 18:21:39.230073181 +0200
 @@ -803,11 +803,11 @@ public class AvutilLibrary {
  	 * Original signature : <code>void* av_malloc(size_t)</code><br>
  	 * <i>native declaration : libavutil/mem.h:1</i>
@@ -258,7 +258,7 @@ diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/
  }
 diff -pruN generated/org/ffmpeg/FFMPeg.java src/org/ffmpeg/FFMPeg.java
 --- generated/org/ffmpeg/FFMPeg.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/ffmpeg/FFMPeg.java	2014-04-18 21:06:33.351123616 +0200
++++ src/org/ffmpeg/FFMPeg.java	2014-07-23 18:21:39.230073181 +0200
 @@ -0,0 +1,27 @@
 +package org.ffmpeg;
 +
@@ -288,8 +288,8 @@ diff -pruN generated/org/ffmpeg/FFMPeg.java src/org/ffmpeg/FFMPeg.java
 +	
 +}
 diff -pruN generated/org/ffmpeg/swscale/SwscaleLibrary.java src/org/ffmpeg/swscale/SwscaleLibrary.java
---- generated/org/ffmpeg/swscale/SwscaleLibrary.java	2014-04-18 20:58:03.132672432 +0200
-+++ src/org/ffmpeg/swscale/SwscaleLibrary.java	2014-04-19 10:44:54.193922229 +0200
+--- generated/org/ffmpeg/swscale/SwscaleLibrary.java	2014-07-23 18:19:07.318658023 +0200
++++ src/org/ffmpeg/swscale/SwscaleLibrary.java	2014-07-23 18:21:39.231073175 +0200
 @@ -125,20 +125,20 @@ public class SwscaleLibrary {
  	 * Original signature : <code>char* swscale_configuration()</code><br>
  	 * <i>native declaration : libswscale/swscale.h:3</i>
@@ -319,7 +319,7 @@ diff -pruN generated/org/ffmpeg/swscale/SwscaleLibrary.java src/org/ffmpeg/swsca
  	 * <i>native declaration : libswscale/swscale.h:8</i>
 diff -pruN generated/test/AVInfo.java src/test/AVInfo.java
 --- generated/test/AVInfo.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/test/AVInfo.java	2014-04-06 19:13:30.278248583 +0200
++++ src/test/AVInfo.java	2014-07-23 18:21:39.231073175 +0200
 @@ -0,0 +1,64 @@
 +package test;
 +
@@ -387,8 +387,8 @@ diff -pruN generated/test/AVInfo.java src/test/AVInfo.java
 +}
 diff -pruN generated/test/Demuxing.java src/test/Demuxing.java
 --- generated/test/Demuxing.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/test/Demuxing.java	2014-04-16 19:15:11.264054344 +0200
-@@ -0,0 +1,381 @@
++++ src/test/Demuxing.java	2014-07-23 18:25:03.696081952 +0200
+@@ -0,0 +1,384 @@
 +package test;
 +
 +import java.io.FileOutputStream;
@@ -453,6 +453,7 @@ diff -pruN generated/test/Demuxing.java src/test/Demuxing.java
 +			throws IOException {
 +		int ret = 0;
 +		int decoded = pkt.get().size();
++		got_frame.setInt(0);
 +
 +		if (pkt.get().stream_index() == video_stream_idx.get()) {
 +			/* decode video frame */
@@ -578,6 +579,7 @@ diff -pruN generated/test/Demuxing.java src/test/Demuxing.java
 +	public static void main(String[] args) throws IOException {
 +		int ret = 0;
 +		Pointer<Integer> got_frame = Pointer.allocateInt();
++		got_frame.set(0);
 +		video_stream_idx.set(-1);
 +		audio_stream_idx.set(-1);
 +		if (args.length != 3) {
@@ -698,6 +700,7 @@ diff -pruN generated/test/Demuxing.java src/test/Demuxing.java
 +			pkt.get().data(null);
 +			pkt.get().size(0);
 +			do {
++				got_frame.set(0);
 +				decode_packet(got_frame, 1);
 +			} while (got_frame.get() != 0);
 +

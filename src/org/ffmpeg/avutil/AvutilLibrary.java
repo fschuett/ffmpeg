@@ -665,7 +665,7 @@ public class AvutilLibrary {
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_PIX_FMT = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/ffversion.h</i> */
-	public static final String FFMPEG_VERSION = (String)"2.2";
+	public static final String FFMPEG_VERSION = (String)"2.2.4";
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_LLS1 = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/version.h</i> */

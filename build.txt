@@ -1,0 +1,34 @@
+ffmpeg
+======
+
+Build new version
+-----------------
+
+Check differences
+
+ - Install new devel files to /usr/include.
+ - Create /usr/include/ffmpeg with all subdirs:
+   libav*, libpostproc, libswscale, libswsample (10 subdirs).
+ - Compare to previouse version to check for differences.
+
+Create new csrc
+ - Move csrc -> csrc.old
+ - Copy new subdirs to <builddir>/csrc
+ - Change to <builddir>
+ - Patch with: patch -p0 <ffmeg-csrc.patch
+ - Compare csrc.old, csrc to check for differences.
+ - Update ffmpeg-csrc.patch: diff -pruN /usr/include/ffmpeg csrc
+
+Create new src
+ - Move src -> src.old
+ - Create generated files: ant ffmpeg-src
+ - Copy generated -> src
+ - Patch with: patch -p0 <ffmpeg-src.patch
+ - Compare src.old, src to check for differences.
+ - Update ffmpeg-src.patch: diff -pruN generated src
+
+Build new lib
+ - Compile source files: ant
+ - Build jar file: ant build-jar
+
+Check in new version

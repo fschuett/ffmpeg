@@ -63,7 +63,7 @@ public class Demuxing {
 		int ret = 0;
 		int decoded = pkt.get().size();
 		got_frame.setInt(0);
-		
+
 		if (pkt.get().stream_index() == video_stream_idx.get()) {
 			/* decode video frame */
 			ret = avcodec_decode_video2(video_dec_ctx, frame, got_frame,

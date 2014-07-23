@@ -758,8 +758,8 @@ diff -pruN /usr/include/ffmpeg/libavc1394/rom1394.h csrc/libavc1394/rom1394.h
 -#endif
 -
 diff -pruN /usr/include/ffmpeg/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
---- /usr/include/ffmpeg/libavcodec/avcodec.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavcodec/avcodec.h	2014-04-14 08:21:16.631770992 +0200
+--- /usr/include/ffmpeg/libavcodec/avcodec.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavcodec/avcodec.h	2014-07-23 18:13:50.748443525 +0200
 @@ -1,39 +1,10 @@
 -/*
 - * copyright (c) 2001 Fabrice Bellard
@@ -5677,7 +5677,7 @@ diff -pruN /usr/include/ffmpeg/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  #endif /* AVCODEC_AVCODEC_H */
 diff -pruN /usr/include/ffmpeg/libavcodec/avcodecid.h csrc/libavcodec/avcodecid.h
 --- /usr/include/ffmpeg/libavcodec/avcodecid.h	1970-01-01 01:00:00.000000000 +0100
-+++ csrc/libavcodec/avcodecid.h	2014-04-06 12:23:04.404322077 +0200
++++ csrc/libavcodec/avcodecid.h	2014-07-23 18:13:50.749443522 +0200
 @@ -0,0 +1,798 @@
 +
 +#ifndef AVCODEC_AVCODECID_H
@@ -6478,7 +6478,7 @@ diff -pruN /usr/include/ffmpeg/libavcodec/avcodecid.h csrc/libavcodec/avcodecid.
 +
 +#endif
 diff -pruN /usr/include/ffmpeg/libavcodec/avfft.h csrc/libavcodec/avfft.h
---- /usr/include/ffmpeg/libavcodec/avfft.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavcodec/avfft.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavcodec/avfft.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,118 +0,0 @@
 -/*
@@ -6600,7 +6600,7 @@ diff -pruN /usr/include/ffmpeg/libavcodec/avfft.h csrc/libavcodec/avfft.h
 -
 -#endif /* AVCODEC_AVFFT_H */
 diff -pruN /usr/include/ffmpeg/libavcodec/dvdata.h csrc/libavcodec/dvdata.h
---- /usr/include/ffmpeg/libavcodec/dvdata.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavcodec/dvdata.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavcodec/dvdata.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,41 +0,0 @@
 -/*
@@ -6645,7 +6645,7 @@ diff -pruN /usr/include/ffmpeg/libavcodec/dvdata.h csrc/libavcodec/dvdata.h
 -
 -#endif /* AVCODEC_DVDATA_H */
 diff -pruN /usr/include/ffmpeg/libavcodec/dxva2.h csrc/libavcodec/dxva2.h
---- /usr/include/ffmpeg/libavcodec/dxva2.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavcodec/dxva2.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavcodec/dxva2.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,95 +0,0 @@
 -/*
@@ -6744,7 +6744,7 @@ diff -pruN /usr/include/ffmpeg/libavcodec/dxva2.h csrc/libavcodec/dxva2.h
 -
 -#endif /* AVCODEC_DXVA_H */
 diff -pruN /usr/include/ffmpeg/libavcodec/old_codec_ids.h csrc/libavcodec/old_codec_ids.h
---- /usr/include/ffmpeg/libavcodec/old_codec_ids.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavcodec/old_codec_ids.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavcodec/old_codec_ids.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,399 +0,0 @@
 -/*
@@ -7147,7 +7147,7 @@ diff -pruN /usr/include/ffmpeg/libavcodec/old_codec_ids.h csrc/libavcodec/old_co
 -
 -#endif /* AVCODEC_OLD_CODEC_IDS_H */
 diff -pruN /usr/include/ffmpeg/libavcodec/vaapi.h csrc/libavcodec/vaapi.h
---- /usr/include/ffmpeg/libavcodec/vaapi.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavcodec/vaapi.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavcodec/vaapi.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,173 +0,0 @@
 -/*
@@ -7324,7 +7324,7 @@ diff -pruN /usr/include/ffmpeg/libavcodec/vaapi.h csrc/libavcodec/vaapi.h
 -
 -#endif /* AVCODEC_VAAPI_H */
 diff -pruN /usr/include/ffmpeg/libavcodec/vda.h csrc/libavcodec/vda.h
---- /usr/include/ffmpeg/libavcodec/vda.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavcodec/vda.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavcodec/vda.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,168 +0,0 @@
 -/*
@@ -7496,7 +7496,7 @@ diff -pruN /usr/include/ffmpeg/libavcodec/vda.h csrc/libavcodec/vda.h
 -
 -#endif /* AVCODEC_VDA_H */
 diff -pruN /usr/include/ffmpeg/libavcodec/vdpau.h csrc/libavcodec/vdpau.h
---- /usr/include/ffmpeg/libavcodec/vdpau.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavcodec/vdpau.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavcodec/vdpau.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,215 +0,0 @@
 -/*
@@ -7715,8 +7715,8 @@ diff -pruN /usr/include/ffmpeg/libavcodec/vdpau.h csrc/libavcodec/vdpau.h
 -
 -#endif /* AVCODEC_VDPAU_H */
 diff -pruN /usr/include/ffmpeg/libavcodec/version.h csrc/libavcodec/version.h
---- /usr/include/ffmpeg/libavcodec/version.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavcodec/version.h	2014-04-06 12:23:04.408322066 +0200
+--- /usr/include/ffmpeg/libavcodec/version.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavcodec/version.h	2014-07-23 18:13:50.753443512 +0200
 @@ -1,31 +1,7 @@
 -/*
 - *
@@ -7765,7 +7765,7 @@ diff -pruN /usr/include/ffmpeg/libavcodec/version.h csrc/libavcodec/version.h
  #ifndef FF_API_REQUEST_CHANNELS
  #define FF_API_REQUEST_CHANNELS (LIBAVCODEC_VERSION_MAJOR < 56)
 diff -pruN /usr/include/ffmpeg/libavcodec/xvmc.h csrc/libavcodec/xvmc.h
---- /usr/include/ffmpeg/libavcodec/xvmc.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavcodec/xvmc.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavcodec/xvmc.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,170 +0,0 @@
 -/*
@@ -7939,7 +7939,7 @@ diff -pruN /usr/include/ffmpeg/libavcodec/xvmc.h csrc/libavcodec/xvmc.h
 -
 -#endif /* AVCODEC_XVMC_H */
 diff -pruN /usr/include/ffmpeg/libavdevice/avdevice.h csrc/libavdevice/avdevice.h
---- /usr/include/ffmpeg/libavdevice/avdevice.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavdevice/avdevice.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavdevice/avdevice.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,233 +0,0 @@
 -/*
@@ -8176,7 +8176,7 @@ diff -pruN /usr/include/ffmpeg/libavdevice/avdevice.h csrc/libavdevice/avdevice.
 -
 -#endif /* AVDEVICE_AVDEVICE_H */
 diff -pruN /usr/include/ffmpeg/libavdevice/version.h csrc/libavdevice/version.h
---- /usr/include/ffmpeg/libavdevice/version.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavdevice/version.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavdevice/version.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,50 +0,0 @@
 -/*
@@ -8230,7 +8230,7 @@ diff -pruN /usr/include/ffmpeg/libavdevice/version.h csrc/libavdevice/version.h
 -
 -#endif /* AVDEVICE_VERSION_H */
 diff -pruN /usr/include/ffmpeg/libavfilter/asrc_abuffer.h csrc/libavfilter/asrc_abuffer.h
---- /usr/include/ffmpeg/libavfilter/asrc_abuffer.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavfilter/asrc_abuffer.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavfilter/asrc_abuffer.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,91 +0,0 @@
 -/*
@@ -8325,7 +8325,7 @@ diff -pruN /usr/include/ffmpeg/libavfilter/asrc_abuffer.h csrc/libavfilter/asrc_
 -
 -#endif /* AVFILTER_ASRC_ABUFFER_H */
 diff -pruN /usr/include/ffmpeg/libavfilter/avcodec.h csrc/libavfilter/avcodec.h
---- /usr/include/ffmpeg/libavfilter/avcodec.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavfilter/avcodec.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavfilter/avcodec.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,110 +0,0 @@
 -/*
@@ -8439,7 +8439,7 @@ diff -pruN /usr/include/ffmpeg/libavfilter/avcodec.h csrc/libavfilter/avcodec.h
 -
 -#endif /* AVFILTER_AVCODEC_H */
 diff -pruN /usr/include/ffmpeg/libavfilter/avfiltergraph.h csrc/libavfilter/avfiltergraph.h
---- /usr/include/ffmpeg/libavfilter/avfiltergraph.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavfilter/avfiltergraph.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavfilter/avfiltergraph.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,28 +0,0 @@
 -/*
@@ -8471,7 +8471,7 @@ diff -pruN /usr/include/ffmpeg/libavfilter/avfiltergraph.h csrc/libavfilter/avfi
 -
 -#endif /* AVFILTER_AVFILTERGRAPH_H */
 diff -pruN /usr/include/ffmpeg/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
---- /usr/include/ffmpeg/libavfilter/avfilter.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavfilter/avfilter.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavfilter/avfilter.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,1529 +0,0 @@
 -/*
@@ -10004,7 +10004,7 @@ diff -pruN /usr/include/ffmpeg/libavfilter/avfilter.h csrc/libavfilter/avfilter.
 -
 -#endif /* AVFILTER_AVFILTER_H */
 diff -pruN /usr/include/ffmpeg/libavfilter/buffersink.h csrc/libavfilter/buffersink.h
---- /usr/include/ffmpeg/libavfilter/buffersink.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavfilter/buffersink.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavfilter/buffersink.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,204 +0,0 @@
 -/*
@@ -10212,7 +10212,7 @@ diff -pruN /usr/include/ffmpeg/libavfilter/buffersink.h csrc/libavfilter/buffers
 -
 -#endif /* AVFILTER_BUFFERSINK_H */
 diff -pruN /usr/include/ffmpeg/libavfilter/buffersrc.h csrc/libavfilter/buffersrc.h
---- /usr/include/ffmpeg/libavfilter/buffersrc.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavfilter/buffersrc.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavfilter/buffersrc.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,160 +0,0 @@
 -/*
@@ -10376,7 +10376,7 @@ diff -pruN /usr/include/ffmpeg/libavfilter/buffersrc.h csrc/libavfilter/buffersr
 -
 -#endif /* AVFILTER_BUFFERSRC_H */
 diff -pruN /usr/include/ffmpeg/libavfilter/version.h csrc/libavfilter/version.h
---- /usr/include/ffmpeg/libavfilter/version.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavfilter/version.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavfilter/version.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,95 +0,0 @@
 -/*
@@ -10475,8 +10475,8 @@ diff -pruN /usr/include/ffmpeg/libavfilter/version.h csrc/libavfilter/version.h
 -
 -#endif /* AVFILTER_VERSION_H */
 diff -pruN /usr/include/ffmpeg/libavformat/avformat.h csrc/libavformat/avformat.h
---- /usr/include/ffmpeg/libavformat/avformat.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavformat/avformat.h	2014-04-06 16:12:03.812131754 +0200
+--- /usr/include/ffmpeg/libavformat/avformat.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavformat/avformat.h	2014-07-23 18:13:50.763443487 +0200
 @@ -1,254 +1,7 @@
 -/*
 - * copyright (c) 2001 Fabrice Bellard
@@ -11272,7 +11272,7 @@ diff -pruN /usr/include/ffmpeg/libavformat/avformat.h csrc/libavformat/avformat.
  #define MAX_STD_TIMEBASES (60*12+6)
      struct {
          int64_t last_dts;
-@@ -857,319 +132,81 @@ typedef struct AVStream {
+@@ -863,319 +138,81 @@ typedef struct AVStream {
          int     fps_last_dts_idx;
  
      } *info;
@@ -11597,7 +11597,7 @@ diff -pruN /usr/include/ffmpeg/libavformat/avformat.h csrc/libavformat/avformat.
      int bit_rate;
  
      unsigned int packet_size;
-@@ -1190,19 +227,7 @@ typedef struct AVFormatContext {
+@@ -1196,19 +233,7 @@ typedef struct AVFormatContext {
  #define AVFMT_FLAG_SORT_DTS    0x10000 ///< try to interleave outputted packets by dts (using this flag can slow demuxing down)
  #define AVFMT_FLAG_PRIV_OPT    0x20000 ///< Enable use of private options by delaying codec open (this could be made default once all code is converted)
  #define AVFMT_FLAG_KEEP_SIDE_DATA 0x40000 ///< Don't merge side data but keep it separate.
@@ -11617,7 +11617,7 @@ diff -pruN /usr/include/ffmpeg/libavformat/avformat.h csrc/libavformat/avformat.
      int max_analyze_duration;
  
      const uint8_t *key;
-@@ -1210,1319 +235,99 @@ typedef struct AVFormatContext {
+@@ -1216,1319 +241,99 @@ typedef struct AVFormatContext {
  
      unsigned int nb_programs;
      AVProgram **programs;
@@ -12939,8 +12939,8 @@ diff -pruN /usr/include/ffmpeg/libavformat/avformat.h csrc/libavformat/avformat.
 -
  #endif /* AVFORMAT_AVFORMAT_H */
 diff -pruN /usr/include/ffmpeg/libavformat/avio.h csrc/libavformat/avio.h
---- /usr/include/ffmpeg/libavformat/avio.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavformat/avio.h	2014-04-06 14:58:42.613404409 +0200
+--- /usr/include/ffmpeg/libavformat/avio.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavformat/avio.h	2014-07-23 18:13:50.764443484 +0200
 @@ -1,196 +1,19 @@
 -/*
 - * copyright (c) 2001 Fabrice Bellard
@@ -13441,8 +13441,8 @@ diff -pruN /usr/include/ffmpeg/libavformat/avio.h csrc/libavformat/avio.h
 -
  #endif /* AVFORMAT_AVIO_H */
 diff -pruN /usr/include/ffmpeg/libavformat/version.h csrc/libavformat/version.h
---- /usr/include/ffmpeg/libavformat/version.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavformat/version.h	2014-04-06 12:23:04.421322033 +0200
+--- /usr/include/ffmpeg/libavformat/version.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavformat/version.h	2014-07-23 18:13:50.764443484 +0200
 @@ -1,32 +1,7 @@
 -/*
 - * Version macros.
@@ -13486,7 +13486,7 @@ diff -pruN /usr/include/ffmpeg/libavformat/version.h csrc/libavformat/version.h
  /**
   * FF_API_* defines may be placed below to indicate public API that will be
 diff -pruN /usr/include/ffmpeg/libavresample/avresample.h csrc/libavresample/avresample.h
---- /usr/include/ffmpeg/libavresample/avresample.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavresample/avresample.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavresample/avresample.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,417 +0,0 @@
 -/*
@@ -13907,7 +13907,7 @@ diff -pruN /usr/include/ffmpeg/libavresample/avresample.h csrc/libavresample/avr
 -
 -#endif /* AVRESAMPLE_AVRESAMPLE_H */
 diff -pruN /usr/include/ffmpeg/libavresample/version.h csrc/libavresample/version.h
---- /usr/include/ffmpeg/libavresample/version.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavresample/version.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavresample/version.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,54 +0,0 @@
 -/*
@@ -13965,7 +13965,7 @@ diff -pruN /usr/include/ffmpeg/libavresample/version.h csrc/libavresample/versio
 -
 -#endif /* AVRESAMPLE_VERSION_H */
 diff -pruN /usr/include/ffmpeg/libavutil/adler32.h csrc/libavutil/adler32.h
---- /usr/include/ffmpeg/libavutil/adler32.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/adler32.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/adler32.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,55 +0,0 @@
 -/*
@@ -14024,7 +14024,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/adler32.h csrc/libavutil/adler32.h
 -
 -#endif /* AVUTIL_ADLER32_H */
 diff -pruN /usr/include/ffmpeg/libavutil/aes.h csrc/libavutil/aes.h
---- /usr/include/ffmpeg/libavutil/aes.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/aes.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/aes.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,65 +0,0 @@
 -/*
@@ -14093,7 +14093,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/aes.h csrc/libavutil/aes.h
 -
 -#endif /* AVUTIL_AES_H */
 diff -pruN /usr/include/ffmpeg/libavutil/attributes.h csrc/libavutil/attributes.h
---- /usr/include/ffmpeg/libavutil/attributes.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/attributes.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/attributes.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,160 +0,0 @@
 -/*
@@ -14257,7 +14257,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/attributes.h csrc/libavutil/attributes.
 -
 -#endif /* AVUTIL_ATTRIBUTES_H */
 diff -pruN /usr/include/ffmpeg/libavutil/audioconvert.h csrc/libavutil/audioconvert.h
---- /usr/include/ffmpeg/libavutil/audioconvert.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/audioconvert.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/audioconvert.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,6 +0,0 @@
 -
@@ -14267,7 +14267,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/audioconvert.h csrc/libavutil/audioconv
 -#include "channel_layout.h"
 -#endif
 diff -pruN /usr/include/ffmpeg/libavutil/audio_fifo.h csrc/libavutil/audio_fifo.h
---- /usr/include/ffmpeg/libavutil/audio_fifo.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/audio_fifo.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/audio_fifo.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,149 +0,0 @@
 -/*
@@ -14420,7 +14420,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/audio_fifo.h csrc/libavutil/audio_fifo.
 -
 -#endif /* AVUTIL_AUDIO_FIFO_H */
 diff -pruN /usr/include/ffmpeg/libavutil/avassert.h csrc/libavutil/avassert.h
---- /usr/include/ffmpeg/libavutil/avassert.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/avassert.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/avassert.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,66 +0,0 @@
 -/*
@@ -14490,7 +14490,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/avassert.h csrc/libavutil/avassert.h
 -
 -#endif /* AVUTIL_AVASSERT_H */
 diff -pruN /usr/include/ffmpeg/libavutil/avconfig.h csrc/libavutil/avconfig.h
---- /usr/include/ffmpeg/libavutil/avconfig.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/avconfig.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/avconfig.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,8 +0,0 @@
 -/* Generated by ffconf */
@@ -14502,7 +14502,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/avconfig.h csrc/libavutil/avconfig.h
 -#define AV_HAVE_INCOMPATIBLE_FORK_ABI 0
 -#endif /* AVUTIL_AVCONFIG_H */
 diff -pruN /usr/include/ffmpeg/libavutil/avstring.h csrc/libavutil/avstring.h
---- /usr/include/ffmpeg/libavutil/avstring.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/avstring.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/avstring.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,356 +0,0 @@
 -/*
@@ -14862,8 +14862,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/avstring.h csrc/libavutil/avstring.h
 -
 -#endif /* AVUTIL_AVSTRING_H */
 diff -pruN /usr/include/ffmpeg/libavutil/avutil.h csrc/libavutil/avutil.h
---- /usr/include/ffmpeg/libavutil/avutil.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/avutil.h	2014-04-06 12:23:04.426322020 +0200
+--- /usr/include/ffmpeg/libavutil/avutil.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/avutil.h	2014-07-23 18:13:50.769443472 +0200
 @@ -1,188 +1,9 @@
 -/*
 - * copyright (c) 2006 Michael Niedermayer <michaelni@gmx.at>
@@ -15192,7 +15192,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/avutil.h csrc/libavutil/avutil.h
 -
  #endif /* AVUTIL_AVUTIL_H */
 diff -pruN /usr/include/ffmpeg/libavutil/base64.h csrc/libavutil/base64.h
---- /usr/include/ffmpeg/libavutil/base64.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/base64.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/base64.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,67 +0,0 @@
 -/*
@@ -15263,7 +15263,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/base64.h csrc/libavutil/base64.h
 -
 -#endif /* AVUTIL_BASE64_H */
 diff -pruN /usr/include/ffmpeg/libavutil/blowfish.h csrc/libavutil/blowfish.h
---- /usr/include/ffmpeg/libavutil/blowfish.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/blowfish.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/blowfish.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,77 +0,0 @@
 -/*
@@ -15344,7 +15344,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/blowfish.h csrc/libavutil/blowfish.h
 -
 -#endif /* AVUTIL_BLOWFISH_H */
 diff -pruN /usr/include/ffmpeg/libavutil/bprint.h csrc/libavutil/bprint.h
---- /usr/include/ffmpeg/libavutil/bprint.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/bprint.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/bprint.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,216 +0,0 @@
 -/*
@@ -15564,7 +15564,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/bprint.h csrc/libavutil/bprint.h
 -
 -#endif /* AVUTIL_BPRINT_H */
 diff -pruN /usr/include/ffmpeg/libavutil/bswap.h csrc/libavutil/bswap.h
---- /usr/include/ffmpeg/libavutil/bswap.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/bswap.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/bswap.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,111 +0,0 @@
 -/*
@@ -15679,8 +15679,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/bswap.h csrc/libavutil/bswap.h
 -
 -#endif /* AVUTIL_BSWAP_H */
 diff -pruN /usr/include/ffmpeg/libavutil/buffer.h csrc/libavutil/buffer.h
---- /usr/include/ffmpeg/libavutil/buffer.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/buffer.h	2014-04-06 15:50:59.050371149 +0200
+--- /usr/include/ffmpeg/libavutil/buffer.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/buffer.h	2014-07-23 18:13:50.772443464 +0200
 @@ -1,274 +1,9 @@
 -/*
 - * This file is part of FFmpeg.
@@ -15958,7 +15958,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/buffer.h csrc/libavutil/buffer.h
 -
  #endif /* AVUTIL_BUFFER_H */
 diff -pruN /usr/include/ffmpeg/libavutil/channel_layout.h csrc/libavutil/channel_layout.h
---- /usr/include/ffmpeg/libavutil/channel_layout.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/channel_layout.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/channel_layout.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,225 +0,0 @@
 -/*
@@ -16187,8 +16187,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/channel_layout.h csrc/libavutil/channel
 -
 -#endif /* AVUTIL_CHANNEL_LAYOUT_H */
 diff -pruN /usr/include/ffmpeg/libavutil/common.h csrc/libavutil/common.h
---- /usr/include/ffmpeg/libavutil/common.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/common.h	2014-04-06 12:23:04.430322010 +0200
+--- /usr/include/ffmpeg/libavutil/common.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/common.h	2014-07-23 18:13:50.773443462 +0200
 @@ -1,469 +1,9 @@
 -/*
 - * copyright (c) 2006 Michael Niedermayer <michaelni@gmx.at>
@@ -16660,7 +16660,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/common.h csrc/libavutil/common.h
 -#   define av_popcount64    av_popcount64_c
 -#endif
 diff -pruN /usr/include/ffmpeg/libavutil/cpu.h csrc/libavutil/cpu.h
---- /usr/include/ffmpeg/libavutil/cpu.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/cpu.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/cpu.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,114 +0,0 @@
 -/*
@@ -16778,7 +16778,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/cpu.h csrc/libavutil/cpu.h
 -
 -#endif /* AVUTIL_CPU_H */
 diff -pruN /usr/include/ffmpeg/libavutil/crc.h csrc/libavutil/crc.h
---- /usr/include/ffmpeg/libavutil/crc.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/crc.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/crc.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,85 +0,0 @@
 -/*
@@ -16867,8 +16867,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/crc.h csrc/libavutil/crc.h
 -
 -#endif /* AVUTIL_CRC_H */
 diff -pruN /usr/include/ffmpeg/libavutil/dict.h csrc/libavutil/dict.h
---- /usr/include/ffmpeg/libavutil/dict.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/dict.h	2014-04-06 14:58:13.805478194 +0200
+--- /usr/include/ffmpeg/libavutil/dict.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/dict.h	2014-07-23 18:13:50.775443457 +0200
 @@ -1,69 +1,7 @@
 -/*
 - *
@@ -17036,7 +17036,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/dict.h csrc/libavutil/dict.h
  
  #endif /* AVUTIL_DICT_H */
 diff -pruN /usr/include/ffmpeg/libavutil/downmix_info.h csrc/libavutil/downmix_info.h
---- /usr/include/ffmpeg/libavutil/downmix_info.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/downmix_info.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/downmix_info.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,114 +0,0 @@
 -/*
@@ -17154,7 +17154,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/downmix_info.h csrc/libavutil/downmix_i
 -
 -#endif /* AVUTIL_DOWNMIX_INFO_H */
 diff -pruN /usr/include/ffmpeg/libavutil/error.h csrc/libavutil/error.h
---- /usr/include/ffmpeg/libavutil/error.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/error.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/error.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,117 +0,0 @@
 -/*
@@ -17275,7 +17275,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/error.h csrc/libavutil/error.h
 -
 -#endif /* AVUTIL_ERROR_H */
 diff -pruN /usr/include/ffmpeg/libavutil/eval.h csrc/libavutil/eval.h
---- /usr/include/ffmpeg/libavutil/eval.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/eval.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/eval.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,113 +0,0 @@
 -/*
@@ -17392,7 +17392,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/eval.h csrc/libavutil/eval.h
 -
 -#endif /* AVUTIL_EVAL_H */
 diff -pruN /usr/include/ffmpeg/libavutil/fifo.h csrc/libavutil/fifo.h
---- /usr/include/ffmpeg/libavutil/fifo.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/fifo.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/fifo.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,144 +0,0 @@
 -/*
@@ -17540,7 +17540,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/fifo.h csrc/libavutil/fifo.h
 -
 -#endif /* AVUTIL_FIFO_H */
 diff -pruN /usr/include/ffmpeg/libavutil/file.h csrc/libavutil/file.h
---- /usr/include/ffmpeg/libavutil/file.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/file.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/file.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,66 +0,0 @@
 -/*
@@ -17610,8 +17610,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/file.h csrc/libavutil/file.h
 -
 -#endif /* AVUTIL_FILE_H */
 diff -pruN /usr/include/ffmpeg/libavutil/frame.h csrc/libavutil/frame.h
---- /usr/include/ffmpeg/libavutil/frame.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/frame.h	2014-04-06 15:54:14.486870584 +0200
+--- /usr/include/ffmpeg/libavutil/frame.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/frame.h	2014-07-23 18:13:50.778443449 +0200
 @@ -1,27 +1,3 @@
 -/*
 - *
@@ -18327,7 +18327,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/frame.h csrc/libavutil/frame.h
 -
  #endif /* AVUTIL_FRAME_H */
 diff -pruN /usr/include/ffmpeg/libavutil/hmac.h csrc/libavutil/hmac.h
---- /usr/include/ffmpeg/libavutil/hmac.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/hmac.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/hmac.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,99 +0,0 @@
 -/*
@@ -18430,8 +18430,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/hmac.h csrc/libavutil/hmac.h
 -
 -#endif /* AVUTIL_HMAC_H */
 diff -pruN /usr/include/ffmpeg/libavutil/imgutils.h csrc/libavutil/imgutils.h
---- /usr/include/ffmpeg/libavutil/imgutils.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/imgutils.h	2014-04-06 12:23:04.435321997 +0200
+--- /usr/include/ffmpeg/libavutil/imgutils.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/imgutils.h	2014-07-23 18:13:50.779443447 +0200
 @@ -1,200 +1,12 @@
 -/*
 - * This file is part of FFmpeg.
@@ -18634,7 +18634,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/imgutils.h csrc/libavutil/imgutils.h
 -
  #endif /* AVUTIL_IMGUTILS_H */
 diff -pruN /usr/include/ffmpeg/libavutil/intfloat.h csrc/libavutil/intfloat.h
---- /usr/include/ffmpeg/libavutil/intfloat.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/intfloat.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/intfloat.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,77 +0,0 @@
 -/*
@@ -18715,7 +18715,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/intfloat.h csrc/libavutil/intfloat.h
 -
 -#endif /* AVUTIL_INTFLOAT_H */
 diff -pruN /usr/include/ffmpeg/libavutil/intfloat_readwrite.h csrc/libavutil/intfloat_readwrite.h
---- /usr/include/ffmpeg/libavutil/intfloat_readwrite.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/intfloat_readwrite.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/intfloat_readwrite.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,44 +0,0 @@
 -/*
@@ -18763,7 +18763,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/intfloat_readwrite.h csrc/libavutil/int
 -
 -#endif /* AVUTIL_INTFLOAT_READWRITE_H */
 diff -pruN /usr/include/ffmpeg/libavutil/intreadwrite.h csrc/libavutil/intreadwrite.h
---- /usr/include/ffmpeg/libavutil/intreadwrite.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/intreadwrite.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/intreadwrite.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,621 +0,0 @@
 -/*
@@ -19388,7 +19388,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/intreadwrite.h csrc/libavutil/intreadwr
 -
 -#endif /* AVUTIL_INTREADWRITE_H */
 diff -pruN /usr/include/ffmpeg/libavutil/lfg.h csrc/libavutil/lfg.h
---- /usr/include/ffmpeg/libavutil/lfg.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/lfg.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/lfg.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,62 +0,0 @@
 -/*
@@ -19454,8 +19454,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/lfg.h csrc/libavutil/lfg.h
 -
 -#endif /* AVUTIL_LFG_H */
 diff -pruN /usr/include/ffmpeg/libavutil/log.h csrc/libavutil/log.h
---- /usr/include/ffmpeg/libavutil/log.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/log.h	2014-04-06 14:53:55.273140365 +0200
+--- /usr/include/ffmpeg/libavutil/log.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/log.h	2014-07-23 18:13:50.782443439 +0200
 @@ -1,29 +1,8 @@
 -/*
 - * copyright (c) 2006 Michael Niedermayer <michaelni@gmx.at>
@@ -19763,7 +19763,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/log.h csrc/libavutil/log.h
 -
  #endif /* AVUTIL_LOG_H */
 diff -pruN /usr/include/ffmpeg/libavutil/lzo.h csrc/libavutil/lzo.h
---- /usr/include/ffmpeg/libavutil/lzo.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/lzo.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/lzo.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,66 +0,0 @@
 -/*
@@ -19833,8 +19833,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/lzo.h csrc/libavutil/lzo.h
 -
 -#endif /* AVUTIL_LZO_H */
 diff -pruN /usr/include/ffmpeg/libavutil/macros.h csrc/libavutil/macros.h
---- /usr/include/ffmpeg/libavutil/macros.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/macros.h	2014-04-06 12:23:04.439321987 +0200
+--- /usr/include/ffmpeg/libavutil/macros.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/macros.h	2014-07-23 18:13:50.782443439 +0200
 @@ -1,48 +1,13 @@
 -/*
 - * This file is part of FFmpeg.
@@ -19885,8 +19885,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/macros.h csrc/libavutil/macros.h
  
  #endif /* AVUTIL_MACROS_H */
 diff -pruN /usr/include/ffmpeg/libavutil/mathematics.h csrc/libavutil/mathematics.h
---- /usr/include/ffmpeg/libavutil/mathematics.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/mathematics.h	2014-04-06 12:23:04.439321987 +0200
+--- /usr/include/ffmpeg/libavutil/mathematics.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/mathematics.h	2014-07-23 18:13:50.783443436 +0200
 @@ -1,164 +1,9 @@
 -/*
 - * copyright (c) 2005-2012 Michael Niedermayer <michaelni@gmx.at>
@@ -20053,7 +20053,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/mathematics.h csrc/libavutil/mathematic
 -
  #endif /* AVUTIL_MATHEMATICS_H */
 diff -pruN /usr/include/ffmpeg/libavutil/md5.h csrc/libavutil/md5.h
---- /usr/include/ffmpeg/libavutil/md5.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/md5.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/md5.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,81 +0,0 @@
 -/*
@@ -20138,8 +20138,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/md5.h csrc/libavutil/md5.h
 -
 -#endif /* AVUTIL_MD5_H */
 diff -pruN /usr/include/ffmpeg/libavutil/mem.h csrc/libavutil/mem.h
---- /usr/include/ffmpeg/libavutil/mem.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/mem.h	2014-04-06 12:23:04.441321982 +0200
+--- /usr/include/ffmpeg/libavutil/mem.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/mem.h	2014-07-23 18:13:50.784443434 +0200
 @@ -1,27 +1,3 @@
 -/*
 - * copyright (c) 2006 Michael Niedermayer <michaelni@gmx.at>
@@ -20496,7 +20496,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/mem.h csrc/libavutil/mem.h
 -
  #endif /* AVUTIL_MEM_H */
 diff -pruN /usr/include/ffmpeg/libavutil/murmur3.h csrc/libavutil/murmur3.h
---- /usr/include/ffmpeg/libavutil/murmur3.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/murmur3.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/murmur3.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,32 +0,0 @@
 -/*
@@ -20532,7 +20532,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/murmur3.h csrc/libavutil/murmur3.h
 -
 -#endif /* AVUTIL_MURMUR3_H */
 diff -pruN /usr/include/ffmpeg/libavutil/old_pix_fmts.h csrc/libavutil/old_pix_fmts.h
---- /usr/include/ffmpeg/libavutil/old_pix_fmts.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/old_pix_fmts.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/old_pix_fmts.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,177 +0,0 @@
 -/*
@@ -20713,8 +20713,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/old_pix_fmts.h csrc/libavutil/old_pix_f
 -    PIX_FMT_NB,        ///< number of pixel formats, DO NOT USE THIS if you want to link with shared libav* because the number of formats might differ between versions
 -#endif /* AVUTIL_OLD_PIX_FMTS_H */
 diff -pruN /usr/include/ffmpeg/libavutil/opt.h csrc/libavutil/opt.h
---- /usr/include/ffmpeg/libavutil/opt.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/opt.h	2014-04-06 14:10:51.660757692 +0200
+--- /usr/include/ffmpeg/libavutil/opt.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/opt.h	2014-07-23 18:13:50.787443426 +0200
 @@ -1,221 +1,9 @@
 -/*
 - * AVOptions
@@ -21478,7 +21478,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/opt.h csrc/libavutil/opt.h
 -
  #endif /* AVUTIL_OPT_H */
 diff -pruN /usr/include/ffmpeg/libavutil/parseutils.h csrc/libavutil/parseutils.h
---- /usr/include/ffmpeg/libavutil/parseutils.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/parseutils.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/parseutils.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,187 +0,0 @@
 -/*
@@ -21669,8 +21669,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/parseutils.h csrc/libavutil/parseutils.
 -
 -#endif /* AVUTIL_PARSEUTILS_H */
 diff -pruN /usr/include/ffmpeg/libavutil/pixdesc.h csrc/libavutil/pixdesc.h
---- /usr/include/ffmpeg/libavutil/pixdesc.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/pixdesc.h	2014-04-06 12:23:04.444321974 +0200
+--- /usr/include/ffmpeg/libavutil/pixdesc.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/pixdesc.h	2014-07-23 18:13:50.788443424 +0200
 @@ -1,291 +1,7 @@
 -/*
 - * pixel format descriptor
@@ -21964,8 +21964,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/pixdesc.h csrc/libavutil/pixdesc.h
 -
  #endif /* AVUTIL_PIXDESC_H */
 diff -pruN /usr/include/ffmpeg/libavutil/pixfmt.h csrc/libavutil/pixfmt.h
---- /usr/include/ffmpeg/libavutil/pixfmt.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/pixfmt.h	2014-04-06 12:23:04.446321969 +0200
+--- /usr/include/ffmpeg/libavutil/pixfmt.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/pixfmt.h	2014-07-23 18:13:50.789443421 +0200
 @@ -1,68 +1,7 @@
 -/*
 - * copyright (c) 2006 Michael Niedermayer <michaelni@gmx.at>
@@ -22222,7 +22222,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/pixfmt.h csrc/libavutil/pixfmt.h
 -
  #endif /* AVUTIL_PIXFMT_H */
 diff -pruN /usr/include/ffmpeg/libavutil/random_seed.h csrc/libavutil/random_seed.h
---- /usr/include/ffmpeg/libavutil/random_seed.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/random_seed.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/random_seed.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,43 +0,0 @@
 -/*
@@ -22269,8 +22269,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/random_seed.h csrc/libavutil/random_see
 -
 -#endif /* AVUTIL_RANDOM_SEED_H */
 diff -pruN /usr/include/ffmpeg/libavutil/rational.h csrc/libavutil/rational.h
---- /usr/include/ffmpeg/libavutil/rational.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/rational.h	2014-04-06 12:23:04.447321966 +0200
+--- /usr/include/ffmpeg/libavutil/rational.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/rational.h	2014-07-23 18:13:50.790443419 +0200
 @@ -1,29 +1,3 @@
 -/*
 - * rational numbers
@@ -22438,7 +22438,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/rational.h csrc/libavutil/rational.h
 -
  #endif /* AVUTIL_RATIONAL_H */
 diff -pruN /usr/include/ffmpeg/libavutil/ripemd.h csrc/libavutil/ripemd.h
---- /usr/include/ffmpeg/libavutil/ripemd.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/ripemd.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/ripemd.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,75 +0,0 @@
 -/*
@@ -22517,8 +22517,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/ripemd.h csrc/libavutil/ripemd.h
 -
 -#endif /* AVUTIL_RIPEMD_H */
 diff -pruN /usr/include/ffmpeg/libavutil/samplefmt.h csrc/libavutil/samplefmt.h
---- /usr/include/ffmpeg/libavutil/samplefmt.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/samplefmt.h	2014-04-06 12:23:04.448321964 +0200
+--- /usr/include/ffmpeg/libavutil/samplefmt.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/samplefmt.h	2014-07-23 18:13:50.791443416 +0200
 @@ -1,51 +1,7 @@
 -/*
 - * This file is part of FFmpeg.
@@ -22770,7 +22770,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/samplefmt.h csrc/libavutil/samplefmt.h
  
  #endif /* AVUTIL_SAMPLEFMT_H */
 diff -pruN /usr/include/ffmpeg/libavutil/sha512.h csrc/libavutil/sha512.h
---- /usr/include/ffmpeg/libavutil/sha512.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/sha512.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/sha512.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,75 +0,0 @@
 -/*
@@ -22849,7 +22849,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/sha512.h csrc/libavutil/sha512.h
 -
 -#endif /* AVUTIL_SHA512_H */
 diff -pruN /usr/include/ffmpeg/libavutil/sha.h csrc/libavutil/sha.h
---- /usr/include/ffmpeg/libavutil/sha.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/sha.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/sha.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,74 +0,0 @@
 -/*
@@ -22927,7 +22927,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/sha.h csrc/libavutil/sha.h
 -
 -#endif /* AVUTIL_SHA_H */
 diff -pruN /usr/include/ffmpeg/libavutil/stereo3d.h csrc/libavutil/stereo3d.h
---- /usr/include/ffmpeg/libavutil/stereo3d.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/stereo3d.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/stereo3d.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,147 +0,0 @@
 -/*
@@ -23078,7 +23078,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/stereo3d.h csrc/libavutil/stereo3d.h
 - */
 -AVStereo3D *av_stereo3d_create_side_data(AVFrame *frame);
 diff -pruN /usr/include/ffmpeg/libavutil/timecode.h csrc/libavutil/timecode.h
---- /usr/include/ffmpeg/libavutil/timecode.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/timecode.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/timecode.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,140 +0,0 @@
 -/*
@@ -23222,7 +23222,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/timecode.h csrc/libavutil/timecode.h
 -
 -#endif /* AVUTIL_TIMECODE_H */
 diff -pruN /usr/include/ffmpeg/libavutil/time.h csrc/libavutil/time.h
---- /usr/include/ffmpeg/libavutil/time.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/time.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/time.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,41 +0,0 @@
 -/*
@@ -23267,7 +23267,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/time.h csrc/libavutil/time.h
 -
 -#endif /* AVUTIL_TIME_H */
 diff -pruN /usr/include/ffmpeg/libavutil/timestamp.h csrc/libavutil/timestamp.h
---- /usr/include/ffmpeg/libavutil/timestamp.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/timestamp.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/timestamp.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,78 +0,0 @@
 -/*
@@ -23349,8 +23349,8 @@ diff -pruN /usr/include/ffmpeg/libavutil/timestamp.h csrc/libavutil/timestamp.h
 -
 -#endif /* AVUTIL_TIMESTAMP_H */
 diff -pruN /usr/include/ffmpeg/libavutil/version.h csrc/libavutil/version.h
---- /usr/include/ffmpeg/libavutil/version.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libavutil/version.h	2014-04-06 12:23:04.450321959 +0200
+--- /usr/include/ffmpeg/libavutil/version.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libavutil/version.h	2014-07-23 18:13:50.793443411 +0200
 @@ -1,60 +1,11 @@
 -/*
 - * copyright (c) 2003 Fabrice Bellard
@@ -23443,7 +23443,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/version.h csrc/libavutil/version.h
  #endif /* AVUTIL_VERSION_H */
  
 diff -pruN /usr/include/ffmpeg/libavutil/xtea.h csrc/libavutil/xtea.h
---- /usr/include/ffmpeg/libavutil/xtea.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libavutil/xtea.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libavutil/xtea.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,64 +0,0 @@
 -/*
@@ -23511,7 +23511,7 @@ diff -pruN /usr/include/ffmpeg/libavutil/xtea.h csrc/libavutil/xtea.h
 -
 -#endif /* AVUTIL_XTEA_H */
 diff -pruN /usr/include/ffmpeg/libpostproc/postprocess.h csrc/libpostproc/postprocess.h
---- /usr/include/ffmpeg/libpostproc/postprocess.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libpostproc/postprocess.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libpostproc/postprocess.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,106 +0,0 @@
 -/*
@@ -23621,7 +23621,7 @@ diff -pruN /usr/include/ffmpeg/libpostproc/postprocess.h csrc/libpostproc/postpr
 -
 -#endif /* POSTPROC_POSTPROCESS_H */
 diff -pruN /usr/include/ffmpeg/libpostproc/version.h csrc/libpostproc/version.h
---- /usr/include/ffmpeg/libpostproc/version.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libpostproc/version.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libpostproc/version.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,45 +0,0 @@
 -/*
@@ -23670,7 +23670,7 @@ diff -pruN /usr/include/ffmpeg/libpostproc/version.h csrc/libpostproc/version.h
 -
 -#endif /* POSTPROC_POSTPROCESS_VERSION_H */
 diff -pruN /usr/include/ffmpeg/libswresample/swresample.h csrc/libswresample/swresample.h
---- /usr/include/ffmpeg/libswresample/swresample.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libswresample/swresample.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libswresample/swresample.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,318 +0,0 @@
 -/*
@@ -23992,7 +23992,7 @@ diff -pruN /usr/include/ffmpeg/libswresample/swresample.h csrc/libswresample/swr
 -
 -#endif /* SWRESAMPLE_SWRESAMPLE_H */
 diff -pruN /usr/include/ffmpeg/libswresample/version.h csrc/libswresample/version.h
---- /usr/include/ffmpeg/libswresample/version.h	2014-04-02 13:56:31.000000000 +0200
+--- /usr/include/ffmpeg/libswresample/version.h	2014-07-21 10:52:48.000000000 +0200
 +++ csrc/libswresample/version.h	1970-01-01 01:00:00.000000000 +0100
 @@ -1,45 +0,0 @@
 -/*
@@ -24041,8 +24041,8 @@ diff -pruN /usr/include/ffmpeg/libswresample/version.h csrc/libswresample/versio
 -
 -#endif /* SWR_VERSION_H */
 diff -pruN /usr/include/ffmpeg/libswscale/swscale.h csrc/libswscale/swscale.h
---- /usr/include/ffmpeg/libswscale/swscale.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libswscale/swscale.h	2014-04-18 18:17:41.333215388 +0200
+--- /usr/include/ffmpeg/libswscale/swscale.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libswscale/swscale.h	2014-07-23 18:13:50.796443404 +0200
 @@ -1,32 +1,7 @@
 -/*
 - * Copyright (C) 2001-2011 Michael Niedermayer <michaelni@gmx.at>
@@ -24382,8 +24382,8 @@ diff -pruN /usr/include/ffmpeg/libswscale/swscale.h csrc/libswscale/swscale.h
 -
  #endif /* SWSCALE_SWSCALE_H */
 diff -pruN /usr/include/ffmpeg/libswscale/version.h csrc/libswscale/version.h
---- /usr/include/ffmpeg/libswscale/version.h	2014-04-02 13:56:31.000000000 +0200
-+++ csrc/libswscale/version.h	2014-04-06 12:23:04.454321948 +0200
+--- /usr/include/ffmpeg/libswscale/version.h	2014-07-21 10:52:48.000000000 +0200
++++ csrc/libswscale/version.h	2014-07-23 18:13:50.797443401 +0200
 @@ -1,29 +1,7 @@
 -/*
 - * This file is part of FFmpeg.
