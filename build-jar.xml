@@ -15,7 +15,7 @@
 	</target>
 	
 	<target name="build-jar" depends="clean-jar,copy-lib">
-	    <jar destfile="dist/ffmpeg-2.2.jar">
+	    <jar destfile="dist/ffmpeg-2.3.jar">
 	        <manifest>
 	            <attribute name="Main-Class" value="org.ffmpeg.FFMPeg"/>
 	        	<attribute name="Class-Path" value="${jar.class.path}"/>

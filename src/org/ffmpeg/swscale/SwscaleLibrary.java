@@ -34,7 +34,7 @@ public class SwscaleLibrary {
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_BICUBLIN = (int)0x40;
 	/** <i>native declaration : libswscale/version.h</i> */
-	public static final String LIBSWSCALE_IDENT = (String)"SwS2.5.102";
+	public static final String LIBSWSCALE_IDENT = (String)"SwS2.6.100";
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_SPLINE = (int)0x400;
 	/** <i>native declaration : libswscale/swscale.h</i> */
@@ -71,11 +71,13 @@ public class SwscaleLibrary {
 	public static final int SWS_ACCURATE_RND = (int)0x40000;
 	/**
 	 * define<br>
-	 * Conversion Error : 2.5.<br>
+	 * Conversion Error : 2.6.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : libswscale/version.h:0</i><br>
-	 * 2.5.
+	 * 2.6.
 	 */
+	/** <i>native declaration : libswscale/version.h</i> */
+	public static final boolean FF_API_ARCH_BFIN = (boolean)(2 < 3);
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_FULL_CHR_H_INP = (int)0x4000;
 	/** <i>native declaration : libswscale/swscale.h</i> */
@@ -93,7 +95,7 @@ public class SwscaleLibrary {
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_SRC_V_CHR_DROP_MASK = (int)0x30000;
 	/** <i>native declaration : libswscale/version.h</i> */
-	public static final int LIBSWSCALE_BUILD = (int)(2 << 16 | 5 << 8 | 102);
+	public static final int LIBSWSCALE_BUILD = (int)(2 << 16 | 6 << 8 | 100);
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_ERROR_DIFFUSION = (int)0x800000;
 	/** <i>native declaration : libswscale/swscale.h</i> */
@@ -105,13 +107,13 @@ public class SwscaleLibrary {
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_CS_ITU709 = (int)1;
 	/** <i>native declaration : libswscale/version.h</i> */
-	public static final int LIBSWSCALE_VERSION_INT = (int)(2 << 16 | 5 << 8 | 102);
+	public static final int LIBSWSCALE_VERSION_INT = (int)(2 << 16 | 6 << 8 | 100);
 	/** <i>native declaration : libswscale/version.h</i> */
-	public static final int LIBSWSCALE_VERSION_MICRO = (int)102;
+	public static final int LIBSWSCALE_VERSION_MICRO = (int)100;
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_CPU_CAPS_BFIN = (int)0x01000000;
 	/** <i>native declaration : libswscale/version.h</i> */
-	public static final int LIBSWSCALE_VERSION_MINOR = (int)5;
+	public static final int LIBSWSCALE_VERSION_MINOR = (int)6;
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_BILINEAR = (int)2;
 	/** <i>native declaration : libswscale/swscale.h</i> */

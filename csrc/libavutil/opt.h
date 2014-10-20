@@ -24,15 +24,48 @@ enum AVOptionType{
     AV_OPT_TYPE_CHANNEL_LAYOUT = MKBETAG('C','H','L','A'),
 };
 
-
+/**
+ * AVOption
+ */
 typedef struct AVOption;
 
+/**
+ * A single allowed range of values, or a single allowed value.
+ */
 typedef struct AVOptionRange;
 
+/**
+ * List of AVOptionRange structs.
+ */
 typedef struct AVOptionRanges;
 
+
+/**
+ * Set the values of all AVOption fields to their default values.
+ *
+ * @param s an AVOption-enabled struct (its first member must be a pointer to AVClass)
+ */
 void av_opt_set_defaults(void *s);
+
+/**
+ * Free all string and binary options in obj.
+ */
 void av_opt_free(void *obj);
+
+/**
+ * Set all the options from a given dictionary on an object.
+ *
+ * @param obj a struct whose first element is a pointer to AVClass
+ * @param options options to process. This dictionary will be freed and replaced
+ *                by a new one containing all options not found in obj.
+ *                Of course this new dictionary needs to be freed by caller
+ *                with av_dict_free().
+ *
+ * @return 0 on success, a negative AVERROR if some option was found in obj,
+ *         but could not be set.
+ *
+ * @see av_dict_copy()
+ */
 int av_opt_set_dict(void *obj, struct AVDictionary **options);
 
 #endif /* AVUTIL_OPT_H */

@@ -17,6 +17,7 @@ Create new csrc
  - Change to <builddir>
  - Patch with: patch -p0 <ffmeg-csrc.patch
  - Compare csrc.old, csrc to check for differences.
+ - change version nr in libavcodec/version.h, libavformat/version.h, libavutil/version.h, libswscale/version.h
  - Update ffmpeg-csrc.patch: diff -pruN /usr/include/ffmpeg csrc
 
 Create new src
@@ -28,6 +29,7 @@ Create new src
  - Update ffmpeg-src.patch: diff -pruN generated src
 
 Build new lib
+ - Change version in build-jar.xml, README.md
  - Compile source files: ant
  - Build jar file: ant build-jar
 

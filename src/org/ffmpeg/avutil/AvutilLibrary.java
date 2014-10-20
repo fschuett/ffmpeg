@@ -24,7 +24,7 @@ public class AvutilLibrary {
 	}
 	/**
 	 * enum values<br>
-	 * <i>native declaration : libavutil/avutil.h:13</i>
+	 * <i>native declaration : libavutil/avutil.h:26</i>
 	 */
 	public enum AVMediaType implements IntValuedEnum<AVMediaType > {
 		/** < Usually treated as AVMEDIA_TYPE_DATA */
@@ -53,7 +53,7 @@ public class AvutilLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : libavutil/avutil.h:33</i>
+	 * <i>native declaration : libavutil/avutil.h:46</i>
 	 */
 	public enum AVPictureType implements IntValuedEnum<AVPictureType > {
 		/** < Undefined */
@@ -87,8 +87,22 @@ public class AvutilLibrary {
 		}
 	};
 	/**
+	 * Audio sample formats<br>
+	 * * - The data described by the sample format is always in native-endian order.<br>
+	 *   Sample values can be expressed by native C types, hence the lack of a signed<br>
+	 *   24-bit sample format even though it is a common raw audio data format.<br>
+	 * * - The floating-point formats are based on full volume being in the range<br>
+	 *   [-1.0, 1.0]. Any values outside this range are beyond full volume level.<br>
+	 * * - The data layout as used in av_samples_fill_arrays() and elsewhere in FFmpeg<br>
+	 *   (such as AVFrame in libavcodec) is as follows:<br>
+	 * * @par<br>
+	 * For planar sample formats, each audio channel is in a separate data plane,<br>
+	 * and linesize is the buffer size, in bytes, for a single plane. All data<br>
+	 * planes must be the same size. For packed sample formats, only the first data<br>
+	 * plane is used, and samples for each channel are interleaved. In this case,<br>
+	 * linesize is the buffer size, in bytes, for the 1 plane.<br>
 	 * enum values<br>
-	 * <i>native declaration : libavutil/samplefmt.h:24</i>
+	 * <i>native declaration : libavutil/samplefmt.h:40</i>
 	 */
 	public enum AVSampleFormat implements IntValuedEnum<AVSampleFormat > {
 		AV_SAMPLE_FMT_NONE(-1),
@@ -130,163 +144,7 @@ public class AvutilLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : libavutil/frame.h:19</i>
-	 */
-	public enum AVColorSpace implements IntValuedEnum<AVColorSpace > {
-		AVCOL_SPC_RGB(0),
-		/** < also ITU-R BT1361 / IEC 61966-2-4 xvYCC709 / SMPTE RP177 Annex B */
-		AVCOL_SPC_BT709(1),
-		AVCOL_SPC_UNSPECIFIED(2),
-		AVCOL_SPC_FCC(4),
-		/** < also ITU-R BT601-6 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL & SECAM / IEC 61966-2-4 xvYCC601 */
-		AVCOL_SPC_BT470BG(5),
-		/** < also ITU-R BT601-6 525 / ITU-R BT1358 525 / ITU-R BT1700 NTSC / functionally identical to above */
-		AVCOL_SPC_SMPTE170M(6),
-		AVCOL_SPC_SMPTE240M(7),
-		/** < Used by Dirac / VC-2 and H.264 FRext, see ITU-T SG16 */
-		AVCOL_SPC_YCOCG(8),
-		/** < ITU-R BT2020 non-constant luminance system */
-		AVCOL_SPC_BT2020_NCL(9),
-		/** < ITU-R BT2020 constant luminance system */
-		AVCOL_SPC_BT2020_CL(10),
-		/** < Not part of ABI */
-		AVCOL_SPC_NB(11);
-		AVColorSpace(long value) {
-			this.value = value;
-		}
-		public final long value;
-		public long value() {
-			return this.value;
-		}
-		public Iterator<AVColorSpace > iterator() {
-			return Collections.singleton(this).iterator();
-		}
-		public static IntValuedEnum<AVColorSpace > fromValue(int value) {
-			return FlagSet.fromValue(value, values());
-		}
-	};
-	/**
-	 * enum values<br>
-	 * <i>native declaration : libavutil/frame.h:28</i>
-	 */
-	public enum AVColorRange implements IntValuedEnum<AVColorRange > {
-		AVCOL_RANGE_UNSPECIFIED(0),
-		/** < the normal 219*2^(n-8) "MPEG" YUV ranges */
-		AVCOL_RANGE_MPEG(1),
-		/** < the normal     2^n-1   "JPEG" YUV ranges */
-		AVCOL_RANGE_JPEG(2),
-		/** < Not part of ABI */
-		AVCOL_RANGE_NB(3);
-		AVColorRange(long value) {
-			this.value = value;
-		}
-		public final long value;
-		public long value() {
-			return this.value;
-		}
-		public Iterator<AVColorRange > iterator() {
-			return Collections.singleton(this).iterator();
-		}
-		public static IntValuedEnum<AVColorRange > fromValue(int value) {
-			return FlagSet.fromValue(value, values());
-		}
-	};
-	/**
-	 * enum values<br>
-	 * <i>native declaration : libavutil/frame.h:35</i>
-	 */
-	public enum AVFrameSideDataType implements IntValuedEnum<AVFrameSideDataType > {
-		AV_FRAME_DATA_PANSCAN(0),
-		AV_FRAME_DATA_A53_CC(1),
-		AV_FRAME_DATA_STEREO3D(2),
-		AV_FRAME_DATA_MATRIXENCODING(3),
-		AV_FRAME_DATA_DOWNMIX_INFO(4);
-		AVFrameSideDataType(long value) {
-			this.value = value;
-		}
-		public final long value;
-		public long value() {
-			return this.value;
-		}
-		public Iterator<AVFrameSideDataType > iterator() {
-			return Collections.singleton(this).iterator();
-		}
-		public static IntValuedEnum<AVFrameSideDataType > fromValue(int value) {
-			return FlagSet.fromValue(value, values());
-		}
-	};
-	/**
-	 * enum values<br>
-	 * <i>native declaration : libavutil/opt.h:20</i>
-	 */
-	public enum AVOptionType implements IntValuedEnum<AVOptionType > {
-		AV_OPT_TYPE_FLAGS(0),
-		AV_OPT_TYPE_INT(1),
-		AV_OPT_TYPE_INT64(2),
-		AV_OPT_TYPE_DOUBLE(3),
-		AV_OPT_TYPE_FLOAT(4),
-		AV_OPT_TYPE_STRING(5),
-		AV_OPT_TYPE_RATIONAL(6),
-		/** < offset must point to a pointer immediately followed by an int for the length */
-		AV_OPT_TYPE_BINARY(7),
-		AV_OPT_TYPE_CONST(128),
-		/** < offset must point to two consecutive integers */
-		AV_OPT_TYPE_IMAGE_SIZE((('E') | (('Z') << 8) | (('I') << 16) | ('S' << 24))),
-		AV_OPT_TYPE_PIXEL_FMT((('T') | (('M') << 8) | (('F') << 16) | ('P' << 24))),
-		AV_OPT_TYPE_SAMPLE_FMT((('T') | (('M') << 8) | (('F') << 16) | ('S' << 24))),
-		/** < offset must point to AVRational */
-		AV_OPT_TYPE_VIDEO_RATE((('T') | (('A') << 8) | (('R') << 16) | ('V' << 24))),
-		AV_OPT_TYPE_DURATION(((' ') | (('R') << 8) | (('U') << 16) | ('D' << 24))),
-		AV_OPT_TYPE_COLOR((('R') | (('L') << 8) | (('O') << 16) | ('C' << 24))),
-		AV_OPT_TYPE_CHANNEL_LAYOUT((('A') | (('L') << 8) | (('H') << 16) | ('C' << 24)));
-		AVOptionType(long value) {
-			this.value = value;
-		}
-		public final long value;
-		public long value() {
-			return this.value;
-		}
-		public Iterator<AVOptionType > iterator() {
-			return Collections.singleton(this).iterator();
-		}
-		public static IntValuedEnum<AVOptionType > fromValue(int value) {
-			return FlagSet.fromValue(value, values());
-		}
-	};
-	/**
-	 * enum values<br>
-	 * <i>native declaration : libavutil/log.h:13</i>
-	 */
-	public enum AVClassCategory implements IntValuedEnum<AVClassCategory > {
-		AV_CLASS_CATEGORY_NA(0),
-		AV_CLASS_CATEGORY_INPUT(1),
-		AV_CLASS_CATEGORY_OUTPUT(2),
-		AV_CLASS_CATEGORY_MUXER(3),
-		AV_CLASS_CATEGORY_DEMUXER(4),
-		AV_CLASS_CATEGORY_ENCODER(5),
-		AV_CLASS_CATEGORY_DECODER(6),
-		AV_CLASS_CATEGORY_FILTER(7),
-		AV_CLASS_CATEGORY_BITSTREAM_FILTER(8),
-		AV_CLASS_CATEGORY_SWSCALER(9),
-		AV_CLASS_CATEGORY_SWRESAMPLER(10),
-		AV_CLASS_CATEGORY_NB(11);
-		AVClassCategory(long value) {
-			this.value = value;
-		}
-		public final long value;
-		public long value() {
-			return this.value;
-		}
-		public Iterator<AVClassCategory > iterator() {
-			return Collections.singleton(this).iterator();
-		}
-		public static IntValuedEnum<AVClassCategory > fromValue(int value) {
-			return FlagSet.fromValue(value, values());
-		}
-	};
-	/**
-	 * enum values<br>
-	 * <i>native declaration : libavutil/pixfmt.h:315</i>
+	 * <i>native declaration : libavutil/pixfmt.h:333</i>
 	 */
 	public enum AVPixelFormat implements IntValuedEnum<AVPixelFormat > {
 		AV_PIX_FMT_NONE(-1),
@@ -517,6 +375,24 @@ public class AvutilLibrary {
 		AV_PIX_FMT_NV20LE(107),
 		/** < interleaved chroma YUV 4:2:2, 20bpp, (1 Cr & Cb sample per 2x1 Y samples), big-endian */
 		AV_PIX_FMT_NV20BE(108),
+		/**
+		 * duplicated pixel formats for compatibility with libav.<br>
+		 * FFmpeg supports these formats since Sat Sep 24 06:01:45 2011 +0200 (commits 9569a3c9f41387a8c7d1ce97d8693520477a66c3)<br>
+		 * also see Fri Nov 25 01:38:21 2011 +0100 92afb431621c79155fcb7171d26f137eb1bee028<br>
+		 * Libav added them Sun Mar 16 23:05:47 2014 +0100 with incompatible values (commit 1481d24c3a0abf81e1d7a514547bd5305232be30)<br>
+		 * < packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as big-endian
+		 */
+		AV_PIX_FMT_RGBA64BE_LIBAV(109),
+		/** < packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as little-endian */
+		AV_PIX_FMT_RGBA64LE_LIBAV(110),
+		/** < packed RGBA 16:16:16:16, 64bpp, 16B, 16G, 16R, 16A, the 2-byte value for each R/G/B/A component is stored as big-endian */
+		AV_PIX_FMT_BGRA64BE_LIBAV(111),
+		/** < packed RGBA 16:16:16:16, 64bpp, 16B, 16G, 16R, 16A, the 2-byte value for each R/G/B/A component is stored as little-endian */
+		AV_PIX_FMT_BGRA64LE_LIBAV(112),
+		/** < packed YUV 4:2:2, 16bpp, Y0 Cr Y1 Cb */
+		AV_PIX_FMT_YVYU422(113),
+		/** < HW acceleration through VDA, data[3] contains a CVPixelBufferRef */
+		AV_PIX_FMT_VDA(114),
 		/** < packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as big-endian */
 		AV_PIX_FMT_RGBA64BE(0x123),
 		/** < packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as little-endian */
@@ -617,6 +493,315 @@ public class AvutilLibrary {
 			return FlagSet.fromValue(value, values());
 		}
 	};
+	/**
+	 * Chromaticity coordinates of the source primaries.<br>
+	 * enum values<br>
+	 * <i>native declaration : libavutil/pixfmt.h:352</i>
+	 */
+	public enum AVColorPrimaries implements IntValuedEnum<AVColorPrimaries > {
+		/** < also ITU-R BT1361 / IEC 61966-2-4 / SMPTE RP177 Annex B */
+		AVCOL_PRI_BT709(1),
+		AVCOL_PRI_UNSPECIFIED(2),
+		AVCOL_PRI_RESERVED(3),
+		AVCOL_PRI_BT470M(4),
+		/** < also ITU-R BT601-6 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL & SECAM */
+		AVCOL_PRI_BT470BG(5),
+		/** < also ITU-R BT601-6 525 / ITU-R BT1358 525 / ITU-R BT1700 NTSC */
+		AVCOL_PRI_SMPTE170M(6),
+		/** < functionally identical to above */
+		AVCOL_PRI_SMPTE240M(7),
+		AVCOL_PRI_FILM(8),
+		/** < ITU-R BT2020 */
+		AVCOL_PRI_BT2020(9),
+		/** < Not part of ABI */
+		AVCOL_PRI_NB(10);
+		AVColorPrimaries(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVColorPrimaries > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVColorPrimaries > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * Color Transfer Characteristic.<br>
+	 * enum values<br>
+	 * <i>native declaration : libavutil/pixfmt.h:384</i>
+	 */
+	public enum AVColorTransferCharacteristic implements IntValuedEnum<AVColorTransferCharacteristic > {
+		/** < also ITU-R BT1361 */
+		AVCOL_TRC_BT709(1),
+		AVCOL_TRC_UNSPECIFIED(2),
+		AVCOL_TRC_RESERVED(3),
+		/** < also ITU-R BT470M / ITU-R BT1700 625 PAL & SECAM */
+		AVCOL_TRC_GAMMA22(4),
+		/** < also ITU-R BT470BG */
+		AVCOL_TRC_GAMMA28(5),
+		/** < also ITU-R BT601-6 525 or 625 / ITU-R BT1358 525 or 625 / ITU-R BT1700 NTSC */
+		AVCOL_TRC_SMPTE170M(6),
+		AVCOL_TRC_SMPTE240M(7),
+		/** < "Linear transfer characteristics" */
+		AVCOL_TRC_LINEAR(8),
+		/** < "Logarithmic transfer characteristic (100:1 range)" */
+		AVCOL_TRC_LOG(9),
+		/** < "Logarithmic transfer characteristic (100 * Sqrt(10) : 1 range)" */
+		AVCOL_TRC_LOG_SQRT(10),
+		/** < IEC 61966-2-4 */
+		AVCOL_TRC_IEC61966_2_4(11),
+		/** < ITU-R BT1361 Extended Colour Gamut */
+		AVCOL_TRC_BT1361_ECG(12),
+		/** < IEC 61966-2-1 (sRGB or sYCC) */
+		AVCOL_TRC_IEC61966_2_1(13),
+		/** < ITU-R BT2020 for 10 bit system */
+		AVCOL_TRC_BT2020_10(14),
+		/** < ITU-R BT2020 for 12 bit system */
+		AVCOL_TRC_BT2020_12(15),
+		/** < Not part of ABI */
+		AVCOL_TRC_NB(16);
+		AVColorTransferCharacteristic(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVColorTransferCharacteristic > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVColorTransferCharacteristic > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * YUV colorspace type.<br>
+	 * enum values<br>
+	 * <i>native declaration : libavutil/pixfmt.h:406</i>
+	 */
+	public enum AVColorSpace implements IntValuedEnum<AVColorSpace > {
+		AVCOL_SPC_RGB(0),
+		/** < also ITU-R BT1361 / IEC 61966-2-4 xvYCC709 / SMPTE RP177 Annex B */
+		AVCOL_SPC_BT709(1),
+		AVCOL_SPC_UNSPECIFIED(2),
+		AVCOL_SPC_RESERVED(3),
+		AVCOL_SPC_FCC(4),
+		/** < also ITU-R BT601-6 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL & SECAM / IEC 61966-2-4 xvYCC601 */
+		AVCOL_SPC_BT470BG(5),
+		/** < also ITU-R BT601-6 525 / ITU-R BT1358 525 / ITU-R BT1700 NTSC / functionally identical to above */
+		AVCOL_SPC_SMPTE170M(6),
+		AVCOL_SPC_SMPTE240M(7),
+		/** < Used by Dirac / VC-2 and H.264 FRext, see ITU-T SG16 */
+		AVCOL_SPC_YCOCG(8),
+		/** < ITU-R BT2020 non-constant luminance system */
+		AVCOL_SPC_BT2020_NCL(9),
+		/** < ITU-R BT2020 constant luminance system */
+		AVCOL_SPC_BT2020_CL(10),
+		/** < Not part of ABI */
+		AVCOL_SPC_NB(11);
+		AVColorSpace(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVColorSpace > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVColorSpace > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * MPEG vs JPEG YUV range.<br>
+	 * enum values<br>
+	 * <i>native declaration : libavutil/pixfmt.h:416</i>
+	 */
+	public enum AVColorRange implements IntValuedEnum<AVColorRange > {
+		AVCOL_RANGE_UNSPECIFIED(0),
+		/** < the normal 219*2^(n-8) "MPEG" YUV ranges */
+		AVCOL_RANGE_MPEG(1),
+		/** < the normal     2^n-1   "JPEG" YUV ranges */
+		AVCOL_RANGE_JPEG(2),
+		/** < Not part of ABI */
+		AVCOL_RANGE_NB(3);
+		AVColorRange(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVColorRange > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVColorRange > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * Location of chroma samples.<br>
+	 * *  X   X      3 4 X      X are luma samples,<br>
+	 *             1 2        1-6 are possible chroma positions<br>
+	 *  X   X      5 6 X      0 is undefined/unknown position<br>
+	 * enum values<br>
+	 * <i>native declaration : libavutil/pixfmt.h:436</i>
+	 */
+	public enum AVChromaLocation implements IntValuedEnum<AVChromaLocation > {
+		AVCHROMA_LOC_UNSPECIFIED(0),
+		/** < mpeg2/4, h264 default */
+		AVCHROMA_LOC_LEFT(1),
+		/** < mpeg1, jpeg, h263 */
+		AVCHROMA_LOC_CENTER(2),
+		/** < DV */
+		AVCHROMA_LOC_TOPLEFT(3),
+		AVCHROMA_LOC_TOP(4),
+		AVCHROMA_LOC_BOTTOMLEFT(5),
+		AVCHROMA_LOC_BOTTOM(6),
+		/** < Not part of ABI */
+		AVCHROMA_LOC_NB(7);
+		AVChromaLocation(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVChromaLocation > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVChromaLocation > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : libavutil/frame.h:30</i>
+	 */
+	public enum AVFrameSideDataType implements IntValuedEnum<AVFrameSideDataType > {
+		/** The data is the AVPanScan struct defined in libavcodec. */
+		AV_FRAME_DATA_PANSCAN(0),
+		/**
+		 * ATSC A53 Part 4 Closed Captions.<br>
+		 * A53 CC bitstream is stored as uint8_t in AVFrameSideData.data.<br>
+		 * The number of bytes of CC data is AVFrameSideData.size.
+		 */
+		AV_FRAME_DATA_A53_CC(1),
+		/**
+		 * Stereoscopic 3d metadata.<br>
+		 * The data is the AVStereo3D struct defined in libavutil/stereo3d.h.
+		 */
+		AV_FRAME_DATA_STEREO3D(2),
+		/** The data is the AVMatrixEncoding enum defined in libavutil/channel_layout.h. */
+		AV_FRAME_DATA_MATRIXENCODING(3),
+		/**
+		 * Metadata relevant to a downmix procedure.<br>
+		 * The data is the AVDownmixInfo struct defined in libavutil/downmix_info.h.
+		 */
+		AV_FRAME_DATA_DOWNMIX_INFO(4),
+		/** ReplayGain information in the form of the AVReplayGain struct. */
+		AV_FRAME_DATA_REPLAYGAIN(5),
+		/**
+		 * This side data contains a 3x3 transformation matrix describing an affine<br>
+		 * transformation that needs to be applied to the frame for correct<br>
+		 * presentation.<br>
+		 * * See libavutil/display.h for a detailed description of the data.
+		 */
+		AV_FRAME_DATA_DISPLAYMATRIX(6);
+		AVFrameSideDataType(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVFrameSideDataType > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVFrameSideDataType > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : libavutil/opt.h:20</i>
+	 */
+	public enum AVOptionType implements IntValuedEnum<AVOptionType > {
+		AV_OPT_TYPE_FLAGS(0),
+		AV_OPT_TYPE_INT(1),
+		AV_OPT_TYPE_INT64(2),
+		AV_OPT_TYPE_DOUBLE(3),
+		AV_OPT_TYPE_FLOAT(4),
+		AV_OPT_TYPE_STRING(5),
+		AV_OPT_TYPE_RATIONAL(6),
+		/** < offset must point to a pointer immediately followed by an int for the length */
+		AV_OPT_TYPE_BINARY(7),
+		AV_OPT_TYPE_CONST(128),
+		/** < offset must point to two consecutive integers */
+		AV_OPT_TYPE_IMAGE_SIZE((('E') | (('Z') << 8) | (('I') << 16) | ('S' << 24))),
+		AV_OPT_TYPE_PIXEL_FMT((('T') | (('M') << 8) | (('F') << 16) | ('P' << 24))),
+		AV_OPT_TYPE_SAMPLE_FMT((('T') | (('M') << 8) | (('F') << 16) | ('S' << 24))),
+		/** < offset must point to AVRational */
+		AV_OPT_TYPE_VIDEO_RATE((('T') | (('A') << 8) | (('R') << 16) | ('V' << 24))),
+		AV_OPT_TYPE_DURATION(((' ') | (('R') << 8) | (('U') << 16) | ('D' << 24))),
+		AV_OPT_TYPE_COLOR((('R') | (('L') << 8) | (('O') << 16) | ('C' << 24))),
+		AV_OPT_TYPE_CHANNEL_LAYOUT((('A') | (('L') << 8) | (('H') << 16) | ('C' << 24)));
+		AVOptionType(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVOptionType > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVOptionType > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
+	/**
+	 * enum values<br>
+	 * <i>native declaration : libavutil/log.h:19</i>
+	 */
+	public enum AVClassCategory implements IntValuedEnum<AVClassCategory > {
+		AV_CLASS_CATEGORY_NA(0),
+		AV_CLASS_CATEGORY_INPUT(1),
+		AV_CLASS_CATEGORY_OUTPUT(2),
+		AV_CLASS_CATEGORY_MUXER(3),
+		AV_CLASS_CATEGORY_DEMUXER(4),
+		AV_CLASS_CATEGORY_ENCODER(5),
+		AV_CLASS_CATEGORY_DECODER(6),
+		AV_CLASS_CATEGORY_FILTER(7),
+		AV_CLASS_CATEGORY_BITSTREAM_FILTER(8),
+		AV_CLASS_CATEGORY_SWSCALER(9),
+		AV_CLASS_CATEGORY_SWRESAMPLER(10),
+		AV_CLASS_CATEGORY_DEVICE_VIDEO_OUTPUT(40),
+		AV_CLASS_CATEGORY_DEVICE_VIDEO_INPUT(41),
+		AV_CLASS_CATEGORY_DEVICE_AUDIO_OUTPUT(42),
+		AV_CLASS_CATEGORY_DEVICE_AUDIO_INPUT(43),
+		AV_CLASS_CATEGORY_DEVICE_OUTPUT(44),
+		AV_CLASS_CATEGORY_DEVICE_INPUT(45),
+		AV_CLASS_CATEGORY_NB(46);
+		AVClassCategory(long value) {
+			this.value = value;
+		}
+		public final long value;
+		public long value() {
+			return this.value;
+		}
+		public Iterator<AVClassCategory > iterator() {
+			return Collections.singleton(this).iterator();
+		}
+		public static IntValuedEnum<AVClassCategory > fromValue(int value) {
+			return FlagSet.fromValue(value, values());
+		}
+	};
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_CONTEXT_SIZE = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/version.h</i> */
@@ -648,28 +833,30 @@ public class AvutilLibrary {
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_INTFLOAT = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_AVFRAME_COLORSPACE = (boolean)(52 >= 52);
+	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_GET_BITS_PER_SAMPLE_FMT = (boolean)(52 < 54);
 	/**
 	 * define<br>
-	 * Conversion Error : 52.66.<br>
+	 * Conversion Error : 52.92.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : libavutil/version.h:0</i><br>
-	 * 52.66.
+	 * 52.92.
 	 */
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_VDPAU = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final int LIBAVUTIL_VERSION_MAJOR = (int)52;
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_VERSION_INT = (int)(52 << 16 | 66 << 8 | 100);
+	public static final int LIBAVUTIL_VERSION_INT = (int)(52 << 16 | 92 << 8 | 100);
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_PIX_FMT = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/ffversion.h</i> */
-	public static final String FFMPEG_VERSION = (String)"2.2.4";
+	public static final String FFMPEG_VERSION = (String)"2.3.3";
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_LLS1 = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_BUILD = (int)(52 << 16 | 66 << 8 | 100);
+	public static final int LIBAVUTIL_BUILD = (int)(52 << 16 | 92 << 8 | 100);
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_GET_CHANNEL_LAYOUT_COMPAT = (boolean)(52 < 54);
 	/** <i>native declaration : libavutil/frame.h</i> */
@@ -691,19 +878,40 @@ public class AvutilLibrary {
 	/** <i>native declaration : libavutil/dict.h</i> */
 	public static final int AV_DICT_DONT_STRDUP_VAL = (int)8;
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_VERSION_MINOR = (int)66;
+	public static final int LIBAVUTIL_VERSION_MINOR = (int)92;
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final String LIBAVUTIL_IDENT = (String)"Lavu52.66.100";
+	public static final String LIBAVUTIL_IDENT = (String)"Lavu52.92.100";
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_FIND_OPT = (boolean)(52 < 54);
 	/**
+	 * Return the LIBAVUTIL_VERSION_INT constant.<br>
 	 * Original signature : <code>int avutil_version()</code><br>
-	 * <i>native declaration : libavutil/avutil.h:1</i>
+	 * <i>native declaration : libavutil/avutil.h:4</i>
 	 */
 	public static native int avutil_version();
 	/**
+	 * Return the libavutil build-time configuration.<br>
+	 * Original signature : <code>char* avutil_configuration()</code><br>
+	 * <i>native declaration : libavutil/avutil.h:9</i>
+	 */
+	public static Pointer<Byte > avutil_configuration() {
+		return Pointer.pointerToAddress(avutil_configuration$2(), Byte.class);
+	}
+	@Ptr 
+	protected native static long avutil_configuration$2();
+	/**
+	 * Return the libavutil license.<br>
+	 * Original signature : <code>char* avutil_license()</code><br>
+	 * <i>native declaration : libavutil/avutil.h:14</i>
+	 */
+	public static Pointer<Byte > avutil_license() {
+		return Pointer.pointerToAddress(avutil_license$2(), Byte.class);
+	}
+	@Ptr 
+	protected native static long avutil_license$2();
+	/**
 	 * Original signature : <code>char* av_get_media_type_string(AVMediaType)</code><br>
-	 * <i>native declaration : libavutil/avutil.h:15</i>
+	 * <i>native declaration : libavutil/avutil.h:28</i>
 	 */
 	public static Pointer<Byte > av_get_media_type_string(IntValuedEnum<AvutilLibrary.AVMediaType > media_type) {
 		return Pointer.pointerToAddress(av_get_media_type_string((int)media_type.value()), Byte.class);
@@ -711,16 +919,24 @@ public class AvutilLibrary {
 	@Ptr 
 	protected native static long av_get_media_type_string(int media_type);
 	/**
+	 * Copy entries from one AVDictionary struct into another.<br>
+	 * @param dst pointer to a pointer to a AVDictionary struct. If *dst is NULL,<br>
+	 *            this function will allocate a struct for you and put it in *dst<br>
+	 * @param src pointer to source AVDictionary struct<br>
+	 * @param flags flags to use when setting entries in *dst<br>
+	 * @note metadata is read using the AV_DICT_IGNORE_SUFFIX flag<br>
 	 * Original signature : <code>void av_dict_copy(AVDictionary**, AVDictionary*, int)</code><br>
-	 * <i>native declaration : libavutil/dict.h:5</i>
+	 * <i>native declaration : libavutil/dict.h:13</i>
 	 */
 	public static void av_dict_copy(Pointer<Pointer<AVDictionary > > dst, Pointer<AVDictionary > src, int flags) {
 		av_dict_copy(Pointer.getPeer(dst), Pointer.getPeer(src), flags);
 	}
 	protected native static void av_dict_copy(@Ptr long dst, @Ptr long src, int flags);
 	/**
+	 * Free all the memory allocated for an AVDictionary struct<br>
+	 * and all keys and values.<br>
 	 * Original signature : <code>void av_dict_free(AVDictionary**)</code><br>
-	 * <i>native declaration : libavutil/dict.h:7</i>
+	 * <i>native declaration : libavutil/dict.h:19</i>
 	 */
 	public static void av_dict_free(Pointer<Pointer<AVDictionary > > m) {
 		av_dict_free(Pointer.getPeer(m));
@@ -735,8 +951,10 @@ public class AvutilLibrary {
 	}
 	protected native static int av_reduce(@Ptr long dst_num, @Ptr long dst_den, long num, long den, long max);
 	/**
+	 * Return the name of sample_fmt, or NULL if sample_fmt is not<br>
+	 * recognized.<br>
 	 * Original signature : <code>char* av_get_sample_fmt_name(AVSampleFormat)</code><br>
-	 * <i>native declaration : libavutil/samplefmt.h:26</i>
+	 * <i>native declaration : libavutil/samplefmt.h:46</i>
 	 */
 	public static Pointer<Byte > av_get_sample_fmt_name(IntValuedEnum<AvutilLibrary.AVSampleFormat > sample_fmt) {
 		return Pointer.pointerToAddress(av_get_sample_fmt_name((int)sample_fmt.value()), Byte.class);
@@ -744,64 +962,86 @@ public class AvutilLibrary {
 	@Ptr 
 	protected native static long av_get_sample_fmt_name(int sample_fmt);
 	/**
-	 * Original signature : <code>int av_sample_fmt_is_planar(AVSampleFormat)</code><br>
-	 * <i>native declaration : libavutil/samplefmt.h:28</i>
-	 */
-	public static int av_sample_fmt_is_planar(IntValuedEnum<AvutilLibrary.AVSampleFormat > sample_fmt) {
-		return av_sample_fmt_is_planar((int)sample_fmt.value());
-	}
-	protected native static int av_sample_fmt_is_planar(int sample_fmt);
-	/**
-	 * Original signature : <code>int av_get_bytes_per_sample(AVSampleFormat)</code><br>
-	 * <i>native declaration : libavutil/samplefmt.h:30</i>
-	 */
-	public static int av_get_bytes_per_sample(IntValuedEnum<AvutilLibrary.AVSampleFormat > sample_fmt) {
-		return av_get_bytes_per_sample((int)sample_fmt.value());
-	}
-	protected native static int av_get_bytes_per_sample(int sample_fmt);
-	/**
-	 * Original signature : <code>AVSampleFormat av_get_sample_fmt(const char*)</code><br>
-	 * <i>native declaration : libavutil/samplefmt.h:32</i>
-	 */
-	public static IntValuedEnum<AvutilLibrary.AVSampleFormat > av_get_sample_fmt(Pointer<Byte > name) {
-		return FlagSet.fromValue(av_get_sample_fmt(Pointer.getPeer(name)), AvutilLibrary.AVSampleFormat.class);
-	}
-	protected native static int av_get_sample_fmt(@Ptr long name);
-	/**
+	 * Get the packed alternative form of the given sample format.<br>
+	 * * If the passed sample_fmt is already in packed format, the format returned is<br>
+	 * the same as the input.<br>
+	 * * @return  the packed alternative form of the given sample format or<br>
+	 * AV_SAMPLE_FMT_NONE on error.<br>
 	 * Original signature : <code>AVSampleFormat av_get_packed_sample_fmt(AVSampleFormat)</code><br>
-	 * <i>native declaration : libavutil/samplefmt.h:34</i>
+	 * <i>native declaration : libavutil/samplefmt.h:55</i>
 	 */
 	public static IntValuedEnum<AvutilLibrary.AVSampleFormat > av_get_packed_sample_fmt(IntValuedEnum<AvutilLibrary.AVSampleFormat > sample_fmt) {
 		return FlagSet.fromValue(av_get_packed_sample_fmt((int)sample_fmt.value()), AvutilLibrary.AVSampleFormat.class);
 	}
 	protected native static int av_get_packed_sample_fmt(int sample_fmt);
 	/**
+	 * Return number of bytes per sample.<br>
+	 * * @param sample_fmt the sample format<br>
+	 * @return number of bytes per sample or zero if unknown for the given<br>
+	 * sample format<br>
+	 * Original signature : <code>int av_get_bytes_per_sample(AVSampleFormat)</code><br>
+	 * <i>native declaration : libavutil/samplefmt.h:63</i>
+	 */
+	public static int av_get_bytes_per_sample(IntValuedEnum<AvutilLibrary.AVSampleFormat > sample_fmt) {
+		return av_get_bytes_per_sample((int)sample_fmt.value());
+	}
+	protected native static int av_get_bytes_per_sample(int sample_fmt);
+	/**
+	 * Check if the sample format is planar.<br>
+	 * * @param sample_fmt the sample format to inspect<br>
+	 * @return 1 if the sample format is planar, 0 if it is interleaved<br>
+	 * Original signature : <code>int av_sample_fmt_is_planar(AVSampleFormat)</code><br>
+	 * <i>native declaration : libavutil/samplefmt.h:70</i>
+	 */
+	public static int av_sample_fmt_is_planar(IntValuedEnum<AvutilLibrary.AVSampleFormat > sample_fmt) {
+		return av_sample_fmt_is_planar((int)sample_fmt.value());
+	}
+	protected native static int av_sample_fmt_is_planar(int sample_fmt);
+	/**
+	 * Set the values of all AVOption fields to their default values.<br>
+	 * * @param s an AVOption-enabled struct (its first member must be a pointer to AVClass)<br>
 	 * Original signature : <code>void av_opt_set_defaults(void*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:25</i>
+	 * <i>native declaration : libavutil/opt.h:32</i>
 	 */
 	public static void av_opt_set_defaults(Pointer<? > s) {
 		av_opt_set_defaults(Pointer.getPeer(s));
 	}
 	protected native static void av_opt_set_defaults(@Ptr long s);
 	/**
+	 * Free all string and binary options in obj.<br>
 	 * Original signature : <code>void av_opt_free(void*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:27</i>
+	 * <i>native declaration : libavutil/opt.h:37</i>
 	 */
 	public static void av_opt_free(Pointer<? > obj) {
 		av_opt_free(Pointer.getPeer(obj));
 	}
 	protected native static void av_opt_free(@Ptr long obj);
 	/**
+	 * Set all the options from a given dictionary on an object.<br>
+	 * * @param obj a struct whose first element is a pointer to AVClass<br>
+	 * @param options options to process. This dictionary will be freed and replaced<br>
+	 *                by a new one containing all options not found in obj.<br>
+	 *                Of course this new dictionary needs to be freed by caller<br>
+	 *                with av_dict_free().<br>
+	 * * @return 0 on success, a negative AVERROR if some option was found in obj,<br>
+	 *         but could not be set.<br>
+	 * * @see av_dict_copy()<br>
 	 * Original signature : <code>int av_opt_set_dict(void*, AVDictionary**)</code><br>
-	 * <i>native declaration : libavutil/opt.h:29</i>
+	 * <i>native declaration : libavutil/opt.h:50</i>
 	 */
 	public static int av_opt_set_dict(Pointer<? > obj, Pointer<Pointer<AVDictionary > > options) {
 		return av_opt_set_dict(Pointer.getPeer(obj), Pointer.getPeer(options));
 	}
 	protected native static int av_opt_set_dict(@Ptr long obj, @Ptr long options);
 	/**
+	 * Allocate a block of size bytes with alignment suitable for all<br>
+	 * memory accesses (including vectors if available on the CPU).<br>
+	 * @param size Size in bytes for the memory block to be allocated.<br>
+	 * @return Pointer to the allocated block, NULL if the block cannot<br>
+	 * be allocated.<br>
+	 * @see av_mallocz()<br>
 	 * Original signature : <code>void* av_malloc(size_t)</code><br>
-	 * <i>native declaration : libavutil/mem.h:1</i>
+	 * <i>native declaration : libavutil/mem.h:9</i>
 	 */
 	public static Pointer<? > malloc(@CLong long size) {
 		return Pointer.pointerToAddress(av_malloc(size));
@@ -809,45 +1049,68 @@ public class AvutilLibrary {
 	@Ptr 
 	protected native static long av_malloc(@CLong long size);
 	/**
+	 * Free a memory block which has been allocated with av_malloc(z)() or<br>
+	 * av_realloc().<br>
+	 * @param ptr Pointer to the memory block which should be freed.<br>
+	 * @note ptr = NULL is explicitly allowed.<br>
+	 * @note It is recommended that you use av_freep() instead.<br>
+	 * @see av_freep()<br>
 	 * Original signature : <code>void av_free(void*)</code><br>
-	 * <i>native declaration : libavutil/mem.h:3</i>
+	 * <i>native declaration : libavutil/mem.h:19</i>
 	 */
 	public static void av_free(Pointer<? > ptr) {
 		av_free(Pointer.getPeer(ptr));
 	}
 	protected native static void av_free(@Ptr long ptr);
 	/**
+	 * Free a memory block which has been allocated with av_malloc(z)() or<br>
+	 * av_realloc() and set the pointer pointing to it to NULL.<br>
+	 * @param ptr Pointer to the pointer to the memory block which should<br>
+	 * be freed.<br>
+	 * @see av_free()<br>
 	 * Original signature : <code>void av_freep(void*)</code><br>
-	 * <i>native declaration : libavutil/mem.h:5</i>
+	 * <i>native declaration : libavutil/mem.h:28</i>
 	 */
 	public static void av_freep(Pointer<? > ptr) {
 		av_freep(Pointer.getPeer(ptr));
 	}
 	protected native static void av_freep(@Ptr long ptr);
 	/**
+	 * Allocate an image with size w and h and pixel format pix_fmt, and<br>
+	 * fill pointers and linesizes accordingly.<br>
+	 * The allocated image buffer has to be freed by using<br>
+	 * av_freep(&pointers[0]).<br>
+	 * * @param align the value to use for buffer size alignment<br>
+	 * @return the size in bytes required for the image buffer, a negative<br>
+	 * error code in case of failure<br>
 	 * Original signature : <code>int av_image_alloc(uint8_t*[4], int[4], int, int, AVPixelFormat, int)</code><br>
-	 * <i>native declaration : libavutil/imgutils.h:1</i>
+	 * <i>native declaration : libavutil/imgutils.h:10</i>
 	 */
 	public static int av_image_alloc(Pointer<Pointer<Byte > > pointers, Pointer<Integer > linesizes, int w, int h, IntValuedEnum<AvutilLibrary.AVPixelFormat > pix_fmt, int align) {
 		return av_image_alloc(Pointer.getPeer(pointers), Pointer.getPeer(linesizes), w, h, (int)pix_fmt.value(), align);
 	}
 	protected native static int av_image_alloc(@Ptr long pointers, @Ptr long linesizes, int w, int h, int pix_fmt, int align);
 	/**
+	 * Copy image in src_data to dst_data.<br>
+	 * * @param dst_linesizes linesizes for the image in dst_data<br>
+	 * @param src_linesizes linesizes for the image in src_data<br>
 	 * Original signature : <code>void av_image_copy(uint8_t*[4], int[4], const uint8_t*[4], const int[4], AVPixelFormat, int, int)</code><br>
-	 * <i>native declaration : libavutil/imgutils.h:3</i>
+	 * <i>native declaration : libavutil/imgutils.h:17</i>
 	 */
 	public static void av_image_copy(Pointer<Pointer<Byte > > dst_data, Pointer<Integer > dst_linesizes, Pointer<Pointer<Byte > > src_data, Pointer<Integer > src_linesizes, IntValuedEnum<AvutilLibrary.AVPixelFormat > pix_fmt, int width, int height) {
 		av_image_copy(Pointer.getPeer(dst_data), Pointer.getPeer(dst_linesizes), Pointer.getPeer(src_data), Pointer.getPeer(src_linesizes), (int)pix_fmt.value(), width, height);
 	}
 	protected native static void av_image_copy(@Ptr long dst_data, @Ptr long dst_linesizes, @Ptr long src_data, @Ptr long src_linesizes, int pix_fmt, int width, int height);
 	/**
+	 * Return the short name for a pixel format, NULL in case pix_fmt is<br>
+	 * unknown.<br>
+	 * * @see av_get_pix_fmt(), av_get_pix_fmt_string()<br>
 	 * Original signature : <code>char* av_get_pix_fmt_name(AVPixelFormat)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:1</i>
+	 * <i>native declaration : libavutil/pixdesc.h:6</i>
 	 */
 	public static Pointer<Byte > av_get_pix_fmt_name(IntValuedEnum<AvutilLibrary.AVPixelFormat > pix_fmt) {
 		return Pointer.pointerToAddress(av_get_pix_fmt_name((int)pix_fmt.value()), Byte.class);
 	}
 	@Ptr 
 	protected native static long av_get_pix_fmt_name(int pix_fmt);
-	
 }

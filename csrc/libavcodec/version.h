@@ -5,8 +5,8 @@
 #include "libavutil/version.h"
 
 #define LIBAVCODEC_VERSION_MAJOR 55
-#define LIBAVCODEC_VERSION_MINOR  52
-#define LIBAVCODEC_VERSION_MICRO 102
+#define LIBAVCODEC_VERSION_MINOR  69
+#define LIBAVCODEC_VERSION_MICRO 100
 
 #define LIBAVCODEC_VERSION_INT  AV_VERSION_INT(LIBAVCODEC_VERSION_MAJOR, \
                                                LIBAVCODEC_VERSION_MINOR, \
@@ -16,7 +16,7 @@
                                            LIBAVCODEC_VERSION_MICRO)
 #define LIBAVCODEC_BUILD        LIBAVCODEC_VERSION_INT
 
-#define LIBAVCODEC_IDENT        "Lavc55.52.102"
+#define LIBAVCODEC_IDENT        "Lavc55.69.100"
 
 #ifndef FF_API_REQUEST_CHANNELS
 #define FF_API_REQUEST_CHANNELS (LIBAVCODEC_VERSION_MAJOR < 56)
@@ -110,6 +110,27 @@
 #endif
 #ifndef FF_API_EMU_EDGE
 #define FF_API_EMU_EDGE          (LIBAVCODEC_VERSION_MAJOR < 56)
+#endif
+#ifndef FF_API_ARCH_SH4
+#define FF_API_ARCH_SH4          (LIBAVCODEC_VERSION_MAJOR < 56)
+#endif
+#ifndef FF_API_ARCH_SPARC
+#define FF_API_ARCH_SPARC        (LIBAVCODEC_VERSION_MAJOR < 56)
+#endif
+#ifndef FF_API_INPUT_PRESERVED
+#define FF_API_INPUT_PRESERVED   (LIBAVCODEC_VERSION_MAJOR < 57)
+#endif
+#ifndef FF_API_NORMALIZE_AQP
+#define FF_API_NORMALIZE_AQP     (LIBAVCODEC_VERSION_MAJOR < 57)
+#endif
+#ifndef FF_API_GMC
+#define FF_API_GMC               (LIBAVCODEC_VERSION_MAJOR < 57)
+#endif
+#ifndef FF_API_MV0
+#define FF_API_MV0               (LIBAVCODEC_VERSION_MAJOR < 57)
+#endif
+#ifndef FF_API_CODEC_NAME
+#define FF_API_CODEC_NAME        (LIBAVCODEC_VERSION_MAJOR < 57)
 #endif
 
 #endif /* AVCODEC_VERSION_H */

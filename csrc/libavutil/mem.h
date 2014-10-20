@@ -21,10 +21,33 @@
     #define av_alloc_size(...)
 #endif
 
+/**
+ * Allocate a block of size bytes with alignment suitable for all
+ * memory accesses (including vectors if available on the CPU).
+ * @param size Size in bytes for the memory block to be allocated.
+ * @return Pointer to the allocated block, NULL if the block cannot
+ * be allocated.
+ * @see av_mallocz()
+ */
 void *av_malloc(size_t size) av_malloc_attrib av_alloc_size(1);
 
+/**
+ * Free a memory block which has been allocated with av_malloc(z)() or
+ * av_realloc().
+ * @param ptr Pointer to the memory block which should be freed.
+ * @note ptr = NULL is explicitly allowed.
+ * @note It is recommended that you use av_freep() instead.
+ * @see av_freep()
+ */
 void av_free(void *ptr);
 
+/**
+ * Free a memory block which has been allocated with av_malloc(z)() or
+ * av_realloc() and set the pointer pointing to it to NULL.
+ * @param ptr Pointer to the pointer to the memory block which should
+ * be freed.
+ * @see av_free()
+ */
 void av_freep(void *ptr);
 
 #endif /* AVUTIL_MEM_H */

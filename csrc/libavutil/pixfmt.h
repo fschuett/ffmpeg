@@ -140,6 +140,21 @@ enum AVPixelFormat {
     AV_PIX_FMT_NV20LE,       ///< interleaved chroma YUV 4:2:2, 20bpp, (1 Cr & Cb sample per 2x1 Y samples), little-endian
     AV_PIX_FMT_NV20BE,       ///< interleaved chroma YUV 4:2:2, 20bpp, (1 Cr & Cb sample per 2x1 Y samples), big-endian
 
+    /**
+     * duplicated pixel formats for compatibility with libav.
+     * FFmpeg supports these formats since Sat Sep 24 06:01:45 2011 +0200 (commits 9569a3c9f41387a8c7d1ce97d8693520477a66c3)
+     * also see Fri Nov 25 01:38:21 2011 +0100 92afb431621c79155fcb7171d26f137eb1bee028
+     * Libav added them Sun Mar 16 23:05:47 2014 +0100 with incompatible values (commit 1481d24c3a0abf81e1d7a514547bd5305232be30)
+     */
+    AV_PIX_FMT_RGBA64BE_LIBAV,     ///< packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as big-endian
+    AV_PIX_FMT_RGBA64LE_LIBAV,     ///< packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as little-endian
+    AV_PIX_FMT_BGRA64BE_LIBAV,     ///< packed RGBA 16:16:16:16, 64bpp, 16B, 16G, 16R, 16A, the 2-byte value for each R/G/B/A component is stored as big-endian
+    AV_PIX_FMT_BGRA64LE_LIBAV,     ///< packed RGBA 16:16:16:16, 64bpp, 16B, 16G, 16R, 16A, the 2-byte value for each R/G/B/A component is stored as little-endian
+
+    AV_PIX_FMT_YVYU422,   ///< packed YUV 4:2:2, 16bpp, Y0 Cr Y1 Cb
+
+    AV_PIX_FMT_VDA,          ///< HW acceleration through VDA, data[3] contains a CVPixelBufferRef
+
     AV_PIX_FMT_RGBA64BE=0x123,  ///< packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as big-endian
     AV_PIX_FMT_RGBA64LE,  ///< packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as little-endian
     AV_PIX_FMT_BGRA64BE,  ///< packed RGBA 16:16:16:16, 64bpp, 16B, 16G, 16R, 16A, the 2-byte value for each R/G/B/A component is stored as big-endian
@@ -190,6 +205,92 @@ enum AVPixelFormat {
 
     AV_PIX_FMT_NB,        ///< number of pixel formats, DO NOT USE THIS if you want to link with shared libav* because the number of formats might differ between versions
 
+};
+
+/**
+  * Chromaticity coordinates of the source primaries.
+  */
+enum AVColorPrimaries {
+    AVCOL_PRI_BT709       = 1, ///< also ITU-R BT1361 / IEC 61966-2-4 / SMPTE RP177 Annex B
+    AVCOL_PRI_UNSPECIFIED = 2,
+    AVCOL_PRI_RESERVED    = 3,
+    AVCOL_PRI_BT470M      = 4,
+    AVCOL_PRI_BT470BG     = 5, ///< also ITU-R BT601-6 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL & SECAM
+    AVCOL_PRI_SMPTE170M   = 6, ///< also ITU-R BT601-6 525 / ITU-R BT1358 525 / ITU-R BT1700 NTSC
+    AVCOL_PRI_SMPTE240M   = 7, ///< functionally identical to above
+    AVCOL_PRI_FILM        = 8,
+    AVCOL_PRI_BT2020      = 9, ///< ITU-R BT2020
+    AVCOL_PRI_NB,              ///< Not part of ABI
+};
+
+/**
+ * Color Transfer Characteristic.
+ */
+enum AVColorTransferCharacteristic {
+    AVCOL_TRC_BT709        = 1,  ///< also ITU-R BT1361
+    AVCOL_TRC_UNSPECIFIED  = 2,
+    AVCOL_TRC_RESERVED     = 3,
+    AVCOL_TRC_GAMMA22      = 4,  ///< also ITU-R BT470M / ITU-R BT1700 625 PAL & SECAM
+    AVCOL_TRC_GAMMA28      = 5,  ///< also ITU-R BT470BG
+    AVCOL_TRC_SMPTE170M    = 6,  ///< also ITU-R BT601-6 525 or 625 / ITU-R BT1358 525 or 625 / ITU-R BT1700 NTSC
+    AVCOL_TRC_SMPTE240M    = 7,
+    AVCOL_TRC_LINEAR       = 8,  ///< "Linear transfer characteristics"
+    AVCOL_TRC_LOG          = 9,  ///< "Logarithmic transfer characteristic (100:1 range)"
+    AVCOL_TRC_LOG_SQRT     = 10, ///< "Logarithmic transfer characteristic (100 * Sqrt(10) : 1 range)"
+    AVCOL_TRC_IEC61966_2_4 = 11, ///< IEC 61966-2-4
+    AVCOL_TRC_BT1361_ECG   = 12, ///< ITU-R BT1361 Extended Colour Gamut
+    AVCOL_TRC_IEC61966_2_1 = 13, ///< IEC 61966-2-1 (sRGB or sYCC)
+    AVCOL_TRC_BT2020_10    = 14, ///< ITU-R BT2020 for 10 bit system
+    AVCOL_TRC_BT2020_12    = 15, ///< ITU-R BT2020 for 12 bit system
+    AVCOL_TRC_NB,                ///< Not part of ABI
+};
+
+/**
+ * YUV colorspace type.
+ */
+enum AVColorSpace {
+    AVCOL_SPC_RGB         = 0,
+    AVCOL_SPC_BT709       = 1,  ///< also ITU-R BT1361 / IEC 61966-2-4 xvYCC709 / SMPTE RP177 Annex B
+    AVCOL_SPC_UNSPECIFIED = 2,
+    AVCOL_SPC_RESERVED    = 3,
+    AVCOL_SPC_FCC         = 4,
+    AVCOL_SPC_BT470BG     = 5,  ///< also ITU-R BT601-6 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL & SECAM / IEC 61966-2-4 xvYCC601
+    AVCOL_SPC_SMPTE170M   = 6,  ///< also ITU-R BT601-6 525 / ITU-R BT1358 525 / ITU-R BT1700 NTSC / functionally identical to above
+    AVCOL_SPC_SMPTE240M   = 7,
+    AVCOL_SPC_YCOCG       = 8,  ///< Used by Dirac / VC-2 and H.264 FRext, see ITU-T SG16
+    AVCOL_SPC_BT2020_NCL  = 9,  ///< ITU-R BT2020 non-constant luminance system
+    AVCOL_SPC_BT2020_CL   = 10, ///< ITU-R BT2020 constant luminance system
+    AVCOL_SPC_NB,               ///< Not part of ABI
+};
+#define AVCOL_SPC_YCGCO AVCOL_SPC_YCOCG
+
+
+/**
+ * MPEG vs JPEG YUV range.
+ */
+enum AVColorRange {
+    AVCOL_RANGE_UNSPECIFIED = 0,
+    AVCOL_RANGE_MPEG        = 1, ///< the normal 219*2^(n-8) "MPEG" YUV ranges
+    AVCOL_RANGE_JPEG        = 2, ///< the normal     2^n-1   "JPEG" YUV ranges
+    AVCOL_RANGE_NB,              ///< Not part of ABI
+};
+
+/**
+ * Location of chroma samples.
+ *
+ *  X   X      3 4 X      X are luma samples,
+ *             1 2        1-6 are possible chroma positions
+ *  X   X      5 6 X      0 is undefined/unknown position
+ */
+enum AVChromaLocation {
+    AVCHROMA_LOC_UNSPECIFIED = 0,
+    AVCHROMA_LOC_LEFT        = 1, ///< mpeg2/4, h264 default
+    AVCHROMA_LOC_CENTER      = 2, ///< mpeg1, jpeg, h263
+    AVCHROMA_LOC_TOPLEFT     = 3, ///< DV
+    AVCHROMA_LOC_TOP         = 4,
+    AVCHROMA_LOC_BOTTOMLEFT  = 5,
+    AVCHROMA_LOC_BOTTOM      = 6,
+    AVCHROMA_LOC_NB,              ///< Not part of ABI
 };
 
 #endif /* AVUTIL_PIXFMT_H */

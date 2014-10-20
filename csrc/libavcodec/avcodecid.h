@@ -185,6 +185,15 @@ enum AVCodecID {
     AV_CODEC_ID_HNM4_VIDEO,
     AV_CODEC_ID_HEVC_DEPRECATED,
     AV_CODEC_ID_FIC,
+    AV_CODEC_ID_ALIAS_PIX,
+    AV_CODEC_ID_BRENDER_PIX_DEPRECATED,
+    AV_CODEC_ID_PAF_VIDEO_DEPRECATED,
+    AV_CODEC_ID_EXR_DEPRECATED,
+    AV_CODEC_ID_VP7_DEPRECATED,
+    AV_CODEC_ID_SANM_DEPRECATED,
+    AV_CODEC_ID_SGIRLE_DEPRECATED,
+    AV_CODEC_ID_MVC1_DEPRECATED,
+    AV_CODEC_ID_MVC2_DEPRECATED,
 
     AV_CODEC_ID_BRENDER_PIX= MKBETAG('B','P','I','X'),
     AV_CODEC_ID_Y41P       = MKBETAG('Y','4','1','P'),
@@ -213,6 +222,7 @@ enum AVCodecID {
     AV_CODEC_ID_SMVJPEG    = MKBETAG('S','M','V','J'),
     AV_CODEC_ID_HEVC       = MKBETAG('H','2','6','5'),
 #define AV_CODEC_ID_H265 AV_CODEC_ID_HEVC
+    AV_CODEC_ID_VP7        = MKBETAG('V','P','7','0'),
 
     /* various PCM "codecs" */
     AV_CODEC_ID_FIRST_AUDIO = 0x10000,     ///< A dummy id pointing at the start of audio codecs
@@ -281,6 +291,8 @@ enum AVCodecID {
     AV_CODEC_ID_ADPCM_IMA_ISS,
     AV_CODEC_ID_ADPCM_G722,
     AV_CODEC_ID_ADPCM_IMA_APC,
+    AV_CODEC_ID_ADPCM_VIMA_DEPRECATED,
+    AV_CODEC_ID_ADPCM_VIMA = MKBETAG('V','I','M','A'),
     AV_CODEC_ID_VIMA       = MKBETAG('V','I','M','A'),
     AV_CODEC_ID_ADPCM_AFC  = MKBETAG('A','F','C',' '),
     AV_CODEC_ID_ADPCM_IMA_OKI = MKBETAG('O','K','I',' '),
@@ -370,6 +382,8 @@ enum AVCodecID {
     AV_CODEC_ID_COMFORT_NOISE,
     AV_CODEC_ID_TAK_DEPRECATED,
     AV_CODEC_ID_METASOUND,
+    AV_CODEC_ID_PAF_AUDIO_DEPRECATED,
+    AV_CODEC_ID_ON2AVC,
     AV_CODEC_ID_FFWAVESYNTH = MKBETAG('F','F','W','S'),
     AV_CODEC_ID_SONIC       = MKBETAG('S','O','N','C'),
     AV_CODEC_ID_SONIC_LS    = MKBETAG('S','O','N','L'),
@@ -378,6 +392,10 @@ enum AVCodecID {
     AV_CODEC_ID_TAK         = MKBETAG('t','B','a','K'),
     AV_CODEC_ID_EVRC        = MKBETAG('s','e','v','c'),
     AV_CODEC_ID_SMV         = MKBETAG('s','s','m','v'),
+    AV_CODEC_ID_DSD_LSBF    = MKBETAG('D','S','D','L'),
+    AV_CODEC_ID_DSD_MSBF    = MKBETAG('D','S','D','M'),
+    AV_CODEC_ID_DSD_LSBF_PLANAR = MKBETAG('D','S','D','1'),
+    AV_CODEC_ID_DSD_MSBF_PLANAR = MKBETAG('D','S','D','8'),
 
     /* subtitle codecs */
     AV_CODEC_ID_FIRST_SUBTITLE = 0x17000,          ///< A dummy ID pointing at the start of subtitle codecs.
@@ -414,6 +432,7 @@ enum AVCodecID {
     AV_CODEC_ID_SMPTE_KLV  = MKBETAG('K','L','V','A'),
     AV_CODEC_ID_DVD_NAV    = MKBETAG('D','N','A','V'),
     AV_CODEC_ID_TIMED_ID3  = MKBETAG('T','I','D','3'),
+    AV_CODEC_ID_BIN_DATA   = MKBETAG('D','A','T','A'),
 
 
     AV_CODEC_ID_PROBE = 0x19000, ///< codec_id is not known (like AV_CODEC_ID_NONE) but lavf should attempt to identify it
@@ -424,7 +443,6 @@ enum AVCodecID {
                                 * stream (only used by libavformat) */
     AV_CODEC_ID_FFMETADATA = 0x21000,   ///< Dummy codec for streams containing only metadata information.
 
-#if FF_API_CODEC_ID
     CODEC_ID_NONE = AV_CODEC_ID_NONE,
 
     /* video codecs */
@@ -791,8 +809,7 @@ enum AVCodecID {
     CODEC_ID_MPEG4SYSTEMS = 0x20001, /**< _FAKE_ codec to indicate a MPEG-4 Systems
                                 * stream (only used by libavformat) */
     CODEC_ID_FFMETADATA = 0x21000,   ///< Dummy codec for streams containing only metadata information.
-#endif
-};
 
+};
 
 #endif
