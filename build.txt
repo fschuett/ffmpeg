@@ -18,6 +18,7 @@ Create new csrc
  - Patch with: patch -p0 <ffmeg-csrc.patch
  - Compare csrc.old, csrc to check for differences.
  - change version nr in libavcodec/version.h, libavformat/version.h, libavutil/version.h, libswscale/version.h
+ - remove every reference to deprecated, it breaks jnaerator
  - Update ffmpeg-csrc.patch: diff -pruN /usr/include/ffmpeg csrc
 
 Create new src
