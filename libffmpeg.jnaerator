@@ -12,7 +12,6 @@
 
 -root org.ffmpeg
 -parseChunks
--sizeAsLong
 -mode Directory
 -f
 -o ../generated/.

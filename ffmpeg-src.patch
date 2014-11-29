@@ -1,6 +1,6 @@
 diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcodec/AvcodecLibrary.java
---- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-11-29 21:27:47.057245741 +0100
-+++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-11-29 21:27:59.172218448 +0100
+--- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-11-29 21:30:36.897863326 +0100
++++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-11-29 21:30:49.867834141 +0100
 @@ -1695,11 +1695,11 @@ public class AvcodecLibrary {
  	 * Original signature : <code>AVFrame* avcodec_alloc_frame()</code><br>
  	 * <i>native declaration : ./libavcodec/avcodec.h:393</i>
@@ -17,9 +17,9 @@ diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcod
  	 * Initialize the AVCodecContext to use the given AVCodec. Prior to using this<br>
  	 * function the context has to be allocated with avcodec_alloc_context3().<br>
 diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avformat/AvformatLibrary.java
---- generated/org/ffmpeg/avformat/AvformatLibrary.java	2014-11-29 21:27:47.563244601 +0100
-+++ src/org/ffmpeg/avformat/AvformatLibrary.java	2014-11-29 21:27:59.177218436 +0100
-@@ -352,11 +352,11 @@ public class AvformatLibrary {
+--- generated/org/ffmpeg/avformat/AvformatLibrary.java	2014-11-29 21:30:37.543861873 +0100
++++ src/org/ffmpeg/avformat/AvformatLibrary.java	2014-11-29 21:30:49.868834139 +0100
+@@ -351,11 +351,11 @@ public class AvformatLibrary {
  	 * Original signature : <code>AVFormatContext* avformat_alloc_context()</code><br>
  	 * <i>native declaration : libavformat/avformat.h:706</i>
  	 */
@@ -36,7 +36,7 @@ diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avf
  	 * @param s context to free<br>
 diff -pruN generated/org/ffmpeg/avutil/AVUtil.java src/org/ffmpeg/avutil/AVUtil.java
 --- generated/org/ffmpeg/avutil/AVUtil.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/ffmpeg/avutil/AVUtil.java	2014-11-29 21:27:59.178218434 +0100
++++ src/org/ffmpeg/avutil/AVUtil.java	2014-11-29 21:30:49.869834137 +0100
 @@ -0,0 +1,44 @@
 +package org.ffmpeg.avutil;
 +
@@ -83,26 +83,26 @@ diff -pruN generated/org/ffmpeg/avutil/AVUtil.java src/org/ffmpeg/avutil/AVUtil.
 +
 +}
 diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/AvutilLibrary.java
---- generated/org/ffmpeg/avutil/AvutilLibrary.java	2014-11-29 21:27:45.641248931 +0100
-+++ src/org/ffmpeg/avutil/AvutilLibrary.java	2014-11-29 21:27:59.178218434 +0100
-@@ -1043,11 +1043,11 @@ public class AvutilLibrary {
+--- generated/org/ffmpeg/avutil/AvutilLibrary.java	2014-11-29 21:30:34.976867649 +0100
++++ src/org/ffmpeg/avutil/AvutilLibrary.java	2014-11-29 21:32:34.726598281 +0100
+@@ -1042,11 +1042,11 @@ public class AvutilLibrary {
  	 * Original signature : <code>void* av_malloc(size_t)</code><br>
  	 * <i>native declaration : libavutil/mem.h:9</i>
  	 */
--	public static Pointer<? > av_malloc(@CLong long size) {
+-	public static Pointer<? > av_malloc(@Ptr long size) {
 -		return Pointer.pointerToAddress(av_malloc$2(size));
-+	public static Pointer<? > malloc(@CLong long size) {
++	public static Pointer<? > malloc(@Ptr long size) {
 +		return Pointer.pointerToAddress(av_malloc(size));
  	}
  	@Ptr 
--	protected native static long av_malloc$2(@CLong long size);
-+	protected native static long av_malloc(@CLong long size);
+-	protected native static long av_malloc$2(@Ptr long size);
++	protected native static long av_malloc(@Ptr long size);
  	/**
  	 * Free a memory block which has been allocated with av_malloc(z)() or<br>
  	 * av_realloc().<br>
 diff -pruN generated/org/ffmpeg/FFMPeg.java src/org/ffmpeg/FFMPeg.java
 --- generated/org/ffmpeg/FFMPeg.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/ffmpeg/FFMPeg.java	2014-11-29 21:27:59.179218432 +0100
++++ src/org/ffmpeg/FFMPeg.java	2014-11-29 21:30:49.870834135 +0100
 @@ -0,0 +1,27 @@
 +package org.ffmpeg;
 +
@@ -132,8 +132,8 @@ diff -pruN generated/org/ffmpeg/FFMPeg.java src/org/ffmpeg/FFMPeg.java
 +	
 +}
 diff -pruN generated/org/ffmpeg/swscale/SwscaleLibrary.java src/org/ffmpeg/swscale/SwscaleLibrary.java
---- generated/org/ffmpeg/swscale/SwscaleLibrary.java	2014-11-29 21:27:45.010250353 +0100
-+++ src/org/ffmpeg/swscale/SwscaleLibrary.java	2014-11-29 21:27:59.179218432 +0100
+--- generated/org/ffmpeg/swscale/SwscaleLibrary.java	2014-11-29 21:30:34.404868936 +0100
++++ src/org/ffmpeg/swscale/SwscaleLibrary.java	2014-11-29 21:30:49.871834132 +0100
 @@ -127,20 +127,20 @@ public class SwscaleLibrary {
  	 * Original signature : <code>char* swscale_configuration()</code><br>
  	 * <i>native declaration : libswscale/swscale.h:3</i>
@@ -163,7 +163,7 @@ diff -pruN generated/org/ffmpeg/swscale/SwscaleLibrary.java src/org/ffmpeg/swsca
  	 * <i>native declaration : libswscale/swscale.h:8</i>
 diff -pruN generated/test/AVInfo.java src/test/AVInfo.java
 --- generated/test/AVInfo.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/test/AVInfo.java	2014-11-29 21:27:59.179218432 +0100
++++ src/test/AVInfo.java	2014-11-29 21:30:49.871834132 +0100
 @@ -0,0 +1,64 @@
 +package test;
 +
@@ -231,7 +231,7 @@ diff -pruN generated/test/AVInfo.java src/test/AVInfo.java
 +}
 diff -pruN generated/test/Demuxing.java src/test/Demuxing.java
 --- generated/test/Demuxing.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/test/Demuxing.java	2014-11-29 21:27:59.180218430 +0100
++++ src/test/Demuxing.java	2014-11-29 21:30:49.872834130 +0100
 @@ -0,0 +1,384 @@
 +package test;
 +
