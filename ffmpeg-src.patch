@@ -1,33 +1,6 @@
-diff -pruN generated/FFMPeg.java src/FFMPeg.java
---- generated/FFMPeg.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/FFMPeg.java	2014-10-20 17:03:05.763770586 +0200
-@@ -0,0 +1,23 @@
-+package org.ffmpeg;
-+import org.ffmpeg.avcodec.AvcodecLibrary;
-+import org.ffmpeg.avformat.AvformatLibrary;
-+import org.ffmpeg.avutil.AvutilLibrary;
-+import org.ffmpeg.swscale.SwscaleLibrary;
-+public class FFMPeg {
-+	public static void main(String[] args) {
-+		System.out.println("Java-Bibliothek ffmpeg.jar");
-+		System.out.println("==========================");
-+		System.out.println("Die Bibliothek ffmpeg ist nur in den Bruchteilen implementiert, die für\n"
-+				+ "Open Source Physics tracker benötigt werden.");
-+		System.out.println("ffmpeg in Version "+AvutilLibrary.FFMPEG_VERSION);
-+		System.out.println("Bestandteile:");
-+		System.out.println("avutil in Version "+AvutilLibrary.avutil_version());
-+		System.out.println("avcodec in Version "+AvcodecLibrary.avcodec_version());
-+		System.out.println("avformat in Version "+AvformatLibrary.avformat_version());
-+		System.out.println("swscale in Version "+SwscaleLibrary.swscale_version());
-+	}
-+	public static String getVersion() {
-+		return AvutilLibrary.FFMPEG_VERSION;
-+	}
-+}
-+
 diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcodec/AvcodecLibrary.java
---- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-10-20 17:02:41.735819228 +0200
-+++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-10-20 17:03:05.764770584 +0200
+--- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-11-29 19:30:11.518750662 +0100
++++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2014-11-29 19:30:45.874676071 +0100
 @@ -1695,11 +1695,11 @@ public class AvcodecLibrary {
  	 * Original signature : <code>AVFrame* avcodec_alloc_frame()</code><br>
  	 * <i>native declaration : ./libavcodec/avcodec.h:393</i>
@@ -45,7 +18,7 @@ diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcod
  	 * function the context has to be allocated with avcodec_alloc_context3().<br>
 diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java.orig src/org/ffmpeg/avcodec/AvcodecLibrary.java.orig
 --- generated/org/ffmpeg/avcodec/AvcodecLibrary.java.orig	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/ffmpeg/avcodec/AvcodecLibrary.java.orig	2014-10-20 17:03:05.768770575 +0200
++++ src/org/ffmpeg/avcodec/AvcodecLibrary.java.orig	2014-11-29 19:30:45.878676063 +0100
 @@ -0,0 +1,1970 @@
 +package org.ffmpeg.avcodec;
 +import java.util.Collections;
@@ -2018,8 +1991,8 @@ diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java.orig src/org/ffmpeg/
 +	};
 +}
 diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avformat/AvformatLibrary.java
---- generated/org/ffmpeg/avformat/AvformatLibrary.java	2014-10-20 17:02:42.272818140 +0200
-+++ src/org/ffmpeg/avformat/AvformatLibrary.java	2014-10-20 17:03:05.769770573 +0200
+--- generated/org/ffmpeg/avformat/AvformatLibrary.java	2014-11-29 19:30:11.993749657 +0100
++++ src/org/ffmpeg/avformat/AvformatLibrary.java	2014-11-29 19:30:45.878676063 +0100
 @@ -352,11 +352,11 @@ public class AvformatLibrary {
  	 * Original signature : <code>AVFormatContext* avformat_alloc_context()</code><br>
  	 * <i>native declaration : libavformat/avformat.h:706</i>
@@ -2037,7 +2010,7 @@ diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avf
  	 * @param s context to free<br>
 diff -pruN generated/org/ffmpeg/avutil/AVUtil.java src/org/ffmpeg/avutil/AVUtil.java
 --- generated/org/ffmpeg/avutil/AVUtil.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/ffmpeg/avutil/AVUtil.java	2014-10-20 17:03:05.769770573 +0200
++++ src/org/ffmpeg/avutil/AVUtil.java	2014-11-29 19:30:45.879676060 +0100
 @@ -0,0 +1,44 @@
 +package org.ffmpeg.avutil;
 +
@@ -2084,8 +2057,8 @@ diff -pruN generated/org/ffmpeg/avutil/AVUtil.java src/org/ffmpeg/avutil/AVUtil.
 +
 +}
 diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/AvutilLibrary.java
---- generated/org/ffmpeg/avutil/AvutilLibrary.java	2014-10-20 17:02:40.268822199 +0200
-+++ src/org/ffmpeg/avutil/AvutilLibrary.java	2014-10-20 17:03:05.770770571 +0200
+--- generated/org/ffmpeg/avutil/AvutilLibrary.java	2014-11-29 19:30:09.682754548 +0100
++++ src/org/ffmpeg/avutil/AvutilLibrary.java	2014-11-29 19:30:45.879676060 +0100
 @@ -1043,11 +1043,11 @@ public class AvutilLibrary {
  	 * Original signature : <code>void* av_malloc(size_t)</code><br>
  	 * <i>native declaration : libavutil/mem.h:9</i>
@@ -2103,7 +2076,7 @@ diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/
  	 * av_realloc().<br>
 diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java.orig src/org/ffmpeg/avutil/AvutilLibrary.java.orig
 --- generated/org/ffmpeg/avutil/AvutilLibrary.java.orig	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/ffmpeg/avutil/AvutilLibrary.java.orig	2014-10-20 17:02:40.000000000 +0200
++++ src/org/ffmpeg/avutil/AvutilLibrary.java.orig	2014-11-29 19:30:45.881676056 +0100
 @@ -0,0 +1,1116 @@
 +package org.ffmpeg.avutil;
 +import java.util.Collections;
@@ -3223,7 +3196,7 @@ diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java.orig src/org/ffmpeg/av
 +}
 diff -pruN generated/org/ffmpeg/FFMPeg.java src/org/ffmpeg/FFMPeg.java
 --- generated/org/ffmpeg/FFMPeg.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/ffmpeg/FFMPeg.java	2014-10-20 17:03:05.770770571 +0200
++++ src/org/ffmpeg/FFMPeg.java	2014-11-29 19:30:45.881676056 +0100
 @@ -0,0 +1,27 @@
 +package org.ffmpeg;
 +
@@ -3253,8 +3226,8 @@ diff -pruN generated/org/ffmpeg/FFMPeg.java src/org/ffmpeg/FFMPeg.java
 +	
 +}
 diff -pruN generated/org/ffmpeg/swscale/SwscaleLibrary.java src/org/ffmpeg/swscale/SwscaleLibrary.java
---- generated/org/ffmpeg/swscale/SwscaleLibrary.java	2014-10-20 17:02:39.620823512 +0200
-+++ src/org/ffmpeg/swscale/SwscaleLibrary.java	2014-10-20 17:03:05.771770569 +0200
+--- generated/org/ffmpeg/swscale/SwscaleLibrary.java	2014-11-29 19:30:09.134755708 +0100
++++ src/org/ffmpeg/swscale/SwscaleLibrary.java	2014-11-29 19:30:45.882676054 +0100
 @@ -127,20 +127,20 @@ public class SwscaleLibrary {
  	 * Original signature : <code>char* swscale_configuration()</code><br>
  	 * <i>native declaration : libswscale/swscale.h:3</i>
@@ -3284,7 +3257,7 @@ diff -pruN generated/org/ffmpeg/swscale/SwscaleLibrary.java src/org/ffmpeg/swsca
  	 * <i>native declaration : libswscale/swscale.h:8</i>
 diff -pruN generated/test/AVInfo.java src/test/AVInfo.java
 --- generated/test/AVInfo.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/test/AVInfo.java	2014-10-20 17:03:05.771770569 +0200
++++ src/test/AVInfo.java	2014-11-29 19:30:45.882676054 +0100
 @@ -0,0 +1,64 @@
 +package test;
 +
@@ -3352,7 +3325,7 @@ diff -pruN generated/test/AVInfo.java src/test/AVInfo.java
 +}
 diff -pruN generated/test/Demuxing.java src/test/Demuxing.java
 --- generated/test/Demuxing.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/test/Demuxing.java	2014-10-20 17:03:05.772770567 +0200
++++ src/test/Demuxing.java	2014-11-29 19:30:45.883676052 +0100
 @@ -0,0 +1,384 @@
 +package test;
 +
