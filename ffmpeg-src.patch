@@ -84,7 +84,35 @@ diff -pruN generated/org/ffmpeg/avutil/AVUtil.java src/org/ffmpeg/avutil/AVUtil.
 +}
 diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/AvutilLibrary.java
 --- generated/org/ffmpeg/avutil/AvutilLibrary.java	2014-11-29 21:30:34.976867649 +0100
-+++ src/org/ffmpeg/avutil/AvutilLibrary.java	2014-11-29 21:32:34.726598281 +0100
++++ src/org/ffmpeg/avutil/AvutilLibrary.java	2014-11-29 21:41:15.979467417 +0100
+@@ -893,21 +893,21 @@ public class AvutilLibrary {
+ 	 * Original signature : <code>char* avutil_configuration()</code><br>
+ 	 * <i>native declaration : libavutil/avutil.h:9</i>
+ 	 */
+-	public static Pointer<Byte > avutil_configuration() {
+-		return Pointer.pointerToAddress(avutil_configuration$2(), Byte.class);
++	public static Pointer<Byte > avutil__configuration() {
++		return Pointer.pointerToAddress(avutil_configuration(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avutil_configuration$2();
++	protected native static long avutil_configuration();
+ 	/**
+ 	 * Return the libavutil license.<br>
+ 	 * Original signature : <code>char* avutil_license()</code><br>
+ 	 * <i>native declaration : libavutil/avutil.h:14</i>
+ 	 */
+-	public static Pointer<Byte > avutil_license() {
+-		return Pointer.pointerToAddress(avutil_license$2(), Byte.class);
++	public static Pointer<Byte > avutil__license() {
++		return Pointer.pointerToAddress(avutil_license(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avutil_license$2();
++	protected native static long avutil_license();
+ 	/**
+ 	 * Original signature : <code>char* av_get_media_type_string(AVMediaType)</code><br>
+ 	 * <i>native declaration : libavutil/avutil.h:28</i>
 @@ -1042,11 +1042,11 @@ public class AvutilLibrary {
  	 * Original signature : <code>void* av_malloc(size_t)</code><br>
  	 * <i>native declaration : libavutil/mem.h:9</i>
