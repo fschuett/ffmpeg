@@ -57,6 +57,8 @@ public class Demuxing {
 	static AvformatLibrary lavf = new AvformatLibrary();
 	static AvcodecLibrary lavc = new AvcodecLibrary();
 	static AvutilLibrary lavu = new AvutilLibrary();
+	
+	static boolean first_frame = true;
 
 	static int decode_packet(Pointer<Integer> got_frame, int cached)
 			throws IOException {
@@ -74,6 +76,10 @@ public class Demuxing {
 			}
 
 			if (got_frame.get() != 0) {
+				if(first_frame) {
+					first_frame = false;
+					StructInfo.printAVFrame(frame.get());
+				}
 				System.out.printf("video_frame%s n:%d coded_n:%d pts:%s\n",
 						cached != 0 ? "(cached)" : "", video_frame_count++,
 						frame.get().coded_picture_number(), av_ts2timestr(

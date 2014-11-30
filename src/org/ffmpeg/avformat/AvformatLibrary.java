@@ -7,7 +7,6 @@ import org.bridj.Callback;
 import org.bridj.FlagSet;
 import org.bridj.IntValuedEnum;
 import org.bridj.Pointer;
-import org.bridj.ann.CLong;
 import org.bridj.ann.Library;
 import org.bridj.ann.Ptr;
 import org.bridj.ann.Runtime;
@@ -267,10 +266,10 @@ public class AvformatLibrary {
 	};
 	/** <i>native declaration : libavformat/avformat.h:263</i> */
 	public static abstract class av_format_control_message extends Callback<av_format_control_message > {
-		public int apply(Pointer<AVFormatContext > s, int type, Pointer<? > data, @CLong long data_size) {
+		public int apply(Pointer<AVFormatContext > s, int type, Pointer<? > data, @Ptr long data_size) {
 			return apply(Pointer.getPeer(s), type, Pointer.getPeer(data), data_size);
 		}
-		public int apply(@Ptr long s, int type, @Ptr long data, @CLong long data_size) {
+		public int apply(@Ptr long s, int type, @Ptr long data, @Ptr long data_size) {
 			return apply(Pointer.pointerToAddress(s, AVFormatContext.class), type, Pointer.pointerToAddress(data), data_size);
 		}
 	};

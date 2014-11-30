@@ -6,7 +6,6 @@ import org.bridj.CRuntime;
 import org.bridj.FlagSet;
 import org.bridj.IntValuedEnum;
 import org.bridj.Pointer;
-import org.bridj.ann.CLong;
 import org.bridj.ann.Library;
 import org.bridj.ann.Ptr;
 import org.bridj.ann.Runtime;
@@ -894,21 +893,21 @@ public class AvutilLibrary {
 	 * Original signature : <code>char* avutil_configuration()</code><br>
 	 * <i>native declaration : libavutil/avutil.h:9</i>
 	 */
-	public static Pointer<Byte > avutil_configuration() {
-		return Pointer.pointerToAddress(avutil_configuration$2(), Byte.class);
+	public static Pointer<Byte > avutil__configuration() {
+		return Pointer.pointerToAddress(avutil_configuration(), Byte.class);
 	}
 	@Ptr 
-	protected native static long avutil_configuration$2();
+	protected native static long avutil_configuration();
 	/**
 	 * Return the libavutil license.<br>
 	 * Original signature : <code>char* avutil_license()</code><br>
 	 * <i>native declaration : libavutil/avutil.h:14</i>
 	 */
-	public static Pointer<Byte > avutil_license() {
-		return Pointer.pointerToAddress(avutil_license$2(), Byte.class);
+	public static Pointer<Byte > avutil__license() {
+		return Pointer.pointerToAddress(avutil_license(), Byte.class);
 	}
 	@Ptr 
-	protected native static long avutil_license$2();
+	protected native static long avutil_license();
 	/**
 	 * Original signature : <code>char* av_get_media_type_string(AVMediaType)</code><br>
 	 * <i>native declaration : libavutil/avutil.h:28</i>
@@ -1043,11 +1042,11 @@ public class AvutilLibrary {
 	 * Original signature : <code>void* av_malloc(size_t)</code><br>
 	 * <i>native declaration : libavutil/mem.h:9</i>
 	 */
-	public static Pointer<? > malloc(@CLong long size) {
+	public static Pointer<? > malloc(@Ptr long size) {
 		return Pointer.pointerToAddress(av_malloc(size));
 	}
 	@Ptr 
-	protected native static long av_malloc(@CLong long size);
+	protected native static long av_malloc(@Ptr long size);
 	/**
 	 * Free a memory block which has been allocated with av_malloc(z)() or<br>
 	 * av_realloc().<br>
