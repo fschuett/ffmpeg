@@ -4,7 +4,6 @@
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
 	<property name="bridj.jar" value="bridj-0.7-SNAPSHOT.jar"/>
-    <property name="jar.class.path" value=". ./* /usr/share/java/ffmpeg/*"/>
 	<target name="clean-jar">
 		<delete dir="dist/"/>
 		<mkdir dir="dist/"/>
@@ -18,7 +17,6 @@
 	    <jar destfile="dist/ffmpeg-2.3.jar">
 	        <manifest>
 	            <attribute name="Main-Class" value="org.ffmpeg.FFMPeg"/>
-	        	<attribute name="Class-Path" value="${jar.class.path}"/>
 	        </manifest>
 	        <fileset dir="bin"/>
 	    </jar>
