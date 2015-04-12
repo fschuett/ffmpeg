@@ -200,11 +200,11 @@ public class SwscaleLibrary {
 	 * Original signature : <code>SwsContext* sws_alloc_context()</code><br>
 	 * <i>native declaration : libswscale/swscale.h:65</i>
 	 */
-	public static Pointer<SwscaleLibrary.SwsContext > sws_alloc_context() {
-		return Pointer.pointerToAddress(sws_alloc_context$2(), SwscaleLibrary.SwsContext.class);
+	public static Pointer<SwscaleLibrary.SwsContext > sws__alloc_context() {
+		return Pointer.pointerToAddress(sws_alloc_context(), SwscaleLibrary.SwsContext.class);
 	}
 	@Ptr 
-	protected native static long sws_alloc_context$2();
+	protected native static long sws_alloc_context();
 	/**
 	 * Initialize the swscaler context sws_context.<br>
 	 * * @return zero or positive value on success, a negative value on<br>
@@ -307,44 +307,44 @@ public class SwscaleLibrary {
 	 * Original signature : <code>SwsVector* sws_allocVec(int)</code><br>
 	 * <i>native declaration : libswscale/swscale.h:142</i>
 	 */
-	public static Pointer<SwsVector > sws_allocVec(int length) {
-		return Pointer.pointerToAddress(sws_allocVec$2(length), SwsVector.class);
+	public static Pointer<SwsVector > sws__allocVec(int length) {
+		return Pointer.pointerToAddress(sws_allocVec(length), SwsVector.class);
 	}
 	@Ptr 
-	protected native static long sws_allocVec$2(int length);
+	protected native static long sws_allocVec(int length);
 	/**
 	 * Return a normalized Gaussian curve used to filter stuff<br>
 	 * quality = 3 is high quality, lower is lower quality.<br>
 	 * Original signature : <code>SwsVector* sws_getGaussianVec(double, double)</code><br>
 	 * <i>native declaration : libswscale/swscale.h:148</i>
 	 */
-	public static Pointer<SwsVector > sws_getGaussianVec(double variance, double quality) {
-		return Pointer.pointerToAddress(sws_getGaussianVec$2(variance, quality), SwsVector.class);
+	public static Pointer<SwsVector > sws__getGaussianVec(double variance, double quality) {
+		return Pointer.pointerToAddress(sws_getGaussianVec(variance, quality), SwsVector.class);
 	}
 	@Ptr 
-	protected native static long sws_getGaussianVec$2(double variance, double quality);
+	protected native static long sws_getGaussianVec(double variance, double quality);
 	/**
 	 * Allocate and return a vector with length coefficients, all<br>
 	 * with the same value c.<br>
 	 * Original signature : <code>SwsVector* sws_getConstVec(double, int)</code><br>
 	 * <i>native declaration : libswscale/swscale.h:154</i>
 	 */
-	public static Pointer<SwsVector > sws_getConstVec(double c, int length) {
-		return Pointer.pointerToAddress(sws_getConstVec$2(c, length), SwsVector.class);
+	public static Pointer<SwsVector > sws__getConstVec(double c, int length) {
+		return Pointer.pointerToAddress(sws_getConstVec(c, length), SwsVector.class);
 	}
 	@Ptr 
-	protected native static long sws_getConstVec$2(double c, int length);
+	protected native static long sws_getConstVec(double c, int length);
 	/**
 	 * Allocate and return a vector with just one coefficient, with<br>
 	 * value 1.0.<br>
 	 * Original signature : <code>SwsVector* sws_getIdentityVec()</code><br>
 	 * <i>native declaration : libswscale/swscale.h:160</i>
 	 */
-	public static Pointer<SwsVector > sws_getIdentityVec() {
-		return Pointer.pointerToAddress(sws_getIdentityVec$2(), SwsVector.class);
+	public static Pointer<SwsVector > sws__getIdentityVec() {
+		return Pointer.pointerToAddress(sws_getIdentityVec(), SwsVector.class);
 	}
 	@Ptr 
-	protected native static long sws_getIdentityVec$2();
+	protected native static long sws_getIdentityVec();
 	/**
 	 * Scale all the coefficients of a by the scalar value.<br>
 	 * Original signature : <code>void sws_scaleVec(SwsVector*, double)</code><br>
@@ -428,11 +428,11 @@ public class SwscaleLibrary {
 	 * Original signature : <code>SwsFilter* sws_getDefaultFilter(float, float, float, float, float, float, int)</code><br>
 	 * <i>native declaration : libswscale/swscale.h:194</i>
 	 */
-	public static Pointer<SwsFilter > sws_getDefaultFilter(float lumaGBlur, float chromaGBlur, float lumaSharpen, float chromaSharpen, float chromaHShift, float chromaVShift, int verbose) {
-		return Pointer.pointerToAddress(sws_getDefaultFilter$2(lumaGBlur, chromaGBlur, lumaSharpen, chromaSharpen, chromaHShift, chromaVShift, verbose), SwsFilter.class);
+	public static Pointer<SwsFilter > sws__getDefaultFilter(float lumaGBlur, float chromaGBlur, float lumaSharpen, float chromaSharpen, float chromaHShift, float chromaVShift, int verbose) {
+		return Pointer.pointerToAddress(sws_getDefaultFilter(lumaGBlur, chromaGBlur, lumaSharpen, chromaSharpen, chromaHShift, chromaVShift, verbose), SwsFilter.class);
 	}
 	@Ptr 
-	protected native static long sws_getDefaultFilter$2(float lumaGBlur, float chromaGBlur, float lumaSharpen, float chromaSharpen, float chromaHShift, float chromaVShift, int verbose);
+	protected native static long sws_getDefaultFilter(float lumaGBlur, float chromaGBlur, float lumaSharpen, float chromaSharpen, float chromaHShift, float chromaVShift, int verbose);
 	/**
 	 * Original signature : <code>void sws_freeFilter(SwsFilter*)</code><br>
 	 * <i>native declaration : libswscale/swscale.h:196</i>
@@ -493,11 +493,11 @@ public class SwscaleLibrary {
 	 * Original signature : <code>AVClass* sws_get_class()</code><br>
 	 * <i>native declaration : libswscale/swscale.h:235</i>
 	 */
-	public static Pointer<AVClass > sws_get_class() {
-		return Pointer.pointerToAddress(sws_get_class$2(), AVClass.class);
+	public static Pointer<AVClass > sws__get_class() {
+		return Pointer.pointerToAddress(sws_get_class(), AVClass.class);
 	}
 	@Ptr 
-	protected native static long sws_get_class$2();
+	protected native static long sws_get_class();
 	/** Undefined type */
 	public static interface SwsContext {
 		

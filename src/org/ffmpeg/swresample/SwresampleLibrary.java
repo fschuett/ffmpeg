@@ -146,11 +146,11 @@ public class SwresampleLibrary {
 	 * Original signature : <code>AVClass* swr_get_class()</code><br>
 	 * <i>native declaration : libswresample/swresample.h:45</i>
 	 */
-	public static Pointer<AVClass > swr_get_class() {
-		return Pointer.pointerToAddress(swr_get_class$2(), AVClass.class);
+	public static Pointer<AVClass > swr__get_class() {
+		return Pointer.pointerToAddress(swr_get_class(), AVClass.class);
 	}
 	@Ptr 
-	protected native static long swr_get_class$2();
+	protected native static long swr_get_class();
 	/**
 	 * Allocate SwrContext.<br>
 	 * * If you use this function you will need to set the parameters (manually or<br>
@@ -160,11 +160,11 @@ public class SwresampleLibrary {
 	 * Original signature : <code>SwrContext* swr_alloc()</code><br>
 	 * <i>native declaration : libswresample/swresample.h:54</i>
 	 */
-	public static Pointer<SwresampleLibrary.SwrContext > swr_alloc() {
-		return Pointer.pointerToAddress(swr_alloc$2(), SwresampleLibrary.SwrContext.class);
+	public static Pointer<SwresampleLibrary.SwrContext > swr__alloc() {
+		return Pointer.pointerToAddress(swr_alloc(), SwresampleLibrary.SwrContext.class);
 	}
 	@Ptr 
-	protected native static long swr_alloc$2();
+	protected native static long swr_alloc();
 	/**
 	 * Initialize context after user parameters have been set.<br>
 	 * @note The context must be configured using the AVOption API.<br>
@@ -399,22 +399,22 @@ public class SwresampleLibrary {
 	 * Original signature : <code>char* swresample_configuration()</code><br>
 	 * <i>native declaration : libswresample/swresample.h:234</i>
 	 */
-	public static Pointer<Byte > swresample_configuration() {
-		return Pointer.pointerToAddress(swresample_configuration$2(), Byte.class);
+	public static Pointer<Byte > swresample__configuration() {
+		return Pointer.pointerToAddress(swresample_configuration(), Byte.class);
 	}
 	@Ptr 
-	protected native static long swresample_configuration$2();
+	protected native static long swresample_configuration();
 	/**
 	 * Return the swr license.<br>
 	 * * @returns     the license of libswresample, determined at build-time<br>
 	 * Original signature : <code>char* swresample_license()</code><br>
 	 * <i>native declaration : libswresample/swresample.h:240</i>
 	 */
-	public static Pointer<Byte > swresample_license() {
-		return Pointer.pointerToAddress(swresample_license$2(), Byte.class);
+	public static Pointer<Byte > swresample__license() {
+		return Pointer.pointerToAddress(swresample_license(), Byte.class);
 	}
 	@Ptr 
-	protected native static long swresample_license$2();
+	protected native static long swresample_license();
 	/**
 	 * Convert the samples in the input AVFrame and write them to the output AVFrame.<br>
 	 * * Input and output AVFrames must have channel_layout, sample_rate and format set.<br>

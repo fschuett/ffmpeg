@@ -1677,12 +1677,12 @@ public class AvutilLibrary {
 	};
 	/** <i>native declaration : libavutil/buffer.h:145</i> */
 	public static abstract class av_buffer_pool_init_alloc_callback extends Callback<av_buffer_pool_init_alloc_callback > {
-		public Pointer<AVBufferRef > apply(int size) {
-			return Pointer.pointerToAddress(apply$2(size), AVBufferRef.class);
+		public Pointer<AVBufferRef > _apply(int size) {
+			return Pointer.pointerToAddress(apply(size), AVBufferRef.class);
 		}
 		@Ptr 
-		public long apply$2(int size) {
-			return Pointer.getPeer(apply(size));
+		public long apply(int size) {
+			return Pointer.getPeer(_apply(size));
 		}
 	};
 	/**
@@ -1910,11 +1910,11 @@ public class AvutilLibrary {
 	 * Original signature : <code>void* av_mallocz(size_t)</code><br>
 	 * <i>native declaration : libavutil/mem.h:130</i>
 	 */
-	public static Pointer<? > av_mallocz(@Ptr long size) {
-		return Pointer.pointerToAddress(av_mallocz$2(size));
+	public static Pointer<? > av__mallocz(@Ptr long size) {
+		return Pointer.pointerToAddress(av_mallocz(size));
 	}
 	@Ptr 
-	protected native static long av_mallocz$2(@Ptr long size);
+	protected native static long av_mallocz(@Ptr long size);
 	/**
 	 * Allocate a block of nmemb * size bytes with alignment suitable for all<br>
 	 * memory accesses (including vectors if available on the CPU) and<br>
@@ -1927,11 +1927,11 @@ public class AvutilLibrary {
 	 * Original signature : <code>void* av_calloc(size_t, size_t)</code><br>
 	 * <i>native declaration : libavutil/mem.h:142</i>
 	 */
-	public static Pointer<? > av_calloc(@Ptr long nmemb, @Ptr long size) {
-		return Pointer.pointerToAddress(av_calloc$2(nmemb, size));
+	public static Pointer<? > av__calloc(@Ptr long nmemb, @Ptr long size) {
+		return Pointer.pointerToAddress(av_calloc(nmemb, size));
 	}
 	@Ptr 
-	protected native static long av_calloc$2(@Ptr long nmemb, @Ptr long size);
+	protected native static long av_calloc(@Ptr long nmemb, @Ptr long size);
 	/**
 	 * Duplicate the string s.<br>
 	 * @param s string to be duplicated<br>
@@ -2556,22 +2556,22 @@ public class AvutilLibrary {
 	 * Original signature : <code>AVBufferRef* av_buffer_alloc(int)</code><br>
 	 * <i>native declaration : libavutil/buffer.h:28</i>
 	 */
-	public static Pointer<AVBufferRef > av_buffer_alloc(int size) {
-		return Pointer.pointerToAddress(av_buffer_alloc$2(size), AVBufferRef.class);
+	public static Pointer<AVBufferRef > av__buffer_alloc(int size) {
+		return Pointer.pointerToAddress(av_buffer_alloc(size), AVBufferRef.class);
 	}
 	@Ptr 
-	protected native static long av_buffer_alloc$2(int size);
+	protected native static long av_buffer_alloc(int size);
 	/**
 	 * Same as av_buffer_alloc(), except the returned buffer will be initialized<br>
 	 * to zero.<br>
 	 * Original signature : <code>AVBufferRef* av_buffer_allocz(int)</code><br>
 	 * <i>native declaration : libavutil/buffer.h:34</i>
 	 */
-	public static Pointer<AVBufferRef > av_buffer_allocz(int size) {
-		return Pointer.pointerToAddress(av_buffer_allocz$2(size), AVBufferRef.class);
+	public static Pointer<AVBufferRef > av__buffer_allocz(int size) {
+		return Pointer.pointerToAddress(av_buffer_allocz(size), AVBufferRef.class);
 	}
 	@Ptr 
-	protected native static long av_buffer_allocz$2(int size);
+	protected native static long av_buffer_allocz(int size);
 	/**
 	 * Create an AVBuffer from an existing array.<br>
 	 * * If this function is successful, data is owned by the AVBuffer. The caller may<br>
@@ -3169,11 +3169,11 @@ public class AvutilLibrary {
 	 * Original signature : <code>AVFrame* av_frame_alloc()</code><br>
 	 * <i>native declaration : libavutil/frame.h:441</i>
 	 */
-	public static Pointer<AVFrame > av_frame_alloc() {
-		return Pointer.pointerToAddress(av_frame_alloc$2(), AVFrame.class);
+	public static Pointer<AVFrame > av__frame_alloc() {
+		return Pointer.pointerToAddress(av_frame_alloc(), AVFrame.class);
 	}
 	@Ptr 
-	protected native static long av_frame_alloc$2();
+	protected native static long av_frame_alloc();
 	/**
 	 * Free the frame and any dynamically allocated objects in it,<br>
 	 * e.g. extended_data. If the frame is reference counted, it will be<br>
@@ -4692,11 +4692,11 @@ public class AvutilLibrary {
 	 * Original signature : <code>char* av_get_channel_name(uint64_t)</code><br>
 	 * <i>native declaration : ./libavutil/channel_layout.h:74</i>
 	 */
-	public static Pointer<Byte > av_get_channel_name(long channel) {
-		return Pointer.pointerToAddress(av_get_channel_name$2(channel), Byte.class);
+	public static Pointer<Byte > av__get_channel_name(long channel) {
+		return Pointer.pointerToAddress(av_get_channel_name(channel), Byte.class);
 	}
 	@Ptr 
-	protected native static long av_get_channel_name$2(long channel);
+	protected native static long av_get_channel_name(long channel);
 	/**
 	 * Get the description of a given channel.<br>
 	 * * @param channel  a channel layout with a single channel<br>
@@ -4704,11 +4704,11 @@ public class AvutilLibrary {
 	 * Original signature : <code>char* av_get_channel_description(uint64_t)</code><br>
 	 * <i>native declaration : ./libavutil/channel_layout.h:81</i>
 	 */
-	public static Pointer<Byte > av_get_channel_description(long channel) {
-		return Pointer.pointerToAddress(av_get_channel_description$2(channel), Byte.class);
+	public static Pointer<Byte > av__get_channel_description(long channel) {
+		return Pointer.pointerToAddress(av_get_channel_description(channel), Byte.class);
 	}
 	@Ptr 
-	protected native static long av_get_channel_description$2(long channel);
+	protected native static long av_get_channel_description(long channel);
 	/**
 	 * Get the value and name of a standard channel layout.<br>
 	 * * @param[in]  index   index in an internal list, starting at 0<br>

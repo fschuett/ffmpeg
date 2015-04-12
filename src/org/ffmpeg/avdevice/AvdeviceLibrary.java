@@ -223,21 +223,21 @@ public class AvdeviceLibrary {
 	 * Original signature : <code>char* avdevice_configuration()</code><br>
 	 * <i>native declaration : libavdevice/avdevice.h:9</i>
 	 */
-	public static Pointer<Byte > avdevice_configuration() {
-		return Pointer.pointerToAddress(avdevice_configuration$2(), Byte.class);
+	public static Pointer<Byte > avdevice__configuration() {
+		return Pointer.pointerToAddress(avdevice_configuration(), Byte.class);
 	}
 	@Ptr 
-	protected native static long avdevice_configuration$2();
+	protected native static long avdevice_configuration();
 	/**
 	 * Return the libavdevice license.<br>
 	 * Original signature : <code>char* avdevice_license()</code><br>
 	 * <i>native declaration : libavdevice/avdevice.h:14</i>
 	 */
-	public static Pointer<Byte > avdevice_license() {
-		return Pointer.pointerToAddress(avdevice_license$2(), Byte.class);
+	public static Pointer<Byte > avdevice__license() {
+		return Pointer.pointerToAddress(avdevice_license(), Byte.class);
 	}
 	@Ptr 
-	protected native static long avdevice_license$2();
+	protected native static long avdevice_license();
 	/**
 	 * Initialize libavdevice and register all the input and output devices.<br>
 	 * @warning This function is not thread safe.<br>

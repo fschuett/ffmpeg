@@ -80,21 +80,21 @@ public class PostprocLibrary {
 	 * Original signature : <code>char* postproc_configuration()</code><br>
 	 * <i>native declaration : libpostproc/postprocess.h:9</i>
 	 */
-	public static Pointer<Byte > postproc_configuration() {
-		return Pointer.pointerToAddress(postproc_configuration$2(), Byte.class);
+	public static Pointer<Byte > postproc__configuration() {
+		return Pointer.pointerToAddress(postproc_configuration(), Byte.class);
 	}
 	@Ptr 
-	protected native static long postproc_configuration$2();
+	protected native static long postproc_configuration();
 	/**
 	 * Return the libpostproc license.<br>
 	 * Original signature : <code>char* postproc_license()</code><br>
 	 * <i>native declaration : libpostproc/postprocess.h:14</i>
 	 */
-	public static Pointer<Byte > postproc_license() {
-		return Pointer.pointerToAddress(postproc_license$2(), Byte.class);
+	public static Pointer<Byte > postproc__license() {
+		return Pointer.pointerToAddress(postproc_license(), Byte.class);
 	}
 	@Ptr 
-	protected native static long postproc_license$2();
+	protected native static long postproc_license();
 	/**
 	 * Original signature : <code>void pp_postprocess(const uint8_t*[3], const int[3], uint8_t*[3], const int[3], int, int, const int8_t*, int, pp_mode*, pp_context*, int)</code><br>
 	 * <i>native declaration : libpostproc/postprocess.h:5</i>
@@ -127,11 +127,11 @@ public class PostprocLibrary {
 	 * Original signature : <code>pp_context* pp_get_context(int, int, int)</code><br>
 	 * <i>native declaration : libpostproc/postprocess.h:16</i>
 	 */
-	public static Pointer<? > pp_get_context(int width, int height, int flags) {
-		return Pointer.pointerToAddress(pp_get_context$2(width, height, flags));
+	public static Pointer<? > pp__get_context(int width, int height, int flags) {
+		return Pointer.pointerToAddress(pp_get_context(width, height, flags));
 	}
 	@Ptr 
-	protected native static long pp_get_context$2(int width, int height, int flags);
+	protected native static long pp_get_context(int width, int height, int flags);
 	/**
 	 * Original signature : <code>void pp_free_context(pp_context*)</code><br>
 	 * <i>native declaration : libpostproc/postprocess.h:18</i>

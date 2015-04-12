@@ -174,21 +174,21 @@ public class AvfilterLibrary {
 	 * Original signature : <code>char* avfilter_configuration()</code><br>
 	 * <i>native declaration : libavfilter/avfilter.h:9</i>
 	 */
-	public static Pointer<Byte > avfilter_configuration() {
-		return Pointer.pointerToAddress(avfilter_configuration$2(), Byte.class);
+	public static Pointer<Byte > avfilter__configuration() {
+		return Pointer.pointerToAddress(avfilter_configuration(), Byte.class);
 	}
 	@Ptr 
-	protected native static long avfilter_configuration$2();
+	protected native static long avfilter_configuration();
 	/**
 	 * Return the libavfilter license.<br>
 	 * Original signature : <code>char* avfilter_license()</code><br>
 	 * <i>native declaration : libavfilter/avfilter.h:14</i>
 	 */
-	public static Pointer<Byte > avfilter_license() {
-		return Pointer.pointerToAddress(avfilter_license$2(), Byte.class);
+	public static Pointer<Byte > avfilter__license() {
+		return Pointer.pointerToAddress(avfilter_license(), Byte.class);
 	}
 	@Ptr 
-	protected native static long avfilter_license$2();
+	protected native static long avfilter_license();
 	/**
 	 * Copy properties of src to dst, without copying the actual data<br>
 	 * Original signature : <code>void avfilter_copy_buffer_ref_props(AVFilterBufferRef*, const AVFilterBufferRef*)</code><br>
@@ -585,21 +585,21 @@ public class AvfilterLibrary {
 	 * Original signature : <code>AVClass* avfilter_get_class()</code><br>
 	 * <i>native declaration : libavfilter/avfilter.h:866</i>
 	 */
-	public static Pointer<AVClass > avfilter_get_class() {
-		return Pointer.pointerToAddress(avfilter_get_class$2(), AVClass.class);
+	public static Pointer<AVClass > avfilter__get_class() {
+		return Pointer.pointerToAddress(avfilter_get_class(), AVClass.class);
 	}
 	@Ptr 
-	protected native static long avfilter_get_class$2();
+	protected native static long avfilter_get_class();
 	/**
 	 * Allocate a filter graph.<br>
 	 * Original signature : <code>AVFilterGraph* avfilter_graph_alloc()</code><br>
 	 * <i>native declaration : libavfilter/avfilter.h:945</i>
 	 */
-	public static Pointer<AVFilterGraph > avfilter_graph_alloc() {
-		return Pointer.pointerToAddress(avfilter_graph_alloc$2(), AVFilterGraph.class);
+	public static Pointer<AVFilterGraph > avfilter__graph_alloc() {
+		return Pointer.pointerToAddress(avfilter_graph_alloc(), AVFilterGraph.class);
 	}
 	@Ptr 
-	protected native static long avfilter_graph_alloc$2();
+	protected native static long avfilter_graph_alloc();
 	/**
 	 * Create a new filter instance in a filter graph.<br>
 	 * * @param graph graph in which the new filter will be used<br>
@@ -704,11 +704,11 @@ public class AvfilterLibrary {
 	 * Original signature : <code>AVFilterInOut* avfilter_inout_alloc()</code><br>
 	 * <i>native declaration : libavfilter/avfilter.h:1041</i>
 	 */
-	public static Pointer<AVFilterInOut > avfilter_inout_alloc() {
-		return Pointer.pointerToAddress(avfilter_inout_alloc$2(), AVFilterInOut.class);
+	public static Pointer<AVFilterInOut > avfilter__inout_alloc() {
+		return Pointer.pointerToAddress(avfilter_inout_alloc(), AVFilterInOut.class);
 	}
 	@Ptr 
-	protected native static long avfilter_inout_alloc$2();
+	protected native static long avfilter_inout_alloc();
 	/**
 	 * Free the supplied list of AVFilterInOut and set *inout to NULL.<br>
 	 * If *inout is NULL, do nothing.<br>
@@ -1029,22 +1029,22 @@ public class AvfilterLibrary {
 	 * Original signature : <code>AVBufferSinkParams* av_buffersink_params_alloc()</code><br>
 	 * <i>native declaration : libavfilter/buffersink.h:65</i>
 	 */
-	public static Pointer<AVBufferSinkParams > av_buffersink_params_alloc() {
-		return Pointer.pointerToAddress(av_buffersink_params_alloc$2(), AVBufferSinkParams.class);
+	public static Pointer<AVBufferSinkParams > av__buffersink_params_alloc() {
+		return Pointer.pointerToAddress(av_buffersink_params_alloc(), AVBufferSinkParams.class);
 	}
 	@Ptr 
-	protected native static long av_buffersink_params_alloc$2();
+	protected native static long av_buffersink_params_alloc();
 	/**
 	 * Create an AVABufferSinkParams structure.<br>
 	 * * Must be freed with av_free().<br>
 	 * Original signature : <code>AVABufferSinkParams* av_abuffersink_params_alloc()</code><br>
 	 * <i>native declaration : libavfilter/buffersink.h:86</i>
 	 */
-	public static Pointer<AVABufferSinkParams > av_abuffersink_params_alloc() {
-		return Pointer.pointerToAddress(av_abuffersink_params_alloc$2(), AVABufferSinkParams.class);
+	public static Pointer<AVABufferSinkParams > av__abuffersink_params_alloc() {
+		return Pointer.pointerToAddress(av_abuffersink_params_alloc(), AVABufferSinkParams.class);
 	}
 	@Ptr 
-	protected native static long av_abuffersink_params_alloc$2();
+	protected native static long av_abuffersink_params_alloc();
 	/**
 	 * Set the frame size for an audio buffer sink.<br>
 	 * * All calls to av_buffersink_get_buffer_ref will return a buffer with<br>

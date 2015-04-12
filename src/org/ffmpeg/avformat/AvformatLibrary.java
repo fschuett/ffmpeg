@@ -1086,21 +1086,21 @@ public class AvformatLibrary {
 	 * Original signature : <code>char* avformat_configuration()</code><br>
 	 * <i>native declaration : libavformat/avformat.h:1119</i>
 	 */
-	public static Pointer<Byte > avformat_configuration() {
-		return Pointer.pointerToAddress(avformat_configuration$2(), Byte.class);
+	public static Pointer<Byte > avformat__configuration() {
+		return Pointer.pointerToAddress(avformat_configuration(), Byte.class);
 	}
 	@Ptr 
-	protected native static long avformat_configuration$2();
+	protected native static long avformat_configuration();
 	/**
 	 * Return the libavformat license.<br>
 	 * Original signature : <code>char* avformat_license()</code><br>
 	 * <i>native declaration : libavformat/avformat.h:1124</i>
 	 */
-	public static Pointer<Byte > avformat_license() {
-		return Pointer.pointerToAddress(avformat_license$2(), Byte.class);
+	public static Pointer<Byte > avformat__license() {
+		return Pointer.pointerToAddress(avformat_license(), Byte.class);
 	}
 	@Ptr 
-	protected native static long avformat_license$2();
+	protected native static long avformat_license();
 	/**
 	 * Initialize libavformat and register all the muxers, demuxers and<br>
 	 * protocols. If you do not call this function, then you can select<br>
@@ -1196,11 +1196,11 @@ public class AvformatLibrary {
 	 * Original signature : <code>AVClass* avformat_get_class()</code><br>
 	 * <i>native declaration : libavformat/avformat.h:1185</i>
 	 */
-	public static Pointer<AVClass > avformat_get_class() {
-		return Pointer.pointerToAddress(avformat_get_class$2(), AVClass.class);
+	public static Pointer<AVClass > avformat__get_class() {
+		return Pointer.pointerToAddress(avformat_get_class(), AVClass.class);
 	}
 	@Ptr 
-	protected native static long avformat_get_class$2();
+	protected native static long avformat_get_class();
 	/**
 	 * Add a new stream to a media file.<br>
 	 * * When demuxing, it is called by the demuxer in read_header(). If the<br>
@@ -2012,41 +2012,41 @@ public class AvformatLibrary {
 	 * Original signature : <code>AVCodecTag* avformat_get_riff_video_tags()</code><br>
 	 * <i>native declaration : libavformat/avformat.h:1785</i>
 	 */
-	public static Pointer<AVCodecTag > avformat_get_riff_video_tags() {
-		return Pointer.pointerToAddress(avformat_get_riff_video_tags$2(), AVCodecTag.class);
+	public static Pointer<AVCodecTag > avformat__get_riff_video_tags() {
+		return Pointer.pointerToAddress(avformat_get_riff_video_tags(), AVCodecTag.class);
 	}
 	@Ptr 
-	protected native static long avformat_get_riff_video_tags$2();
+	protected native static long avformat_get_riff_video_tags();
 	/**
 	 * @return the table mapping RIFF FourCCs for audio to AVCodecID.<br>
 	 * Original signature : <code>AVCodecTag* avformat_get_riff_audio_tags()</code><br>
 	 * <i>native declaration : libavformat/avformat.h:1790</i>
 	 */
-	public static Pointer<AVCodecTag > avformat_get_riff_audio_tags() {
-		return Pointer.pointerToAddress(avformat_get_riff_audio_tags$2(), AVCodecTag.class);
+	public static Pointer<AVCodecTag > avformat__get_riff_audio_tags() {
+		return Pointer.pointerToAddress(avformat_get_riff_audio_tags(), AVCodecTag.class);
 	}
 	@Ptr 
-	protected native static long avformat_get_riff_audio_tags$2();
+	protected native static long avformat_get_riff_audio_tags();
 	/**
 	 * @return the table mapping MOV FourCCs for video to libavcodec AVCodecID.<br>
 	 * Original signature : <code>AVCodecTag* avformat_get_mov_video_tags()</code><br>
 	 * <i>native declaration : libavformat/avformat.h:1795</i>
 	 */
-	public static Pointer<AVCodecTag > avformat_get_mov_video_tags() {
-		return Pointer.pointerToAddress(avformat_get_mov_video_tags$2(), AVCodecTag.class);
+	public static Pointer<AVCodecTag > avformat__get_mov_video_tags() {
+		return Pointer.pointerToAddress(avformat_get_mov_video_tags(), AVCodecTag.class);
 	}
 	@Ptr 
-	protected native static long avformat_get_mov_video_tags$2();
+	protected native static long avformat_get_mov_video_tags();
 	/**
 	 * @return the table mapping MOV FourCCs for audio to AVCodecID.<br>
 	 * Original signature : <code>AVCodecTag* avformat_get_mov_audio_tags()</code><br>
 	 * <i>native declaration : libavformat/avformat.h:1800</i>
 	 */
-	public static Pointer<AVCodecTag > avformat_get_mov_audio_tags() {
-		return Pointer.pointerToAddress(avformat_get_mov_audio_tags$2(), AVCodecTag.class);
+	public static Pointer<AVCodecTag > avformat__get_mov_audio_tags() {
+		return Pointer.pointerToAddress(avformat_get_mov_audio_tags(), AVCodecTag.class);
 	}
 	@Ptr 
-	protected native static long avformat_get_mov_audio_tags$2();
+	protected native static long avformat_get_mov_audio_tags();
 	/**
 	 * Guess the sample aspect ratio of a frame, based on both the stream and the<br>
 	 * frame aspect ratio.<br>

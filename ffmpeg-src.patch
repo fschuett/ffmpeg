@@ -62,7 +62,7 @@ diff -pruN generated/org/ffmpeg/avcodec/AVCodecContext.java src/org/ffmpeg/avcod
  	}
 diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcodec/AvcodecLibrary.java
 --- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2015-04-12 16:51:06.621544874 +0200
-+++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2015-04-12 16:51:28.362485172 +0200
++++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2015-04-12 17:12:07.151075553 +0200
 @@ -1988,11 +1988,11 @@ public class AvcodecLibrary {
  	};
  	/** <i>native declaration : ./libavcodec/avcodec.h:3566</i> */
@@ -77,6 +77,79 @@ diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcod
  		}
  	};
  	/**
+@@ -2108,21 +2108,21 @@ public class AvcodecLibrary {
+ 	 * Original signature : <code>char* avcodec_configuration()</code><br>
+ 	 * <i>native declaration : ./libavcodec/avcodec.h:2077</i>
+ 	 */
+-	public static Pointer<Byte > avcodec_configuration() {
+-		return Pointer.pointerToAddress(avcodec_configuration$2(), Byte.class);
++	public static Pointer<Byte > avcodec__configuration() {
++		return Pointer.pointerToAddress(avcodec_configuration(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avcodec_configuration$2();
++	protected native static long avcodec_configuration();
+ 	/**
+ 	 * Return the libavcodec license.<br>
+ 	 * Original signature : <code>char* avcodec_license()</code><br>
+ 	 * <i>native declaration : ./libavcodec/avcodec.h:2082</i>
+ 	 */
+-	public static Pointer<Byte > avcodec_license() {
+-		return Pointer.pointerToAddress(avcodec_license$2(), Byte.class);
++	public static Pointer<Byte > avcodec__license() {
++		return Pointer.pointerToAddress(avcodec_license(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avcodec_license$2();
++	protected native static long avcodec_license();
+ 	/**
+ 	 * Register the codec codec and initialize libavcodec.<br>
+ 	 * * @warning either this function or avcodec_register_all() must be called<br>
+@@ -2197,11 +2197,11 @@ public class AvcodecLibrary {
+ 	 * Original signature : <code>AVClass* avcodec_get_class()</code><br>
+ 	 * <i>native declaration : ./libavcodec/avcodec.h:2138</i>
+ 	 */
+-	public static Pointer<AVClass > avcodec_get_class() {
+-		return Pointer.pointerToAddress(avcodec_get_class$2(), AVClass.class);
++	public static Pointer<AVClass > avcodec__get_class() {
++		return Pointer.pointerToAddress(avcodec_get_class(), AVClass.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avcodec_get_class$2();
++	protected native static long avcodec_get_class();
+ 	/**
+ 	 * Get the AVClass for AVFrame. It can be used in combination with<br>
+ 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>
+@@ -2209,11 +2209,11 @@ public class AvcodecLibrary {
+ 	 * Original signature : <code>AVClass* avcodec_get_frame_class()</code><br>
+ 	 * <i>native declaration : ./libavcodec/avcodec.h:2145</i>
+ 	 */
+-	public static Pointer<AVClass > avcodec_get_frame_class() {
+-		return Pointer.pointerToAddress(avcodec_get_frame_class$2(), AVClass.class);
++	public static Pointer<AVClass > avcodec__get_frame_class() {
++		return Pointer.pointerToAddress(avcodec_get_frame_class(), AVClass.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avcodec_get_frame_class$2();
++	protected native static long avcodec_get_frame_class();
+ 	/**
+ 	 * Get the AVClass for AVSubtitleRect. It can be used in combination with<br>
+ 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>
+@@ -2221,11 +2221,11 @@ public class AvcodecLibrary {
+ 	 * Original signature : <code>AVClass* avcodec_get_subtitle_rect_class()</code><br>
+ 	 * <i>native declaration : ./libavcodec/avcodec.h:2152</i>
+ 	 */
+-	public static Pointer<AVClass > avcodec_get_subtitle_rect_class() {
+-		return Pointer.pointerToAddress(avcodec_get_subtitle_rect_class$2(), AVClass.class);
++	public static Pointer<AVClass > avcodec__get_subtitle_rect_class() {
++		return Pointer.pointerToAddress(avcodec_get_subtitle_rect_class(), AVClass.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avcodec_get_subtitle_rect_class$2();
++	protected native static long avcodec_get_subtitle_rect_class();
+ 	/**
+ 	 * Copy the settings of the source AVCodecContext into the destination<br>
+ 	 * AVCodecContext. The resulting destination codec context will be<br>
 @@ -2247,11 +2247,11 @@ public class AvcodecLibrary {
  	 * Original signature : <code>AVFrame* avcodec_alloc_frame()</code><br>
  	 * <i>native declaration : ./libavcodec/avcodec.h:2169</i>
@@ -92,6 +165,50 @@ diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcod
  	/**
  	 * Set the fields of the given AVFrame to default values.<br>
  	 * * @param frame The AVFrame of which the fields should be set to default values.<br>
+@@ -2734,10 +2734,10 @@ public class AvcodecLibrary {
+ 	 * Original signature : <code>AVChromaLocation avcodec_chroma_pos_to_enum(int, int)</code><br>
+ 	 * <i>native declaration : ./libavcodec/avcodec.h:2487</i>
+ 	 */
+-	public static IntValuedEnum<AVChromaLocation > avcodec_chroma_pos_to_enum(int xpos, int ypos) {
+-		return FlagSet.fromValue(avcodec_chroma_pos_to_enum$2(xpos, ypos), AVChromaLocation.class);
++	public static IntValuedEnum<AVChromaLocation > avcodec__chroma_pos_to_enum(int xpos, int ypos) {
++		return FlagSet.fromValue(avcodec_chroma_pos_to_enum(xpos, ypos), AVChromaLocation.class);
+ 	}
+-	protected native static int avcodec_chroma_pos_to_enum$2(int xpos, int ypos);
++	protected native static int avcodec_chroma_pos_to_enum(int xpos, int ypos);
+ 	/**
+ 	 * Wrapper function which calls avcodec_decode_audio4.<br>
+ 	 * * @deprecated Use avcodec_decode_audio4 instead.<br>
+@@ -2934,11 +2934,11 @@ public class AvcodecLibrary {
+ 	 * Original signature : <code>AVCodecParserContext* av_parser_init(int)</code><br>
+ 	 * <i>native declaration : ./libavcodec/avcodec.h:2812</i>
+ 	 */
+-	public static Pointer<AVCodecParserContext > av_parser_init(int codec_id) {
+-		return Pointer.pointerToAddress(av_parser_init$2(codec_id), AVCodecParserContext.class);
++	public static Pointer<AVCodecParserContext > av__parser_init(int codec_id) {
++		return Pointer.pointerToAddress(av_parser_init(codec_id), AVCodecParserContext.class);
+ 	}
+ 	@Ptr 
+-	protected native static long av_parser_init$2(int codec_id);
++	protected native static long av_parser_init(int codec_id);
+ 	/**
+ 	 * Parse a packet.<br>
+ 	 * * @param s             parser context.<br>
+@@ -3196,11 +3196,11 @@ public class AvcodecLibrary {
+ 	 * Original signature : <code>AVResampleContext* av_resample_init(int, int, int, int, int, double)</code><br>
+ 	 * <i>native declaration : ./libavcodec/avcodec.h:3017</i>
+ 	 */
+-	public static Pointer<AvcodecLibrary.AVResampleContext > av_resample_init(int out_rate, int in_rate, int filter_length, int log2_phase_count, int linear, double cutoff) {
+-		return Pointer.pointerToAddress(av_resample_init$2(out_rate, in_rate, filter_length, log2_phase_count, linear, cutoff), AvcodecLibrary.AVResampleContext.class);
++	public static Pointer<AvcodecLibrary.AVResampleContext > av__resample_init(int out_rate, int in_rate, int filter_length, int log2_phase_count, int linear, double cutoff) {
++		return Pointer.pointerToAddress(av_resample_init(out_rate, in_rate, filter_length, log2_phase_count, linear, cutoff), AvcodecLibrary.AVResampleContext.class);
+ 	}
+ 	@Ptr 
+-	protected native static long av_resample_init$2(int out_rate, int in_rate, int filter_length, int log2_phase_count, int linear, double cutoff);
++	protected native static long av_resample_init(int out_rate, int in_rate, int filter_length, int log2_phase_count, int linear, double cutoff);
+ 	/**
+ 	 * Resample an array of samples using a previously configured context.<br>
+ 	 * @param src an array of unconsumed samples<br>
 diff -pruN generated/org/ffmpeg/avcodec/AVCodecParser.java src/org/ffmpeg/avcodec/AVCodecParser.java
 --- generated/org/ffmpeg/avcodec/AVCodecParser.java	2015-04-12 16:51:04.497550706 +0200
 +++ src/org/ffmpeg/avcodec/AVCodecParser.java	2015-04-12 16:51:28.363485169 +0200
@@ -187,6 +304,37 @@ diff -pruN generated/org/ffmpeg/avcodec/AVPacketSideData.java src/org/ffmpeg/avc
  	public AVPacketSideData(Pointer pointer) {
  		super(pointer);
  	}
+diff -pruN generated/org/ffmpeg/avdevice/AvdeviceLibrary.java src/org/ffmpeg/avdevice/AvdeviceLibrary.java
+--- generated/org/ffmpeg/avdevice/AvdeviceLibrary.java	2015-04-12 16:51:08.678539226 +0200
++++ src/org/ffmpeg/avdevice/AvdeviceLibrary.java	2015-04-12 17:13:29.382854184 +0200
+@@ -223,21 +223,21 @@ public class AvdeviceLibrary {
+ 	 * Original signature : <code>char* avdevice_configuration()</code><br>
+ 	 * <i>native declaration : libavdevice/avdevice.h:9</i>
+ 	 */
+-	public static Pointer<Byte > avdevice_configuration() {
+-		return Pointer.pointerToAddress(avdevice_configuration$2(), Byte.class);
++	public static Pointer<Byte > avdevice__configuration() {
++		return Pointer.pointerToAddress(avdevice_configuration(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avdevice_configuration$2();
++	protected native static long avdevice_configuration();
+ 	/**
+ 	 * Return the libavdevice license.<br>
+ 	 * Original signature : <code>char* avdevice_license()</code><br>
+ 	 * <i>native declaration : libavdevice/avdevice.h:14</i>
+ 	 */
+-	public static Pointer<Byte > avdevice_license() {
+-		return Pointer.pointerToAddress(avdevice_license$2(), Byte.class);
++	public static Pointer<Byte > avdevice__license() {
++		return Pointer.pointerToAddress(avdevice_license(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avdevice_license$2();
++	protected native static long avdevice_license();
+ 	/**
+ 	 * Initialize libavdevice and register all the input and output devices.<br>
+ 	 * @warning This function is not thread safe.<br>
 diff -pruN generated/org/ffmpeg/avfilter/AVFilter.java src/org/ffmpeg/avfilter/AVFilter.java
 --- generated/org/ffmpeg/avfilter/AVFilter.java	2015-04-12 16:51:08.998538347 +0200
 +++ src/org/ffmpeg/avfilter/AVFilter.java	2015-04-12 16:53:21.734173756 +0200
@@ -204,6 +352,109 @@ diff -pruN generated/org/ffmpeg/avfilter/AVFilter.java src/org/ffmpeg/avfilter/A
  		}
  	};
  	/** <i>native declaration : libavfilter/avfilter.h:453</i> */
+diff -pruN generated/org/ffmpeg/avfilter/AvfilterLibrary.java src/org/ffmpeg/avfilter/AvfilterLibrary.java
+--- generated/org/ffmpeg/avfilter/AvfilterLibrary.java	2015-04-12 16:51:09.425537174 +0200
++++ src/org/ffmpeg/avfilter/AvfilterLibrary.java	2015-04-12 17:15:22.088550601 +0200
+@@ -174,21 +174,21 @@ public class AvfilterLibrary {
+ 	 * Original signature : <code>char* avfilter_configuration()</code><br>
+ 	 * <i>native declaration : libavfilter/avfilter.h:9</i>
+ 	 */
+-	public static Pointer<Byte > avfilter_configuration() {
+-		return Pointer.pointerToAddress(avfilter_configuration$2(), Byte.class);
++	public static Pointer<Byte > avfilter__configuration() {
++		return Pointer.pointerToAddress(avfilter_configuration(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avfilter_configuration$2();
++	protected native static long avfilter_configuration();
+ 	/**
+ 	 * Return the libavfilter license.<br>
+ 	 * Original signature : <code>char* avfilter_license()</code><br>
+ 	 * <i>native declaration : libavfilter/avfilter.h:14</i>
+ 	 */
+-	public static Pointer<Byte > avfilter_license() {
+-		return Pointer.pointerToAddress(avfilter_license$2(), Byte.class);
++	public static Pointer<Byte > avfilter__license() {
++		return Pointer.pointerToAddress(avfilter_license(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avfilter_license$2();
++	protected native static long avfilter_license();
+ 	/**
+ 	 * Copy properties of src to dst, without copying the actual data<br>
+ 	 * Original signature : <code>void avfilter_copy_buffer_ref_props(AVFilterBufferRef*, const AVFilterBufferRef*)</code><br>
+@@ -585,21 +585,21 @@ public class AvfilterLibrary {
+ 	 * Original signature : <code>AVClass* avfilter_get_class()</code><br>
+ 	 * <i>native declaration : libavfilter/avfilter.h:866</i>
+ 	 */
+-	public static Pointer<AVClass > avfilter_get_class() {
+-		return Pointer.pointerToAddress(avfilter_get_class$2(), AVClass.class);
++	public static Pointer<AVClass > avfilter__get_class() {
++		return Pointer.pointerToAddress(avfilter_get_class(), AVClass.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avfilter_get_class$2();
++	protected native static long avfilter_get_class();
+ 	/**
+ 	 * Allocate a filter graph.<br>
+ 	 * Original signature : <code>AVFilterGraph* avfilter_graph_alloc()</code><br>
+ 	 * <i>native declaration : libavfilter/avfilter.h:945</i>
+ 	 */
+-	public static Pointer<AVFilterGraph > avfilter_graph_alloc() {
+-		return Pointer.pointerToAddress(avfilter_graph_alloc$2(), AVFilterGraph.class);
++	public static Pointer<AVFilterGraph > avfilter__graph_alloc() {
++		return Pointer.pointerToAddress(avfilter_graph_alloc(), AVFilterGraph.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avfilter_graph_alloc$2();
++	protected native static long avfilter_graph_alloc();
+ 	/**
+ 	 * Create a new filter instance in a filter graph.<br>
+ 	 * * @param graph graph in which the new filter will be used<br>
+@@ -704,11 +704,11 @@ public class AvfilterLibrary {
+ 	 * Original signature : <code>AVFilterInOut* avfilter_inout_alloc()</code><br>
+ 	 * <i>native declaration : libavfilter/avfilter.h:1041</i>
+ 	 */
+-	public static Pointer<AVFilterInOut > avfilter_inout_alloc() {
+-		return Pointer.pointerToAddress(avfilter_inout_alloc$2(), AVFilterInOut.class);
++	public static Pointer<AVFilterInOut > avfilter__inout_alloc() {
++		return Pointer.pointerToAddress(avfilter_inout_alloc(), AVFilterInOut.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avfilter_inout_alloc$2();
++	protected native static long avfilter_inout_alloc();
+ 	/**
+ 	 * Free the supplied list of AVFilterInOut and set *inout to NULL.<br>
+ 	 * If *inout is NULL, do nothing.<br>
+@@ -1029,22 +1029,22 @@ public class AvfilterLibrary {
+ 	 * Original signature : <code>AVBufferSinkParams* av_buffersink_params_alloc()</code><br>
+ 	 * <i>native declaration : libavfilter/buffersink.h:65</i>
+ 	 */
+-	public static Pointer<AVBufferSinkParams > av_buffersink_params_alloc() {
+-		return Pointer.pointerToAddress(av_buffersink_params_alloc$2(), AVBufferSinkParams.class);
++	public static Pointer<AVBufferSinkParams > av__buffersink_params_alloc() {
++		return Pointer.pointerToAddress(av_buffersink_params_alloc(), AVBufferSinkParams.class);
+ 	}
+ 	@Ptr 
+-	protected native static long av_buffersink_params_alloc$2();
++	protected native static long av_buffersink_params_alloc();
+ 	/**
+ 	 * Create an AVABufferSinkParams structure.<br>
+ 	 * * Must be freed with av_free().<br>
+ 	 * Original signature : <code>AVABufferSinkParams* av_abuffersink_params_alloc()</code><br>
+ 	 * <i>native declaration : libavfilter/buffersink.h:86</i>
+ 	 */
+-	public static Pointer<AVABufferSinkParams > av_abuffersink_params_alloc() {
+-		return Pointer.pointerToAddress(av_abuffersink_params_alloc$2(), AVABufferSinkParams.class);
++	public static Pointer<AVABufferSinkParams > av__abuffersink_params_alloc() {
++		return Pointer.pointerToAddress(av_abuffersink_params_alloc(), AVABufferSinkParams.class);
+ 	}
+ 	@Ptr 
+-	protected native static long av_abuffersink_params_alloc$2();
++	protected native static long av_abuffersink_params_alloc();
+ 	/**
+ 	 * Set the frame size for an audio buffer sink.<br>
+ 	 * * All calls to av_buffersink_get_buffer_ref will return a buffer with<br>
 diff -pruN generated/org/ffmpeg/avformat/AVFormatContext.java src/org/ffmpeg/avformat/AVFormatContext.java
 --- generated/org/ffmpeg/avformat/AVFormatContext.java	2015-04-12 16:51:07.259543122 +0200
 +++ src/org/ffmpeg/avformat/AVFormatContext.java	2015-04-12 16:51:28.364485166 +0200
@@ -236,7 +487,35 @@ diff -pruN generated/org/ffmpeg/avformat/AVFormatContext.java src/org/ffmpeg/avf
  	}
 diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avformat/AvformatLibrary.java
 --- generated/org/ffmpeg/avformat/AvformatLibrary.java	2015-04-12 16:51:08.476539780 +0200
-+++ src/org/ffmpeg/avformat/AvformatLibrary.java	2015-04-12 16:51:28.365485164 +0200
++++ src/org/ffmpeg/avformat/AvformatLibrary.java	2015-04-12 17:13:09.325908188 +0200
+@@ -1086,21 +1086,21 @@ public class AvformatLibrary {
+ 	 * Original signature : <code>char* avformat_configuration()</code><br>
+ 	 * <i>native declaration : libavformat/avformat.h:1119</i>
+ 	 */
+-	public static Pointer<Byte > avformat_configuration() {
+-		return Pointer.pointerToAddress(avformat_configuration$2(), Byte.class);
++	public static Pointer<Byte > avformat__configuration() {
++		return Pointer.pointerToAddress(avformat_configuration(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avformat_configuration$2();
++	protected native static long avformat_configuration();
+ 	/**
+ 	 * Return the libavformat license.<br>
+ 	 * Original signature : <code>char* avformat_license()</code><br>
+ 	 * <i>native declaration : libavformat/avformat.h:1124</i>
+ 	 */
+-	public static Pointer<Byte > avformat_license() {
+-		return Pointer.pointerToAddress(avformat_license$2(), Byte.class);
++	public static Pointer<Byte > avformat__license() {
++		return Pointer.pointerToAddress(avformat_license(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avformat_license$2();
++	protected native static long avformat_license();
+ 	/**
+ 	 * Initialize libavformat and register all the muxers, demuxers and<br>
+ 	 * protocols. If you do not call this function, then you can select<br>
 @@ -1174,11 +1174,11 @@ public class AvformatLibrary {
  	 * Original signature : <code>AVFormatContext* avformat_alloc_context()</code><br>
  	 * <i>native declaration : libavformat/avformat.h:1172</i>
@@ -252,6 +531,75 @@ diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avf
  	/**
  	 * Free an AVFormatContext and all its streams.<br>
  	 * @param s context to free<br>
+@@ -1196,11 +1196,11 @@ public class AvformatLibrary {
+ 	 * Original signature : <code>AVClass* avformat_get_class()</code><br>
+ 	 * <i>native declaration : libavformat/avformat.h:1185</i>
+ 	 */
+-	public static Pointer<AVClass > avformat_get_class() {
+-		return Pointer.pointerToAddress(avformat_get_class$2(), AVClass.class);
++	public static Pointer<AVClass > avformat__get_class() {
++		return Pointer.pointerToAddress(avformat_get_class(), AVClass.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avformat_get_class$2();
++	protected native static long avformat_get_class();
+ 	/**
+ 	 * Add a new stream to a media file.<br>
+ 	 * * When demuxing, it is called by the demuxer in read_header(). If the<br>
+@@ -2012,41 +2012,41 @@ public class AvformatLibrary {
+ 	 * Original signature : <code>AVCodecTag* avformat_get_riff_video_tags()</code><br>
+ 	 * <i>native declaration : libavformat/avformat.h:1785</i>
+ 	 */
+-	public static Pointer<AVCodecTag > avformat_get_riff_video_tags() {
+-		return Pointer.pointerToAddress(avformat_get_riff_video_tags$2(), AVCodecTag.class);
++	public static Pointer<AVCodecTag > avformat__get_riff_video_tags() {
++		return Pointer.pointerToAddress(avformat_get_riff_video_tags(), AVCodecTag.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avformat_get_riff_video_tags$2();
++	protected native static long avformat_get_riff_video_tags();
+ 	/**
+ 	 * @return the table mapping RIFF FourCCs for audio to AVCodecID.<br>
+ 	 * Original signature : <code>AVCodecTag* avformat_get_riff_audio_tags()</code><br>
+ 	 * <i>native declaration : libavformat/avformat.h:1790</i>
+ 	 */
+-	public static Pointer<AVCodecTag > avformat_get_riff_audio_tags() {
+-		return Pointer.pointerToAddress(avformat_get_riff_audio_tags$2(), AVCodecTag.class);
++	public static Pointer<AVCodecTag > avformat__get_riff_audio_tags() {
++		return Pointer.pointerToAddress(avformat_get_riff_audio_tags(), AVCodecTag.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avformat_get_riff_audio_tags$2();
++	protected native static long avformat_get_riff_audio_tags();
+ 	/**
+ 	 * @return the table mapping MOV FourCCs for video to libavcodec AVCodecID.<br>
+ 	 * Original signature : <code>AVCodecTag* avformat_get_mov_video_tags()</code><br>
+ 	 * <i>native declaration : libavformat/avformat.h:1795</i>
+ 	 */
+-	public static Pointer<AVCodecTag > avformat_get_mov_video_tags() {
+-		return Pointer.pointerToAddress(avformat_get_mov_video_tags$2(), AVCodecTag.class);
++	public static Pointer<AVCodecTag > avformat__get_mov_video_tags() {
++		return Pointer.pointerToAddress(avformat_get_mov_video_tags(), AVCodecTag.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avformat_get_mov_video_tags$2();
++	protected native static long avformat_get_mov_video_tags();
+ 	/**
+ 	 * @return the table mapping MOV FourCCs for audio to AVCodecID.<br>
+ 	 * Original signature : <code>AVCodecTag* avformat_get_mov_audio_tags()</code><br>
+ 	 * <i>native declaration : libavformat/avformat.h:1800</i>
+ 	 */
+-	public static Pointer<AVCodecTag > avformat_get_mov_audio_tags() {
+-		return Pointer.pointerToAddress(avformat_get_mov_audio_tags$2(), AVCodecTag.class);
++	public static Pointer<AVCodecTag > avformat__get_mov_audio_tags() {
++		return Pointer.pointerToAddress(avformat_get_mov_audio_tags(), AVCodecTag.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avformat_get_mov_audio_tags$2();
++	protected native static long avformat_get_mov_audio_tags();
+ 	/**
+ 	 * Guess the sample aspect ratio of a frame, based on both the stream and the<br>
+ 	 * frame aspect ratio.<br>
 diff -pruN generated/org/ffmpeg/avformat/AVOutputFormat.java src/org/ffmpeg/avformat/AVOutputFormat.java
 --- generated/org/ffmpeg/avformat/AVOutputFormat.java	2015-04-12 16:51:06.864544207 +0200
 +++ src/org/ffmpeg/avformat/AVOutputFormat.java	2015-04-12 16:51:28.366485161 +0200
@@ -300,6 +648,66 @@ diff -pruN generated/org/ffmpeg/avformat/AVStream.java src/org/ffmpeg/avformat/A
  	public AVStream(Pointer pointer) {
  		super(pointer);
  	}
+diff -pruN generated/org/ffmpeg/avresample/AvresampleLibrary.java src/org/ffmpeg/avresample/AvresampleLibrary.java
+--- generated/org/ffmpeg/avresample/AvresampleLibrary.java	2015-04-12 16:51:08.762538995 +0200
++++ src/org/ffmpeg/avresample/AvresampleLibrary.java	2015-04-12 17:13:58.311776281 +0200
+@@ -150,21 +150,21 @@ public class AvresampleLibrary {
+ 	 * Original signature : <code>char* avresample_configuration()</code><br>
+ 	 * <i>native declaration : libavresample/avresample.h:32</i>
+ 	 */
+-	public static Pointer<Byte > avresample_configuration() {
+-		return Pointer.pointerToAddress(avresample_configuration$2(), Byte.class);
++	public static Pointer<Byte > avresample__configuration() {
++		return Pointer.pointerToAddress(avresample_configuration(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avresample_configuration$2();
++	protected native static long avresample_configuration();
+ 	/**
+ 	 * Return the libavresample license.<br>
+ 	 * Original signature : <code>char* avresample_license()</code><br>
+ 	 * <i>native declaration : libavresample/avresample.h:37</i>
+ 	 */
+-	public static Pointer<Byte > avresample_license() {
+-		return Pointer.pointerToAddress(avresample_license$2(), Byte.class);
++	public static Pointer<Byte > avresample__license() {
++		return Pointer.pointerToAddress(avresample_license(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avresample_license$2();
++	protected native static long avresample_license();
+ 	/**
+ 	 * Get the AVClass for AVAudioResampleContext.<br>
+ 	 * * Can be used in combination with AV_OPT_SEARCH_FAKE_OBJ for examining options<br>
+@@ -174,22 +174,22 @@ public class AvresampleLibrary {
+ 	 * Original signature : <code>AVClass* avresample_get_class()</code><br>
+ 	 * <i>native declaration : libavresample/avresample.h:46</i>
+ 	 */
+-	public static Pointer<AVClass > avresample_get_class() {
+-		return Pointer.pointerToAddress(avresample_get_class$2(), AVClass.class);
++	public static Pointer<AVClass > avresample__get_class() {
++		return Pointer.pointerToAddress(avresample_get_class(), AVClass.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avresample_get_class$2();
++	protected native static long avresample_get_class();
+ 	/**
+ 	 * Allocate AVAudioResampleContext and set options.<br>
+ 	 * * @return  allocated audio resample context, or NULL on failure<br>
+ 	 * Original signature : <code>AVAudioResampleContext* avresample_alloc_context()</code><br>
+ 	 * <i>native declaration : libavresample/avresample.h:52</i>
+ 	 */
+-	public static Pointer<AvresampleLibrary.AVAudioResampleContext > avresample_alloc_context() {
+-		return Pointer.pointerToAddress(avresample_alloc_context$2(), AvresampleLibrary.AVAudioResampleContext.class);
++	public static Pointer<AvresampleLibrary.AVAudioResampleContext > avresample__alloc_context() {
++		return Pointer.pointerToAddress(avresample_alloc_context(), AvresampleLibrary.AVAudioResampleContext.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avresample_alloc_context$2();
++	protected native static long avresample_alloc_context();
+ 	/**
+ 	 * Initialize AVAudioResampleContext.<br>
+ 	 * @note The context must be configured using the AVOption API.<br>
 diff -pruN generated/org/ffmpeg/avutil/AVClass.java src/org/ffmpeg/avutil/AVClass.java
 --- generated/org/ffmpeg/avutil/AVClass.java	2015-04-12 16:51:00.316562187 +0200
 +++ src/org/ffmpeg/avutil/AVClass.java	2015-04-12 16:51:28.367485158 +0200
@@ -471,7 +879,24 @@ diff -pruN generated/org/ffmpeg/avutil/AVUtil.java src/org/ffmpeg/avutil/AVUtil.
 +}
 diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/AvutilLibrary.java
 --- generated/org/ffmpeg/avutil/AvutilLibrary.java	2015-04-12 16:51:02.374556536 +0200
-+++ src/org/ffmpeg/avutil/AvutilLibrary.java	2015-04-12 16:51:28.370485150 +0200
++++ src/org/ffmpeg/avutil/AvutilLibrary.java	2015-04-12 17:16:17.673400755 +0200
+@@ -1677,12 +1677,12 @@ public class AvutilLibrary {
+ 	};
+ 	/** <i>native declaration : libavutil/buffer.h:145</i> */
+ 	public static abstract class av_buffer_pool_init_alloc_callback extends Callback<av_buffer_pool_init_alloc_callback > {
+-		public Pointer<AVBufferRef > apply(int size) {
+-			return Pointer.pointerToAddress(apply$2(size), AVBufferRef.class);
++		public Pointer<AVBufferRef > _apply(int size) {
++			return Pointer.pointerToAddress(apply(size), AVBufferRef.class);
+ 		}
+ 		@Ptr 
+-		public long apply$2(int size) {
+-			return Pointer.getPeer(apply(size));
++		public long apply(int size) {
++			return Pointer.getPeer(_apply(size));
+ 		}
+ 	};
+ 	/**
 @@ -1696,21 +1696,21 @@ public class AvutilLibrary {
  	 * Original signature : <code>char* avutil_configuration()</code><br>
  	 * <i>native declaration : libavutil/avutil.h:9</i>
@@ -515,6 +940,36 @@ diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/
  	/**
  	 * Allocate or reallocate a block of memory.<br>
  	 * If ptr is NULL and size > 0, allocate a new block. If<br>
+@@ -1910,11 +1910,11 @@ public class AvutilLibrary {
+ 	 * Original signature : <code>void* av_mallocz(size_t)</code><br>
+ 	 * <i>native declaration : libavutil/mem.h:130</i>
+ 	 */
+-	public static Pointer<? > av_mallocz(@Ptr long size) {
+-		return Pointer.pointerToAddress(av_mallocz$2(size));
++	public static Pointer<? > av__mallocz(@Ptr long size) {
++		return Pointer.pointerToAddress(av_mallocz(size));
+ 	}
+ 	@Ptr 
+-	protected native static long av_mallocz$2(@Ptr long size);
++	protected native static long av_mallocz(@Ptr long size);
+ 	/**
+ 	 * Allocate a block of nmemb * size bytes with alignment suitable for all<br>
+ 	 * memory accesses (including vectors if available on the CPU) and<br>
+@@ -1927,11 +1927,11 @@ public class AvutilLibrary {
+ 	 * Original signature : <code>void* av_calloc(size_t, size_t)</code><br>
+ 	 * <i>native declaration : libavutil/mem.h:142</i>
+ 	 */
+-	public static Pointer<? > av_calloc(@Ptr long nmemb, @Ptr long size) {
+-		return Pointer.pointerToAddress(av_calloc$2(nmemb, size));
++	public static Pointer<? > av__calloc(@Ptr long nmemb, @Ptr long size) {
++		return Pointer.pointerToAddress(av_calloc(nmemb, size));
+ 	}
+ 	@Ptr 
+-	protected native static long av_calloc$2(@Ptr long nmemb, @Ptr long size);
++	protected native static long av_calloc(@Ptr long nmemb, @Ptr long size);
+ 	/**
+ 	 * Duplicate the string s.<br>
+ 	 * @param s string to be duplicated<br>
 @@ -2384,10 +2384,10 @@ public class AvutilLibrary {
  	 * Original signature : <code>void av_log_format_line(void*, int, const char*, va_list, char*, int, int*)</code><br>
  	 * <i>native declaration : libavutil/log.h:172</i>
@@ -529,6 +984,80 @@ diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/
  	/**
  	 * Original signature : <code>void av_log_set_flags(int)</code><br>
  	 * <i>native declaration : libavutil/log.h:174</i>
+@@ -2556,22 +2556,22 @@ public class AvutilLibrary {
+ 	 * Original signature : <code>AVBufferRef* av_buffer_alloc(int)</code><br>
+ 	 * <i>native declaration : libavutil/buffer.h:28</i>
+ 	 */
+-	public static Pointer<AVBufferRef > av_buffer_alloc(int size) {
+-		return Pointer.pointerToAddress(av_buffer_alloc$2(size), AVBufferRef.class);
++	public static Pointer<AVBufferRef > av__buffer_alloc(int size) {
++		return Pointer.pointerToAddress(av_buffer_alloc(size), AVBufferRef.class);
+ 	}
+ 	@Ptr 
+-	protected native static long av_buffer_alloc$2(int size);
++	protected native static long av_buffer_alloc(int size);
+ 	/**
+ 	 * Same as av_buffer_alloc(), except the returned buffer will be initialized<br>
+ 	 * to zero.<br>
+ 	 * Original signature : <code>AVBufferRef* av_buffer_allocz(int)</code><br>
+ 	 * <i>native declaration : libavutil/buffer.h:34</i>
+ 	 */
+-	public static Pointer<AVBufferRef > av_buffer_allocz(int size) {
+-		return Pointer.pointerToAddress(av_buffer_allocz$2(size), AVBufferRef.class);
++	public static Pointer<AVBufferRef > av__buffer_allocz(int size) {
++		return Pointer.pointerToAddress(av_buffer_allocz(size), AVBufferRef.class);
+ 	}
+ 	@Ptr 
+-	protected native static long av_buffer_allocz$2(int size);
++	protected native static long av_buffer_allocz(int size);
+ 	/**
+ 	 * Create an AVBuffer from an existing array.<br>
+ 	 * * If this function is successful, data is owned by the AVBuffer. The caller may<br>
+@@ -3169,11 +3169,11 @@ public class AvutilLibrary {
+ 	 * Original signature : <code>AVFrame* av_frame_alloc()</code><br>
+ 	 * <i>native declaration : libavutil/frame.h:441</i>
+ 	 */
+-	public static Pointer<AVFrame > av_frame_alloc() {
+-		return Pointer.pointerToAddress(av_frame_alloc$2(), AVFrame.class);
++	public static Pointer<AVFrame > av__frame_alloc() {
++		return Pointer.pointerToAddress(av_frame_alloc(), AVFrame.class);
+ 	}
+ 	@Ptr 
+-	protected native static long av_frame_alloc$2();
++	protected native static long av_frame_alloc();
+ 	/**
+ 	 * Free the frame and any dynamically allocated objects in it,<br>
+ 	 * e.g. extended_data. If the frame is reference counted, it will be<br>
+@@ -4692,11 +4692,11 @@ public class AvutilLibrary {
+ 	 * Original signature : <code>char* av_get_channel_name(uint64_t)</code><br>
+ 	 * <i>native declaration : ./libavutil/channel_layout.h:74</i>
+ 	 */
+-	public static Pointer<Byte > av_get_channel_name(long channel) {
+-		return Pointer.pointerToAddress(av_get_channel_name$2(channel), Byte.class);
++	public static Pointer<Byte > av__get_channel_name(long channel) {
++		return Pointer.pointerToAddress(av_get_channel_name(channel), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long av_get_channel_name$2(long channel);
++	protected native static long av_get_channel_name(long channel);
+ 	/**
+ 	 * Get the description of a given channel.<br>
+ 	 * * @param channel  a channel layout with a single channel<br>
+@@ -4704,11 +4704,11 @@ public class AvutilLibrary {
+ 	 * Original signature : <code>char* av_get_channel_description(uint64_t)</code><br>
+ 	 * <i>native declaration : ./libavutil/channel_layout.h:81</i>
+ 	 */
+-	public static Pointer<Byte > av_get_channel_description(long channel) {
+-		return Pointer.pointerToAddress(av_get_channel_description$2(channel), Byte.class);
++	public static Pointer<Byte > av__get_channel_description(long channel) {
++		return Pointer.pointerToAddress(av_get_channel_description(channel), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long av_get_channel_description$2(long channel);
++	protected native static long av_get_channel_description(long channel);
+ 	/**
+ 	 * Get the value and name of a standard channel layout.<br>
+ 	 * * @param[in]  index   index in an internal list, starting at 0<br>
 diff -pruN generated/org/ffmpeg/FFMPeg.java src/org/ffmpeg/FFMPeg.java
 --- generated/org/ffmpeg/FFMPeg.java	1970-01-01 01:00:00.000000000 +0100
 +++ src/org/ffmpeg/FFMPeg.java	2015-04-12 16:51:28.379485125 +0200
@@ -560,9 +1089,117 @@ diff -pruN generated/org/ffmpeg/FFMPeg.java src/org/ffmpeg/FFMPeg.java
 +	}
 +	
 +}
+diff -pruN generated/org/ffmpeg/postproc/PostprocLibrary.java src/org/ffmpeg/postproc/PostprocLibrary.java
+--- generated/org/ffmpeg/postproc/PostprocLibrary.java	2015-04-12 16:51:00.120562725 +0200
++++ src/org/ffmpeg/postproc/PostprocLibrary.java	2015-04-12 17:08:59.301593129 +0200
+@@ -80,21 +80,21 @@ public class PostprocLibrary {
+ 	 * Original signature : <code>char* postproc_configuration()</code><br>
+ 	 * <i>native declaration : libpostproc/postprocess.h:9</i>
+ 	 */
+-	public static Pointer<Byte > postproc_configuration() {
+-		return Pointer.pointerToAddress(postproc_configuration$2(), Byte.class);
++	public static Pointer<Byte > postproc__configuration() {
++		return Pointer.pointerToAddress(postproc_configuration(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long postproc_configuration$2();
++	protected native static long postproc_configuration();
+ 	/**
+ 	 * Return the libpostproc license.<br>
+ 	 * Original signature : <code>char* postproc_license()</code><br>
+ 	 * <i>native declaration : libpostproc/postprocess.h:14</i>
+ 	 */
+-	public static Pointer<Byte > postproc_license() {
+-		return Pointer.pointerToAddress(postproc_license$2(), Byte.class);
++	public static Pointer<Byte > postproc__license() {
++		return Pointer.pointerToAddress(postproc_license(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long postproc_license$2();
++	protected native static long postproc_license();
+ 	/**
+ 	 * Original signature : <code>void pp_postprocess(const uint8_t*[3], const int[3], uint8_t*[3], const int[3], int, int, const int8_t*, int, pp_mode*, pp_context*, int)</code><br>
+ 	 * <i>native declaration : libpostproc/postprocess.h:5</i>
+@@ -127,11 +127,11 @@ public class PostprocLibrary {
+ 	 * Original signature : <code>pp_context* pp_get_context(int, int, int)</code><br>
+ 	 * <i>native declaration : libpostproc/postprocess.h:16</i>
+ 	 */
+-	public static Pointer<? > pp_get_context(int width, int height, int flags) {
+-		return Pointer.pointerToAddress(pp_get_context$2(width, height, flags));
++	public static Pointer<? > pp__get_context(int width, int height, int flags) {
++		return Pointer.pointerToAddress(pp_get_context(width, height, flags));
+ 	}
+ 	@Ptr 
+-	protected native static long pp_get_context$2(int width, int height, int flags);
++	protected native static long pp_get_context(int width, int height, int flags);
+ 	/**
+ 	 * Original signature : <code>void pp_free_context(pp_context*)</code><br>
+ 	 * <i>native declaration : libpostproc/postprocess.h:18</i>
+diff -pruN generated/org/ffmpeg/swresample/SwresampleLibrary.java src/org/ffmpeg/swresample/SwresampleLibrary.java
+--- generated/org/ffmpeg/swresample/SwresampleLibrary.java	2015-04-12 16:51:08.842538775 +0200
++++ src/org/ffmpeg/swresample/SwresampleLibrary.java	2015-04-12 17:14:36.414673652 +0200
+@@ -146,11 +146,11 @@ public class SwresampleLibrary {
+ 	 * Original signature : <code>AVClass* swr_get_class()</code><br>
+ 	 * <i>native declaration : libswresample/swresample.h:45</i>
+ 	 */
+-	public static Pointer<AVClass > swr_get_class() {
+-		return Pointer.pointerToAddress(swr_get_class$2(), AVClass.class);
++	public static Pointer<AVClass > swr__get_class() {
++		return Pointer.pointerToAddress(swr_get_class(), AVClass.class);
+ 	}
+ 	@Ptr 
+-	protected native static long swr_get_class$2();
++	protected native static long swr_get_class();
+ 	/**
+ 	 * Allocate SwrContext.<br>
+ 	 * * If you use this function you will need to set the parameters (manually or<br>
+@@ -160,11 +160,11 @@ public class SwresampleLibrary {
+ 	 * Original signature : <code>SwrContext* swr_alloc()</code><br>
+ 	 * <i>native declaration : libswresample/swresample.h:54</i>
+ 	 */
+-	public static Pointer<SwresampleLibrary.SwrContext > swr_alloc() {
+-		return Pointer.pointerToAddress(swr_alloc$2(), SwresampleLibrary.SwrContext.class);
++	public static Pointer<SwresampleLibrary.SwrContext > swr__alloc() {
++		return Pointer.pointerToAddress(swr_alloc(), SwresampleLibrary.SwrContext.class);
+ 	}
+ 	@Ptr 
+-	protected native static long swr_alloc$2();
++	protected native static long swr_alloc();
+ 	/**
+ 	 * Initialize context after user parameters have been set.<br>
+ 	 * @note The context must be configured using the AVOption API.<br>
+@@ -399,22 +399,22 @@ public class SwresampleLibrary {
+ 	 * Original signature : <code>char* swresample_configuration()</code><br>
+ 	 * <i>native declaration : libswresample/swresample.h:234</i>
+ 	 */
+-	public static Pointer<Byte > swresample_configuration() {
+-		return Pointer.pointerToAddress(swresample_configuration$2(), Byte.class);
++	public static Pointer<Byte > swresample__configuration() {
++		return Pointer.pointerToAddress(swresample_configuration(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long swresample_configuration$2();
++	protected native static long swresample_configuration();
+ 	/**
+ 	 * Return the swr license.<br>
+ 	 * * @returns     the license of libswresample, determined at build-time<br>
+ 	 * Original signature : <code>char* swresample_license()</code><br>
+ 	 * <i>native declaration : libswresample/swresample.h:240</i>
+ 	 */
+-	public static Pointer<Byte > swresample_license() {
+-		return Pointer.pointerToAddress(swresample_license$2(), Byte.class);
++	public static Pointer<Byte > swresample__license() {
++		return Pointer.pointerToAddress(swresample_license(), Byte.class);
+ 	}
+ 	@Ptr 
+-	protected native static long swresample_license$2();
++	protected native static long swresample_license();
+ 	/**
+ 	 * Convert the samples in the input AVFrame and write them to the output AVFrame.<br>
+ 	 * * Input and output AVFrames must have channel_layout, sample_rate and format set.<br>
 diff -pruN generated/org/ffmpeg/swscale/SwscaleLibrary.java src/org/ffmpeg/swscale/SwscaleLibrary.java
 --- generated/org/ffmpeg/swscale/SwscaleLibrary.java	2015-04-12 16:51:00.066562873 +0200
-+++ src/org/ffmpeg/swscale/SwscaleLibrary.java	2015-04-12 16:51:28.380485122 +0200
++++ src/org/ffmpeg/swscale/SwscaleLibrary.java	2015-04-12 17:08:21.212698133 +0200
 @@ -134,21 +134,21 @@ public class SwscaleLibrary {
  	 * Original signature : <code>char* swscale_configuration()</code><br>
  	 * <i>native declaration : libswscale/swscale.h:11</i>
@@ -606,6 +1243,108 @@ diff -pruN generated/org/ffmpeg/swscale/SwscaleLibrary.java src/org/ffmpeg/swsca
  	/**
  	 * Return a positive value if pix_fmt is a supported input format, 0<br>
  	 * otherwise.<br>
+@@ -200,11 +200,11 @@ public class SwscaleLibrary {
+ 	 * Original signature : <code>SwsContext* sws_alloc_context()</code><br>
+ 	 * <i>native declaration : libswscale/swscale.h:65</i>
+ 	 */
+-	public static Pointer<SwscaleLibrary.SwsContext > sws_alloc_context() {
+-		return Pointer.pointerToAddress(sws_alloc_context$2(), SwscaleLibrary.SwsContext.class);
++	public static Pointer<SwscaleLibrary.SwsContext > sws__alloc_context() {
++		return Pointer.pointerToAddress(sws_alloc_context(), SwscaleLibrary.SwsContext.class);
+ 	}
+ 	@Ptr 
+-	protected native static long sws_alloc_context$2();
++	protected native static long sws_alloc_context();
+ 	/**
+ 	 * Initialize the swscaler context sws_context.<br>
+ 	 * * @return zero or positive value on success, a negative value on<br>
+@@ -307,44 +307,44 @@ public class SwscaleLibrary {
+ 	 * Original signature : <code>SwsVector* sws_allocVec(int)</code><br>
+ 	 * <i>native declaration : libswscale/swscale.h:142</i>
+ 	 */
+-	public static Pointer<SwsVector > sws_allocVec(int length) {
+-		return Pointer.pointerToAddress(sws_allocVec$2(length), SwsVector.class);
++	public static Pointer<SwsVector > sws__allocVec(int length) {
++		return Pointer.pointerToAddress(sws_allocVec(length), SwsVector.class);
+ 	}
+ 	@Ptr 
+-	protected native static long sws_allocVec$2(int length);
++	protected native static long sws_allocVec(int length);
+ 	/**
+ 	 * Return a normalized Gaussian curve used to filter stuff<br>
+ 	 * quality = 3 is high quality, lower is lower quality.<br>
+ 	 * Original signature : <code>SwsVector* sws_getGaussianVec(double, double)</code><br>
+ 	 * <i>native declaration : libswscale/swscale.h:148</i>
+ 	 */
+-	public static Pointer<SwsVector > sws_getGaussianVec(double variance, double quality) {
+-		return Pointer.pointerToAddress(sws_getGaussianVec$2(variance, quality), SwsVector.class);
++	public static Pointer<SwsVector > sws__getGaussianVec(double variance, double quality) {
++		return Pointer.pointerToAddress(sws_getGaussianVec(variance, quality), SwsVector.class);
+ 	}
+ 	@Ptr 
+-	protected native static long sws_getGaussianVec$2(double variance, double quality);
++	protected native static long sws_getGaussianVec(double variance, double quality);
+ 	/**
+ 	 * Allocate and return a vector with length coefficients, all<br>
+ 	 * with the same value c.<br>
+ 	 * Original signature : <code>SwsVector* sws_getConstVec(double, int)</code><br>
+ 	 * <i>native declaration : libswscale/swscale.h:154</i>
+ 	 */
+-	public static Pointer<SwsVector > sws_getConstVec(double c, int length) {
+-		return Pointer.pointerToAddress(sws_getConstVec$2(c, length), SwsVector.class);
++	public static Pointer<SwsVector > sws__getConstVec(double c, int length) {
++		return Pointer.pointerToAddress(sws_getConstVec(c, length), SwsVector.class);
+ 	}
+ 	@Ptr 
+-	protected native static long sws_getConstVec$2(double c, int length);
++	protected native static long sws_getConstVec(double c, int length);
+ 	/**
+ 	 * Allocate and return a vector with just one coefficient, with<br>
+ 	 * value 1.0.<br>
+ 	 * Original signature : <code>SwsVector* sws_getIdentityVec()</code><br>
+ 	 * <i>native declaration : libswscale/swscale.h:160</i>
+ 	 */
+-	public static Pointer<SwsVector > sws_getIdentityVec() {
+-		return Pointer.pointerToAddress(sws_getIdentityVec$2(), SwsVector.class);
++	public static Pointer<SwsVector > sws__getIdentityVec() {
++		return Pointer.pointerToAddress(sws_getIdentityVec(), SwsVector.class);
+ 	}
+ 	@Ptr 
+-	protected native static long sws_getIdentityVec$2();
++	protected native static long sws_getIdentityVec();
+ 	/**
+ 	 * Scale all the coefficients of a by the scalar value.<br>
+ 	 * Original signature : <code>void sws_scaleVec(SwsVector*, double)</code><br>
+@@ -428,11 +428,11 @@ public class SwscaleLibrary {
+ 	 * Original signature : <code>SwsFilter* sws_getDefaultFilter(float, float, float, float, float, float, int)</code><br>
+ 	 * <i>native declaration : libswscale/swscale.h:194</i>
+ 	 */
+-	public static Pointer<SwsFilter > sws_getDefaultFilter(float lumaGBlur, float chromaGBlur, float lumaSharpen, float chromaSharpen, float chromaHShift, float chromaVShift, int verbose) {
+-		return Pointer.pointerToAddress(sws_getDefaultFilter$2(lumaGBlur, chromaGBlur, lumaSharpen, chromaSharpen, chromaHShift, chromaVShift, verbose), SwsFilter.class);
++	public static Pointer<SwsFilter > sws__getDefaultFilter(float lumaGBlur, float chromaGBlur, float lumaSharpen, float chromaSharpen, float chromaHShift, float chromaVShift, int verbose) {
++		return Pointer.pointerToAddress(sws_getDefaultFilter(lumaGBlur, chromaGBlur, lumaSharpen, chromaSharpen, chromaHShift, chromaVShift, verbose), SwsFilter.class);
+ 	}
+ 	@Ptr 
+-	protected native static long sws_getDefaultFilter$2(float lumaGBlur, float chromaGBlur, float lumaSharpen, float chromaSharpen, float chromaHShift, float chromaVShift, int verbose);
++	protected native static long sws_getDefaultFilter(float lumaGBlur, float chromaGBlur, float lumaSharpen, float chromaSharpen, float chromaHShift, float chromaVShift, int verbose);
+ 	/**
+ 	 * Original signature : <code>void sws_freeFilter(SwsFilter*)</code><br>
+ 	 * <i>native declaration : libswscale/swscale.h:196</i>
+@@ -493,11 +493,11 @@ public class SwscaleLibrary {
+ 	 * Original signature : <code>AVClass* sws_get_class()</code><br>
+ 	 * <i>native declaration : libswscale/swscale.h:235</i>
+ 	 */
+-	public static Pointer<AVClass > sws_get_class() {
+-		return Pointer.pointerToAddress(sws_get_class$2(), AVClass.class);
++	public static Pointer<AVClass > sws__get_class() {
++		return Pointer.pointerToAddress(sws_get_class(), AVClass.class);
+ 	}
+ 	@Ptr 
+-	protected native static long sws_get_class$2();
++	protected native static long sws_get_class();
+ 	/** Undefined type */
+ 	public static interface SwsContext {
+ 		
 diff -pruN generated/org/ffmpeg/util/AlignmentCustomizer.java src/org/ffmpeg/util/AlignmentCustomizer.java
 --- generated/org/ffmpeg/util/AlignmentCustomizer.java	1970-01-01 01:00:00.000000000 +0100
 +++ src/org/ffmpeg/util/AlignmentCustomizer.java	2015-04-12 16:51:28.380485122 +0200

@@ -150,21 +150,21 @@ public class AvresampleLibrary {
 	 * Original signature : <code>char* avresample_configuration()</code><br>
 	 * <i>native declaration : libavresample/avresample.h:32</i>
 	 */
-	public static Pointer<Byte > avresample_configuration() {
-		return Pointer.pointerToAddress(avresample_configuration$2(), Byte.class);
+	public static Pointer<Byte > avresample__configuration() {
+		return Pointer.pointerToAddress(avresample_configuration(), Byte.class);
 	}
 	@Ptr 
-	protected native static long avresample_configuration$2();
+	protected native static long avresample_configuration();
 	/**
 	 * Return the libavresample license.<br>
 	 * Original signature : <code>char* avresample_license()</code><br>
 	 * <i>native declaration : libavresample/avresample.h:37</i>
 	 */
-	public static Pointer<Byte > avresample_license() {
-		return Pointer.pointerToAddress(avresample_license$2(), Byte.class);
+	public static Pointer<Byte > avresample__license() {
+		return Pointer.pointerToAddress(avresample_license(), Byte.class);
 	}
 	@Ptr 
-	protected native static long avresample_license$2();
+	protected native static long avresample_license();
 	/**
 	 * Get the AVClass for AVAudioResampleContext.<br>
 	 * * Can be used in combination with AV_OPT_SEARCH_FAKE_OBJ for examining options<br>
@@ -174,22 +174,22 @@ public class AvresampleLibrary {
 	 * Original signature : <code>AVClass* avresample_get_class()</code><br>
 	 * <i>native declaration : libavresample/avresample.h:46</i>
 	 */
-	public static Pointer<AVClass > avresample_get_class() {
-		return Pointer.pointerToAddress(avresample_get_class$2(), AVClass.class);
+	public static Pointer<AVClass > avresample__get_class() {
+		return Pointer.pointerToAddress(avresample_get_class(), AVClass.class);
 	}
 	@Ptr 
-	protected native static long avresample_get_class$2();
+	protected native static long avresample_get_class();
 	/**
 	 * Allocate AVAudioResampleContext and set options.<br>
 	 * * @return  allocated audio resample context, or NULL on failure<br>
 	 * Original signature : <code>AVAudioResampleContext* avresample_alloc_context()</code><br>
 	 * <i>native declaration : libavresample/avresample.h:52</i>
 	 */
-	public static Pointer<AvresampleLibrary.AVAudioResampleContext > avresample_alloc_context() {
-		return Pointer.pointerToAddress(avresample_alloc_context$2(), AvresampleLibrary.AVAudioResampleContext.class);
+	public static Pointer<AvresampleLibrary.AVAudioResampleContext > avresample__alloc_context() {
+		return Pointer.pointerToAddress(avresample_alloc_context(), AvresampleLibrary.AVAudioResampleContext.class);
 	}
 	@Ptr 
-	protected native static long avresample_alloc_context$2();
+	protected native static long avresample_alloc_context();
 	/**
 	 * Initialize AVAudioResampleContext.<br>
 	 * @note The context must be configured using the AVOption API.<br>

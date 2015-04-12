@@ -2108,21 +2108,21 @@ public class AvcodecLibrary {
 	 * Original signature : <code>char* avcodec_configuration()</code><br>
 	 * <i>native declaration : ./libavcodec/avcodec.h:2077</i>
 	 */
-	public static Pointer<Byte > avcodec_configuration() {
-		return Pointer.pointerToAddress(avcodec_configuration$2(), Byte.class);
+	public static Pointer<Byte > avcodec__configuration() {
+		return Pointer.pointerToAddress(avcodec_configuration(), Byte.class);
 	}
 	@Ptr 
-	protected native static long avcodec_configuration$2();
+	protected native static long avcodec_configuration();
 	/**
 	 * Return the libavcodec license.<br>
 	 * Original signature : <code>char* avcodec_license()</code><br>
 	 * <i>native declaration : ./libavcodec/avcodec.h:2082</i>
 	 */
-	public static Pointer<Byte > avcodec_license() {
-		return Pointer.pointerToAddress(avcodec_license$2(), Byte.class);
+	public static Pointer<Byte > avcodec__license() {
+		return Pointer.pointerToAddress(avcodec_license(), Byte.class);
 	}
 	@Ptr 
-	protected native static long avcodec_license$2();
+	protected native static long avcodec_license();
 	/**
 	 * Register the codec codec and initialize libavcodec.<br>
 	 * * @warning either this function or avcodec_register_all() must be called<br>
@@ -2197,11 +2197,11 @@ public class AvcodecLibrary {
 	 * Original signature : <code>AVClass* avcodec_get_class()</code><br>
 	 * <i>native declaration : ./libavcodec/avcodec.h:2138</i>
 	 */
-	public static Pointer<AVClass > avcodec_get_class() {
-		return Pointer.pointerToAddress(avcodec_get_class$2(), AVClass.class);
+	public static Pointer<AVClass > avcodec__get_class() {
+		return Pointer.pointerToAddress(avcodec_get_class(), AVClass.class);
 	}
 	@Ptr 
-	protected native static long avcodec_get_class$2();
+	protected native static long avcodec_get_class();
 	/**
 	 * Get the AVClass for AVFrame. It can be used in combination with<br>
 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>
@@ -2209,11 +2209,11 @@ public class AvcodecLibrary {
 	 * Original signature : <code>AVClass* avcodec_get_frame_class()</code><br>
 	 * <i>native declaration : ./libavcodec/avcodec.h:2145</i>
 	 */
-	public static Pointer<AVClass > avcodec_get_frame_class() {
-		return Pointer.pointerToAddress(avcodec_get_frame_class$2(), AVClass.class);
+	public static Pointer<AVClass > avcodec__get_frame_class() {
+		return Pointer.pointerToAddress(avcodec_get_frame_class(), AVClass.class);
 	}
 	@Ptr 
-	protected native static long avcodec_get_frame_class$2();
+	protected native static long avcodec_get_frame_class();
 	/**
 	 * Get the AVClass for AVSubtitleRect. It can be used in combination with<br>
 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>
@@ -2221,11 +2221,11 @@ public class AvcodecLibrary {
 	 * Original signature : <code>AVClass* avcodec_get_subtitle_rect_class()</code><br>
 	 * <i>native declaration : ./libavcodec/avcodec.h:2152</i>
 	 */
-	public static Pointer<AVClass > avcodec_get_subtitle_rect_class() {
-		return Pointer.pointerToAddress(avcodec_get_subtitle_rect_class$2(), AVClass.class);
+	public static Pointer<AVClass > avcodec__get_subtitle_rect_class() {
+		return Pointer.pointerToAddress(avcodec_get_subtitle_rect_class(), AVClass.class);
 	}
 	@Ptr 
-	protected native static long avcodec_get_subtitle_rect_class$2();
+	protected native static long avcodec_get_subtitle_rect_class();
 	/**
 	 * Copy the settings of the source AVCodecContext into the destination<br>
 	 * AVCodecContext. The resulting destination codec context will be<br>
@@ -2734,10 +2734,10 @@ public class AvcodecLibrary {
 	 * Original signature : <code>AVChromaLocation avcodec_chroma_pos_to_enum(int, int)</code><br>
 	 * <i>native declaration : ./libavcodec/avcodec.h:2487</i>
 	 */
-	public static IntValuedEnum<AVChromaLocation > avcodec_chroma_pos_to_enum(int xpos, int ypos) {
-		return FlagSet.fromValue(avcodec_chroma_pos_to_enum$2(xpos, ypos), AVChromaLocation.class);
+	public static IntValuedEnum<AVChromaLocation > avcodec__chroma_pos_to_enum(int xpos, int ypos) {
+		return FlagSet.fromValue(avcodec_chroma_pos_to_enum(xpos, ypos), AVChromaLocation.class);
 	}
-	protected native static int avcodec_chroma_pos_to_enum$2(int xpos, int ypos);
+	protected native static int avcodec_chroma_pos_to_enum(int xpos, int ypos);
 	/**
 	 * Wrapper function which calls avcodec_decode_audio4.<br>
 	 * * @deprecated Use avcodec_decode_audio4 instead.<br>
@@ -2934,11 +2934,11 @@ public class AvcodecLibrary {
 	 * Original signature : <code>AVCodecParserContext* av_parser_init(int)</code><br>
 	 * <i>native declaration : ./libavcodec/avcodec.h:2812</i>
 	 */
-	public static Pointer<AVCodecParserContext > av_parser_init(int codec_id) {
-		return Pointer.pointerToAddress(av_parser_init$2(codec_id), AVCodecParserContext.class);
+	public static Pointer<AVCodecParserContext > av__parser_init(int codec_id) {
+		return Pointer.pointerToAddress(av_parser_init(codec_id), AVCodecParserContext.class);
 	}
 	@Ptr 
-	protected native static long av_parser_init$2(int codec_id);
+	protected native static long av_parser_init(int codec_id);
 	/**
 	 * Parse a packet.<br>
 	 * * @param s             parser context.<br>
@@ -3196,11 +3196,11 @@ public class AvcodecLibrary {
 	 * Original signature : <code>AVResampleContext* av_resample_init(int, int, int, int, int, double)</code><br>
 	 * <i>native declaration : ./libavcodec/avcodec.h:3017</i>
 	 */
-	public static Pointer<AvcodecLibrary.AVResampleContext > av_resample_init(int out_rate, int in_rate, int filter_length, int log2_phase_count, int linear, double cutoff) {
-		return Pointer.pointerToAddress(av_resample_init$2(out_rate, in_rate, filter_length, log2_phase_count, linear, cutoff), AvcodecLibrary.AVResampleContext.class);
+	public static Pointer<AvcodecLibrary.AVResampleContext > av__resample_init(int out_rate, int in_rate, int filter_length, int log2_phase_count, int linear, double cutoff) {
+		return Pointer.pointerToAddress(av_resample_init(out_rate, in_rate, filter_length, log2_phase_count, linear, cutoff), AvcodecLibrary.AVResampleContext.class);
 	}
 	@Ptr 
-	protected native static long av_resample_init$2(int out_rate, int in_rate, int filter_length, int log2_phase_count, int linear, double cutoff);
+	protected native static long av_resample_init(int out_rate, int in_rate, int filter_length, int log2_phase_count, int linear, double cutoff);
 	/**
 	 * Resample an array of samples using a previously configured context.<br>
 	 * @param src an array of unconsumed samples<br>
