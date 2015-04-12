@@ -1039,7 +1039,7 @@ typedef struct AVCodecContext {
      * - encoding: unused
      * - decoding: Set by user, if not set the native format will be chosen.
      */
-    enum AVPixelFormat (*get_format)(struct AVCodecContext *s, const enum AVPixelFormat * fmt);
+    long get_format;
 
     /**
      * maximum number of B-frames between non-B-frames
@@ -4766,7 +4766,7 @@ enum AVLockOp {
  *           implement your lock manager). If cb is set to NULL the
  *           lockmgr will be unregistered.
  */
-int av_lockmgr_register(int (*cb)(void **mutex, enum AVLockOp op));
+//int av_lockmgr_register(int (*cb)(void **mutex, enum AVLockOp op));
 
 /**
  * Get the type of the given codec.
