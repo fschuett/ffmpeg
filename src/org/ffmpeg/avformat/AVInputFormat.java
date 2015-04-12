@@ -7,8 +7,8 @@ import org.bridj.ann.Field;
 import org.bridj.ann.Library;
 import org.bridj.ann.Ptr;
 import org.ffmpeg.avcodec.AVPacket;
-import org.ffmpeg.avformat.AvformatLibrary.AVDeviceCapabilitiesQuery;
-import org.ffmpeg.avformat.AvformatLibrary.AVDeviceInfoList;
+import org.ffmpeg.avdevice.AVDeviceCapabilitiesQuery;
+import org.ffmpeg.avdevice.AVDeviceInfoList;
 import org.ffmpeg.avutil.AVClass;
 /**
  * <i>native declaration : libavformat/avformat.h:290</i><br>

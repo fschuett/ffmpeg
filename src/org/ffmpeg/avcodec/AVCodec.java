@@ -350,12 +350,12 @@ public class AVCodec extends StructObject {
 	}
 	/** C type : init_callback* */
 	@Field(19) 
-	public Pointer<org.ffmpeg.avcodec.AVHWAccel.init_callback > init() {
+	public Pointer<org.ffmpeg.avfilter.AVFilter.init_callback > init() {
 		return this.io.getPointerField(this, 19);
 	}
 	/** C type : init_callback* */
 	@Field(19) 
-	public AVCodec init(Pointer<org.ffmpeg.avcodec.AVHWAccel.init_callback > init) {
+	public AVCodec init(Pointer<org.ffmpeg.avfilter.AVFilter.init_callback > init) {
 		this.io.setPointerField(this, 19, init);
 		return this;
 	}

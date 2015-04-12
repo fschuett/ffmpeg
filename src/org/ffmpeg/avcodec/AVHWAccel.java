@@ -173,7 +173,7 @@ public class AVHWAccel extends StructObject {
 	 * C type : start_frame_callback*
 	 */
 	@Field(7) 
-	public Pointer<AVHWAccel.start_frame_callback > start_frame() {
+	public Pointer<org.ffmpeg.avfilter.AVFilterPad.start_frame_callback > start_frame() {
 		return this.io.getPointerField(this, 7);
 	}
 	/**
@@ -189,7 +189,7 @@ public class AVHWAccel extends StructObject {
 	 * C type : start_frame_callback*
 	 */
 	@Field(7) 
-	public AVHWAccel start_frame(Pointer<AVHWAccel.start_frame_callback > start_frame) {
+	public AVHWAccel start_frame(Pointer<org.ffmpeg.avfilter.AVFilterPad.start_frame_callback > start_frame) {
 		this.io.setPointerField(this, 7, start_frame);
 		return this;
 	}
@@ -233,7 +233,7 @@ public class AVHWAccel extends StructObject {
 	 * C type : end_frame_callback*
 	 */
 	@Field(9) 
-	public Pointer<AVHWAccel.end_frame_callback > end_frame() {
+	public Pointer<org.ffmpeg.avfilter.AVFilterPad.end_frame_callback > end_frame() {
 		return this.io.getPointerField(this, 9);
 	}
 	/**
@@ -245,7 +245,7 @@ public class AVHWAccel extends StructObject {
 	 * C type : end_frame_callback*
 	 */
 	@Field(9) 
-	public AVHWAccel end_frame(Pointer<AVHWAccel.end_frame_callback > end_frame) {
+	public AVHWAccel end_frame(Pointer<org.ffmpeg.avfilter.AVFilterPad.end_frame_callback > end_frame) {
 		this.io.setPointerField(this, 9, end_frame);
 		return this;
 	}
@@ -303,7 +303,7 @@ public class AVHWAccel extends StructObject {
 	 * C type : init_callback*
 	 */
 	@Field(12) 
-	public Pointer<AVHWAccel.init_callback > init() {
+	public Pointer<org.ffmpeg.avfilter.AVFilter.init_callback > init() {
 		return this.io.getPointerField(this, 12);
 	}
 	/**
@@ -314,7 +314,7 @@ public class AVHWAccel extends StructObject {
 	 * C type : init_callback*
 	 */
 	@Field(12) 
-	public AVHWAccel init(Pointer<AVHWAccel.init_callback > init) {
+	public AVHWAccel init(Pointer<org.ffmpeg.avfilter.AVFilter.init_callback > init) {
 		this.io.setPointerField(this, 12, init);
 		return this;
 	}
@@ -325,7 +325,7 @@ public class AVHWAccel extends StructObject {
 	 * C type : uninit_callback*
 	 */
 	@Field(13) 
-	public Pointer<AVHWAccel.uninit_callback > uninit() {
+	public Pointer<org.ffmpeg.avfilter.AVFilter.uninit_callback > uninit() {
 		return this.io.getPointerField(this, 13);
 	}
 	/**
@@ -335,7 +335,7 @@ public class AVHWAccel extends StructObject {
 	 * C type : uninit_callback*
 	 */
 	@Field(13) 
-	public AVHWAccel uninit(Pointer<AVHWAccel.uninit_callback > uninit) {
+	public AVHWAccel uninit(Pointer<org.ffmpeg.avfilter.AVFilter.uninit_callback > uninit) {
 		this.io.setPointerField(this, 13, uninit);
 		return this;
 	}

@@ -11,8 +11,8 @@ import org.bridj.ann.Ptr;
 import org.bridj.util.DefaultParameterizedType;
 import org.ffmpeg.avcodec.AVPacket;
 import org.ffmpeg.avcodec.AvcodecLibrary.AVCodecID;
-import org.ffmpeg.avformat.AvformatLibrary.AVDeviceCapabilitiesQuery;
-import org.ffmpeg.avformat.AvformatLibrary.AVDeviceInfoList;
+import org.ffmpeg.avdevice.AVDeviceCapabilitiesQuery;
+import org.ffmpeg.avdevice.AVDeviceInfoList;
 import org.ffmpeg.avutil.AVClass;
 import org.ffmpeg.avutil.AVFrame;
 /**

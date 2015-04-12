@@ -71,24 +71,15 @@ public class AVBitStreamFilter extends StructObject {
 		this.io.setPointerField(this, 4, next);
 		return this;
 	}
-//	/** <i>native declaration : ./libavcodec/avcodec.h:3281</i> */
-//	public static abstract class filter_callback extends Callback<filter_callback > {
-//		public int apply(Pointer<AVBitStreamFilterContext > bsfc, Pointer<AVCodecContext > avctx, Pointer<Byte > args, Pointer<Pointer<Byte > > poutbuf, Pointer<Integer > poutbuf_size, Pointer<Byte > buf, int buf_size, int keyframe) {
-//			return apply(Pointer.getPeer(bsfc), Pointer.getPeer(avctx), Pointer.getPeer(args), Pointer.getPeer(poutbuf), Pointer.getPeer(poutbuf_size), Pointer.getPeer(buf), buf_size, keyframe);
-//		}
-//		public int apply(@Ptr long bsfc, @Ptr long avctx, @Ptr long args, @Ptr long poutbuf, @Ptr long poutbuf_size, @Ptr long buf, int buf_size, int keyframe) {
-//			return apply(Pointer.pointerToAddress(bsfc, AVBitStreamFilterContext.class), Pointer.pointerToAddress(avctx, AVCodecContext.class), Pointer.pointerToAddress(args, Byte.class), Pointer.pointerToAddress(poutbuf, DefaultParameterizedType.paramType(Pointer.class, Byte.class)), Pointer.pointerToAddress(poutbuf_size, Integer.class), Pointer.pointerToAddress(buf, Byte.class), buf_size, keyframe);
-//		}
-//	};
-        /** <i>native declaration : ./libavcodec/avcodec.h:3281</i> */
-        public static abstract class filter_callback extends Callback<filter_callback > {
-                public int apply(Pointer<AVBitStreamFilterContext > bsfc, Pointer<AVCodecContext > avctx, Pointer<Byte > args, Pointer<Pointer > poutbuf, Pointer<Integer > poutbuf_size, Pointer<Byte > buf, int buf_size, int keyframe) {
-                        return apply(Pointer.getPeer(bsfc), Pointer.getPeer(avctx), Pointer.getPeer(args), Pointer.getPeer(poutbuf), Pointer.getPeer(poutbuf_size), Pointer.getPeer(buf), buf_size, keyframe);
-                }
-                public int apply(@Ptr long bsfc, @Ptr long avctx, @Ptr long args, @Ptr long poutbuf, @Ptr long poutbuf_size, @Ptr long buf, int buf_size, int keyframe) {
-                        return apply(Pointer.pointerToAddress(bsfc, AVBitStreamFilterContext.class), Pointer.pointerToAddress(avctx, AVCodecContext.class), Pointer.pointerToAddress(args, Byte.class), Pointer.pointerToAddress(poutbuf, Pointer.class), Pointer.pointerToAddress(poutbuf_size, Integer.class), Pointer.pointerToAddress(buf, Byte.class), buf_size, keyframe);
-                }
-        };
+	/** <i>native declaration : ./libavcodec/avcodec.h:3281</i> */
+	public static abstract class filter_callback extends Callback<filter_callback > {
+		public int apply(Pointer<AVBitStreamFilterContext > bsfc, Pointer<AVCodecContext > avctx, Pointer<Byte > args, Pointer<Pointer > poutbuf, Pointer<Integer > poutbuf_size, Pointer<Byte > buf, int buf_size, int keyframe) {
+			return apply(Pointer.getPeer(bsfc), Pointer.getPeer(avctx), Pointer.getPeer(args), Pointer.getPeer(poutbuf), Pointer.getPeer(poutbuf_size), Pointer.getPeer(buf), buf_size, keyframe);
+		}
+		public int apply(@Ptr long bsfc, @Ptr long avctx, @Ptr long args, @Ptr long poutbuf, @Ptr long poutbuf_size, @Ptr long buf, int buf_size, int keyframe) {
+			return apply(Pointer.pointerToAddress(bsfc, AVBitStreamFilterContext.class), Pointer.pointerToAddress(avctx, AVCodecContext.class), Pointer.pointerToAddress(args, Byte.class), Pointer.pointerToAddress(poutbuf, Pointer.class), Pointer.pointerToAddress(poutbuf_size, Integer.class), Pointer.pointerToAddress(buf, Byte.class), buf_size, keyframe);
+		}
+	};
 	/** <i>native declaration : ./libavcodec/avcodec.h:3282</i> */
 	public static abstract class close_callback extends Callback<close_callback > {
 		public void apply(Pointer<AVBitStreamFilterContext > bsfc) {
