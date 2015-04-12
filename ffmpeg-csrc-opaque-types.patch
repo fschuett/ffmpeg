@@ -1,0 +1,78 @@
+diff -pruN csrc.version/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
+--- csrc.version/libavcodec/avcodec.h	2015-04-12 12:35:54.000000000 +0200
++++ csrc/libavcodec/avcodec.h	2015-04-12 15:17:39.250938444 +0200
+@@ -765,7 +765,9 @@ enum AVSideDataParamChangeFlags {
+  * @}
+  */
+ 
+-struct AVCodecInternal;
++struct AVCodecInternal {
++    int dummy;
++};
+ 
+ enum AVFieldOrder {
+     AV_FIELD_UNKNOWN,
+@@ -2693,7 +2695,9 @@ typedef struct AVProfile {
+     const char *name; ///< short name for the profile
+ } AVProfile;
+ 
+-typedef struct AVCodecDefault AVCodecDefault;
++typedef struct AVCodecDefault {
++    int dummy;
++} AVCodecDefault;
+ 
+ struct AVSubtitle;
+ 
+diff -pruN csrc.version/libavformat/avformat.h csrc/libavformat/avformat.h
+--- csrc.version/libavformat/avformat.h	2015-04-12 12:24:56.000000000 +0200
++++ csrc/libavformat/avformat.h	2015-04-12 15:18:33.418771076 +0200
+@@ -393,7 +393,9 @@ typedef struct AVFrac {
+ /*************************************************/
+ /* input/output formats */
+ 
+-struct AVCodecTag;
++struct AVCodecTag {
++    int dummy;
++};
+ 
+ /**
+  * This structure contains the data a format has to probe a file.
+@@ -1191,7 +1193,9 @@ enum AVDurationEstimationMethod {
+     AVFMT_DURATION_FROM_BITRATE ///< Duration estimated from bitrate (less accurate)
+ };
+ 
+-typedef struct AVFormatInternal AVFormatInternal;
++typedef struct AVFormatInternal {
++    int dummy;
++} AVFormatInternal;
+ 
+ /**
+  * Format I/O context.
+diff -pruN csrc.version/libavutil/buffer.h csrc/libavutil/buffer.h
+--- csrc.version/libavutil/buffer.h	2015-04-01 11:30:46.000000000 +0200
++++ csrc/libavutil/buffer.h	2015-04-12 15:15:55.016261347 +0200
+@@ -70,7 +70,9 @@
+  * A reference counted buffer type. It is opaque and is meant to be used through
+  * references (AVBufferRef).
+  */
+-typedef struct AVBuffer AVBuffer;
++typedef struct AVBuffer {
++    int dummy;
++} AVBuffer;
+ 
+ /**
+  * A reference to a data buffer.
+diff -pruN csrc.version/libavutil/dict.h csrc/libavutil/dict.h
+--- csrc.version/libavutil/dict.h	2015-04-01 11:30:46.000000000 +0200
++++ csrc/libavutil/dict.h	2015-04-12 15:14:33.319515216 +0200
+@@ -84,7 +84,9 @@ typedef struct AVDictionaryEntry {
+     char *value;
+ } AVDictionaryEntry;
+ 
+-typedef struct AVDictionary AVDictionary;
++typedef struct AVDictionary {
++    int dummy;
++} AVDictionary;
+ 
+ /**
+  * Get a dictionary entry with matching key.
