@@ -1,8 +1,19 @@
-
-#ifndef AVCODEC_AVCODECID_H
-#define AVCODEC_AVCODECID_H
-#define AVCODEC_OLD_CODEC_IDS_H
-
+/**
+ * Identify the syntax and semantics of the bitstream.
+ * The principle is roughly:
+ * Two decoders with the same ID can decode the same streams.
+ * Two encoders with the same ID can encode compatible streams.
+ * There may be slight deviations from the principle due to implementation
+ * details.
+ *
+ * If you add a codec ID to this list, add it so that
+ * 1. no value of a existing codec ID changes (that would break ABI),
+ * 2. Give it a value which when taken as ASCII is recognized uniquely by a human as this specific codec.
+ *    This ensures that 2 forks can independently add AVCodecIDs without producing conflicts.
+ *
+ * After adding new codec IDs, do not forget to add an entry to the codec
+ * descriptor list and bump libavcodec minor version.
+ */
 enum AVCodecID {
     AV_CODEC_ID_NONE,
 
@@ -194,6 +205,7 @@ enum AVCodecID {
     AV_CODEC_ID_SGIRLE_DEPRECATED,
     AV_CODEC_ID_MVC1_DEPRECATED,
     AV_CODEC_ID_MVC2_DEPRECATED,
+    AV_CODEC_ID_HQX,
 
     AV_CODEC_ID_BRENDER_PIX= MKBETAG('B','P','I','X'),
     AV_CODEC_ID_Y41P       = MKBETAG('Y','4','1','P'),
@@ -223,6 +235,7 @@ enum AVCodecID {
     AV_CODEC_ID_HEVC       = MKBETAG('H','2','6','5'),
 #define AV_CODEC_ID_H265 AV_CODEC_ID_HEVC
     AV_CODEC_ID_VP7        = MKBETAG('V','P','7','0'),
+    AV_CODEC_ID_APNG       = MKBETAG('A','P','N','G'),
 
     /* various PCM "codecs" */
     AV_CODEC_ID_FIRST_AUDIO = 0x10000,     ///< A dummy id pointing at the start of audio codecs
@@ -293,7 +306,9 @@ enum AVCodecID {
     AV_CODEC_ID_ADPCM_IMA_APC,
     AV_CODEC_ID_ADPCM_VIMA_DEPRECATED,
     AV_CODEC_ID_ADPCM_VIMA = MKBETAG('V','I','M','A'),
+#if FF_API_VIMA_DECODER
     AV_CODEC_ID_VIMA       = MKBETAG('V','I','M','A'),
+#endif
     AV_CODEC_ID_ADPCM_AFC  = MKBETAG('A','F','C',' '),
     AV_CODEC_ID_ADPCM_IMA_OKI = MKBETAG('O','K','I',' '),
     AV_CODEC_ID_ADPCM_DTK  = MKBETAG('D','T','K',' '),
@@ -384,6 +399,7 @@ enum AVCodecID {
     AV_CODEC_ID_METASOUND,
     AV_CODEC_ID_PAF_AUDIO_DEPRECATED,
     AV_CODEC_ID_ON2AVC,
+    AV_CODEC_ID_DSS_SP,
     AV_CODEC_ID_FFWAVESYNTH = MKBETAG('F','F','W','S'),
     AV_CODEC_ID_SONIC       = MKBETAG('S','O','N','C'),
     AV_CODEC_ID_SONIC_LS    = MKBETAG('S','O','N','L'),
@@ -413,6 +429,7 @@ enum AVCodecID {
     AV_CODEC_ID_JACOSUB    = MKBETAG('J','S','U','B'),
     AV_CODEC_ID_SAMI       = MKBETAG('S','A','M','I'),
     AV_CODEC_ID_REALTEXT   = MKBETAG('R','T','X','T'),
+    AV_CODEC_ID_STL        = MKBETAG('S','p','T','L'),
     AV_CODEC_ID_SUBVIEWER1 = MKBETAG('S','b','V','1'),
     AV_CODEC_ID_SUBVIEWER  = MKBETAG('S','u','b','V'),
     AV_CODEC_ID_SUBRIP     = MKBETAG('S','R','i','p'),
@@ -442,6 +459,15 @@ enum AVCodecID {
     AV_CODEC_ID_MPEG4SYSTEMS = 0x20001, /**< _FAKE_ codec to indicate a MPEG-4 Systems
                                 * stream (only used by libavformat) */
     AV_CODEC_ID_FFMETADATA = 0x21000,   ///< Dummy codec for streams containing only metadata information.
+
+#if FF_API_CODEC_ID
+/*
+ * This header exists to prevent new codec IDs from being accidentally added to
+ * the deprecated list.
+ * Do not include it directly. It will be removed on next major bump
+ *
+ * Do not add new items to this list. Use the AVCodecID enum instead.
+ */
 
     CODEC_ID_NONE = AV_CODEC_ID_NONE,
 
@@ -810,6 +836,5 @@ enum AVCodecID {
                                 * stream (only used by libavformat) */
     CODEC_ID_FFMETADATA = 0x21000,   ///< Dummy codec for streams containing only metadata information.
 
-};
-
 #endif
+};

@@ -21,6 +21,8 @@
 #ifndef AVUTIL_VERSION_H
 #define AVUTIL_VERSION_H
 
+#include "macros.h"
+
 /**
  * @addtogroup version_utils
  *
@@ -30,7 +32,7 @@
  * @{
  */
 
-#define AV_VERSION_INT(a, b, c) (a<<16 | b<<8 | c)
+#define AV_VERSION_INT(a, b, c) ((a)<<16 | (b)<<8 | (c))
 #define AV_VERSION_DOT(a, b, c) a ##.## b ##.## c
 #define AV_VERSION(a, b, c) AV_VERSION_DOT(a, b, c)
 
@@ -53,8 +55,8 @@
  * @{
  */
 
-#define LIBAVUTIL_VERSION_MAJOR  52
-#define LIBAVUTIL_VERSION_MINOR  92
+#define LIBAVUTIL_VERSION_MAJOR  54
+#define LIBAVUTIL_VERSION_MINOR  20
 #define LIBAVUTIL_VERSION_MICRO 100
 
 #define LIBAVUTIL_VERSION_INT   AV_VERSION_INT(LIBAVUTIL_VERSION_MAJOR, \
@@ -65,77 +67,70 @@
                                            LIBAVUTIL_VERSION_MICRO)
 #define LIBAVUTIL_BUILD         LIBAVUTIL_VERSION_INT
 
-#define LIBAVUTIL_IDENT         "Lavu52.92.100"
+#define LIBAVUTIL_IDENT         "Lavu54.20.100"
 
-#ifndef FF_API_GET_BITS_PER_SAMPLE_FMT
-#define FF_API_GET_BITS_PER_SAMPLE_FMT (LIBAVUTIL_VERSION_MAJOR < 54)
-#endif
-#ifndef FF_API_FIND_OPT
-#define FF_API_FIND_OPT                 (LIBAVUTIL_VERSION_MAJOR < 54)
-#endif
+/**
+ * @}
+ *
+ * @defgroup depr_guards Deprecation guards
+ * FF_API_* defines may be placed below to indicate public API that will be
+ * dropped at a future version bump. The defines themselves are not part of
+ * the public API and may change, break or disappear at any time.
+ *
+ * @{
+ */
+
 #ifndef FF_API_OLD_AVOPTIONS
-#define FF_API_OLD_AVOPTIONS            (LIBAVUTIL_VERSION_MAJOR < 54)
+#define FF_API_OLD_AVOPTIONS            (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 #ifndef FF_API_PIX_FMT
-#define FF_API_PIX_FMT                  (LIBAVUTIL_VERSION_MAJOR < 54)
+#define FF_API_PIX_FMT                  (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 #ifndef FF_API_CONTEXT_SIZE
-#define FF_API_CONTEXT_SIZE             (LIBAVUTIL_VERSION_MAJOR < 54)
+#define FF_API_CONTEXT_SIZE             (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 #ifndef FF_API_PIX_FMT_DESC
-#define FF_API_PIX_FMT_DESC             (LIBAVUTIL_VERSION_MAJOR < 54)
+#define FF_API_PIX_FMT_DESC             (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 #ifndef FF_API_AV_REVERSE
-#define FF_API_AV_REVERSE               (LIBAVUTIL_VERSION_MAJOR < 54)
+#define FF_API_AV_REVERSE               (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 #ifndef FF_API_AUDIOCONVERT
-#define FF_API_AUDIOCONVERT             (LIBAVUTIL_VERSION_MAJOR < 54)
+#define FF_API_AUDIOCONVERT             (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 #ifndef FF_API_CPU_FLAG_MMX2
-#define FF_API_CPU_FLAG_MMX2            (LIBAVUTIL_VERSION_MAJOR < 54)
-#endif
-#ifndef FF_API_SAMPLES_UTILS_RETURN_ZERO
-#define FF_API_SAMPLES_UTILS_RETURN_ZERO (LIBAVUTIL_VERSION_MAJOR < 54)
+#define FF_API_CPU_FLAG_MMX2            (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 #ifndef FF_API_LLS_PRIVATE
-#define FF_API_LLS_PRIVATE              (LIBAVUTIL_VERSION_MAJOR < 54)
-#endif
-#ifndef FF_API_LLS1
-#define FF_API_LLS1                     (LIBAVUTIL_VERSION_MAJOR < 54)
+#define FF_API_LLS_PRIVATE              (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 #ifndef FF_API_AVFRAME_LAVC
-#define FF_API_AVFRAME_LAVC             (LIBAVUTIL_VERSION_MAJOR < 54)
+#define FF_API_AVFRAME_LAVC             (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 #ifndef FF_API_VDPAU
-#define FF_API_VDPAU                    (LIBAVUTIL_VERSION_MAJOR < 54)
+#define FF_API_VDPAU                    (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 #ifndef FF_API_GET_CHANNEL_LAYOUT_COMPAT
-#define FF_API_GET_CHANNEL_LAYOUT_COMPAT (LIBAVUTIL_VERSION_MAJOR < 54)
-#endif
-#ifndef FF_API_OLD_OPENCL
-#define FF_API_OLD_OPENCL               (LIBAVUTIL_VERSION_MAJOR < 54)
+#define FF_API_GET_CHANNEL_LAYOUT_COMPAT (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 #ifndef FF_API_XVMC
-#define FF_API_XVMC                     (LIBAVUTIL_VERSION_MAJOR < 54)
-#endif
-#ifndef FF_API_INTFLOAT
-#define FF_API_INTFLOAT                 (LIBAVUTIL_VERSION_MAJOR < 54)
+#define FF_API_XVMC                     (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 #ifndef FF_API_OPT_TYPE_METADATA
-#define FF_API_OPT_TYPE_METADATA        (LIBAVUTIL_VERSION_MAJOR < 54)
-#endif
-#ifndef FF_API_AVFRAME_COLORSPACE
-#define FF_API_AVFRAME_COLORSPACE       (LIBAVUTIL_VERSION_MAJOR >= 52)
+#define FF_API_OPT_TYPE_METADATA        (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 
-
-#ifndef FF_CONST_AVUTIL53
-#if LIBAVUTIL_VERSION_MAJOR >= 53
-#define FF_CONST_AVUTIL53 const
+#ifndef FF_CONST_AVUTIL55
+#if LIBAVUTIL_VERSION_MAJOR >= 55
+#define FF_CONST_AVUTIL55 const
 #else
-#define FF_CONST_AVUTIL53
+#define FF_CONST_AVUTIL55
 #endif
 #endif
+
+/**
+ * @}
+ */
 
 #endif /* AVUTIL_VERSION_H */
 

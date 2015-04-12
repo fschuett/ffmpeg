@@ -1,3 +1,27 @@
+/*
+ *
+ * This file is part of FFmpeg.
+ *
+ * FFmpeg is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * FFmpeg is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with FFmpeg; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ */
+
+/**
+ * @file
+ * @ingroup lavu_frame
+ * reference-counted frame API
+ */
 
 #ifndef AVUTIL_FRAME_H
 #define AVUTIL_FRAME_H
@@ -58,10 +82,53 @@ enum AVFrameSideDataType {
      * See libavutil/display.h for a detailed description of the data.
      */
     AV_FRAME_DATA_DISPLAYMATRIX,
+    /**
+     * Active Format Description data consisting of a single byte as specified
+     * in ETSI TS 101 154 using AVActiveFormatDescription enum.
+     */
+    AV_FRAME_DATA_AFD,
+    /**
+     * Motion vectors exported by some codecs (on demand through the export_mvs
+     * flag set in the libavcodec AVCodecContext flags2 option).
+     * The data is the AVMotionVector struct defined in
+     * libavutil/motion_vector.h.
+     */
+    AV_FRAME_DATA_MOTION_VECTORS,
+    /**
+     * Recommmends skipping the specified number of samples. This is exported
+     * only if the "skip_manual" AVOption is set in libavcodec.
+     * This has the same format as AV_PKT_DATA_SKIP_SAMPLES.
+     * @code
+     * u32le number of samples to skip from start of this packet
+     * u32le number of samples to skip from end of this packet
+     * u8    reason for start skip
+     * u8    reason for end   skip (0=padding silence, 1=convergence)
+     * @endcode
+     */
+    AV_FRAME_DATA_SKIP_SAMPLES,
+
+    /**
+     * This side data must be associated with an audio frame and corresponds to
+     * enum AVAudioServiceType defined in avcodec.h.
+     */
+    AV_FRAME_DATA_AUDIO_SERVICE_TYPE,
+};
+
+enum AVActiveFormatDescription {
+    AV_AFD_SAME         = 8,
+    AV_AFD_4_3          = 9,
+    AV_AFD_16_9         = 10,
+    AV_AFD_14_9         = 11,
+    AV_AFD_4_3_SP_14_9  = 13,
+    AV_AFD_16_9_SP_14_9 = 14,
+    AV_AFD_SP_4_3       = 15,
 };
 
 typedef struct AVFrameSideData {
-    int dummy;
+    enum AVFrameSideDataType type;
+    uint8_t *data;
+    int      size;
+    AVDictionary *metadata;
 } AVFrameSideData;
 
 /**
@@ -113,7 +180,7 @@ typedef struct AVFrame {
      * For audio, only linesize[0] may be set. For planar audio, each channel
      * plane must be the same size.
      *
-     * For video the linesizes should be multiplies of the CPUs alignment
+     * For video the linesizes should be multiples of the CPUs alignment
      * preference, this is 16 or 32 for modern desktop CPUs.
      * Some code requires such alignment other code can be slower without
      * correct alignment, for yet other it makes no difference.
@@ -339,7 +406,9 @@ typedef struct AVFrame {
 
     /**
      * AVBuffer references backing the data for this frame. If all elements of
-     * this array are NULL, then this frame is not reference counted.
+     * this array are NULL, then this frame is not reference counted. This array
+     * must be filled contiguously -- if buf[i] is non-NULL then buf[j] must
+     * also be non-NULL for all j < i.
      *
      * There may be at most one AVBuffer per data plane, so for video this array
      * always contains all the references. For planar audio with more than
@@ -390,7 +459,6 @@ typedef struct AVFrame {
      */
     int flags;
 
-#if FF_API_AVFRAME_COLORSPACE
     /**
      * MPEG vs JPEG YUV range.
      * It must be accessed using av_frame_get_color_range() and
@@ -414,7 +482,6 @@ typedef struct AVFrame {
     enum AVColorSpace colorspace;
 
     enum AVChromaLocation chroma_location;
-#endif
 
     /**
      * frame timestamp estimated using various heuristics, in stream time base
@@ -490,5 +557,209 @@ typedef struct AVFrame {
      */
     AVBufferRef *qp_table_buf;
 } AVFrame;
+
+/**
+ * Accessors for some AVFrame fields.
+ * The position of these field in the structure is not part of the ABI,
+ * they should not be accessed directly outside libavcodec.
+ */
+int64_t av_frame_get_best_effort_timestamp(const AVFrame *frame);
+void    av_frame_set_best_effort_timestamp(AVFrame *frame, int64_t val);
+int64_t av_frame_get_pkt_duration         (const AVFrame *frame);
+void    av_frame_set_pkt_duration         (AVFrame *frame, int64_t val);
+int64_t av_frame_get_pkt_pos              (const AVFrame *frame);
+void    av_frame_set_pkt_pos              (AVFrame *frame, int64_t val);
+int64_t av_frame_get_channel_layout       (const AVFrame *frame);
+void    av_frame_set_channel_layout       (AVFrame *frame, int64_t val);
+int     av_frame_get_channels             (const AVFrame *frame);
+void    av_frame_set_channels             (AVFrame *frame, int     val);
+int     av_frame_get_sample_rate          (const AVFrame *frame);
+void    av_frame_set_sample_rate          (AVFrame *frame, int     val);
+AVDictionary *av_frame_get_metadata       (const AVFrame *frame);
+void          av_frame_set_metadata       (AVFrame *frame, AVDictionary *val);
+int     av_frame_get_decode_error_flags   (const AVFrame *frame);
+void    av_frame_set_decode_error_flags   (AVFrame *frame, int     val);
+int     av_frame_get_pkt_size(const AVFrame *frame);
+void    av_frame_set_pkt_size(AVFrame *frame, int val);
+AVDictionary **avpriv_frame_get_metadatap(AVFrame *frame);
+int8_t *av_frame_get_qp_table(AVFrame *f, int *stride, int *type);
+int av_frame_set_qp_table(AVFrame *f, AVBufferRef *buf, int stride, int type);
+enum AVColorSpace av_frame_get_colorspace(const AVFrame *frame);
+void    av_frame_set_colorspace(AVFrame *frame, enum AVColorSpace val);
+enum AVColorRange av_frame_get_color_range(const AVFrame *frame);
+void    av_frame_set_color_range(AVFrame *frame, enum AVColorRange val);
+
+/**
+ * Get the name of a colorspace.
+ * @return a static string identifying the colorspace; can be NULL.
+ */
+const char *av_get_colorspace_name(enum AVColorSpace val);
+
+/**
+ * Allocate an AVFrame and set its fields to default values.  The resulting
+ * struct must be freed using av_frame_free().
+ *
+ * @return An AVFrame filled with default values or NULL on failure.
+ *
+ * @note this only allocates the AVFrame itself, not the data buffers. Those
+ * must be allocated through other means, e.g. with av_frame_get_buffer() or
+ * manually.
+ */
+AVFrame *av_frame_alloc(void);
+
+/**
+ * Free the frame and any dynamically allocated objects in it,
+ * e.g. extended_data. If the frame is reference counted, it will be
+ * unreferenced first.
+ *
+ * @param frame frame to be freed. The pointer will be set to NULL.
+ */
+void av_frame_free(AVFrame **frame);
+
+/**
+ * Set up a new reference to the data described by the source frame.
+ *
+ * Copy frame properties from src to dst and create a new reference for each
+ * AVBufferRef from src.
+ *
+ * If src is not reference counted, new buffers are allocated and the data is
+ * copied.
+ *
+ * @return 0 on success, a negative AVERROR on error
+ */
+int av_frame_ref(AVFrame *dst, const AVFrame *src);
+
+/**
+ * Create a new frame that references the same data as src.
+ *
+ * This is a shortcut for av_frame_alloc()+av_frame_ref().
+ *
+ * @return newly created AVFrame on success, NULL on error.
+ */
+AVFrame *av_frame_clone(const AVFrame *src);
+
+/**
+ * Unreference all the buffers referenced by frame and reset the frame fields.
+ */
+void av_frame_unref(AVFrame *frame);
+
+/**
+ * Move everythnig contained in src to dst and reset src.
+ */
+void av_frame_move_ref(AVFrame *dst, AVFrame *src);
+
+/**
+ * Allocate new buffer(s) for audio or video data.
+ *
+ * The following fields must be set on frame before calling this function:
+ * - format (pixel format for video, sample format for audio)
+ * - width and height for video
+ * - nb_samples and channel_layout for audio
+ *
+ * This function will fill AVFrame.data and AVFrame.buf arrays and, if
+ * necessary, allocate and fill AVFrame.extended_data and AVFrame.extended_buf.
+ * For planar formats, one buffer will be allocated for each plane.
+ *
+ * @param frame frame in which to store the new buffers.
+ * @param align required buffer size alignment
+ *
+ * @return 0 on success, a negative AVERROR on error.
+ */
+int av_frame_get_buffer(AVFrame *frame, int align);
+
+/**
+ * Check if the frame data is writable.
+ *
+ * @return A positive value if the frame data is writable (which is true if and
+ * only if each of the underlying buffers has only one reference, namely the one
+ * stored in this frame). Return 0 otherwise.
+ *
+ * If 1 is returned the answer is valid until av_buffer_ref() is called on any
+ * of the underlying AVBufferRefs (e.g. through av_frame_ref() or directly).
+ *
+ * @see av_frame_make_writable(), av_buffer_is_writable()
+ */
+int av_frame_is_writable(AVFrame *frame);
+
+/**
+ * Ensure that the frame data is writable, avoiding data copy if possible.
+ *
+ * Do nothing if the frame is writable, allocate new buffers and copy the data
+ * if it is not.
+ *
+ * @return 0 on success, a negative AVERROR on error.
+ *
+ * @see av_frame_is_writable(), av_buffer_is_writable(),
+ * av_buffer_make_writable()
+ */
+int av_frame_make_writable(AVFrame *frame);
+
+/**
+ * Copy the frame data from src to dst.
+ *
+ * This function does not allocate anything, dst must be already initialized and
+ * allocated with the same parameters as src.
+ *
+ * This function only copies the frame data (i.e. the contents of the data /
+ * extended data arrays), not any other properties.
+ *
+ * @return >= 0 on success, a negative AVERROR on error.
+ */
+int av_frame_copy(AVFrame *dst, const AVFrame *src);
+
+/**
+ * Copy only "metadata" fields from src to dst.
+ *
+ * Metadata for the purpose of this function are those fields that do not affect
+ * the data layout in the buffers.  E.g. pts, sample rate (for audio) or sample
+ * aspect ratio (for video), but not width/height or channel layout.
+ * Side data is also copied.
+ */
+int av_frame_copy_props(AVFrame *dst, const AVFrame *src);
+
+/**
+ * Get the buffer reference a given data plane is stored in.
+ *
+ * @param plane index of the data plane of interest in frame->extended_data.
+ *
+ * @return the buffer reference that contains the plane or NULL if the input
+ * frame is not valid.
+ */
+AVBufferRef *av_frame_get_plane_buffer(AVFrame *frame, int plane);
+
+/**
+ * Add a new side data to a frame.
+ *
+ * @param frame a frame to which the side data should be added
+ * @param type type of the added side data
+ * @param size size of the side data
+ *
+ * @return newly added side data on success, NULL on error
+ */
+AVFrameSideData *av_frame_new_side_data(AVFrame *frame,
+                                        enum AVFrameSideDataType type,
+                                        int size);
+
+/**
+ * @return a pointer to the side data of a given type on success, NULL if there
+ * is no side data with such type in this frame.
+ */
+AVFrameSideData *av_frame_get_side_data(const AVFrame *frame,
+                                        enum AVFrameSideDataType type);
+
+/**
+ * If side data of the supplied type exists in the frame, free it and remove it
+ * from the frame.
+ */
+void av_frame_remove_side_data(AVFrame *frame, enum AVFrameSideDataType type);
+
+/**
+ * @return a string identifying the side data type
+ */
+const char *av_frame_side_data_name(enum AVFrameSideDataType type);
+
+/**
+ * @}
+ */
 
 #endif /* AVUTIL_FRAME_H */

@@ -15,7 +15,7 @@ Create new csrc
  - Move csrc -> csrc.old
  - Copy new subdirs to <builddir>/csrc
  - Change to <builddir>
- - Patch with: patch -p0 <ffmeg-csrc.patch
+ - Patch with patches: patch -p0 <ffmeg-csrc-....patch
  - Compare csrc.old, csrc to check for differences.
  - change version nr in libavcodec/version.h, libavformat/version.h, libavutil/version.h, libswscale/version.h
  - remove every reference to deprecated, it breaks jnaerator
