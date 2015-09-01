@@ -1518,7 +1518,7 @@ public class AVCodecContext extends StructObject {
 	/**
 	 * precision of the intra DC coefficient - 8<br>
 	 * - encoding: Set by user.<br>
-	 * - decoding: unused
+	 * - decoding: Set by libavcodec
 	 */
 	@Field(72) 
 	public int intra_dc_precision() {
@@ -1527,7 +1527,7 @@ public class AVCodecContext extends StructObject {
 	/**
 	 * precision of the intra DC coefficient - 8<br>
 	 * - encoding: Set by user.<br>
-	 * - decoding: unused
+	 * - decoding: Set by libavcodec
 	 */
 	@Field(72) 
 	public AVCodecContext intra_dc_precision(int intra_dc_precision) {

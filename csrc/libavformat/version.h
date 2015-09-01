@@ -30,8 +30,8 @@
 #include "libavutil/version.h"
 
 #define LIBAVFORMAT_VERSION_MAJOR 56
-#define LIBAVFORMAT_VERSION_MINOR  25
-#define LIBAVFORMAT_VERSION_MICRO 101
+#define LIBAVFORMAT_VERSION_MINOR  36
+#define LIBAVFORMAT_VERSION_MICRO 100
 
 #define LIBAVFORMAT_VERSION_INT AV_VERSION_INT(LIBAVFORMAT_VERSION_MAJOR, \
                                                LIBAVFORMAT_VERSION_MINOR, \
@@ -41,7 +41,7 @@
                                            LIBAVFORMAT_VERSION_MICRO)
 #define LIBAVFORMAT_BUILD       LIBAVFORMAT_VERSION_INT
 
-#define LIBAVFORMAT_IDENT       "Lavf56.25.101"
+#define LIBAVFORMAT_IDENT       "Lavf56.36.100"
 
 /**
  * FF_API_* defines may be placed below to indicate public API that will be

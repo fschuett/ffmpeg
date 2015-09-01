@@ -1,6 +1,6 @@
-ffmpeg-2.6
+ffmpeg-2.7
 ==========
-parts of a java library interface to access ffmpeg 2.6 c library.
+parts of a java library interface to access ffmpeg 2.7 c library.
 Only parts that are needed in opensourcephysics tracker are 
 included.
 
@@ -13,13 +13,13 @@ to the dist/ directory.
 
 usage
 =====
-You need ffmpeg-2.6.jar, bridj-0.7-SNAPSHOT.jar installed in /usr/share/java/ffmpeg,
+You need ffmpeg-2.7.jar, bridj-0.7-SNAPSHOT.jar installed in /usr/share/java/ffmpeg,
 which are in the dist directory.
 Set the environment variable f.e. FFMPEG_HOME=/usr/share/java/ffmpeg
 for use with tracker.
 
 You need the ffmpeg c libraries
-libavformat56, libavcodec56, libavutil54, libswscale3, which all belong to ffmpeg 2.6.
+libavformat56, libavcodec56, libavutil54, libswscale3, which all belong to ffmpeg 2.7.
 
 Copyright
 =========

@@ -82,14 +82,6 @@
 #    define av_flatten
 #endif
 
-#if AV_GCC_VERSION_AT_LEAST(3,1)
-#    define attribute_deprecated __attribute__((deprecated))
-#elif defined(_MSC_VER)
-#    define attribute_deprecated __declspec(deprecated)
-#else
-#    define attribute_deprecated
-#endif
-
 /**
  * Disable warnings about deprecated features
  * This is useful for sections of code kept for backward compatibility and

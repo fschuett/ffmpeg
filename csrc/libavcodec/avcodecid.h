@@ -1,3 +1,5 @@
+#ifndef AVCODEC_AVCODECID_H
+#define AVCODEC_AVCODECID_H
 /**
  * Identify the syntax and semantics of the bitstream.
  * The principle is roughly:
@@ -206,6 +208,8 @@ enum AVCodecID {
     AV_CODEC_ID_MVC1_DEPRECATED,
     AV_CODEC_ID_MVC2_DEPRECATED,
     AV_CODEC_ID_HQX,
+    AV_CODEC_ID_TDSC,
+    AV_CODEC_ID_HQ_HQA,
 
     AV_CODEC_ID_BRENDER_PIX= MKBETAG('B','P','I','X'),
     AV_CODEC_ID_Y41P       = MKBETAG('Y','4','1','P'),
@@ -838,3 +842,5 @@ enum AVCodecID {
 
 #endif
 };
+
+#endif /* AVCODEC_AVCODECID_H */

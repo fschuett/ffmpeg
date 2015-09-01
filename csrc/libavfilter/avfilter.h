@@ -1230,6 +1230,8 @@ typedef struct AVFilterGraph {
 
 /**
  * Allocate a filter graph.
+ *
+ * @return the allocated filter graph on success or NULL.
  */
 AVFilterGraph *avfilter_graph_alloc(void);
 

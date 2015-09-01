@@ -1,6 +1,6 @@
-diff -pruN csrc.deprecated/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
---- csrc.deprecated/libavcodec/avcodec.h	2015-04-12 12:21:28.000000000 +0200
-+++ csrc/libavcodec/avcodec.h	2015-04-12 12:35:54.929824555 +0200
+diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
+--- csrc.orig/libavcodec/avcodec.h	2015-09-01 15:27:17.000000000 +0200
++++ csrc/libavcodec/avcodec.h	2015-09-01 15:35:29.732345169 +0200
 @@ -41,6 +41,7 @@
  #include "libavutil/rational.h"
  
@@ -9,10 +9,25 @@ diff -pruN csrc.deprecated/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  
  /**
   * @defgroup libavc Encoding/Decoding Library
-@@ -99,456 +100,6 @@
-  * After adding new codec IDs, do not forget to add an entry to the codec
-  * descriptor list and bump libavcodec minor version.
-  */
+@@ -84,475 +85,6 @@
+ 
+ 
+ /**
+- * Identify the syntax and semantics of the bitstream.
+- * The principle is roughly:
+- * Two decoders with the same ID can decode the same streams.
+- * Two encoders with the same ID can encode compatible streams.
+- * There may be slight deviations from the principle due to implementation
+- * details.
+- *
+- * If you add a codec ID to this list, add it so that
+- * 1. no value of a existing codec ID changes (that would break ABI),
+- * 2. Give it a value which when taken as ASCII is recognized uniquely by a human as this specific codec.
+- *    This ensures that 2 forks can independently add AVCodecIDs without producing conflicts.
+- *
+- * After adding new codec IDs, do not forget to add an entry to the codec
+- * descriptor list and bump libavcodec minor version.
+- */
 -enum AVCodecID {
 -    AV_CODEC_ID_NONE,
 -
@@ -205,6 +220,8 @@ diff -pruN csrc.deprecated/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
 -    AV_CODEC_ID_MVC1_DEPRECATED,
 -    AV_CODEC_ID_MVC2_DEPRECATED,
 -    AV_CODEC_ID_HQX,
+-    AV_CODEC_ID_TDSC,
+-    AV_CODEC_ID_HQ_HQA,
 -
 -    AV_CODEC_ID_BRENDER_PIX= MKBETAG('B','P','I','X'),
 -    AV_CODEC_ID_Y41P       = MKBETAG('Y','4','1','P'),
@@ -463,13 +480,17 @@ diff -pruN csrc.deprecated/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
 -#include "old_codec_ids.h"
 -#endif
 -};
- 
- /**
+-
+-/**
   * This struct describes the properties of a single codec described by an
-diff -pruN csrc.deprecated/libavcodec/avcodecid.h csrc/libavcodec/avcodecid.h
---- csrc.deprecated/libavcodec/avcodecid.h	1970-01-01 01:00:00.000000000 +0100
-+++ csrc/libavcodec/avcodecid.h	2015-04-12 14:48:45.938341596 +0200
-@@ -0,0 +1,840 @@
+  * AVCodecID.
+  * @see avcodec_descriptor_get()
+diff -pruN csrc.orig/libavcodec/avcodecid.h csrc/libavcodec/avcodecid.h
+--- csrc.orig/libavcodec/avcodecid.h	1970-01-01 01:00:00.000000000 +0100
++++ csrc/libavcodec/avcodecid.h	2015-09-01 15:34:54.468320857 +0200
+@@ -0,0 +1,846 @@
++#ifndef AVCODEC_AVCODECID_H
++#define AVCODEC_AVCODECID_H
 +/**
 + * Identify the syntax and semantics of the bitstream.
 + * The principle is roughly:
@@ -678,6 +699,8 @@ diff -pruN csrc.deprecated/libavcodec/avcodecid.h csrc/libavcodec/avcodecid.h
 +    AV_CODEC_ID_MVC1_DEPRECATED,
 +    AV_CODEC_ID_MVC2_DEPRECATED,
 +    AV_CODEC_ID_HQX,
++    AV_CODEC_ID_TDSC,
++    AV_CODEC_ID_HQ_HQA,
 +
 +    AV_CODEC_ID_BRENDER_PIX= MKBETAG('B','P','I','X'),
 +    AV_CODEC_ID_Y41P       = MKBETAG('Y','4','1','P'),
@@ -1310,3 +1333,5 @@ diff -pruN csrc.deprecated/libavcodec/avcodecid.h csrc/libavcodec/avcodecid.h
 +
 +#endif
 +};
++
++#endif /* AVCODEC_AVCODECID_H */

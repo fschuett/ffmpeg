@@ -8,7 +8,7 @@ Check differences
 
  - Install new devel files to /usr/include.
  - Create /usr/include/ffmpeg with all subdirs:
-   libav*, libpostproc, libswscale, libswsample (10 subdirs).
+   libav*(ohne libavc1394), libpostproc, libswscale, libswsample (9 subdirs).
  - Compare to previouse version to check for differences.
 
 Create new csrc
@@ -17,9 +17,9 @@ Create new csrc
  - Change to <builddir>
  - Patch with patches: patch -p0 <ffmeg-csrc-....patch
  - Compare csrc.old, csrc to check for differences.
- - change version nr in libavcodec/version.h, libavformat/version.h, libavutil/version.h, libswscale/version.h
- - remove every reference to deprecated, it breaks jnaerator
- - Update ffmpeg-csrc.patch: diff -pruN /usr/include/ffmpeg csrc
+ Patch: - change version nr in libavcodec/version.h, libavformat/version.h, libavutil/version.h, libswscale/version.h
+ Patch: - remove every reference to deprecated, it breaks jnaerator
+ - Update patches ffmpeg-csrc-....patch: diff -pruN csrc.orig csrc >ffmpeg-csrc-...patch
 
 Create new src
  - Move src -> src.old

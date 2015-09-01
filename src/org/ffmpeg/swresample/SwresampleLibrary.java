@@ -120,24 +120,24 @@ public class SwresampleLibrary {
 	/** <i>native declaration : libswresample/swresample.h</i> */
 	public static final int SWR_FLAG_RESAMPLE = (int)1;
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final String LIBSWRESAMPLE_IDENT = (String)"SwR1.1.100";
+	public static final String LIBSWRESAMPLE_IDENT = (String)"SwR1.2.100";
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final int LIBSWRESAMPLE_BUILD = (int)((1) << 16 | (1) << 8 | (100));
+	public static final int LIBSWRESAMPLE_BUILD = (int)((1) << 16 | (2) << 8 | (100));
 	/** <i>native declaration : ./libswresample/version.h</i> */
 	public static final int LIBSWRESAMPLE_VERSION_MICRO = (int)100;
 	/** <i>native declaration : ./libswresample/version.h</i> */
 	public static final int LIBSWRESAMPLE_VERSION_MAJOR = (int)1;
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final int LIBSWRESAMPLE_VERSION_MINOR = (int)1;
+	public static final int LIBSWRESAMPLE_VERSION_MINOR = (int)2;
 	/**
 	 * define<br>
-	 * Conversion Error : 1.1.<br>
+	 * Conversion Error : 1.2.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libswresample/version.h:0</i><br>
-	 * 1.1.
+	 * 1.2.
 	 */
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final int LIBSWRESAMPLE_VERSION_INT = (int)((1) << 16 | (1) << 8 | (100));
+	public static final int LIBSWRESAMPLE_VERSION_INT = (int)((1) << 16 | (2) << 8 | (100));
 	/**
 	 * Get the AVClass for SwrContext. It can be used in combination with<br>
 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>
@@ -243,9 +243,10 @@ public class SwresampleLibrary {
 	 * Convert audio.<br>
 	 * * in and in_count can be set to 0 to flush the last few samples out at the<br>
 	 * end.<br>
-	 * * If more input is provided than output space then the input will be buffered.<br>
-	 * You can avoid this buffering by providing more output space than input.<br>
-	 * Conversion will run directly without copying whenever possible.<br>
+	 * * If more input is provided than output space, then the input will be buffered.<br>
+	 * You can avoid this buffering by using swr_get_out_samples() to retrieve an<br>
+	 * upper bound on the required number of output samples for the given number of<br>
+	 * input samples. Conversion will run directly without copying whenever possible.<br>
 	 * * @param s         allocated Swr context, with parameters set<br>
 	 * @param out       output buffers, only the first one need be set in case of packed audio<br>
 	 * @param out_count amount of space available for output in samples per channel<br>
@@ -253,7 +254,7 @@ public class SwresampleLibrary {
 	 * @param in_count  number of input samples available in one channel<br>
 	 * * @return number of samples output per channel, negative value on error<br>
 	 * Original signature : <code>int swr_convert(SwrContext*, uint8_t**, int, const uint8_t**, int)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:123</i>
+	 * <i>native declaration : libswresample/swresample.h:124</i>
 	 */
 	public static int swr_convert(Pointer<SwresampleLibrary.SwrContext > s, Pointer<Pointer<Byte > > out, int out_count, Pointer<Pointer<Byte > > in, int in_count) {
 		return swr_convert(Pointer.getPeer(s), Pointer.getPeer(out), out_count, Pointer.getPeer(in), in_count);
@@ -274,7 +275,7 @@ public class SwresampleLibrary {
 	 *      function used internally for timestamp compensation.<br>
 	 * @return the output timestamp for the next output sample<br>
 	 * Original signature : <code>int64_t swr_next_pts(SwrContext*, int64_t)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:140</i>
+	 * <i>native declaration : libswresample/swresample.h:141</i>
 	 */
 	public static long swr_next_pts(Pointer<SwresampleLibrary.SwrContext > s, long pts) {
 		return swr_next_pts(Pointer.getPeer(s), pts);
@@ -295,7 +296,7 @@ public class SwresampleLibrary {
 	 *            @li compensation unsupported by resampler, or<br>
 	 *            @li swr_init() fails when called.<br>
 	 * Original signature : <code>int swr_set_compensation(SwrContext*, int, int)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:157</i>
+	 * <i>native declaration : libswresample/swresample.h:158</i>
 	 */
 	public static int swr_set_compensation(Pointer<SwresampleLibrary.SwrContext > s, int sample_delta, int compensation_distance) {
 		return swr_set_compensation(Pointer.getPeer(s), sample_delta, compensation_distance);
@@ -308,7 +309,7 @@ public class SwresampleLibrary {
 	 *                            indexes, -1 for a muted channel)<br>
 	 * @return >= 0 on success, or AVERROR error code in case of failure.<br>
 	 * Original signature : <code>int swr_set_channel_mapping(SwrContext*, const int*)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:166</i>
+	 * <i>native declaration : libswresample/swresample.h:167</i>
 	 */
 	public static int swr_set_channel_mapping(Pointer<SwresampleLibrary.SwrContext > s, Pointer<Integer > channel_map) {
 		return swr_set_channel_mapping(Pointer.getPeer(s), Pointer.getPeer(channel_map));
@@ -322,7 +323,7 @@ public class SwresampleLibrary {
 	 * @param stride  offset between lines of the matrix<br>
 	 * @return  >= 0 on success, or AVERROR error code in case of failure.<br>
 	 * Original signature : <code>int swr_set_matrix(SwrContext*, const double*, int)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:176</i>
+	 * <i>native declaration : libswresample/swresample.h:177</i>
 	 */
 	public static int swr_set_matrix(Pointer<SwresampleLibrary.SwrContext > s, Pointer<Double > matrix, int stride) {
 		return swr_set_matrix(Pointer.getPeer(s), Pointer.getPeer(matrix), stride);
@@ -336,7 +337,7 @@ public class SwresampleLibrary {
 	 * @param count number of samples to be dropped<br>
 	 * * @return >= 0 on success, or a negative AVERROR code on failure<br>
 	 * Original signature : <code>int swr_drop_output(SwrContext*, int)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:186</i>
+	 * <i>native declaration : libswresample/swresample.h:187</i>
 	 */
 	public static int swr_drop_output(Pointer<SwresampleLibrary.SwrContext > s, int count) {
 		return swr_drop_output(Pointer.getPeer(s), count);
@@ -350,7 +351,7 @@ public class SwresampleLibrary {
 	 * @param count number of samples to be dropped<br>
 	 * * @return >= 0 on success, or a negative AVERROR code on failure<br>
 	 * Original signature : <code>int swr_inject_silence(SwrContext*, int)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:196</i>
+	 * <i>native declaration : libswresample/swresample.h:197</i>
 	 */
 	public static int swr_inject_silence(Pointer<SwresampleLibrary.SwrContext > s, int count) {
 		return swr_inject_silence(Pointer.getPeer(s), count);
@@ -378,26 +379,47 @@ public class SwresampleLibrary {
 	 *                  returned<br>
 	 * @returns     the delay in 1 / @c base units.<br>
 	 * Original signature : <code>int64_t swr_get_delay(SwrContext*, int64_t)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:220</i>
+	 * <i>native declaration : libswresample/swresample.h:221</i>
 	 */
 	public static long swr_get_delay(Pointer<SwresampleLibrary.SwrContext > s, long base) {
 		return swr_get_delay(Pointer.getPeer(s), base);
 	}
 	protected native static long swr_get_delay(@Ptr long s, long base);
 	/**
+	 * Find an upper bound on the number of samples that the next swr_convert<br>
+	 * call will output, if called with in_samples of input samples. This<br>
+	 * depends on the internal state, and anything changing the internal state<br>
+	 * (like further swr_convert() calls) will may change the number of samples<br>
+	 * swr_get_out_samples() returns for the same number of input samples.<br>
+	 * * @param in_samples    number of input samples.<br>
+	 * @note any call to swr_inject_silence(), swr_convert(), swr_next_pts()<br>
+	 *       or swr_set_compensation() invalidates this limit<br>
+	 * @note it is recommended to pass the correct available buffer size<br>
+	 *       to all functions like swr_convert() even if swr_get_out_samples()<br>
+	 *       indicates that less would be used.<br>
+	 * @returns an upper bound on the number of samples that the next swr_convert<br>
+	 *          will output or a negative value to indicate an error<br>
+	 * Original signature : <code>int swr_get_out_samples(SwrContext*, int)</code><br>
+	 * <i>native declaration : libswresample/swresample.h:238</i>
+	 */
+	public static int swr_get_out_samples(Pointer<SwresampleLibrary.SwrContext > s, int in_samples) {
+		return swr_get_out_samples(Pointer.getPeer(s), in_samples);
+	}
+	protected native static int swr_get_out_samples(@Ptr long s, int in_samples);
+	/**
 	 * Return the @ref LIBSWRESAMPLE_VERSION_INT constant.<br>
 	 * * This is useful to check if the build-time libswresample has the same version<br>
 	 * as the run-time one.<br>
 	 * * @returns     the unsigned int-typed version<br>
 	 * Original signature : <code>int swresample_version()</code><br>
-	 * <i>native declaration : libswresample/swresample.h:228</i>
+	 * <i>native declaration : libswresample/swresample.h:246</i>
 	 */
 	public static native int swresample_version();
 	/**
 	 * Return the swr build-time configuration.<br>
 	 * * @returns     the build-time @c ./configure flags<br>
 	 * Original signature : <code>char* swresample_configuration()</code><br>
-	 * <i>native declaration : libswresample/swresample.h:234</i>
+	 * <i>native declaration : libswresample/swresample.h:252</i>
 	 */
 	public static Pointer<Byte > swresample__configuration() {
 		return Pointer.pointerToAddress(swresample_configuration(), Byte.class);
@@ -408,7 +430,7 @@ public class SwresampleLibrary {
 	 * Return the swr license.<br>
 	 * * @returns     the license of libswresample, determined at build-time<br>
 	 * Original signature : <code>char* swresample_license()</code><br>
-	 * <i>native declaration : libswresample/swresample.h:240</i>
+	 * <i>native declaration : libswresample/swresample.h:258</i>
 	 */
 	public static Pointer<Byte > swresample__license() {
 		return Pointer.pointerToAddress(swresample_license(), Byte.class);
@@ -442,7 +464,7 @@ public class SwresampleLibrary {
 	 * @return                0 on success, AVERROR on failure or nonmatching<br>
 	 *                        configuration.<br>
 	 * Original signature : <code>int swr_convert_frame(SwrContext*, AVFrame*, const AVFrame*)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:269</i>
+	 * <i>native declaration : libswresample/swresample.h:287</i>
 	 */
 	public static int swr_convert_frame(Pointer<SwresampleLibrary.SwrContext > swr, Pointer<AVFrame > output, Pointer<AVFrame > input) {
 		return swr_convert_frame(Pointer.getPeer(swr), Pointer.getPeer(output), Pointer.getPeer(input));
@@ -459,7 +481,7 @@ public class SwresampleLibrary {
 	 * @param input           input AVFrame<br>
 	 * @return                0 on success, AVERROR on failure.<br>
 	 * Original signature : <code>int swr_config_frame(SwrContext*, const AVFrame*, const AVFrame*)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:282</i>
+	 * <i>native declaration : libswresample/swresample.h:300</i>
 	 */
 	public static int swr_config_frame(Pointer<SwresampleLibrary.SwrContext > swr, Pointer<AVFrame > out, Pointer<AVFrame > in) {
 		return swr_config_frame(Pointer.getPeer(swr), Pointer.getPeer(out), Pointer.getPeer(in));

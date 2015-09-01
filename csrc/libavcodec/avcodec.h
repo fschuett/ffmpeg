@@ -85,23 +85,6 @@
 
 
 /**
- * Identify the syntax and semantics of the bitstream.
- * The principle is roughly:
- * Two decoders with the same ID can decode the same streams.
- * Two encoders with the same ID can encode compatible streams.
- * There may be slight deviations from the principle due to implementation
- * details.
- *
- * If you add a codec ID to this list, add it so that
- * 1. no value of a existing codec ID changes (that would break ABI),
- * 2. Give it a value which when taken as ASCII is recognized uniquely by a human as this specific codec.
- *    This ensures that 2 forks can independently add AVCodecIDs without producing conflicts.
- *
- * After adding new codec IDs, do not forget to add an entry to the codec
- * descriptor list and bump libavcodec minor version.
- */
-
-/**
  * This struct describes the properties of a single codec described by an
  * AVCodecID.
  * @see avcodec_descriptor_get()
@@ -1370,7 +1353,7 @@ typedef struct AVCodecContext {
     /**
      * precision of the intra DC coefficient - 8
      * - encoding: Set by user.
-     * - decoding: unused
+     * - decoding: Set by libavcodec
      */
     int intra_dc_precision;
 
@@ -2384,6 +2367,7 @@ typedef struct AVCodecContext {
 #define FF_PROFILE_DTS_96_24   40
 #define FF_PROFILE_DTS_HD_HRA  50
 #define FF_PROFILE_DTS_HD_MA   60
+#define FF_PROFILE_DTS_EXPRESS 70
 
 #define FF_PROFILE_MPEG2_422    0
 #define FF_PROFILE_MPEG2_HIGH   1
@@ -2442,6 +2426,11 @@ typedef struct AVCodecContext {
 #define FF_PROFILE_HEVC_MAIN_10                     2
 #define FF_PROFILE_HEVC_MAIN_STILL_PICTURE          3
 #define FF_PROFILE_HEVC_REXT                        4
+
+#define FF_PROFILE_VP9_0                            0
+#define FF_PROFILE_VP9_1                            1
+#define FF_PROFILE_VP9_2                            2
+#define FF_PROFILE_VP9_3                            3
 
     /**
      * level
@@ -2796,6 +2785,11 @@ typedef struct AVCodec {
      * Will be called when seeking
      */
     void (*flush)(AVCodecContext *);
+    /**
+     * Internal codec capabilities.
+     * See FF_CODEC_CAP_* in internal.h
+     */
+    int caps_internal;
 } AVCodec;
 
 int av_codec_get_max_lowres(const AVCodec *codec);
@@ -3368,6 +3362,8 @@ uint8_t* av_packet_get_side_data(AVPacket *pkt, enum AVPacketSideDataType type,
 int av_packet_merge_side_data(AVPacket *pkt);
 
 int av_packet_split_side_data(AVPacket *pkt);
+
+const char *av_packet_side_data_name(enum AVPacketSideDataType type);
 
 /**
  * Pack a dictionary for use in side_data.
