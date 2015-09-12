@@ -1,6 +1,8 @@
 package org.ffmpeg.avformat;
 import org.bridj.BridJ;
+import org.bridj.Pointer;
 import org.bridj.StructObject;
+import org.bridj.ann.Field;
 import org.bridj.ann.Library;
 /**
  * <i>native declaration : libavformat/avio.h:52</i><br>
@@ -9,9 +11,25 @@ import org.bridj.ann.Library;
  * For help, please visit <a href="http://nativelibs4java.googlecode.com/">NativeLibs4Java</a> or <a href="http://bridj.googlecode.com/">BridJ</a> .
  */
 @Library("avformat") 
-public abstract class AVIODirContext extends StructObject {
+public class AVIODirContext extends StructObject {
 	static {
 		BridJ.register();
 	}
-	/** Conversion Error : URLContext* (failed to convert type to Java (undefined type)) */
+	/** C type : void* */
+	@Field(0) 
+	public Pointer<? > url_context() {
+		return this.io.getPointerField(this, 0);
+	}
+	/** C type : void* */
+	@Field(0) 
+	public AVIODirContext url_context(Pointer<? > url_context) {
+		this.io.setPointerField(this, 0, url_context);
+		return this;
+	}
+	public AVIODirContext() {
+		super();
+	}
+	public AVIODirContext(Pointer pointer) {
+		super(pointer);
+	}
 }

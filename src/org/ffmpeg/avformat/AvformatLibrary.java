@@ -2221,8 +2221,4 @@ public class AvformatLibrary {
 		return avformat_queue_attached_pictures(Pointer.getPeer(s));
 	}
 	protected native static int avformat_queue_attached_pictures(@Ptr long s);
-	/** Undefined type */
-	public static interface URLContext {
-		
-	};
 }

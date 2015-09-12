@@ -93,7 +93,7 @@ typedef struct AVIODirEntry {
 } AVIODirEntry;
 
 typedef struct AVIODirContext {
-    struct URLContext *url_context;
+    void *url_context;
 } AVIODirContext;
 
 /**
