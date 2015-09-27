@@ -39,6 +39,8 @@ public class PostprocLibrary {
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
 	public static final int PP_FORMAT_411 = (int)(0x00000002 | 0x00000008);
 	/** <i>native declaration : ./libpostproc/version.h</i> */
+	public static final boolean FF_API_QP_TYPE = (boolean)(53 < 55);
+	/** <i>native declaration : ./libpostproc/version.h</i> */
 	public static final int LIBPOSTPROC_VERSION_MINOR = (int)3;
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
 	public static final int PP_QUALITY_MAX = (int)6;

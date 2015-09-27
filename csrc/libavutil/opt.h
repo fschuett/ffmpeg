@@ -406,14 +406,18 @@ typedef struct AVOptionRanges {
  * AVERROR(EINVAL) if the value is not valid
  * @deprecated use av_opt_set()
  */
+
 int av_set_string3(void *obj, const char *name, const char *val, int alloc, const AVOption **o_out);
 
 const AVOption *av_set_double(void *obj, const char *name, double n);
 const AVOption *av_set_q(void *obj, const char *name, AVRational n);
 const AVOption *av_set_int(void *obj, const char *name, int64_t n);
 
+
 double av_get_double(void *obj, const char *name, const AVOption **o_out);
+
 AVRational av_get_q(void *obj, const char *name, const AVOption **o_out);
+
 int64_t av_get_int(void *obj, const char *name, const AVOption **o_out);
 const char *av_get_string(void *obj, const char *name, const AVOption **o_out, char *buf, int buf_len);
 const AVOption *av_next_option(FF_CONST_AVUTIL55 void *obj, const AVOption *last);
@@ -437,9 +441,16 @@ int av_opt_show2(void *obj, void *av_log_obj, int req_flags, int rej_flags);
  */
 void av_opt_set_defaults(void *s);
 
-#if FF_API_OLD_AVOPTIONS
+/**
+ * Set the values of all AVOption fields to their default values. Only these
+ * AVOption fields for which (opt->flags & mask) == flags will have their
+ * default applied to s.
+ *
+ * @param s an AVOption-enabled struct (its first member must be a pointer to AVClass)
+ * @param mask combination of AV_OPT_FLAG_*
+ * @param flags combination of AV_OPT_FLAG_*
+ */
 void av_opt_set_defaults2(void *s, int mask, int flags);
-#endif
 
 /**
  * Parse the key/value pairs list in opts. For each key/value pair

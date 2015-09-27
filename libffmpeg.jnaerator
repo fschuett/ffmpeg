@@ -5,7 +5,7 @@
 
 -library avutil libavutil/ffversion.h libavutil/avutil.h libavutil/dict.h libavutil/frame.h libavutil/log.h libavutil/mem.h libavutil/opt.h libavutil/pixfmt.h libavutil/mathematics.h libavutil/samplefmt.h libavutil/imgutils.h libavutil/pixdesc.h libavutil/buffer.h
 -library swscale libswscale/swscale.h libswscale/version.h
--library avformat libavformat/avformat.h libavformat/avio.h libavformat/version.h
+-library avformat libavformat/avformat.h libavformat/avio.h libavformat/internal.h libavformat/version.h
 -library avcodec libavcodec/avcodec.h libavcodec/version.h libavcodec/avcodecid.h
 -library avdevice libavdevice/avdevice.h libavdevice/version.h
 -library avfilter libavfilter/asrc_abuffer.h  libavfilter/avcodec.h  libavfilter/avfiltergraph.h  libavfilter/avfilter.h libavfilter/buffersink.h  libavfilter/buffersrc.h  libavfilter/asrc_abuffer.h libavfilter/version.h

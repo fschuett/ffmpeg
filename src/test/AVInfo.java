@@ -4,10 +4,8 @@ import static org.ffmpeg.avformat.AvformatLibrary.av_dump_format;
 import static org.ffmpeg.avformat.AvformatLibrary.av_register_all;
 import static org.ffmpeg.avformat.AvformatLibrary.avformat_close_input;
 import static org.ffmpeg.avformat.AvformatLibrary.avformat_open_input;
-import static org.ffmpeg.avutil.AvutilLibrary.av_strerror;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
 
 import org.bridj.Pointer;
 import org.ffmpeg.avformat.AVFormatContext;
@@ -34,14 +32,10 @@ public class AVInfo {
 			/* open input file, and allocate format context */
 			Pointer<Pointer<AVFormatContext>> pfmt_ctx = Pointer
 					.allocatePointer(AVFormatContext.class);
-			int error;
-			if ((error = avformat_open_input(pfmt_ctx,
-					Pointer.pointerToCString(src_filename), null, null)) < 0) {
-				int length = 64;
-				Pointer<Byte> errorstring = Pointer.allocateBytes(length);
-				av_strerror(error,errorstring,length);
-				System.err.printf("Could not open source file %s\n error: %s",
-						src_filename, errorstring.getCString());
+			if (avformat_open_input(pfmt_ctx,
+					Pointer.pointerToCString(src_filename), null, null) < 0) {
+				System.err.printf("Could not open source file %s\n",
+						src_filename);
 				System.exit(1);
 			}
 

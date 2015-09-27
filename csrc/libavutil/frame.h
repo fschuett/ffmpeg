@@ -493,7 +493,7 @@ typedef struct AVFrame {
 
     /**
      * frame timestamp estimated using various heuristics, in stream time base
-     * Code outside libavcodec should access this field using:
+     * Code outside libavutil should access this field using:
      * av_frame_get_best_effort_timestamp(frame)
      * - encoding: unused
      * - decoding: set by libavcodec, read by user.
@@ -502,7 +502,7 @@ typedef struct AVFrame {
 
     /**
      * reordered pos from the last AVPacket that has been input into the decoder
-     * Code outside libavcodec should access this field using:
+     * Code outside libavutil should access this field using:
      * av_frame_get_pkt_pos(frame)
      * - encoding: unused
      * - decoding: Read by user.
@@ -512,7 +512,7 @@ typedef struct AVFrame {
     /**
      * duration of the corresponding packet, expressed in
      * AVStream->time_base units, 0 if unknown.
-     * Code outside libavcodec should access this field using:
+     * Code outside libavutil should access this field using:
      * av_frame_get_pkt_duration(frame)
      * - encoding: unused
      * - decoding: Read by user.
@@ -521,7 +521,7 @@ typedef struct AVFrame {
 
     /**
      * metadata.
-     * Code outside libavcodec should access this field using:
+     * Code outside libavutil should access this field using:
      * av_frame_get_metadata(frame)
      * - encoding: Set by user.
      * - decoding: Set by libavcodec.
@@ -532,7 +532,7 @@ typedef struct AVFrame {
      * decode error flags of the frame, set to a combination of
      * FF_DECODE_ERROR_xxx flags if the decoder produced a frame, but there
      * were errors during the decoding.
-     * Code outside libavcodec should access this field using:
+     * Code outside libavutil should access this field using:
      * av_frame_get_decode_error_flags(frame)
      * - encoding: unused
      * - decoding: set by libavcodec, read by user.
@@ -543,7 +543,7 @@ typedef struct AVFrame {
 
     /**
      * number of audio channels, only used for audio.
-     * Code outside libavcodec should access this field using:
+     * Code outside libavutil should access this field using:
      * av_frame_get_channels(frame)
      * - encoding: unused
      * - decoding: Read by user.
@@ -569,7 +569,7 @@ typedef struct AVFrame {
 /**
  * Accessors for some AVFrame fields.
  * The position of these field in the structure is not part of the ABI,
- * they should not be accessed directly outside libavcodec.
+ * they should not be accessed directly outside libavutil.
  */
 int64_t av_frame_get_best_effort_timestamp(const AVFrame *frame);
 void    av_frame_set_best_effort_timestamp(AVFrame *frame, int64_t val);

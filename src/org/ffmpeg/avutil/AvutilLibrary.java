@@ -26,7 +26,7 @@ public class AvutilLibrary {
 	}
 	/**
 	 * enum values<br>
-	 * <i>native declaration : libavutil/avutil.h:26</i>
+	 * <i>native declaration : libavutil/avutil.h:33</i>
 	 */
 	public enum AVMediaType implements IntValuedEnum<AVMediaType > {
 		/** < Usually treated as AVMEDIA_TYPE_DATA */
@@ -55,7 +55,7 @@ public class AvutilLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : libavutil/avutil.h:50</i>
+	 * <i>native declaration : libavutil/avutil.h:57</i>
 	 */
 	public enum AVPictureType implements IntValuedEnum<AVPictureType > {
 		/** < Undefined */
@@ -178,7 +178,7 @@ public class AvutilLibrary {
 	 * for pal8. This palette is filled in automatically by the function<br>
 	 * allocating the picture.<br>
 	 * enum values<br>
-	 * <i>native declaration : libavutil/pixfmt.h:645</i>
+	 * <i>native declaration : libavutil/pixfmt.h:654</i>
 	 */
 	public enum AVPixelFormat implements IntValuedEnum<AVPixelFormat > {
 		AV_PIX_FMT_NONE(-1),
@@ -283,148 +283,153 @@ public class AvutilLibrary {
 		AV_PIX_FMT_BGR555BE(49),
 		/** < packed BGR 5:5:5, 16bpp, (msb)1X 5B 5G 5R(lsb), little-endian, X=unused/undefined */
 		AV_PIX_FMT_BGR555LE(50),
-		/** < HW acceleration through VA API at motion compensation entry-point, Picture.data[3] contains a vaapi_render_state struct which contains macroblocks as well as various fields extracted from headers */
+		/**
+		 * @{<br>
+		 * < HW acceleration through VA API at motion compensation entry-point, Picture.data[3] contains a vaapi_render_state struct which contains macroblocks as well as various fields extracted from headers
+		 */
 		AV_PIX_FMT_VAAPI_MOCO(51),
 		/** < HW acceleration through VA API at IDCT entry-point, Picture.data[3] contains a vaapi_render_state struct which contains fields extracted from headers */
 		AV_PIX_FMT_VAAPI_IDCT(52),
 		/** < HW decoding through VA API, Picture.data[3] contains a vaapi_render_state struct which contains the bitstream of the slices as well as various fields extracted from headers */
 		AV_PIX_FMT_VAAPI_VLD(53),
+		/** @} */
+		AV_PIX_FMT_VAAPI(53),
 		/** < planar YUV 4:2:0, 24bpp, (1 Cr & Cb sample per 2x2 Y samples), little-endian */
-		AV_PIX_FMT_YUV420P16LE(54),
+		AV_PIX_FMT_YUV420P16LE((53 + 1)),
 		/** < planar YUV 4:2:0, 24bpp, (1 Cr & Cb sample per 2x2 Y samples), big-endian */
-		AV_PIX_FMT_YUV420P16BE(55),
+		AV_PIX_FMT_YUV420P16BE((53 + 2)),
 		/** < planar YUV 4:2:2, 32bpp, (1 Cr & Cb sample per 2x1 Y samples), little-endian */
-		AV_PIX_FMT_YUV422P16LE(56),
+		AV_PIX_FMT_YUV422P16LE((53 + 3)),
 		/** < planar YUV 4:2:2, 32bpp, (1 Cr & Cb sample per 2x1 Y samples), big-endian */
-		AV_PIX_FMT_YUV422P16BE(57),
+		AV_PIX_FMT_YUV422P16BE((53 + 4)),
 		/** < planar YUV 4:4:4, 48bpp, (1 Cr & Cb sample per 1x1 Y samples), little-endian */
-		AV_PIX_FMT_YUV444P16LE(58),
+		AV_PIX_FMT_YUV444P16LE((53 + 5)),
 		/** < planar YUV 4:4:4, 48bpp, (1 Cr & Cb sample per 1x1 Y samples), big-endian */
-		AV_PIX_FMT_YUV444P16BE(59),
+		AV_PIX_FMT_YUV444P16BE((53 + 6)),
 		/** < MPEG4 HW decoding with VDPAU, data[0] contains a vdpau_render_state struct which contains the bitstream of the slices as well as various fields extracted from headers */
-		AV_PIX_FMT_VDPAU_MPEG4(60),
+		AV_PIX_FMT_VDPAU_MPEG4((53 + 7)),
 		/** < HW decoding through DXVA2, Picture.data[3] contains a LPDIRECT3DSURFACE9 pointer */
-		AV_PIX_FMT_DXVA2_VLD(61),
+		AV_PIX_FMT_DXVA2_VLD((53 + 8)),
 		/** < packed RGB 4:4:4, 16bpp, (msb)4X 4R 4G 4B(lsb), little-endian, X=unused/undefined */
-		AV_PIX_FMT_RGB444LE(62),
+		AV_PIX_FMT_RGB444LE((53 + 9)),
 		/** < packed RGB 4:4:4, 16bpp, (msb)4X 4R 4G 4B(lsb), big-endian,    X=unused/undefined */
-		AV_PIX_FMT_RGB444BE(63),
+		AV_PIX_FMT_RGB444BE((53 + 10)),
 		/** < packed BGR 4:4:4, 16bpp, (msb)4X 4B 4G 4R(lsb), little-endian, X=unused/undefined */
-		AV_PIX_FMT_BGR444LE(64),
+		AV_PIX_FMT_BGR444LE((53 + 11)),
 		/** < packed BGR 4:4:4, 16bpp, (msb)4X 4B 4G 4R(lsb), big-endian,    X=unused/undefined */
-		AV_PIX_FMT_BGR444BE(65),
+		AV_PIX_FMT_BGR444BE((53 + 12)),
 		/** < 8bit gray, 8bit alpha */
-		AV_PIX_FMT_YA8(66),
+		AV_PIX_FMT_YA8((53 + 13)),
 		/** < alias for AV_PIX_FMT_YA8 */
-		AV_PIX_FMT_Y400A(66),
+		AV_PIX_FMT_Y400A(53 + 13),
 		/** < alias for AV_PIX_FMT_YA8 */
-		AV_PIX_FMT_GRAY8A(66),
+		AV_PIX_FMT_GRAY8A(53 + 13),
 		/** < packed RGB 16:16:16, 48bpp, 16B, 16G, 16R, the 2-byte value for each R/G/B component is stored as big-endian */
-		AV_PIX_FMT_BGR48BE((66 + 1)),
+		AV_PIX_FMT_BGR48BE((53 + 13 + 1)),
 		/** < packed RGB 16:16:16, 48bpp, 16B, 16G, 16R, the 2-byte value for each R/G/B component is stored as little-endian */
-		AV_PIX_FMT_BGR48LE((66 + 2)),
+		AV_PIX_FMT_BGR48LE((53 + 13 + 2)),
 		/**
 		 * The following 12 formats have the disadvantage of needing 1 format for each bit depth.<br>
 		 * Notice that each 9/10 bits sample is stored in 16 bits with extra padding.<br>
 		 * If you want to support multiple bit depths, then using AV_PIX_FMT_YUV420P16* with the bpp stored separately is better.<br>
 		 * < planar YUV 4:2:0, 13.5bpp, (1 Cr & Cb sample per 2x2 Y samples), big-endian
 		 */
-		AV_PIX_FMT_YUV420P9BE((66 + 3)),
+		AV_PIX_FMT_YUV420P9BE((53 + 13 + 3)),
 		/** < planar YUV 4:2:0, 13.5bpp, (1 Cr & Cb sample per 2x2 Y samples), little-endian */
-		AV_PIX_FMT_YUV420P9LE((66 + 4)),
+		AV_PIX_FMT_YUV420P9LE((53 + 13 + 4)),
 		/** < planar YUV 4:2:0, 15bpp, (1 Cr & Cb sample per 2x2 Y samples), big-endian */
-		AV_PIX_FMT_YUV420P10BE((66 + 5)),
+		AV_PIX_FMT_YUV420P10BE((53 + 13 + 5)),
 		/** < planar YUV 4:2:0, 15bpp, (1 Cr & Cb sample per 2x2 Y samples), little-endian */
-		AV_PIX_FMT_YUV420P10LE((66 + 6)),
+		AV_PIX_FMT_YUV420P10LE((53 + 13 + 6)),
 		/** < planar YUV 4:2:2, 20bpp, (1 Cr & Cb sample per 2x1 Y samples), big-endian */
-		AV_PIX_FMT_YUV422P10BE((66 + 7)),
+		AV_PIX_FMT_YUV422P10BE((53 + 13 + 7)),
 		/** < planar YUV 4:2:2, 20bpp, (1 Cr & Cb sample per 2x1 Y samples), little-endian */
-		AV_PIX_FMT_YUV422P10LE((66 + 8)),
+		AV_PIX_FMT_YUV422P10LE((53 + 13 + 8)),
 		/** < planar YUV 4:4:4, 27bpp, (1 Cr & Cb sample per 1x1 Y samples), big-endian */
-		AV_PIX_FMT_YUV444P9BE((66 + 9)),
+		AV_PIX_FMT_YUV444P9BE((53 + 13 + 9)),
 		/** < planar YUV 4:4:4, 27bpp, (1 Cr & Cb sample per 1x1 Y samples), little-endian */
-		AV_PIX_FMT_YUV444P9LE((66 + 10)),
+		AV_PIX_FMT_YUV444P9LE((53 + 13 + 10)),
 		/** < planar YUV 4:4:4, 30bpp, (1 Cr & Cb sample per 1x1 Y samples), big-endian */
-		AV_PIX_FMT_YUV444P10BE((66 + 11)),
+		AV_PIX_FMT_YUV444P10BE((53 + 13 + 11)),
 		/** < planar YUV 4:4:4, 30bpp, (1 Cr & Cb sample per 1x1 Y samples), little-endian */
-		AV_PIX_FMT_YUV444P10LE((66 + 12)),
+		AV_PIX_FMT_YUV444P10LE((53 + 13 + 12)),
 		/** < planar YUV 4:2:2, 18bpp, (1 Cr & Cb sample per 2x1 Y samples), big-endian */
-		AV_PIX_FMT_YUV422P9BE((66 + 13)),
+		AV_PIX_FMT_YUV422P9BE((53 + 13 + 13)),
 		/** < planar YUV 4:2:2, 18bpp, (1 Cr & Cb sample per 2x1 Y samples), little-endian */
-		AV_PIX_FMT_YUV422P9LE((66 + 14)),
+		AV_PIX_FMT_YUV422P9LE((53 + 13 + 14)),
 		/** < hardware decoding through VDA */
-		AV_PIX_FMT_VDA_VLD((66 + 15)),
+		AV_PIX_FMT_VDA_VLD((53 + 13 + 15)),
 		/** < planar GBR 4:4:4 24bpp */
-		AV_PIX_FMT_GBRP((66 + 16)),
+		AV_PIX_FMT_GBRP((53 + 13 + 16)),
 		/** < planar GBR 4:4:4 27bpp, big-endian */
-		AV_PIX_FMT_GBRP9BE((66 + 17)),
+		AV_PIX_FMT_GBRP9BE((53 + 13 + 17)),
 		/** < planar GBR 4:4:4 27bpp, little-endian */
-		AV_PIX_FMT_GBRP9LE((66 + 18)),
+		AV_PIX_FMT_GBRP9LE((53 + 13 + 18)),
 		/** < planar GBR 4:4:4 30bpp, big-endian */
-		AV_PIX_FMT_GBRP10BE((66 + 19)),
+		AV_PIX_FMT_GBRP10BE((53 + 13 + 19)),
 		/** < planar GBR 4:4:4 30bpp, little-endian */
-		AV_PIX_FMT_GBRP10LE((66 + 20)),
+		AV_PIX_FMT_GBRP10LE((53 + 13 + 20)),
 		/** < planar GBR 4:4:4 48bpp, big-endian */
-		AV_PIX_FMT_GBRP16BE((66 + 21)),
+		AV_PIX_FMT_GBRP16BE((53 + 13 + 21)),
 		/** < planar GBR 4:4:4 48bpp, little-endian */
-		AV_PIX_FMT_GBRP16LE((66 + 22)),
+		AV_PIX_FMT_GBRP16LE((53 + 13 + 22)),
 		/**
 		 * duplicated pixel formats for compatibility with libav.<br>
 		 * FFmpeg supports these formats since May 8 2012 and Jan 28 2012 (commits f9ca1ac7 and 143a5c55)<br>
 		 * Libav added them Oct 12 2012 with incompatible values (commit 6d5600e85)<br>
 		 * < planar YUV 4:2:2 24bpp, (1 Cr & Cb sample per 2x1 Y & A samples)
 		 */
-		AV_PIX_FMT_YUVA422P_LIBAV((66 + 23)),
+		AV_PIX_FMT_YUVA422P_LIBAV((53 + 13 + 23)),
 		/** < planar YUV 4:4:4 32bpp, (1 Cr & Cb sample per 1x1 Y & A samples) */
-		AV_PIX_FMT_YUVA444P_LIBAV((66 + 24)),
+		AV_PIX_FMT_YUVA444P_LIBAV((53 + 13 + 24)),
 		/** < planar YUV 4:2:0 22.5bpp, (1 Cr & Cb sample per 2x2 Y & A samples), big-endian */
-		AV_PIX_FMT_YUVA420P9BE((66 + 25)),
+		AV_PIX_FMT_YUVA420P9BE((53 + 13 + 25)),
 		/** < planar YUV 4:2:0 22.5bpp, (1 Cr & Cb sample per 2x2 Y & A samples), little-endian */
-		AV_PIX_FMT_YUVA420P9LE((66 + 26)),
+		AV_PIX_FMT_YUVA420P9LE((53 + 13 + 26)),
 		/** < planar YUV 4:2:2 27bpp, (1 Cr & Cb sample per 2x1 Y & A samples), big-endian */
-		AV_PIX_FMT_YUVA422P9BE((66 + 27)),
+		AV_PIX_FMT_YUVA422P9BE((53 + 13 + 27)),
 		/** < planar YUV 4:2:2 27bpp, (1 Cr & Cb sample per 2x1 Y & A samples), little-endian */
-		AV_PIX_FMT_YUVA422P9LE((66 + 28)),
+		AV_PIX_FMT_YUVA422P9LE((53 + 13 + 28)),
 		/** < planar YUV 4:4:4 36bpp, (1 Cr & Cb sample per 1x1 Y & A samples), big-endian */
-		AV_PIX_FMT_YUVA444P9BE((66 + 29)),
+		AV_PIX_FMT_YUVA444P9BE((53 + 13 + 29)),
 		/** < planar YUV 4:4:4 36bpp, (1 Cr & Cb sample per 1x1 Y & A samples), little-endian */
-		AV_PIX_FMT_YUVA444P9LE((66 + 30)),
+		AV_PIX_FMT_YUVA444P9LE((53 + 13 + 30)),
 		/** < planar YUV 4:2:0 25bpp, (1 Cr & Cb sample per 2x2 Y & A samples, big-endian) */
-		AV_PIX_FMT_YUVA420P10BE((66 + 31)),
+		AV_PIX_FMT_YUVA420P10BE((53 + 13 + 31)),
 		/** < planar YUV 4:2:0 25bpp, (1 Cr & Cb sample per 2x2 Y & A samples, little-endian) */
-		AV_PIX_FMT_YUVA420P10LE((66 + 32)),
+		AV_PIX_FMT_YUVA420P10LE((53 + 13 + 32)),
 		/** < planar YUV 4:2:2 30bpp, (1 Cr & Cb sample per 2x1 Y & A samples, big-endian) */
-		AV_PIX_FMT_YUVA422P10BE((66 + 33)),
+		AV_PIX_FMT_YUVA422P10BE((53 + 13 + 33)),
 		/** < planar YUV 4:2:2 30bpp, (1 Cr & Cb sample per 2x1 Y & A samples, little-endian) */
-		AV_PIX_FMT_YUVA422P10LE((66 + 34)),
+		AV_PIX_FMT_YUVA422P10LE((53 + 13 + 34)),
 		/** < planar YUV 4:4:4 40bpp, (1 Cr & Cb sample per 1x1 Y & A samples, big-endian) */
-		AV_PIX_FMT_YUVA444P10BE((66 + 35)),
+		AV_PIX_FMT_YUVA444P10BE((53 + 13 + 35)),
 		/** < planar YUV 4:4:4 40bpp, (1 Cr & Cb sample per 1x1 Y & A samples, little-endian) */
-		AV_PIX_FMT_YUVA444P10LE((66 + 36)),
+		AV_PIX_FMT_YUVA444P10LE((53 + 13 + 36)),
 		/** < planar YUV 4:2:0 40bpp, (1 Cr & Cb sample per 2x2 Y & A samples, big-endian) */
-		AV_PIX_FMT_YUVA420P16BE((66 + 37)),
+		AV_PIX_FMT_YUVA420P16BE((53 + 13 + 37)),
 		/** < planar YUV 4:2:0 40bpp, (1 Cr & Cb sample per 2x2 Y & A samples, little-endian) */
-		AV_PIX_FMT_YUVA420P16LE((66 + 38)),
+		AV_PIX_FMT_YUVA420P16LE((53 + 13 + 38)),
 		/** < planar YUV 4:2:2 48bpp, (1 Cr & Cb sample per 2x1 Y & A samples, big-endian) */
-		AV_PIX_FMT_YUVA422P16BE((66 + 39)),
+		AV_PIX_FMT_YUVA422P16BE((53 + 13 + 39)),
 		/** < planar YUV 4:2:2 48bpp, (1 Cr & Cb sample per 2x1 Y & A samples, little-endian) */
-		AV_PIX_FMT_YUVA422P16LE((66 + 40)),
+		AV_PIX_FMT_YUVA422P16LE((53 + 13 + 40)),
 		/** < planar YUV 4:4:4 64bpp, (1 Cr & Cb sample per 1x1 Y & A samples, big-endian) */
-		AV_PIX_FMT_YUVA444P16BE((66 + 41)),
+		AV_PIX_FMT_YUVA444P16BE((53 + 13 + 41)),
 		/** < planar YUV 4:4:4 64bpp, (1 Cr & Cb sample per 1x1 Y & A samples, little-endian) */
-		AV_PIX_FMT_YUVA444P16LE((66 + 42)),
+		AV_PIX_FMT_YUVA444P16LE((53 + 13 + 42)),
 		/** < HW acceleration through VDPAU, Picture.data[3] contains a VdpVideoSurface */
-		AV_PIX_FMT_VDPAU((66 + 43)),
+		AV_PIX_FMT_VDPAU((53 + 13 + 43)),
 		/** < packed XYZ 4:4:4, 36 bpp, (msb) 12X, 12Y, 12Z (lsb), the 2-byte value for each X/Y/Z is stored as little-endian, the 4 lower bits are set to 0 */
-		AV_PIX_FMT_XYZ12LE((66 + 44)),
+		AV_PIX_FMT_XYZ12LE((53 + 13 + 44)),
 		/** < packed XYZ 4:4:4, 36 bpp, (msb) 12X, 12Y, 12Z (lsb), the 2-byte value for each X/Y/Z is stored as big-endian, the 4 lower bits are set to 0 */
-		AV_PIX_FMT_XYZ12BE((66 + 45)),
+		AV_PIX_FMT_XYZ12BE((53 + 13 + 45)),
 		/** < interleaved chroma YUV 4:2:2, 16bpp, (1 Cr & Cb sample per 2x1 Y samples) */
-		AV_PIX_FMT_NV16((66 + 46)),
+		AV_PIX_FMT_NV16((53 + 13 + 46)),
 		/** < interleaved chroma YUV 4:2:2, 20bpp, (1 Cr & Cb sample per 2x1 Y samples), little-endian */
-		AV_PIX_FMT_NV20LE((66 + 47)),
+		AV_PIX_FMT_NV20LE((53 + 13 + 47)),
 		/** < interleaved chroma YUV 4:2:2, 20bpp, (1 Cr & Cb sample per 2x1 Y samples), big-endian */
-		AV_PIX_FMT_NV20BE((66 + 48)),
+		AV_PIX_FMT_NV20BE((53 + 13 + 48)),
 		/**
 		 * duplicated pixel formats for compatibility with libav.<br>
 		 * FFmpeg supports these formats since Sat Sep 24 06:01:45 2011 +0200 (commits 9569a3c9f41387a8c7d1ce97d8693520477a66c3)<br>
@@ -432,44 +437,44 @@ public class AvutilLibrary {
 		 * Libav added them Sun Mar 16 23:05:47 2014 +0100 with incompatible values (commit 1481d24c3a0abf81e1d7a514547bd5305232be30)<br>
 		 * < packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as big-endian
 		 */
-		AV_PIX_FMT_RGBA64BE_LIBAV((66 + 49)),
+		AV_PIX_FMT_RGBA64BE_LIBAV((53 + 13 + 49)),
 		/** < packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as little-endian */
-		AV_PIX_FMT_RGBA64LE_LIBAV((66 + 50)),
+		AV_PIX_FMT_RGBA64LE_LIBAV((53 + 13 + 50)),
 		/** < packed RGBA 16:16:16:16, 64bpp, 16B, 16G, 16R, 16A, the 2-byte value for each R/G/B/A component is stored as big-endian */
-		AV_PIX_FMT_BGRA64BE_LIBAV((66 + 51)),
+		AV_PIX_FMT_BGRA64BE_LIBAV((53 + 13 + 51)),
 		/** < packed RGBA 16:16:16:16, 64bpp, 16B, 16G, 16R, 16A, the 2-byte value for each R/G/B/A component is stored as little-endian */
-		AV_PIX_FMT_BGRA64LE_LIBAV((66 + 52)),
+		AV_PIX_FMT_BGRA64LE_LIBAV((53 + 13 + 52)),
 		/** < packed YUV 4:2:2, 16bpp, Y0 Cr Y1 Cb */
-		AV_PIX_FMT_YVYU422((66 + 53)),
+		AV_PIX_FMT_YVYU422((53 + 13 + 53)),
 		/** < HW acceleration through VDA, data[3] contains a CVPixelBufferRef */
-		AV_PIX_FMT_VDA((66 + 54)),
+		AV_PIX_FMT_VDA((53 + 13 + 54)),
 		/** < 16bit gray, 16bit alpha (big-endian) */
-		AV_PIX_FMT_YA16BE((66 + 55)),
+		AV_PIX_FMT_YA16BE((53 + 13 + 55)),
 		/** < 16bit gray, 16bit alpha (little-endian) */
-		AV_PIX_FMT_YA16LE((66 + 56)),
+		AV_PIX_FMT_YA16LE((53 + 13 + 56)),
 		/**
 		 * duplicated pixel formats for compatibility with libav.<br>
 		 * FFmpeg supports these formats since May 3 2013 (commit e6d4e687558d08187e7a415a7725e4b1a416f782)<br>
 		 * Libav added them Jan 14 2015 with incompatible values (commit 0e6c7dfa650e8b0497bfa7a06394b7a462ddc33a)<br>
 		 * < planar GBRA 4:4:4:4 32bpp
 		 */
-		AV_PIX_FMT_GBRAP_LIBAV((66 + 57)),
+		AV_PIX_FMT_GBRAP_LIBAV((53 + 13 + 57)),
 		/** < planar GBRA 4:4:4:4 64bpp, big-endian */
-		AV_PIX_FMT_GBRAP16BE_LIBAV((66 + 58)),
+		AV_PIX_FMT_GBRAP16BE_LIBAV((53 + 13 + 58)),
 		/** < planar GBRA 4:4:4:4 64bpp, little-endian */
-		AV_PIX_FMT_GBRAP16LE_LIBAV((66 + 59)),
+		AV_PIX_FMT_GBRAP16LE_LIBAV((53 + 13 + 59)),
 		/**
 		 * HW acceleration through QSV, data[3] contains a pointer to the<br>
 		 *  mfxFrameSurface1 structure.
 		 */
-		AV_PIX_FMT_QSV((66 + 60)),
+		AV_PIX_FMT_QSV((53 + 13 + 60)),
 		/**
 		 * HW acceleration though MMAL, data[3] contains a pointer to the<br>
 		 * MMAL_BUFFER_HEADER_T structure.
 		 */
-		AV_PIX_FMT_MMAL((66 + 61)),
+		AV_PIX_FMT_MMAL((53 + 13 + 61)),
 		/** < HW decoding through Direct3D11, Picture.data[3] contains a ID3D11VideoDecoderOutputView pointer */
-		AV_PIX_FMT_D3D11VA_VLD((66 + 62)),
+		AV_PIX_FMT_D3D11VA_VLD((53 + 13 + 62)),
 		/** < packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as big-endian */
 		AV_PIX_FMT_RGBA64BE(0x123),
 		/** < packed RGBA 16:16:16:16, 64bpp, 16R, 16G, 16B, 16A, the 2-byte value for each R/G/B/A component is stored as little-endian */
@@ -562,8 +567,14 @@ public class AvutilLibrary {
 		AV_PIX_FMT_YUV440P12LE((0x123 + 4 + 40)),
 		/** < planar YUV 4:4:0,24bpp, (1 Cr & Cb sample per 1x2 Y samples), big-endian */
 		AV_PIX_FMT_YUV440P12BE((0x123 + 4 + 41)),
+		/** < packed AYUV 4:4:4,64bpp (1 Cr & Cb sample per 1x1 Y & A samples), little-endian */
+		AV_PIX_FMT_AYUV64LE((0x123 + 4 + 42)),
+		/** < packed AYUV 4:4:4,64bpp (1 Cr & Cb sample per 1x1 Y & A samples), big-endian */
+		AV_PIX_FMT_AYUV64BE((0x123 + 4 + 43)),
+		/** < hardware decoding through Videotoolbox */
+		AV_PIX_FMT_VIDEOTOOLBOX((0x123 + 4 + 44)),
 		/** < number of pixel formats, DO NOT USE THIS if you want to link with shared libav* because the number of formats might differ between versions */
-		AV_PIX_FMT_NB((0x123 + 4 + 42)),
+		AV_PIX_FMT_NB((0x123 + 4 + 45)),
 		/**
 		 * This header exists to prevent new pixel formats from being accidentally added<br>
 		 * to the deprecated list.<br>
@@ -822,7 +833,7 @@ public class AvutilLibrary {
 	/**
 	 * Chromaticity coordinates of the source primaries.<br>
 	 * enum values<br>
-	 * <i>native declaration : libavutil/pixfmt.h:667</i>
+	 * <i>native declaration : libavutil/pixfmt.h:676</i>
 	 */
 	public enum AVColorPrimaries implements IntValuedEnum<AVColorPrimaries > {
 		AVCOL_PRI_RESERVED0(0),
@@ -861,7 +872,7 @@ public class AvutilLibrary {
 	/**
 	 * Color Transfer Characteristic.<br>
 	 * enum values<br>
-	 * <i>native declaration : libavutil/pixfmt.h:700</i>
+	 * <i>native declaration : libavutil/pixfmt.h:709</i>
 	 */
 	public enum AVColorTransferCharacteristic implements IntValuedEnum<AVColorTransferCharacteristic > {
 		AVCOL_TRC_RESERVED0(0),
@@ -911,7 +922,7 @@ public class AvutilLibrary {
 	/**
 	 * YUV colorspace type.<br>
 	 * enum values<br>
-	 * <i>native declaration : libavutil/pixfmt.h:724</i>
+	 * <i>native declaration : libavutil/pixfmt.h:733</i>
 	 */
 	public enum AVColorSpace implements IntValuedEnum<AVColorSpace > {
 		/** < order of coefficients is actually GBR, also IEC 61966-2-1 (sRGB) */
@@ -952,7 +963,7 @@ public class AvutilLibrary {
 	/**
 	 * MPEG vs JPEG YUV range.<br>
 	 * enum values<br>
-	 * <i>native declaration : libavutil/pixfmt.h:734</i>
+	 * <i>native declaration : libavutil/pixfmt.h:743</i>
 	 */
 	public enum AVColorRange implements IntValuedEnum<AVColorRange > {
 		AVCOL_RANGE_UNSPECIFIED(0),
@@ -989,7 +1000,7 @@ public class AvutilLibrary {
 	 *                |             |1 2           1-6 are possible chroma positions<br>
 	 * 2nd luma line > |X   X ...    |5 6 X ...     0 is undefined/unknown position<br>
 	 * enum values<br>
-	 * <i>native declaration : libavutil/pixfmt.h:761</i>
+	 * <i>native declaration : libavutil/pixfmt.h:770</i>
 	 */
 	public enum AVChromaLocation implements IntValuedEnum<AVChromaLocation > {
 		AVCHROMA_LOC_UNSPECIFIED(0),
@@ -1351,7 +1362,7 @@ public class AvutilLibrary {
 	/** <i>native declaration : ./libavutil/cpu.h</i> */
 	public static final int AV_CPU_FLAG_AVX2 = (int)0x8000;
 	/** <i>native declaration : libavutil/log.h</i> */
-	public static final int AV_LOG_MAX_OFFSET = (int)(48 - -8);
+	public static final int AV_LOG_MAX_OFFSET = (int)(56 - -8);
 	/** <i>native declaration : libavutil/log.h</i> */
 	public static final int AV_LOG_WARNING = (int)24;
 	/** <i>native declaration : ./libavutil/cpu.h</i> */
@@ -1436,6 +1447,8 @@ public class AvutilLibrary {
 	public static final int AV_OPT_SERIALIZE_OPT_FLAGS_EXACT = (int)0x00000002;
 	/** <i>native declaration : libavutil/pixfmt.h</i> */
 	public static final int AVPALETTE_COUNT = (int)256;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final long AV_CH_LAYOUT_HEXADECAGONAL = (long)(((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000010 | 0x00000100 | 0x00000020) | 0x0000000080000000L | 0x0000000100000000L | 0x00008000 | 0x00020000 | 0x00010000 | 0x00002000 | 0x00001000 | 0x00004000);
 	/** <i>native declaration : libavutil/pixdesc.h</i> */
 	public static final int AV_PIX_FMT_FLAG_BITSTREAM = (int)(1 << 2);
 	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
@@ -1446,6 +1459,8 @@ public class AvutilLibrary {
 	public static final int AV_CPU_FLAG_FMA4 = (int)0x0800;
 	/** <i>native declaration : libavutil/version.h</i> */
 	public static final boolean FF_API_PIX_FMT_DESC = (boolean)(54 < 55);
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_VAAPI = (boolean)(54 < 56);
 	/** <i>native declaration : libavutil/pixdesc.h</i> */
 	public static final int PIX_FMT_PSEUDOPAL = (int)(1 << 6);
 	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
@@ -1467,9 +1482,9 @@ public class AvutilLibrary {
 	/** <i>native declaration : libavutil/dict.h</i> */
 	public static final int AV_DICT_DONT_STRDUP_VAL = (int)8;
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_VERSION_MINOR = (int)27;
+	public static final int LIBAVUTIL_VERSION_MINOR = (int)31;
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final String LIBAVUTIL_IDENT = (String)"Lavu54.27.100";
+	public static final String LIBAVUTIL_IDENT = (String)"Lavu54.31.100";
 	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
 	public static final int AV_CH_LAYOUT_7POINT1_WIDE_BACK = (int)(((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000010 | 0x00000020) | 0x00000008) | 0x00000040 | 0x00000080);
 	/** <i>native declaration : libavutil/error.h</i> */
@@ -1580,10 +1595,10 @@ public class AvutilLibrary {
 	public static final int AV_CPU_FLAG_CMOV = (int)0x1001000;
 	/**
 	 * define<br>
-	 * Conversion Error : 54.27.<br>
+	 * Conversion Error : 54.31.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : libavutil/version.h:0</i><br>
-	 * 54.27.
+	 * 54.31.
 	 */
 	/** <i>native declaration : libavutil/error.h</i> */
 	public static final int AVERROR_STREAM_NOT_FOUND = (int)(-(0xF8) | (('S') << 8) | (('T') << 16) | ('R' << 24));
@@ -1602,7 +1617,7 @@ public class AvutilLibrary {
 	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
 	public static final int AV_CH_LAYOUT_3POINT1 = (int)(((0x00000001 | 0x00000002) | 0x00000004) | 0x00000008);
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_VERSION_INT = (int)((54) << 16 | (27) << 8 | (100));
+	public static final int LIBAVUTIL_VERSION_INT = (int)((54) << 16 | (31) << 8 | (100));
 	/** <i>native declaration : libavutil/avutil.h</i> */
 	public static final int FF_LAMBDA_SCALE = (int)(1 << 7);
 	/** <i>native declaration : ./libavutil/avconfig.h</i> */
@@ -1610,7 +1625,7 @@ public class AvutilLibrary {
 	/** <i>native declaration : ./libavutil/cpu.h</i> */
 	public static final int AV_CPU_FLAG_AVXSLOW = (int)0x8000000;
 	/** <i>native declaration : libavutil/ffversion.h</i> */
-	public static final String FFMPEG_VERSION = (String)"2.7.2";
+	public static final String FFMPEG_VERSION = (String)"2.8";
 	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
 	public static final int AV_CH_BACK_LEFT = (int)0x00000010;
 	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
@@ -1620,7 +1635,9 @@ public class AvutilLibrary {
 	/** <i>native declaration : libavutil/opt.h</i> */
 	public static final int AV_OPT_FLAG_SUBTITLE_PARAM = (int)32;
 	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_BUILD = (int)((54) << 16 | (27) << 8 | (100));
+	public static final int LIBAVUTIL_BUILD = (int)((54) << 16 | (31) << 8 | (100));
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_HMAC = (boolean)(54 < 55);
 	/** <i>native declaration : libavutil/opt.h</i> */
 	public static final int AV_OPT_SEARCH_CHILDREN = (int)0x0001;
 	/** <i>native declaration : libavutil/opt.h</i> */
@@ -1726,9 +1743,21 @@ public class AvutilLibrary {
 	 */
 	public static native int avutil_version();
 	/**
+	 * Return an informative version string. This usually is the actual release<br>
+	 * version number or a git commit description. This string has no fixed format<br>
+	 * and can change any time. It should never be parsed by code.<br>
+	 * Original signature : <code>char* av_version_info()</code><br>
+	 * <i>native declaration : libavutil/avutil.h:11</i>
+	 */
+	public static Pointer<Byte > av__version_info() {
+		return Pointer.pointerToAddress(av_version_info(), Byte.class);
+	}
+	@Ptr 
+	protected native static long av_version_info();
+	/**
 	 * Return the libavutil build-time configuration.<br>
 	 * Original signature : <code>char* avutil_configuration()</code><br>
-	 * <i>native declaration : libavutil/avutil.h:9</i>
+	 * <i>native declaration : libavutil/avutil.h:16</i>
 	 */
 	public static Pointer<Byte > avutil__configuration() {
 		return Pointer.pointerToAddress(avutil_configuration(), Byte.class);
@@ -1738,7 +1767,7 @@ public class AvutilLibrary {
 	/**
 	 * Return the libavutil license.<br>
 	 * Original signature : <code>char* avutil_license()</code><br>
-	 * <i>native declaration : libavutil/avutil.h:14</i>
+	 * <i>native declaration : libavutil/avutil.h:21</i>
 	 */
 	public static Pointer<Byte > avutil__license() {
 		return Pointer.pointerToAddress(avutil_license(), Byte.class);
@@ -1749,7 +1778,7 @@ public class AvutilLibrary {
 	 * Return a string describing the media_type enum, NULL if media_type<br>
 	 * is unknown.<br>
 	 * Original signature : <code>char* av_get_media_type_string(AVMediaType)</code><br>
-	 * <i>native declaration : libavutil/avutil.h:32</i>
+	 * <i>native declaration : libavutil/avutil.h:39</i>
 	 */
 	public static Pointer<Byte > av_get_media_type_string(IntValuedEnum<AvutilLibrary.AVMediaType > media_type) {
 		return Pointer.pointerToAddress(av_get_media_type_string((int)media_type.value()), Byte.class);
@@ -1762,7 +1791,7 @@ public class AvutilLibrary {
 	 * * @param[in] pict_type the picture type @return a single character<br>
 	 * representing the picture type, '?' if pict_type is unknown<br>
 	 * Original signature : <code>char av_get_picture_type_char(AVPictureType)</code><br>
-	 * <i>native declaration : libavutil/avutil.h:58</i>
+	 * <i>native declaration : libavutil/avutil.h:65</i>
 	 */
 	public static byte av_get_picture_type_char(IntValuedEnum<AvutilLibrary.AVPictureType > pict_type) {
 		return av_get_picture_type_char((int)pict_type.value());
@@ -2986,7 +3015,7 @@ public class AvutilLibrary {
 	/**
 	 * Accessors for some AVFrame fields.<br>
 	 * The position of these field in the structure is not part of the ABI,<br>
-	 * they should not be accessed directly outside libavcodec.<br>
+	 * they should not be accessed directly outside libavutil.<br>
 	 * Original signature : <code>int64_t av_frame_get_best_effort_timestamp(const AVFrame*)</code><br>
 	 * <i>native declaration : libavutil/frame.h:383</i>
 	 */
@@ -3405,31 +3434,8 @@ public class AvutilLibrary {
 	@Ptr 
 	protected native static long av_frame_side_data_name(int type);
 	/**
-	 * Set the field of obj with the given name to value.<br>
-	 * * @param[in] obj A struct whose first element is a pointer to an<br>
-	 * AVClass.<br>
-	 * @param[in] name the name of the field to set<br>
-	 * @param[in] val The value to set. If the field is not of a string<br>
-	 * type, then the given string is parsed.<br>
-	 * SI postfixes and some named scalars are supported.<br>
-	 * If the field is of a numeric type, it has to be a numeric or named<br>
-	 * scalar. Behavior with more than one scalar and +- infix operators<br>
-	 * is undefined.<br>
-	 * If the field is of a flags type, it has to be a sequence of numeric<br>
-	 * scalars or named flags separated by '+' or '-'. Prefixing a flag<br>
-	 * with '+' causes it to be set without affecting the other flags;<br>
-	 * similarly, '-' unsets a flag.<br>
-	 * @param[out] o_out if non-NULL put here a pointer to the AVOption<br>
-	 * found<br>
-	 * @param alloc this parameter is currently ignored<br>
-	 * @return 0 if the value has been set, or an AVERROR code in case of<br>
-	 * error:<br>
-	 * AVERROR_OPTION_NOT_FOUND if no matching option exists<br>
-	 * AVERROR(ERANGE) if the value is out of range<br>
-	 * AVERROR(EINVAL) if the value is not valid<br>
-	 * @deprecated use av_opt_set()<br>
 	 * Original signature : <code>int av_set_string3(void*, const char*, const char*, int, const AVOption**)</code><br>
-	 * <i>native declaration : libavutil/opt.h:159</i>
+	 * <i>native declaration : libavutil/opt.h:134</i>
 	 */
 	public static int av_set_string3(Pointer<? > obj, Pointer<Byte > name, Pointer<Byte > val, int alloc, Pointer<Pointer<AVOption > > o_out) {
 		return av_set_string3(Pointer.getPeer(obj), Pointer.getPeer(name), Pointer.getPeer(val), alloc, Pointer.getPeer(o_out));
@@ -3437,7 +3443,7 @@ public class AvutilLibrary {
 	protected native static int av_set_string3(@Ptr long obj, @Ptr long name, @Ptr long val, int alloc, @Ptr long o_out);
 	/**
 	 * Original signature : <code>AVOption* av_set_double(void*, const char*, double)</code><br>
-	 * <i>native declaration : libavutil/opt.h:161</i>
+	 * <i>native declaration : libavutil/opt.h:136</i>
 	 */
 	public static Pointer<AVOption > av_set_double(Pointer<? > obj, Pointer<Byte > name, double n) {
 		return Pointer.pointerToAddress(av_set_double(Pointer.getPeer(obj), Pointer.getPeer(name), n), AVOption.class);
@@ -3446,7 +3452,7 @@ public class AvutilLibrary {
 	protected native static long av_set_double(@Ptr long obj, @Ptr long name, double n);
 	/**
 	 * Original signature : <code>AVOption* av_set_q(void*, const char*, AVRational)</code><br>
-	 * <i>native declaration : libavutil/opt.h:163</i>
+	 * <i>native declaration : libavutil/opt.h:138</i>
 	 */
 	public static Pointer<AVOption > av_set_q(Pointer<? > obj, Pointer<Byte > name, AVRational n) {
 		return Pointer.pointerToAddress(av_set_q(Pointer.getPeer(obj), Pointer.getPeer(name), n), AVOption.class);
@@ -3455,7 +3461,7 @@ public class AvutilLibrary {
 	protected native static long av_set_q(@Ptr long obj, @Ptr long name, AVRational n);
 	/**
 	 * Original signature : <code>AVOption* av_set_int(void*, const char*, int64_t)</code><br>
-	 * <i>native declaration : libavutil/opt.h:165</i>
+	 * <i>native declaration : libavutil/opt.h:140</i>
 	 */
 	public static Pointer<AVOption > av_set_int(Pointer<? > obj, Pointer<Byte > name, long n) {
 		return Pointer.pointerToAddress(av_set_int(Pointer.getPeer(obj), Pointer.getPeer(name), n), AVOption.class);
@@ -3464,7 +3470,7 @@ public class AvutilLibrary {
 	protected native static long av_set_int(@Ptr long obj, @Ptr long name, long n);
 	/**
 	 * Original signature : <code>double av_get_double(void*, const char*, const AVOption**)</code><br>
-	 * <i>native declaration : libavutil/opt.h:167</i>
+	 * <i>native declaration : libavutil/opt.h:142</i>
 	 */
 	public static double av_get_double(Pointer<? > obj, Pointer<Byte > name, Pointer<Pointer<AVOption > > o_out) {
 		return av_get_double(Pointer.getPeer(obj), Pointer.getPeer(name), Pointer.getPeer(o_out));
@@ -3472,7 +3478,7 @@ public class AvutilLibrary {
 	protected native static double av_get_double(@Ptr long obj, @Ptr long name, @Ptr long o_out);
 	/**
 	 * Original signature : <code>AVRational av_get_q(void*, const char*, const AVOption**)</code><br>
-	 * <i>native declaration : libavutil/opt.h:169</i>
+	 * <i>native declaration : libavutil/opt.h:144</i>
 	 */
 	public static AVRational av_get_q(Pointer<? > obj, Pointer<Byte > name, Pointer<Pointer<AVOption > > o_out) {
 		return av_get_q(Pointer.getPeer(obj), Pointer.getPeer(name), Pointer.getPeer(o_out));
@@ -3480,7 +3486,7 @@ public class AvutilLibrary {
 	protected native static AVRational av_get_q(@Ptr long obj, @Ptr long name, @Ptr long o_out);
 	/**
 	 * Original signature : <code>int64_t av_get_int(void*, const char*, const AVOption**)</code><br>
-	 * <i>native declaration : libavutil/opt.h:171</i>
+	 * <i>native declaration : libavutil/opt.h:146</i>
 	 */
 	public static long av_get_int(Pointer<? > obj, Pointer<Byte > name, Pointer<Pointer<AVOption > > o_out) {
 		return av_get_int(Pointer.getPeer(obj), Pointer.getPeer(name), Pointer.getPeer(o_out));
@@ -3488,7 +3494,7 @@ public class AvutilLibrary {
 	protected native static long av_get_int(@Ptr long obj, @Ptr long name, @Ptr long o_out);
 	/**
 	 * Original signature : <code>char* av_get_string(void*, const char*, const AVOption**, char*, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:173</i>
+	 * <i>native declaration : libavutil/opt.h:148</i>
 	 */
 	public static Pointer<Byte > av_get_string(Pointer<? > obj, Pointer<Byte > name, Pointer<Pointer<AVOption > > o_out, Pointer<Byte > buf, int buf_len) {
 		return Pointer.pointerToAddress(av_get_string(Pointer.getPeer(obj), Pointer.getPeer(name), Pointer.getPeer(o_out), Pointer.getPeer(buf), buf_len), Byte.class);
@@ -3497,7 +3503,7 @@ public class AvutilLibrary {
 	protected native static long av_get_string(@Ptr long obj, @Ptr long name, @Ptr long o_out, @Ptr long buf, int buf_len);
 	/**
 	 * Original signature : <code>AVOption* av_next_option(void*, const AVOption*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:175</i>
+	 * <i>native declaration : libavutil/opt.h:150</i>
 	 */
 	public static Pointer<AVOption > av_next_option(Pointer<? > obj, Pointer<AVOption > last) {
 		return Pointer.pointerToAddress(av_next_option(Pointer.getPeer(obj), Pointer.getPeer(last)), AVOption.class);
@@ -3512,7 +3518,7 @@ public class AvutilLibrary {
 	 * options for which it is !(opt->flags & req_flags).<br>
 	 * @param av_log_obj log context to use for showing the options<br>
 	 * Original signature : <code>int av_opt_show2(void*, void*, int, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:185</i>
+	 * <i>native declaration : libavutil/opt.h:160</i>
 	 */
 	public static int av_opt_show2(Pointer<? > obj, Pointer<? > av_log_obj, int req_flags, int rej_flags) {
 		return av_opt_show2(Pointer.getPeer(obj), Pointer.getPeer(av_log_obj), req_flags, rej_flags);
@@ -3522,15 +3528,21 @@ public class AvutilLibrary {
 	 * Set the values of all AVOption fields to their default values.<br>
 	 * * @param s an AVOption-enabled struct (its first member must be a pointer to AVClass)<br>
 	 * Original signature : <code>void av_opt_set_defaults(void*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:191</i>
+	 * <i>native declaration : libavutil/opt.h:166</i>
 	 */
 	public static void av_opt_set_defaults(Pointer<? > s) {
 		av_opt_set_defaults(Pointer.getPeer(s));
 	}
 	protected native static void av_opt_set_defaults(@Ptr long s);
 	/**
+	 * Set the values of all AVOption fields to their default values. Only these<br>
+	 * AVOption fields for which (opt->flags & mask) == flags will have their<br>
+	 * default applied to s.<br>
+	 * * @param s an AVOption-enabled struct (its first member must be a pointer to AVClass)<br>
+	 * @param mask combination of AV_OPT_FLAG_*<br>
+	 * @param flags combination of AV_OPT_FLAG_*<br>
 	 * Original signature : <code>void av_opt_set_defaults2(void*, int, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:193</i>
+	 * <i>native declaration : libavutil/opt.h:176</i>
 	 */
 	public static void av_opt_set_defaults2(Pointer<? > s, int mask, int flags) {
 		av_opt_set_defaults2(Pointer.getPeer(s), mask, flags);
@@ -3552,7 +3564,7 @@ public class AvutilLibrary {
 	 * the error code issued by av_opt_set() if a key/value pair<br>
 	 * cannot be set<br>
 	 * Original signature : <code>int av_set_options_string(void*, const char*, const char*, const char*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:211</i>
+	 * <i>native declaration : libavutil/opt.h:194</i>
 	 */
 	public static int av_set_options_string(Pointer<? > ctx, Pointer<Byte > opts, Pointer<Byte > key_val_sep, Pointer<Byte > pairs_sep) {
 		return av_set_options_string(Pointer.getPeer(ctx), Pointer.getPeer(opts), Pointer.getPeer(key_val_sep), Pointer.getPeer(pairs_sep));
@@ -3583,7 +3595,7 @@ public class AvutilLibrary {
 	 * Separators must use characters distinct from option names and from each<br>
 	 * other.<br>
 	 * Original signature : <code>int av_opt_set_from_string(void*, const char*, const const char**, const char*, const char*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:238</i>
+	 * <i>native declaration : libavutil/opt.h:221</i>
 	 */
 	public static int av_opt_set_from_string(Pointer<? > ctx, Pointer<Byte > opts, Pointer<Pointer<Byte > > shorthand, Pointer<Byte > key_val_sep, Pointer<Byte > pairs_sep) {
 		return av_opt_set_from_string(Pointer.getPeer(ctx), Pointer.getPeer(opts), Pointer.getPeer(shorthand), Pointer.getPeer(key_val_sep), Pointer.getPeer(pairs_sep));
@@ -3592,7 +3604,7 @@ public class AvutilLibrary {
 	/**
 	 * Free all allocated objects in obj.<br>
 	 * Original signature : <code>void av_opt_free(void*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:243</i>
+	 * <i>native declaration : libavutil/opt.h:226</i>
 	 */
 	public static void av_opt_free(Pointer<? > obj) {
 		av_opt_free(Pointer.getPeer(obj));
@@ -3605,7 +3617,7 @@ public class AvutilLibrary {
 	 * @return non-zero if the flag is set, zero if the flag isn't set,<br>
 	 *         isn't of the right type, or the flags field doesn't exist.<br>
 	 * Original signature : <code>int av_opt_flag_is_set(void*, const char*, const char*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:252</i>
+	 * <i>native declaration : libavutil/opt.h:235</i>
 	 */
 	public static int av_opt_flag_is_set(Pointer<? > obj, Pointer<Byte > field_name, Pointer<Byte > flag_name) {
 		return av_opt_flag_is_set(Pointer.getPeer(obj), Pointer.getPeer(field_name), Pointer.getPeer(flag_name));
@@ -3622,7 +3634,7 @@ public class AvutilLibrary {
 	 *         but could not be set.<br>
 	 * * @see av_dict_copy()<br>
 	 * Original signature : <code>int av_opt_set_dict(void*, AVDictionary**)</code><br>
-	 * <i>native declaration : libavutil/opt.h:265</i>
+	 * <i>native declaration : libavutil/opt.h:248</i>
 	 */
 	public static int av_opt_set_dict(Pointer<? > obj, Pointer<Pointer<AVDictionary > > options) {
 		return av_opt_set_dict(Pointer.getPeer(obj), Pointer.getPeer(options));
@@ -3640,7 +3652,7 @@ public class AvutilLibrary {
 	 *         but could not be set.<br>
 	 * * @see av_dict_copy()<br>
 	 * Original signature : <code>int av_opt_set_dict2(void*, AVDictionary**, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:279</i>
+	 * <i>native declaration : libavutil/opt.h:262</i>
 	 */
 	public static int av_opt_set_dict2(Pointer<? > obj, Pointer<Pointer<AVDictionary > > options, int search_flags) {
 		return av_opt_set_dict2(Pointer.getPeer(obj), Pointer.getPeer(options), search_flags);
@@ -3662,7 +3674,7 @@ public class AvutilLibrary {
 	 *          AVERROR code in case of error; in particular:<br>
 	 *          AVERROR(EINVAL) if no key is present<br>
 	 * Original signature : <code>int av_opt_get_key_value(const char**, const char*, const char*, unsigned, char**, char**)</code><br>
-	 * <i>native declaration : libavutil/opt.h:297</i>
+	 * <i>native declaration : libavutil/opt.h:280</i>
 	 */
 	public static int av_opt_get_key_value(Pointer<Pointer<Byte > > ropts, Pointer<Byte > key_val_sep, Pointer<Byte > pairs_sep, int flags, Pointer<Pointer<Byte > > rkey, Pointer<Pointer<Byte > > rval) {
 		return av_opt_get_key_value(Pointer.getPeer(ropts), Pointer.getPeer(key_val_sep), Pointer.getPeer(pairs_sep), flags, Pointer.getPeer(rkey), Pointer.getPeer(rval));
@@ -3680,7 +3692,7 @@ public class AvutilLibrary {
 	 * @param *_out value of the string will be written here.<br>
 	 * * @return 0 on success, a negative number on failure.<br>
 	 * Original signature : <code>int av_opt_eval_flags(void*, const AVOption*, const char*, int*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:318</i>
+	 * <i>native declaration : libavutil/opt.h:301</i>
 	 */
 	public static int av_opt_eval_flags(Pointer<? > obj, Pointer<AVOption > o, Pointer<Byte > val, Pointer<Integer > flags_out) {
 		return av_opt_eval_flags(Pointer.getPeer(obj), Pointer.getPeer(o), Pointer.getPeer(val), Pointer.getPeer(flags_out));
@@ -3688,7 +3700,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_eval_flags(@Ptr long obj, @Ptr long o, @Ptr long val, @Ptr long flags_out);
 	/**
 	 * Original signature : <code>int av_opt_eval_int(void*, const AVOption*, const char*, int*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:320</i>
+	 * <i>native declaration : libavutil/opt.h:303</i>
 	 */
 	public static int av_opt_eval_int(Pointer<? > obj, Pointer<AVOption > o, Pointer<Byte > val, Pointer<Integer > int_out) {
 		return av_opt_eval_int(Pointer.getPeer(obj), Pointer.getPeer(o), Pointer.getPeer(val), Pointer.getPeer(int_out));
@@ -3696,7 +3708,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_eval_int(@Ptr long obj, @Ptr long o, @Ptr long val, @Ptr long int_out);
 	/**
 	 * Original signature : <code>int av_opt_eval_int64(void*, const AVOption*, const char*, int64_t*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:322</i>
+	 * <i>native declaration : libavutil/opt.h:305</i>
 	 */
 	public static int av_opt_eval_int64(Pointer<? > obj, Pointer<AVOption > o, Pointer<Byte > val, Pointer<Long > int64_out) {
 		return av_opt_eval_int64(Pointer.getPeer(obj), Pointer.getPeer(o), Pointer.getPeer(val), Pointer.getPeer(int64_out));
@@ -3704,7 +3716,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_eval_int64(@Ptr long obj, @Ptr long o, @Ptr long val, @Ptr long int64_out);
 	/**
 	 * Original signature : <code>int av_opt_eval_float(void*, const AVOption*, const char*, float*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:324</i>
+	 * <i>native declaration : libavutil/opt.h:307</i>
 	 */
 	public static int av_opt_eval_float(Pointer<? > obj, Pointer<AVOption > o, Pointer<Byte > val, Pointer<Float > float_out) {
 		return av_opt_eval_float(Pointer.getPeer(obj), Pointer.getPeer(o), Pointer.getPeer(val), Pointer.getPeer(float_out));
@@ -3712,7 +3724,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_eval_float(@Ptr long obj, @Ptr long o, @Ptr long val, @Ptr long float_out);
 	/**
 	 * Original signature : <code>int av_opt_eval_double(void*, const AVOption*, const char*, double*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:326</i>
+	 * <i>native declaration : libavutil/opt.h:309</i>
 	 */
 	public static int av_opt_eval_double(Pointer<? > obj, Pointer<AVOption > o, Pointer<Byte > val, Pointer<Double > double_out) {
 		return av_opt_eval_double(Pointer.getPeer(obj), Pointer.getPeer(o), Pointer.getPeer(val), Pointer.getPeer(double_out));
@@ -3720,7 +3732,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_eval_double(@Ptr long obj, @Ptr long o, @Ptr long val, @Ptr long double_out);
 	/**
 	 * Original signature : <code>int av_opt_eval_q(void*, const AVOption*, const char*, AVRational*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:328</i>
+	 * <i>native declaration : libavutil/opt.h:311</i>
 	 */
 	public static int av_opt_eval_q(Pointer<? > obj, Pointer<AVOption > o, Pointer<Byte > val, Pointer<AVRational > q_out) {
 		return av_opt_eval_q(Pointer.getPeer(obj), Pointer.getPeer(o), Pointer.getPeer(val), Pointer.getPeer(q_out));
@@ -3745,7 +3757,7 @@ public class AvutilLibrary {
 	 * AVDictionary (e.g. avformat_open_input()) to set options found with this<br>
 	 * flag.<br>
 	 * Original signature : <code>AVOption* av_opt_find(void*, const char*, const char*, int, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:349</i>
+	 * <i>native declaration : libavutil/opt.h:332</i>
 	 */
 	public static Pointer<AVOption > av_opt_find(Pointer<? > obj, Pointer<Byte > name, Pointer<Byte > unit, int opt_flags, int search_flags) {
 		return Pointer.pointerToAddress(av_opt_find(Pointer.getPeer(obj), Pointer.getPeer(name), Pointer.getPeer(unit), opt_flags, search_flags), AVOption.class);
@@ -3771,7 +3783,7 @@ public class AvutilLibrary {
 	 * * @return A pointer to the option found, or NULL if no option<br>
 	 *         was found.<br>
 	 * Original signature : <code>AVOption* av_opt_find2(void*, const char*, const char*, int, int, void**)</code><br>
-	 * <i>native declaration : libavutil/opt.h:370</i>
+	 * <i>native declaration : libavutil/opt.h:353</i>
 	 */
 	public static Pointer<AVOption > av_opt_find2(Pointer<? > obj, Pointer<Byte > name, Pointer<Byte > unit, int opt_flags, int search_flags, Pointer<Pointer<? > > target_obj) {
 		return Pointer.pointerToAddress(av_opt_find2(Pointer.getPeer(obj), Pointer.getPeer(name), Pointer.getPeer(unit), opt_flags, search_flags, Pointer.getPeer(target_obj)), AVOption.class);
@@ -3786,7 +3798,7 @@ public class AvutilLibrary {
 	 *             or NULL<br>
 	 * @return next AVOption or NULL<br>
 	 * Original signature : <code>AVOption* av_opt_next(void*, const AVOption*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:380</i>
+	 * <i>native declaration : libavutil/opt.h:363</i>
 	 */
 	public static Pointer<AVOption > av_opt_next(Pointer<? > obj, Pointer<AVOption > prev) {
 		return Pointer.pointerToAddress(av_opt_next(Pointer.getPeer(obj), Pointer.getPeer(prev)), AVOption.class);
@@ -3798,7 +3810,7 @@ public class AvutilLibrary {
 	 * * @param prev result of a previous call to this function or NULL<br>
 	 * @return next AVOptions-enabled child or NULL<br>
 	 * Original signature : <code>void* av_opt_child_next(void*, void*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:387</i>
+	 * <i>native declaration : libavutil/opt.h:370</i>
 	 */
 	public static Pointer<? > av_opt_child_next(Pointer<? > obj, Pointer<? > prev) {
 		return Pointer.pointerToAddress(av_opt_child_next(Pointer.getPeer(obj), Pointer.getPeer(prev)));
@@ -3810,7 +3822,7 @@ public class AvutilLibrary {
 	 * * @param prev result of a previous call to this function or NULL<br>
 	 * @return AVClass corresponding to next potential child or NULL<br>
 	 * Original signature : <code>AVClass* av_opt_child_class_next(const AVClass*, const AVClass*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:394</i>
+	 * <i>native declaration : libavutil/opt.h:377</i>
 	 */
 	public static Pointer<AVClass > av_opt_child_class_next(Pointer<AVClass > parent, Pointer<AVClass > prev) {
 		return Pointer.pointerToAddress(av_opt_child_class_next(Pointer.getPeer(parent), Pointer.getPeer(prev)), AVClass.class);
@@ -3841,7 +3853,7 @@ public class AvutilLibrary {
 	 * AVERROR(ERANGE) if the value is out of range<br>
 	 * AVERROR(EINVAL) if the value is not valid<br>
 	 * Original signature : <code>int av_opt_set(void*, const char*, const char*, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:420</i>
+	 * <i>native declaration : libavutil/opt.h:403</i>
 	 */
 	public static int av_opt_set(Pointer<? > obj, Pointer<Byte > name, Pointer<Byte > val, int search_flags) {
 		return av_opt_set(Pointer.getPeer(obj), Pointer.getPeer(name), Pointer.getPeer(val), search_flags);
@@ -3849,7 +3861,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_set(@Ptr long obj, @Ptr long name, @Ptr long val, int search_flags);
 	/**
 	 * Original signature : <code>int av_opt_set_int(void*, const char*, int64_t, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:422</i>
+	 * <i>native declaration : libavutil/opt.h:405</i>
 	 */
 	public static int av_opt_set_int(Pointer<? > obj, Pointer<Byte > name, long val, int search_flags) {
 		return av_opt_set_int(Pointer.getPeer(obj), Pointer.getPeer(name), val, search_flags);
@@ -3857,7 +3869,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_set_int(@Ptr long obj, @Ptr long name, long val, int search_flags);
 	/**
 	 * Original signature : <code>int av_opt_set_double(void*, const char*, double, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:424</i>
+	 * <i>native declaration : libavutil/opt.h:407</i>
 	 */
 	public static int av_opt_set_double(Pointer<? > obj, Pointer<Byte > name, double val, int search_flags) {
 		return av_opt_set_double(Pointer.getPeer(obj), Pointer.getPeer(name), val, search_flags);
@@ -3865,7 +3877,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_set_double(@Ptr long obj, @Ptr long name, double val, int search_flags);
 	/**
 	 * Original signature : <code>int av_opt_set_q(void*, const char*, AVRational, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:426</i>
+	 * <i>native declaration : libavutil/opt.h:409</i>
 	 */
 	public static int av_opt_set_q(Pointer<? > obj, Pointer<Byte > name, AVRational val, int search_flags) {
 		return av_opt_set_q(Pointer.getPeer(obj), Pointer.getPeer(name), val, search_flags);
@@ -3873,7 +3885,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_set_q(@Ptr long obj, @Ptr long name, AVRational val, int search_flags);
 	/**
 	 * Original signature : <code>int av_opt_set_bin(void*, const char*, const uint8_t*, int, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:428</i>
+	 * <i>native declaration : libavutil/opt.h:411</i>
 	 */
 	public static int av_opt_set_bin(Pointer<? > obj, Pointer<Byte > name, Pointer<Byte > val, int size, int search_flags) {
 		return av_opt_set_bin(Pointer.getPeer(obj), Pointer.getPeer(name), Pointer.getPeer(val), size, search_flags);
@@ -3881,7 +3893,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_set_bin(@Ptr long obj, @Ptr long name, @Ptr long val, int size, int search_flags);
 	/**
 	 * Original signature : <code>int av_opt_set_image_size(void*, const char*, int, int, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:430</i>
+	 * <i>native declaration : libavutil/opt.h:413</i>
 	 */
 	public static int av_opt_set_image_size(Pointer<? > obj, Pointer<Byte > name, int w, int h, int search_flags) {
 		return av_opt_set_image_size(Pointer.getPeer(obj), Pointer.getPeer(name), w, h, search_flags);
@@ -3889,7 +3901,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_set_image_size(@Ptr long obj, @Ptr long name, int w, int h, int search_flags);
 	/**
 	 * Original signature : <code>int av_opt_set_pixel_fmt(void*, const char*, AVPixelFormat, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:432</i>
+	 * <i>native declaration : libavutil/opt.h:415</i>
 	 */
 	public static int av_opt_set_pixel_fmt(Pointer<? > obj, Pointer<Byte > name, IntValuedEnum<AvutilLibrary.AVPixelFormat > fmt, int search_flags) {
 		return av_opt_set_pixel_fmt(Pointer.getPeer(obj), Pointer.getPeer(name), (int)fmt.value(), search_flags);
@@ -3897,7 +3909,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_set_pixel_fmt(@Ptr long obj, @Ptr long name, int fmt, int search_flags);
 	/**
 	 * Original signature : <code>int av_opt_set_sample_fmt(void*, const char*, AVSampleFormat, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:434</i>
+	 * <i>native declaration : libavutil/opt.h:417</i>
 	 */
 	public static int av_opt_set_sample_fmt(Pointer<? > obj, Pointer<Byte > name, IntValuedEnum<AvutilLibrary.AVSampleFormat > fmt, int search_flags) {
 		return av_opt_set_sample_fmt(Pointer.getPeer(obj), Pointer.getPeer(name), (int)fmt.value(), search_flags);
@@ -3905,7 +3917,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_set_sample_fmt(@Ptr long obj, @Ptr long name, int fmt, int search_flags);
 	/**
 	 * Original signature : <code>int av_opt_set_video_rate(void*, const char*, AVRational, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:436</i>
+	 * <i>native declaration : libavutil/opt.h:419</i>
 	 */
 	public static int av_opt_set_video_rate(Pointer<? > obj, Pointer<Byte > name, AVRational val, int search_flags) {
 		return av_opt_set_video_rate(Pointer.getPeer(obj), Pointer.getPeer(name), val, search_flags);
@@ -3913,7 +3925,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_set_video_rate(@Ptr long obj, @Ptr long name, AVRational val, int search_flags);
 	/**
 	 * Original signature : <code>int av_opt_set_channel_layout(void*, const char*, int64_t, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:438</i>
+	 * <i>native declaration : libavutil/opt.h:421</i>
 	 */
 	public static int av_opt_set_channel_layout(Pointer<? > obj, Pointer<Byte > name, long ch_layout, int search_flags) {
 		return av_opt_set_channel_layout(Pointer.getPeer(obj), Pointer.getPeer(name), ch_layout, search_flags);
@@ -3923,7 +3935,7 @@ public class AvutilLibrary {
 	 * @note Any old dictionary present is discarded and replaced with a copy of the new one. The<br>
 	 * caller still owns val is and responsible for freeing it.<br>
 	 * Original signature : <code>int av_opt_set_dict_val(void*, const char*, const AVDictionary*, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:444</i>
+	 * <i>native declaration : libavutil/opt.h:427</i>
 	 */
 	public static int av_opt_set_dict_val(Pointer<? > obj, Pointer<Byte > name, Pointer<AVDictionary > val, int search_flags) {
 		return av_opt_set_dict_val(Pointer.getPeer(obj), Pointer.getPeer(name), Pointer.getPeer(val), search_flags);
@@ -3932,7 +3944,7 @@ public class AvutilLibrary {
 	/**
 	 * @note the returned string will be av_malloc()ed and must be av_free()ed by the caller<br>
 	 * Original signature : <code>int av_opt_get(void*, const char*, int, uint8_t**)</code><br>
-	 * <i>native declaration : libavutil/opt.h:449</i>
+	 * <i>native declaration : libavutil/opt.h:432</i>
 	 */
 	public static int av_opt_get(Pointer<? > obj, Pointer<Byte > name, int search_flags, Pointer<Pointer<Byte > > out_val) {
 		return av_opt_get(Pointer.getPeer(obj), Pointer.getPeer(name), search_flags, Pointer.getPeer(out_val));
@@ -3940,7 +3952,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_get(@Ptr long obj, @Ptr long name, int search_flags, @Ptr long out_val);
 	/**
 	 * Original signature : <code>int av_opt_get_int(void*, const char*, int, int64_t*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:451</i>
+	 * <i>native declaration : libavutil/opt.h:434</i>
 	 */
 	public static int av_opt_get_int(Pointer<? > obj, Pointer<Byte > name, int search_flags, Pointer<Long > out_val) {
 		return av_opt_get_int(Pointer.getPeer(obj), Pointer.getPeer(name), search_flags, Pointer.getPeer(out_val));
@@ -3948,7 +3960,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_get_int(@Ptr long obj, @Ptr long name, int search_flags, @Ptr long out_val);
 	/**
 	 * Original signature : <code>int av_opt_get_double(void*, const char*, int, double*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:453</i>
+	 * <i>native declaration : libavutil/opt.h:436</i>
 	 */
 	public static int av_opt_get_double(Pointer<? > obj, Pointer<Byte > name, int search_flags, Pointer<Double > out_val) {
 		return av_opt_get_double(Pointer.getPeer(obj), Pointer.getPeer(name), search_flags, Pointer.getPeer(out_val));
@@ -3956,7 +3968,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_get_double(@Ptr long obj, @Ptr long name, int search_flags, @Ptr long out_val);
 	/**
 	 * Original signature : <code>int av_opt_get_q(void*, const char*, int, AVRational*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:455</i>
+	 * <i>native declaration : libavutil/opt.h:438</i>
 	 */
 	public static int av_opt_get_q(Pointer<? > obj, Pointer<Byte > name, int search_flags, Pointer<AVRational > out_val) {
 		return av_opt_get_q(Pointer.getPeer(obj), Pointer.getPeer(name), search_flags, Pointer.getPeer(out_val));
@@ -3964,7 +3976,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_get_q(@Ptr long obj, @Ptr long name, int search_flags, @Ptr long out_val);
 	/**
 	 * Original signature : <code>int av_opt_get_image_size(void*, const char*, int, int*, int*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:457</i>
+	 * <i>native declaration : libavutil/opt.h:440</i>
 	 */
 	public static int av_opt_get_image_size(Pointer<? > obj, Pointer<Byte > name, int search_flags, Pointer<Integer > w_out, Pointer<Integer > h_out) {
 		return av_opt_get_image_size(Pointer.getPeer(obj), Pointer.getPeer(name), search_flags, Pointer.getPeer(w_out), Pointer.getPeer(h_out));
@@ -3972,7 +3984,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_get_image_size(@Ptr long obj, @Ptr long name, int search_flags, @Ptr long w_out, @Ptr long h_out);
 	/**
 	 * Original signature : <code>int av_opt_get_pixel_fmt(void*, const char*, int, AVPixelFormat*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:459</i>
+	 * <i>native declaration : libavutil/opt.h:442</i>
 	 */
 	public static int av_opt_get_pixel_fmt(Pointer<? > obj, Pointer<Byte > name, int search_flags, Pointer<IntValuedEnum<AvutilLibrary.AVPixelFormat > > out_fmt) {
 		return av_opt_get_pixel_fmt(Pointer.getPeer(obj), Pointer.getPeer(name), search_flags, Pointer.getPeer(out_fmt));
@@ -3980,7 +3992,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_get_pixel_fmt(@Ptr long obj, @Ptr long name, int search_flags, @Ptr long out_fmt);
 	/**
 	 * Original signature : <code>int av_opt_get_sample_fmt(void*, const char*, int, AVSampleFormat*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:461</i>
+	 * <i>native declaration : libavutil/opt.h:444</i>
 	 */
 	public static int av_opt_get_sample_fmt(Pointer<? > obj, Pointer<Byte > name, int search_flags, Pointer<IntValuedEnum<AvutilLibrary.AVSampleFormat > > out_fmt) {
 		return av_opt_get_sample_fmt(Pointer.getPeer(obj), Pointer.getPeer(name), search_flags, Pointer.getPeer(out_fmt));
@@ -3988,7 +4000,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_get_sample_fmt(@Ptr long obj, @Ptr long name, int search_flags, @Ptr long out_fmt);
 	/**
 	 * Original signature : <code>int av_opt_get_video_rate(void*, const char*, int, AVRational*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:463</i>
+	 * <i>native declaration : libavutil/opt.h:446</i>
 	 */
 	public static int av_opt_get_video_rate(Pointer<? > obj, Pointer<Byte > name, int search_flags, Pointer<AVRational > out_val) {
 		return av_opt_get_video_rate(Pointer.getPeer(obj), Pointer.getPeer(name), search_flags, Pointer.getPeer(out_val));
@@ -3996,7 +4008,7 @@ public class AvutilLibrary {
 	protected native static int av_opt_get_video_rate(@Ptr long obj, @Ptr long name, int search_flags, @Ptr long out_val);
 	/**
 	 * Original signature : <code>int av_opt_get_channel_layout(void*, const char*, int, int64_t*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:465</i>
+	 * <i>native declaration : libavutil/opt.h:448</i>
 	 */
 	public static int av_opt_get_channel_layout(Pointer<? > obj, Pointer<Byte > name, int search_flags, Pointer<Long > ch_layout) {
 		return av_opt_get_channel_layout(Pointer.getPeer(obj), Pointer.getPeer(name), search_flags, Pointer.getPeer(ch_layout));
@@ -4006,7 +4018,7 @@ public class AvutilLibrary {
 	 * @param[out] out_val The returned dictionary is a copy of the actual value and must<br>
 	 * be freed with av_dict_free() by the caller<br>
 	 * Original signature : <code>int av_opt_get_dict_val(void*, const char*, int, AVDictionary**)</code><br>
-	 * <i>native declaration : libavutil/opt.h:471</i>
+	 * <i>native declaration : libavutil/opt.h:454</i>
 	 */
 	public static int av_opt_get_dict_val(Pointer<? > obj, Pointer<Byte > name, int search_flags, Pointer<Pointer<AVDictionary > > out_val) {
 		return av_opt_get_dict_val(Pointer.getPeer(obj), Pointer.getPeer(name), search_flags, Pointer.getPeer(out_val));
@@ -4019,7 +4031,7 @@ public class AvutilLibrary {
 	 * * @returns a pointer to the field, it can be cast to the correct type and read<br>
 	 *          or written to.<br>
 	 * Original signature : <code>void* av_opt_ptr(const AVClass*, void*, const char*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:480</i>
+	 * <i>native declaration : libavutil/opt.h:463</i>
 	 */
 	public static Pointer<? > av_opt_ptr(Pointer<AVClass > avclass, Pointer<? > obj, Pointer<Byte > name) {
 		return Pointer.pointerToAddress(av_opt_ptr(Pointer.getPeer(avclass), Pointer.getPeer(obj), Pointer.getPeer(name)));
@@ -4029,7 +4041,7 @@ public class AvutilLibrary {
 	/**
 	 * Free an AVOptionRanges struct and set it to NULL.<br>
 	 * Original signature : <code>void av_opt_freep_ranges(AVOptionRanges**)</code><br>
-	 * <i>native declaration : libavutil/opt.h:485</i>
+	 * <i>native declaration : libavutil/opt.h:468</i>
 	 */
 	public static void av_opt_freep_ranges(Pointer<Pointer<AVOptionRanges > > ranges) {
 		av_opt_freep_ranges(Pointer.getPeer(ranges));
@@ -4044,7 +4056,7 @@ public class AvutilLibrary {
 	 * * The result must be freed with av_opt_freep_ranges.<br>
 	 * * @return number of compontents returned on success, a negative errro code otherwise<br>
 	 * Original signature : <code>int av_opt_query_ranges(AVOptionRanges**, void*, const char*, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:496</i>
+	 * <i>native declaration : libavutil/opt.h:479</i>
 	 */
 	public static int av_opt_query_ranges(Pointer<Pointer<AVOptionRanges > > AVOptionRangesPtrPtr1, Pointer<? > obj, Pointer<Byte > key, int flags) {
 		return av_opt_query_ranges(Pointer.getPeer(AVOptionRangesPtrPtr1), Pointer.getPeer(obj), Pointer.getPeer(key), flags);
@@ -4058,7 +4070,7 @@ public class AvutilLibrary {
 	 * @param src  Object to copy into<br>
 	 * @return 0 on success, negative on error<br>
 	 * Original signature : <code>int av_opt_copy(void*, void*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:506</i>
+	 * <i>native declaration : libavutil/opt.h:489</i>
 	 */
 	public static int av_opt_copy(Pointer<? > dest, Pointer<? > src) {
 		return av_opt_copy(Pointer.getPeer(dest), Pointer.getPeer(src));
@@ -4074,7 +4086,7 @@ public class AvutilLibrary {
 	 * * The result must be freed with av_opt_free_ranges.<br>
 	 * * @return number of compontents returned on success, a negative errro code otherwise<br>
 	 * Original signature : <code>int av_opt_query_ranges_default(AVOptionRanges**, void*, const char*, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:518</i>
+	 * <i>native declaration : libavutil/opt.h:501</i>
 	 */
 	public static int av_opt_query_ranges_default(Pointer<Pointer<AVOptionRanges > > AVOptionRangesPtrPtr1, Pointer<? > obj, Pointer<Byte > key, int flags) {
 		return av_opt_query_ranges_default(Pointer.getPeer(AVOptionRangesPtrPtr1), Pointer.getPeer(obj), Pointer.getPeer(key), flags);
@@ -4090,7 +4102,7 @@ public class AvutilLibrary {
 	 *              0 when option is not set its default,<br>
 	 *             <0 on error<br>
 	 * Original signature : <code>int av_opt_is_set_to_default(void*, const AVOption*)</code><br>
-	 * <i>native declaration : libavutil/opt.h:530</i>
+	 * <i>native declaration : libavutil/opt.h:513</i>
 	 */
 	public static int av_opt_is_set_to_default(Pointer<? > obj, Pointer<AVOption > o) {
 		return av_opt_is_set_to_default(Pointer.getPeer(obj), Pointer.getPeer(o));
@@ -4105,7 +4117,7 @@ public class AvutilLibrary {
 	 *                     0 when option is not set its default,<br>
 	 *                     <0 on error<br>
 	 * Original signature : <code>int av_opt_is_set_to_default_by_name(void*, const char*, int)</code><br>
-	 * <i>native declaration : libavutil/opt.h:541</i>
+	 * <i>native declaration : libavutil/opt.h:524</i>
 	 */
 	public static int av_opt_is_set_to_default_by_name(Pointer<? > obj, Pointer<Byte > name, int search_flags) {
 		return av_opt_is_set_to_default_by_name(Pointer.getPeer(obj), Pointer.getPeer(name), search_flags);
@@ -4127,7 +4139,7 @@ public class AvutilLibrary {
 	 * @return                   >= 0 on success, negative on error<br>
 	 * @warning Separators cannot be neither '\\' nor '\0'. They also cannot be the same.<br>
 	 * Original signature : <code>int av_opt_serialize(void*, int, int, char**, const char, const char)</code><br>
-	 * <i>native declaration : libavutil/opt.h:559</i>
+	 * <i>native declaration : libavutil/opt.h:542</i>
 	 */
 	public static int av_opt_serialize(Pointer<? > obj, int opt_flags, int flags, Pointer<Pointer<Byte > > buffer, byte key_val_sep, byte pairs_sep) {
 		return av_opt_serialize(Pointer.getPeer(obj), opt_flags, flags, Pointer.getPeer(buffer), key_val_sep, pairs_sep);

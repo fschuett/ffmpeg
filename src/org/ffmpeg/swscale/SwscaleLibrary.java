@@ -236,11 +236,17 @@ public class SwscaleLibrary {
 	 * @param dstH the height of the destination image<br>
 	 * @param dstFormat the destination image format<br>
 	 * @param flags specify which algorithm and options to use for rescaling<br>
+	 * @param param extra parameters to tune the used scaler<br>
+	 *              For SWS_BICUBIC param[0] and [1] tune the shape of the basis<br>
+	 *              function, param[0] tunes f(1) and param[1] f\u00b4(1)<br>
+	 *              For SWS_GAUSS param[0] tunes the exponent and thus cutoff<br>
+	 *              frequency<br>
+	 *              For SWS_LANCZOS param[0] tunes the width of the window function<br>
 	 * @return a pointer to an allocated context, or NULL in case of error<br>
 	 * @note this function is to be removed after a saner alternative is<br>
 	 *       written<br>
 	 * Original signature : <code>SwsContext* sws_getContext(int, int, AVPixelFormat, int, int, AVPixelFormat, int, SwsFilter*, SwsFilter*, const double*)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:94</i>
+	 * <i>native declaration : libswscale/swscale.h:100</i>
 	 */
 	public static Pointer<SwscaleLibrary.SwsContext > sws_getContext(int srcW, int srcH, IntValuedEnum<AVPixelFormat > srcFormat, int dstW, int dstH, IntValuedEnum<AVPixelFormat > dstFormat, int flags, Pointer<SwsFilter > srcFilter, Pointer<SwsFilter > dstFilter, Pointer<Double > param) {
 		return Pointer.pointerToAddress(sws_getContext(srcW, srcH, (int)srcFormat.value(), dstW, dstH, (int)dstFormat.value(), flags, Pointer.getPeer(srcFilter), Pointer.getPeer(dstFilter), Pointer.getPeer(param)), SwscaleLibrary.SwsContext.class);
@@ -271,7 +277,7 @@ public class SwscaleLibrary {
 	 *                  the destination image<br>
 	 * @return          the height of the output slice<br>
 	 * Original signature : <code>int sws_scale(SwsContext*, const const uint8_t*[], const int[], int, int, const uint8_t*[], const int[])</code><br>
-	 * <i>native declaration : libswscale/swscale.h:120</i>
+	 * <i>native declaration : libswscale/swscale.h:126</i>
 	 */
 	public static int sws_scale(Pointer<SwscaleLibrary.SwsContext > c, Pointer<Pointer<Byte > > srcSlice, Pointer<Integer > srcStride, int srcSliceY, int srcSliceH, Pointer<Pointer<Byte > > dst, Pointer<Integer > dstStride) {
 		return sws_scale(Pointer.getPeer(c), Pointer.getPeer(srcSlice), Pointer.getPeer(srcStride), srcSliceY, srcSliceH, Pointer.getPeer(dst), Pointer.getPeer(dstStride));
@@ -287,7 +293,7 @@ public class SwscaleLibrary {
 	 * @param saturation 16.16 fixed point saturation correction<br>
 	 * @return -1 if not supported<br>
 	 * Original signature : <code>int sws_setColorspaceDetails(SwsContext*, const int[4], int, const int[4], int, int, int, int)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:132</i>
+	 * <i>native declaration : libswscale/swscale.h:138</i>
 	 */
 	public static int sws_setColorspaceDetails(Pointer<SwscaleLibrary.SwsContext > c, Pointer<Integer > inv_table, int srcRange, Pointer<Integer > table, int dstRange, int brightness, int contrast, int saturation) {
 		return sws_setColorspaceDetails(Pointer.getPeer(c), Pointer.getPeer(inv_table), srcRange, Pointer.getPeer(table), dstRange, brightness, contrast, saturation);
@@ -296,7 +302,7 @@ public class SwscaleLibrary {
 	/**
 	 * @return -1 if not supported<br>
 	 * Original signature : <code>int sws_getColorspaceDetails(SwsContext*, int**, int*, int**, int*, int*, int*, int*)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:137</i>
+	 * <i>native declaration : libswscale/swscale.h:143</i>
 	 */
 	public static int sws_getColorspaceDetails(Pointer<SwscaleLibrary.SwsContext > c, Pointer<Pointer<Integer > > inv_table, Pointer<Integer > srcRange, Pointer<Pointer<Integer > > table, Pointer<Integer > dstRange, Pointer<Integer > brightness, Pointer<Integer > contrast, Pointer<Integer > saturation) {
 		return sws_getColorspaceDetails(Pointer.getPeer(c), Pointer.getPeer(inv_table), Pointer.getPeer(srcRange), Pointer.getPeer(table), Pointer.getPeer(dstRange), Pointer.getPeer(brightness), Pointer.getPeer(contrast), Pointer.getPeer(saturation));
@@ -305,7 +311,7 @@ public class SwscaleLibrary {
 	/**
 	 * Allocate and return an uninitialized vector with length coefficients.<br>
 	 * Original signature : <code>SwsVector* sws_allocVec(int)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:142</i>
+	 * <i>native declaration : libswscale/swscale.h:148</i>
 	 */
 	public static Pointer<SwsVector > sws__allocVec(int length) {
 		return Pointer.pointerToAddress(sws_allocVec(length), SwsVector.class);
@@ -316,7 +322,7 @@ public class SwscaleLibrary {
 	 * Return a normalized Gaussian curve used to filter stuff<br>
 	 * quality = 3 is high quality, lower is lower quality.<br>
 	 * Original signature : <code>SwsVector* sws_getGaussianVec(double, double)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:148</i>
+	 * <i>native declaration : libswscale/swscale.h:154</i>
 	 */
 	public static Pointer<SwsVector > sws__getGaussianVec(double variance, double quality) {
 		return Pointer.pointerToAddress(sws_getGaussianVec(variance, quality), SwsVector.class);
@@ -327,7 +333,7 @@ public class SwscaleLibrary {
 	 * Allocate and return a vector with length coefficients, all<br>
 	 * with the same value c.<br>
 	 * Original signature : <code>SwsVector* sws_getConstVec(double, int)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:154</i>
+	 * <i>native declaration : libswscale/swscale.h:160</i>
 	 */
 	public static Pointer<SwsVector > sws__getConstVec(double c, int length) {
 		return Pointer.pointerToAddress(sws_getConstVec(c, length), SwsVector.class);
@@ -338,7 +344,7 @@ public class SwscaleLibrary {
 	 * Allocate and return a vector with just one coefficient, with<br>
 	 * value 1.0.<br>
 	 * Original signature : <code>SwsVector* sws_getIdentityVec()</code><br>
-	 * <i>native declaration : libswscale/swscale.h:160</i>
+	 * <i>native declaration : libswscale/swscale.h:166</i>
 	 */
 	public static Pointer<SwsVector > sws__getIdentityVec() {
 		return Pointer.pointerToAddress(sws_getIdentityVec(), SwsVector.class);
@@ -348,7 +354,7 @@ public class SwscaleLibrary {
 	/**
 	 * Scale all the coefficients of a by the scalar value.<br>
 	 * Original signature : <code>void sws_scaleVec(SwsVector*, double)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:165</i>
+	 * <i>native declaration : libswscale/swscale.h:171</i>
 	 */
 	public static void sws_scaleVec(Pointer<SwsVector > a, double scalar) {
 		sws_scaleVec(Pointer.getPeer(a), scalar);
@@ -357,7 +363,7 @@ public class SwscaleLibrary {
 	/**
 	 * Scale all the coefficients of a so that their sum equals height.<br>
 	 * Original signature : <code>void sws_normalizeVec(SwsVector*, double)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:170</i>
+	 * <i>native declaration : libswscale/swscale.h:176</i>
 	 */
 	public static void sws_normalizeVec(Pointer<SwsVector > a, double height) {
 		sws_normalizeVec(Pointer.getPeer(a), height);
@@ -365,7 +371,7 @@ public class SwscaleLibrary {
 	protected native static void sws_normalizeVec(@Ptr long a, double height);
 	/**
 	 * Original signature : <code>void sws_convVec(SwsVector*, SwsVector*)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:172</i>
+	 * <i>native declaration : libswscale/swscale.h:178</i>
 	 */
 	public static void sws_convVec(Pointer<SwsVector > a, Pointer<SwsVector > b) {
 		sws_convVec(Pointer.getPeer(a), Pointer.getPeer(b));
@@ -373,7 +379,7 @@ public class SwscaleLibrary {
 	protected native static void sws_convVec(@Ptr long a, @Ptr long b);
 	/**
 	 * Original signature : <code>void sws_addVec(SwsVector*, SwsVector*)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:174</i>
+	 * <i>native declaration : libswscale/swscale.h:180</i>
 	 */
 	public static void sws_addVec(Pointer<SwsVector > a, Pointer<SwsVector > b) {
 		sws_addVec(Pointer.getPeer(a), Pointer.getPeer(b));
@@ -381,7 +387,7 @@ public class SwscaleLibrary {
 	protected native static void sws_addVec(@Ptr long a, @Ptr long b);
 	/**
 	 * Original signature : <code>void sws_subVec(SwsVector*, SwsVector*)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:176</i>
+	 * <i>native declaration : libswscale/swscale.h:182</i>
 	 */
 	public static void sws_subVec(Pointer<SwsVector > a, Pointer<SwsVector > b) {
 		sws_subVec(Pointer.getPeer(a), Pointer.getPeer(b));
@@ -389,7 +395,7 @@ public class SwscaleLibrary {
 	protected native static void sws_subVec(@Ptr long a, @Ptr long b);
 	/**
 	 * Original signature : <code>void sws_shiftVec(SwsVector*, int)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:178</i>
+	 * <i>native declaration : libswscale/swscale.h:184</i>
 	 */
 	public static void sws_shiftVec(Pointer<SwsVector > a, int shift) {
 		sws_shiftVec(Pointer.getPeer(a), shift);
@@ -399,7 +405,7 @@ public class SwscaleLibrary {
 	 * Allocate and return a clone of the vector a, that is a vector<br>
 	 * with the same coefficients as a.<br>
 	 * Original signature : <code>SwsVector* sws_cloneVec(SwsVector*)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:184</i>
+	 * <i>native declaration : libswscale/swscale.h:190</i>
 	 */
 	public static Pointer<SwsVector > sws_cloneVec(Pointer<SwsVector > a) {
 		return Pointer.pointerToAddress(sws_cloneVec(Pointer.getPeer(a)), SwsVector.class);
@@ -410,7 +416,7 @@ public class SwscaleLibrary {
 	 * Print with av_log() a textual representation of the vector a<br>
 	 * if log_level <= av_log_level.<br>
 	 * Original signature : <code>void sws_printVec2(SwsVector*, AVClass*, int)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:190</i>
+	 * <i>native declaration : libswscale/swscale.h:196</i>
 	 */
 	public static void sws_printVec2(Pointer<SwsVector > a, Pointer<AVClass > log_ctx, int log_level) {
 		sws_printVec2(Pointer.getPeer(a), Pointer.getPeer(log_ctx), log_level);
@@ -418,7 +424,7 @@ public class SwscaleLibrary {
 	protected native static void sws_printVec2(@Ptr long a, @Ptr long log_ctx, int log_level);
 	/**
 	 * Original signature : <code>void sws_freeVec(SwsVector*)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:192</i>
+	 * <i>native declaration : libswscale/swscale.h:198</i>
 	 */
 	public static void sws_freeVec(Pointer<SwsVector > a) {
 		sws_freeVec(Pointer.getPeer(a));
@@ -426,7 +432,7 @@ public class SwscaleLibrary {
 	protected native static void sws_freeVec(@Ptr long a);
 	/**
 	 * Original signature : <code>SwsFilter* sws_getDefaultFilter(float, float, float, float, float, float, int)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:194</i>
+	 * <i>native declaration : libswscale/swscale.h:200</i>
 	 */
 	public static Pointer<SwsFilter > sws__getDefaultFilter(float lumaGBlur, float chromaGBlur, float lumaSharpen, float chromaSharpen, float chromaHShift, float chromaVShift, int verbose) {
 		return Pointer.pointerToAddress(sws_getDefaultFilter(lumaGBlur, chromaGBlur, lumaSharpen, chromaSharpen, chromaHShift, chromaVShift, verbose), SwsFilter.class);
@@ -435,7 +441,7 @@ public class SwscaleLibrary {
 	protected native static long sws_getDefaultFilter(float lumaGBlur, float chromaGBlur, float lumaSharpen, float chromaSharpen, float chromaHShift, float chromaVShift, int verbose);
 	/**
 	 * Original signature : <code>void sws_freeFilter(SwsFilter*)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:196</i>
+	 * <i>native declaration : libswscale/swscale.h:202</i>
 	 */
 	public static void sws_freeFilter(Pointer<SwsFilter > filter) {
 		sws_freeFilter(Pointer.getPeer(filter));
@@ -451,7 +457,7 @@ public class SwscaleLibrary {
 	 * * Be warned that srcFilter and dstFilter are not checked, they<br>
 	 * are assumed to remain the same.<br>
 	 * Original signature : <code>SwsContext* sws_getCachedContext(SwsContext*, int, int, AVPixelFormat, int, int, AVPixelFormat, int, SwsFilter*, SwsFilter*, const double*)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:208</i>
+	 * <i>native declaration : libswscale/swscale.h:214</i>
 	 */
 	public static Pointer<SwscaleLibrary.SwsContext > sws_getCachedContext(Pointer<SwscaleLibrary.SwsContext > context, int srcW, int srcH, IntValuedEnum<AVPixelFormat > srcFormat, int dstW, int dstH, IntValuedEnum<AVPixelFormat > dstFormat, int flags, Pointer<SwsFilter > srcFilter, Pointer<SwsFilter > dstFilter, Pointer<Double > param) {
 		return Pointer.pointerToAddress(sws_getCachedContext(Pointer.getPeer(context), srcW, srcH, (int)srcFormat.value(), dstW, dstH, (int)dstFormat.value(), flags, Pointer.getPeer(srcFilter), Pointer.getPeer(dstFilter), Pointer.getPeer(param)), SwscaleLibrary.SwsContext.class);
@@ -466,7 +472,7 @@ public class SwscaleLibrary {
 	 * @param num_pixels number of pixels to convert<br>
 	 * @param palette    array with [256] entries, which must match color arrangement (RGB or BGR) of src<br>
 	 * Original signature : <code>void sws_convertPalette8ToPacked32(const uint8_t*, uint8_t*, int, const uint8_t*)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:218</i>
+	 * <i>native declaration : libswscale/swscale.h:224</i>
 	 */
 	public static void sws_convertPalette8ToPacked32(Pointer<Byte > src, Pointer<Byte > dst, int num_pixels, Pointer<Byte > palette) {
 		sws_convertPalette8ToPacked32(Pointer.getPeer(src), Pointer.getPeer(dst), num_pixels, Pointer.getPeer(palette));
@@ -480,7 +486,7 @@ public class SwscaleLibrary {
 	 * @param num_pixels number of pixels to convert<br>
 	 * @param palette    array with [256] entries, which must match color arrangement (RGB or BGR) of src<br>
 	 * Original signature : <code>void sws_convertPalette8ToPacked24(const uint8_t*, uint8_t*, int, const uint8_t*)</code><br>
-	 * <i>native declaration : libswscale/swscale.h:228</i>
+	 * <i>native declaration : libswscale/swscale.h:234</i>
 	 */
 	public static void sws_convertPalette8ToPacked24(Pointer<Byte > src, Pointer<Byte > dst, int num_pixels, Pointer<Byte > palette) {
 		sws_convertPalette8ToPacked24(Pointer.getPeer(src), Pointer.getPeer(dst), num_pixels, Pointer.getPeer(palette));
@@ -491,7 +497,7 @@ public class SwscaleLibrary {
 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>
 	 * * @see av_opt_find().<br>
 	 * Original signature : <code>AVClass* sws_get_class()</code><br>
-	 * <i>native declaration : libswscale/swscale.h:235</i>
+	 * <i>native declaration : libswscale/swscale.h:241</i>
 	 */
 	public static Pointer<AVClass > sws__get_class() {
 		return Pointer.pointerToAddress(sws_get_class(), AVClass.class);

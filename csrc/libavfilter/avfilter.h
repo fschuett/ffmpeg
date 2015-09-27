@@ -230,12 +230,12 @@ void avfilter_unref_buffer(AVFilterBufferRef *ref);
  * @param ref pointer to the buffer reference
  */
 void avfilter_unref_bufferp(AVFilterBufferRef **ref);
-#endif
 
 /**
  * Get the number of channels of a buffer reference.
  */
 int avfilter_ref_get_channels(AVFilterBufferRef *ref);
+#endif
 
 #if FF_API_AVFILTERPAD_PUBLIC
 /**
@@ -758,7 +758,9 @@ struct AVFilterLink {
         AVLINK_INIT             ///< complete
     } init_state;
 
+#if FF_API_AVFILTERBUFFER
     struct AVFilterPool *pool;
+#endif
 
     /**
      * Graph the filter belongs to.
@@ -814,6 +816,7 @@ struct AVFilterLink {
      */
     int max_samples;
 
+#if FF_API_AVFILTERBUFFER
     /**
      * The buffer reference currently being received across the link by the
      * destination filter. This is used internally by the filter system to
@@ -822,6 +825,7 @@ struct AVFilterLink {
      * by the filters.
      */
     AVFilterBufferRef *cur_buf_copy;
+#endif
 
     /**
      * True if the link is closed.

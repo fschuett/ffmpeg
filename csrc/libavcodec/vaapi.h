@@ -31,6 +31,8 @@
  */
 
 #include <stdint.h>
+#include "libavutil/attributes.h"
+#include "version.h"
 
 /**
  * @defgroup lavc_codec_hwaccel_vaapi VA API Decoding
@@ -72,6 +74,7 @@ struct vaapi_context {
      */
     uint32_t context_id;
 
+#if FF_API_VAAPI_CONTEXT
     /**
      * VAPictureParameterBuffer ID
      *
@@ -166,6 +169,7 @@ struct vaapi_context {
      * - decoding: Set by libavcodec
      */
     uint32_t slice_data_size;
+#endif
 };
 
 /* @} */

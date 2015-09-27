@@ -1,7 +1,7 @@
 diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
---- csrc.orig/libavcodec/avcodec.h	2015-09-01 15:23:47.000000000 +0200
-+++ csrc/libavcodec/avcodec.h	2015-09-01 15:27:17.814921366 +0200
-@@ -1216,7 +1216,9 @@ enum AVSideDataParamChangeFlags {
+--- csrc.orig/libavcodec/avcodec.h	2015-09-27 12:09:29.000000000 +0200
++++ csrc/libavcodec/avcodec.h	2015-09-27 12:11:35.388745614 +0200
+@@ -1003,7 +1003,9 @@ enum AVSideDataParamChangeFlags {
   * @}
   */
  
@@ -12,7 +12,7 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  
  enum AVFieldOrder {
      AV_FIELD_UNKNOWN,
-@@ -3150,7 +3152,9 @@ typedef struct AVProfile {
+@@ -2967,7 +2969,9 @@ typedef struct AVProfile {
      const char *name; ///< short name for the profile
  } AVProfile;
  
@@ -24,8 +24,8 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  struct AVSubtitle;
  
 diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
---- csrc.orig/libavformat/avformat.h	2015-09-01 15:23:47.000000000 +0200
-+++ csrc/libavformat/avformat.h	2015-09-01 15:27:17.818921369 +0200
+--- csrc.orig/libavformat/avformat.h	2015-09-27 12:09:29.000000000 +0200
++++ csrc/libavformat/avformat.h	2015-09-27 12:11:35.390745609 +0200
 @@ -440,7 +440,9 @@ typedef struct AVFrac {
  /*************************************************/
  /* input/output formats */
@@ -37,7 +37,7 @@ diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
  
  /**
   * This structure contains the data a format has to probe a file.
-@@ -1249,7 +1251,9 @@ enum AVDurationEstimationMethod {
+@@ -1250,7 +1252,9 @@ enum AVDurationEstimationMethod {
      AVFMT_DURATION_FROM_BITRATE ///< Duration estimated from bitrate (less accurate)
  };
  
@@ -49,8 +49,8 @@ diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
  /**
   * Format I/O context.
 diff -pruN csrc.orig/libavutil/buffer.h csrc/libavutil/buffer.h
---- csrc.orig/libavutil/buffer.h	2015-08-12 15:04:44.000000000 +0200
-+++ csrc/libavutil/buffer.h	2015-09-01 15:27:17.820921370 +0200
+--- csrc.orig/libavutil/buffer.h	2015-09-19 11:18:47.000000000 +0200
++++ csrc/libavutil/buffer.h	2015-09-27 12:11:35.391745607 +0200
 @@ -70,7 +70,9 @@
   * A reference counted buffer type. It is opaque and is meant to be used through
   * references (AVBufferRef).
@@ -63,8 +63,8 @@ diff -pruN csrc.orig/libavutil/buffer.h csrc/libavutil/buffer.h
  /**
   * A reference to a data buffer.
 diff -pruN csrc.orig/libavutil/dict.h csrc/libavutil/dict.h
---- csrc.orig/libavutil/dict.h	2015-08-12 15:04:44.000000000 +0200
-+++ csrc/libavutil/dict.h	2015-09-01 15:27:17.822921372 +0200
+--- csrc.orig/libavutil/dict.h	2015-09-19 11:18:47.000000000 +0200
++++ csrc/libavutil/dict.h	2015-09-27 12:11:35.392745604 +0200
 @@ -84,7 +84,9 @@ typedef struct AVDictionaryEntry {
      char *value;
  } AVDictionaryEntry;

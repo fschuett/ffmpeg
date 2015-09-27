@@ -799,7 +799,7 @@ public class AVFrame extends StructObject {
 	}
 	/**
 	 * frame timestamp estimated using various heuristics, in stream time base<br>
-	 * Code outside libavcodec should access this field using:<br>
+	 * Code outside libavutil should access this field using:<br>
 	 * av_frame_get_best_effort_timestamp(frame)<br>
 	 * - encoding: unused<br>
 	 * - decoding: set by libavcodec, read by user.
@@ -810,7 +810,7 @@ public class AVFrame extends StructObject {
 	}
 	/**
 	 * frame timestamp estimated using various heuristics, in stream time base<br>
-	 * Code outside libavcodec should access this field using:<br>
+	 * Code outside libavutil should access this field using:<br>
 	 * av_frame_get_best_effort_timestamp(frame)<br>
 	 * - encoding: unused<br>
 	 * - decoding: set by libavcodec, read by user.
@@ -822,7 +822,7 @@ public class AVFrame extends StructObject {
 	}
 	/**
 	 * reordered pos from the last AVPacket that has been input into the decoder<br>
-	 * Code outside libavcodec should access this field using:<br>
+	 * Code outside libavutil should access this field using:<br>
 	 * av_frame_get_pkt_pos(frame)<br>
 	 * - encoding: unused<br>
 	 * - decoding: Read by user.
@@ -833,7 +833,7 @@ public class AVFrame extends StructObject {
 	}
 	/**
 	 * reordered pos from the last AVPacket that has been input into the decoder<br>
-	 * Code outside libavcodec should access this field using:<br>
+	 * Code outside libavutil should access this field using:<br>
 	 * av_frame_get_pkt_pos(frame)<br>
 	 * - encoding: unused<br>
 	 * - decoding: Read by user.
@@ -846,7 +846,7 @@ public class AVFrame extends StructObject {
 	/**
 	 * duration of the corresponding packet, expressed in<br>
 	 * AVStream->time_base units, 0 if unknown.<br>
-	 * Code outside libavcodec should access this field using:<br>
+	 * Code outside libavutil should access this field using:<br>
 	 * av_frame_get_pkt_duration(frame)<br>
 	 * - encoding: unused<br>
 	 * - decoding: Read by user.
@@ -858,7 +858,7 @@ public class AVFrame extends StructObject {
 	/**
 	 * duration of the corresponding packet, expressed in<br>
 	 * AVStream->time_base units, 0 if unknown.<br>
-	 * Code outside libavcodec should access this field using:<br>
+	 * Code outside libavutil should access this field using:<br>
 	 * av_frame_get_pkt_duration(frame)<br>
 	 * - encoding: unused<br>
 	 * - decoding: Read by user.
@@ -870,7 +870,7 @@ public class AVFrame extends StructObject {
 	}
 	/**
 	 * metadata.<br>
-	 * Code outside libavcodec should access this field using:<br>
+	 * Code outside libavutil should access this field using:<br>
 	 * av_frame_get_metadata(frame)<br>
 	 * - encoding: Set by user.<br>
 	 * - decoding: Set by libavcodec.<br>
@@ -882,7 +882,7 @@ public class AVFrame extends StructObject {
 	}
 	/**
 	 * metadata.<br>
-	 * Code outside libavcodec should access this field using:<br>
+	 * Code outside libavutil should access this field using:<br>
 	 * av_frame_get_metadata(frame)<br>
 	 * - encoding: Set by user.<br>
 	 * - decoding: Set by libavcodec.<br>
@@ -897,7 +897,7 @@ public class AVFrame extends StructObject {
 	 * decode error flags of the frame, set to a combination of<br>
 	 * FF_DECODE_ERROR_xxx flags if the decoder produced a frame, but there<br>
 	 * were errors during the decoding.<br>
-	 * Code outside libavcodec should access this field using:<br>
+	 * Code outside libavutil should access this field using:<br>
 	 * av_frame_get_decode_error_flags(frame)<br>
 	 * - encoding: unused<br>
 	 * - decoding: set by libavcodec, read by user.
@@ -910,7 +910,7 @@ public class AVFrame extends StructObject {
 	 * decode error flags of the frame, set to a combination of<br>
 	 * FF_DECODE_ERROR_xxx flags if the decoder produced a frame, but there<br>
 	 * were errors during the decoding.<br>
-	 * Code outside libavcodec should access this field using:<br>
+	 * Code outside libavutil should access this field using:<br>
 	 * av_frame_get_decode_error_flags(frame)<br>
 	 * - encoding: unused<br>
 	 * - decoding: set by libavcodec, read by user.
@@ -922,7 +922,7 @@ public class AVFrame extends StructObject {
 	}
 	/**
 	 * number of audio channels, only used for audio.<br>
-	 * Code outside libavcodec should access this field using:<br>
+	 * Code outside libavutil should access this field using:<br>
 	 * av_frame_get_channels(frame)<br>
 	 * - encoding: unused<br>
 	 * - decoding: Read by user.
@@ -933,7 +933,7 @@ public class AVFrame extends StructObject {
 	}
 	/**
 	 * number of audio channels, only used for audio.<br>
-	 * Code outside libavcodec should access this field using:<br>
+	 * Code outside libavutil should access this field using:<br>
 	 * av_frame_get_channels(frame)<br>
 	 * - encoding: unused<br>
 	 * - decoding: Read by user.

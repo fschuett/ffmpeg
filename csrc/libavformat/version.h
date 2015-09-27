@@ -30,8 +30,8 @@
 #include "libavutil/version.h"
 
 #define LIBAVFORMAT_VERSION_MAJOR 56
-#define LIBAVFORMAT_VERSION_MINOR  36
-#define LIBAVFORMAT_VERSION_MICRO 100
+#define LIBAVFORMAT_VERSION_MINOR  40
+#define LIBAVFORMAT_VERSION_MICRO 101
 
 #define LIBAVFORMAT_VERSION_INT AV_VERSION_INT(LIBAVFORMAT_VERSION_MAJOR, \
                                                LIBAVFORMAT_VERSION_MINOR, \
@@ -41,12 +41,17 @@
                                            LIBAVFORMAT_VERSION_MICRO)
 #define LIBAVFORMAT_BUILD       LIBAVFORMAT_VERSION_INT
 
-#define LIBAVFORMAT_IDENT       "Lavf56.36.100"
+#define LIBAVFORMAT_IDENT       "Lavf56.40.101"
 
 /**
  * FF_API_* defines may be placed below to indicate public API that will be
  * dropped at a future version bump. The defines themselves are not part of
  * the public API and may change, break or disappear at any time.
+ *
+ * @note, when bumping the major version it is recommended to manually
+ * disable each FF_API_* in its own commit instead of disabling them all
+ * at once through the bump. This improves the git bisect-ability of the change.
+ *
  */
 #ifndef FF_API_LAVF_BITEXACT
 #define FF_API_LAVF_BITEXACT            (LIBAVFORMAT_VERSION_MAJOR < 57)
@@ -59,6 +64,9 @@
 #endif
 #ifndef FF_API_URL_FEOF
 #define FF_API_URL_FEOF                 (LIBAVFORMAT_VERSION_MAJOR < 57)
+#endif
+#ifndef FF_API_PROBESIZE_32
+#define FF_API_PROBESIZE_32             (LIBAVFORMAT_VERSION_MAJOR < 57)
 #endif
 
 #ifndef FF_API_R_FRAME_RATE

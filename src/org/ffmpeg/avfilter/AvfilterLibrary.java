@@ -53,7 +53,7 @@ public class AvfilterLibrary {
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
 	public static final int AVFILTER_THREAD_SLICE = (int)(1 << 0);
 	/** <i>native declaration : ./libavfilter/version.h</i> */
-	public static final String LIBAVFILTER_IDENT = (String)"Lavfi5.16.101";
+	public static final String LIBAVFILTER_IDENT = (String)"Lavfi5.40.101";
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
 	public static final int AV_PERM_ALIGN = (int)0x40;
 	/** <i>native declaration : ./libavfilter/version.h</i> */
@@ -83,7 +83,7 @@ public class AvfilterLibrary {
 	/** <i>native declaration : ./libavfilter/version.h</i> */
 	public static final boolean FF_API_OLD_GRAPH_PARSE = (boolean)(5 < 5);
 	/** <i>native declaration : ./libavfilter/version.h</i> */
-	public static final int LIBAVFILTER_VERSION_INT = (int)((5) << 16 | (16) << 8 | (101));
+	public static final int LIBAVFILTER_VERSION_INT = (int)((5) << 16 | (40) << 8 | (101));
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
 	public static final int AVFILTER_ALIGN = (int)16;
 	/** <i>native declaration : libavfilter/buffersink.h</i> */
@@ -96,6 +96,8 @@ public class AvfilterLibrary {
 	public static final int AVFILTER_FLAG_DYNAMIC_INPUTS = (int)(1 << 0);
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
 	public static final int AV_PERM_REUSE2 = (int)0x10;
+	/** <i>native declaration : ./libavfilter/version.h</i> */
+	public static final boolean FF_API_OLD_FILTER_OPTS_ERROR = (boolean)(5 < 7);
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
 	public static final int AVFILTER_CMD_FLAG_ONE = (int)1;
 	/** <i>native declaration : ./libavfilter/version.h</i> */
@@ -108,10 +110,10 @@ public class AvfilterLibrary {
 	public static final boolean FF_API_NOCONST_GET_NAME = (boolean)(5 < 6);
 	/**
 	 * define<br>
-	 * Conversion Error : 5.16.<br>
+	 * Conversion Error : 5.40.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libavfilter/version.h:0</i><br>
-	 * 5.16.
+	 * 5.40.
 	 */
 	/** <i>native declaration : ./libavfilter/version.h</i> */
 	public static final boolean FF_API_OLD_FILTER_OPTS = (boolean)(5 < 6);
@@ -120,11 +122,11 @@ public class AvfilterLibrary {
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
 	public static final int AV_PERM_NEG_LINESIZES = (int)0x20;
 	/** <i>native declaration : ./libavfilter/version.h</i> */
-	public static final int LIBAVFILTER_VERSION_MINOR = (int)16;
+	public static final int LIBAVFILTER_VERSION_MINOR = (int)40;
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
 	public static final int AV_PERM_READ = (int)0x01;
 	/** <i>native declaration : ./libavfilter/version.h</i> */
-	public static final int LIBAVFILTER_BUILD = (int)((5) << 16 | (16) << 8 | (101));
+	public static final int LIBAVFILTER_BUILD = (int)((5) << 16 | (40) << 8 | (101));
 	/**
 	 * A function pointer passed to the @ref AVFilterGraph.execute callback to be<br>
 	 * executed multiple times, possibly in parallel.<br>

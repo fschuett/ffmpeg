@@ -120,11 +120,11 @@ public class SwresampleLibrary {
 	/** <i>native declaration : libswresample/swresample.h</i> */
 	public static final int SWR_FLAG_RESAMPLE = (int)1;
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final String LIBSWRESAMPLE_IDENT = (String)"SwR1.2.100";
+	public static final String LIBSWRESAMPLE_IDENT = (String)"SwR1.2.101";
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final int LIBSWRESAMPLE_BUILD = (int)((1) << 16 | (2) << 8 | (100));
+	public static final int LIBSWRESAMPLE_BUILD = (int)((1) << 16 | (2) << 8 | (101));
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final int LIBSWRESAMPLE_VERSION_MICRO = (int)100;
+	public static final int LIBSWRESAMPLE_VERSION_MICRO = (int)101;
 	/** <i>native declaration : ./libswresample/version.h</i> */
 	public static final int LIBSWRESAMPLE_VERSION_MAJOR = (int)1;
 	/** <i>native declaration : ./libswresample/version.h</i> */
@@ -137,7 +137,7 @@ public class SwresampleLibrary {
 	 * 1.2.
 	 */
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final int LIBSWRESAMPLE_VERSION_INT = (int)((1) << 16 | (2) << 8 | (100));
+	public static final int LIBSWRESAMPLE_VERSION_INT = (int)((1) << 16 | (2) << 8 | (101));
 	/**
 	 * Get the AVClass for SwrContext. It can be used in combination with<br>
 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>
