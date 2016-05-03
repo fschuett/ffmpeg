@@ -1,6 +1,6 @@
-ffmpeg-2.8
+ffmpeg-3.0
 ==========
-parts of a java library interface to access ffmpeg 2.8 c library.
+parts of a java library interface to access ffmpeg 3.0 c library.
 
 example demuxing.c -> demuxing.java compiles
 
@@ -11,27 +11,27 @@ to the dist/ directory.
 
 usage
 =====
-You need ffmpeg-2.8.jar, bridj-0.7-SNAPSHOT.jar installed in /usr/share/java/ffmpeg,
+You need ffmpeg-3.0.jar, bridj-0.7-SNAPSHOT.jar installed in /usr/share/java/ffmpeg,
 which are in the dist directory.
 Set the environment variable f.e. FFMPEG_HOME=/usr/share/java/ffmpeg
 for use with tracker.
 
 You need the ffmpeg c libraries
 
-libavcodec56,
-libavdevice56,
-libavfilter5,
-libavformat56,
-libavresample2,
-libavutil54,
-libpostproc53,
-libswresample1,
-libswscale3,
+libavcodec57,
+libavdevice57,
+libavfilter6,
+libavformat57,
+libavresample3,
+libavutil55,
+libpostproc54,
+libswresample2,
+libswscale4,
 
-which all belong to ffmpeg 2.8.
+which all belong to ffmpeg 3.0.
 
 Copyright
 =========
-The jar ffmpeg-2.8.jar is copyright 2014-2015 Frank Schütte.
+The jar ffmpeg-3.0.jar is copyright 2014-2016 Frank Schütte.
 
 the homepage of the bridj project is http://code.google.com/p/bridj/wiki/FAQ.

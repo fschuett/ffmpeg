@@ -106,12 +106,22 @@ enum AVFrameSideDataType {
      * @endcode
      */
     AV_FRAME_DATA_SKIP_SAMPLES,
-
     /**
      * This side data must be associated with an audio frame and corresponds to
      * enum AVAudioServiceType defined in avcodec.h.
      */
     AV_FRAME_DATA_AUDIO_SERVICE_TYPE,
+    /**
+     * Mastering display metadata associated with a video frame. The payload is
+     * an AVMasteringDisplayMetadata type and contains information about the
+     * mastering display color volume.
+     */
+    AV_FRAME_DATA_MASTERING_DISPLAY_METADATA,
+    /**
+     * The GOP timecode in 25 bit timecode format. Data format is 64-bit integer.
+     * This is set on the first frame of a GOP that has a temporal reference of 0.
+     */
+    AV_FRAME_DATA_GOP_TIMECODE
 };
 
 enum AVActiveFormatDescription {
@@ -241,10 +251,6 @@ typedef struct AVFrame {
      */
     enum AVPictureType pict_type;
 
-#if FF_API_AVFRAME_LAVC
-    uint8_t *base[AV_NUM_DATA_POINTERS];
-#endif
-
     /**
      * Sample aspect ratio for the video frame, 0/1 if unknown/unspecified.
      */
@@ -281,68 +287,16 @@ typedef struct AVFrame {
      */
     int quality;
 
-#if FF_API_AVFRAME_LAVC
-    int reference;
-
-    /**
-     * QP table
-     */
-    int8_t *qscale_table;
-    /**
-     * QP store stride
-     */
-    int qstride;
-
-    int qscale_type;
-
-    /**
-     * mbskip_table[mb]>=1 if MB didn't change
-     * stride= mb_width = (width+15)>>4
-     */
-    uint8_t *mbskip_table;
-
-    /**
-     * motion vector table
-     * @code
-     * example:
-     * int mv_sample_log2= 4 - motion_subsample_log2;
-     * int mb_width= (width+15)>>4;
-     * int mv_stride= (mb_width << mv_sample_log2) + 1;
-     * motion_val[direction][x + y*mv_stride][0->mv_x, 1->mv_y];
-     * @endcode
-     */
-    int16_t (*motion_val[2])[2];
-
-    /**
-     * macroblock type table
-     * mb_type_base + mb_width + 2
-     */
-    uint32_t *mb_type;
-
-    /**
-     * DCT coefficients
-     */
-    short *dct_coeff;
-
-    /**
-     * motion reference frame index
-     * the order in which these are stored can depend on the codec.
-     */
-    int8_t *ref_index[2];
-#endif
-
     /**
      * for some private data of the user
      */
     void *opaque;
 
+#if FF_API_ERROR_FRAME
     /**
-     * error
+     * @deprecated unused
      */
     uint64_t error[AV_NUM_DATA_POINTERS];
-
-#if FF_API_AVFRAME_LAVC
-    int type;
 #endif
 
     /**
@@ -366,15 +320,6 @@ typedef struct AVFrame {
      */
     int palette_has_changed;
 
-#if FF_API_AVFRAME_LAVC
-    int buffer_hints;
-
-    /**
-     * Pan scan.
-     */
-    struct AVPanScan *pan_scan;
-#endif
-
     /**
      * reordered opaque 64bit (generally an integer or a double precision float
      * PTS but can be anything).
@@ -385,22 +330,6 @@ typedef struct AVFrame {
      * @deprecated in favor of pkt_pts
      */
     int64_t reordered_opaque;
-
-#if FF_API_AVFRAME_LAVC
-    /**
-     * @deprecated this field is unused
-     */
-    void *hwaccel_picture_private;
-
-    struct AVCodecContext *owner;
-    void *thread_opaque;
-
-    /**
-     * log2 of the size of the block which a single vector in motion_val represents:
-     * (4->16x16, 3->8x8, 2-> 4x4, 1-> 2x2)
-     */
-    uint8_t motion_subsample_log2;
-#endif
 
     /**
      * Sample rate of the audio data.
@@ -560,10 +489,25 @@ typedef struct AVFrame {
      */
     int pkt_size;
 
+#if FF_API_FRAME_QP
+    /**
+     * QP table
+     * Not to be accessed directly from outside libavutil
+     */
+    int8_t *qscale_table;
+    /**
+     * QP store stride
+     * Not to be accessed directly from outside libavutil
+     */
+    int qstride;
+
+    int qscale_type;
+
     /**
      * Not to be accessed directly from outside libavutil
      */
     AVBufferRef *qp_table_buf;
+#endif
 } AVFrame;
 
 /**
@@ -590,8 +534,10 @@ void    av_frame_set_decode_error_flags   (AVFrame *frame, int     val);
 int     av_frame_get_pkt_size(const AVFrame *frame);
 void    av_frame_set_pkt_size(AVFrame *frame, int val);
 AVDictionary **avpriv_frame_get_metadatap(AVFrame *frame);
+#if FF_API_FRAME_QP
 int8_t *av_frame_get_qp_table(AVFrame *f, int *stride, int *type);
 int av_frame_set_qp_table(AVFrame *f, AVBufferRef *buf, int stride, int type);
+#endif
 enum AVColorSpace av_frame_get_colorspace(const AVFrame *frame);
 void    av_frame_set_colorspace(AVFrame *frame, enum AVColorSpace val);
 enum AVColorRange av_frame_get_color_range(const AVFrame *frame);

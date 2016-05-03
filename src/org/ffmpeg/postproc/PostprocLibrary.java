@@ -25,7 +25,7 @@ public class PostprocLibrary {
 	 * const int64_t tmp = a.num * (int64_t)b.den - b.num * (int64_t)a.den;
 	 */
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_BUILD = (int)((53) << 16 | (3) << 8 | (100));
+	public static final int LIBPOSTPROC_BUILD = (int)((54) << 16 | (0) << 8 | (100));
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
 	public static final int PP_FORMAT_440 = (int)(0x00000010 | 0x00000008);
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
@@ -39,9 +39,9 @@ public class PostprocLibrary {
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
 	public static final int PP_FORMAT_411 = (int)(0x00000002 | 0x00000008);
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final boolean FF_API_QP_TYPE = (boolean)(53 < 55);
+	public static final boolean FF_API_QP_TYPE = (boolean)(54 < 55);
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_VERSION_MINOR = (int)3;
+	public static final int LIBPOSTPROC_VERSION_MINOR = (int)0;
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
 	public static final int PP_QUALITY_MAX = (int)6;
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
@@ -57,20 +57,20 @@ public class PostprocLibrary {
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
 	public static final int PP_PICT_TYPE_QP2 = (int)0x00000010;
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final String LIBPOSTPROC_IDENT = (String)"postproc53.3.100";
+	public static final String LIBPOSTPROC_IDENT = (String)"postproc54.0.100";
 	/**
 	 * define<br>
-	 * Conversion Error : 53.3.<br>
+	 * Conversion Error : 54.0.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libpostproc/version.h:0</i><br>
-	 * 53.3.
+	 * 54.0.
 	 */
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_VERSION_INT = (int)((53) << 16 | (3) << 8 | (100));
+	public static final int LIBPOSTPROC_VERSION_INT = (int)((54) << 16 | (0) << 8 | (100));
 	/** <i>native declaration : ./libpostproc/version.h</i> */
 	public static final int LIBPOSTPROC_VERSION_MICRO = (int)100;
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_VERSION_MAJOR = (int)53;
+	public static final int LIBPOSTPROC_VERSION_MAJOR = (int)54;
 	/**
 	 * Return the LIBPOSTPROC_VERSION_INT constant.<br>
 	 * Original signature : <code>int postproc_version()</code><br>

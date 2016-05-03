@@ -277,7 +277,7 @@ public class Demuxing {
 				System.exit(1);
 			}
 
-			frame = alloc_frame();
+			// FIXME: frame = alloc_frame(); 3.0.2
 			if (frame == null) {
 				System.err.printf("Could not allocate frame\n");
 				System.exit(1);

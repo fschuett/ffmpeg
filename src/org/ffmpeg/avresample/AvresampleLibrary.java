@@ -117,27 +117,25 @@ public class AvresampleLibrary {
 	 */
 	/**
 	 * define<br>
-	 * Conversion Error : 2.1.<br>
+	 * Conversion Error : 3.0.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libavresample/version.h:0</i><br>
-	 * 2.1.
+	 * 3.0.
 	 */
 	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final String LIBAVRESAMPLE_IDENT = (String)"Lavr2.1.0";
+	public static final String LIBAVRESAMPLE_IDENT = (String)"Lavr3.0.0";
 	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_VERSION_INT = (int)((2) << 16 | (1) << 8 | (0));
+	public static final int LIBAVRESAMPLE_VERSION_INT = (int)((3) << 16 | (0) << 8 | (0));
 	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_VERSION_MINOR = (int)1;
+	public static final int LIBAVRESAMPLE_VERSION_MINOR = (int)0;
 	/** <i>native declaration : ./libavresample/version.h</i> */
 	public static final int LIBAVRESAMPLE_VERSION_MICRO = (int)0;
 	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_VERSION_MAJOR = (int)2;
-	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final boolean FF_API_RESAMPLE_CLOSE_OPEN = (boolean)(2 < 3);
+	public static final int LIBAVRESAMPLE_VERSION_MAJOR = (int)3;
 	/** <i>native declaration : libavresample/avresample.h</i> */
 	public static final int AVRESAMPLE_MAX_CHANNELS = (int)32;
 	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_BUILD = (int)((2) << 16 | (1) << 8 | (0));
+	public static final int LIBAVRESAMPLE_BUILD = (int)((3) << 16 | (0) << 8 | (0));
 	/**
 	 * Return the LIBAVRESAMPLE_VERSION_INT constant.<br>
 	 * Original signature : <code>int avresample_version()</code><br>
@@ -193,12 +191,16 @@ public class AvresampleLibrary {
 	/**
 	 * Initialize AVAudioResampleContext.<br>
 	 * @note The context must be configured using the AVOption API.<br>
+	 * @note The fields "in_channel_layout", "out_channel_layout",<br>
+	 *       "in_sample_rate", "out_sample_rate", "in_sample_fmt",<br>
+	 *       "out_sample_fmt" must be set.<br>
 	 * * @see av_opt_set_int()<br>
 	 * @see av_opt_set_dict()<br>
+	 * @see av_get_default_channel_layout()<br>
 	 * * @param avr  audio resample context<br>
 	 * @return     0 on success, negative AVERROR code on failure<br>
 	 * Original signature : <code>int avresample_open(AVAudioResampleContext*)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:62</i>
+	 * <i>native declaration : libavresample/avresample.h:66</i>
 	 */
 	public static int avresample_open(Pointer<AvresampleLibrary.AVAudioResampleContext > avr) {
 		return avresample_open(Pointer.getPeer(avr));
@@ -209,7 +211,7 @@ public class AvresampleLibrary {
 	 * * @param avr AVAudioResampleContext to check<br>
 	 * @return 1 if avr is open, 0 if avr is closed.<br>
 	 * Original signature : <code>int avresample_is_open(AVAudioResampleContext*)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:69</i>
+	 * <i>native declaration : libavresample/avresample.h:73</i>
 	 */
 	public static int avresample_is_open(Pointer<AvresampleLibrary.AVAudioResampleContext > avr) {
 		return avresample_is_open(Pointer.getPeer(avr));
@@ -225,7 +227,7 @@ public class AvresampleLibrary {
 	 * @see avresample_set_matrix()<br>
 	 * * @param avr  audio resample context<br>
 	 * Original signature : <code>void avresample_close(AVAudioResampleContext*)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:81</i>
+	 * <i>native declaration : libavresample/avresample.h:85</i>
 	 */
 	public static void avresample_close(Pointer<AvresampleLibrary.AVAudioResampleContext > avr) {
 		avresample_close(Pointer.getPeer(avr));
@@ -236,7 +238,7 @@ public class AvresampleLibrary {
 	 * * This also calls avresample_close() before freeing.<br>
 	 * * @param avr  audio resample context<br>
 	 * Original signature : <code>void avresample_free(AVAudioResampleContext**)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:88</i>
+	 * <i>native declaration : libavresample/avresample.h:92</i>
 	 */
 	public static void avresample_free(Pointer<Pointer<AvresampleLibrary.AVAudioResampleContext > > avr) {
 		avresample_free(Pointer.getPeer(avr));
@@ -262,7 +264,7 @@ public class AvresampleLibrary {
 	 * @param matrix_encoding     matrixed stereo downmix mode (e.g. dplii)<br>
 	 * @return                    0 on success, negative AVERROR code on failure<br>
 	 * Original signature : <code>int avresample_build_matrix(uint64_t, uint64_t, double, double, double, int, double*, int, AVMatrixEncoding)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:110</i>
+	 * <i>native declaration : libavresample/avresample.h:114</i>
 	 */
 	public static int avresample_build_matrix(long in_layout, long out_layout, double center_mix_level, double surround_mix_level, double lfe_mix_level, int normalize, Pointer<Double > matrix, int stride, IntValuedEnum<AVMatrixEncoding > matrix_encoding) {
 		return avresample_build_matrix(in_layout, out_layout, center_mix_level, surround_mix_level, lfe_mix_level, normalize, Pointer.getPeer(matrix), stride, (int)matrix_encoding.value());
@@ -278,7 +280,7 @@ public class AvresampleLibrary {
 	 * @param stride  distance between adjacent input channels in the matrix array<br>
 	 * @return        0 on success, negative AVERROR code on failure<br>
 	 * Original signature : <code>int avresample_get_matrix(AVAudioResampleContext*, double*, int)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:122</i>
+	 * <i>native declaration : libavresample/avresample.h:126</i>
 	 */
 	public static int avresample_get_matrix(Pointer<AvresampleLibrary.AVAudioResampleContext > avr, Pointer<Double > matrix, int stride) {
 		return avresample_get_matrix(Pointer.getPeer(avr), Pointer.getPeer(matrix), stride);
@@ -299,7 +301,7 @@ public class AvresampleLibrary {
 	 * @param stride  distance between adjacent input channels in the matrix array<br>
 	 * @return        0 on success, negative AVERROR code on failure<br>
 	 * Original signature : <code>int avresample_set_matrix(AVAudioResampleContext*, const double*, int)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:139</i>
+	 * <i>native declaration : libavresample/avresample.h:143</i>
 	 */
 	public static int avresample_set_matrix(Pointer<AvresampleLibrary.AVAudioResampleContext > avr, Pointer<Double > matrix, int stride) {
 		return avresample_set_matrix(Pointer.getPeer(avr), Pointer.getPeer(matrix), stride);
@@ -324,7 +326,7 @@ public class AvresampleLibrary {
 	 * @param channel_map customized input channel mapping<br>
 	 * @return            0 on success, negative AVERROR code on failure<br>
 	 * Original signature : <code>int avresample_set_channel_mapping(AVAudioResampleContext*, const int*)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:160</i>
+	 * <i>native declaration : libavresample/avresample.h:164</i>
 	 */
 	public static int avresample_set_channel_mapping(Pointer<AvresampleLibrary.AVAudioResampleContext > avr, Pointer<Integer > channel_map) {
 		return avresample_set_channel_mapping(Pointer.getPeer(avr), Pointer.getPeer(channel_map));
@@ -341,7 +343,7 @@ public class AvresampleLibrary {
 	 * @param compensation_distance  compensation distance, in samples<br>
 	 * @return                       0 on success, negative AVERROR code on failure<br>
 	 * Original signature : <code>int avresample_set_compensation(AVAudioResampleContext*, int, int)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:173</i>
+	 * <i>native declaration : libavresample/avresample.h:177</i>
 	 */
 	public static int avresample_set_compensation(Pointer<AvresampleLibrary.AVAudioResampleContext > avr, int sample_delta, int compensation_distance) {
 		return avresample_set_compensation(Pointer.getPeer(avr), sample_delta, compensation_distance);
@@ -349,7 +351,7 @@ public class AvresampleLibrary {
 	protected native static int avresample_set_compensation(@Ptr long avr, int sample_delta, int compensation_distance);
 	/**
 	 * Original signature : <code>int avresample_get_out_samples(AVAudioResampleContext*, int)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:175</i>
+	 * <i>native declaration : libavresample/avresample.h:179</i>
 	 */
 	public static int avresample_get_out_samples(Pointer<AvresampleLibrary.AVAudioResampleContext > avr, int in_nb_samples) {
 		return avresample_get_out_samples(Pointer.getPeer(avr), in_nb_samples);
@@ -390,8 +392,8 @@ public class AvresampleLibrary {
 	 * @return                number of samples written to the output buffer,<br>
 	 *                        not including converted samples added to the internal<br>
 	 *                        output FIFO<br>
-	 * Original signature : <code>int avresample_convert(AVAudioResampleContext*, uint8_t**, int, int, uint8_t**, int, int)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:213</i>
+	 * Original signature : <code>int avresample_convert(AVAudioResampleContext*, uint8_t**, int, int, const uint8_t**, int, int)</code><br>
+	 * <i>native declaration : libavresample/avresample.h:217</i>
 	 */
 	public static int avresample_convert(Pointer<AvresampleLibrary.AVAudioResampleContext > avr, Pointer<Pointer<Byte > > output, int out_plane_size, int out_samples, Pointer<Pointer<Byte > > input, int in_plane_size, int in_samples) {
 		return avresample_convert(Pointer.getPeer(avr), Pointer.getPeer(output), out_plane_size, out_samples, Pointer.getPeer(input), in_plane_size, in_samples);
@@ -407,7 +409,7 @@ public class AvresampleLibrary {
 	 * * @param avr  audio resample context<br>
 	 * @return     number of samples currently in the resampling delay buffer<br>
 	 * Original signature : <code>int avresample_get_delay(AVAudioResampleContext*)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:225</i>
+	 * <i>native declaration : libavresample/avresample.h:229</i>
 	 */
 	public static int avresample_get_delay(Pointer<AvresampleLibrary.AVAudioResampleContext > avr) {
 		return avresample_get_delay(Pointer.getPeer(avr));
@@ -425,7 +427,7 @@ public class AvresampleLibrary {
 	 * * @param avr  audio resample context<br>
 	 * @return     number of samples available for reading<br>
 	 * Original signature : <code>int avresample_available(AVAudioResampleContext*)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:239</i>
+	 * <i>native declaration : libavresample/avresample.h:243</i>
 	 */
 	public static int avresample_available(Pointer<AvresampleLibrary.AVAudioResampleContext > avr) {
 		return avresample_available(Pointer.getPeer(avr));
@@ -445,7 +447,7 @@ public class AvresampleLibrary {
 	 * @param nb_samples  number of samples to read from the FIFO<br>
 	 * @return            the number of samples written to output<br>
 	 * Original signature : <code>int avresample_read(AVAudioResampleContext*, uint8_t**, int)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:255</i>
+	 * <i>native declaration : libavresample/avresample.h:259</i>
 	 */
 	public static int avresample_read(Pointer<AvresampleLibrary.AVAudioResampleContext > avr, Pointer<Pointer<Byte > > output, int nb_samples) {
 		return avresample_read(Pointer.getPeer(avr), Pointer.getPeer(output), nb_samples);
@@ -486,7 +488,7 @@ public class AvresampleLibrary {
 	 * @return                0 on success, AVERROR on failure or nonmatching<br>
 	 *                        configuration.<br>
 	 * Original signature : <code>int avresample_convert_frame(AVAudioResampleContext*, AVFrame*, AVFrame*)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:292</i>
+	 * <i>native declaration : libavresample/avresample.h:296</i>
 	 */
 	public static int avresample_convert_frame(Pointer<AvresampleLibrary.AVAudioResampleContext > avr, Pointer<AVFrame > output, Pointer<AVFrame > input) {
 		return avresample_convert_frame(Pointer.getPeer(avr), Pointer.getPeer(output), Pointer.getPeer(input));
@@ -504,7 +506,7 @@ public class AvresampleLibrary {
 	 * @param input           input AVFrame<br>
 	 * @return                0 on success, AVERROR on failure.<br>
 	 * Original signature : <code>int avresample_config(AVAudioResampleContext*, AVFrame*, AVFrame*)</code><br>
-	 * <i>native declaration : libavresample/avresample.h:306</i>
+	 * <i>native declaration : libavresample/avresample.h:310</i>
 	 */
 	public static int avresample_config(Pointer<AvresampleLibrary.AVAudioResampleContext > avr, Pointer<AVFrame > out, Pointer<AVFrame > in) {
 		return avresample_config(Pointer.getPeer(avr), Pointer.getPeer(out), Pointer.getPeer(in));
