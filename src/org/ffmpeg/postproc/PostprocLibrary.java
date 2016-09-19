@@ -24,40 +24,8 @@ public class PostprocLibrary {
 	 * <i>native declaration : libavutil/rational.h:0</i><br>
 	 * const int64_t tmp = a.num * (int64_t)b.den - b.num * (int64_t)a.den;
 	 */
-	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_BUILD = (int)((54) << 16 | (0) << 8 | (100));
-	/** <i>native declaration : libpostproc/postprocess.h</i> */
-	public static final int PP_FORMAT_440 = (int)(0x00000010 | 0x00000008);
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
 	public static final int PP_CPU_CAPS_ALTIVEC = (int)0x10000000;
-	/** <i>native declaration : libpostproc/postprocess.h</i> */
-	public static final int PP_FORMAT_444 = (int)(0x00000000 | 0x00000008);
-	/** <i>native declaration : libpostproc/postprocess.h</i> */
-	public static final int PP_FORMAT_420 = (int)(0x00000011 | 0x00000008);
-	/** <i>native declaration : libpostproc/postprocess.h</i> */
-	public static final int PP_FORMAT_422 = (int)(0x00000001 | 0x00000008);
-	/** <i>native declaration : libpostproc/postprocess.h</i> */
-	public static final int PP_FORMAT_411 = (int)(0x00000002 | 0x00000008);
-	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final boolean FF_API_QP_TYPE = (boolean)(54 < 55);
-	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_VERSION_MINOR = (int)0;
-	/** <i>native declaration : libpostproc/postprocess.h</i> */
-	public static final int PP_QUALITY_MAX = (int)6;
-	/** <i>native declaration : libpostproc/postprocess.h</i> */
-	public static final int PP_CPU_CAPS_3DNOW = (int)0x40000000;
-	/** <i>native declaration : libpostproc/postprocess.h</i> */
-	public static final int PP_CPU_CAPS_MMX2 = (int)0x20000000;
-	/** <i>native declaration : libpostproc/postprocess.h</i> */
-	public static final int PP_CPU_CAPS_MMX = (int)0x80000000;
-	/** <i>native declaration : libpostproc/postprocess.h</i> */
-	public static final int PP_FORMAT = (int)0x00000008;
-	/** <i>native declaration : libpostproc/postprocess.h</i> */
-	public static final int PP_CPU_CAPS_AUTO = (int)0x00080000;
-	/** <i>native declaration : libpostproc/postprocess.h</i> */
-	public static final int PP_PICT_TYPE_QP2 = (int)0x00000010;
-	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final String LIBPOSTPROC_IDENT = (String)"postproc54.0.100";
 	/**
 	 * define<br>
 	 * Conversion Error : 54.0.<br>
@@ -66,11 +34,43 @@ public class PostprocLibrary {
 	 * 54.0.
 	 */
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_VERSION_INT = (int)((54) << 16 | (0) << 8 | (100));
+	public static final int LIBPOSTPROC_VERSION_MINOR = (int)0;
+	/** <i>native declaration : ./libpostproc/version.h</i> */
+	public static final String LIBPOSTPROC_IDENT = (String)"postproc54.0.100";
+	/** <i>native declaration : ./libpostproc/version.h</i> */
+	public static final int LIBPOSTPROC_BUILD = (int)((54) << 16 | (0) << 8 | (100));
+	/** <i>native declaration : libpostproc/postprocess.h</i> */
+	public static final int PP_CPU_CAPS_AUTO = (int)0x00080000;
+	/** <i>native declaration : ./libpostproc/version.h</i> */
+	public static final int LIBPOSTPROC_VERSION_MAJOR = (int)54;
+	/** <i>native declaration : libpostproc/postprocess.h</i> */
+	public static final int PP_FORMAT = (int)0x00000008;
+	/** <i>native declaration : libpostproc/postprocess.h</i> */
+	public static final int PP_CPU_CAPS_3DNOW = (int)0x40000000;
+	/** <i>native declaration : ./libpostproc/version.h</i> */
+	public static final boolean FF_API_QP_TYPE = (boolean)(54 < 55);
 	/** <i>native declaration : ./libpostproc/version.h</i> */
 	public static final int LIBPOSTPROC_VERSION_MICRO = (int)100;
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_VERSION_MAJOR = (int)54;
+	public static final int LIBPOSTPROC_VERSION_INT = (int)((54) << 16 | (0) << 8 | (100));
+	/** <i>native declaration : libpostproc/postprocess.h</i> */
+	public static final int PP_FORMAT_444 = (int)(0x00000000 | 0x00000008);
+	/** <i>native declaration : libpostproc/postprocess.h</i> */
+	public static final int PP_FORMAT_440 = (int)(0x00000010 | 0x00000008);
+	/** <i>native declaration : libpostproc/postprocess.h</i> */
+	public static final int PP_FORMAT_411 = (int)(0x00000002 | 0x00000008);
+	/** <i>native declaration : libpostproc/postprocess.h</i> */
+	public static final int PP_FORMAT_422 = (int)(0x00000001 | 0x00000008);
+	/** <i>native declaration : libpostproc/postprocess.h</i> */
+	public static final int PP_FORMAT_420 = (int)(0x00000011 | 0x00000008);
+	/** <i>native declaration : libpostproc/postprocess.h</i> */
+	public static final int PP_CPU_CAPS_MMX = (int)0x80000000;
+	/** <i>native declaration : libpostproc/postprocess.h</i> */
+	public static final int PP_QUALITY_MAX = (int)6;
+	/** <i>native declaration : libpostproc/postprocess.h</i> */
+	public static final int PP_PICT_TYPE_QP2 = (int)0x00000010;
+	/** <i>native declaration : libpostproc/postprocess.h</i> */
+	public static final int PP_CPU_CAPS_MMX2 = (int)0x20000000;
 	/**
 	 * Return the LIBPOSTPROC_VERSION_INT constant.<br>
 	 * Original signature : <code>int postproc_version()</code><br>

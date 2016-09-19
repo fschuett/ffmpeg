@@ -8,6 +8,7 @@ import org.bridj.ann.Field;
 import org.bridj.ann.Library;
 import org.bridj.ann.Struct;
 import org.ffmpeg.avcodec.AVCodecContext;
+import org.ffmpeg.avcodec.AVCodecParameters;
 import org.ffmpeg.avcodec.AVCodecParserContext;
 import org.ffmpeg.avcodec.AVPacket;
 import org.ffmpeg.avcodec.AVPacketSideData;
@@ -58,14 +59,7 @@ public class AVStream extends StructObject {
 		return this;
 	}
 	/**
-	 * Codec context associated with this stream. Allocated and freed by<br>
-	 * libavformat.<br>
-	 * * - decoding: The demuxer exports codec information stored in the headers<br>
-	 *             here.<br>
-	 * - encoding: The user sets codec information, the muxer writes it to the<br>
-	 *             output. Mandatory fields as specified in AVCodecContext<br>
-	 *             documentation must be set even if this AVCodecContext is<br>
-	 *             not actually used for encoding.<br>
+	 * @deprecated use the codecpar struct instead<br>
 	 * C type : AVCodecContext*
 	 */
 	@Field(2) 
@@ -73,14 +67,7 @@ public class AVStream extends StructObject {
 		return this.io.getPointerField(this, 2);
 	}
 	/**
-	 * Codec context associated with this stream. Allocated and freed by<br>
-	 * libavformat.<br>
-	 * * - decoding: The demuxer exports codec information stored in the headers<br>
-	 *             here.<br>
-	 * - encoding: The user sets codec information, the muxer writes it to the<br>
-	 *             output. Mandatory fields as specified in AVCodecContext<br>
-	 *             documentation must be set even if this AVCodecContext is<br>
-	 *             not actually used for encoding.<br>
+	 * @deprecated use the codecpar struct instead<br>
 	 * C type : AVCodecContext*
 	 */
 	@Field(2) 
@@ -958,6 +945,33 @@ public class AVStream extends StructObject {
 	@Field(58) 
 	public AVStream internal(Pointer<AVStreamInternal > internal) {
 		this.io.setPointerField(this, 58, internal);
+		return this;
+	}
+	/**
+	 * Codec parameters associated with this stream. Allocated and freed by<br>
+	 * libavformat in avformat_new_stream() and avformat_free_context()<br>
+	 * respectively.<br>
+	 * * - demuxing: filled by libavformat on stream creation or in<br>
+	 *             avformat_find_stream_info()<br>
+	 * - muxing: filled by the caller before avformat_write_header()<br>
+	 * C type : AVCodecParameters*
+	 */
+	@Field(59) 
+	public Pointer<AVCodecParameters > codecpar() {
+		return this.io.getPointerField(this, 59);
+	}
+	/**
+	 * Codec parameters associated with this stream. Allocated and freed by<br>
+	 * libavformat in avformat_new_stream() and avformat_free_context()<br>
+	 * respectively.<br>
+	 * * - demuxing: filled by libavformat on stream creation or in<br>
+	 *             avformat_find_stream_info()<br>
+	 * - muxing: filled by the caller before avformat_write_header()<br>
+	 * C type : AVCodecParameters*
+	 */
+	@Field(59) 
+	public AVStream codecpar(Pointer<AVCodecParameters > codecpar) {
+		this.io.setPointerField(this, 59, codecpar);
 		return this;
 	}
 	/** <i>native declaration : libavformat/avformat.h:602</i> */

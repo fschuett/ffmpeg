@@ -115,6 +115,20 @@ public class AvresampleLibrary {
 	 * <i>native declaration : libavutil/rational.h:0</i><br>
 	 * const int64_t tmp = a.num * (int64_t)b.den - b.num * (int64_t)a.den;
 	 */
+	/** <i>native declaration : ./libavresample/version.h</i> */
+	public static final int LIBAVRESAMPLE_VERSION_MICRO = (int)0;
+	/** <i>native declaration : ./libavresample/version.h</i> */
+	public static final int LIBAVRESAMPLE_VERSION_INT = (int)((3) << 16 | (0) << 8 | (0));
+	/** <i>native declaration : ./libavresample/version.h</i> */
+	public static final String LIBAVRESAMPLE_IDENT = (String)"Lavr3.0.0";
+	/** <i>native declaration : ./libavresample/version.h</i> */
+	public static final int LIBAVRESAMPLE_BUILD = (int)((3) << 16 | (0) << 8 | (0));
+	/** <i>native declaration : ./libavresample/version.h</i> */
+	public static final int LIBAVRESAMPLE_VERSION_MINOR = (int)0;
+	/** <i>native declaration : ./libavresample/version.h</i> */
+	public static final int LIBAVRESAMPLE_VERSION_MAJOR = (int)3;
+	/** <i>native declaration : libavresample/avresample.h</i> */
+	public static final int AVRESAMPLE_MAX_CHANNELS = (int)32;
 	/**
 	 * define<br>
 	 * Conversion Error : 3.0.<br>
@@ -122,20 +136,6 @@ public class AvresampleLibrary {
 	 * <i>native declaration : ./libavresample/version.h:0</i><br>
 	 * 3.0.
 	 */
-	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final String LIBAVRESAMPLE_IDENT = (String)"Lavr3.0.0";
-	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_VERSION_INT = (int)((3) << 16 | (0) << 8 | (0));
-	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_VERSION_MINOR = (int)0;
-	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_VERSION_MICRO = (int)0;
-	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_VERSION_MAJOR = (int)3;
-	/** <i>native declaration : libavresample/avresample.h</i> */
-	public static final int AVRESAMPLE_MAX_CHANNELS = (int)32;
-	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_BUILD = (int)((3) << 16 | (0) << 8 | (0));
 	/**
 	 * Return the LIBAVRESAMPLE_VERSION_INT constant.<br>
 	 * Original signature : <code>int avresample_version()</code><br>

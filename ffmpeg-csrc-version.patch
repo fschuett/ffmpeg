@@ -1,7 +1,7 @@
 diff -pruN csrc.orig/libavcodec/version.h csrc/libavcodec/version.h
---- csrc.orig/libavcodec/version.h	2016-05-02 14:52:08.000000000 +0200
-+++ csrc/libavcodec/version.h	2016-05-03 17:58:14.484989062 +0200
-@@ -40,7 +40,7 @@
+--- csrc.orig/libavcodec/version.h	2016-08-28 15:49:56.000000000 +0200
++++ csrc/libavcodec/version.h	2016-09-19 18:19:05.092918365 +0200
+@@ -39,7 +39,7 @@
                                             LIBAVCODEC_VERSION_MICRO)
  #define LIBAVCODEC_BUILD        LIBAVCODEC_VERSION_INT
  
@@ -11,8 +11,8 @@ diff -pruN csrc.orig/libavcodec/version.h csrc/libavcodec/version.h
  /**
   * FF_API_* defines may be placed below to indicate public API that will be
 diff -pruN csrc.orig/libavdevice/version.h csrc/libavdevice/version.h
---- csrc.orig/libavdevice/version.h	2016-05-02 14:52:08.000000000 +0200
-+++ csrc/libavdevice/version.h	2016-05-03 17:58:14.484989062 +0200
+--- csrc.orig/libavdevice/version.h	2016-08-28 15:49:56.000000000 +0200
++++ csrc/libavdevice/version.h	2016-09-19 18:19:05.092918365 +0200
 @@ -39,7 +39,7 @@
                                             LIBAVDEVICE_VERSION_MICRO)
  #define LIBAVDEVICE_BUILD       LIBAVDEVICE_VERSION_INT
@@ -23,8 +23,8 @@ diff -pruN csrc.orig/libavdevice/version.h csrc/libavdevice/version.h
  /**
   * FF_API_* defines may be placed below to indicate public API that will be
 diff -pruN csrc.orig/libavfilter/version.h csrc/libavfilter/version.h
---- csrc.orig/libavfilter/version.h	2016-05-02 14:52:08.000000000 +0200
-+++ csrc/libavfilter/version.h	2016-05-03 17:58:14.484989062 +0200
+--- csrc.orig/libavfilter/version.h	2016-08-28 15:49:56.000000000 +0200
++++ csrc/libavfilter/version.h	2016-09-19 18:19:05.092918365 +0200
 @@ -41,7 +41,7 @@
                                             LIBAVFILTER_VERSION_MICRO)
  #define LIBAVFILTER_BUILD       LIBAVFILTER_VERSION_INT
@@ -35,9 +35,9 @@ diff -pruN csrc.orig/libavfilter/version.h csrc/libavfilter/version.h
  /**
   * FF_API_* defines may be placed below to indicate public API that will be
 diff -pruN csrc.orig/libavformat/version.h csrc/libavformat/version.h
---- csrc.orig/libavformat/version.h	2016-05-02 14:52:08.000000000 +0200
-+++ csrc/libavformat/version.h	2016-05-03 17:58:14.484989062 +0200
-@@ -41,7 +41,7 @@
+--- csrc.orig/libavformat/version.h	2016-08-28 15:49:56.000000000 +0200
++++ csrc/libavformat/version.h	2016-09-19 18:19:05.092918365 +0200
+@@ -43,7 +43,7 @@
                                             LIBAVFORMAT_VERSION_MICRO)
  #define LIBAVFORMAT_BUILD       LIBAVFORMAT_VERSION_INT
  
@@ -47,8 +47,8 @@ diff -pruN csrc.orig/libavformat/version.h csrc/libavformat/version.h
  /**
   * FF_API_* defines may be placed below to indicate public API that will be
 diff -pruN csrc.orig/libavresample/version.h csrc/libavresample/version.h
---- csrc.orig/libavresample/version.h	2016-05-02 14:52:08.000000000 +0200
-+++ csrc/libavresample/version.h	2016-05-03 17:58:14.484989062 +0200
+--- csrc.orig/libavresample/version.h	2016-08-28 15:49:56.000000000 +0200
++++ csrc/libavresample/version.h	2016-09-19 18:19:05.092918365 +0200
 @@ -39,7 +39,7 @@
                                                    LIBAVRESAMPLE_VERSION_MICRO)
  #define LIBAVRESAMPLE_BUILD        LIBAVRESAMPLE_VERSION_INT
@@ -59,8 +59,8 @@ diff -pruN csrc.orig/libavresample/version.h csrc/libavresample/version.h
  /**
   * FF_API_* defines may be placed below to indicate public API that will be
 diff -pruN csrc.orig/libavutil/version.h csrc/libavutil/version.h
---- csrc.orig/libavutil/version.h	2016-05-02 14:52:09.000000000 +0200
-+++ csrc/libavutil/version.h	2016-05-03 17:58:14.488989125 +0200
+--- csrc.orig/libavutil/version.h	2016-08-28 15:49:57.000000000 +0200
++++ csrc/libavutil/version.h	2016-09-19 18:19:05.092918365 +0200
 @@ -75,7 +75,7 @@
                                             LIBAVUTIL_VERSION_MICRO)
  #define LIBAVUTIL_BUILD         LIBAVUTIL_VERSION_INT
@@ -71,8 +71,8 @@ diff -pruN csrc.orig/libavutil/version.h csrc/libavutil/version.h
  /**
   * @}
 diff -pruN csrc.orig/libpostproc/version.h csrc/libpostproc/version.h
---- csrc.orig/libpostproc/version.h	2016-05-02 14:52:08.000000000 +0200
-+++ csrc/libpostproc/version.h	2016-05-03 17:58:14.488989125 +0200
+--- csrc.orig/libpostproc/version.h	2016-08-28 15:49:56.000000000 +0200
++++ csrc/libpostproc/version.h	2016-09-19 18:19:05.096918428 +0200
 @@ -40,7 +40,7 @@
                                             LIBPOSTPROC_VERSION_MICRO)
  #define LIBPOSTPROC_BUILD       LIBPOSTPROC_VERSION_INT
@@ -83,8 +83,8 @@ diff -pruN csrc.orig/libpostproc/version.h csrc/libpostproc/version.h
  #ifndef FF_API_QP_TYPE
  #define FF_API_QP_TYPE     (LIBPOSTPROC_VERSION_MAJOR < 55)
 diff -pruN csrc.orig/libswresample/version.h csrc/libswresample/version.h
---- csrc.orig/libswresample/version.h	2016-05-02 14:52:08.000000000 +0200
-+++ csrc/libswresample/version.h	2016-05-03 17:58:14.488989125 +0200
+--- csrc.orig/libswresample/version.h	2016-08-28 15:49:56.000000000 +0200
++++ csrc/libswresample/version.h	2016-09-19 18:19:05.096918428 +0200
 @@ -40,6 +40,6 @@
                                                LIBSWRESAMPLE_VERSION_MICRO)
  #define LIBSWRESAMPLE_BUILD        LIBSWRESAMPLE_VERSION_INT
@@ -94,8 +94,8 @@ diff -pruN csrc.orig/libswresample/version.h csrc/libswresample/version.h
  
  #endif /* SWRESAMPLE_VERSION_H */
 diff -pruN csrc.orig/libswscale/version.h csrc/libswscale/version.h
---- csrc.orig/libswscale/version.h	2016-05-02 14:52:09.000000000 +0200
-+++ csrc/libswscale/version.h	2016-05-03 17:58:14.488989125 +0200
+--- csrc.orig/libswscale/version.h	2016-08-28 15:49:57.000000000 +0200
++++ csrc/libswscale/version.h	2016-09-19 18:19:05.096918428 +0200
 @@ -38,7 +38,7 @@
                                             LIBSWSCALE_VERSION_MICRO)
  #define LIBSWSCALE_BUILD        LIBSWSCALE_VERSION_INT

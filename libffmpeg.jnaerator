@@ -2,6 +2,7 @@
 -I /usr/include
 -I /usr/include/linux
 -DTARGET_OS_LINUX=1
+-D__STDC_CONSTANT_MACROS=1
 
 -library avutil libavutil/ffversion.h libavutil/avutil.h libavutil/dict.h libavutil/frame.h libavutil/log.h libavutil/mem.h libavutil/opt.h libavutil/pixfmt.h libavutil/mathematics.h libavutil/samplefmt.h libavutil/imgutils.h libavutil/pixdesc.h libavutil/buffer.h
 -library swscale libswscale/swscale.h libswscale/version.h

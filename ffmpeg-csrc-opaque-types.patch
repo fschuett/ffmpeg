@@ -1,7 +1,7 @@
 diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
---- csrc.orig/libavcodec/avcodec.h	2016-05-02 14:52:08.000000000 +0200
-+++ csrc/libavcodec/avcodec.h	2016-05-03 17:51:24.090533412 +0200
-@@ -1509,7 +1509,9 @@ enum AVSideDataParamChangeFlags {
+--- csrc.orig/libavcodec/avcodec.h	2016-09-19 18:25:37.000000000 +0200
++++ csrc/libavcodec/avcodec.h	2016-09-19 18:27:02.708544372 +0200
+@@ -1621,7 +1621,9 @@ enum AVSideDataParamChangeFlags {
   * @}
   */
  
@@ -12,7 +12,7 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  
  enum AVFieldOrder {
      AV_FIELD_UNKNOWN,
-@@ -3382,7 +3384,9 @@ typedef struct AVProfile {
+@@ -3485,7 +3487,9 @@ typedef struct AVProfile {
      const char *name; ///< short name for the profile
  } AVProfile;
  
@@ -23,57 +23,10 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  
  struct AVSubtitle;
  
-diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
---- csrc.orig/libavformat/avformat.h    2016-05-03 17:33:21.000000000 +0200
-+++ csrc/libavformat/avformat.h 2016-05-03 19:33:55.412597508 +0200
-@@ -327,6 +327,10 @@ struct AVFormatContext;
- struct AVDeviceInfoList;
- struct AVDeviceCapabilitiesQuery;
- 
-+typedef struct FFFrac {
-+  int dummy;
-+} FFFrac;
-+
- /**
-  * @defgroup metadata_api Public Metadata API
-  * @{
-@@ -452,7 +452,9 @@ typedef struct AVFrac {
- /*************************************************/
- /* input/output formats */
- 
--struct AVCodecTag;
-+struct AVCodecTag {
-+    int dummy;
-+};
- 
- /**
-  * This structure contains the data a format has to probe a file.
-@@ -848,7 +848,9 @@ typedef struct AVIndexEntry {
-  */
- #define AV_DISPOSITION_ATTACHED_PIC      0x0400
- 
--typedef struct AVStreamInternal AVStreamInternal;
-+typedef struct AVStreamInternal {
-+  int dummy;
-+} AVStreamInternal;
- 
- /**
-  * To specify text track kind (different from subtitles default).
-@@ -1291,7 +1293,9 @@ enum AVDurationEstimationMethod {
-     AVFMT_DURATION_FROM_BITRATE ///< Duration estimated from bitrate (less accurate)
- };
- 
--typedef struct AVFormatInternal AVFormatInternal;
-+typedef struct AVFormatInternal {
-+    int dummy;
-+} AVFormatInternal;
- 
- /**
-  * Format I/O context.
 diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
---- csrc.orig/libavfilter/avfilter.h    2016-05-03 17:32:13.000000000 +0200
-+++ csrc/libavfilter/avfilter.h 2016-05-03 19:45:06.503313298 +0200
-@@ -63,8 +63,13 @@ const char *avfilter_license(void);
+--- csrc.orig/libavfilter/avfilter.h	2016-09-19 18:20:56.000000000 +0200
++++ csrc/libavfilter/avfilter.h	2016-09-19 18:27:02.712544436 +0200
+@@ -64,8 +64,13 @@ const char *avfilter_license(void);
  
  typedef struct AVFilterContext AVFilterContext;
  typedef struct AVFilterLink    AVFilterLink;
@@ -89,7 +42,7 @@ diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
  
  /**
   * Get the number of elements in a NULL-terminated array of AVFilterPads (e.g.
-@@ -298,7 +303,13 @@ typedef struct AVFilter {
+@@ -299,7 +304,13 @@ typedef struct AVFilter {
   */
  #define AVFILTER_THREAD_SLICE (1 << 0)
  
@@ -104,7 +57,7 @@ diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
  
  /** An instance of a filter */
  struct AVFilterContext {
-@@ -358,6 +369,10 @@ struct AVFilterContext {
+@@ -368,6 +379,10 @@ struct AVFilterContext {
   * which have been negotiated and agreed upon between the filter, such as
   * image dimensions, format, etc.
   */
@@ -115,7 +68,7 @@ diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
  struct AVFilterLink {
      AVFilterContext *src;       ///< source filter
      AVFilterPad *srcpad;        ///< output pad on the source filter
-@@ -722,7 +737,9 @@ int avfilter_insert_filter(AVFilterLink
+@@ -738,7 +753,9 @@ int avfilter_insert_filter(AVFilterLink
   */
  const AVClass *avfilter_get_class(void);
  
@@ -126,9 +79,56 @@ diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
  
  /**
   * A function pointer passed to the @ref AVFilterGraph.execute callback to be
+diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
+--- csrc.orig/libavformat/avformat.h	2016-09-19 18:23:59.000000000 +0200
++++ csrc/libavformat/avformat.h	2016-09-19 18:27:02.712544436 +0200
+@@ -326,6 +326,10 @@ struct AVFormatContext;
+ struct AVDeviceInfoList;
+ struct AVDeviceCapabilitiesQuery;
+ 
++typedef struct FFFrac {
++  int dummy;
++} FFFrac;
++
+ /**
+  * @defgroup metadata_api Public Metadata API
+  * @{
+@@ -451,7 +455,9 @@ typedef struct AVFrac {
+ /*************************************************/
+ /* input/output formats */
+ 
+-struct AVCodecTag;
++struct AVCodecTag {
++    int dummy;
++};
+ 
+ /**
+  * This structure contains the data a format has to probe a file.
+@@ -841,7 +847,9 @@ typedef struct AVIndexEntry {
+  */
+ #define AV_DISPOSITION_ATTACHED_PIC      0x0400
+ 
+-typedef struct AVStreamInternal AVStreamInternal;
++typedef struct AVStreamInternal {
++  int dummy;
++} AVStreamInternal;
+ 
+ /**
+  * To specify text track kind (different from subtitles default).
+@@ -1294,7 +1302,9 @@ enum AVDurationEstimationMethod {
+     AVFMT_DURATION_FROM_BITRATE ///< Duration estimated from bitrate (less accurate)
+ };
+ 
+-typedef struct AVFormatInternal AVFormatInternal;
++typedef struct AVFormatInternal {
++    int dummy;
++} AVFormatInternal;
+ 
+ /**
+  * Format I/O context.
 diff -pruN csrc.orig/libavutil/buffer.h csrc/libavutil/buffer.h
---- csrc.orig/libavutil/buffer.h	2016-05-02 14:52:09.000000000 +0200
-+++ csrc/libavutil/buffer.h	2016-05-03 17:51:24.090533412 +0200
+--- csrc.orig/libavutil/buffer.h	2016-08-28 15:49:57.000000000 +0200
++++ csrc/libavutil/buffer.h	2016-09-19 18:27:02.712544436 +0200
 @@ -70,7 +70,9 @@
   * A reference counted buffer type. It is opaque and is meant to be used through
   * references (AVBufferRef).
@@ -141,9 +141,9 @@ diff -pruN csrc.orig/libavutil/buffer.h csrc/libavutil/buffer.h
  /**
   * A reference to a data buffer.
 diff -pruN csrc.orig/libavutil/dict.h csrc/libavutil/dict.h
---- csrc.orig/libavutil/dict.h	2016-05-02 14:52:09.000000000 +0200
-+++ csrc/libavutil/dict.h	2016-05-03 17:51:24.094533476 +0200
-@@ -84,7 +84,9 @@ typedef struct AVDictionaryEntry {
+--- csrc.orig/libavutil/dict.h	2016-08-28 15:49:57.000000000 +0200
++++ csrc/libavutil/dict.h	2016-09-19 18:27:02.712544436 +0200
+@@ -83,7 +83,9 @@ typedef struct AVDictionaryEntry {
      char *value;
  } AVDictionaryEntry;
  

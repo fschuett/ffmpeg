@@ -65,7 +65,7 @@ public class AvutilLibrary {
 		AV_PICTURE_TYPE_P(2),
 		/** < Bi-dir predicted */
 		AV_PICTURE_TYPE_B(3),
-		/** < S(GMC)-VOP MPEG4 */
+		/** < S(GMC)-VOP MPEG-4 */
 		AV_PICTURE_TYPE_S(4),
 		/** < Switching Intra */
 		AV_PICTURE_TYPE_SI(5),
@@ -173,11 +173,11 @@ public class AvutilLibrary {
 	 * This is important as many custom PAL8 video codecs that were designed<br>
 	 * to run on the IBM VGA graphics adapter use 6-bit palette components.<br>
 	 * * @par<br>
-	 * For all the 8bit per pixel formats, an RGB32 palette is in data[1] like<br>
+	 * For all the 8 bits per pixel formats, an RGB32 palette is in data[1] like<br>
 	 * for pal8. This palette is filled in automatically by the function<br>
 	 * allocating the picture.<br>
 	 * enum values<br>
-	 * <i>native declaration : libavutil/pixfmt.h:385</i>
+	 * <i>native declaration : libavutil/pixfmt.h:398</i>
 	 */
 	public enum AVPixelFormat implements IntValuedEnum<AVPixelFormat > {
 		AV_PIX_FMT_NONE(-1),
@@ -203,7 +203,7 @@ public class AvutilLibrary {
 		AV_PIX_FMT_MONOWHITE(9),
 		/** <        Y        ,  1bpp, 0 is black, 1 is white, in each byte pixels are ordered from the msb to the lsb */
 		AV_PIX_FMT_MONOBLACK(10),
-		/** < 8 bit with AV_PIX_FMT_RGB32 palette */
+		/** < 8 bits with AV_PIX_FMT_RGB32 palette */
 		AV_PIX_FMT_PAL8(11),
 		/** < planar YUV 4:2:0, 12bpp, full scale (JPEG), deprecated in favor of AV_PIX_FMT_YUV420P and setting color_range */
 		AV_PIX_FMT_YUVJ420P(12),
@@ -289,7 +289,7 @@ public class AvutilLibrary {
 		AV_PIX_FMT_VAAPI_MOCO(51),
 		/** < HW acceleration through VA API at IDCT entry-point, Picture.data[3] contains a vaapi_render_state struct which contains fields extracted from headers */
 		AV_PIX_FMT_VAAPI_IDCT(52),
-		/** < HW decoding through VA API, Picture.data[3] contains a vaapi_render_state struct which contains the bitstream of the slices as well as various fields extracted from headers */
+		/** < HW decoding through VA API, Picture.data[3] contains a VASurfaceID */
 		AV_PIX_FMT_VAAPI_VLD(53),
 		/** @} */
 		AV_PIX_FMT_VAAPI(53),
@@ -305,7 +305,7 @@ public class AvutilLibrary {
 		AV_PIX_FMT_YUV444P16LE((53 + 5)),
 		/** < planar YUV 4:4:4, 48bpp, (1 Cr & Cb sample per 1x1 Y samples), big-endian */
 		AV_PIX_FMT_YUV444P16BE((53 + 6)),
-		/** < MPEG4 HW decoding with VDPAU, data[0] contains a vdpau_render_state struct which contains the bitstream of the slices as well as various fields extracted from headers */
+		/** < MPEG-4 HW decoding with VDPAU, data[0] contains a vdpau_render_state struct which contains the bitstream of the slices as well as various fields extracted from headers */
 		AV_PIX_FMT_VDPAU_MPEG4((53 + 7)),
 		/** < HW decoding through DXVA2, Picture.data[3] contains a LPDIRECT3DSURFACE9 pointer */
 		AV_PIX_FMT_DXVA2_VLD((53 + 8)),
@@ -317,7 +317,7 @@ public class AvutilLibrary {
 		AV_PIX_FMT_BGR444LE((53 + 11)),
 		/** < packed BGR 4:4:4, 16bpp, (msb)4X 4B 4G 4R(lsb), big-endian,    X=unused/undefined */
 		AV_PIX_FMT_BGR444BE((53 + 12)),
-		/** < 8bit gray, 8bit alpha */
+		/** < 8 bits gray, 8 bits alpha */
 		AV_PIX_FMT_YA8((53 + 13)),
 		/** < alias for AV_PIX_FMT_YA8 */
 		AV_PIX_FMT_Y400A(53 + 13),
@@ -436,9 +436,9 @@ public class AvutilLibrary {
 		AV_PIX_FMT_YVYU422((53 + 13 + 53)),
 		/** < HW acceleration through VDA, data[3] contains a CVPixelBufferRef */
 		AV_PIX_FMT_VDA((53 + 13 + 54)),
-		/** < 16bit gray, 16bit alpha (big-endian) */
+		/** < 16 bits gray, 16 bits alpha (big-endian) */
 		AV_PIX_FMT_YA16BE((53 + 13 + 55)),
-		/** < 16bit gray, 16bit alpha (little-endian) */
+		/** < 16 bits gray, 16 bits alpha (little-endian) */
 		AV_PIX_FMT_YA16LE((53 + 13 + 56)),
 		/** < planar GBRA 4:4:4:4 32bpp */
 		AV_PIX_FMT_GBRAP((53 + 13 + 57)),
@@ -458,6 +458,11 @@ public class AvutilLibrary {
 		AV_PIX_FMT_MMAL((53 + 13 + 61)),
 		/** < HW decoding through Direct3D11, Picture.data[3] contains a ID3D11VideoDecoderOutputView pointer */
 		AV_PIX_FMT_D3D11VA_VLD((53 + 13 + 62)),
+		/**
+		 * HW acceleration through CUDA. data[i] contain CUdeviceptr pointers<br>
+		 * exactly as for system memory frames.
+		 */
+		AV_PIX_FMT_CUDA((53 + 13 + 63)),
 		/** < packed RGB 8:8:8, 32bpp, XRGBXRGB...   X=unused/undefined */
 		AV_PIX_FMT_0RGB(0x123 + 4),
 		/** < packed RGB 8:8:8, 32bpp, RGBXRGBX...   X=unused/undefined */
@@ -542,8 +547,16 @@ public class AvutilLibrary {
 		AV_PIX_FMT_P010LE((0x123 + 4 + 40)),
 		/** < like NV12, with 10bpp per component, data in the high bits, zeros in the low bits, big-endian */
 		AV_PIX_FMT_P010BE((0x123 + 4 + 41)),
+		/** < planar GBR 4:4:4:4 48bpp, big-endian */
+		AV_PIX_FMT_GBRAP12BE((0x123 + 4 + 42)),
+		/** < planar GBR 4:4:4:4 48bpp, little-endian */
+		AV_PIX_FMT_GBRAP12LE((0x123 + 4 + 43)),
+		/** < planar GBR 4:4:4:4 40bpp, big-endian */
+		AV_PIX_FMT_GBRAP10BE((0x123 + 4 + 44)),
+		/** < planar GBR 4:4:4:4 40bpp, little-endian */
+		AV_PIX_FMT_GBRAP10LE((0x123 + 4 + 45)),
 		/** < number of pixel formats, DO NOT USE THIS if you want to link with shared libav* because the number of formats might differ between versions */
-		AV_PIX_FMT_NB((0x123 + 4 + 42));
+		AV_PIX_FMT_NB((0x123 + 4 + 46));
 		AVPixelFormat(long value) {
 			this.value = value;
 		}
@@ -561,7 +574,7 @@ public class AvutilLibrary {
 	/**
 	 * Chromaticity coordinates of the source primaries.<br>
 	 * enum values<br>
-	 * <i>native declaration : libavutil/pixfmt.h:409</i>
+	 * <i>native declaration : libavutil/pixfmt.h:422</i>
 	 */
 	public enum AVColorPrimaries implements IntValuedEnum<AVColorPrimaries > {
 		AVCOL_PRI_RESERVED0(0),
@@ -602,7 +615,7 @@ public class AvutilLibrary {
 	/**
 	 * Color Transfer Characteristic.<br>
 	 * enum values<br>
-	 * <i>native declaration : libavutil/pixfmt.h:446</i>
+	 * <i>native declaration : libavutil/pixfmt.h:461</i>
 	 */
 	public enum AVColorTransferCharacteristic implements IntValuedEnum<AVColorTransferCharacteristic > {
 		AVCOL_TRC_RESERVED0(0),
@@ -629,16 +642,18 @@ public class AvutilLibrary {
 		AVCOL_TRC_BT1361_ECG(12),
 		/** < IEC 61966-2-1 (sRGB or sYCC) */
 		AVCOL_TRC_IEC61966_2_1(13),
-		/** < ITU-R BT2020 for 10 bit system */
+		/** < ITU-R BT2020 for 10-bit system */
 		AVCOL_TRC_BT2020_10(14),
-		/** < ITU-R BT2020 for 12 bit system */
+		/** < ITU-R BT2020 for 12-bit system */
 		AVCOL_TRC_BT2020_12(15),
-		/** < SMPTE ST 2084 for 10, 12, 14 and 16 bit systems */
+		/** < SMPTE ST 2084 for 10-, 12-, 14- and 16-bit systems */
 		AVCOL_TRC_SMPTEST2084(16),
 		/** < SMPTE ST 428-1 */
 		AVCOL_TRC_SMPTEST428_1(17),
+		/** < ARIB STD-B67, known as "Hybrid log-gamma" */
+		AVCOL_TRC_ARIB_STD_B67(18),
 		/** < Not part of ABI */
-		AVCOL_TRC_NB(18);
+		AVCOL_TRC_NB(19);
 		AVColorTransferCharacteristic(long value) {
 			this.value = value;
 		}
@@ -656,7 +671,7 @@ public class AvutilLibrary {
 	/**
 	 * YUV colorspace type.<br>
 	 * enum values<br>
-	 * <i>native declaration : libavutil/pixfmt.h:470</i>
+	 * <i>native declaration : libavutil/pixfmt.h:486</i>
 	 */
 	public enum AVColorSpace implements IntValuedEnum<AVColorSpace > {
 		/** < order of coefficients is actually GBR, also IEC 61966-2-1 (sRGB) */
@@ -669,8 +684,9 @@ public class AvutilLibrary {
 		AVCOL_SPC_FCC(4),
 		/** < also ITU-R BT601-6 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL & SECAM / IEC 61966-2-4 xvYCC601 */
 		AVCOL_SPC_BT470BG(5),
-		/** < also ITU-R BT601-6 525 / ITU-R BT1358 525 / ITU-R BT1700 NTSC / functionally identical to above */
+		/** < also ITU-R BT601-6 525 / ITU-R BT1358 525 / ITU-R BT1700 NTSC */
 		AVCOL_SPC_SMPTE170M(6),
+		/** < functionally identical to above */
 		AVCOL_SPC_SMPTE240M(7),
 		/** < Used by Dirac / VC-2 and H.264 FRext, see ITU-T SG16 */
 		AVCOL_SPC_YCOCG(8),
@@ -697,7 +713,7 @@ public class AvutilLibrary {
 	/**
 	 * MPEG vs JPEG YUV range.<br>
 	 * enum values<br>
-	 * <i>native declaration : libavutil/pixfmt.h:480</i>
+	 * <i>native declaration : libavutil/pixfmt.h:496</i>
 	 */
 	public enum AVColorRange implements IntValuedEnum<AVColorRange > {
 		AVCOL_RANGE_UNSPECIFIED(0),
@@ -734,13 +750,13 @@ public class AvutilLibrary {
 	 *                |             |1 2           1-6 are possible chroma positions<br>
 	 * 2nd luma line > |X   X ...    |5 6 X ...     0 is undefined/unknown position<br>
 	 * enum values<br>
-	 * <i>native declaration : libavutil/pixfmt.h:507</i>
+	 * <i>native declaration : libavutil/pixfmt.h:523</i>
 	 */
 	public enum AVChromaLocation implements IntValuedEnum<AVChromaLocation > {
 		AVCHROMA_LOC_UNSPECIFIED(0),
-		/** < mpeg2/4 4:2:0, h264 default for 4:2:0 */
+		/** < MPEG-2/4 4:2:0, H.264 default for 4:2:0 */
 		AVCHROMA_LOC_LEFT(1),
-		/** < mpeg1 4:2:0, jpeg 4:2:0, h263 4:2:0 */
+		/** < MPEG-1 4:2:0, JPEG 4:2:0, H.263 4:2:0 */
 		AVCHROMA_LOC_CENTER(2),
 		/** < ITU-R 601, SMPTE 274M 296M S314M(DV 4:1:1), mpeg2 4:2:2 */
 		AVCHROMA_LOC_TOPLEFT(3),
@@ -1011,416 +1027,418 @@ public class AvutilLibrary {
 	 * <i>native declaration : libavutil/rational.h:0</i><br>
 	 * const int64_t tmp = a.num * (int64_t)b.den - b.num * (int64_t)a.den;
 	 */
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_DLOG = (boolean)(55 < 56);
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_OPTION_NOT_FOUND = (int)(-(0xF8) | (('O') << 8) | (('P') << 16) | ('T' << 24));
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_6POINT0_FRONT = (int)(((0x00000001 | 0x00000002) | 0x00000200 | 0x00000400) | 0x00000040 | 0x00000080);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_STEREO = (int)(0x00000001 | 0x00000002);
-	/** <i>native declaration : libavutil/pixfmt.h</i> */
-	public static final int AVPALETTE_SIZE = (int)1024;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_FRONT_CENTER = (int)0x00000004;
-	/** <i>native declaration : libavutil/mathematics.h</i> */
-	public static final double M_LOG2_10 = (double)3.32192809488736234787;
-	/** <i>native declaration : libavutil/frame.h</i> */
-	public static final int FF_DECODE_ERROR_INVALID_BITSTREAM = (int)1;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_SIDE_RIGHT = (int)0x00000400;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_AVX = (int)0x4000;
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AV_ERROR_MAX_STRING_SIZE = (int)64;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final long AV_CH_WIDE_LEFT = (long)0x0000000080000000L;
-	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int FF_LOSS_RESOLUTION = (int)0x0001;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_FRONT_LEFT = (int)0x00000001;
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_OUTPUT_CHANGED = (int)(0x636e6702);
-	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int AV_PIX_FMT_FLAG_RGB = (int)(1 << 5);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final long AV_CH_WIDE_RIGHT = (long)0x0000000100000000L;
-	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int FF_LOSS_CHROMA = (int)0x0020;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_SSSE3 = (int)0x0080;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_MMX = (int)0x0001;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final long AV_CH_SURROUND_DIRECT_LEFT = (long)0x0000000200000000L;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_NEON = (int)(1 << 5);
-	/** <i>native declaration : libavutil/log.h</i> */
-	public static final int AV_LOG_SKIP_REPEATED = (int)1;
-	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int FF_LOSS_DEPTH = (int)0x0002;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_VSX = (int)0x0002;
-	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int AV_PIX_FMT_FLAG_HWACCEL = (int)(1 << 3);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_FRONT_RIGHT_OF_CENTER = (int)0x00000080;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_6POINT0 = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000100);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_6POINT1 = (int)(((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000008) | 0x00000100);
-	/** <i>native declaration : ./libavutil/avconfig.h</i> */
-	public static final int AV_HAVE_FAST_UNALIGNED = (int)1;
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_EOF = (int)(-('E') | (('O') << 8) | (('F') << 16) | (' ' << 24));
-	/** <i>native declaration : libavutil/mathematics.h</i> */
-	public static final double M_PHI = (double)1.61803398874989484820;
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_XVMC = (boolean)(55 < 56);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_STEREO_DOWNMIX = (int)(0x20000000 | 0x40000000);
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_ARMV5TE = (int)(1 << 0);
-	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_FLAG_ENCODING_PARAM = (int)1;
-	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_FLAG_METADATA = (int)4;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_7POINT1_WIDE = (int)(((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000008) | 0x00000040 | 0x00000080);
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_AVX2 = (int)0x8000;
-	/** <i>native declaration : libavutil/log.h</i> */
-	public static final int AV_LOG_MAX_OFFSET = (int)(56 - -8);
-	/** <i>native declaration : libavutil/log.h</i> */
-	public static final int AV_LOG_WARNING = (int)24;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_SSE2SLOW = (int)0x40000000;
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_PROTOCOL_NOT_FOUND = (int)(-(0xF8) | (('P') << 8) | (('R') << 16) | ('O' << 24));
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_TOP_FRONT_CENTER = (int)0x00002000;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_7POINT0_FRONT = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000040 | 0x00000080);
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_SETEND = (int)(1 << 16);
-	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_SERIALIZE_SKIP_DEFAULTS = (int)0x00000001;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_STEREO_RIGHT = (int)0x40000000;
-	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_FLAG_FILTERING_PARAM = (int)(1 << 16);
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_SSE3SLOW = (int)0x20000000;
-	/** <i>native declaration : libavutil/avutil.h</i> */
-	public static final int FF_QUALITY_SCALE = (int)(1 << 7);
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_HTTP_UNAUTHORIZED = (int)(-(0xF8) | (('4') << 8) | (('0') << 16) | ('1' << 24));
-	/** <i>native declaration : libavutil/avutil.h</i> */
-	public static final long AV_NOPTS_VALUE = (long)(0x8000000000000000L);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_TOP_FRONT_RIGHT = (int)0x00004000;
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_DECODER_NOT_FOUND = (int)(-(0xF8) | (('D') << 8) | (('E') << 16) | ('C' << 24));
-	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int FF_LOSS_ALPHA = (int)0x0008;
-	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int AV_PIX_FMT_FLAG_BE = (int)(1 << 0);
-	/** <i>native declaration : libavutil/log.h</i> */
-	public static final int AV_LOG_QUIET = (int)-8;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_VFPV3 = (int)(1 << 4);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_4POINT0 = (int)(((0x00000001 | 0x00000002) | 0x00000004) | 0x00000100);
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_VERSION_MAJOR = (int)55;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_4POINT1 = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000100) | 0x00000008);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_FRONT_LEFT_OF_CENTER = (int)0x00000040;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_VFP = (int)(1 << 3);
-	/** <i>native declaration : libavutil/log.h</i> */
-	public static final int AV_LOG_PRINT_LEVEL = (int)2;
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_HTTP_OTHER_4XX = (int)(-(0xF8) | (('4') << 8) | (('X') << 16) | ('X' << 24));
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_UNKNOWN = (int)(-('U') | (('N') << 8) | (('K') << 16) | ('N' << 24));
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_POWER8 = (int)0x0004;
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_BUG2 = (int)(-('B') | (('U') << 8) | (('G') << 16) | (' ' << 24));
-	/** <i>native declaration : libavutil/avutil.h</i> */
-	public static final int FF_QP2LAMBDA = (int)118;
-	/** <i>native declaration : ./libavutil/avconfig.h</i> */
-	public static final int AV_HAVE_INCOMPATIBLE_LIBAV_ABI = (int)0;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LOW_FREQUENCY = (int)0x00000008;
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_EXIT = (int)(-('E') | (('X') << 8) | (('I') << 16) | ('T' << 24));
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_2POINT1 = (int)((0x00000001 | 0x00000002) | 0x00000008);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_TOP_FRONT_LEFT = (int)0x00001000;
-	/** <i>native declaration : libavutil/frame.h</i> */
-	public static final int FF_DECODE_ERROR_MISSING_REFERENCE = (int)2;
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_PATCHWELCOME = (int)(-('P') | (('A') << 8) | (('W') << 16) | ('E' << 24));
-	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_SERIALIZE_OPT_FLAGS_EXACT = (int)0x00000002;
-	/** <i>native declaration : libavutil/pixfmt.h</i> */
-	public static final int AVPALETTE_COUNT = (int)256;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final long AV_CH_LAYOUT_HEXADECAGONAL = (long)(((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000010 | 0x00000100 | 0x00000020) | 0x0000000080000000L | 0x0000000100000000L | 0x00008000 | 0x00020000 | 0x00010000 | 0x00002000 | 0x00001000 | 0x00004000);
-	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int AV_PIX_FMT_FLAG_BITSTREAM = (int)(1 << 2);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_TOP_BACK_RIGHT = (int)0x00020000;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_FMA3 = (int)0x10000;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_FMA4 = (int)0x0800;
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_VAAPI = (boolean)(55 < 56);
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_ERROR_FRAME = (boolean)(55 < 56);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_FRONT_RIGHT = (int)0x00000002;
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_INPUT_CHANGED = (int)(0x636e6701);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_TOP_CENTER = (int)0x00000800;
-	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int FF_LOSS_COLORSPACE = (int)0x0004;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_FORCE = (int)0x80000000;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_SSE = (int)0x0008;
-	/** <i>native declaration : libavutil/dict.h</i> */
-	public static final int AV_DICT_DONT_STRDUP_VAL = (int)8;
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_VERSION_MINOR = (int)17;
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final String LIBAVUTIL_IDENT = (String)"Lavu55.17.103";
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_7POINT1_WIDE_BACK = (int)(((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000010 | 0x00000020) | 0x00000008) | 0x00000040 | 0x00000080);
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_HTTP_SERVER_ERROR = (int)(-(0xF8) | (('5') << 8) | (('X') << 16) | ('X' << 24));
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_ENCODER_NOT_FOUND = (int)(-(0xF8) | (('E') << 8) | (('N') << 16) | ('C' << 24));
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final long AV_CH_LOW_FREQUENCY_2 = (long)0x0000000800000000L;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_ALTIVEC = (int)0x0001;
-	/** <i>native declaration : libavutil/avutil.h</i> */
-	public static final int FF_LAMBDA_SHIFT = (int)7;
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_FILTER_NOT_FOUND = (int)(-(0xF8) | (('F') << 8) | (('I') << 16) | ('L' << 24));
-	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int AV_PIX_FMT_FLAG_PAL = (int)(1 << 1);
-	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int AV_PIX_FMT_FLAG_ALPHA = (int)(1 << 7);
-	/** <i>native declaration : libavutil/dict.h</i> */
-	public static final int AV_DICT_IGNORE_SUFFIX = (int)2;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final long AV_CH_SURROUND_DIRECT_RIGHT = (long)0x0000000400000000L;
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_HTTP_BAD_REQUEST = (int)(-(0xF8) | (('4') << 8) | (('0') << 16) | ('0' << 24));
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_SIDE_LEFT = (int)0x00000200;
 	/** <i>native declaration : libavutil/dict.h</i> */
 	public static final int AV_DICT_APPEND = (int)32;
-	/** <i>native declaration : libavutil/avutil.h</i> */
-	public static final int FF_LAMBDA_MAX = (int)(256 * 128 - 1);
-	/** <i>native declaration : libavutil/frame.h</i> */
-	public static final int AV_NUM_DATA_POINTERS = (int)8;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_MMXEXT = (int)0x0002;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_AESNI = (int)0x80000;
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_PLUS1_MINUS1 = (boolean)(55 < 56);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_TOP_BACK_LEFT = (int)0x00008000;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_ATOM = (int)0x10000000;
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_VERSION_MICRO = (int)103;
 	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_BUG = (int)(-('B') | (('U') << 8) | (('G') << 16) | ('!' << 24));
-	/** <i>native declaration : libavutil/frame.h</i> */
-	public static final int AV_FRAME_FLAG_CORRUPT = (int)(1 << 0);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_STEREO_LEFT = (int)0x20000000;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_BMI1 = (int)0x20000;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_BMI2 = (int)0x40000;
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_CRC_BIG_TABLE = (boolean)(55 < 56);
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_INVALIDDATA = (int)(-('I') | (('N') << 8) | (('D') << 16) | ('A' << 24));
-	/** <i>native declaration : libavutil/log.h</i> */
-	public static final int AV_LOG_PANIC = (int)0;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_SSE2 = (int)0x0010;
-	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_FLAG_DECODING_PARAM = (int)2;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_QUAD = (int)((0x00000001 | 0x00000002) | 0x00000010 | 0x00000020);
+	public static final int AVERROR_DECODER_NOT_FOUND = (int)(-(0xF8) | (('D') << 8) | (('E') << 16) | ('C' << 24));
+	/** <i>native declaration : libavutil/mathematics.h</i> */
+	public static final double M_LOG2_10 = (double)3.32192809488736234787;
 	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int AV_PIX_FMT_FLAG_PLANAR = (int)(1 << 4);
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_XOP = (int)0x0400;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_SSE3 = (int)0x0040;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_SSE4 = (int)0x0100;
-	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_FLAG_READONLY = (int)128;
-	/** <i>native declaration : libavutil/dict.h</i> */
-	public static final int AV_DICT_DONT_STRDUP_KEY = (int)4;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_5POINT1_BACK = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000010 | 0x00000020) | 0x00000008);
-	/** <i>native declaration : libavutil/log.h</i> */
-	public static final int AV_LOG_DEBUG = (int)48;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_SURROUND = (int)((0x00000001 | 0x00000002) | 0x00000004);
-	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int FF_LOSS_COLORQUANT = (int)0x0010;
-	/** <i>native declaration : libavutil/log.h</i> */
-	public static final int AV_LOG_VERBOSE = (int)40;
-	/** <i>native declaration : libavutil/log.h</i> */
-	public static final int AV_LOG_INFO = (int)32;
+	public static final int FF_LOSS_RESOLUTION = (int)0x0001;
 	/** <i>native declaration : libavutil/avutil.h</i> */
-	public static final int AV_TIME_BASE = (int)1000000;
+	public static final int FF_QP2LAMBDA = (int)118;
 	/** <i>native declaration : ./libavutil/cpu.h</i> */
 	public static final int AV_CPU_FLAG_MMX2 = (int)0x0002;
+	/** <i>native declaration : libavutil/log.h</i> */
+	public static final int AV_LOG_WARNING = (int)24;
+	/** <i>native declaration : libavutil/log.h</i> */
+	public static final int AV_LOG_PANIC = (int)0;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_HTTP_UNAUTHORIZED = (int)(-(0xF8) | (('4') << 8) | (('0') << 16) | ('1' << 24));
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_VAAPI = (boolean)(55 < 56);
+	/** <i>native declaration : libavutil/frame.h</i> */
+	public static final int FF_DECODE_ERROR_INVALID_BITSTREAM = (int)1;
 	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
 	public static final int AV_CH_LAYOUT_7POINT1 = (int)(((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000008) | 0x00000010 | 0x00000020);
 	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
 	public static final int AV_CH_LAYOUT_7POINT0 = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000010 | 0x00000020);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_BACK_RIGHT = (int)0x00000020;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_5POINT0 = (int)(((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_5POINT1 = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000008);
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_CMOV = (int)0x1000;
-	/**
-	 * define<br>
-	 * Conversion Error : 55.17.<br>
-	 * SKIPPED:<br>
-	 * <i>native declaration : libavutil/version.h:0</i><br>
-	 * 55.17.
-	 */
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_STREAM_NOT_FOUND = (int)(-(0xF8) | (('S') << 8) | (('T') << 16) | ('R' << 24));
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_OCTAGONAL = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000010 | 0x00000100 | 0x00000020);
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_VFP_VM = (int)(1 << 7);
 	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_FLAG_VIDEO_PARAM = (int)16;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_BACK_CENTER = (int)0x00000100;
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_VDPAU = (boolean)(55 < 56);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_2_1 = (int)((0x00000001 | 0x00000002) | 0x00000100);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_2_2 = (int)((0x00000001 | 0x00000002) | 0x00000200 | 0x00000400);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_3POINT1 = (int)(((0x00000001 | 0x00000002) | 0x00000004) | 0x00000008);
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_VERSION_INT = (int)((55) << 16 | (17) << 8 | (103));
-	/** <i>native declaration : libavutil/avutil.h</i> */
-	public static final int FF_LAMBDA_SCALE = (int)(1 << 7);
-	/** <i>native declaration : ./libavutil/avconfig.h</i> */
-	public static final int AV_HAVE_BIGENDIAN = (int)0;
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_AVXSLOW = (int)0x8000000;
-	/** <i>native declaration : libavutil/ffversion.h</i> */
-	public static final String FFMPEG_VERSION = (String)"3.0.2";
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_BACK_LEFT = (int)0x00000010;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final long AV_CH_LAYOUT_NATIVE = (long)0x8000000000000000L;
-	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_SEARCH_FAKE_OBJ = (int)(1 << 1);
-	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_FLAG_SUBTITLE_PARAM = (int)32;
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final int LIBAVUTIL_BUILD = (int)((55) << 16 | (17) << 8 | (103));
-	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_SEARCH_CHILDREN = (int)(1 << 0);
-	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_FLAG_AUDIO_PARAM = (int)8;
-	/** <i>native declaration : libavutil/dict.h</i> */
-	public static final int AV_DICT_MATCH_CASE = (int)1;
-	/** <i>native declaration : libavutil/dict.h</i> */
-	public static final int AV_DICT_DONT_OVERWRITE = (int)16;
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_HTTP_FORBIDDEN = (int)(-(0xF8) | (('4') << 8) | (('0') << 16) | ('3' << 24));
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_SSE42 = (int)0x0200;
-	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_MULTI_COMPONENT_RANGE = (int)(1 << 12);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_6POINT1_BACK = (int)(((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000010 | 0x00000020) | 0x00000008) | 0x00000100);
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_OPT_TYPE_METADATA = (boolean)(55 < 56);
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_MUXER_NOT_FOUND = (int)(-(0xF8) | (('M') << 8) | (('U') << 16) | ('X' << 24));
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_EXTERNAL = (int)(-('E') | (('X') << 8) | (('T') << 16) | (' ' << 24));
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_HEXAGONAL = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000010 | 0x00000020) | 0x00000100);
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_DEMUXER_NOT_FOUND = (int)(-(0xF8) | (('D') << 8) | (('E') << 16) | ('M' << 24));
+	public static final int AV_OPT_SERIALIZE_SKIP_DEFAULTS = (int)0x00000001;
 	/** <i>native declaration : ./libavutil/cpu.h</i> */
 	public static final int AV_CPU_FLAG_3DNOW = (int)0x0004;
-	/** <i>native declaration : libavutil/version.h</i> */
-	public static final boolean FF_API_FRAME_QP = (boolean)(55 < 56);
 	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_MONO = (int)(0x00000004);
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_TOP_BACK_CENTER = (int)0x00010000;
-	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_6POINT1_FRONT = (int)((((0x00000001 | 0x00000002) | 0x00000200 | 0x00000400) | 0x00000040 | 0x00000080) | 0x00000008);
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_ARMV6T2 = (int)(1 << 2);
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_ARMV8 = (int)(1 << 6);
-	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_ARMV6 = (int)(1 << 1);
+	public static final int AV_CH_SIDE_RIGHT = (int)0x00000400;
+	/** <i>native declaration : libavutil/opt.h</i> */
+	public static final int AV_OPT_FLAG_ENCODING_PARAM = (int)1;
 	/** <i>native declaration : libavutil/error.h</i> */
 	public static final int AVERROR_EXPERIMENTAL = (int)(0x2bb2afa8);
-	/** <i>native declaration : libavutil/log.h</i> */
-	public static final int AV_LOG_TRACE = (int)56;
-	/** <i>native declaration : libavutil/log.h</i> */
-	public static final int AV_LOG_ERROR = (int)16;
 	/** <i>native declaration : libavutil/error.h</i> */
 	public static final int AVERROR_HTTP_NOT_FOUND = (int)(-(0xF8) | (('4') << 8) | (('0') << 16) | ('4' << 24));
 	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
-	public static final int AV_CH_LAYOUT_5POINT0_BACK = (int)(((0x00000001 | 0x00000002) | 0x00000004) | 0x00000010 | 0x00000020);
+	public static final int AV_CH_LAYOUT_7POINT0_FRONT = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000040 | 0x00000080);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final long AV_CH_SURROUND_DIRECT_RIGHT = (long)0x0000000400000000L;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_TOP_BACK_CENTER = (int)0x00010000;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_HEXAGONAL = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000010 | 0x00000020) | 0x00000100);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_SSSE3 = (int)0x0080;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_FRONT_CENTER = (int)0x00000004;
+	/** <i>native declaration : libavutil/opt.h</i> */
+	public static final int AV_OPT_FLAG_DECODING_PARAM = (int)2;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_2POINT1 = (int)((0x00000001 | 0x00000002) | 0x00000008);
 	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_BSF_NOT_FOUND = (int)(-(0xF8) | (('B') << 8) | (('S') << 16) | ('F' << 24));
+	public static final int AVERROR_STREAM_NOT_FOUND = (int)(-(0xF8) | (('S') << 8) | (('T') << 16) | ('R' << 24));
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_AESNI = (int)0x80000;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_SURROUND = (int)((0x00000001 | 0x00000002) | 0x00000004);
+	/** <i>native declaration : libavutil/avutil.h</i> */
+	public static final int FF_LAMBDA_MAX = (int)(256 * 128 - 1);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_ARMV6 = (int)(1 << 1);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_ARMV8 = (int)(1 << 6);
+	/** <i>native declaration : ./libavutil/avconfig.h</i> */
+	public static final int AV_HAVE_BIGENDIAN = (int)0;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_EXIT = (int)(-('E') | (('X') << 8) | (('I') << 16) | ('T' << 24));
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_MONO = (int)(0x00000004);
+	/** <i>native declaration : libavutil/mathematics.h</i> */
+	public static final double M_PHI = (double)1.61803398874989484820;
+	/** <i>native declaration : libavutil/pixdesc.h</i> */
+	public static final int AV_PIX_FMT_FLAG_PAL = (int)(1 << 1);
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_BUG = (int)(-('B') | (('U') << 8) | (('G') << 16) | ('!' << 24));
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_BACK_RIGHT = (int)0x00000020;
+	/** <i>native declaration : libavutil/frame.h</i> */
+	public static final int AV_FRAME_FLAG_CORRUPT = (int)(1 << 0);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_BACK_LEFT = (int)0x00000010;
+	/** <i>native declaration : libavutil/dict.h</i> */
+	public static final int AV_DICT_DONT_STRDUP_KEY = (int)4;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_MUXER_NOT_FOUND = (int)(-(0xF8) | (('M') << 8) | (('U') << 16) | ('X' << 24));
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_3DNOWEXT = (int)0x0020;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_FILTER_NOT_FOUND = (int)(-(0xF8) | (('F') << 8) | (('I') << 16) | ('L' << 24));
+	/** <i>native declaration : libavutil/frame.h</i> */
+	public static final int AV_NUM_DATA_POINTERS = (int)8;
+	/** <i>native declaration : libavutil/avutil.h</i> */
+	public static final int AV_TIME_BASE = (int)1000000;
+	/** <i>native declaration : libavutil/opt.h</i> */
+	public static final int AV_OPT_FLAG_VIDEO_PARAM = (int)16;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_VDPAU = (boolean)(55 < 56);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_5POINT1_BACK = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000010 | 0x00000020) | 0x00000008);
+	/** <i>native declaration : libavutil/pixdesc.h</i> */
+	public static final int AV_PIX_FMT_FLAG_PSEUDOPAL = (int)(1 << 6);
+	/** <i>native declaration : libavutil/opt.h</i> */
+	public static final int AV_OPT_SEARCH_FAKE_OBJ = (int)(1 << 1);
+	/** <i>native declaration : libavutil/pixdesc.h</i> */
+	public static final int AV_PIX_FMT_FLAG_ALPHA = (int)(1 << 7);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final long AV_CH_LAYOUT_HEXADECAGONAL = (long)(((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000010 | 0x00000100 | 0x00000020) | 0x0000000080000000L | 0x0000000100000000L | 0x00008000 | 0x00020000 | 0x00010000 | 0x00002000 | 0x00001000 | 0x00004000);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_AVXSLOW = (int)0x8000000;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_FRONT_RIGHT = (int)0x00000002;
+	/** <i>native declaration : libavutil/log.h</i> */
+	public static final int AV_LOG_QUIET = (int)-8;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_PROTOCOL_NOT_FOUND = (int)(-(0xF8) | (('P') << 8) | (('R') << 16) | ('O' << 24));
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final long AV_CH_WIDE_RIGHT = (long)0x0000000100000000L;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LOW_FREQUENCY = (int)0x00000008;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_INPUT_CHANGED = (int)(0x636e6701);
+	/** <i>native declaration : libavutil/opt.h</i> */
+	public static final int AV_OPT_FLAG_METADATA = (int)4;
 	/** <i>native declaration : libavutil/log.h</i> */
 	public static final int AV_LOG_FATAL = (int)8;
 	/** <i>native declaration : ./libavutil/cpu.h</i> */
-	public static final int AV_CPU_FLAG_3DNOWEXT = (int)0x0020;
+	public static final int AV_CPU_FLAG_CMOV = (int)0x1000;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final int LIBAVUTIL_VERSION_MICRO = (int)100;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_TOP_FRONT_CENTER = (int)0x00002000;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final String LIBAVUTIL_IDENT = (String)"Lavu55.17.103";
+	/** <i>native declaration : libavutil/pixdesc.h</i> */
+	public static final int AV_PIX_FMT_FLAG_HWACCEL = (int)(1 << 3);
+	/** <i>native declaration : libavutil/log.h</i> */
+	public static final int AV_LOG_DEBUG = (int)48;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AV_ERROR_MAX_STRING_SIZE = (int)64;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_ARMV6T2 = (int)(1 << 2);
+	/** <i>native declaration : libavutil/log.h</i> */
+	public static final int AV_LOG_INFO = (int)32;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_5POINT1 = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000008);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_5POINT0 = (int)(((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_ATOM = (int)0x10000000;
+	/** <i>native declaration : libavutil/pixdesc.h</i> */
+	public static final int AV_PIX_FMT_FLAG_BE = (int)(1 << 0);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_6POINT1_BACK = (int)(((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000010 | 0x00000020) | 0x00000008) | 0x00000100);
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_INVALIDDATA = (int)(-('I') | (('N') << 8) | (('D') << 16) | ('A' << 24));
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_4POINT1 = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000100) | 0x00000008);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_4POINT0 = (int)(((0x00000001 | 0x00000002) | 0x00000004) | 0x00000100);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_SSE2SLOW = (int)0x40000000;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_XOP = (int)0x0400;
 	/** <i>native declaration : libavutil/opt.h</i> */
-	public static final int AV_OPT_FLAG_EXPORT = (int)64;
+	public static final int AV_OPT_FLAG_AUDIO_PARAM = (int)8;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final long AV_CH_LOW_FREQUENCY_2 = (long)0x0000000800000000L;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_DEMUXER_NOT_FOUND = (int)(-(0xF8) | (('D') << 8) | (('E') << 16) | ('M' << 24));
+	/** <i>native declaration : libavutil/pixdesc.h</i> */
+	public static final int FF_LOSS_COLORSPACE = (int)0x0004;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_FRONT_LEFT_OF_CENTER = (int)0x00000040;
+	/** <i>native declaration : libavutil/log.h</i> */
+	public static final int AV_LOG_PRINT_LEVEL = (int)2;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_XVMC = (boolean)(55 < 56);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_NEON = (int)(1 << 5);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_POWER8 = (int)0x0004;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_OPT_TYPE_METADATA = (boolean)(55 < 56);
+	/** <i>native declaration : libavutil/opt.h</i> */
+	public static final int AV_OPT_FLAG_FILTERING_PARAM = (int)(1 << 16);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_TOP_BACK_LEFT = (int)0x00008000;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_HTTP_OTHER_4XX = (int)(-(0xF8) | (('4') << 8) | (('X') << 16) | ('X' << 24));
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_TOP_FRONT_RIGHT = (int)0x00004000;
+	/** <i>native declaration : libavutil/avutil.h</i> */
+	public static final long AV_NOPTS_VALUE = (long)(0x8000000000000000L);
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_PATCHWELCOME = (int)(-('P') | (('A') << 8) | (('W') << 16) | ('E' << 24));
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_STEREO_DOWNMIX = (int)(0x20000000 | 0x40000000);
+	/** <i>native declaration : libavutil/pixdesc.h</i> */
+	public static final int AV_PIX_FMT_FLAG_BITSTREAM = (int)(1 << 2);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_FRONT_LEFT = (int)0x00000001;
 	/** <i>native declaration : libavutil/opt.h</i> */
 	public static final int AV_OPT_ALLOW_NULL = (int)(1 << 2);
-	/** <i>native declaration : libavutil/error.h</i> */
-	public static final int AVERROR_BUFFER_TOO_SMALL = (int)(-('B') | (('U') << 8) | (('F') << 16) | ('S' << 24));
+	/** <i>native declaration : libavutil/pixfmt.h</i> */
+	public static final int AVPALETTE_SIZE = (int)1024;
 	/** <i>native declaration : libavutil/pixdesc.h</i> */
-	public static final int AV_PIX_FMT_FLAG_PSEUDOPAL = (int)(1 << 6);
+	public static final int FF_LOSS_DEPTH = (int)0x0002;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final long AV_CH_WIDE_LEFT = (long)0x0000000080000000L;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_5POINT0_BACK = (int)(((0x00000001 | 0x00000002) | 0x00000004) | 0x00000010 | 0x00000020);
+	/** <i>native declaration : libavutil/dict.h</i> */
+	public static final int AV_DICT_MULTIKEY = (int)64;
+	/** <i>native declaration : libavutil/log.h</i> */
+	public static final int AV_LOG_VERBOSE = (int)40;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_SSE = (int)0x0008;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_BSF_NOT_FOUND = (int)(-(0xF8) | (('B') << 8) | (('S') << 16) | ('F' << 24));
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final int LIBAVUTIL_BUILD = (int)((55) << 16 | (28) << 8 | (100));
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_QUAD = (int)((0x00000001 | 0x00000002) | 0x00000010 | 0x00000020);
 	/** <i>native declaration : libavutil/buffer.h</i> */
 	public static final int AV_BUFFER_FLAG_READONLY = (int)(1 << 0);
-	/** <i>native declaration : libavutil/log.h:177</i> */
+	/** <i>native declaration : libavutil/opt.h</i> */
+	public static final int AV_OPT_SEARCH_CHILDREN = (int)(1 << 0);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_STEREO = (int)(0x00000001 | 0x00000002);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_6POINT0_FRONT = (int)(((0x00000001 | 0x00000002) | 0x00000200 | 0x00000400) | 0x00000040 | 0x00000080);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_TOP_FRONT_LEFT = (int)0x00001000;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_6POINT1 = (int)(((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000008) | 0x00000100);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_6POINT0 = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000100);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final long AV_CH_SURROUND_DIRECT_LEFT = (long)0x0000000200000000L;
+	/** <i>native declaration : libavutil/log.h</i> */
+	public static final int AV_LOG_ERROR = (int)16;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_ARMV5TE = (int)(1 << 0);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_VFP_VM = (int)(1 << 7);
+	/** <i>native declaration : libavutil/log.h</i> */
+	public static final int AV_LOG_TRACE = (int)56;
+	/** <i>native declaration : libavutil/dict.h</i> */
+	public static final int AV_DICT_DONT_OVERWRITE = (int)16;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_FRAME_QP = (boolean)(55 < 56);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_2_1 = (int)((0x00000001 | 0x00000002) | 0x00000100);
+	/** <i>native declaration : ./libavutil/avconfig.h</i> */
+	public static final int AV_HAVE_INCOMPATIBLE_LIBAV_ABI = (int)0;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_2_2 = (int)((0x00000001 | 0x00000002) | 0x00000200 | 0x00000400);
+	/** <i>native declaration : libavutil/avutil.h</i> */
+	public static final int FF_LAMBDA_SHIFT = (int)7;
+	/** <i>native declaration : libavutil/dict.h</i> */
+	public static final int AV_DICT_DONT_STRDUP_VAL = (int)8;
+	/** <i>native declaration : libavutil/log.h</i> */
+	public static final int AV_LOG_SKIP_REPEATED = (int)1;
+	/** <i>native declaration : libavutil/pixdesc.h</i> */
+	public static final int FF_LOSS_CHROMA = (int)0x0020;
+	/** <i>native declaration : libavutil/log.h</i> */
+	public static final int AV_LOG_MAX_OFFSET = (int)(56 - -8);
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_DLOG = (boolean)(55 < 56);
+	/** <i>native declaration : libavutil/avutil.h</i> */
+	public static final int FF_QUALITY_SCALE = (int)(1 << 7);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_3POINT1 = (int)(((0x00000001 | 0x00000002) | 0x00000004) | 0x00000008);
+	/** <i>native declaration : libavutil/pixdesc.h</i> */
+	public static final int AV_PIX_FMT_FLAG_RGB = (int)(1 << 5);
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_EXTERNAL = (int)(-('E') | (('X') << 8) | (('T') << 16) | (' ' << 24));
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_7POINT1_WIDE_BACK = (int)(((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000010 | 0x00000020) | 0x00000008) | 0x00000040 | 0x00000080);
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_OPTION_NOT_FOUND = (int)(-(0xF8) | (('O') << 8) | (('P') << 16) | ('T' << 24));
+	/** <i>native declaration : libavutil/opt.h</i> */
+	public static final int AV_OPT_MULTI_COMPONENT_RANGE = (int)(1 << 12);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_VFPV3 = (int)(1 << 4);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_SIDE_LEFT = (int)0x00000200;
+	/** <i>native declaration : libavutil/opt.h</i> */
+	public static final int AV_OPT_SERIALIZE_OPT_FLAGS_EXACT = (int)0x00000002;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_PLUS1_MINUS1 = (boolean)(55 < 56);
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_HTTP_FORBIDDEN = (int)(-(0xF8) | (('4') << 8) | (('0') << 16) | ('3' << 24));
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_BUG2 = (int)(-('B') | (('U') << 8) | (('G') << 16) | (' ' << 24));
+	/** <i>native declaration : libavutil/pixdesc.h</i> */
+	public static final int AV_PIX_FMT_FLAG_PLANAR = (int)(1 << 4);
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_OUTPUT_CHANGED = (int)(0x636e6702);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_AVX = (int)0x4000;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final long AV_CH_LAYOUT_NATIVE = (long)0x8000000000000000L;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_ENCODER_NOT_FOUND = (int)(-(0xF8) | (('E') << 8) | (('N') << 16) | ('C' << 24));
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_STEREO_LEFT = (int)0x20000000;
+	/**
+	 * define<br>
+	 * Conversion Error : 55.28.<br>
+	 * SKIPPED:<br>
+	 * <i>native declaration : libavutil/version.h:0</i><br>
+	 * 55.28.
+	 */
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_7POINT1_WIDE = (int)(((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000008) | 0x00000040 | 0x00000080);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_SETEND = (int)(1 << 16);
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_STEREO_RIGHT = (int)0x40000000;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_VSX = (int)0x0002;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_SSE3SLOW = (int)0x20000000;
+	/** <i>native declaration : libavutil/avutil.h</i> */
+	public static final int FF_LAMBDA_SCALE = (int)(1 << 7);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_ALTIVEC = (int)0x0001;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_TOP_CENTER = (int)0x00000800;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_6POINT1_FRONT = (int)((((0x00000001 | 0x00000002) | 0x00000200 | 0x00000400) | 0x00000040 | 0x00000080) | 0x00000008);
+	/** <i>native declaration : libavutil/opt.h</i> */
+	public static final int AV_OPT_FLAG_SUBTITLE_PARAM = (int)32;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_FORCE = (int)0x80000000;
+	/** <i>native declaration : ./libavutil/avconfig.h</i> */
+	public static final int AV_HAVE_FAST_UNALIGNED = (int)1;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_BUFFER_TOO_SMALL = (int)(-('B') | (('U') << 8) | (('F') << 16) | ('S' << 24));
+	/** <i>native declaration : libavutil/pixfmt.h</i> */
+	public static final int AVPALETTE_COUNT = (int)256;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final int LIBAVUTIL_VERSION_MAJOR = (int)55;
+	/** <i>native declaration : libavutil/ffversion.h</i> */
+	public static final String FFMPEG_VERSION = (String)"3.1.3";
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_EOF = (int)(-('E') | (('O') << 8) | (('F') << 16) | (' ' << 24));
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_TOP_BACK_RIGHT = (int)0x00020000;
+	/** <i>native declaration : libavutil/pixdesc.h</i> */
+	public static final int FF_LOSS_COLORQUANT = (int)0x0010;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_SSE42 = (int)0x0200;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_BACK_CENTER = (int)0x00000100;
+	/** <i>native declaration : libavutil/dict.h</i> */
+	public static final int AV_DICT_MATCH_CASE = (int)1;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_HTTP_SERVER_ERROR = (int)(-(0xF8) | (('5') << 8) | (('X') << 16) | ('X' << 24));
+	/** <i>native declaration : libavutil/pixdesc.h</i> */
+	public static final int FF_LOSS_ALPHA = (int)0x0008;
+	/** <i>native declaration : libavutil/opt.h</i> */
+	public static final int AV_OPT_FLAG_EXPORT = (int)64;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_ERROR_FRAME = (boolean)(55 < 56);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_AVX2 = (int)0x8000;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_FMA4 = (int)0x0800;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_UNKNOWN = (int)(-('U') | (('N') << 8) | (('K') << 16) | ('N' << 24));
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_FMA3 = (int)0x10000;
+	/** <i>native declaration : libavutil/dict.h</i> */
+	public static final int AV_DICT_IGNORE_SUFFIX = (int)2;
+	/** <i>native declaration : libavutil/frame.h</i> */
+	public static final int FF_DECODE_ERROR_MISSING_REFERENCE = (int)2;
+	/** <i>native declaration : libavutil/opt.h</i> */
+	public static final int AV_OPT_FLAG_READONLY = (int)128;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_LAYOUT_OCTAGONAL = (int)((((0x00000001 | 0x00000002) | 0x00000004) | 0x00000200 | 0x00000400) | 0x00000010 | 0x00000100 | 0x00000020);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_VFP = (int)(1 << 3);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_MMX = (int)0x0001;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_BMI2 = (int)0x40000;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_BMI1 = (int)0x20000;
+	/** <i>native declaration : libavutil/error.h</i> */
+	public static final int AVERROR_HTTP_BAD_REQUEST = (int)(-(0xF8) | (('4') << 8) | (('0') << 16) | ('0' << 24));
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final int LIBAVUTIL_VERSION_MINOR = (int)28;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_SSE2 = (int)0x0010;
+	/** <i>native declaration : ./libavutil/channel_layout.h</i> */
+	public static final int AV_CH_FRONT_RIGHT_OF_CENTER = (int)0x00000080;
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final int LIBAVUTIL_VERSION_INT = (int)((55) << 16 | (28) << 8 | (100));
+	/** <i>native declaration : libavutil/version.h</i> */
+	public static final boolean FF_API_CRC_BIG_TABLE = (boolean)(55 < 56);
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_MMXEXT = (int)0x0002;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_SSE3 = (int)0x0040;
+	/** <i>native declaration : ./libavutil/cpu.h</i> */
+	public static final int AV_CPU_FLAG_SSE4 = (int)0x0100;
+	/** <i>native declaration : libavutil/log.h:193</i> */
 	public static abstract class av_log_set_callback_callback_callback extends Callback<av_log_set_callback_callback_callback > {
 		public void apply(Pointer<? > voidPtr1, int int1, Pointer<Byte > charPtr1, Object... va_list1) {
 			apply(Pointer.getPeer(voidPtr1), int1, Pointer.getPeer(charPtr1), va_list1);
@@ -1429,7 +1447,7 @@ public class AvutilLibrary {
 			apply(Pointer.pointerToAddress(voidPtr1), int1, Pointer.pointerToAddress(charPtr1, Byte.class), va_list1);
 		}
 	};
-	/** <i>native declaration : libavutil/buffer.h:144</i> */
+	/** <i>native declaration : libavutil/buffer.h:157</i> */
 	public static abstract class av_buffer_create_free_callback extends Callback<av_buffer_create_free_callback > {
 		public void apply(Pointer<? > opaque, Pointer<Byte > data) {
 			apply(Pointer.getPeer(opaque), Pointer.getPeer(data));
@@ -1438,7 +1456,7 @@ public class AvutilLibrary {
 			apply(Pointer.pointerToAddress(opaque), Pointer.pointerToAddress(data, Byte.class));
 		}
 	};
-	/** <i>native declaration : libavutil/buffer.h:145</i> */
+	/** <i>native declaration : libavutil/buffer.h:158</i> */
 	public static abstract class av_buffer_pool_init_alloc_callback extends Callback<av_buffer_pool_init_alloc_callback > {
 		public Pointer<AVBufferRef > _apply(int size) {
 			return Pointer.pointerToAddress(apply(size), AVBufferRef.class);
@@ -1446,6 +1464,25 @@ public class AvutilLibrary {
 		@Ptr 
 		public long apply(int size) {
 			return Pointer.getPeer(_apply(size));
+		}
+	};
+	/** <i>native declaration : libavutil/buffer.h:159</i> */
+	public static abstract class av_buffer_pool_init2_alloc_callback extends Callback<av_buffer_pool_init2_alloc_callback > {
+		public Pointer<AVBufferRef > apply(Pointer<? > opaque, int size) {
+			return Pointer.pointerToAddress(apply(Pointer.getPeer(opaque), size), AVBufferRef.class);
+		}
+		@Ptr 
+		public long apply(@Ptr long opaque, int size) {
+			return Pointer.getPeer(apply(Pointer.pointerToAddress(opaque), size));
+		}
+	};
+	/** <i>native declaration : libavutil/buffer.h:160</i> */
+	public static abstract class av_buffer_pool_init2_pool_free_callback extends Callback<av_buffer_pool_init2_pool_free_callback > {
+		public void apply(Pointer<? > opaque) {
+			apply(Pointer.getPeer(opaque));
+		}
+		public void apply(@Ptr long opaque) {
+			apply(Pointer.pointerToAddress(opaque));
 		}
 	};
 	/**
@@ -2164,13 +2201,33 @@ public class AvutilLibrary {
 	}
 	protected native static void av_log_format_line(@Ptr long ptr, int level, @Ptr long fmt, @Ptr long vl, int line, @Ptr long line_size, @Ptr long print_prefix);
 	/**
+	 * Format a line of log the same way as the default callback.<br>
+	 * @param line          buffer to receive the formatted line;<br>
+	 *                      may be NULL if line_size is 0<br>
+	 * @param line_size     size of the buffer; at most line_size-1 characters will<br>
+	 *                      be written to the buffer, plus one null terminator<br>
+	 * @param print_prefix  used to store whether the prefix must be printed;<br>
+	 *                      must point to a persistent integer initially set to 1<br>
+	 * @return Returns a negative value if an error occurred, otherwise returns<br>
+	 *         the number of characters that would have been written for a<br>
+	 *         sufficiently large buffer, not including the terminating null<br>
+	 *         character. If the return value is not less than line_size, it means<br>
+	 *         that the log message was truncated to fit the buffer.<br>
+	 * Original signature : <code>int av_log_format_line2(void*, int, const char*, va_list, char*, int, int*)</code><br>
+	 * <i>native declaration : libavutil/log.h:188</i>
+	 */
+	public static int av_log_format_line2(Pointer<? > ptr, int level, Pointer<Byte > fmt, Pointer<Byte > vl, int line, Pointer<Integer > line_size, Pointer<Integer > print_prefix) {
+		return av_log_format_line2(Pointer.getPeer(ptr), level, Pointer.getPeer(fmt), Pointer.getPeer(vl), line, Pointer.getPeer(line_size), Pointer.getPeer(print_prefix));
+	}
+	protected native static int av_log_format_line2(@Ptr long ptr, int level, @Ptr long fmt, @Ptr long vl, int line, @Ptr long line_size, @Ptr long print_prefix);
+	/**
 	 * Original signature : <code>void av_log_set_flags(int)</code><br>
-	 * <i>native declaration : libavutil/log.h:174</i>
+	 * <i>native declaration : libavutil/log.h:190</i>
 	 */
 	public static native void av_log_set_flags(int arg);
 	/**
 	 * Original signature : <code>int av_log_get_flags()</code><br>
-	 * <i>native declaration : libavutil/log.h:176</i>
+	 * <i>native declaration : libavutil/log.h:192</i>
 	 */
 	public static native int av_log_get_flags();
 	/**
@@ -2238,14 +2295,16 @@ public class AvutilLibrary {
 	 * Set the given entry in *pm, overwriting an existing entry.<br>
 	 * * Note: If AV_DICT_DONT_STRDUP_KEY or AV_DICT_DONT_STRDUP_VAL is set,<br>
 	 * these arguments will be freed on error.<br>
+	 * * Warning: Adding a new entry to a dictionary invalidates all existing entries<br>
+	 * previously returned with av_dict_get.<br>
 	 * * @param pm pointer to a pointer to a dictionary struct. If *pm is NULL<br>
 	 * a dictionary struct is allocated and put in *pm.<br>
-	 * @param key entry key to add to *pm (will be av_strduped depending on flags)<br>
-	 * @param value entry value to add to *pm (will be av_strduped depending on flags).<br>
+	 * @param key entry key to add to *pm (will either be av_strduped or added as a new key depending on flags)<br>
+	 * @param value entry value to add to *pm (will be av_strduped or added as a new key depending on flags).<br>
 	 *        Passing a NULL value will cause an existing entry to be deleted.<br>
 	 * @return >= 0 on success otherwise an error code <0<br>
 	 * Original signature : <code>int av_dict_set(AVDictionary**, const char*, const char*, int)</code><br>
-	 * <i>native declaration : libavutil/dict.h:40</i>
+	 * <i>native declaration : libavutil/dict.h:42</i>
 	 */
 	public static int av_dict_set(Pointer<Pointer<AVDictionary > > pm, Pointer<Byte > key, Pointer<Byte > value, int flags) {
 		return av_dict_set(Pointer.getPeer(pm), Pointer.getPeer(key), Pointer.getPeer(value), flags);
@@ -2256,7 +2315,7 @@ public class AvutilLibrary {
 	 * and stores it.<br>
 	 * * Note: If AV_DICT_DONT_STRDUP_KEY is set, key will be freed on error.<br>
 	 * Original signature : <code>int av_dict_set_int(AVDictionary**, const char*, int64_t, int)</code><br>
-	 * <i>native declaration : libavutil/dict.h:47</i>
+	 * <i>native declaration : libavutil/dict.h:49</i>
 	 */
 	public static int av_dict_set_int(Pointer<Pointer<AVDictionary > > pm, Pointer<Byte > key, long value, int flags) {
 		return av_dict_set_int(Pointer.getPeer(pm), Pointer.getPeer(key), value, flags);
@@ -2276,7 +2335,7 @@ public class AvutilLibrary {
 	 *                     be duplicated.<br>
 	 * @return             0 on success, negative AVERROR code on failure<br>
 	 * Original signature : <code>int av_dict_parse_string(AVDictionary**, const char*, const char*, const char*, int)</code><br>
-	 * <i>native declaration : libavutil/dict.h:63</i>
+	 * <i>native declaration : libavutil/dict.h:65</i>
 	 */
 	public static int av_dict_parse_string(Pointer<Pointer<AVDictionary > > pm, Pointer<Byte > str, Pointer<Byte > key_val_sep, Pointer<Byte > pairs_sep, int flags) {
 		return av_dict_parse_string(Pointer.getPeer(pm), Pointer.getPeer(str), Pointer.getPeer(key_val_sep), Pointer.getPeer(pairs_sep), flags);
@@ -2292,7 +2351,7 @@ public class AvutilLibrary {
 	 * @return 0 on success, negative AVERROR code on failure. If dst was allocated<br>
 	 *           by this function, callers should free the associated memory.<br>
 	 * Original signature : <code>int av_dict_copy(AVDictionary**, const AVDictionary*, int)</code><br>
-	 * <i>native declaration : libavutil/dict.h:75</i>
+	 * <i>native declaration : libavutil/dict.h:77</i>
 	 */
 	public static int av_dict_copy(Pointer<Pointer<AVDictionary > > dst, Pointer<AVDictionary > src, int flags) {
 		return av_dict_copy(Pointer.getPeer(dst), Pointer.getPeer(src), flags);
@@ -2302,7 +2361,7 @@ public class AvutilLibrary {
 	 * Free all the memory allocated for an AVDictionary struct<br>
 	 * and all keys and values.<br>
 	 * Original signature : <code>void av_dict_free(AVDictionary**)</code><br>
-	 * <i>native declaration : libavutil/dict.h:81</i>
+	 * <i>native declaration : libavutil/dict.h:83</i>
 	 */
 	public static void av_dict_free(Pointer<Pointer<AVDictionary > > m) {
 		av_dict_free(Pointer.getPeer(m));
@@ -2321,7 +2380,7 @@ public class AvutilLibrary {
 	 * @return                   >= 0 on success, negative on error<br>
 	 * @warning Separators cannot be neither '\\' nor '\0'. They also cannot be the same.<br>
 	 * Original signature : <code>int av_dict_get_string(const AVDictionary*, char**, const char, const char)</code><br>
-	 * <i>native declaration : libavutil/dict.h:96</i>
+	 * <i>native declaration : libavutil/dict.h:98</i>
 	 */
 	public static int av_dict_get_string(Pointer<AVDictionary > m, Pointer<Pointer<Byte > > buffer, byte key_val_sep, byte pairs_sep) {
 		return av_dict_get_string(Pointer.getPeer(m), Pointer.getPeer(buffer), key_val_sep, pairs_sep);
@@ -2482,14 +2541,32 @@ public class AvutilLibrary {
 	@Ptr 
 	protected native static long av_buffer_pool_init(int size, @Ptr long alloc);
 	/**
+	 * Allocate and initialize a buffer pool with a more complex allocator.<br>
+	 * * @param size size of each buffer in this pool<br>
+	 * @param opaque arbitrary user data used by the allocator<br>
+	 * @param alloc a function that will be used to allocate new buffers when the<br>
+	 *              pool is empty.<br>
+	 * @param pool_free a function that will be called immediately before the pool<br>
+	 *                  is freed. I.e. after av_buffer_pool_can_uninit() is called<br>
+	 *                  by the pool and all the frames are returned to the pool and<br>
+	 *                  freed. It is intended to uninitialize the user opaque data.<br>
+	 * @return newly created buffer pool on success, NULL on error.<br>
+	 * Original signature : <code>AVBufferPool* av_buffer_pool_init2(int, void*, av_buffer_pool_init2_alloc_callback*, av_buffer_pool_init2_pool_free_callback*)</code><br>
+	 * <i>native declaration : libavutil/buffer.h:140</i>
+	 */
+	public static Pointer<AvutilLibrary.AVBufferPool > av_buffer_pool_init2(int size, Pointer<? > opaque, Pointer<AvutilLibrary.av_buffer_pool_init2_alloc_callback > alloc, Pointer<AvutilLibrary.av_buffer_pool_init2_pool_free_callback > pool_free) {
+		return Pointer.pointerToAddress(av_buffer_pool_init2(size, Pointer.getPeer(opaque), Pointer.getPeer(alloc), Pointer.getPeer(pool_free)), AvutilLibrary.AVBufferPool.class);
+	}
+	@Ptr 
+	protected native static long av_buffer_pool_init2(int size, @Ptr long opaque, @Ptr long alloc, @Ptr long pool_free);
+	/**
 	 * Mark the pool as being available for freeing. It will actually be freed only<br>
 	 * once all the allocated buffers associated with the pool are released. Thus it<br>
 	 * is safe to call this function while some of the allocated buffers are still<br>
 	 * in use.<br>
 	 * * @param pool pointer to the pool to be freed. It will be set to NULL.<br>
-	 * @see av_buffer_pool_can_uninit()<br>
 	 * Original signature : <code>void av_buffer_pool_uninit(AVBufferPool**)</code><br>
-	 * <i>native declaration : libavutil/buffer.h:136</i>
+	 * <i>native declaration : libavutil/buffer.h:149</i>
 	 */
 	public static void av_buffer_pool_uninit(Pointer<Pointer<AvutilLibrary.AVBufferPool > > pool) {
 		av_buffer_pool_uninit(Pointer.getPeer(pool));
@@ -2500,7 +2577,7 @@ public class AvutilLibrary {
 	 * This function may be called simultaneously from multiple threads.<br>
 	 * * @return a reference to the new buffer on success, NULL on error.<br>
 	 * Original signature : <code>AVBufferRef* av_buffer_pool_get(AVBufferPool*)</code><br>
-	 * <i>native declaration : libavutil/buffer.h:143</i>
+	 * <i>native declaration : libavutil/buffer.h:156</i>
 	 */
 	public static Pointer<AVBufferRef > av_buffer_pool_get(Pointer<AvutilLibrary.AVBufferPool > pool) {
 		return Pointer.pointerToAddress(av_buffer_pool_get(Pointer.getPeer(pool)), AVBufferRef.class);
@@ -2724,7 +2801,7 @@ public class AvutilLibrary {
 	 * The position of these field in the structure is not part of the ABI,<br>
 	 * they should not be accessed directly outside libavutil.<br>
 	 * Original signature : <code>int64_t av_frame_get_best_effort_timestamp(const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:357</i>
+	 * <i>native declaration : libavutil/frame.h:367</i>
 	 */
 	public static long av_frame_get_best_effort_timestamp(Pointer<AVFrame > frame) {
 		return av_frame_get_best_effort_timestamp(Pointer.getPeer(frame));
@@ -2732,7 +2809,7 @@ public class AvutilLibrary {
 	protected native static long av_frame_get_best_effort_timestamp(@Ptr long frame);
 	/**
 	 * Original signature : <code>void av_frame_set_best_effort_timestamp(AVFrame*, int64_t)</code><br>
-	 * <i>native declaration : libavutil/frame.h:359</i>
+	 * <i>native declaration : libavutil/frame.h:369</i>
 	 */
 	public static void av_frame_set_best_effort_timestamp(Pointer<AVFrame > frame, long val) {
 		av_frame_set_best_effort_timestamp(Pointer.getPeer(frame), val);
@@ -2740,7 +2817,7 @@ public class AvutilLibrary {
 	protected native static void av_frame_set_best_effort_timestamp(@Ptr long frame, long val);
 	/**
 	 * Original signature : <code>int64_t av_frame_get_pkt_duration(const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:361</i>
+	 * <i>native declaration : libavutil/frame.h:371</i>
 	 */
 	public static long av_frame_get_pkt_duration(Pointer<AVFrame > frame) {
 		return av_frame_get_pkt_duration(Pointer.getPeer(frame));
@@ -2748,7 +2825,7 @@ public class AvutilLibrary {
 	protected native static long av_frame_get_pkt_duration(@Ptr long frame);
 	/**
 	 * Original signature : <code>void av_frame_set_pkt_duration(AVFrame*, int64_t)</code><br>
-	 * <i>native declaration : libavutil/frame.h:363</i>
+	 * <i>native declaration : libavutil/frame.h:373</i>
 	 */
 	public static void av_frame_set_pkt_duration(Pointer<AVFrame > frame, long val) {
 		av_frame_set_pkt_duration(Pointer.getPeer(frame), val);
@@ -2756,7 +2833,7 @@ public class AvutilLibrary {
 	protected native static void av_frame_set_pkt_duration(@Ptr long frame, long val);
 	/**
 	 * Original signature : <code>int64_t av_frame_get_pkt_pos(const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:365</i>
+	 * <i>native declaration : libavutil/frame.h:375</i>
 	 */
 	public static long av_frame_get_pkt_pos(Pointer<AVFrame > frame) {
 		return av_frame_get_pkt_pos(Pointer.getPeer(frame));
@@ -2764,7 +2841,7 @@ public class AvutilLibrary {
 	protected native static long av_frame_get_pkt_pos(@Ptr long frame);
 	/**
 	 * Original signature : <code>void av_frame_set_pkt_pos(AVFrame*, int64_t)</code><br>
-	 * <i>native declaration : libavutil/frame.h:367</i>
+	 * <i>native declaration : libavutil/frame.h:377</i>
 	 */
 	public static void av_frame_set_pkt_pos(Pointer<AVFrame > frame, long val) {
 		av_frame_set_pkt_pos(Pointer.getPeer(frame), val);
@@ -2772,7 +2849,7 @@ public class AvutilLibrary {
 	protected native static void av_frame_set_pkt_pos(@Ptr long frame, long val);
 	/**
 	 * Original signature : <code>int64_t av_frame_get_channel_layout(const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:369</i>
+	 * <i>native declaration : libavutil/frame.h:379</i>
 	 */
 	public static long av_frame_get_channel_layout(Pointer<AVFrame > frame) {
 		return av_frame_get_channel_layout(Pointer.getPeer(frame));
@@ -2780,7 +2857,7 @@ public class AvutilLibrary {
 	protected native static long av_frame_get_channel_layout(@Ptr long frame);
 	/**
 	 * Original signature : <code>void av_frame_set_channel_layout(AVFrame*, int64_t)</code><br>
-	 * <i>native declaration : libavutil/frame.h:371</i>
+	 * <i>native declaration : libavutil/frame.h:381</i>
 	 */
 	public static void av_frame_set_channel_layout(Pointer<AVFrame > frame, long val) {
 		av_frame_set_channel_layout(Pointer.getPeer(frame), val);
@@ -2788,7 +2865,7 @@ public class AvutilLibrary {
 	protected native static void av_frame_set_channel_layout(@Ptr long frame, long val);
 	/**
 	 * Original signature : <code>int av_frame_get_channels(const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:373</i>
+	 * <i>native declaration : libavutil/frame.h:383</i>
 	 */
 	public static int av_frame_get_channels(Pointer<AVFrame > frame) {
 		return av_frame_get_channels(Pointer.getPeer(frame));
@@ -2796,7 +2873,7 @@ public class AvutilLibrary {
 	protected native static int av_frame_get_channels(@Ptr long frame);
 	/**
 	 * Original signature : <code>void av_frame_set_channels(AVFrame*, int)</code><br>
-	 * <i>native declaration : libavutil/frame.h:375</i>
+	 * <i>native declaration : libavutil/frame.h:385</i>
 	 */
 	public static void av_frame_set_channels(Pointer<AVFrame > frame, int val) {
 		av_frame_set_channels(Pointer.getPeer(frame), val);
@@ -2804,7 +2881,7 @@ public class AvutilLibrary {
 	protected native static void av_frame_set_channels(@Ptr long frame, int val);
 	/**
 	 * Original signature : <code>int av_frame_get_sample_rate(const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:377</i>
+	 * <i>native declaration : libavutil/frame.h:387</i>
 	 */
 	public static int av_frame_get_sample_rate(Pointer<AVFrame > frame) {
 		return av_frame_get_sample_rate(Pointer.getPeer(frame));
@@ -2812,7 +2889,7 @@ public class AvutilLibrary {
 	protected native static int av_frame_get_sample_rate(@Ptr long frame);
 	/**
 	 * Original signature : <code>void av_frame_set_sample_rate(AVFrame*, int)</code><br>
-	 * <i>native declaration : libavutil/frame.h:379</i>
+	 * <i>native declaration : libavutil/frame.h:389</i>
 	 */
 	public static void av_frame_set_sample_rate(Pointer<AVFrame > frame, int val) {
 		av_frame_set_sample_rate(Pointer.getPeer(frame), val);
@@ -2820,7 +2897,7 @@ public class AvutilLibrary {
 	protected native static void av_frame_set_sample_rate(@Ptr long frame, int val);
 	/**
 	 * Original signature : <code>AVDictionary* av_frame_get_metadata(const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:381</i>
+	 * <i>native declaration : libavutil/frame.h:391</i>
 	 */
 	public static Pointer<AVDictionary > av_frame_get_metadata(Pointer<AVFrame > frame) {
 		return Pointer.pointerToAddress(av_frame_get_metadata(Pointer.getPeer(frame)), AVDictionary.class);
@@ -2829,7 +2906,7 @@ public class AvutilLibrary {
 	protected native static long av_frame_get_metadata(@Ptr long frame);
 	/**
 	 * Original signature : <code>void av_frame_set_metadata(AVFrame*, AVDictionary*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:383</i>
+	 * <i>native declaration : libavutil/frame.h:393</i>
 	 */
 	public static void av_frame_set_metadata(Pointer<AVFrame > frame, Pointer<AVDictionary > val) {
 		av_frame_set_metadata(Pointer.getPeer(frame), Pointer.getPeer(val));
@@ -2837,7 +2914,7 @@ public class AvutilLibrary {
 	protected native static void av_frame_set_metadata(@Ptr long frame, @Ptr long val);
 	/**
 	 * Original signature : <code>int av_frame_get_decode_error_flags(const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:385</i>
+	 * <i>native declaration : libavutil/frame.h:395</i>
 	 */
 	public static int av_frame_get_decode_error_flags(Pointer<AVFrame > frame) {
 		return av_frame_get_decode_error_flags(Pointer.getPeer(frame));
@@ -2845,7 +2922,7 @@ public class AvutilLibrary {
 	protected native static int av_frame_get_decode_error_flags(@Ptr long frame);
 	/**
 	 * Original signature : <code>void av_frame_set_decode_error_flags(AVFrame*, int)</code><br>
-	 * <i>native declaration : libavutil/frame.h:387</i>
+	 * <i>native declaration : libavutil/frame.h:397</i>
 	 */
 	public static void av_frame_set_decode_error_flags(Pointer<AVFrame > frame, int val) {
 		av_frame_set_decode_error_flags(Pointer.getPeer(frame), val);
@@ -2853,7 +2930,7 @@ public class AvutilLibrary {
 	protected native static void av_frame_set_decode_error_flags(@Ptr long frame, int val);
 	/**
 	 * Original signature : <code>int av_frame_get_pkt_size(const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:389</i>
+	 * <i>native declaration : libavutil/frame.h:399</i>
 	 */
 	public static int av_frame_get_pkt_size(Pointer<AVFrame > frame) {
 		return av_frame_get_pkt_size(Pointer.getPeer(frame));
@@ -2861,7 +2938,7 @@ public class AvutilLibrary {
 	protected native static int av_frame_get_pkt_size(@Ptr long frame);
 	/**
 	 * Original signature : <code>void av_frame_set_pkt_size(AVFrame*, int)</code><br>
-	 * <i>native declaration : libavutil/frame.h:391</i>
+	 * <i>native declaration : libavutil/frame.h:401</i>
 	 */
 	public static void av_frame_set_pkt_size(Pointer<AVFrame > frame, int val) {
 		av_frame_set_pkt_size(Pointer.getPeer(frame), val);
@@ -2869,7 +2946,7 @@ public class AvutilLibrary {
 	protected native static void av_frame_set_pkt_size(@Ptr long frame, int val);
 	/**
 	 * Original signature : <code>AVDictionary** avpriv_frame_get_metadatap(AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:393</i>
+	 * <i>native declaration : libavutil/frame.h:403</i>
 	 */
 	public static Pointer<Pointer<AVDictionary > > avpriv_frame_get_metadatap(Pointer<AVFrame > frame) {
 		return Pointer.pointerToAddress(avpriv_frame_get_metadatap(Pointer.getPeer(frame)), DefaultParameterizedType.paramType(Pointer.class, AVDictionary.class));
@@ -2878,7 +2955,7 @@ public class AvutilLibrary {
 	protected native static long avpriv_frame_get_metadatap(@Ptr long frame);
 	/**
 	 * Original signature : <code>int8_t* av_frame_get_qp_table(AVFrame*, int*, int*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:395</i>
+	 * <i>native declaration : libavutil/frame.h:405</i>
 	 */
 	public static Pointer<Byte > av_frame_get_qp_table(Pointer<AVFrame > f, Pointer<Integer > stride, Pointer<Integer > type) {
 		return Pointer.pointerToAddress(av_frame_get_qp_table(Pointer.getPeer(f), Pointer.getPeer(stride), Pointer.getPeer(type)), Byte.class);
@@ -2887,7 +2964,7 @@ public class AvutilLibrary {
 	protected native static long av_frame_get_qp_table(@Ptr long f, @Ptr long stride, @Ptr long type);
 	/**
 	 * Original signature : <code>int av_frame_set_qp_table(AVFrame*, AVBufferRef*, int, int)</code><br>
-	 * <i>native declaration : libavutil/frame.h:397</i>
+	 * <i>native declaration : libavutil/frame.h:407</i>
 	 */
 	public static int av_frame_set_qp_table(Pointer<AVFrame > f, Pointer<AVBufferRef > buf, int stride, int type) {
 		return av_frame_set_qp_table(Pointer.getPeer(f), Pointer.getPeer(buf), stride, type);
@@ -2895,7 +2972,7 @@ public class AvutilLibrary {
 	protected native static int av_frame_set_qp_table(@Ptr long f, @Ptr long buf, int stride, int type);
 	/**
 	 * Original signature : <code>AVColorSpace av_frame_get_colorspace(const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:399</i>
+	 * <i>native declaration : libavutil/frame.h:409</i>
 	 */
 	public static IntValuedEnum<AvutilLibrary.AVColorSpace > av_frame_get_colorspace(Pointer<AVFrame > frame) {
 		return FlagSet.fromValue(av_frame_get_colorspace(Pointer.getPeer(frame)), AvutilLibrary.AVColorSpace.class);
@@ -2903,7 +2980,7 @@ public class AvutilLibrary {
 	protected native static int av_frame_get_colorspace(@Ptr long frame);
 	/**
 	 * Original signature : <code>void av_frame_set_colorspace(AVFrame*, AVColorSpace)</code><br>
-	 * <i>native declaration : libavutil/frame.h:401</i>
+	 * <i>native declaration : libavutil/frame.h:411</i>
 	 */
 	public static void av_frame_set_colorspace(Pointer<AVFrame > frame, IntValuedEnum<AvutilLibrary.AVColorSpace > val) {
 		av_frame_set_colorspace(Pointer.getPeer(frame), (int)val.value());
@@ -2911,7 +2988,7 @@ public class AvutilLibrary {
 	protected native static void av_frame_set_colorspace(@Ptr long frame, int val);
 	/**
 	 * Original signature : <code>AVColorRange av_frame_get_color_range(const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:403</i>
+	 * <i>native declaration : libavutil/frame.h:413</i>
 	 */
 	public static IntValuedEnum<AvutilLibrary.AVColorRange > av_frame_get_color_range(Pointer<AVFrame > frame) {
 		return FlagSet.fromValue(av_frame_get_color_range(Pointer.getPeer(frame)), AvutilLibrary.AVColorRange.class);
@@ -2919,7 +2996,7 @@ public class AvutilLibrary {
 	protected native static int av_frame_get_color_range(@Ptr long frame);
 	/**
 	 * Original signature : <code>void av_frame_set_color_range(AVFrame*, AVColorRange)</code><br>
-	 * <i>native declaration : libavutil/frame.h:405</i>
+	 * <i>native declaration : libavutil/frame.h:415</i>
 	 */
 	public static void av_frame_set_color_range(Pointer<AVFrame > frame, IntValuedEnum<AvutilLibrary.AVColorRange > val) {
 		av_frame_set_color_range(Pointer.getPeer(frame), (int)val.value());
@@ -2929,7 +3006,7 @@ public class AvutilLibrary {
 	 * Get the name of a colorspace.<br>
 	 * @return a static string identifying the colorspace; can be NULL.<br>
 	 * Original signature : <code>char* av_get_colorspace_name(AVColorSpace)</code><br>
-	 * <i>native declaration : libavutil/frame.h:411</i>
+	 * <i>native declaration : libavutil/frame.h:421</i>
 	 */
 	public static Pointer<Byte > av_get_colorspace_name(IntValuedEnum<AvutilLibrary.AVColorSpace > val) {
 		return Pointer.pointerToAddress(av_get_colorspace_name((int)val.value()), Byte.class);
@@ -2944,7 +3021,7 @@ public class AvutilLibrary {
 	 * must be allocated through other means, e.g. with av_frame_get_buffer() or<br>
 	 * manually.<br>
 	 * Original signature : <code>AVFrame* av_frame_alloc()</code><br>
-	 * <i>native declaration : libavutil/frame.h:421</i>
+	 * <i>native declaration : libavutil/frame.h:431</i>
 	 */
 	public static Pointer<AVFrame > av__frame_alloc() {
 		return Pointer.pointerToAddress(av_frame_alloc(), AVFrame.class);
@@ -2957,7 +3034,7 @@ public class AvutilLibrary {
 	 * unreferenced first.<br>
 	 * * @param frame frame to be freed. The pointer will be set to NULL.<br>
 	 * Original signature : <code>void av_frame_free(AVFrame**)</code><br>
-	 * <i>native declaration : libavutil/frame.h:429</i>
+	 * <i>native declaration : libavutil/frame.h:439</i>
 	 */
 	public static void av_frame_free(Pointer<Pointer<AVFrame > > frame) {
 		av_frame_free(Pointer.getPeer(frame));
@@ -2969,9 +3046,12 @@ public class AvutilLibrary {
 	 * AVBufferRef from src.<br>
 	 * * If src is not reference counted, new buffers are allocated and the data is<br>
 	 * copied.<br>
+	 * * @warning: dst MUST have been either unreferenced with av_frame_unref(dst),<br>
+	 *           or newly allocated with av_frame_alloc() before calling this<br>
+	 *           function, or undefined behavior will occur.<br>
 	 * * @return 0 on success, a negative AVERROR on error<br>
 	 * Original signature : <code>int av_frame_ref(AVFrame*, const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:439</i>
+	 * <i>native declaration : libavutil/frame.h:452</i>
 	 */
 	public static int av_frame_ref(Pointer<AVFrame > dst, Pointer<AVFrame > src) {
 		return av_frame_ref(Pointer.getPeer(dst), Pointer.getPeer(src));
@@ -2982,7 +3062,7 @@ public class AvutilLibrary {
 	 * * This is a shortcut for av_frame_alloc()+av_frame_ref().<br>
 	 * * @return newly created AVFrame on success, NULL on error.<br>
 	 * Original signature : <code>AVFrame* av_frame_clone(const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:446</i>
+	 * <i>native declaration : libavutil/frame.h:459</i>
 	 */
 	public static Pointer<AVFrame > av_frame_clone(Pointer<AVFrame > src) {
 		return Pointer.pointerToAddress(av_frame_clone(Pointer.getPeer(src)), AVFrame.class);
@@ -2992,7 +3072,7 @@ public class AvutilLibrary {
 	/**
 	 * Unreference all the buffers referenced by frame and reset the frame fields.<br>
 	 * Original signature : <code>void av_frame_unref(AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:451</i>
+	 * <i>native declaration : libavutil/frame.h:464</i>
 	 */
 	public static void av_frame_unref(Pointer<AVFrame > frame) {
 		av_frame_unref(Pointer.getPeer(frame));
@@ -3000,8 +3080,11 @@ public class AvutilLibrary {
 	protected native static void av_frame_unref(@Ptr long frame);
 	/**
 	 * Move everything contained in src to dst and reset src.<br>
+	 * * @warning: dst is not unreferenced, but directly overwritten without reading<br>
+	 *           or deallocating its contents. Call av_frame_unref(dst) manually<br>
+	 *           before calling this function to ensure that no memory is leaked.<br>
 	 * Original signature : <code>void av_frame_move_ref(AVFrame*, AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:456</i>
+	 * <i>native declaration : libavutil/frame.h:472</i>
 	 */
 	public static void av_frame_move_ref(Pointer<AVFrame > dst, Pointer<AVFrame > src) {
 		av_frame_move_ref(Pointer.getPeer(dst), Pointer.getPeer(src));
@@ -3016,11 +3099,14 @@ public class AvutilLibrary {
 	 * * This function will fill AVFrame.data and AVFrame.buf arrays and, if<br>
 	 * necessary, allocate and fill AVFrame.extended_data and AVFrame.extended_buf.<br>
 	 * For planar formats, one buffer will be allocated for each plane.<br>
+	 * * @warning: if frame already has been allocated, calling this function will<br>
+	 *           leak memory. In addition, undefined behavior can occur in certain<br>
+	 *           cases.<br>
 	 * * @param frame frame in which to store the new buffers.<br>
 	 * @param align required buffer size alignment<br>
 	 * * @return 0 on success, a negative AVERROR on error.<br>
 	 * Original signature : <code>int av_frame_get_buffer(AVFrame*, int)</code><br>
-	 * <i>native declaration : libavutil/frame.h:471</i>
+	 * <i>native declaration : libavutil/frame.h:490</i>
 	 */
 	public static int av_frame_get_buffer(Pointer<AVFrame > frame, int align) {
 		return av_frame_get_buffer(Pointer.getPeer(frame), align);
@@ -3035,7 +3121,7 @@ public class AvutilLibrary {
 	 * of the underlying AVBufferRefs (e.g. through av_frame_ref() or directly).<br>
 	 * * @see av_frame_make_writable(), av_buffer_is_writable()<br>
 	 * Original signature : <code>int av_frame_is_writable(AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:482</i>
+	 * <i>native declaration : libavutil/frame.h:501</i>
 	 */
 	public static int av_frame_is_writable(Pointer<AVFrame > frame) {
 		return av_frame_is_writable(Pointer.getPeer(frame));
@@ -3049,7 +3135,7 @@ public class AvutilLibrary {
 	 * * @see av_frame_is_writable(), av_buffer_is_writable(),<br>
 	 * av_buffer_make_writable()<br>
 	 * Original signature : <code>int av_frame_make_writable(AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:492</i>
+	 * <i>native declaration : libavutil/frame.h:511</i>
 	 */
 	public static int av_frame_make_writable(Pointer<AVFrame > frame) {
 		return av_frame_make_writable(Pointer.getPeer(frame));
@@ -3063,7 +3149,7 @@ public class AvutilLibrary {
 	 * extended data arrays), not any other properties.<br>
 	 * * @return >= 0 on success, a negative AVERROR on error.<br>
 	 * Original signature : <code>int av_frame_copy(AVFrame*, const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:502</i>
+	 * <i>native declaration : libavutil/frame.h:521</i>
 	 */
 	public static int av_frame_copy(Pointer<AVFrame > dst, Pointer<AVFrame > src) {
 		return av_frame_copy(Pointer.getPeer(dst), Pointer.getPeer(src));
@@ -3076,7 +3162,7 @@ public class AvutilLibrary {
 	 * aspect ratio (for video), but not width/height or channel layout.<br>
 	 * Side data is also copied.<br>
 	 * Original signature : <code>int av_frame_copy_props(AVFrame*, const AVFrame*)</code><br>
-	 * <i>native declaration : libavutil/frame.h:511</i>
+	 * <i>native declaration : libavutil/frame.h:530</i>
 	 */
 	public static int av_frame_copy_props(Pointer<AVFrame > dst, Pointer<AVFrame > src) {
 		return av_frame_copy_props(Pointer.getPeer(dst), Pointer.getPeer(src));
@@ -3088,7 +3174,7 @@ public class AvutilLibrary {
 	 * * @return the buffer reference that contains the plane or NULL if the input<br>
 	 * frame is not valid.<br>
 	 * Original signature : <code>AVBufferRef* av_frame_get_plane_buffer(AVFrame*, int)</code><br>
-	 * <i>native declaration : libavutil/frame.h:519</i>
+	 * <i>native declaration : libavutil/frame.h:538</i>
 	 */
 	public static Pointer<AVBufferRef > av_frame_get_plane_buffer(Pointer<AVFrame > frame, int plane) {
 		return Pointer.pointerToAddress(av_frame_get_plane_buffer(Pointer.getPeer(frame), plane), AVBufferRef.class);
@@ -3102,7 +3188,7 @@ public class AvutilLibrary {
 	 * @param size size of the side data<br>
 	 * * @return newly added side data on success, NULL on error<br>
 	 * Original signature : <code>AVFrameSideData* av_frame_new_side_data(AVFrame*, AVFrameSideDataType, int)</code><br>
-	 * <i>native declaration : libavutil/frame.h:528</i>
+	 * <i>native declaration : libavutil/frame.h:547</i>
 	 */
 	public static Pointer<AVFrameSideData > av_frame_new_side_data(Pointer<AVFrame > frame, IntValuedEnum<AvutilLibrary.AVFrameSideDataType > type, int size) {
 		return Pointer.pointerToAddress(av_frame_new_side_data(Pointer.getPeer(frame), (int)type.value(), size), AVFrameSideData.class);
@@ -3113,7 +3199,7 @@ public class AvutilLibrary {
 	 * @return a pointer to the side data of a given type on success, NULL if there<br>
 	 * is no side data with such type in this frame.<br>
 	 * Original signature : <code>AVFrameSideData* av_frame_get_side_data(const AVFrame*, AVFrameSideDataType)</code><br>
-	 * <i>native declaration : libavutil/frame.h:534</i>
+	 * <i>native declaration : libavutil/frame.h:553</i>
 	 */
 	public static Pointer<AVFrameSideData > av_frame_get_side_data(Pointer<AVFrame > frame, IntValuedEnum<AvutilLibrary.AVFrameSideDataType > type) {
 		return Pointer.pointerToAddress(av_frame_get_side_data(Pointer.getPeer(frame), (int)type.value()), AVFrameSideData.class);
@@ -3124,7 +3210,7 @@ public class AvutilLibrary {
 	 * If side data of the supplied type exists in the frame, free it and remove it<br>
 	 * from the frame.<br>
 	 * Original signature : <code>void av_frame_remove_side_data(AVFrame*, AVFrameSideDataType)</code><br>
-	 * <i>native declaration : libavutil/frame.h:540</i>
+	 * <i>native declaration : libavutil/frame.h:559</i>
 	 */
 	public static void av_frame_remove_side_data(Pointer<AVFrame > frame, IntValuedEnum<AvutilLibrary.AVFrameSideDataType > type) {
 		av_frame_remove_side_data(Pointer.getPeer(frame), (int)type.value());
@@ -3133,7 +3219,7 @@ public class AvutilLibrary {
 	/**
 	 * @return a string identifying the side data type<br>
 	 * Original signature : <code>char* av_frame_side_data_name(AVFrameSideDataType)</code><br>
-	 * <i>native declaration : libavutil/frame.h:545</i>
+	 * <i>native declaration : libavutil/frame.h:564</i>
 	 */
 	public static Pointer<Byte > av_frame_side_data_name(IntValuedEnum<AvutilLibrary.AVFrameSideDataType > type) {
 		return Pointer.pointerToAddress(av_frame_side_data_name((int)type.value()), Byte.class);
@@ -3793,7 +3879,7 @@ public class AvutilLibrary {
 	 * component c in data[1] to dst, rather than the palette indexes in<br>
 	 * data[0]. The behavior is undefined if the format is not paletted.<br>
 	 * Original signature : <code>void av_read_image_line(uint16_t*, const uint8_t*[4], const int[4], const AVPixFmtDescriptor*, int, int, int, int, int)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:86</i>
+	 * <i>native declaration : libavutil/pixdesc.h:85</i>
 	 */
 	public static void av_read_image_line(Pointer<Short > dst, Pointer<Pointer<Byte > > data, Pointer<Integer > linesize, Pointer<AVPixFmtDescriptor > desc, int x, int y, int c, int w, int read_pal_component) {
 		av_read_image_line(Pointer.getPeer(dst), Pointer.getPeer(data), Pointer.getPeer(linesize), Pointer.getPeer(desc), x, y, c, w, read_pal_component);
@@ -3812,7 +3898,7 @@ public class AvutilLibrary {
 	 * @param w the width of the line to write, that is the number of<br>
 	 * values to write to the image line<br>
 	 * Original signature : <code>void av_write_image_line(const uint16_t*, uint8_t*[4], const int[4], const AVPixFmtDescriptor*, int, int, int, int)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:101</i>
+	 * <i>native declaration : libavutil/pixdesc.h:100</i>
 	 */
 	public static void av_write_image_line(Pointer<Short > src, Pointer<Pointer<Byte > > data, Pointer<Integer > linesize, Pointer<AVPixFmtDescriptor > desc, int x, int y, int c, int w) {
 		av_write_image_line(Pointer.getPeer(src), Pointer.getPeer(data), Pointer.getPeer(linesize), Pointer.getPeer(desc), x, y, c, w);
@@ -3827,7 +3913,7 @@ public class AvutilLibrary {
 	 * then for "gray16le".<br>
 	 * * Finally if no pixel format has been found, returns AV_PIX_FMT_NONE.<br>
 	 * Original signature : <code>AVPixelFormat av_get_pix_fmt(const char*)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:112</i>
+	 * <i>native declaration : libavutil/pixdesc.h:111</i>
 	 */
 	public static IntValuedEnum<AvutilLibrary.AVPixelFormat > av_get_pix_fmt(Pointer<Byte > name) {
 		return FlagSet.fromValue(av_get_pix_fmt(Pointer.getPeer(name)), AvutilLibrary.AVPixelFormat.class);
@@ -3838,7 +3924,7 @@ public class AvutilLibrary {
 	 * unknown.<br>
 	 * * @see av_get_pix_fmt(), av_get_pix_fmt_string()<br>
 	 * Original signature : <code>char* av_get_pix_fmt_name(AVPixelFormat)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:119</i>
+	 * <i>native declaration : libavutil/pixdesc.h:118</i>
 	 */
 	public static Pointer<Byte > av_get_pix_fmt_name(IntValuedEnum<AvutilLibrary.AVPixelFormat > pix_fmt) {
 		return Pointer.pointerToAddress(av_get_pix_fmt_name((int)pix_fmt.value()), Byte.class);
@@ -3854,7 +3940,7 @@ public class AvutilLibrary {
 	 * corresponding info string, or a negative value to print the<br>
 	 * corresponding header.<br>
 	 * Original signature : <code>char* av_get_pix_fmt_string(char*, int, AVPixelFormat)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:130</i>
+	 * <i>native declaration : libavutil/pixdesc.h:129</i>
 	 */
 	public static Pointer<Byte > av_get_pix_fmt_string(Pointer<Byte > buf, int buf_size, IntValuedEnum<AvutilLibrary.AVPixelFormat > pix_fmt) {
 		return Pointer.pointerToAddress(av_get_pix_fmt_string(Pointer.getPeer(buf), buf_size, (int)pix_fmt.value()), Byte.class);
@@ -3869,7 +3955,7 @@ public class AvutilLibrary {
 	 * used for storing the pixel information, that is padding bits are<br>
 	 * not counted.<br>
 	 * Original signature : <code>int av_get_bits_per_pixel(const AVPixFmtDescriptor*)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:140</i>
+	 * <i>native declaration : libavutil/pixdesc.h:139</i>
 	 */
 	public static int av_get_bits_per_pixel(Pointer<AVPixFmtDescriptor > pixdesc) {
 		return av_get_bits_per_pixel(Pointer.getPeer(pixdesc));
@@ -3879,7 +3965,7 @@ public class AvutilLibrary {
 	 * Return the number of bits per pixel for the pixel format<br>
 	 * described by pixdesc, including any padding or unused bits.<br>
 	 * Original signature : <code>int av_get_padded_bits_per_pixel(const AVPixFmtDescriptor*)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:146</i>
+	 * <i>native declaration : libavutil/pixdesc.h:145</i>
 	 */
 	public static int av_get_padded_bits_per_pixel(Pointer<AVPixFmtDescriptor > pixdesc) {
 		return av_get_padded_bits_per_pixel(Pointer.getPeer(pixdesc));
@@ -3889,7 +3975,7 @@ public class AvutilLibrary {
 	 * @return a pixel format descriptor for provided pixel format or NULL if<br>
 	 * this pixel format is unknown.<br>
 	 * Original signature : <code>AVPixFmtDescriptor* av_pix_fmt_desc_get(AVPixelFormat)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:152</i>
+	 * <i>native declaration : libavutil/pixdesc.h:151</i>
 	 */
 	public static Pointer<AVPixFmtDescriptor > av_pix_fmt_desc_get(IntValuedEnum<AvutilLibrary.AVPixelFormat > pix_fmt) {
 		return Pointer.pointerToAddress(av_pix_fmt_desc_get((int)pix_fmt.value()), AVPixFmtDescriptor.class);
@@ -3901,7 +3987,7 @@ public class AvutilLibrary {
 	 * * @param prev previous descriptor. NULL to get the first descriptor.<br>
 	 * * @return next descriptor or NULL after the last descriptor<br>
 	 * Original signature : <code>AVPixFmtDescriptor* av_pix_fmt_desc_next(const AVPixFmtDescriptor*)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:159</i>
+	 * <i>native declaration : libavutil/pixdesc.h:158</i>
 	 */
 	public static Pointer<AVPixFmtDescriptor > av_pix_fmt_desc_next(Pointer<AVPixFmtDescriptor > prev) {
 		return Pointer.pointerToAddress(av_pix_fmt_desc_next(Pointer.getPeer(prev)), AVPixFmtDescriptor.class);
@@ -3912,7 +3998,7 @@ public class AvutilLibrary {
 	 * @return an AVPixelFormat id described by desc, or AV_PIX_FMT_NONE if desc<br>
 	 * is not a valid pointer to a pixel format descriptor.<br>
 	 * Original signature : <code>AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor*)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:165</i>
+	 * <i>native declaration : libavutil/pixdesc.h:164</i>
 	 */
 	public static IntValuedEnum<AvutilLibrary.AVPixelFormat > av_pix_fmt_desc_get_id(Pointer<AVPixFmtDescriptor > desc) {
 		return FlagSet.fromValue(av_pix_fmt_desc_get_id(Pointer.getPeer(desc)), AvutilLibrary.AVPixelFormat.class);
@@ -3930,7 +4016,7 @@ public class AvutilLibrary {
 	 * @param[out] v_shift store log2_chroma_h (vertical/height shift)<br>
 	 * * @return 0 on success, AVERROR(ENOSYS) on invalid or unknown pixel format<br>
 	 * Original signature : <code>int av_pix_fmt_get_chroma_sub_sample(AVPixelFormat, int*, int*)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:179</i>
+	 * <i>native declaration : libavutil/pixdesc.h:178</i>
 	 */
 	public static int av_pix_fmt_get_chroma_sub_sample(IntValuedEnum<AvutilLibrary.AVPixelFormat > pix_fmt, Pointer<Integer > h_shift, Pointer<Integer > v_shift) {
 		return av_pix_fmt_get_chroma_sub_sample((int)pix_fmt.value(), Pointer.getPeer(h_shift), Pointer.getPeer(v_shift));
@@ -3940,7 +4026,7 @@ public class AvutilLibrary {
 	 * @return number of planes in pix_fmt, a negative AVERROR if pix_fmt is not a<br>
 	 * valid pixel format.<br>
 	 * Original signature : <code>int av_pix_fmt_count_planes(AVPixelFormat)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:185</i>
+	 * <i>native declaration : libavutil/pixdesc.h:184</i>
 	 */
 	public static int av_pix_fmt_count_planes(IntValuedEnum<AvutilLibrary.AVPixelFormat > pix_fmt) {
 		return av_pix_fmt_count_planes((int)pix_fmt.value());
@@ -3952,7 +4038,7 @@ public class AvutilLibrary {
 	 * * @return pixel format with swapped endianness if it exists,<br>
 	 * otherwise AV_PIX_FMT_NONE<br>
 	 * Original signature : <code>AVPixelFormat av_pix_fmt_swap_endianness(AVPixelFormat)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:193</i>
+	 * <i>native declaration : libavutil/pixdesc.h:192</i>
 	 */
 	public static IntValuedEnum<AvutilLibrary.AVPixelFormat > av_pix_fmt_swap_endianness(IntValuedEnum<AvutilLibrary.AVPixelFormat > pix_fmt) {
 		return FlagSet.fromValue(av_pix_fmt_swap_endianness((int)pix_fmt.value()), AvutilLibrary.AVPixelFormat.class);
@@ -3975,7 +4061,7 @@ public class AvutilLibrary {
 	 * @return Combination of flags informing you what kind of losses will occur<br>
 	 * (maximum loss for an invalid dst_pix_fmt).<br>
 	 * Original signature : <code>int av_get_pix_fmt_loss(AVPixelFormat, AVPixelFormat, int)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:212</i>
+	 * <i>native declaration : libavutil/pixdesc.h:211</i>
 	 */
 	public static int av_get_pix_fmt_loss(IntValuedEnum<AvutilLibrary.AVPixelFormat > dst_pix_fmt, IntValuedEnum<AvutilLibrary.AVPixelFormat > src_pix_fmt, int has_alpha) {
 		return av_get_pix_fmt_loss((int)dst_pix_fmt.value(), (int)src_pix_fmt.value(), has_alpha);
@@ -3998,7 +4084,7 @@ public class AvutilLibrary {
 	 * @return Combination of flags informing you what kind of losses will occur<br>
 	 * (maximum loss for an invalid dst_pix_fmt).<br>
 	 * Original signature : <code>AVPixelFormat av_find_best_pix_fmt_of_2(AVPixelFormat, AVPixelFormat, AVPixelFormat, int, int*)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:231</i>
+	 * <i>native declaration : libavutil/pixdesc.h:230</i>
 	 */
 	public static IntValuedEnum<AvutilLibrary.AVPixelFormat > av_find_best_pix_fmt_of_2(IntValuedEnum<AvutilLibrary.AVPixelFormat > dst_pix_fmt1, IntValuedEnum<AvutilLibrary.AVPixelFormat > dst_pix_fmt2, IntValuedEnum<AvutilLibrary.AVPixelFormat > src_pix_fmt, int has_alpha, Pointer<Integer > loss_ptr) {
 		return FlagSet.fromValue(av_find_best_pix_fmt_of_2((int)dst_pix_fmt1.value(), (int)dst_pix_fmt2.value(), (int)src_pix_fmt.value(), has_alpha, Pointer.getPeer(loss_ptr)), AvutilLibrary.AVPixelFormat.class);
@@ -4007,7 +4093,7 @@ public class AvutilLibrary {
 	/**
 	 * @return the name for provided color range or NULL if unknown.<br>
 	 * Original signature : <code>char* av_color_range_name(AVColorRange)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:236</i>
+	 * <i>native declaration : libavutil/pixdesc.h:235</i>
 	 */
 	public static Pointer<Byte > av_color_range_name(IntValuedEnum<AvutilLibrary.AVColorRange > range) {
 		return Pointer.pointerToAddress(av_color_range_name((int)range.value()), Byte.class);
@@ -4017,7 +4103,7 @@ public class AvutilLibrary {
 	/**
 	 * @return the name for provided color primaries or NULL if unknown.<br>
 	 * Original signature : <code>char* av_color_primaries_name(AVColorPrimaries)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:241</i>
+	 * <i>native declaration : libavutil/pixdesc.h:240</i>
 	 */
 	public static Pointer<Byte > av_color_primaries_name(IntValuedEnum<AvutilLibrary.AVColorPrimaries > primaries) {
 		return Pointer.pointerToAddress(av_color_primaries_name((int)primaries.value()), Byte.class);
@@ -4027,7 +4113,7 @@ public class AvutilLibrary {
 	/**
 	 * @return the name for provided color transfer or NULL if unknown.<br>
 	 * Original signature : <code>char* av_color_transfer_name(AVColorTransferCharacteristic)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:246</i>
+	 * <i>native declaration : libavutil/pixdesc.h:245</i>
 	 */
 	public static Pointer<Byte > av_color_transfer_name(IntValuedEnum<AvutilLibrary.AVColorTransferCharacteristic > transfer) {
 		return Pointer.pointerToAddress(av_color_transfer_name((int)transfer.value()), Byte.class);
@@ -4037,7 +4123,7 @@ public class AvutilLibrary {
 	/**
 	 * @return the name for provided color space or NULL if unknown.<br>
 	 * Original signature : <code>char* av_color_space_name(AVColorSpace)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:251</i>
+	 * <i>native declaration : libavutil/pixdesc.h:250</i>
 	 */
 	public static Pointer<Byte > av_color_space_name(IntValuedEnum<AvutilLibrary.AVColorSpace > space) {
 		return Pointer.pointerToAddress(av_color_space_name((int)space.value()), Byte.class);
@@ -4047,7 +4133,7 @@ public class AvutilLibrary {
 	/**
 	 * @return the name for provided chroma location or NULL if unknown.<br>
 	 * Original signature : <code>char* av_chroma_location_name(AVChromaLocation)</code><br>
-	 * <i>native declaration : libavutil/pixdesc.h:256</i>
+	 * <i>native declaration : libavutil/pixdesc.h:255</i>
 	 */
 	public static Pointer<Byte > av_chroma_location_name(IntValuedEnum<AvutilLibrary.AVChromaLocation > location) {
 		return Pointer.pointerToAddress(av_chroma_location_name((int)location.value()), Byte.class);
@@ -4247,7 +4333,7 @@ public class AvutilLibrary {
 	/**
 	 * Return the flags which specify extensions supported by the CPU.<br>
 	 * The returned value is affected by av_force_cpu_flags() if that was used<br>
-	 * before. So av_get_cpu_flags() can easily be used in a application to<br>
+	 * before. So av_get_cpu_flags() can easily be used in an application to<br>
 	 * detect the enabled cpu flags.<br>
 	 * Original signature : <code>int av_get_cpu_flags()</code><br>
 	 * <i>native declaration : ./libavutil/cpu.h:7</i>

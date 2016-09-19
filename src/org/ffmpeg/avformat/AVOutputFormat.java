@@ -143,7 +143,7 @@ public class AVOutputFormat extends StructObject {
 	 * can use flags: AVFMT_NOFILE, AVFMT_NEEDNUMBER,<br>
 	 * AVFMT_GLOBALHEADER, AVFMT_NOTIMESTAMPS, AVFMT_VARIABLE_FPS,<br>
 	 * AVFMT_NODIMENSIONS, AVFMT_NOSTREAMS, AVFMT_ALLOW_FLUSH,<br>
-	 * AVFMT_TS_NONSTRICT
+	 * AVFMT_TS_NONSTRICT, AVFMT_TS_NEGATIVE
 	 */
 	@Field(7) 
 	public int flags() {
@@ -153,7 +153,7 @@ public class AVOutputFormat extends StructObject {
 	 * can use flags: AVFMT_NOFILE, AVFMT_NEEDNUMBER,<br>
 	 * AVFMT_GLOBALHEADER, AVFMT_NOTIMESTAMPS, AVFMT_VARIABLE_FPS,<br>
 	 * AVFMT_NODIMENSIONS, AVFMT_NOSTREAMS, AVFMT_ALLOW_FLUSH,<br>
-	 * AVFMT_TS_NONSTRICT
+	 * AVFMT_TS_NONSTRICT, AVFMT_TS_NEGATIVE
 	 */
 	@Field(7) 
 	public AVOutputFormat flags(int flags) {
