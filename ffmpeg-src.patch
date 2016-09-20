@@ -1,6 +1,6 @@
 diff -pruN generated/org/ffmpeg/avcodec/AVCodecContext.java src/org/ffmpeg/avcodec/AVCodecContext.java
---- generated/org/ffmpeg/avcodec/AVCodecContext.java	2016-09-19 18:36:53.950088343 +0200
-+++ src/org/ffmpeg/avcodec/AVCodecContext.java	2016-09-19 18:37:58.083122410 +0200
+--- generated/org/ffmpeg/avcodec/AVCodecContext.java	2016-09-20 16:11:24.802358226 +0200
++++ src/org/ffmpeg/avcodec/AVCodecContext.java	2016-09-20 16:11:58.486890938 +0200
 @@ -9,6 +9,7 @@ import org.bridj.ann.CLong;
  import org.bridj.ann.Field;
  import org.bridj.ann.Library;
@@ -30,8 +30,8 @@ diff -pruN generated/org/ffmpeg/avcodec/AVCodecContext.java src/org/ffmpeg/avcod
  		super(pointer);
  	}
 diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcodec/AvcodecLibrary.java
---- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2016-09-19 18:36:56.834134849 +0200
-+++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2016-09-19 18:47:05.079920015 +0200
+--- generated/org/ffmpeg/avcodec/AvcodecLibrary.java	2016-09-20 16:11:26.858390798 +0200
++++ src/org/ffmpeg/avcodec/AvcodecLibrary.java	2016-09-20 16:17:34.640507055 +0200
 @@ -1889,21 +1889,21 @@ public class AvcodecLibrary {
  	 * Original signature : <code>char* avcodec_configuration()</code><br>
  	 * <i>native declaration : ./libavcodec/avcodec.h:2630</i>
@@ -105,6 +105,21 @@ diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcod
  	/**
  	 * Copy the settings of the source AVCodecContext into the destination<br>
  	 * AVCodecContext. The resulting destination codec context will be<br>
+@@ -2031,11 +2031,11 @@ public class AvcodecLibrary {
+ 	 * Original signature : <code>AVCodecParameters* avcodec_parameters_alloc()</code><br>
+ 	 * <i>native declaration : ./libavcodec/avcodec.h:2725</i>
+ 	 */
+-	public static Pointer<AVCodecParameters > avcodec_parameters_alloc() {
+-		return Pointer.pointerToAddress(avcodec_parameters_alloc$2(), AVCodecParameters.class);
++	public static Pointer<AVCodecParameters > avcodec__parameters_alloc() {
++		return Pointer.pointerToAddress(avcodec_parameters_alloc(), AVCodecParameters.class);
+ 	}
+ 	@Ptr 
+-	protected native static long avcodec_parameters_alloc$2();
++	protected native static long avcodec_parameters_alloc();
+ 	/**
+ 	 * Free an AVCodecParameters instance and everything associated with it and<br>
+ 	 * write NULL to the supplied pointer.<br>
 @@ -2155,11 +2155,11 @@ public class AvcodecLibrary {
  	 * Original signature : <code>AVPacket* av_packet_alloc()</code><br>
  	 * <i>native declaration : ./libavcodec/avcodec.h:2816</i>
@@ -151,7 +166,7 @@ diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcod
  	 * * @param s             parser context.<br>
 @@ -3072,11 +3072,11 @@ public class AvcodecLibrary {
  	 * Original signature : <code>AVResampleContext* av_resample_init(int, int, int, int, int, double)</code><br>
- 	 * <i>native declaration : ./libavcodec/avcodec.h:3635</i>
+ 	 * <i>native declaration : ./libavcodec/avcodec.h:3637</i>
  	 */
 -	public static Pointer<AvcodecLibrary.AVResampleContext > av_resample_init(int out_rate, int in_rate, int filter_length, int log2_phase_count, int linear, double cutoff) {
 -		return Pointer.pointerToAddress(av_resample_init$2(out_rate, in_rate, filter_length, log2_phase_count, linear, cutoff), AvcodecLibrary.AVResampleContext.class);
@@ -164,9 +179,24 @@ diff -pruN generated/org/ffmpeg/avcodec/AvcodecLibrary.java src/org/ffmpeg/avcod
  	/**
  	 * Resample an array of samples using a previously configured context.<br>
  	 * @param src an array of unconsumed samples<br>
+@@ -3636,11 +3636,11 @@ public class AvcodecLibrary {
+ 	 * Original signature : <code>AVClass* av_bsf_get_class()</code><br>
+ 	 * <i>native declaration : ./libavcodec/avcodec.h:4077</i>
+ 	 */
+-	public static Pointer<AVClass > av_bsf_get_class() {
+-		return Pointer.pointerToAddress(av_bsf_get_class$2(), AVClass.class);
++	public static Pointer<AVClass > av_bsf__get_class() {
++		return Pointer.pointerToAddress(av_bsf_get_class(), AVClass.class);
+ 	}
+ 	@Ptr 
+-	protected native static long av_bsf_get_class$2();
++	protected native static long av_bsf_get_class();
+ 	/**
+ 	 * Same behaviour av_fast_malloc but the buffer has additional<br>
+ 	 * AV_INPUT_BUFFER_PADDING_SIZE at the end which will always be 0.<br>
 diff -pruN generated/org/ffmpeg/avcodec/AVCodecParser.java src/org/ffmpeg/avcodec/AVCodecParser.java
---- generated/org/ffmpeg/avcodec/AVCodecParser.java	2016-09-19 18:36:54.634099373 +0200
-+++ src/org/ffmpeg/avcodec/AVCodecParser.java	2016-09-19 18:37:58.099122668 +0200
+--- generated/org/ffmpeg/avcodec/AVCodecParser.java	2016-09-20 16:11:25.430368175 +0200
++++ src/org/ffmpeg/avcodec/AVCodecParser.java	2016-09-20 16:11:58.490891001 +0200
 @@ -111,11 +111,11 @@ public class AVCodecParser extends Struc
  	};
  	/** <i>native declaration : ./libavcodec/avcodec.h:3458</i> */
@@ -182,8 +212,8 @@ diff -pruN generated/org/ffmpeg/avcodec/AVCodecParser.java src/org/ffmpeg/avcode
  	};
  	/** <i>native declaration : ./libavcodec/avcodec.h:3459</i> */
 diff -pruN generated/org/ffmpeg/avcodec/AVPacket.java src/org/ffmpeg/avcodec/AVPacket.java
---- generated/org/ffmpeg/avcodec/AVPacket.java	2016-09-19 18:36:53.502081118 +0200
-+++ src/org/ffmpeg/avcodec/AVPacket.java	2016-09-19 18:37:58.099122668 +0200
+--- generated/org/ffmpeg/avcodec/AVPacket.java	2016-09-20 16:11:24.466352902 +0200
++++ src/org/ffmpeg/avcodec/AVPacket.java	2016-09-20 16:11:58.490891001 +0200
 @@ -1,10 +1,15 @@
  package org.ffmpeg.avcodec;
 +import java.util.List;
@@ -233,8 +263,8 @@ diff -pruN generated/org/ffmpeg/avcodec/AVPacket.java src/org/ffmpeg/avcodec/AVP
 +	}
  }
 diff -pruN generated/org/ffmpeg/avcodec/AVPacketSideData.java src/org/ffmpeg/avcodec/AVPacketSideData.java
---- generated/org/ffmpeg/avcodec/AVPacketSideData.java	2016-09-19 18:36:53.470080602 +0200
-+++ src/org/ffmpeg/avcodec/AVPacketSideData.java	2016-09-19 18:37:58.103122732 +0200
+--- generated/org/ffmpeg/avcodec/AVPacketSideData.java	2016-09-20 16:11:24.454352712 +0200
++++ src/org/ffmpeg/avcodec/AVPacketSideData.java	2016-09-20 16:11:58.490891001 +0200
 @@ -5,7 +5,9 @@ import org.bridj.Pointer;
  import org.bridj.StructObject;
  import org.bridj.ann.Field;
@@ -258,8 +288,8 @@ diff -pruN generated/org/ffmpeg/avcodec/AVPacketSideData.java src/org/ffmpeg/avc
  		super(pointer);
  	}
 diff -pruN generated/org/ffmpeg/avdevice/AvdeviceLibrary.java src/org/ffmpeg/avdevice/AvdeviceLibrary.java
---- generated/org/ffmpeg/avdevice/AvdeviceLibrary.java	2016-09-19 18:36:47.705987652 +0200
-+++ src/org/ffmpeg/avdevice/AvdeviceLibrary.java	2016-09-19 18:37:58.103122732 +0200
+--- generated/org/ffmpeg/avdevice/AvdeviceLibrary.java	2016-09-20 16:11:19.786278729 +0200
++++ src/org/ffmpeg/avdevice/AvdeviceLibrary.java	2016-09-20 16:11:58.490891001 +0200
 @@ -223,21 +223,21 @@ public class AvdeviceLibrary {
  	 * Original signature : <code>char* avdevice_configuration()</code><br>
  	 * <i>native declaration : libavdevice/avdevice.h:9</i>
@@ -289,11 +319,11 @@ diff -pruN generated/org/ffmpeg/avdevice/AvdeviceLibrary.java src/org/ffmpeg/avd
  	 * Initialize libavdevice and register all the input and output devices.<br>
  	 * @warning This function is not thread safe.<br>
 diff -pruN generated/org/ffmpeg/avfilter/AVFilter.java src/org/ffmpeg/avfilter/AVFilter.java
---- generated/org/ffmpeg/avfilter/AVFilter.java	2016-09-19 18:36:47.837989781 +0200
-+++ src/org/ffmpeg/avfilter/AVFilter.java	2016-09-19 18:37:58.103122732 +0200
+--- generated/org/ffmpeg/avfilter/AVFilter.java	2016-09-20 16:11:19.978281773 +0200
++++ src/org/ffmpeg/avfilter/AVFilter.java	2016-09-20 16:11:58.490891001 +0200
 @@ -377,11 +377,11 @@ public class AVFilter extends StructObje
  	};
- 	/** <i>native declaration : libavfilter/avfilter.h:163</i> */
+ 	/** <i>native declaration : libavfilter/avfilter.h:167</i> */
  	public static abstract class init_dict_callback extends Callback<init_dict_callback > {
 -		public int apply(Pointer<AVFilterContext > ctx, Pointer<Pointer<AVDictionary > > options) {
 +		public int apply(Pointer<AVFilterContext > ctx, Pointer<Pointer > options) {
@@ -304,10 +334,10 @@ diff -pruN generated/org/ffmpeg/avfilter/AVFilter.java src/org/ffmpeg/avfilter/A
 +			return apply(Pointer.pointerToAddress(ctx, AVFilterContext.class), Pointer.pointerToAddress(options, Pointer.class));
  		}
  	};
- 	/** <i>native declaration : libavfilter/avfilter.h:164</i> */
+ 	/** <i>native declaration : libavfilter/avfilter.h:168</i> */
 diff -pruN generated/org/ffmpeg/avfilter/AvfilterLibrary.java src/org/ffmpeg/avfilter/AvfilterLibrary.java
---- generated/org/ffmpeg/avfilter/AvfilterLibrary.java	2016-09-19 18:36:48.498000424 +0200
-+++ src/org/ffmpeg/avfilter/AvfilterLibrary.java	2016-09-19 18:49:54.750638069 +0200
+--- generated/org/ffmpeg/avfilter/AvfilterLibrary.java	2016-09-20 16:11:20.382288177 +0200
++++ src/org/ffmpeg/avfilter/AvfilterLibrary.java	2016-09-20 16:16:13.703144228 +0200
 @@ -148,21 +148,21 @@ public class AvfilterLibrary {
  	 * Original signature : <code>char* avfilter_configuration()</code><br>
  	 * <i>native declaration : libavfilter/avfilter.h:9</i>
@@ -338,7 +368,7 @@ diff -pruN generated/org/ffmpeg/avfilter/AvfilterLibrary.java src/org/ffmpeg/avf
  	 * AVFilter.inputs/outputs).<br>
 @@ -426,22 +426,22 @@ public class AvfilterLibrary {
  	 * Original signature : <code>AVClass* avfilter_get_class()</code><br>
- 	 * <i>native declaration : libavfilter/avfilter.h:540</i>
+ 	 * <i>native declaration : libavfilter/avfilter.h:544</i>
  	 */
 -	public static Pointer<AVClass > avfilter_get_class() {
 -		return Pointer.pointerToAddress(avfilter_get_class$2(), AVClass.class);
@@ -352,7 +382,7 @@ diff -pruN generated/org/ffmpeg/avfilter/AvfilterLibrary.java src/org/ffmpeg/avf
  	 * Allocate a filter graph.<br>
  	 * * @return the allocated filter graph on success or NULL.<br>
  	 * Original signature : <code>AVFilterGraph* avfilter_graph_alloc()</code><br>
- 	 * <i>native declaration : libavfilter/avfilter.h:621</i>
+ 	 * <i>native declaration : libavfilter/avfilter.h:625</i>
  	 */
 -	public static Pointer<AVFilterGraph > avfilter_graph_alloc() {
 -		return Pointer.pointerToAddress(avfilter_graph_alloc$2(), AVFilterGraph.class);
@@ -367,7 +397,7 @@ diff -pruN generated/org/ffmpeg/avfilter/AvfilterLibrary.java src/org/ffmpeg/avf
  	 * * @param graph graph in which the new filter will be used<br>
 @@ -546,11 +546,11 @@ public class AvfilterLibrary {
  	 * Original signature : <code>AVFilterInOut* avfilter_inout_alloc()</code><br>
- 	 * <i>native declaration : libavfilter/avfilter.h:717</i>
+ 	 * <i>native declaration : libavfilter/avfilter.h:721</i>
  	 */
 -	public static Pointer<AVFilterInOut > avfilter_inout_alloc() {
 -		return Pointer.pointerToAddress(avfilter_inout_alloc$2(), AVFilterInOut.class);
@@ -425,8 +455,8 @@ diff -pruN generated/org/ffmpeg/avfilter/AvfilterLibrary.java src/org/ffmpeg/avf
  	 * Initialize the buffersrc or abuffersrc filter with the provided parameters.<br>
  	 * This function may be called multiple times, the later calls override the<br>
 diff -pruN generated/org/ffmpeg/avformat/AVFormatContext.java src/org/ffmpeg/avformat/AVFormatContext.java
---- generated/org/ffmpeg/avformat/AVFormatContext.java	2016-09-19 18:36:51.174043577 +0200
-+++ src/org/ffmpeg/avformat/AVFormatContext.java	2016-09-19 18:55:11.651712630 +0200
+--- generated/org/ffmpeg/avformat/AVFormatContext.java	2016-09-20 16:11:22.650324125 +0200
++++ src/org/ffmpeg/avformat/AVFormatContext.java	2016-09-20 16:11:58.494891064 +0200
 @@ -7,6 +7,7 @@ import org.bridj.StructObject;
  import org.bridj.ann.Array;
  import org.bridj.ann.Field;
@@ -482,8 +512,8 @@ diff -pruN generated/org/ffmpeg/avformat/AVFormatContext.java src/org/ffmpeg/avf
  		super(pointer);
  	}
 diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avformat/AvformatLibrary.java
---- generated/org/ffmpeg/avformat/AvformatLibrary.java	2016-09-19 18:36:53.258077184 +0200
-+++ src/org/ffmpeg/avformat/AvformatLibrary.java	2016-09-19 18:57:04.517519341 +0200
+--- generated/org/ffmpeg/avformat/AvformatLibrary.java	2016-09-20 16:11:24.206348782 +0200
++++ src/org/ffmpeg/avformat/AvformatLibrary.java	2016-09-20 16:11:58.498891127 +0200
 @@ -417,11 +417,11 @@ public class AvformatLibrary {
  	};
  	/** <i>native declaration : libavformat/avformat.h:668</i> */
@@ -611,8 +641,8 @@ diff -pruN generated/org/ffmpeg/avformat/AvformatLibrary.java src/org/ffmpeg/avf
  	 * Guess the sample aspect ratio of a frame, based on both the stream and the<br>
  	 * frame aspect ratio.<br>
 diff -pruN generated/org/ffmpeg/avformat/AVOutputFormat.java src/org/ffmpeg/avformat/AVOutputFormat.java
---- generated/org/ffmpeg/avformat/AVOutputFormat.java	2016-09-19 18:36:50.594034224 +0200
-+++ src/org/ffmpeg/avformat/AVOutputFormat.java	2016-09-19 18:37:58.131123184 +0200
+--- generated/org/ffmpeg/avformat/AVOutputFormat.java	2016-09-20 16:11:22.110315567 +0200
++++ src/org/ffmpeg/avformat/AVOutputFormat.java	2016-09-20 16:11:58.498891127 +0200
 @@ -576,11 +576,11 @@ public class AVOutputFormat extends Stru
  	};
  	/** <i>native declaration : libavformat/avformat.h:172</i> */
@@ -628,8 +658,8 @@ diff -pruN generated/org/ffmpeg/avformat/AVOutputFormat.java src/org/ffmpeg/avfo
  	};
  	/** <i>native declaration : libavformat/avformat.h:173</i> */
 diff -pruN generated/org/ffmpeg/avformat/AVStream.java src/org/ffmpeg/avformat/AVStream.java
---- generated/org/ffmpeg/avformat/AVStream.java	2016-09-19 18:36:50.882038869 +0200
-+++ src/org/ffmpeg/avformat/AVStream.java	2016-09-19 18:37:58.135123248 +0200
+--- generated/org/ffmpeg/avformat/AVStream.java	2016-09-20 16:11:22.366319624 +0200
++++ src/org/ffmpeg/avformat/AVStream.java	2016-09-20 16:11:58.498891127 +0200
 @@ -6,6 +6,7 @@ import org.bridj.StructObject;
  import org.bridj.ann.Array;
  import org.bridj.ann.Field;
@@ -647,11 +677,11 @@ diff -pruN generated/org/ffmpeg/avformat/AVStream.java src/org/ffmpeg/avformat/A
   * <i>native declaration : libavformat/avformat.h:605</i><br>
   * This file was autogenerated by <a href="http://jnaerator.googlecode.com/">JNAerator</a>,<br>
 diff -pruN generated/org/ffmpeg/avresample/AvresampleLibrary.java src/org/ffmpeg/avresample/AvresampleLibrary.java
---- generated/org/ffmpeg/avresample/AvresampleLibrary.java	2016-09-19 18:36:46.177963012 +0200
-+++ src/org/ffmpeg/avresample/AvresampleLibrary.java	2016-09-19 18:37:58.135123248 +0200
+--- generated/org/ffmpeg/avresample/AvresampleLibrary.java	2016-09-20 16:11:19.102267885 +0200
++++ src/org/ffmpeg/avresample/AvresampleLibrary.java	2016-09-20 16:15:33.074446238 +0200
 @@ -148,21 +148,21 @@ public class AvresampleLibrary {
  	 * Original signature : <code>char* avresample_configuration()</code><br>
- 	 * <i>native declaration : libavresample/avresample.h:32</i>
+ 	 * <i>native declaration : libavresample/avresample.h:34</i>
  	 */
 -	public static Pointer<Byte > avresample_configuration() {
 -		return Pointer.pointerToAddress(avresample_configuration$2(), Byte.class);
@@ -664,7 +694,7 @@ diff -pruN generated/org/ffmpeg/avresample/AvresampleLibrary.java src/org/ffmpeg
  	/**
  	 * Return the libavresample license.<br>
  	 * Original signature : <code>char* avresample_license()</code><br>
- 	 * <i>native declaration : libavresample/avresample.h:37</i>
+ 	 * <i>native declaration : libavresample/avresample.h:39</i>
  	 */
 -	public static Pointer<Byte > avresample_license() {
 -		return Pointer.pointerToAddress(avresample_license$2(), Byte.class);
@@ -679,7 +709,7 @@ diff -pruN generated/org/ffmpeg/avresample/AvresampleLibrary.java src/org/ffmpeg
  	 * * Can be used in combination with AV_OPT_SEARCH_FAKE_OBJ for examining options<br>
 @@ -172,22 +172,22 @@ public class AvresampleLibrary {
  	 * Original signature : <code>AVClass* avresample_get_class()</code><br>
- 	 * <i>native declaration : libavresample/avresample.h:46</i>
+ 	 * <i>native declaration : libavresample/avresample.h:48</i>
  	 */
 -	public static Pointer<AVClass > avresample_get_class() {
 -		return Pointer.pointerToAddress(avresample_get_class$2(), AVClass.class);
@@ -693,12 +723,12 @@ diff -pruN generated/org/ffmpeg/avresample/AvresampleLibrary.java src/org/ffmpeg
  	 * Allocate AVAudioResampleContext and set options.<br>
  	 * * @return  allocated audio resample context, or NULL on failure<br>
  	 * Original signature : <code>AVAudioResampleContext* avresample_alloc_context()</code><br>
- 	 * <i>native declaration : libavresample/avresample.h:52</i>
+ 	 * <i>native declaration : libavresample/avresample.h:54</i>
  	 */
--	public static Pointer<AvresampleLibrary.AVAudioResampleContext > avresample_alloc_context() {
--		return Pointer.pointerToAddress(avresample_alloc_context$2(), AvresampleLibrary.AVAudioResampleContext.class);
-+	public static Pointer<AvresampleLibrary.AVAudioResampleContext > avresample__alloc_context() {
-+		return Pointer.pointerToAddress(avresample_alloc_context(), AvresampleLibrary.AVAudioResampleContext.class);
+-	public static Pointer<AVAudioResampleContext > avresample_alloc_context() {
+-		return Pointer.pointerToAddress(avresample_alloc_context$2(), AVAudioResampleContext.class);
++	public static Pointer<AVAudioResampleContext > avresample__alloc_context() {
++		return Pointer.pointerToAddress(avresample_alloc_context(), AVAudioResampleContext.class);
  	}
  	@Ptr 
 -	protected native static long avresample_alloc_context$2();
@@ -707,8 +737,8 @@ diff -pruN generated/org/ffmpeg/avresample/AvresampleLibrary.java src/org/ffmpeg
  	 * Initialize AVAudioResampleContext.<br>
  	 * @note The context must be configured using the AVOption API.<br>
 diff -pruN generated/org/ffmpeg/avutil/AVClass.java src/org/ffmpeg/avutil/AVClass.java
---- generated/org/ffmpeg/avutil/AVClass.java	2016-09-19 18:36:48.690003520 +0200
-+++ src/org/ffmpeg/avutil/AVClass.java	2016-09-19 18:37:58.139123313 +0200
+--- generated/org/ffmpeg/avutil/AVClass.java	2016-09-20 16:11:20.538290650 +0200
++++ src/org/ffmpeg/avutil/AVClass.java	2016-09-20 16:11:58.502891190 +0200
 @@ -269,11 +269,11 @@ public class AVClass extends StructObjec
  	};
  	/** <i>native declaration : libavutil/log.h:86</i> */
@@ -724,8 +754,8 @@ diff -pruN generated/org/ffmpeg/avutil/AVClass.java src/org/ffmpeg/avutil/AVClas
  	};
  	public AVClass() {
 diff -pruN generated/org/ffmpeg/avutil/AVFrame.java src/org/ffmpeg/avutil/AVFrame.java
---- generated/org/ffmpeg/avutil/AVFrame.java	2016-09-19 18:36:48.826005714 +0200
-+++ src/org/ffmpeg/avutil/AVFrame.java	2016-09-19 18:37:58.143123377 +0200
+--- generated/org/ffmpeg/avutil/AVFrame.java	2016-09-20 16:11:20.658292552 +0200
++++ src/org/ffmpeg/avutil/AVFrame.java	2016-09-20 16:11:58.502891190 +0200
 @@ -1,17 +1,22 @@
  package org.ffmpeg.avutil;
 +import java.util.List;
@@ -840,7 +870,7 @@ diff -pruN generated/org/ffmpeg/avutil/AVFrame.java src/org/ffmpeg/avutil/AVFram
  }
 diff -pruN generated/org/ffmpeg/avutil/AVUtil.java src/org/ffmpeg/avutil/AVUtil.java
 --- generated/org/ffmpeg/avutil/AVUtil.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/ffmpeg/avutil/AVUtil.java	2016-09-19 18:37:58.143123377 +0200
++++ src/org/ffmpeg/avutil/AVUtil.java	2016-09-20 16:11:58.502891190 +0200
 @@ -0,0 +1,44 @@
 +package org.ffmpeg.avutil;
 +
@@ -887,11 +917,11 @@ diff -pruN generated/org/ffmpeg/avutil/AVUtil.java src/org/ffmpeg/avutil/AVUtil.
 +
 +}
 diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/AvutilLibrary.java
---- generated/org/ffmpeg/avutil/AvutilLibrary.java	2016-09-19 18:36:50.126026677 +0200
-+++ src/org/ffmpeg/avutil/AvutilLibrary.java	2016-09-19 19:11:37.103477496 +0200
+--- generated/org/ffmpeg/avutil/AvutilLibrary.java	2016-09-20 16:11:21.698309037 +0200
++++ src/org/ffmpeg/avutil/AvutilLibrary.java	2016-09-20 16:11:58.506891253 +0200
 @@ -1458,12 +1458,12 @@ public class AvutilLibrary {
  	};
- 	/** <i>native declaration : libavutil/buffer.h:158</i> */
+ 	/** <i>native declaration : libavutil/buffer.h:160</i> */
  	public static abstract class av_buffer_pool_init_alloc_callback extends Callback<av_buffer_pool_init_alloc_callback > {
 -		public Pointer<AVBufferRef > apply(int size) {
 -			return Pointer.pointerToAddress(apply$2(size), AVBufferRef.class);
@@ -905,7 +935,7 @@ diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/
 +			return Pointer.getPeer(_apply(size));
  		}
  	};
- 	/** <i>native declaration : libavutil/buffer.h:159</i> */
+ 	/** <i>native declaration : libavutil/buffer.h:161</i> */
 @@ -1498,31 +1498,31 @@ public class AvutilLibrary {
  	 * Original signature : <code>char* av_version_info()</code><br>
  	 * <i>native declaration : libavutil/avutil.h:11</i>
@@ -1096,7 +1126,7 @@ diff -pruN generated/org/ffmpeg/avutil/AvutilLibrary.java src/org/ffmpeg/avutil/
  	 * * @param[in]  index   index in an internal list, starting at 0<br>
 diff -pruN generated/org/ffmpeg/FFMPeg.java src/org/ffmpeg/FFMPeg.java
 --- generated/org/ffmpeg/FFMPeg.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/ffmpeg/FFMPeg.java	2016-09-19 18:37:58.155123571 +0200
++++ src/org/ffmpeg/FFMPeg.java	2016-09-20 16:11:58.506891253 +0200
 @@ -0,0 +1,37 @@
 +package org.ffmpeg;
 +
@@ -1136,8 +1166,8 @@ diff -pruN generated/org/ffmpeg/FFMPeg.java src/org/ffmpeg/FFMPeg.java
 +	
 +}
 diff -pruN generated/org/ffmpeg/postproc/PostprocLibrary.java src/org/ffmpeg/postproc/PostprocLibrary.java
---- generated/org/ffmpeg/postproc/PostprocLibrary.java	2016-09-19 18:36:53.318078151 +0200
-+++ src/org/ffmpeg/postproc/PostprocLibrary.java	2016-09-19 18:37:58.155123571 +0200
+--- generated/org/ffmpeg/postproc/PostprocLibrary.java	2016-09-20 16:11:24.238349289 +0200
++++ src/org/ffmpeg/postproc/PostprocLibrary.java	2016-09-20 16:11:58.506891253 +0200
 @@ -82,21 +82,21 @@ public class PostprocLibrary {
  	 * Original signature : <code>char* postproc_configuration()</code><br>
  	 * <i>native declaration : libpostproc/postprocess.h:9</i>
@@ -1182,11 +1212,11 @@ diff -pruN generated/org/ffmpeg/postproc/PostprocLibrary.java src/org/ffmpeg/pos
  	 * Original signature : <code>void pp_free_context(pp_context*)</code><br>
  	 * <i>native declaration : libpostproc/postprocess.h:18</i>
 diff -pruN generated/org/ffmpeg/swresample/SwresampleLibrary.java src/org/ffmpeg/swresample/SwresampleLibrary.java
---- generated/org/ffmpeg/swresample/SwresampleLibrary.java	2016-09-19 18:36:45.865957980 +0200
-+++ src/org/ffmpeg/swresample/SwresampleLibrary.java	2016-09-19 18:37:58.163123700 +0200
+--- generated/org/ffmpeg/swresample/SwresampleLibrary.java	2016-09-20 16:11:18.858264016 +0200
++++ src/org/ffmpeg/swresample/SwresampleLibrary.java	2016-09-20 16:14:08.357056664 +0200
 @@ -146,11 +146,11 @@ public class SwresampleLibrary {
  	 * Original signature : <code>AVClass* swr_get_class()</code><br>
- 	 * <i>native declaration : libswresample/swresample.h:45</i>
+ 	 * <i>native declaration : libswresample/swresample.h:47</i>
  	 */
 -	public static Pointer<AVClass > swr_get_class() {
 -		return Pointer.pointerToAddress(swr_get_class$2(), AVClass.class);
@@ -1201,12 +1231,12 @@ diff -pruN generated/org/ffmpeg/swresample/SwresampleLibrary.java src/org/ffmpeg
  	 * * If you use this function you will need to set the parameters (manually or<br>
 @@ -160,11 +160,11 @@ public class SwresampleLibrary {
  	 * Original signature : <code>SwrContext* swr_alloc()</code><br>
- 	 * <i>native declaration : libswresample/swresample.h:54</i>
+ 	 * <i>native declaration : libswresample/swresample.h:56</i>
  	 */
--	public static Pointer<SwresampleLibrary.SwrContext > swr_alloc() {
--		return Pointer.pointerToAddress(swr_alloc$2(), SwresampleLibrary.SwrContext.class);
-+	public static Pointer<SwresampleLibrary.SwrContext > swr__alloc() {
-+		return Pointer.pointerToAddress(swr_alloc(), SwresampleLibrary.SwrContext.class);
+-	public static Pointer<SwrContext > swr_alloc() {
+-		return Pointer.pointerToAddress(swr_alloc$2(), SwrContext.class);
++	public static Pointer<SwrContext > swr__alloc() {
++		return Pointer.pointerToAddress(swr_alloc(), SwrContext.class);
  	}
  	@Ptr 
 -	protected native static long swr_alloc$2();
@@ -1216,7 +1246,7 @@ diff -pruN generated/org/ffmpeg/swresample/SwresampleLibrary.java src/org/ffmpeg
  	 * @note The context must be configured using the AVOption API.<br>
 @@ -421,22 +421,22 @@ public class SwresampleLibrary {
  	 * Original signature : <code>char* swresample_configuration()</code><br>
- 	 * <i>native declaration : libswresample/swresample.h:252</i>
+ 	 * <i>native declaration : libswresample/swresample.h:254</i>
  	 */
 -	public static Pointer<Byte > swresample_configuration() {
 -		return Pointer.pointerToAddress(swresample_configuration$2(), Byte.class);
@@ -1230,7 +1260,7 @@ diff -pruN generated/org/ffmpeg/swresample/SwresampleLibrary.java src/org/ffmpeg
  	 * Return the swr license.<br>
  	 * * @returns     the license of libswresample, determined at build-time<br>
  	 * Original signature : <code>char* swresample_license()</code><br>
- 	 * <i>native declaration : libswresample/swresample.h:258</i>
+ 	 * <i>native declaration : libswresample/swresample.h:260</i>
  	 */
 -	public static Pointer<Byte > swresample_license() {
 -		return Pointer.pointerToAddress(swresample_license$2(), Byte.class);
@@ -1244,8 +1274,8 @@ diff -pruN generated/org/ffmpeg/swresample/SwresampleLibrary.java src/org/ffmpeg
  	 * Convert the samples in the input AVFrame and write them to the output AVFrame.<br>
  	 * * Input and output AVFrames must have channel_layout, sample_rate and format set.<br>
 diff -pruN generated/org/ffmpeg/swscale/SwscaleLibrary.java src/org/ffmpeg/swscale/SwscaleLibrary.java
---- generated/org/ffmpeg/swscale/SwscaleLibrary.java	2016-09-19 18:36:47.077977525 +0200
-+++ src/org/ffmpeg/swscale/SwscaleLibrary.java	2016-09-19 18:48:57.329718299 +0200
+--- generated/org/ffmpeg/swscale/SwscaleLibrary.java	2016-09-20 16:11:19.334271563 +0200
++++ src/org/ffmpeg/swscale/SwscaleLibrary.java	2016-09-20 16:11:58.510891316 +0200
 @@ -120,21 +120,21 @@ public class SwscaleLibrary {
  	 * Original signature : <code>char* swscale_configuration()</code><br>
  	 * <i>native declaration : libswscale/swscale.h:11</i>
@@ -1392,7 +1422,7 @@ diff -pruN generated/org/ffmpeg/swscale/SwscaleLibrary.java src/org/ffmpeg/swsca
  		
 diff -pruN generated/org/ffmpeg/util/AlignmentCustomizer.java src/org/ffmpeg/util/AlignmentCustomizer.java
 --- generated/org/ffmpeg/util/AlignmentCustomizer.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/ffmpeg/util/AlignmentCustomizer.java	2016-09-19 18:37:58.167123764 +0200
++++ src/org/ffmpeg/util/AlignmentCustomizer.java	2016-09-20 16:11:58.510891316 +0200
 @@ -0,0 +1,26 @@
 +package org.ffmpeg.util;
 +
@@ -1422,7 +1452,7 @@ diff -pruN generated/org/ffmpeg/util/AlignmentCustomizer.java src/org/ffmpeg/uti
 +}
 diff -pruN generated/test/AVInfo.java src/test/AVInfo.java
 --- generated/test/AVInfo.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/test/AVInfo.java	2016-09-19 18:37:58.167123764 +0200
++++ src/test/AVInfo.java	2016-09-20 16:11:58.510891316 +0200
 @@ -0,0 +1,64 @@
 +package test;
 +
@@ -1490,7 +1520,7 @@ diff -pruN generated/test/AVInfo.java src/test/AVInfo.java
 +}
 diff -pruN generated/test/Demuxing.java src/test/Demuxing.java
 --- generated/test/Demuxing.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/test/Demuxing.java	2016-09-19 18:37:58.167123764 +0200
++++ src/test/Demuxing.java	2016-09-20 16:11:58.510891316 +0200
 @@ -0,0 +1,390 @@
 +package test;
 +
@@ -1884,7 +1914,7 @@ diff -pruN generated/test/Demuxing.java src/test/Demuxing.java
 +}
 diff -pruN generated/test/StructInfo.java src/test/StructInfo.java
 --- generated/test/StructInfo.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/test/StructInfo.java	2016-09-19 18:37:58.167123764 +0200
++++ src/test/StructInfo.java	2016-09-20 16:11:58.510891316 +0200
 @@ -0,0 +1,55 @@
 +package test;
 +
