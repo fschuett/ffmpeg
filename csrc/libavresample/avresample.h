@@ -103,7 +103,9 @@
 
 #define AVRESAMPLE_MAX_CHANNELS 32
 
-typedef struct AVAudioResampleContext AVAudioResampleContext;
+typedef struct AVAudioResampleContext {
+    int dummy;
+} AVAudioResampleContext;
 
 /** Mixing Coefficient Types */
 enum AVMixCoeffType {

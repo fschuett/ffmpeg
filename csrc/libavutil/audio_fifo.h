@@ -46,7 +46,9 @@
  * - Supports multiple channels with either planar or packed sample format.
  * - Automatic reallocation when writing to a full buffer.
  */
-typedef struct AVAudioFifo AVAudioFifo;
+typedef struct AVAudioFifo {
+    int dummy;
+} AVAudioFifo;
 
 /**
  * Free an AVAudioFifo.

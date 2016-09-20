@@ -38,7 +38,9 @@ typedef struct FFTComplex {
     FFTSample re, im;
 } FFTComplex;
 
-typedef struct FFTContext FFTContext;
+typedef struct FFTContext {
+    int dummy;
+} FFTContext;
 
 /**
  * Set up a complex FFT.
@@ -75,7 +77,9 @@ enum RDFTransformType {
     DFT_C2R,
 };
 
-typedef struct RDFTContext RDFTContext;
+typedef struct RDFTContext {
+    int dummy;
+} RDFTContext;
 
 /**
  * Set up a real FFT.

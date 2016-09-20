@@ -5225,7 +5225,9 @@ int avcodec_encode_subtitle(AVCodecContext *avctx, uint8_t *buf, int buf_size,
 struct ReSampleContext;
 struct AVResampleContext;
 
-typedef struct ReSampleContext ReSampleContext;
+typedef struct ReSampleContext {
+    int dummy;
+} ReSampleContext;
 
 /**
  *  Initialize audio resampling context.
@@ -5590,7 +5592,9 @@ typedef struct AVBitStreamFilterContext {
 } AVBitStreamFilterContext;
 #endif
 
-typedef struct AVBSFInternal AVBSFInternal;
+typedef struct AVBSFInternal {
+    int dummy;
+} AVBSFInternal;
 
 /**
  * The bitstream filter state.

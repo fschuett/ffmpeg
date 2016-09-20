@@ -62,8 +62,12 @@ const char *avfilter_configuration(void);
  */
 const char *avfilter_license(void);
 
-typedef struct AVFilterContext AVFilterContext;
-typedef struct AVFilterLink    AVFilterLink;
+typedef struct AVFilterContext {
+    int dummy;
+} AVFilterContext;
+typedef struct AVFilterLink {
+    int dummy;
+} AVFilterLink;
 typedef struct AVFilterPad {
   int dummy;
 } AVFilterPad;

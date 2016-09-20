@@ -237,7 +237,9 @@ int av_buffer_realloc(AVBufferRef **buf, int size);
  * directly. It is allocated with av_buffer_pool_init() and freed with
  * av_buffer_pool_uninit().
  */
-typedef struct AVBufferPool AVBufferPool;
+typedef struct AVBufferPool {
+    int dummy;
+} AVBufferPool;
 
 /**
  * Allocate and initialize a buffer pool.

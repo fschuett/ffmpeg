@@ -19,7 +19,9 @@
 #ifndef AVUTIL_THREADMESSAGE_H
 #define AVUTIL_THREADMESSAGE_H
 
-typedef struct AVThreadMessageQueue AVThreadMessageQueue;
+typedef struct AVThreadMessageQueue {
+    int dummy;
+} AVThreadMessageQueue;
 
 typedef enum AVThreadMessageFlags {
 
