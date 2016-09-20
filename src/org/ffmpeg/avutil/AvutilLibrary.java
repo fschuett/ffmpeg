@@ -1447,7 +1447,7 @@ public class AvutilLibrary {
 			apply(Pointer.pointerToAddress(voidPtr1), int1, Pointer.pointerToAddress(charPtr1, Byte.class), va_list1);
 		}
 	};
-	/** <i>native declaration : libavutil/buffer.h:157</i> */
+	/** <i>native declaration : libavutil/buffer.h:159</i> */
 	public static abstract class av_buffer_create_free_callback extends Callback<av_buffer_create_free_callback > {
 		public void apply(Pointer<? > opaque, Pointer<Byte > data) {
 			apply(Pointer.getPeer(opaque), Pointer.getPeer(data));
@@ -1456,7 +1456,7 @@ public class AvutilLibrary {
 			apply(Pointer.pointerToAddress(opaque), Pointer.pointerToAddress(data, Byte.class));
 		}
 	};
-	/** <i>native declaration : libavutil/buffer.h:158</i> */
+	/** <i>native declaration : libavutil/buffer.h:160</i> */
 	public static abstract class av_buffer_pool_init_alloc_callback extends Callback<av_buffer_pool_init_alloc_callback > {
 		public Pointer<AVBufferRef > _apply(int size) {
 			return Pointer.pointerToAddress(apply(size), AVBufferRef.class);
@@ -1466,7 +1466,7 @@ public class AvutilLibrary {
 			return Pointer.getPeer(_apply(size));
 		}
 	};
-	/** <i>native declaration : libavutil/buffer.h:159</i> */
+	/** <i>native declaration : libavutil/buffer.h:161</i> */
 	public static abstract class av_buffer_pool_init2_alloc_callback extends Callback<av_buffer_pool_init2_alloc_callback > {
 		public Pointer<AVBufferRef > apply(Pointer<? > opaque, int size) {
 			return Pointer.pointerToAddress(apply(Pointer.getPeer(opaque), size), AVBufferRef.class);
@@ -1476,7 +1476,7 @@ public class AvutilLibrary {
 			return Pointer.getPeer(apply(Pointer.pointerToAddress(opaque), size));
 		}
 	};
-	/** <i>native declaration : libavutil/buffer.h:160</i> */
+	/** <i>native declaration : libavutil/buffer.h:162</i> */
 	public static abstract class av_buffer_pool_init2_pool_free_callback extends Callback<av_buffer_pool_init2_pool_free_callback > {
 		public void apply(Pointer<? > opaque) {
 			apply(Pointer.getPeer(opaque));
@@ -2533,10 +2533,10 @@ public class AvutilLibrary {
 	 * (av_buffer_alloc()).<br>
 	 * @return newly created buffer pool on success, NULL on error.<br>
 	 * Original signature : <code>AVBufferPool* av_buffer_pool_init(int, av_buffer_pool_init_alloc_callback*)</code><br>
-	 * <i>native declaration : libavutil/buffer.h:126</i>
+	 * <i>native declaration : libavutil/buffer.h:128</i>
 	 */
-	public static Pointer<AvutilLibrary.AVBufferPool > av_buffer_pool_init(int size, Pointer<AvutilLibrary.av_buffer_pool_init_alloc_callback > alloc) {
-		return Pointer.pointerToAddress(av_buffer_pool_init(size, Pointer.getPeer(alloc)), AvutilLibrary.AVBufferPool.class);
+	public static Pointer<AVBufferPool > av_buffer_pool_init(int size, Pointer<AvutilLibrary.av_buffer_pool_init_alloc_callback > alloc) {
+		return Pointer.pointerToAddress(av_buffer_pool_init(size, Pointer.getPeer(alloc)), AVBufferPool.class);
 	}
 	@Ptr 
 	protected native static long av_buffer_pool_init(int size, @Ptr long alloc);
@@ -2552,10 +2552,10 @@ public class AvutilLibrary {
 	 *                  freed. It is intended to uninitialize the user opaque data.<br>
 	 * @return newly created buffer pool on success, NULL on error.<br>
 	 * Original signature : <code>AVBufferPool* av_buffer_pool_init2(int, void*, av_buffer_pool_init2_alloc_callback*, av_buffer_pool_init2_pool_free_callback*)</code><br>
-	 * <i>native declaration : libavutil/buffer.h:140</i>
+	 * <i>native declaration : libavutil/buffer.h:142</i>
 	 */
-	public static Pointer<AvutilLibrary.AVBufferPool > av_buffer_pool_init2(int size, Pointer<? > opaque, Pointer<AvutilLibrary.av_buffer_pool_init2_alloc_callback > alloc, Pointer<AvutilLibrary.av_buffer_pool_init2_pool_free_callback > pool_free) {
-		return Pointer.pointerToAddress(av_buffer_pool_init2(size, Pointer.getPeer(opaque), Pointer.getPeer(alloc), Pointer.getPeer(pool_free)), AvutilLibrary.AVBufferPool.class);
+	public static Pointer<AVBufferPool > av_buffer_pool_init2(int size, Pointer<? > opaque, Pointer<AvutilLibrary.av_buffer_pool_init2_alloc_callback > alloc, Pointer<AvutilLibrary.av_buffer_pool_init2_pool_free_callback > pool_free) {
+		return Pointer.pointerToAddress(av_buffer_pool_init2(size, Pointer.getPeer(opaque), Pointer.getPeer(alloc), Pointer.getPeer(pool_free)), AVBufferPool.class);
 	}
 	@Ptr 
 	protected native static long av_buffer_pool_init2(int size, @Ptr long opaque, @Ptr long alloc, @Ptr long pool_free);
@@ -2566,9 +2566,9 @@ public class AvutilLibrary {
 	 * in use.<br>
 	 * * @param pool pointer to the pool to be freed. It will be set to NULL.<br>
 	 * Original signature : <code>void av_buffer_pool_uninit(AVBufferPool**)</code><br>
-	 * <i>native declaration : libavutil/buffer.h:149</i>
+	 * <i>native declaration : libavutil/buffer.h:151</i>
 	 */
-	public static void av_buffer_pool_uninit(Pointer<Pointer<AvutilLibrary.AVBufferPool > > pool) {
+	public static void av_buffer_pool_uninit(Pointer<Pointer<AVBufferPool > > pool) {
 		av_buffer_pool_uninit(Pointer.getPeer(pool));
 	}
 	protected native static void av_buffer_pool_uninit(@Ptr long pool);
@@ -2577,9 +2577,9 @@ public class AvutilLibrary {
 	 * This function may be called simultaneously from multiple threads.<br>
 	 * * @return a reference to the new buffer on success, NULL on error.<br>
 	 * Original signature : <code>AVBufferRef* av_buffer_pool_get(AVBufferPool*)</code><br>
-	 * <i>native declaration : libavutil/buffer.h:156</i>
+	 * <i>native declaration : libavutil/buffer.h:158</i>
 	 */
-	public static Pointer<AVBufferRef > av_buffer_pool_get(Pointer<AvutilLibrary.AVBufferPool > pool) {
+	public static Pointer<AVBufferRef > av_buffer_pool_get(Pointer<AVBufferPool > pool) {
 		return Pointer.pointerToAddress(av_buffer_pool_get(Pointer.getPeer(pool)), AVBufferRef.class);
 	}
 	@Ptr 
@@ -4497,10 +4497,6 @@ public class AvutilLibrary {
 	protected native static int av_get_standard_channel_layout(int index, @Ptr long layout, @Ptr long name);
 	/** Undefined type */
 	public static interface AVBPrint {
-		
-	};
-	/** Undefined type */
-	public static interface AVBufferPool {
 		
 	};
 }
