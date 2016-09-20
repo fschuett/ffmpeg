@@ -1,6 +1,6 @@
 ffmpeg-3.1
 ==========
-parts of a java library interface to access ffmpeg 3.1 c library.
+a java library interface to access ffmpeg 3.1 c library.
 
 example demuxing.c -> demuxing.java compiles
 
