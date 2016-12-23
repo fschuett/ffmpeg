@@ -28,8 +28,8 @@
 #include "libavutil/version.h"
 
 #define LIBAVCODEC_VERSION_MAJOR  57
-#define LIBAVCODEC_VERSION_MINOR  48
-#define LIBAVCODEC_VERSION_MICRO 101
+#define LIBAVCODEC_VERSION_MINOR  64
+#define LIBAVCODEC_VERSION_MICRO 100
 
 #define LIBAVCODEC_VERSION_INT  AV_VERSION_INT(LIBAVCODEC_VERSION_MAJOR, \
                                                LIBAVCODEC_VERSION_MINOR, \
@@ -39,7 +39,7 @@
                                            LIBAVCODEC_VERSION_MICRO)
 #define LIBAVCODEC_BUILD        LIBAVCODEC_VERSION_INT
 
-#define LIBAVCODEC_IDENT        "Lavc57.24.102"
+#define LIBAVCODEC_IDENT        "Lavc57.64.100"
 
 /**
  * FF_API_* defines may be placed below to indicate public API that will be
