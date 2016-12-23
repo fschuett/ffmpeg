@@ -47,7 +47,7 @@ public class AvfilterLibrary {
 	 * const int64_t tmp = a.num * (int64_t)b.den - b.num * (int64_t)a.den;
 	 */
 	/** <i>native declaration : ./libavfilter/version.h</i> */
-	public static final int LIBAVFILTER_VERSION_INT = (int)((6) << 16 | (47) << 8 | (100));
+	public static final int LIBAVFILTER_VERSION_INT = (int)((6) << 16 | (65) << 8 | (100));
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
 	public static final int AVFILTER_FLAG_SLICE_THREADS = (int)(1 << 2);
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
@@ -64,15 +64,15 @@ public class AvfilterLibrary {
 	public static final boolean FF_API_NOCONST_GET_NAME = (boolean)(6 < 7);
 	/**
 	 * define<br>
-	 * Conversion Error : 6.47.<br>
+	 * Conversion Error : 6.65.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libavfilter/version.h:0</i><br>
-	 * 6.47.
+	 * 6.65.
 	 */
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
 	public static final int AVFILTER_FLAG_SUPPORT_TIMELINE = (int)((1 << 16) | (1 << 17));
 	/** <i>native declaration : ./libavfilter/version.h</i> */
-	public static final int LIBAVFILTER_BUILD = (int)((6) << 16 | (47) << 8 | (100));
+	public static final int LIBAVFILTER_BUILD = (int)((6) << 16 | (65) << 8 | (100));
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
 	public static final int AVFILTER_FLAG_DYNAMIC_OUTPUTS = (int)(1 << 1);
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
@@ -80,7 +80,7 @@ public class AvfilterLibrary {
 	/** <i>native declaration : ./libavfilter/version.h</i> */
 	public static final int LIBAVFILTER_VERSION_MICRO = (int)100;
 	/** <i>native declaration : ./libavfilter/version.h</i> */
-	public static final String LIBAVFILTER_IDENT = (String)"Lavfi6.31.100";
+	public static final String LIBAVFILTER_IDENT = (String)"Lavfi6.65.100";
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
 	public static final int AVFILTER_CMD_FLAG_ONE = (int)1;
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
@@ -98,7 +98,7 @@ public class AvfilterLibrary {
 	/** <i>native declaration : libavfilter/avfilter.h</i> */
 	public static final int AVFILTER_FLAG_SUPPORT_TIMELINE_INTERNAL = (int)(1 << 17);
 	/** <i>native declaration : ./libavfilter/version.h</i> */
-	public static final int LIBAVFILTER_VERSION_MINOR = (int)47;
+	public static final int LIBAVFILTER_VERSION_MINOR = (int)65;
 	/**
 	 * A function pointer passed to the @ref AVFilterGraph.execute callback to be<br>
 	 * executed multiple times, possibly in parallel.<br>
@@ -108,7 +108,7 @@ public class AvfilterLibrary {
 	 * @param jobnr the index of the job being executed<br>
 	 * @param nb_jobs the total number of jobs<br>
 	 * * @return 0 on success, a negative AVERROR on error<br>
-	 * <i>native declaration : libavfilter/avfilter.h:558</i>
+	 * <i>native declaration : libavfilter/avfilter.h:564</i>
 	 */
 	public static abstract class avfilter_action_func extends Callback<avfilter_action_func > {
 		public int apply(Pointer<AVFilterContext > ctx, Pointer<? > arg, int jobnr, int nb_jobs) {
@@ -127,7 +127,7 @@ public class AvfilterLibrary {
 	 *            invocation of func<br>
 	 * @param nb_jobs the number of jobs to execute<br>
 	 * * @return 0 on success, a negative AVERROR on error<br>
-	 * <i>native declaration : libavfilter/avfilter.h:569</i>
+	 * <i>native declaration : libavfilter/avfilter.h:575</i>
 	 */
 	public static abstract class avfilter_execute_func extends Callback<avfilter_execute_func > {
 		public int apply(Pointer<AVFilterContext > ctx, Pointer<AvfilterLibrary.avfilter_action_func > func, Pointer<? > arg, Pointer<Integer > ret, int nb_jobs) {
@@ -208,7 +208,7 @@ public class AvfilterLibrary {
 	 * @param dstpad index of the input pad on the destination filter<br>
 	 * @return       zero on success<br>
 	 * Original signature : <code>int avfilter_link(AVFilterContext*, unsigned, AVFilterContext*, unsigned)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:399</i>
+	 * <i>native declaration : libavfilter/avfilter.h:405</i>
 	 */
 	public static int avfilter_link(Pointer<AVFilterContext > src, int srcpad, Pointer<AVFilterContext > dst, int dstpad) {
 		return avfilter_link(Pointer.getPeer(src), srcpad, Pointer.getPeer(dst), dstpad);
@@ -217,7 +217,7 @@ public class AvfilterLibrary {
 	/**
 	 * Free the link in *link, and set its pointer to NULL.<br>
 	 * Original signature : <code>void avfilter_link_free(AVFilterLink**)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:404</i>
+	 * <i>native declaration : libavfilter/avfilter.h:410</i>
 	 */
 	public static void avfilter_link_free(Pointer<Pointer<AVFilterLink > > link) {
 		avfilter_link_free(Pointer.getPeer(link));
@@ -226,7 +226,7 @@ public class AvfilterLibrary {
 	/**
 	 * Get the number of channels of a link.<br>
 	 * Original signature : <code>int avfilter_link_get_channels(AVFilterLink*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:409</i>
+	 * <i>native declaration : libavfilter/avfilter.h:415</i>
 	 */
 	public static int avfilter_link_get_channels(Pointer<AVFilterLink > link) {
 		return avfilter_link_get_channels(Pointer.getPeer(link));
@@ -237,7 +237,7 @@ public class AvfilterLibrary {
 	 * @deprecated applications are not supposed to mess with links, they should<br>
 	 * close the sinks.<br>
 	 * Original signature : <code>void avfilter_link_set_closed(AVFilterLink*, int)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:416</i>
+	 * <i>native declaration : libavfilter/avfilter.h:422</i>
 	 */
 	public static void avfilter_link_set_closed(Pointer<AVFilterLink > link, int closed) {
 		avfilter_link_set_closed(Pointer.getPeer(link), closed);
@@ -248,7 +248,7 @@ public class AvfilterLibrary {
 	 * * @param filter the filter to negotiate the properties for its inputs<br>
 	 * @return       zero on successful negotiation<br>
 	 * Original signature : <code>int avfilter_config_links(AVFilterContext*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:423</i>
+	 * <i>native declaration : libavfilter/avfilter.h:429</i>
 	 */
 	public static int avfilter_config_links(Pointer<AVFilterContext > filter) {
 		return avfilter_config_links(Pointer.getPeer(filter));
@@ -258,7 +258,7 @@ public class AvfilterLibrary {
 	 * Make the filter instance process a command.<br>
 	 * It is recommended to use avfilter_graph_send_command().<br>
 	 * Original signature : <code>int avfilter_process_command(AVFilterContext*, const char*, const char*, char*, int, int)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:429</i>
+	 * <i>native declaration : libavfilter/avfilter.h:435</i>
 	 */
 	public static int avfilter_process_command(Pointer<AVFilterContext > filter, Pointer<Byte > cmd, Pointer<Byte > arg, Pointer<Byte > res, int res_len, int flags) {
 		return avfilter_process_command(Pointer.getPeer(filter), Pointer.getPeer(cmd), Pointer.getPeer(arg), Pointer.getPeer(res), res_len, flags);
@@ -267,13 +267,13 @@ public class AvfilterLibrary {
 	/**
 	 * Initialize the filter system. Register all builtin filters.<br>
 	 * Original signature : <code>void avfilter_register_all()</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:434</i>
+	 * <i>native declaration : libavfilter/avfilter.h:440</i>
 	 */
 	public static native void avfilter_register_all();
 	/**
 	 * Uninitialize the filter system. Unregister all filters.<br>
 	 * Original signature : <code>void avfilter_uninit()</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:439</i>
+	 * <i>native declaration : libavfilter/avfilter.h:445</i>
 	 */
 	public static native void avfilter_uninit();
 	/**
@@ -285,7 +285,7 @@ public class AvfilterLibrary {
 	 * @return 0 if the registration was successful, a negative value<br>
 	 * otherwise<br>
 	 * Original signature : <code>int avfilter_register(AVFilter*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:450</i>
+	 * <i>native declaration : libavfilter/avfilter.h:456</i>
 	 */
 	public static int avfilter_register(Pointer<AVFilter > filter) {
 		return avfilter_register(Pointer.getPeer(filter));
@@ -293,7 +293,7 @@ public class AvfilterLibrary {
 	protected native static int avfilter_register(@Ptr long filter);
 	/**
 	 * Original signature : <code>AVFilter* avfilter_get_by_name(const char*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:452</i>
+	 * <i>native declaration : libavfilter/avfilter.h:458</i>
 	 */
 	public static Pointer<AVFilter > avfilter_get_by_name(Pointer<Byte > name) {
 		return Pointer.pointerToAddress(avfilter_get_by_name(Pointer.getPeer(name)), AVFilter.class);
@@ -305,7 +305,7 @@ public class AvfilterLibrary {
 	 * @return If prev is non-NULL, next registered filter after prev or NULL if<br>
 	 * prev is the last filter. If prev is NULL, return the first registered filter.<br>
 	 * Original signature : <code>AVFilter* avfilter_next(const AVFilter*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:459</i>
+	 * <i>native declaration : libavfilter/avfilter.h:465</i>
 	 */
 	public static Pointer<AVFilter > avfilter_next(Pointer<AVFilter > prev) {
 		return Pointer.pointerToAddress(avfilter_next(Pointer.getPeer(prev)), AVFilter.class);
@@ -319,7 +319,7 @@ public class AvfilterLibrary {
 	 * was already reached.<br>
 	 * @deprecated use avfilter_next()<br>
 	 * Original signature : <code>AVFilter** av_filter_next(AVFilter**)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:468</i>
+	 * <i>native declaration : libavfilter/avfilter.h:474</i>
 	 */
 	public static Pointer<Pointer<AVFilter > > av_filter_next(Pointer<Pointer<AVFilter > > filter) {
 		return Pointer.pointerToAddress(av_filter_next(Pointer.getPeer(filter)), DefaultParameterizedType.paramType(Pointer.class, AVFilter.class));
@@ -335,7 +335,7 @@ public class AvfilterLibrary {
 	 * @return >= 0 in case of success, a negative error code otherwise<br>
 	 * @deprecated use avfilter_graph_alloc_filter() instead<br>
 	 * Original signature : <code>int avfilter_open(AVFilterContext**, AVFilter*, const char*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:479</i>
+	 * <i>native declaration : libavfilter/avfilter.h:485</i>
 	 */
 	public static int avfilter_open(Pointer<Pointer<AVFilterContext > > filter_ctx, Pointer<AVFilter > filter, Pointer<Byte > inst_name) {
 		return avfilter_open(Pointer.getPeer(filter_ctx), Pointer.getPeer(filter), Pointer.getPeer(inst_name));
@@ -350,7 +350,7 @@ public class AvfilterLibrary {
 	 *               of this parameter varies by filter.<br>
 	 * @return       zero on success<br>
 	 * Original signature : <code>int avfilter_init_filter(AVFilterContext*, const char*, void*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:490</i>
+	 * <i>native declaration : libavfilter/avfilter.h:496</i>
 	 */
 	public static int avfilter_init_filter(Pointer<AVFilterContext > filter, Pointer<Byte > args, Pointer<? > opaque) {
 		return avfilter_init_filter(Pointer.getPeer(filter), Pointer.getPeer(args), Pointer.getPeer(opaque));
@@ -365,7 +365,7 @@ public class AvfilterLibrary {
 	 *             AVOptions API or there are no options that need to be set.<br>
 	 * @return 0 on success, a negative AVERROR on failure<br>
 	 * Original signature : <code>int avfilter_init_str(AVFilterContext*, const char*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:501</i>
+	 * <i>native declaration : libavfilter/avfilter.h:507</i>
 	 */
 	public static int avfilter_init_str(Pointer<AVFilterContext > ctx, Pointer<Byte > args) {
 		return avfilter_init_str(Pointer.getPeer(ctx), Pointer.getPeer(args));
@@ -389,7 +389,7 @@ public class AvfilterLibrary {
 	 * this function will leave those extra options in the options AVDictionary and<br>
 	 * continue as usual.<br>
 	 * Original signature : <code>int avfilter_init_dict(AVFilterContext*, AVDictionary**)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:521</i>
+	 * <i>native declaration : libavfilter/avfilter.h:527</i>
 	 */
 	public static int avfilter_init_dict(Pointer<AVFilterContext > ctx, Pointer<Pointer<AVDictionary > > options) {
 		return avfilter_init_dict(Pointer.getPeer(ctx), Pointer.getPeer(options));
@@ -400,7 +400,7 @@ public class AvfilterLibrary {
 	 * filtergraph's list of filters.<br>
 	 * * @param filter the filter to free<br>
 	 * Original signature : <code>void avfilter_free(AVFilterContext*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:528</i>
+	 * <i>native declaration : libavfilter/avfilter.h:534</i>
 	 */
 	public static void avfilter_free(Pointer<AVFilterContext > filter) {
 		avfilter_free(Pointer.getPeer(filter));
@@ -414,7 +414,7 @@ public class AvfilterLibrary {
 	 * @param filt_dstpad_idx the output pad on the filter to connect<br>
 	 * @return     zero on success<br>
 	 * Original signature : <code>int avfilter_insert_filter(AVFilterLink*, AVFilterContext*, unsigned, unsigned)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:538</i>
+	 * <i>native declaration : libavfilter/avfilter.h:544</i>
 	 */
 	public static int avfilter_insert_filter(Pointer<AVFilterLink > link, Pointer<AVFilterContext > filt, int filt_srcpad_idx, int filt_dstpad_idx) {
 		return avfilter_insert_filter(Pointer.getPeer(link), Pointer.getPeer(filt), filt_srcpad_idx, filt_dstpad_idx);
@@ -424,7 +424,7 @@ public class AvfilterLibrary {
 	 * @return AVClass for AVFilterContext.<br>
 	 * * @see av_opt_find().<br>
 	 * Original signature : <code>AVClass* avfilter_get_class()</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:544</i>
+	 * <i>native declaration : libavfilter/avfilter.h:550</i>
 	 */
 	public static Pointer<AVClass > avfilter__get_class() {
 		return Pointer.pointerToAddress(avfilter_get_class(), AVClass.class);
@@ -435,7 +435,7 @@ public class AvfilterLibrary {
 	 * Allocate a filter graph.<br>
 	 * * @return the allocated filter graph on success or NULL.<br>
 	 * Original signature : <code>AVFilterGraph* avfilter_graph_alloc()</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:625</i>
+	 * <i>native declaration : libavfilter/avfilter.h:631</i>
 	 */
 	public static Pointer<AVFilterGraph > avfilter__graph_alloc() {
 		return Pointer.pointerToAddress(avfilter_graph_alloc(), AVFilterGraph.class);
@@ -454,7 +454,7 @@ public class AvfilterLibrary {
 	 *         also retrievable directly through AVFilterGraph.filters or with<br>
 	 *         avfilter_graph_get_filter()) on success or NULL on failure.<br>
 	 * Original signature : <code>AVFilterContext* avfilter_graph_alloc_filter(AVFilterGraph*, const AVFilter*, const char*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:639</i>
+	 * <i>native declaration : libavfilter/avfilter.h:645</i>
 	 */
 	public static Pointer<AVFilterContext > avfilter_graph_alloc_filter(Pointer<AVFilterGraph > graph, Pointer<AVFilter > filter, Pointer<Byte > name) {
 		return Pointer.pointerToAddress(avfilter_graph_alloc_filter(Pointer.getPeer(graph), Pointer.getPeer(filter), Pointer.getPeer(name)), AVFilterContext.class);
@@ -468,7 +468,7 @@ public class AvfilterLibrary {
 	 * @return the pointer to the found filter instance or NULL if it<br>
 	 * cannot be found.<br>
 	 * Original signature : <code>AVFilterContext* avfilter_graph_get_filter(AVFilterGraph*, const char*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:648</i>
+	 * <i>native declaration : libavfilter/avfilter.h:654</i>
 	 */
 	public static Pointer<AVFilterContext > avfilter_graph_get_filter(Pointer<AVFilterGraph > graph, Pointer<Byte > name) {
 		return Pointer.pointerToAddress(avfilter_graph_get_filter(Pointer.getPeer(graph), Pointer.getPeer(name)), AVFilterContext.class);
@@ -482,7 +482,7 @@ public class AvfilterLibrary {
 	 * * @deprecated use avfilter_graph_alloc_filter() to allocate a filter in a<br>
 	 * filter graph<br>
 	 * Original signature : <code>int avfilter_graph_add_filter(AVFilterGraph*, AVFilterContext*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:657</i>
+	 * <i>native declaration : libavfilter/avfilter.h:663</i>
 	 */
 	public static int avfilter_graph_add_filter(Pointer<AVFilterGraph > graphctx, Pointer<AVFilterContext > filter) {
 		return avfilter_graph_add_filter(Pointer.getPeer(graphctx), Pointer.getPeer(filter));
@@ -499,7 +499,7 @@ public class AvfilterLibrary {
 	 * @return a negative AVERROR error code in case of failure, a non<br>
 	 * negative value otherwise<br>
 	 * Original signature : <code>int avfilter_graph_create_filter(AVFilterContext**, const AVFilter*, const char*, const char*, void*, AVFilterGraph*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:670</i>
+	 * <i>native declaration : libavfilter/avfilter.h:676</i>
 	 */
 	public static int avfilter_graph_create_filter(Pointer<Pointer<AVFilterContext > > filt_ctx, Pointer<AVFilter > filt, Pointer<Byte > name, Pointer<Byte > args, Pointer<? > opaque, Pointer<AVFilterGraph > graph_ctx) {
 		return avfilter_graph_create_filter(Pointer.getPeer(filt_ctx), Pointer.getPeer(filt), Pointer.getPeer(name), Pointer.getPeer(args), Pointer.getPeer(opaque), Pointer.getPeer(graph_ctx));
@@ -511,7 +511,7 @@ public class AvfilterLibrary {
 	 * scale and aresample filters.<br>
 	 * * @param flags  any of the AVFILTER_AUTO_CONVERT_* constants<br>
 	 * Original signature : <code>void avfilter_graph_set_auto_convert(AVFilterGraph*, unsigned)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:678</i>
+	 * <i>native declaration : libavfilter/avfilter.h:684</i>
 	 */
 	public static void avfilter_graph_set_auto_convert(Pointer<AVFilterGraph > graph, int flags) {
 		avfilter_graph_set_auto_convert(Pointer.getPeer(graph), flags);
@@ -523,7 +523,7 @@ public class AvfilterLibrary {
 	 * @param log_ctx context used for logging<br>
 	 * @return >= 0 in case of success, a negative AVERROR code otherwise<br>
 	 * Original signature : <code>int avfilter_graph_config(AVFilterGraph*, void*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:690</i>
+	 * <i>native declaration : libavfilter/avfilter.h:696</i>
 	 */
 	public static int avfilter_graph_config(Pointer<AVFilterGraph > graphctx, Pointer<? > log_ctx) {
 		return avfilter_graph_config(Pointer.getPeer(graphctx), Pointer.getPeer(log_ctx));
@@ -533,7 +533,7 @@ public class AvfilterLibrary {
 	 * Free a graph, destroy its links, and set *graph to NULL.<br>
 	 * If *graph is NULL, do nothing.<br>
 	 * Original signature : <code>void avfilter_graph_free(AVFilterGraph**)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:696</i>
+	 * <i>native declaration : libavfilter/avfilter.h:702</i>
 	 */
 	public static void avfilter_graph_free(Pointer<Pointer<AVFilterGraph > > graph) {
 		avfilter_graph_free(Pointer.getPeer(graph));
@@ -544,7 +544,7 @@ public class AvfilterLibrary {
 	 * Must be freed with avfilter_inout_free().<br>
 	 * @return allocated AVFilterInOut on success, NULL on failure.<br>
 	 * Original signature : <code>AVFilterInOut* avfilter_inout_alloc()</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:721</i>
+	 * <i>native declaration : libavfilter/avfilter.h:727</i>
 	 */
 	public static Pointer<AVFilterInOut > avfilter__inout_alloc() {
 		return Pointer.pointerToAddress(avfilter_inout_alloc(), AVFilterInOut.class);
@@ -555,7 +555,7 @@ public class AvfilterLibrary {
 	 * Free the supplied list of AVFilterInOut and set *inout to NULL.<br>
 	 * If *inout is NULL, do nothing.<br>
 	 * Original signature : <code>void avfilter_inout_free(AVFilterInOut**)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:727</i>
+	 * <i>native declaration : libavfilter/avfilter.h:733</i>
 	 */
 	public static void avfilter_inout_free(Pointer<Pointer<AVFilterInOut > > inout) {
 		avfilter_inout_free(Pointer.getPeer(inout));
@@ -576,7 +576,7 @@ public class AvfilterLibrary {
 	 * @param outputs linked list to the outputs of the graph<br>
 	 * @return zero on success, a negative AVERROR code on error<br>
 	 * Original signature : <code>int avfilter_graph_parse(AVFilterGraph*, const char*, AVFilterInOut*, AVFilterInOut*, void*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:744</i>
+	 * <i>native declaration : libavfilter/avfilter.h:750</i>
 	 */
 	public static int avfilter_graph_parse(Pointer<AVFilterGraph > graph, Pointer<Byte > filters, Pointer<AVFilterInOut > inputs, Pointer<AVFilterInOut > outputs, Pointer<? > log_ctx) {
 		return avfilter_graph_parse(Pointer.getPeer(graph), Pointer.getPeer(filters), Pointer.getPeer(inputs), Pointer.getPeer(outputs), Pointer.getPeer(log_ctx));
@@ -597,7 +597,7 @@ public class AvfilterLibrary {
 	 *                after the parsing, should be freed with avfilter_inout_free().<br>
 	 * @return non negative on success, a negative AVERROR code on error<br>
 	 * Original signature : <code>int avfilter_graph_parse_ptr(AVFilterGraph*, const char*, AVFilterInOut**, AVFilterInOut**, void*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:761</i>
+	 * <i>native declaration : libavfilter/avfilter.h:767</i>
 	 */
 	public static int avfilter_graph_parse_ptr(Pointer<AVFilterGraph > graph, Pointer<Byte > filters, Pointer<Pointer<AVFilterInOut > > inputs, Pointer<Pointer<AVFilterInOut > > outputs, Pointer<? > log_ctx) {
 		return avfilter_graph_parse_ptr(Pointer.getPeer(graph), Pointer.getPeer(filters), Pointer.getPeer(inputs), Pointer.getPeer(outputs), Pointer.getPeer(log_ctx));
@@ -623,7 +623,7 @@ public class AvfilterLibrary {
 	 * the outputs parameter will contain outputs of the newly created<br>
 	 * filters.<br>
 	 * Original signature : <code>int avfilter_graph_parse2(AVFilterGraph*, const char*, AVFilterInOut**, AVFilterInOut**)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:783</i>
+	 * <i>native declaration : libavfilter/avfilter.h:789</i>
 	 */
 	public static int avfilter_graph_parse2(Pointer<AVFilterGraph > graph, Pointer<Byte > filters, Pointer<Pointer<AVFilterInOut > > inputs, Pointer<Pointer<AVFilterInOut > > outputs) {
 		return avfilter_graph_parse2(Pointer.getPeer(graph), Pointer.getPeer(filters), Pointer.getPeer(inputs), Pointer.getPeer(outputs));
@@ -642,7 +642,7 @@ public class AvfilterLibrary {
 	 * * @returns >=0 on success otherwise an error code.<br>
 	 *              AVERROR(ENOSYS) on unsupported commands<br>
 	 * Original signature : <code>int avfilter_graph_send_command(AVFilterGraph*, const char*, const char*, const char*, char*, int, int)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:798</i>
+	 * <i>native declaration : libavfilter/avfilter.h:804</i>
 	 */
 	public static int avfilter_graph_send_command(Pointer<AVFilterGraph > graph, Pointer<Byte > target, Pointer<Byte > cmd, Pointer<Byte > arg, Pointer<Byte > res, int res_len, int flags) {
 		return avfilter_graph_send_command(Pointer.getPeer(graph), Pointer.getPeer(target), Pointer.getPeer(cmd), Pointer.getPeer(arg), Pointer.getPeer(res), res_len, flags);
@@ -661,7 +661,7 @@ public class AvfilterLibrary {
 	 * * @note As this executes commands after this function returns, no return code<br>
 	 *       from the filter is provided, also AVFILTER_CMD_FLAG_ONE is not supported.<br>
 	 * Original signature : <code>int avfilter_graph_queue_command(AVFilterGraph*, const char*, const char*, const char*, int, double)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:813</i>
+	 * <i>native declaration : libavfilter/avfilter.h:819</i>
 	 */
 	public static int avfilter_graph_queue_command(Pointer<AVFilterGraph > graph, Pointer<Byte > target, Pointer<Byte > cmd, Pointer<Byte > arg, int flags, double ts) {
 		return avfilter_graph_queue_command(Pointer.getPeer(graph), Pointer.getPeer(target), Pointer.getPeer(cmd), Pointer.getPeer(arg), flags, ts);
@@ -674,7 +674,7 @@ public class AvfilterLibrary {
 	 * @return  a string, or NULL in case of memory allocation failure;<br>
 	 *          the string must be freed using av_free<br>
 	 * Original signature : <code>char* avfilter_graph_dump(AVFilterGraph*, const char*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:822</i>
+	 * <i>native declaration : libavfilter/avfilter.h:828</i>
 	 */
 	public static Pointer<Byte > avfilter_graph_dump(Pointer<AVFilterGraph > graph, Pointer<Byte > options) {
 		return Pointer.pointerToAddress(avfilter_graph_dump(Pointer.getPeer(graph), Pointer.getPeer(options)), Byte.class);
@@ -695,7 +695,7 @@ public class AvfilterLibrary {
 	 * * @return  the return value of ff_request_frame(),<br>
 	 *          or AVERROR_EOF if all links returned AVERROR_EOF<br>
 	 * Original signature : <code>int avfilter_graph_request_oldest(AVFilterGraph*)</code><br>
-	 * <i>native declaration : libavfilter/avfilter.h:838</i>
+	 * <i>native declaration : libavfilter/avfilter.h:844</i>
 	 */
 	public static int avfilter_graph_request_oldest(Pointer<AVFilterGraph > graph) {
 		return avfilter_graph_request_oldest(Pointer.getPeer(graph));

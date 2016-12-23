@@ -11,6 +11,7 @@ import org.bridj.ann.Ptr;
 import org.bridj.ann.Runtime;
 import org.ffmpeg.avutil.AVClass;
 import org.ffmpeg.avutil.AVFrame;
+import org.ffmpeg.avutil.AvutilLibrary.AVMatrixEncoding;
 import org.ffmpeg.avutil.AvutilLibrary.AVSampleFormat;
 /**
  * Wrapper for library <b>swresample</b><br>
@@ -114,19 +115,19 @@ public class SwresampleLibrary {
 	/**
 	 * Conversion Error : a.num<br>
 	 * SKIPPED:<br>
-	 * <i>native declaration : libavutil/rational.h:26</i><br>
+	 * <i>native declaration : libavutil/rational.h:30</i><br>
 	 * const int64_t tmp = a.num * (int64_t)b.den - b.num * (int64_t)a.den;
 	 */
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final int LIBSWRESAMPLE_VERSION_INT = (int)((2) << 16 | (1) << 8 | (100));
+	public static final int LIBSWRESAMPLE_VERSION_INT = (int)((2) << 16 | (3) << 8 | (100));
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final int LIBSWRESAMPLE_BUILD = (int)((2) << 16 | (1) << 8 | (100));
+	public static final int LIBSWRESAMPLE_BUILD = (int)((2) << 16 | (3) << 8 | (100));
 	/**
 	 * define<br>
-	 * Conversion Error : 2.1.<br>
+	 * Conversion Error : 2.3.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libswresample/version.h:0</i><br>
-	 * 2.1.
+	 * 2.3.
 	 */
 	/** <i>native declaration : ./libswresample/version.h</i> */
 	public static final int LIBSWRESAMPLE_VERSION_MICRO = (int)100;
@@ -135,9 +136,9 @@ public class SwresampleLibrary {
 	/** <i>native declaration : ./libswresample/version.h</i> */
 	public static final int LIBSWRESAMPLE_VERSION_MAJOR = (int)2;
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final int LIBSWRESAMPLE_VERSION_MINOR = (int)1;
+	public static final int LIBSWRESAMPLE_VERSION_MINOR = (int)3;
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final String LIBSWRESAMPLE_IDENT = (String)"SwR2.0.101";
+	public static final String LIBSWRESAMPLE_IDENT = (String)"SwR2.3.100";
 	/**
 	 * Get the AVClass for SwrContext. It can be used in combination with<br>
 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>
@@ -316,6 +317,33 @@ public class SwresampleLibrary {
 	}
 	protected native static int swr_set_channel_mapping(@Ptr long s, @Ptr long channel_map);
 	/**
+	 * Generate a channel mixing matrix.<br>
+	 * * This function is the one used internally by libswresample for building the<br>
+	 * default mixing matrix. It is made public just as a utility function for<br>
+	 * building custom matrices.<br>
+	 * * @param in_layout           input channel layout<br>
+	 * @param out_layout          output channel layout<br>
+	 * @param center_mix_level    mix level for the center channel<br>
+	 * @param surround_mix_level  mix level for the surround channel(s)<br>
+	 * @param lfe_mix_level       mix level for the low-frequency effects channel<br>
+	 * @param rematrix_maxval     if 1.0, coefficients will be normalized to prevent<br>
+	 *                            overflow. if INT_MAX, coefficients will not be<br>
+	 *                            normalized.<br>
+	 * @param[out] matrix         mixing coefficients; matrix[i + stride * o] is<br>
+	 *                            the weight of input channel i in output channel o.<br>
+	 * @param stride              distance between adjacent input channels in the<br>
+	 *                            matrix array<br>
+	 * @param matrix_encoding     matrixed stereo downmix mode (e.g. dplii)<br>
+	 * @param log_ctx             parent logging context, can be NULL<br>
+	 * @return                    0 on success, negative AVERROR code on failure<br>
+	 * Original signature : <code>int swr_build_matrix(uint64_t, uint64_t, double, double, double, double, double, double*, int, AVMatrixEncoding, void*)</code><br>
+	 * <i>native declaration : libswresample/swresample.h:192</i>
+	 */
+	public static int swr_build_matrix(long in_layout, long out_layout, double center_mix_level, double surround_mix_level, double lfe_mix_level, double rematrix_maxval, double rematrix_volume, Pointer<Double > matrix, int stride, IntValuedEnum<AVMatrixEncoding > matrix_encoding, Pointer<? > log_ctx) {
+		return swr_build_matrix(in_layout, out_layout, center_mix_level, surround_mix_level, lfe_mix_level, rematrix_maxval, rematrix_volume, Pointer.getPeer(matrix), stride, (int)matrix_encoding.value(), Pointer.getPeer(log_ctx));
+	}
+	protected native static int swr_build_matrix(long in_layout, long out_layout, double center_mix_level, double surround_mix_level, double lfe_mix_level, double rematrix_maxval, double rematrix_volume, @Ptr long matrix, int stride, int matrix_encoding, @Ptr long log_ctx);
+	/**
 	 * Set a customized remix matrix.<br>
 	 * * @param s       allocated Swr context, not yet initialized<br>
 	 * @param matrix  remix coefficients; matrix[i + stride * o] is<br>
@@ -323,7 +351,7 @@ public class SwresampleLibrary {
 	 * @param stride  offset between lines of the matrix<br>
 	 * @return  >= 0 on success, or AVERROR error code in case of failure.<br>
 	 * Original signature : <code>int swr_set_matrix(SwrContext*, const double*, int)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:179</i>
+	 * <i>native declaration : libswresample/swresample.h:202</i>
 	 */
 	public static int swr_set_matrix(Pointer<SwrContext > s, Pointer<Double > matrix, int stride) {
 		return swr_set_matrix(Pointer.getPeer(s), Pointer.getPeer(matrix), stride);
@@ -337,7 +365,7 @@ public class SwresampleLibrary {
 	 * @param count number of samples to be dropped<br>
 	 * * @return >= 0 on success, or a negative AVERROR code on failure<br>
 	 * Original signature : <code>int swr_drop_output(SwrContext*, int)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:189</i>
+	 * <i>native declaration : libswresample/swresample.h:212</i>
 	 */
 	public static int swr_drop_output(Pointer<SwrContext > s, int count) {
 		return swr_drop_output(Pointer.getPeer(s), count);
@@ -351,7 +379,7 @@ public class SwresampleLibrary {
 	 * @param count number of samples to be dropped<br>
 	 * * @return >= 0 on success, or a negative AVERROR code on failure<br>
 	 * Original signature : <code>int swr_inject_silence(SwrContext*, int)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:199</i>
+	 * <i>native declaration : libswresample/swresample.h:222</i>
 	 */
 	public static int swr_inject_silence(Pointer<SwrContext > s, int count) {
 		return swr_inject_silence(Pointer.getPeer(s), count);
@@ -379,7 +407,7 @@ public class SwresampleLibrary {
 	 *                  returned<br>
 	 * @returns     the delay in 1 / @c base units.<br>
 	 * Original signature : <code>int64_t swr_get_delay(SwrContext*, int64_t)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:223</i>
+	 * <i>native declaration : libswresample/swresample.h:246</i>
 	 */
 	public static long swr_get_delay(Pointer<SwrContext > s, long base) {
 		return swr_get_delay(Pointer.getPeer(s), base);
@@ -400,7 +428,7 @@ public class SwresampleLibrary {
 	 * @returns an upper bound on the number of samples that the next swr_convert<br>
 	 *          will output or a negative value to indicate an error<br>
 	 * Original signature : <code>int swr_get_out_samples(SwrContext*, int)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:240</i>
+	 * <i>native declaration : libswresample/swresample.h:263</i>
 	 */
 	public static int swr_get_out_samples(Pointer<SwrContext > s, int in_samples) {
 		return swr_get_out_samples(Pointer.getPeer(s), in_samples);
@@ -412,14 +440,14 @@ public class SwresampleLibrary {
 	 * as the run-time one.<br>
 	 * * @returns     the unsigned int-typed version<br>
 	 * Original signature : <code>int swresample_version()</code><br>
-	 * <i>native declaration : libswresample/swresample.h:248</i>
+	 * <i>native declaration : libswresample/swresample.h:271</i>
 	 */
 	public static native int swresample_version();
 	/**
 	 * Return the swr build-time configuration.<br>
 	 * * @returns     the build-time @c ./configure flags<br>
 	 * Original signature : <code>char* swresample_configuration()</code><br>
-	 * <i>native declaration : libswresample/swresample.h:254</i>
+	 * <i>native declaration : libswresample/swresample.h:277</i>
 	 */
 	public static Pointer<Byte > swresample__configuration() {
 		return Pointer.pointerToAddress(swresample_configuration(), Byte.class);
@@ -430,7 +458,7 @@ public class SwresampleLibrary {
 	 * Return the swr license.<br>
 	 * * @returns     the license of libswresample, determined at build-time<br>
 	 * Original signature : <code>char* swresample_license()</code><br>
-	 * <i>native declaration : libswresample/swresample.h:260</i>
+	 * <i>native declaration : libswresample/swresample.h:283</i>
 	 */
 	public static Pointer<Byte > swresample__license() {
 		return Pointer.pointerToAddress(swresample_license(), Byte.class);
@@ -464,7 +492,7 @@ public class SwresampleLibrary {
 	 * @return                0 on success, AVERROR on failure or nonmatching<br>
 	 *                        configuration.<br>
 	 * Original signature : <code>int swr_convert_frame(SwrContext*, AVFrame*, const AVFrame*)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:289</i>
+	 * <i>native declaration : libswresample/swresample.h:312</i>
 	 */
 	public static int swr_convert_frame(Pointer<SwrContext > swr, Pointer<AVFrame > output, Pointer<AVFrame > input) {
 		return swr_convert_frame(Pointer.getPeer(swr), Pointer.getPeer(output), Pointer.getPeer(input));
@@ -481,7 +509,7 @@ public class SwresampleLibrary {
 	 * @param input           input AVFrame<br>
 	 * @return                0 on success, AVERROR on failure.<br>
 	 * Original signature : <code>int swr_config_frame(SwrContext*, const AVFrame*, const AVFrame*)</code><br>
-	 * <i>native declaration : libswresample/swresample.h:302</i>
+	 * <i>native declaration : libswresample/swresample.h:325</i>
 	 */
 	public static int swr_config_frame(Pointer<SwrContext > swr, Pointer<AVFrame > out, Pointer<AVFrame > in) {
 		return swr_config_frame(Pointer.getPeer(swr), Pointer.getPeer(out), Pointer.getPeer(in));
