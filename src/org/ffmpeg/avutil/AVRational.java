@@ -15,23 +15,23 @@ public class AVRational extends StructObject {
 	static {
 		BridJ.register();
 	}
-	/** < Numerator */
+	/** < numerator */
 	@Field(0) 
 	public int num() {
 		return this.io.getIntField(this, 0);
 	}
-	/** < Numerator */
+	/** < numerator */
 	@Field(0) 
 	public AVRational num(int num) {
 		this.io.setIntField(this, 0, num);
 		return this;
 	}
-	/** < Denominator */
+	/** < denominator */
 	@Field(1) 
 	public int den() {
 		return this.io.getIntField(this, 1);
 	}
-	/** < Denominator */
+	/** < denominator */
 	@Field(1) 
 	public AVRational den(int den) {
 		this.io.setIntField(this, 1, den);

@@ -28,17 +28,17 @@ public class PostprocLibrary {
 	public static final int PP_CPU_CAPS_ALTIVEC = (int)0x10000000;
 	/**
 	 * define<br>
-	 * Conversion Error : 54.1.<br>
+	 * Conversion Error : 54.0.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libpostproc/version.h:0</i><br>
-	 * 54.1.
+	 * 54.0.
 	 */
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_VERSION_MINOR = (int)1;
+	public static final int LIBPOSTPROC_VERSION_MINOR = (int)0;
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final String LIBPOSTPROC_IDENT = (String)"postproc54.1.100";
+	public static final String LIBPOSTPROC_IDENT = (String)"postproc54.0.100";
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_BUILD = (int)((54) << 16 | (1) << 8 | (100));
+	public static final int LIBPOSTPROC_BUILD = (int)((54) << 16 | (0) << 8 | (100));
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
 	public static final int PP_CPU_CAPS_AUTO = (int)0x00080000;
 	/** <i>native declaration : ./libpostproc/version.h</i> */
@@ -52,7 +52,7 @@ public class PostprocLibrary {
 	/** <i>native declaration : ./libpostproc/version.h</i> */
 	public static final int LIBPOSTPROC_VERSION_MICRO = (int)100;
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_VERSION_INT = (int)((54) << 16 | (1) << 8 | (100));
+	public static final int LIBPOSTPROC_VERSION_INT = (int)((54) << 16 | (0) << 8 | (100));
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
 	public static final int PP_FORMAT_444 = (int)(0x00000000 | 0x00000008);
 	/** <i>native declaration : libpostproc/postprocess.h</i> */

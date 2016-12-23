@@ -14,7 +14,7 @@
 	</target>
 	
 	<target name="build-jar" depends="clean-jar,copy-lib">
-	    <jar destfile="dist/ffmpeg-3.2.jar">
+	    <jar destfile="dist/ffmpeg-3.1.jar">
 	        <manifest>
 	            <attribute name="Main-Class" value="org.ffmpeg.FFMPeg"/>
 	        </manifest>

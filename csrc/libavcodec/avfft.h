@@ -92,9 +92,7 @@ void av_rdft_end(RDFTContext *s);
 
 /* Discrete Cosine Transform */
 
-typedef struct DCTContext {
-  int dummy;
-} DCTContext;
+typedef struct DCTContext DCTContext;
 
 enum DCTTransformType {
     DCT_II = 0,
