@@ -118,23 +118,23 @@ public class AvresampleLibrary {
 	/** <i>native declaration : ./libavresample/version.h</i> */
 	public static final int LIBAVRESAMPLE_VERSION_MICRO = (int)0;
 	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_VERSION_INT = (int)((3) << 16 | (1) << 8 | (0));
+	public static final int LIBAVRESAMPLE_VERSION_INT = (int)((3) << 16 | (5) << 8 | (0));
 	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final String LIBAVRESAMPLE_IDENT = (String)"Lavr3.1.0";
+	public static final String LIBAVRESAMPLE_IDENT = (String)"Lavr3.5.0";
 	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_BUILD = (int)((3) << 16 | (1) << 8 | (0));
+	public static final int LIBAVRESAMPLE_BUILD = (int)((3) << 16 | (5) << 8 | (0));
 	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_VERSION_MINOR = (int)1;
+	public static final int LIBAVRESAMPLE_VERSION_MINOR = (int)5;
 	/** <i>native declaration : ./libavresample/version.h</i> */
 	public static final int LIBAVRESAMPLE_VERSION_MAJOR = (int)3;
 	/** <i>native declaration : libavresample/avresample.h</i> */
 	public static final int AVRESAMPLE_MAX_CHANNELS = (int)32;
 	/**
 	 * define<br>
-	 * Conversion Error : 3.1.<br>
+	 * Conversion Error : 3.5.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libavresample/version.h:0</i><br>
-	 * 3.1.
+	 * 3.5.
 	 */
 	/**
 	 * Return the LIBAVRESAMPLE_VERSION_INT constant.<br>

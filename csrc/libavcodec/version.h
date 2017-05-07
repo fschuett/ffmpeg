@@ -28,7 +28,7 @@
 #include "libavutil/version.h"
 
 #define LIBAVCODEC_VERSION_MAJOR  57
-#define LIBAVCODEC_VERSION_MINOR  64
+#define LIBAVCODEC_VERSION_MINOR  89
 #define LIBAVCODEC_VERSION_MICRO 100
 
 #define LIBAVCODEC_VERSION_INT  AV_VERSION_INT(LIBAVCODEC_VERSION_MAJOR, \
@@ -39,7 +39,7 @@
                                            LIBAVCODEC_VERSION_MICRO)
 #define LIBAVCODEC_BUILD        LIBAVCODEC_VERSION_INT
 
-#define LIBAVCODEC_IDENT        "Lavc57.64.100"
+#define LIBAVCODEC_IDENT        "Lavc57.89.100"
 
 /**
  * FF_API_* defines may be placed below to indicate public API that will be
@@ -157,6 +157,9 @@
 #ifndef FF_API_VAAPI_CONTEXT
 #define FF_API_VAAPI_CONTEXT     (LIBAVCODEC_VERSION_MAJOR < 58)
 #endif
+#ifndef FF_API_MERGE_SD
+#define FF_API_MERGE_SD          (LIBAVCODEC_VERSION_MAJOR < 58)
+#endif
 #ifndef FF_API_AVCTX_TIMEBASE
 #define FF_API_AVCTX_TIMEBASE    (LIBAVCODEC_VERSION_MAJOR < 59)
 #endif
@@ -226,5 +229,15 @@
 #ifndef FF_API_NVENC_OLD_NAME
 #define FF_API_NVENC_OLD_NAME    (LIBAVCODEC_VERSION_MAJOR < 59)
 #endif
+#ifndef FF_API_STRUCT_VAAPI_CONTEXT
+#define FF_API_STRUCT_VAAPI_CONTEXT (LIBAVCODEC_VERSION_MAJOR < 59)
+#endif
+#ifndef FF_API_MERGE_SD_API
+#define FF_API_MERGE_SD_API      (LIBAVCODEC_VERSION_MAJOR < 59)
+#endif
+#ifndef FF_API_TAG_STRING
+#define FF_API_TAG_STRING        (LIBAVCODEC_VERSION_MAJOR < 59)
+#endif
+
 
 #endif /* AVCODEC_VERSION_H */

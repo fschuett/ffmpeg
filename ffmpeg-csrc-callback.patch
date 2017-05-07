@@ -1,7 +1,7 @@
 diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
---- csrc.orig/libavcodec/avcodec.h	2016-12-15 13:19:26.000000000 +0100
-+++ csrc/libavcodec/avcodec.h	2016-12-22 18:45:35.900160814 +0100
-@@ -1951,7 +1951,7 @@ typedef struct AVCodecContext {
+--- csrc.orig/libavcodec/avcodec.h	2017-05-07 08:37:27.000000000 +0200
++++ csrc/libavcodec/avcodec.h	2017-05-07 08:40:46.092596089 +0200
+@@ -1994,7 +1994,7 @@ typedef struct AVCodecContext {
       * - encoding: unused
       * - decoding: Set by user, if not set the native format will be chosen.
       */
@@ -10,7 +10,7 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  
      /**
       * maximum number of B-frames between non-B-frames
-@@ -6173,7 +6173,7 @@ enum AVLockOp {
+@@ -6179,7 +6179,7 @@ enum AVLockOp {
   *           implement your lock manager). If cb is set to NULL the
   *           lockmgr will be unregistered.
   */

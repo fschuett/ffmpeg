@@ -30,7 +30,7 @@ public class AvdeviceLibrary {
 	/**
 	 * Message types used by avdevice_app_to_dev_control_message().<br>
 	 * enum values<br>
-	 * <i>native declaration : libavdevice/avdevice.h:114</i>
+	 * <i>native declaration : libavdevice/avdevice.h:113</i>
 	 */
 	public enum AVAppToDevMessageType implements IntValuedEnum<AVAppToDevMessageType > {
 		/** Dummy message. */
@@ -103,7 +103,7 @@ public class AvdeviceLibrary {
 	/**
 	 * Message types used by avdevice_dev_to_app_control_message().<br>
 	 * enum values<br>
-	 * <i>native declaration : libavdevice/avdevice.h:184</i>
+	 * <i>native declaration : libavdevice/avdevice.h:183</i>
 	 */
 	public enum AVDevToAppMessageType implements IntValuedEnum<AVDevToAppMessageType > {
 		/** Dummy message. */
@@ -194,24 +194,24 @@ public class AvdeviceLibrary {
 	 * const int64_t tmp = a.num * (int64_t)b.den - b.num * (int64_t)a.den;
 	 */
 	/** <i>native declaration : libavdevice/version.h</i> */
-	public static final int LIBAVDEVICE_VERSION_INT = (int)((57) << 16 | (1) << 8 | (100));
+	public static final int LIBAVDEVICE_VERSION_INT = (int)((57) << 16 | (6) << 8 | (100));
 	/** <i>native declaration : libavdevice/version.h</i> */
 	public static final int LIBAVDEVICE_VERSION_MICRO = (int)100;
 	/** <i>native declaration : libavdevice/version.h</i> */
-	public static final int LIBAVDEVICE_BUILD = (int)((57) << 16 | (1) << 8 | (100));
+	public static final int LIBAVDEVICE_BUILD = (int)((57) << 16 | (6) << 8 | (100));
 	/** <i>native declaration : libavdevice/version.h</i> */
-	public static final int LIBAVDEVICE_VERSION_MINOR = (int)1;
+	public static final int LIBAVDEVICE_VERSION_MINOR = (int)6;
 	/**
 	 * define<br>
-	 * Conversion Error : 57.1.<br>
+	 * Conversion Error : 57.6.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : libavdevice/version.h:0</i><br>
-	 * 57.1.
+	 * 57.6.
 	 */
 	/** <i>native declaration : libavdevice/version.h</i> */
 	public static final int LIBAVDEVICE_VERSION_MAJOR = (int)57;
 	/** <i>native declaration : libavdevice/version.h</i> */
-	public static final String LIBAVDEVICE_IDENT = (String)"Lavd57.1.100";
+	public static final String LIBAVDEVICE_IDENT = (String)"Lavd57.6.100";
 	/**
 	 * Return the LIBAVDEVICE_VERSION_INT constant.<br>
 	 * Original signature : <code>int avdevice_version()</code><br>
@@ -240,9 +240,8 @@ public class AvdeviceLibrary {
 	protected native static long avdevice_license();
 	/**
 	 * Initialize libavdevice and register all the input and output devices.<br>
-	 * @warning This function is not thread safe.<br>
 	 * Original signature : <code>void avdevice_register_all()</code><br>
-	 * <i>native declaration : libavdevice/avdevice.h:20</i>
+	 * <i>native declaration : libavdevice/avdevice.h:19</i>
 	 */
 	public static native void avdevice_register_all();
 	/**
@@ -251,7 +250,7 @@ public class AvdeviceLibrary {
 	 * if d is non-NULL, returns the next registered input audio/video device after d<br>
 	 * or NULL if d is the last one.<br>
 	 * Original signature : <code>AVInputFormat* av_input_audio_device_next(AVInputFormat*)</code><br>
-	 * <i>native declaration : libavdevice/avdevice.h:28</i>
+	 * <i>native declaration : libavdevice/avdevice.h:27</i>
 	 */
 	public static Pointer<AVInputFormat > av_input_audio_device_next(Pointer<AVInputFormat > d) {
 		return Pointer.pointerToAddress(av_input_audio_device_next(Pointer.getPeer(d)), AVInputFormat.class);
@@ -264,7 +263,7 @@ public class AvdeviceLibrary {
 	 * if d is non-NULL, returns the next registered input audio/video device after d<br>
 	 * or NULL if d is the last one.<br>
 	 * Original signature : <code>AVInputFormat* av_input_video_device_next(AVInputFormat*)</code><br>
-	 * <i>native declaration : libavdevice/avdevice.h:36</i>
+	 * <i>native declaration : libavdevice/avdevice.h:35</i>
 	 */
 	public static Pointer<AVInputFormat > av_input_video_device_next(Pointer<AVInputFormat > d) {
 		return Pointer.pointerToAddress(av_input_video_device_next(Pointer.getPeer(d)), AVInputFormat.class);
@@ -277,7 +276,7 @@ public class AvdeviceLibrary {
 	 * if d is non-NULL, returns the next registered output audio/video device after d<br>
 	 * or NULL if d is the last one.<br>
 	 * Original signature : <code>AVOutputFormat* av_output_audio_device_next(AVOutputFormat*)</code><br>
-	 * <i>native declaration : libavdevice/avdevice.h:44</i>
+	 * <i>native declaration : libavdevice/avdevice.h:43</i>
 	 */
 	public static Pointer<AVOutputFormat > av_output_audio_device_next(Pointer<AVOutputFormat > d) {
 		return Pointer.pointerToAddress(av_output_audio_device_next(Pointer.getPeer(d)), AVOutputFormat.class);
@@ -290,7 +289,7 @@ public class AvdeviceLibrary {
 	 * if d is non-NULL, returns the next registered output audio/video device after d<br>
 	 * or NULL if d is the last one.<br>
 	 * Original signature : <code>AVOutputFormat* av_output_video_device_next(AVOutputFormat*)</code><br>
-	 * <i>native declaration : libavdevice/avdevice.h:52</i>
+	 * <i>native declaration : libavdevice/avdevice.h:51</i>
 	 */
 	public static Pointer<AVOutputFormat > av_output_video_device_next(Pointer<AVOutputFormat > d) {
 		return Pointer.pointerToAddress(av_output_video_device_next(Pointer.getPeer(d)), AVOutputFormat.class);
@@ -306,7 +305,7 @@ public class AvdeviceLibrary {
 	 * @return >= 0 on success, negative on error.<br>
 	 *         AVERROR(ENOSYS) when device doesn't implement handler of the message.<br>
 	 * Original signature : <code>int avdevice_app_to_dev_control_message(AVFormatContext*, AVAppToDevMessageType, void*, size_t)</code><br>
-	 * <i>native declaration : libavdevice/avdevice.h:195</i>
+	 * <i>native declaration : libavdevice/avdevice.h:194</i>
 	 */
 	public static int avdevice_app_to_dev_control_message(Pointer<AVFormatContext > s, IntValuedEnum<AvdeviceLibrary.AVAppToDevMessageType > type, Pointer<? > data, @Ptr long data_size) {
 		return avdevice_app_to_dev_control_message(Pointer.getPeer(s), (int)type.value(), Pointer.getPeer(data), data_size);
@@ -321,7 +320,7 @@ public class AvdeviceLibrary {
 	 * @return >= 0 on success, negative on error.<br>
 	 *         AVERROR(ENOSYS) when application doesn't implement handler of the message.<br>
 	 * Original signature : <code>int avdevice_dev_to_app_control_message(AVFormatContext*, AVDevToAppMessageType, void*, size_t)</code><br>
-	 * <i>native declaration : libavdevice/avdevice.h:206</i>
+	 * <i>native declaration : libavdevice/avdevice.h:205</i>
 	 */
 	public static int avdevice_dev_to_app_control_message(Pointer<AVFormatContext > s, IntValuedEnum<AvdeviceLibrary.AVDevToAppMessageType > type, Pointer<? > data, @Ptr long data_size) {
 		return avdevice_dev_to_app_control_message(Pointer.getPeer(s), (int)type.value(), Pointer.getPeer(data), data_size);
@@ -341,7 +340,7 @@ public class AvdeviceLibrary {
 	 *                       that affects device-private options.<br>
 	 * * @return >= 0 on success, negative otherwise.<br>
 	 * Original signature : <code>int avdevice_capabilities_create(AVDeviceCapabilitiesQuery**, AVFormatContext*, AVDictionary**)</code><br>
-	 * <i>native declaration : libavdevice/avdevice.h:250</i>
+	 * <i>native declaration : libavdevice/avdevice.h:249</i>
 	 */
 	public static int avdevice_capabilities_create(Pointer<Pointer<AVDeviceCapabilitiesQuery > > caps, Pointer<AVFormatContext > s, Pointer<Pointer<AVDictionary > > device_options) {
 		return avdevice_capabilities_create(Pointer.getPeer(caps), Pointer.getPeer(s), Pointer.getPeer(device_options));
@@ -352,7 +351,7 @@ public class AvdeviceLibrary {
 	 * * @param caps Device capabilities data to be freed.<br>
 	 * @param s    Context of the device.<br>
 	 * Original signature : <code>void avdevice_capabilities_free(AVDeviceCapabilitiesQuery**, AVFormatContext*)</code><br>
-	 * <i>native declaration : libavdevice/avdevice.h:257</i>
+	 * <i>native declaration : libavdevice/avdevice.h:256</i>
 	 */
 	public static void avdevice_capabilities_free(Pointer<Pointer<AVDeviceCapabilitiesQuery > > caps, Pointer<AVFormatContext > s) {
 		avdevice_capabilities_free(Pointer.getPeer(caps), Pointer.getPeer(s));
@@ -368,7 +367,7 @@ public class AvdeviceLibrary {
 	 * @param[out] device_list list of autodetected devices.<br>
 	 * @return count of autodetected devices, negative on error.<br>
 	 * Original signature : <code>int avdevice_list_devices(AVFormatContext*, AVDeviceInfoList**)</code><br>
-	 * <i>native declaration : libavdevice/avdevice.h:280</i>
+	 * <i>native declaration : libavdevice/avdevice.h:279</i>
 	 */
 	public static int avdevice_list_devices(Pointer<AVFormatContext > s, Pointer<Pointer<AVDeviceInfoList > > device_list) {
 		return avdevice_list_devices(Pointer.getPeer(s), Pointer.getPeer(device_list));
@@ -378,7 +377,7 @@ public class AvdeviceLibrary {
 	 * Convenient function to free result of avdevice_list_devices().<br>
 	 * * @param devices device list to be freed.<br>
 	 * Original signature : <code>void avdevice_free_list_devices(AVDeviceInfoList**)</code><br>
-	 * <i>native declaration : libavdevice/avdevice.h:286</i>
+	 * <i>native declaration : libavdevice/avdevice.h:285</i>
 	 */
 	public static void avdevice_free_list_devices(Pointer<Pointer<AVDeviceInfoList > > device_list) {
 		avdevice_free_list_devices(Pointer.getPeer(device_list));
@@ -399,7 +398,7 @@ public class AvdeviceLibrary {
 	 * @return count of autodetected devices, negative on error.<br>
 	 * @note device argument takes precedence over device_name when both are set.<br>
 	 * Original signature : <code>int avdevice_list_input_sources(AVInputFormat*, const char*, AVDictionary*, AVDeviceInfoList**)</code><br>
-	 * <i>native declaration : libavdevice/avdevice.h:303</i>
+	 * <i>native declaration : libavdevice/avdevice.h:302</i>
 	 */
 	public static int avdevice_list_input_sources(Pointer<AVInputFormat > device, Pointer<Byte > device_name, Pointer<AVDictionary > device_options, Pointer<Pointer<AVDeviceInfoList > > device_list) {
 		return avdevice_list_input_sources(Pointer.getPeer(device), Pointer.getPeer(device_name), Pointer.getPeer(device_options), Pointer.getPeer(device_list));
@@ -407,7 +406,7 @@ public class AvdeviceLibrary {
 	protected native static int avdevice_list_input_sources(@Ptr long device, @Ptr long device_name, @Ptr long device_options, @Ptr long device_list);
 	/**
 	 * Original signature : <code>int avdevice_list_output_sinks(AVOutputFormat*, const char*, AVDictionary*, AVDeviceInfoList**)</code><br>
-	 * <i>native declaration : libavdevice/avdevice.h:305</i>
+	 * <i>native declaration : libavdevice/avdevice.h:304</i>
 	 */
 	public static int avdevice_list_output_sinks(Pointer<AVOutputFormat > device, Pointer<Byte > device_name, Pointer<AVDictionary > device_options, Pointer<Pointer<AVDeviceInfoList > > device_list) {
 		return avdevice_list_output_sinks(Pointer.getPeer(device), Pointer.getPeer(device_name), Pointer.getPeer(device_options), Pointer.getPeer(device_list));

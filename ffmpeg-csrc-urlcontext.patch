@@ -1,7 +1,7 @@
 diff -pruN csrc.orig/libavformat/avio.h csrc/libavformat/avio.h
---- csrc.orig/libavformat/avio.h	2015-09-01 15:23:47.000000000 +0200
-+++ csrc/libavformat/avio.h	2015-09-02 14:47:15.978822916 +0200
-@@ -93,7 +93,7 @@ typedef struct AVIODirEntry {
+--- csrc.orig/libavformat/avio.h	2017-05-07 08:36:29.000000000 +0200
++++ csrc/libavformat/avio.h	2017-05-07 08:42:44.302396060 +0200
+@@ -101,7 +101,7 @@ typedef struct AVIODirEntry {
  } AVIODirEntry;
  
  typedef struct AVIODirContext {

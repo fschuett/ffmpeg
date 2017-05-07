@@ -44,7 +44,7 @@ public class AvcodecLibrary {
 	 * * After adding new codec IDs, do not forget to add an entry to the codec<br>
 	 * descriptor list and bump libavcodec minor version.<br>
 	 * enum values<br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:459</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:471</i>
 	 */
 	public enum AVCodecID implements IntValuedEnum<AVCodecID > {
 		AV_CODEC_ID_NONE(0),
@@ -264,6 +264,14 @@ public class AvcodecLibrary {
 		AV_CODEC_ID_MAGICYUV((0x8000 + 19)),
 		AV_CODEC_ID_SHEERVIDEO((0x8000 + 20)),
 		AV_CODEC_ID_YLC((0x8000 + 21)),
+		AV_CODEC_ID_PSD((0x8000 + 22)),
+		AV_CODEC_ID_PIXLET((0x8000 + 23)),
+		AV_CODEC_ID_SPEEDHQ((0x8000 + 24)),
+		AV_CODEC_ID_FMVC((0x8000 + 25)),
+		AV_CODEC_ID_SCPR((0x8000 + 26)),
+		AV_CODEC_ID_CLEARVIDEO((0x8000 + 27)),
+		AV_CODEC_ID_XPM((0x8000 + 28)),
+		AV_CODEC_ID_AV1((0x8000 + 29)),
 		/**
 		 * various PCM "codecs"<br>
 		 * < A dummy id pointing at the start of audio codecs
@@ -302,6 +310,8 @@ public class AvcodecLibrary {
 		AV_CODEC_ID_PCM_S16BE_PLANAR((0x10000 + 30)),
 		AV_CODEC_ID_PCM_S64LE(0x10800),
 		AV_CODEC_ID_PCM_S64BE((0x10800 + 1)),
+		AV_CODEC_ID_PCM_F16LE((0x10800 + 2)),
+		AV_CODEC_ID_PCM_F24LE((0x10800 + 3)),
 		/** various ADPCM codecs */
 		AV_CODEC_ID_ADPCM_IMA_QT(0x11000),
 		AV_CODEC_ID_ADPCM_IMA_WAV((0x11000 + 1)),
@@ -443,6 +453,8 @@ public class AvcodecLibrary {
 		AV_CODEC_ID_XMA1((0x15800 + 11)),
 		AV_CODEC_ID_XMA2((0x15800 + 12)),
 		AV_CODEC_ID_DST((0x15800 + 13)),
+		AV_CODEC_ID_ATRAC3AL((0x15800 + 14)),
+		AV_CODEC_ID_ATRAC3PAL((0x15800 + 15)),
 		/**
 		 * subtitle codecs<br>
 		 * < A dummy ID pointing at the start of subtitle codecs.
@@ -521,7 +533,7 @@ public class AvcodecLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:512</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:524</i>
 	 */
 	public enum Motion_Est_ID implements IntValuedEnum<Motion_Est_ID > {
 		/** < no search, that is use 0,0 vector whenever one is needed */
@@ -558,7 +570,7 @@ public class AvcodecLibrary {
 	/**
 	 * @ingroup lavc_decoding<br>
 	 * enum values<br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:533</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:545</i>
 	 */
 	public enum AVDiscard implements IntValuedEnum<AVDiscard > {
 		/**
@@ -595,7 +607,7 @@ public class AvcodecLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:546</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:558</i>
 	 */
 	public enum AVAudioServiceType implements IntValuedEnum<AVAudioServiceType > {
 		AV_AUDIO_SERVICE_TYPE_MAIN(0),
@@ -628,9 +640,14 @@ public class AvcodecLibrary {
 	 * * Types and functions for working with AVPacket.<br>
 	 * @{<br>
 	 * enum values<br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:773</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:795</i>
 	 */
 	public enum AVPacketSideDataType implements IntValuedEnum<AVPacketSideDataType > {
+		/**
+		 * An AV_PKT_DATA_PALETTE side data packet contains exactly AVPALETTE_SIZE<br>
+		 * bytes worth of palette. This side data signals that a new palette is<br>
+		 * present.
+		 */
 		AV_PKT_DATA_PALETTE(0),
 		/**
 		 * The AV_PKT_DATA_NEW_EXTRADATA is used to notify the codec or the format<br>
@@ -782,7 +799,12 @@ public class AvcodecLibrary {
 		 * should be associated with a video stream and containts data in the form<br>
 		 * of the AVMasteringDisplayMetadata struct.
 		 */
-		AV_PKT_DATA_MASTERING_DISPLAY_METADATA(79);
+		AV_PKT_DATA_MASTERING_DISPLAY_METADATA(79),
+		/**
+		 * This side data should be associated with a video stream and corresponds<br>
+		 * to the AVSphericalMapping structure.
+		 */
+		AV_PKT_DATA_SPHERICAL(80);
 		AVPacketSideDataType(long value) {
 			this.value = value;
 		}
@@ -799,7 +821,7 @@ public class AvcodecLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:856</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:878</i>
 	 */
 	public enum AVSideDataParamChangeFlags implements IntValuedEnum<AVSideDataParamChangeFlags > {
 		AV_SIDE_DATA_PARAM_CHANGE_CHANNEL_COUNT(0x0001),
@@ -822,7 +844,7 @@ public class AvcodecLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:871</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:893</i>
 	 */
 	public enum AVFieldOrder implements IntValuedEnum<AVFieldOrder > {
 		AV_FIELD_UNKNOWN(0),
@@ -851,7 +873,7 @@ public class AvcodecLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2475</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2520</i>
 	 */
 	public enum AVSubtitleType implements IntValuedEnum<AVSubtitleType > {
 		SUBTITLE_NONE(0),
@@ -883,7 +905,7 @@ public class AvcodecLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3354</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3403</i>
 	 */
 	public enum AVPictureStructure implements IntValuedEnum<AVPictureStructure > {
 		/** < unknown */
@@ -911,7 +933,7 @@ public class AvcodecLibrary {
 	/**
 	 * Lock operation used by lockmgr<br>
 	 * enum values<br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4254</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4311</i>
 	 */
 	public enum AVLockOp implements IntValuedEnum<AVLockOp > {
 		/** < Create a mutex */
@@ -958,6 +980,8 @@ public class AvcodecLibrary {
 	public static final int FF_PROFILE_MPEG4_HYBRID = (int)8;
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int AV_EF_IGNORE_ERR = (int)(1 << 15);
+	/** <i>native declaration : ./libavcodec/version.h</i> */
+	public static final boolean FF_API_MERGE_SD = (boolean)(57 < 58);
 	/** <i>native declaration : ./libavcodec/version.h</i> */
 	public static final boolean FF_API_AUDIO_CONVERT = (boolean)(57 < 58);
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
@@ -1013,7 +1037,7 @@ public class AvcodecLibrary {
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG2_LOCAL_HEADER = (int)(1 << 3);
 	/** <i>native declaration : ./libavcodec/version.h</i> */
-	public static final int LIBAVCODEC_VERSION_MINOR = (int)64;
+	public static final int LIBAVCODEC_VERSION_MINOR = (int)89;
 	/** <i>native declaration : ./libavcodec/version.h</i> */
 	public static final boolean FF_API_VIMA_DECODER = (boolean)(57 < 58);
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
@@ -1065,7 +1089,7 @@ public class AvcodecLibrary {
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int CODEC_CAP_HWACCEL_VDPAU = (int)(1 << 7);
 	/** <i>native declaration : ./libavcodec/version.h</i> */
-	public static final int LIBAVCODEC_BUILD = (int)((57) << 16 | (64) << 8 | (100));
+	public static final int LIBAVCODEC_BUILD = (int)((57) << 16 | (89) << 8 | (100));
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int FF_PROFILE_DTS_EXPRESS = (int)70;
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
@@ -1082,6 +1106,8 @@ public class AvcodecLibrary {
 	public static final int AV_CODEC_PROP_LOSSY = (int)(1 << 1);
 	/** <i>native declaration : ./libavcodec/version.h</i> */
 	public static final boolean FF_API_CODER_TYPE = (boolean)(57 < 59);
+	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
+	public static final int FF_BUG_IEDGE = (int)32768;
 	/** <i>native declaration : ./libavcodec/version.h</i> */
 	public static final boolean FF_API_AFD = (boolean)(57 < 58);
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
@@ -1184,6 +1210,8 @@ public class AvcodecLibrary {
 	public static final int AV_CODEC_CAP_PARAM_CHANGE = (int)(1 << 14);
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_UNALIGNED = (int)(1 << 0);
+	/** <i>native declaration : ./libavcodec/version.h</i> */
+	public static final boolean FF_API_MERGE_SD_API = (boolean)(57 < 59);
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int FF_COMPLIANCE_VERY_STRICT = (int)2;
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
@@ -1192,10 +1220,10 @@ public class AvcodecLibrary {
 	public static final int CODEC_FLAG_INPUT_PRESERVED = (int)0x0100;
 	/**
 	 * define<br>
-	 * Conversion Error : 57.64.<br>
+	 * Conversion Error : 57.89.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libavcodec/version.h:0</i><br>
-	 * 57.64.
+	 * 57.89.
 	 */
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int FF_BUG_UMP4 = (int)8;
@@ -1490,7 +1518,7 @@ public class AvcodecLibrary {
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int FF_IDCT_SIMPLEMMX = (int)3;
 	/** <i>native declaration : ./libavcodec/version.h</i> */
-	public static final int LIBAVCODEC_VERSION_INT = (int)((57) << 16 | (64) << 8 | (100));
+	public static final int LIBAVCODEC_VERSION_INT = (int)((57) << 16 | (89) << 8 | (100));
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int AV_CODEC_CAP_TRUNCATED = (int)(1 << 3);
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
@@ -1663,6 +1691,8 @@ public class AvcodecLibrary {
 	public static final int FF_BUG_DIRECT_BLOCKSIZE = (int)512;
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int AV_CODEC_CAP_HWACCEL_VDPAU = (int)(1 << 7);
+	/** <i>native declaration : ./libavcodec/version.h</i> */
+	public static final boolean FF_API_STRUCT_VAAPI_CONTEXT = (boolean)(57 < 59);
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int CODEC_FLAG_MV0 = (int)0x0040;
 	/** <i>native declaration : ./libavcodec/version.h</i> */
@@ -1756,7 +1786,7 @@ public class AvcodecLibrary {
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int FF_PROFILE_MPEG4_ADVANCED_REAL_TIME = (int)9;
 	/** <i>native declaration : ./libavcodec/version.h</i> */
-	public static final String LIBAVCODEC_IDENT = (String)"Lavc57.64.100";
+	public static final String LIBAVCODEC_IDENT = (String)"Lavc57.89.100";
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int FF_PROFILE_DTS_HD_MA = (int)60;
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
@@ -1767,6 +1797,8 @@ public class AvcodecLibrary {
 	public static final boolean FF_API_BUFS_VDPAU = (boolean)(57 < 58);
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int FF_PROFILE_JPEG2000_CSTREAM_NO_RESTRICTION = (int)32768;
+	/** <i>native declaration : ./libavcodec/version.h</i> */
+	public static final boolean FF_API_TAG_STRING = (boolean)(57 < 59);
 	/** <i>native declaration : ./libavcodec/version.h</i> */
 	public static final int LIBAVCODEC_VERSION_MAJOR = (int)57;
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
@@ -1783,7 +1815,7 @@ public class AvcodecLibrary {
 	public static final int FF_PROFILE_VC1_MAIN = (int)1;
 	/** <i>native declaration : ./libavcodec/avcodec.h</i> */
 	public static final int AV_CODEC_FLAG_GLOBAL_HEADER = (int)(1 << 22);
-	/** <i>native declaration : ./libavcodec/avcodec.h:4381</i> */
+	/** <i>native declaration : ./libavcodec/avcodec.h:4438</i> */
 	public static abstract class avcodec_default_execute_func_callback extends Callback<avcodec_default_execute_func_callback > {
 		public int apply(Pointer<AVCodecContext > c2, Pointer<? > arg2) {
 			return apply(Pointer.getPeer(c2), Pointer.getPeer(arg2));
@@ -1792,7 +1824,7 @@ public class AvcodecLibrary {
 			return apply(Pointer.pointerToAddress(c2, AVCodecContext.class), Pointer.pointerToAddress(arg2));
 		}
 	};
-	/** <i>native declaration : ./libavcodec/avcodec.h:4382</i> */
+	/** <i>native declaration : ./libavcodec/avcodec.h:4439</i> */
 	public static abstract class avcodec_default_execute2_func_callback extends Callback<avcodec_default_execute2_func_callback > {
 		public int apply(Pointer<AVCodecContext > c2, Pointer<? > arg2, int int1, int int2) {
 			return apply(Pointer.getPeer(c2), Pointer.getPeer(arg2), int1, int2);
@@ -1803,7 +1835,7 @@ public class AvcodecLibrary {
 	};
 	/**
 	 * Original signature : <code>AVRational av_codec_get_pkt_timebase(const AVCodecContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2172</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2215</i>
 	 */
 	public static AVRational av_codec_get_pkt_timebase(Pointer<AVCodecContext > avctx) {
 		return av_codec_get_pkt_timebase(Pointer.getPeer(avctx));
@@ -1811,7 +1843,7 @@ public class AvcodecLibrary {
 	protected native static AVRational av_codec_get_pkt_timebase(@Ptr long avctx);
 	/**
 	 * Original signature : <code>void av_codec_set_pkt_timebase(AVCodecContext*, AVRational)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2174</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2217</i>
 	 */
 	public static void av_codec_set_pkt_timebase(Pointer<AVCodecContext > avctx, AVRational val) {
 		av_codec_set_pkt_timebase(Pointer.getPeer(avctx), val);
@@ -1819,7 +1851,7 @@ public class AvcodecLibrary {
 	protected native static void av_codec_set_pkt_timebase(@Ptr long avctx, AVRational val);
 	/**
 	 * Original signature : <code>AVCodecDescriptor* av_codec_get_codec_descriptor(const AVCodecContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2176</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2219</i>
 	 */
 	public static Pointer<AVCodecDescriptor > av_codec_get_codec_descriptor(Pointer<AVCodecContext > avctx) {
 		return Pointer.pointerToAddress(av_codec_get_codec_descriptor(Pointer.getPeer(avctx)), AVCodecDescriptor.class);
@@ -1828,7 +1860,7 @@ public class AvcodecLibrary {
 	protected native static long av_codec_get_codec_descriptor(@Ptr long avctx);
 	/**
 	 * Original signature : <code>void av_codec_set_codec_descriptor(AVCodecContext*, const AVCodecDescriptor*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2178</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2221</i>
 	 */
 	public static void av_codec_set_codec_descriptor(Pointer<AVCodecContext > avctx, Pointer<AVCodecDescriptor > desc) {
 		av_codec_set_codec_descriptor(Pointer.getPeer(avctx), Pointer.getPeer(desc));
@@ -1836,7 +1868,7 @@ public class AvcodecLibrary {
 	protected native static void av_codec_set_codec_descriptor(@Ptr long avctx, @Ptr long desc);
 	/**
 	 * Original signature : <code>int av_codec_get_codec_properties(const AVCodecContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2180</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2223</i>
 	 */
 	public static int av_codec_get_codec_properties(Pointer<AVCodecContext > avctx) {
 		return av_codec_get_codec_properties(Pointer.getPeer(avctx));
@@ -1844,7 +1876,7 @@ public class AvcodecLibrary {
 	protected native static int av_codec_get_codec_properties(@Ptr long avctx);
 	/**
 	 * Original signature : <code>int av_codec_get_lowres(const AVCodecContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2182</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2225</i>
 	 */
 	public static int av_codec_get_lowres(Pointer<AVCodecContext > avctx) {
 		return av_codec_get_lowres(Pointer.getPeer(avctx));
@@ -1852,7 +1884,7 @@ public class AvcodecLibrary {
 	protected native static int av_codec_get_lowres(@Ptr long avctx);
 	/**
 	 * Original signature : <code>void av_codec_set_lowres(AVCodecContext*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2184</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2227</i>
 	 */
 	public static void av_codec_set_lowres(Pointer<AVCodecContext > avctx, int val) {
 		av_codec_set_lowres(Pointer.getPeer(avctx), val);
@@ -1860,7 +1892,7 @@ public class AvcodecLibrary {
 	protected native static void av_codec_set_lowres(@Ptr long avctx, int val);
 	/**
 	 * Original signature : <code>int av_codec_get_seek_preroll(const AVCodecContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2186</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2229</i>
 	 */
 	public static int av_codec_get_seek_preroll(Pointer<AVCodecContext > avctx) {
 		return av_codec_get_seek_preroll(Pointer.getPeer(avctx));
@@ -1868,7 +1900,7 @@ public class AvcodecLibrary {
 	protected native static int av_codec_get_seek_preroll(@Ptr long avctx);
 	/**
 	 * Original signature : <code>void av_codec_set_seek_preroll(AVCodecContext*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2188</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2231</i>
 	 */
 	public static void av_codec_set_seek_preroll(Pointer<AVCodecContext > avctx, int val) {
 		av_codec_set_seek_preroll(Pointer.getPeer(avctx), val);
@@ -1876,7 +1908,7 @@ public class AvcodecLibrary {
 	protected native static void av_codec_set_seek_preroll(@Ptr long avctx, int val);
 	/**
 	 * Original signature : <code>uint16_t* av_codec_get_chroma_intra_matrix(const AVCodecContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2190</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2233</i>
 	 */
 	public static Pointer<Short > av_codec_get_chroma_intra_matrix(Pointer<AVCodecContext > avctx) {
 		return Pointer.pointerToAddress(av_codec_get_chroma_intra_matrix(Pointer.getPeer(avctx)), Short.class);
@@ -1885,7 +1917,7 @@ public class AvcodecLibrary {
 	protected native static long av_codec_get_chroma_intra_matrix(@Ptr long avctx);
 	/**
 	 * Original signature : <code>void av_codec_set_chroma_intra_matrix(AVCodecContext*, uint16_t*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2192</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2235</i>
 	 */
 	public static void av_codec_set_chroma_intra_matrix(Pointer<AVCodecContext > avctx, Pointer<Short > val) {
 		av_codec_set_chroma_intra_matrix(Pointer.getPeer(avctx), Pointer.getPeer(val));
@@ -1893,7 +1925,7 @@ public class AvcodecLibrary {
 	protected native static void av_codec_set_chroma_intra_matrix(@Ptr long avctx, @Ptr long val);
 	/**
 	 * Original signature : <code>int av_codec_get_max_lowres(const AVCodec*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2328</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2371</i>
 	 */
 	public static int av_codec_get_max_lowres(Pointer<AVCodec > codec) {
 		return av_codec_get_max_lowres(Pointer.getPeer(codec));
@@ -1904,7 +1936,7 @@ public class AvcodecLibrary {
 	 * if c is non-NULL, returns the next registered codec after c,<br>
 	 * or NULL if c is the last one.<br>
 	 * Original signature : <code>AVCodec* av_codec_next(const AVCodec*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2648</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2693</i>
 	 */
 	public static Pointer<AVCodec > av_codec_next(Pointer<AVCodec > c) {
 		return Pointer.pointerToAddress(av_codec_next(Pointer.getPeer(c)), AVCodec.class);
@@ -1914,13 +1946,13 @@ public class AvcodecLibrary {
 	/**
 	 * Return the LIBAVCODEC_VERSION_INT constant.<br>
 	 * Original signature : <code>int avcodec_version()</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2653</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2698</i>
 	 */
 	public static native int avcodec_version();
 	/**
 	 * Return the libavcodec build-time configuration.<br>
 	 * Original signature : <code>char* avcodec_configuration()</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2658</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2703</i>
 	 */
 	public static Pointer<Byte > avcodec__configuration() {
 		return Pointer.pointerToAddress(avcodec_configuration(), Byte.class);
@@ -1930,7 +1962,7 @@ public class AvcodecLibrary {
 	/**
 	 * Return the libavcodec license.<br>
 	 * Original signature : <code>char* avcodec_license()</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2663</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2708</i>
 	 */
 	public static Pointer<Byte > avcodec__license() {
 		return Pointer.pointerToAddress(avcodec_license(), Byte.class);
@@ -1943,7 +1975,7 @@ public class AvcodecLibrary {
 	 * before any other libavcodec functions.<br>
 	 * * @see avcodec_register_all()<br>
 	 * Original signature : <code>void avcodec_register(AVCodec*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2671</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2716</i>
 	 */
 	public static void avcodec_register(Pointer<AVCodec > codec) {
 		avcodec_register(Pointer.getPeer(codec));
@@ -1958,7 +1990,7 @@ public class AvcodecLibrary {
 	 * @see av_register_codec_parser<br>
 	 * @see av_register_bitstream_filter<br>
 	 * Original signature : <code>void avcodec_register_all()</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2682</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2727</i>
 	 */
 	public static native void avcodec_register_all();
 	/**
@@ -1972,7 +2004,7 @@ public class AvcodecLibrary {
 	 *              important mainly for encoders, e.g. libx264).<br>
 	 * * @return An AVCodecContext filled with default values or NULL on failure.<br>
 	 * Original signature : <code>AVCodecContext* avcodec_alloc_context3(const AVCodec*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2695</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2740</i>
 	 */
 	public static Pointer<AVCodecContext > avcodec_alloc_context3(Pointer<AVCodec > codec) {
 		return Pointer.pointerToAddress(avcodec_alloc_context3(Pointer.getPeer(codec)), AVCodecContext.class);
@@ -1983,7 +2015,7 @@ public class AvcodecLibrary {
 	 * Free the codec context and everything associated with it and write NULL to<br>
 	 * the provided pointer.<br>
 	 * Original signature : <code>void avcodec_free_context(AVCodecContext**)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2701</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2746</i>
 	 */
 	public static void avcodec_free_context(Pointer<Pointer<AVCodecContext > > avctx) {
 		avcodec_free_context(Pointer.getPeer(avctx));
@@ -1994,7 +2026,7 @@ public class AvcodecLibrary {
 	 * context multiple time is not supported. A new codec context should be<br>
 	 * allocated for each new use.<br>
 	 * Original signature : <code>int avcodec_get_context_defaults3(AVCodecContext*, const AVCodec*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2708</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2753</i>
 	 */
 	public static int avcodec_get_context_defaults3(Pointer<AVCodecContext > s, Pointer<AVCodec > codec) {
 		return avcodec_get_context_defaults3(Pointer.getPeer(s), Pointer.getPeer(codec));
@@ -2005,7 +2037,7 @@ public class AvcodecLibrary {
 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>
 	 * * @see av_opt_find().<br>
 	 * Original signature : <code>AVClass* avcodec_get_class()</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2715</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2760</i>
 	 */
 	public static Pointer<AVClass > avcodec__get_class() {
 		return Pointer.pointerToAddress(avcodec_get_class(), AVClass.class);
@@ -2017,7 +2049,7 @@ public class AvcodecLibrary {
 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>
 	 * * @see av_opt_find().<br>
 	 * Original signature : <code>AVClass* avcodec_get_frame_class()</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2722</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2767</i>
 	 */
 	public static Pointer<AVClass > avcodec__get_frame_class() {
 		return Pointer.pointerToAddress(avcodec_get_frame_class(), AVClass.class);
@@ -2029,7 +2061,7 @@ public class AvcodecLibrary {
 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>
 	 * * @see av_opt_find().<br>
 	 * Original signature : <code>AVClass* avcodec_get_subtitle_rect_class()</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2729</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2774</i>
 	 */
 	public static Pointer<AVClass > avcodec__get_subtitle_rect_class() {
 		return Pointer.pointerToAddress(avcodec_get_subtitle_rect_class(), AVClass.class);
@@ -2051,7 +2083,7 @@ public class AvcodecLibrary {
 	 * avcodec_parameters_from_context() / avcodec_parameters_to_context()<br>
 	 * functions.<br>
 	 * Original signature : <code>int avcodec_copy_context(AVCodecContext*, const AVCodecContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2746</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2791</i>
 	 */
 	public static int avcodec_copy_context(Pointer<AVCodecContext > dest, Pointer<AVCodecContext > src) {
 		return avcodec_copy_context(Pointer.getPeer(dest), Pointer.getPeer(src));
@@ -2062,7 +2094,7 @@ public class AvcodecLibrary {
 	 * (unknown/invalid/0). The returned struct must be freed with<br>
 	 * avcodec_parameters_free().<br>
 	 * Original signature : <code>AVCodecParameters* avcodec_parameters_alloc()</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2753</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2798</i>
 	 */
 	public static Pointer<AVCodecParameters > avcodec__parameters_alloc() {
 		return Pointer.pointerToAddress(avcodec_parameters_alloc(), AVCodecParameters.class);
@@ -2073,7 +2105,7 @@ public class AvcodecLibrary {
 	 * Free an AVCodecParameters instance and everything associated with it and<br>
 	 * write NULL to the supplied pointer.<br>
 	 * Original signature : <code>void avcodec_parameters_free(AVCodecParameters**)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2759</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2804</i>
 	 */
 	public static void avcodec_parameters_free(Pointer<Pointer<AVCodecParameters > > par) {
 		avcodec_parameters_free(Pointer.getPeer(par));
@@ -2084,7 +2116,7 @@ public class AvcodecLibrary {
 	 * replaced with newly allocated duplicates of the corresponding fields in src.<br>
 	 * * @return >= 0 on success, a negative AVERROR code on failure.<br>
 	 * Original signature : <code>int avcodec_parameters_copy(AVCodecParameters*, const AVCodecParameters*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2766</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2811</i>
 	 */
 	public static int avcodec_parameters_copy(Pointer<AVCodecParameters > dst, Pointer<AVCodecParameters > src) {
 		return avcodec_parameters_copy(Pointer.getPeer(dst), Pointer.getPeer(src));
@@ -2096,7 +2128,7 @@ public class AvcodecLibrary {
 	 * of the corresponding fields in codec.<br>
 	 * * @return >= 0 on success, a negative AVERROR code on failure<br>
 	 * Original signature : <code>int avcodec_parameters_from_context(AVCodecParameters*, const AVCodecContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2774</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2819</i>
 	 */
 	public static int avcodec_parameters_from_context(Pointer<AVCodecParameters > par, Pointer<AVCodecContext > codec) {
 		return avcodec_parameters_from_context(Pointer.getPeer(par), Pointer.getPeer(codec));
@@ -2109,7 +2141,7 @@ public class AvcodecLibrary {
 	 * Fields in codec that do not have a counterpart in par are not touched.<br>
 	 * * @return >= 0 on success, a negative AVERROR code on failure.<br>
 	 * Original signature : <code>int avcodec_parameters_to_context(AVCodecContext*, const AVCodecParameters*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2783</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2828</i>
 	 */
 	public static int avcodec_parameters_to_context(Pointer<AVCodecContext > codec, Pointer<AVCodecParameters > par) {
 		return avcodec_parameters_to_context(Pointer.getPeer(codec), Pointer.getPeer(par));
@@ -2145,7 +2177,7 @@ public class AvcodecLibrary {
 	 * @see avcodec_alloc_context3(), avcodec_find_decoder(), avcodec_find_encoder(),<br>
 	 *      av_dict_set(), av_opt_find().<br>
 	 * Original signature : <code>int avcodec_open2(AVCodecContext*, const AVCodec*, AVDictionary**)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2815</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2860</i>
 	 */
 	public static int avcodec_open2(Pointer<AVCodecContext > avctx, Pointer<AVCodec > codec, Pointer<Pointer<AVDictionary > > options) {
 		return avcodec_open2(Pointer.getPeer(avctx), Pointer.getPeer(codec), Pointer.getPeer(options));
@@ -2162,7 +2194,7 @@ public class AvcodecLibrary {
 	 * multiple times is not supported anymore -- use multiple codec contexts<br>
 	 * instead.<br>
 	 * Original signature : <code>int avcodec_close(AVCodecContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2828</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2873</i>
 	 */
 	public static int avcodec_close(Pointer<AVCodecContext > avctx) {
 		return avcodec_close(Pointer.getPeer(avctx));
@@ -2172,7 +2204,7 @@ public class AvcodecLibrary {
 	 * Free all allocated data in the given subtitle struct.<br>
 	 * * @param sub AVSubtitle to free.<br>
 	 * Original signature : <code>void avsubtitle_free(AVSubtitle*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2834</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2879</i>
 	 */
 	public static void avsubtitle_free(Pointer<AVSubtitle > sub) {
 		avsubtitle_free(Pointer.getPeer(sub));
@@ -2186,7 +2218,7 @@ public class AvcodecLibrary {
 	 * must be allocated through other means such as av_new_packet.<br>
 	 * * @see av_new_packet<br>
 	 * Original signature : <code>AVPacket* av_packet_alloc()</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2844</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2889</i>
 	 */
 	public static Pointer<AVPacket > av_packet__alloc() {
 		return Pointer.pointerToAddress(av_packet_alloc(), AVPacket.class);
@@ -2199,8 +2231,8 @@ public class AvcodecLibrary {
 	 * * @return newly created AVPacket on success, NULL on error.<br>
 	 * * @see av_packet_alloc<br>
 	 * @see av_packet_ref<br>
-	 * Original signature : <code>AVPacket* av_packet_clone(AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2853</i>
+	 * Original signature : <code>AVPacket* av_packet_clone(const AVPacket*)</code><br>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2898</i>
 	 */
 	public static Pointer<AVPacket > av_packet_clone(Pointer<AVPacket > src) {
 		return Pointer.pointerToAddress(av_packet_clone(Pointer.getPeer(src)), AVPacket.class);
@@ -2213,7 +2245,7 @@ public class AvcodecLibrary {
 	 * * @param packet packet to be freed. The pointer will be set to NULL.<br>
 	 * @note passing NULL is a no-op.<br>
 	 * Original signature : <code>void av_packet_free(AVPacket**)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2861</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2906</i>
 	 */
 	public static void av_packet_free(Pointer<Pointer<AVPacket > > pkt) {
 		av_packet_free(Pointer.getPeer(pkt));
@@ -2225,7 +2257,7 @@ public class AvcodecLibrary {
 	 * initialized separately.<br>
 	 * * @param pkt packet<br>
 	 * Original signature : <code>void av_init_packet(AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2869</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2914</i>
 	 */
 	public static void av_init_packet(Pointer<AVPacket > pkt) {
 		av_init_packet(Pointer.getPeer(pkt));
@@ -2238,7 +2270,7 @@ public class AvcodecLibrary {
 	 * @param size wanted payload size<br>
 	 * @return 0 if OK, AVERROR_xxx otherwise<br>
 	 * Original signature : <code>int av_new_packet(AVPacket*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2878</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2923</i>
 	 */
 	public static int av_new_packet(Pointer<AVPacket > pkt, int size) {
 		return av_new_packet(Pointer.getPeer(pkt), size);
@@ -2249,7 +2281,7 @@ public class AvcodecLibrary {
 	 * * @param pkt packet<br>
 	 * @param size new size<br>
 	 * Original signature : <code>void av_shrink_packet(AVPacket*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2885</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2930</i>
 	 */
 	public static void av_shrink_packet(Pointer<AVPacket > pkt, int size) {
 		av_shrink_packet(Pointer.getPeer(pkt), size);
@@ -2260,7 +2292,7 @@ public class AvcodecLibrary {
 	 * * @param pkt packet<br>
 	 * @param grow_by number of bytes by which to increase the size of the packet<br>
 	 * Original signature : <code>int av_grow_packet(AVPacket*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2892</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2937</i>
 	 */
 	public static int av_grow_packet(Pointer<AVPacket > pkt, int grow_by) {
 		return av_grow_packet(Pointer.getPeer(pkt), grow_by);
@@ -2277,7 +2309,7 @@ public class AvcodecLibrary {
 	 *        size is assumed to be size + AV_INPUT_BUFFER_PADDING_SIZE.<br>
 	 * * @return 0 on success, a negative AVERROR on error<br>
 	 * Original signature : <code>int av_packet_from_data(AVPacket*, uint8_t*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2905</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2950</i>
 	 */
 	public static int av_packet_from_data(Pointer<AVPacket > pkt, Pointer<Byte > data, int size) {
 		return av_packet_from_data(Pointer.getPeer(pkt), Pointer.getPeer(data), size);
@@ -2288,7 +2320,7 @@ public class AvcodecLibrary {
 	 * packet is allocated if it was not really allocated.<br>
 	 * * @deprecated Use av_packet_ref<br>
 	 * Original signature : <code>int av_dup_packet(AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2912</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2957</i>
 	 */
 	public static int av_dup_packet(Pointer<AVPacket > pkt) {
 		return av_dup_packet(Pointer.getPeer(pkt));
@@ -2298,7 +2330,7 @@ public class AvcodecLibrary {
 	 * Copy packet, including contents<br>
 	 * * @return 0 on success, negative AVERROR on fail<br>
 	 * Original signature : <code>int av_copy_packet(AVPacket*, const AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2918</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2963</i>
 	 */
 	public static int av_copy_packet(Pointer<AVPacket > dst, Pointer<AVPacket > src) {
 		return av_copy_packet(Pointer.getPeer(dst), Pointer.getPeer(src));
@@ -2308,7 +2340,7 @@ public class AvcodecLibrary {
 	 * Copy packet side data<br>
 	 * * @return 0 on success, negative AVERROR on fail<br>
 	 * Original signature : <code>int av_copy_packet_side_data(AVPacket*, const AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2924</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2969</i>
 	 */
 	public static int av_copy_packet_side_data(Pointer<AVPacket > dst, Pointer<AVPacket > src) {
 		return av_copy_packet_side_data(Pointer.getPeer(dst), Pointer.getPeer(src));
@@ -2319,7 +2351,7 @@ public class AvcodecLibrary {
 	 * * @deprecated Use av_packet_unref<br>
 	 * * @param pkt packet to free<br>
 	 * Original signature : <code>void av_free_packet(AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2931</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2976</i>
 	 */
 	public static void av_free_packet(Pointer<AVPacket > pkt) {
 		av_free_packet(Pointer.getPeer(pkt));
@@ -2332,7 +2364,7 @@ public class AvcodecLibrary {
 	 * @param size side information size<br>
 	 * @return pointer to fresh allocated data or NULL otherwise<br>
 	 * Original signature : <code>uint8_t* av_packet_new_side_data(AVPacket*, AVPacketSideDataType, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2940</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2985</i>
 	 */
 	public static Pointer<Byte > av_packet_new_side_data(Pointer<AVPacket > pkt, IntValuedEnum<AvcodecLibrary.AVPacketSideDataType > type, int size) {
 		return Pointer.pointerToAddress(av_packet_new_side_data(Pointer.getPeer(pkt), (int)type.value(), size), Byte.class);
@@ -2351,7 +2383,7 @@ public class AvcodecLibrary {
 	 *         failure. On failure, the packet is unchanged and the data remains<br>
 	 *         owned by the caller.<br>
 	 * Original signature : <code>int av_packet_add_side_data(AVPacket*, AVPacketSideDataType, uint8_t*, size_t)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2954</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:2999</i>
 	 */
 	public static int av_packet_add_side_data(Pointer<AVPacket > pkt, IntValuedEnum<AvcodecLibrary.AVPacketSideDataType > type, Pointer<Byte > data, @Ptr long size) {
 		return av_packet_add_side_data(Pointer.getPeer(pkt), (int)type.value(), Pointer.getPeer(data), size);
@@ -2364,7 +2396,7 @@ public class AvcodecLibrary {
 	 * @param size new side information size<br>
 	 * @return 0 on success, < 0 on failure<br>
 	 * Original signature : <code>int av_packet_shrink_side_data(AVPacket*, AVPacketSideDataType, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2963</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3008</i>
 	 */
 	public static int av_packet_shrink_side_data(Pointer<AVPacket > pkt, IntValuedEnum<AvcodecLibrary.AVPacketSideDataType > type, int size) {
 		return av_packet_shrink_side_data(Pointer.getPeer(pkt), (int)type.value(), size);
@@ -2376,8 +2408,8 @@ public class AvcodecLibrary {
 	 * @param type desired side information type<br>
 	 * @param size pointer for side information size to store (optional)<br>
 	 * @return pointer to data if present or NULL otherwise<br>
-	 * Original signature : <code>uint8_t* av_packet_get_side_data(AVPacket*, AVPacketSideDataType, int*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2972</i>
+	 * Original signature : <code>uint8_t* av_packet_get_side_data(const AVPacket*, AVPacketSideDataType, int*)</code><br>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3017</i>
 	 */
 	public static Pointer<Byte > av_packet_get_side_data(Pointer<AVPacket > pkt, IntValuedEnum<AvcodecLibrary.AVPacketSideDataType > type, Pointer<Integer > size) {
 		return Pointer.pointerToAddress(av_packet_get_side_data(Pointer.getPeer(pkt), (int)type.value(), Pointer.getPeer(size)), Byte.class);
@@ -2386,7 +2418,7 @@ public class AvcodecLibrary {
 	protected native static long av_packet_get_side_data(@Ptr long pkt, int type, @Ptr long size);
 	/**
 	 * Original signature : <code>int av_packet_merge_side_data(AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2974</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3019</i>
 	 */
 	public static int av_packet_merge_side_data(Pointer<AVPacket > pkt) {
 		return av_packet_merge_side_data(Pointer.getPeer(pkt));
@@ -2394,7 +2426,7 @@ public class AvcodecLibrary {
 	protected native static int av_packet_merge_side_data(@Ptr long pkt);
 	/**
 	 * Original signature : <code>int av_packet_split_side_data(AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2976</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3021</i>
 	 */
 	public static int av_packet_split_side_data(Pointer<AVPacket > pkt) {
 		return av_packet_split_side_data(Pointer.getPeer(pkt));
@@ -2402,7 +2434,7 @@ public class AvcodecLibrary {
 	protected native static int av_packet_split_side_data(@Ptr long pkt);
 	/**
 	 * Original signature : <code>char* av_packet_side_data_name(AVPacketSideDataType)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2978</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3023</i>
 	 */
 	public static Pointer<Byte > av_packet_side_data_name(IntValuedEnum<AvcodecLibrary.AVPacketSideDataType > type) {
 		return Pointer.pointerToAddress(av_packet_side_data_name((int)type.value()), Byte.class);
@@ -2415,7 +2447,7 @@ public class AvcodecLibrary {
 	 * @param size pointer to store the size of the returned data<br>
 	 * @return pointer to data if successful, NULL otherwise<br>
 	 * Original signature : <code>uint8_t* av_packet_pack_dictionary(AVDictionary*, int*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2986</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3031</i>
 	 */
 	public static Pointer<Byte > av_packet_pack_dictionary(Pointer<AVDictionary > dict, Pointer<Integer > size) {
 		return Pointer.pointerToAddress(av_packet_pack_dictionary(Pointer.getPeer(dict), Pointer.getPeer(size)), Byte.class);
@@ -2429,7 +2461,7 @@ public class AvcodecLibrary {
 	 * @param dict the metadata storage dictionary<br>
 	 * @return 0 on success, < 0 on failure<br>
 	 * Original signature : <code>int av_packet_unpack_dictionary(const uint8_t*, int, AVDictionary**)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:2995</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3040</i>
 	 */
 	public static int av_packet_unpack_dictionary(Pointer<Byte > data, int size, Pointer<Pointer<AVDictionary > > dict) {
 		return av_packet_unpack_dictionary(Pointer.getPeer(data), size, Pointer.getPeer(dict));
@@ -2440,7 +2472,7 @@ public class AvcodecLibrary {
 	 * All the other fields stay untouched.<br>
 	 * * @param pkt packet<br>
 	 * Original signature : <code>void av_packet_free_side_data(AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3002</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3047</i>
 	 */
 	public static void av_packet_free_side_data(Pointer<AVPacket > pkt) {
 		av_packet_free_side_data(Pointer.getPeer(pkt));
@@ -2457,7 +2489,7 @@ public class AvcodecLibrary {
 	 * @param src Source packet<br>
 	 * * @return 0 on success, a negative AVERROR on error.<br>
 	 * Original signature : <code>int av_packet_ref(AVPacket*, const AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3015</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3060</i>
 	 */
 	public static int av_packet_ref(Pointer<AVPacket > dst, Pointer<AVPacket > src) {
 		return av_packet_ref(Pointer.getPeer(dst), Pointer.getPeer(src));
@@ -2469,7 +2501,7 @@ public class AvcodecLibrary {
 	 * remaining packet fields to their default values.<br>
 	 * * @param pkt The packet to be unreferenced.<br>
 	 * Original signature : <code>void av_packet_unref(AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3023</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3068</i>
 	 */
 	public static void av_packet_unref(Pointer<AVPacket > pkt) {
 		av_packet_unref(Pointer.getPeer(pkt));
@@ -2481,7 +2513,7 @@ public class AvcodecLibrary {
 	 * * @param src Source packet, will be reset<br>
 	 * @param dst Destination packet<br>
 	 * Original signature : <code>void av_packet_move_ref(AVPacket*, AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3031</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3076</i>
 	 */
 	public static void av_packet_move_ref(Pointer<AVPacket > dst, Pointer<AVPacket > src) {
 		av_packet_move_ref(Pointer.getPeer(dst), Pointer.getPeer(src));
@@ -2495,7 +2527,7 @@ public class AvcodecLibrary {
 	 * @param src Source packet<br>
 	 * * @return 0 on success AVERROR on failure.<br>
 	 * Original signature : <code>int av_packet_copy_props(AVPacket*, const AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3041</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3086</i>
 	 */
 	public static int av_packet_copy_props(Pointer<AVPacket > dst, Pointer<AVPacket > src) {
 		return av_packet_copy_props(Pointer.getPeer(dst), Pointer.getPeer(src));
@@ -2511,7 +2543,7 @@ public class AvcodecLibrary {
 	 * @param tb_dst destination timebase, to which the timing fields will be<br>
 	 *               converted<br>
 	 * Original signature : <code>void av_packet_rescale_ts(AVPacket*, AVRational, AVRational)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3053</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3098</i>
 	 */
 	public static void av_packet_rescale_ts(Pointer<AVPacket > pkt, AVRational tb_src, AVRational tb_dst) {
 		av_packet_rescale_ts(Pointer.getPeer(pkt), tb_src, tb_dst);
@@ -2522,7 +2554,7 @@ public class AvcodecLibrary {
 	 * * @param id AVCodecID of the requested decoder<br>
 	 * @return A decoder if one was found, NULL otherwise.<br>
 	 * Original signature : <code>AVCodec* avcodec_find_decoder(AVCodecID)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3060</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3105</i>
 	 */
 	public static Pointer<AVCodec > avcodec_find_decoder(IntValuedEnum<AvcodecLibrary.AVCodecID > id) {
 		return Pointer.pointerToAddress(avcodec_find_decoder((int)id.value()), AVCodec.class);
@@ -2534,7 +2566,7 @@ public class AvcodecLibrary {
 	 * * @param name name of the requested decoder<br>
 	 * @return A decoder if one was found, NULL otherwise.<br>
 	 * Original signature : <code>AVCodec* avcodec_find_decoder_by_name(const char*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3067</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3112</i>
 	 */
 	public static Pointer<AVCodec > avcodec_find_decoder_by_name(Pointer<Byte > name) {
 		return Pointer.pointerToAddress(avcodec_find_decoder_by_name(Pointer.getPeer(name)), AVCodec.class);
@@ -2546,7 +2578,7 @@ public class AvcodecLibrary {
 	 * it can be called by custom get_buffer2() implementations for decoders without<br>
 	 * AV_CODEC_CAP_DR1 set.<br>
 	 * Original signature : <code>int avcodec_default_get_buffer2(AVCodecContext*, AVFrame*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3074</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3119</i>
 	 */
 	public static int avcodec_default_get_buffer2(Pointer<AVCodecContext > s, Pointer<AVFrame > frame, int flags) {
 		return avcodec_default_get_buffer2(Pointer.getPeer(s), Pointer.getPeer(frame), flags);
@@ -2560,7 +2592,7 @@ public class AvcodecLibrary {
 	 * * @deprecated CODEC_FLAG_EMU_EDGE is deprecated, so this function is no longer<br>
 	 * needed<br>
 	 * Original signature : <code>int avcodec_get_edge_width()</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3084</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3129</i>
 	 */
 	public static native int avcodec_get_edge_width();
 	/**
@@ -2569,7 +2601,7 @@ public class AvcodecLibrary {
 	 * padding.<br>
 	 * * May only be used if a codec with AV_CODEC_CAP_DR1 has been opened.<br>
 	 * Original signature : <code>void avcodec_align_dimensions(AVCodecContext*, int*, int*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3092</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3137</i>
 	 */
 	public static void avcodec_align_dimensions(Pointer<AVCodecContext > s, Pointer<Integer > width, Pointer<Integer > height) {
 		avcodec_align_dimensions(Pointer.getPeer(s), Pointer.getPeer(width), Pointer.getPeer(height));
@@ -2581,7 +2613,7 @@ public class AvcodecLibrary {
 	 * line sizes are a multiple of the respective linesize_align[i].<br>
 	 * * May only be used if a codec with AV_CODEC_CAP_DR1 has been opened.<br>
 	 * Original signature : <code>void avcodec_align_dimensions2(AVCodecContext*, int*, int*, int[8])</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3100</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3145</i>
 	 */
 	public static void avcodec_align_dimensions2(Pointer<AVCodecContext > s, Pointer<Integer > width, Pointer<Integer > height, Pointer<Integer > linesize_align) {
 		avcodec_align_dimensions2(Pointer.getPeer(s), Pointer.getPeer(width), Pointer.getPeer(height), Pointer.getPeer(linesize_align));
@@ -2594,7 +2626,7 @@ public class AvcodecLibrary {
 	 * * @param xpos  horizontal chroma sample position<br>
 	 * @param ypos  vertical   chroma sample position<br>
 	 * Original signature : <code>int avcodec_enum_to_chroma_pos(int*, int*, AVChromaLocation)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3109</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3154</i>
 	 */
 	public static int avcodec_enum_to_chroma_pos(Pointer<Integer > xpos, Pointer<Integer > ypos, IntValuedEnum<AVChromaLocation > pos) {
 		return avcodec_enum_to_chroma_pos(Pointer.getPeer(xpos), Pointer.getPeer(ypos), (int)pos.value());
@@ -2607,7 +2639,7 @@ public class AvcodecLibrary {
 	 * * @param xpos  horizontal chroma sample position<br>
 	 * @param ypos  vertical   chroma sample position<br>
 	 * Original signature : <code>AVChromaLocation avcodec_chroma_pos_to_enum(int, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3118</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3163</i>
 	 */
 	public static IntValuedEnum<AVChromaLocation > avcodec__chroma_pos_to_enum(int xpos, int ypos) {
 		return FlagSet.fromValue(avcodec_chroma_pos_to_enum(xpos, ypos), AVChromaLocation.class);
@@ -2660,7 +2692,7 @@ public class AvcodecLibrary {
 	 *         AVPacket is returned.<br>
 	 * * @deprecated Use avcodec_send_packet() and avcodec_receive_frame().<br>
 	 * Original signature : <code>int avcodec_decode_audio4(AVCodecContext*, AVFrame*, int*, const AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3167</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3212</i>
 	 */
 	public static int avcodec_decode_audio4(Pointer<AVCodecContext > avctx, Pointer<AVFrame > frame, Pointer<Integer > got_frame_ptr, Pointer<AVPacket > avpkt) {
 		return avcodec_decode_audio4(Pointer.getPeer(avctx), Pointer.getPeer(frame), Pointer.getPeer(got_frame_ptr), Pointer.getPeer(avpkt));
@@ -2704,7 +2736,7 @@ public class AvcodecLibrary {
 	 * used or zero if no frame could be decompressed.<br>
 	 * * @deprecated Use avcodec_send_packet() and avcodec_receive_frame().<br>
 	 * Original signature : <code>int avcodec_decode_video2(AVCodecContext*, AVFrame*, int*, const AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3207</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3252</i>
 	 */
 	public static int avcodec_decode_video2(Pointer<AVCodecContext > avctx, Pointer<AVFrame > picture, Pointer<Integer > got_picture_ptr, Pointer<AVPacket > avpkt) {
 		return avcodec_decode_video2(Pointer.getPeer(avctx), Pointer.getPeer(picture), Pointer.getPeer(got_picture_ptr), Pointer.getPeer(avpkt));
@@ -2734,7 +2766,7 @@ public class AvcodecLibrary {
 	 * @param[in,out] got_sub_ptr Zero if no subtitle could be decompressed, otherwise, it is nonzero.<br>
 	 * @param[in] avpkt The input AVPacket containing the input buffer.<br>
 	 * Original signature : <code>int avcodec_decode_subtitle2(AVCodecContext*, AVSubtitle*, int*, AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3233</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3278</i>
 	 */
 	public static int avcodec_decode_subtitle2(Pointer<AVCodecContext > avctx, Pointer<AVSubtitle > sub, Pointer<Integer > got_sub_ptr, Pointer<AVPacket > avpkt) {
 		return avcodec_decode_subtitle2(Pointer.getPeer(avctx), Pointer.getPeer(sub), Pointer.getPeer(got_sub_ptr), Pointer.getPeer(avpkt));
@@ -2773,8 +2805,10 @@ public class AvcodecLibrary {
 	 *                  still has frames buffered, it will return them after sending<br>
 	 *                  a flush packet.<br>
 	 * * @return 0 on success, otherwise negative error code:<br>
-	 *      AVERROR(EAGAIN):   input is not accepted right now - the packet must be<br>
-	 *                         resent after trying to read output<br>
+	 *      AVERROR(EAGAIN):   input is not accepted in the current state - user<br>
+	 *                         must read output with avcodec_receive_frame() (once<br>
+	 *                         all output is read, the packet should be resent, and<br>
+	 *                         the call will not fail with EAGAIN).<br>
 	 *      AVERROR_EOF:       the decoder has been flushed, and no new packets can<br>
 	 *                         be sent to it (also returned if more than 1 flush<br>
 	 *                         packet is sent)<br>
@@ -2782,7 +2816,7 @@ public class AvcodecLibrary {
 	 *      AVERROR(ENOMEM):   failed to add packet to internal queue, or similar<br>
 	 *      other errors: legitimate decoding errors<br>
 	 * Original signature : <code>int avcodec_send_packet(AVCodecContext*, const AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3277</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3324</i>
 	 */
 	public static int avcodec_send_packet(Pointer<AVCodecContext > avctx, Pointer<AVPacket > avpkt) {
 		return avcodec_send_packet(Pointer.getPeer(avctx), Pointer.getPeer(avpkt));
@@ -2797,14 +2831,14 @@ public class AvcodecLibrary {
 	 *              av_frame_unref(frame) before doing anything else.<br>
 	 * * @return<br>
 	 *      0:                 success, a frame was returned<br>
-	 *      AVERROR(EAGAIN):   output is not available right now - user must try<br>
+	 *      AVERROR(EAGAIN):   output is not available in this state - user must try<br>
 	 *                         to send new input<br>
 	 *      AVERROR_EOF:       the decoder has been fully flushed, and there will be<br>
 	 *                         no more output frames<br>
 	 *      AVERROR(EINVAL):   codec not opened, or it is an encoder<br>
 	 *      other negative values: legitimate decoding errors<br>
 	 * Original signature : <code>int avcodec_receive_frame(AVCodecContext*, AVFrame*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3295</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3342</i>
 	 */
 	public static int avcodec_receive_frame(Pointer<AVCodecContext > avctx, Pointer<AVFrame > frame) {
 		return avcodec_receive_frame(Pointer.getPeer(avctx), Pointer.getPeer(frame));
@@ -2832,8 +2866,10 @@ public class AvcodecLibrary {
 	 *                  avctx->frame_size for all frames except the last.<br>
 	 *                  The final frame may be smaller than avctx->frame_size.<br>
 	 * @return 0 on success, otherwise negative error code:<br>
-	 *      AVERROR(EAGAIN):   input is not accepted right now - the frame must be<br>
-	 *                         resent after trying to read output packets<br>
+	 *      AVERROR(EAGAIN):   input is not accepted in the current state - user<br>
+	 *                         must read output with avcodec_receive_packet() (once<br>
+	 *                         all output is read, the packet should be resent, and<br>
+	 *                         the call will not fail with EAGAIN).<br>
 	 *      AVERROR_EOF:       the encoder has been flushed, and no new frames can<br>
 	 *                         be sent to it<br>
 	 *      AVERROR(EINVAL):   codec not opened, refcounted_frames not set, it is a<br>
@@ -2841,7 +2877,7 @@ public class AvcodecLibrary {
 	 *      AVERROR(ENOMEM):   failed to add packet to internal queue, or similar<br>
 	 *      other errors: legitimate decoding errors<br>
 	 * Original signature : <code>int avcodec_send_frame(AVCodecContext*, const AVFrame*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3328</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3377</i>
 	 */
 	public static int avcodec_send_frame(Pointer<AVCodecContext > avctx, Pointer<AVFrame > frame) {
 		return avcodec_send_frame(Pointer.getPeer(avctx), Pointer.getPeer(frame));
@@ -2854,14 +2890,14 @@ public class AvcodecLibrary {
 	 *              encoder. Note that the function will always call<br>
 	 *              av_frame_unref(frame) before doing anything else.<br>
 	 * @return 0 on success, otherwise negative error code:<br>
-	 *      AVERROR(EAGAIN):   output is not available right now - user must try<br>
-	 *                         to send input<br>
+	 *      AVERROR(EAGAIN):   output is not available in the current state - user<br>
+	 *                         must try to send input<br>
 	 *      AVERROR_EOF:       the encoder has been fully flushed, and there will be<br>
 	 *                         no more output packets<br>
 	 *      AVERROR(EINVAL):   codec not opened, or it is an encoder<br>
 	 *      other errors: legitimate decoding errors<br>
 	 * Original signature : <code>int avcodec_receive_packet(AVCodecContext*, AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3344</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3393</i>
 	 */
 	public static int avcodec_receive_packet(Pointer<AVCodecContext > avctx, Pointer<AVPacket > avpkt) {
 		return avcodec_receive_packet(Pointer.getPeer(avctx), Pointer.getPeer(avpkt));
@@ -2869,7 +2905,7 @@ public class AvcodecLibrary {
 	protected native static int avcodec_receive_packet(@Ptr long avctx, @Ptr long avpkt);
 	/**
 	 * Original signature : <code>AVCodecParser* av_parser_next(const AVCodecParser*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3491</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3540</i>
 	 */
 	public static Pointer<AVCodecParser > av_parser_next(Pointer<AVCodecParser > c) {
 		return Pointer.pointerToAddress(av_parser_next(Pointer.getPeer(c)), AVCodecParser.class);
@@ -2878,7 +2914,7 @@ public class AvcodecLibrary {
 	protected native static long av_parser_next(@Ptr long c);
 	/**
 	 * Original signature : <code>void av_register_codec_parser(AVCodecParser*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3493</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3542</i>
 	 */
 	public static void av_register_codec_parser(Pointer<AVCodecParser > parser) {
 		av_register_codec_parser(Pointer.getPeer(parser));
@@ -2886,7 +2922,7 @@ public class AvcodecLibrary {
 	protected native static void av_register_codec_parser(@Ptr long parser);
 	/**
 	 * Original signature : <code>AVCodecParserContext* av_parser_init(int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3495</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3544</i>
 	 */
 	public static Pointer<AVCodecParserContext > av__parser_init(int codec_id) {
 		return Pointer.pointerToAddress(av_parser_init(codec_id), AVCodecParserContext.class);
@@ -2921,7 +2957,7 @@ public class AvcodecLibrary {
 	 *   }<br>
 	 * @endcode<br>
 	 * Original signature : <code>int av_parser_parse2(AVCodecParserContext*, AVCodecContext*, uint8_t**, int*, const uint8_t*, int, int64_t, int64_t, int64_t)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3525</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3574</i>
 	 */
 	public static int av_parser_parse2(Pointer<AVCodecParserContext > s, Pointer<AVCodecContext > avctx, Pointer<Pointer<Byte > > poutbuf, Pointer<Integer > poutbuf_size, Pointer<Byte > buf, int buf_size, long pts, long dts, long pos) {
 		return av_parser_parse2(Pointer.getPeer(s), Pointer.getPeer(avctx), Pointer.getPeer(poutbuf), Pointer.getPeer(poutbuf_size), Pointer.getPeer(buf), buf_size, pts, dts, pos);
@@ -2931,7 +2967,7 @@ public class AvcodecLibrary {
 	 * @return 0 if the output buffer is a subset of the input, 1 if it is allocated and must be freed<br>
 	 * @deprecated use AVBitStreamFilter<br>
 	 * Original signature : <code>int av_parser_change(AVCodecParserContext*, AVCodecContext*, uint8_t**, int*, const uint8_t*, int, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3531</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3580</i>
 	 */
 	public static int av_parser_change(Pointer<AVCodecParserContext > s, Pointer<AVCodecContext > avctx, Pointer<Pointer<Byte > > poutbuf, Pointer<Integer > poutbuf_size, Pointer<Byte > buf, int buf_size, int keyframe) {
 		return av_parser_change(Pointer.getPeer(s), Pointer.getPeer(avctx), Pointer.getPeer(poutbuf), Pointer.getPeer(poutbuf_size), Pointer.getPeer(buf), buf_size, keyframe);
@@ -2939,7 +2975,7 @@ public class AvcodecLibrary {
 	protected native static int av_parser_change(@Ptr long s, @Ptr long avctx, @Ptr long poutbuf, @Ptr long poutbuf_size, @Ptr long buf, int buf_size, int keyframe);
 	/**
 	 * Original signature : <code>void av_parser_close(AVCodecParserContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3533</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3582</i>
 	 */
 	public static void av_parser_close(Pointer<AVCodecParserContext > s) {
 		av_parser_close(Pointer.getPeer(s));
@@ -2950,7 +2986,7 @@ public class AvcodecLibrary {
 	 * * @param id AVCodecID of the requested encoder<br>
 	 * @return An encoder if one was found, NULL otherwise.<br>
 	 * Original signature : <code>AVCodec* avcodec_find_encoder(AVCodecID)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3540</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3589</i>
 	 */
 	public static Pointer<AVCodec > avcodec_find_encoder(IntValuedEnum<AvcodecLibrary.AVCodecID > id) {
 		return Pointer.pointerToAddress(avcodec_find_encoder((int)id.value()), AVCodec.class);
@@ -2962,7 +2998,7 @@ public class AvcodecLibrary {
 	 * * @param name name of the requested encoder<br>
 	 * @return An encoder if one was found, NULL otherwise.<br>
 	 * Original signature : <code>AVCodec* avcodec_find_encoder_by_name(const char*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3547</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3596</i>
 	 */
 	public static Pointer<AVCodec > avcodec_find_encoder_by_name(Pointer<Byte > name) {
 		return Pointer.pointerToAddress(avcodec_find_encoder_by_name(Pointer.getPeer(name)), AVCodec.class);
@@ -3005,7 +3041,7 @@ public class AvcodecLibrary {
 	 * @return          0 on success, negative error code on failure<br>
 	 * * @deprecated use avcodec_send_frame()/avcodec_receive_packet() instead<br>
 	 * Original signature : <code>int avcodec_encode_audio2(AVCodecContext*, AVPacket*, const AVFrame*, int*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3585</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3634</i>
 	 */
 	public static int avcodec_encode_audio2(Pointer<AVCodecContext > avctx, Pointer<AVPacket > avpkt, Pointer<AVFrame > frame, Pointer<Integer > got_packet_ptr) {
 		return avcodec_encode_audio2(Pointer.getPeer(avctx), Pointer.getPeer(avpkt), Pointer.getPeer(frame), Pointer.getPeer(got_packet_ptr));
@@ -3042,7 +3078,7 @@ public class AvcodecLibrary {
 	 * @return          0 on success, negative error code on failure<br>
 	 * * @deprecated use avcodec_send_frame()/avcodec_receive_packet() instead<br>
 	 * Original signature : <code>int avcodec_encode_video2(AVCodecContext*, AVPacket*, const AVFrame*, int*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3618</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3667</i>
 	 */
 	public static int avcodec_encode_video2(Pointer<AVCodecContext > avctx, Pointer<AVPacket > avpkt, Pointer<AVFrame > frame, Pointer<Integer > got_packet_ptr) {
 		return avcodec_encode_video2(Pointer.getPeer(avctx), Pointer.getPeer(avpkt), Pointer.getPeer(frame), Pointer.getPeer(got_packet_ptr));
@@ -3050,7 +3086,7 @@ public class AvcodecLibrary {
 	protected native static int avcodec_encode_video2(@Ptr long avctx, @Ptr long avpkt, @Ptr long frame, @Ptr long got_packet_ptr);
 	/**
 	 * Original signature : <code>int avcodec_encode_subtitle(AVCodecContext*, uint8_t*, int, const AVSubtitle*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3620</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3669</i>
 	 */
 	public static int avcodec_encode_subtitle(Pointer<AVCodecContext > avctx, Pointer<Byte > buf, int buf_size, Pointer<AVSubtitle > sub) {
 		return avcodec_encode_subtitle(Pointer.getPeer(avctx), Pointer.getPeer(buf), buf_size, Pointer.getPeer(sub));
@@ -3071,7 +3107,7 @@ public class AvcodecLibrary {
 	 * @param cutoff           cutoff frequency, 1.0 corresponds to half the output sampling rate<br>
 	 * @return allocated ReSampleContext, NULL if error occurred<br>
 	 * Original signature : <code>ReSampleContext* av_audio_resample_init(int, int, int, int, AVSampleFormat, AVSampleFormat, int, int, int, double)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3648</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3697</i>
 	 */
 	public static Pointer<ReSampleContext > av_audio_resample_init(int output_channels, int input_channels, int output_rate, int input_rate, IntValuedEnum<AVSampleFormat > sample_fmt_out, IntValuedEnum<AVSampleFormat > sample_fmt_in, int filter_length, int log2_phase_count, int linear, double cutoff) {
 		return Pointer.pointerToAddress(av_audio_resample_init(output_channels, input_channels, output_rate, input_rate, (int)sample_fmt_out.value(), (int)sample_fmt_in.value(), filter_length, log2_phase_count, linear, cutoff), ReSampleContext.class);
@@ -3080,7 +3116,7 @@ public class AvcodecLibrary {
 	protected native static long av_audio_resample_init(int output_channels, int input_channels, int output_rate, int input_rate, int sample_fmt_out, int sample_fmt_in, int filter_length, int log2_phase_count, int linear, double cutoff);
 	/**
 	 * Original signature : <code>int audio_resample(ReSampleContext*, short*, short*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3650</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3699</i>
 	 */
 	public static int audio_resample(Pointer<ReSampleContext > s, Pointer<Short > output, Pointer<Short > input, int nb_samples) {
 		return audio_resample(Pointer.getPeer(s), Pointer.getPeer(output), Pointer.getPeer(input), nb_samples);
@@ -3091,7 +3127,7 @@ public class AvcodecLibrary {
 	 * * @param s a non-NULL pointer to a resample context previously<br>
 	 *          created with av_audio_resample_init()<br>
 	 * Original signature : <code>void audio_resample_close(ReSampleContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3657</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3706</i>
 	 */
 	public static void audio_resample_close(Pointer<ReSampleContext > s) {
 		audio_resample_close(Pointer.getPeer(s));
@@ -3106,7 +3142,7 @@ public class AvcodecLibrary {
 	 * between the 2 closest, if 0 the closest will be used<br>
 	 * @param cutoff cutoff frequency, 1.0 corresponds to half the output sampling rate<br>
 	 * Original signature : <code>AVResampleContext* av_resample_init(int, int, int, int, int, double)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3668</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3717</i>
 	 */
 	public static Pointer<AvcodecLibrary.AVResampleContext > av__resample_init(int out_rate, int in_rate, int filter_length, int log2_phase_count, int linear, double cutoff) {
 		return Pointer.pointerToAddress(av_resample_init(out_rate, in_rate, filter_length, log2_phase_count, linear, cutoff), AvcodecLibrary.AVResampleContext.class);
@@ -3122,7 +3158,7 @@ public class AvcodecLibrary {
 	 * @param update_ctx If this is 0 then the context will not be modified, that way several channels can be resampled with the same context.<br>
 	 * @return the number of samples written in dst or -1 if an error occurred<br>
 	 * Original signature : <code>int av_resample(AVResampleContext*, short*, short*, int*, int, int, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3679</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3728</i>
 	 */
 	public static int av_resample(Pointer<AvcodecLibrary.AVResampleContext > c, Pointer<Short > dst, Pointer<Short > src, Pointer<Integer > consumed, int src_size, int dst_size, int update_ctx) {
 		return av_resample(Pointer.getPeer(c), Pointer.getPeer(dst), Pointer.getPeer(src), Pointer.getPeer(consumed), src_size, dst_size, update_ctx);
@@ -3138,7 +3174,7 @@ public class AvcodecLibrary {
 	 * * note, due to rounding the actual compensation might be slightly different,<br>
 	 * especially if the compensation_distance is large and the in_rate used during init is small<br>
 	 * Original signature : <code>void av_resample_compensate(AVResampleContext*, int, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3691</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3740</i>
 	 */
 	public static void av_resample_compensate(Pointer<AvcodecLibrary.AVResampleContext > c, int sample_delta, int compensation_distance) {
 		av_resample_compensate(Pointer.getPeer(c), sample_delta, compensation_distance);
@@ -3146,7 +3182,7 @@ public class AvcodecLibrary {
 	protected native static void av_resample_compensate(@Ptr long c, int sample_delta, int compensation_distance);
 	/**
 	 * Original signature : <code>void av_resample_close(AVResampleContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3693</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3742</i>
 	 */
 	public static void av_resample_close(Pointer<AvcodecLibrary.AVResampleContext > c) {
 		av_resample_close(Pointer.getPeer(c));
@@ -3155,7 +3191,7 @@ public class AvcodecLibrary {
 	/**
 	 * @deprecated unused<br>
 	 * Original signature : <code>int avpicture_alloc(AVPicture*, AVPixelFormat, int, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3698</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3747</i>
 	 */
 	public static int avpicture_alloc(Pointer<AVPicture > picture, IntValuedEnum<AVPixelFormat > pix_fmt, int width, int height) {
 		return avpicture_alloc(Pointer.getPeer(picture), (int)pix_fmt.value(), width, height);
@@ -3164,7 +3200,7 @@ public class AvcodecLibrary {
 	/**
 	 * @deprecated unused<br>
 	 * Original signature : <code>void avpicture_free(AVPicture*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3703</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3752</i>
 	 */
 	public static void avpicture_free(Pointer<AVPicture > picture) {
 		avpicture_free(Pointer.getPeer(picture));
@@ -3173,7 +3209,7 @@ public class AvcodecLibrary {
 	/**
 	 * @deprecated use av_image_fill_arrays() instead.<br>
 	 * Original signature : <code>int avpicture_fill(AVPicture*, const uint8_t*, AVPixelFormat, int, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3708</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3757</i>
 	 */
 	public static int avpicture_fill(Pointer<AVPicture > picture, Pointer<Byte > ptr, IntValuedEnum<AVPixelFormat > pix_fmt, int width, int height) {
 		return avpicture_fill(Pointer.getPeer(picture), Pointer.getPeer(ptr), (int)pix_fmt.value(), width, height);
@@ -3182,7 +3218,7 @@ public class AvcodecLibrary {
 	/**
 	 * @deprecated use av_image_copy_to_buffer() instead.<br>
 	 * Original signature : <code>int avpicture_layout(const AVPicture*, AVPixelFormat, int, int, unsigned char*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3713</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3762</i>
 	 */
 	public static int avpicture_layout(Pointer<AVPicture > src, IntValuedEnum<AVPixelFormat > pix_fmt, int width, int height, Pointer<Byte > dest, int dest_size) {
 		return avpicture_layout(Pointer.getPeer(src), (int)pix_fmt.value(), width, height, Pointer.getPeer(dest), dest_size);
@@ -3191,7 +3227,7 @@ public class AvcodecLibrary {
 	/**
 	 * @deprecated use av_image_get_buffer_size() instead.<br>
 	 * Original signature : <code>int avpicture_get_size(AVPixelFormat, int, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3718</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3767</i>
 	 */
 	public static int avpicture_get_size(IntValuedEnum<AVPixelFormat > pix_fmt, int width, int height) {
 		return avpicture_get_size((int)pix_fmt.value(), width, height);
@@ -3200,7 +3236,7 @@ public class AvcodecLibrary {
 	/**
 	 * @deprecated av_image_copy() instead.<br>
 	 * Original signature : <code>void av_picture_copy(AVPicture*, const AVPicture*, AVPixelFormat, int, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3723</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3772</i>
 	 */
 	public static void av_picture_copy(Pointer<AVPicture > dst, Pointer<AVPicture > src, IntValuedEnum<AVPixelFormat > pix_fmt, int width, int height) {
 		av_picture_copy(Pointer.getPeer(dst), Pointer.getPeer(src), (int)pix_fmt.value(), width, height);
@@ -3209,7 +3245,7 @@ public class AvcodecLibrary {
 	/**
 	 * @deprecated unused<br>
 	 * Original signature : <code>int av_picture_crop(AVPicture*, const AVPicture*, AVPixelFormat, int, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3728</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3777</i>
 	 */
 	public static int av_picture_crop(Pointer<AVPicture > dst, Pointer<AVPicture > src, IntValuedEnum<AVPixelFormat > pix_fmt, int top_band, int left_band) {
 		return av_picture_crop(Pointer.getPeer(dst), Pointer.getPeer(src), (int)pix_fmt.value(), top_band, left_band);
@@ -3218,7 +3254,7 @@ public class AvcodecLibrary {
 	/**
 	 * @deprecated unused<br>
 	 * Original signature : <code>int av_picture_pad(AVPicture*, const AVPicture*, int, int, AVPixelFormat, int, int, int, int, int*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3733</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3782</i>
 	 */
 	public static int av_picture_pad(Pointer<AVPicture > dst, Pointer<AVPicture > src, int height, int width, IntValuedEnum<AVPixelFormat > pix_fmt, int padtop, int padbottom, int padleft, int padright, Pointer<Integer > color) {
 		return av_picture_pad(Pointer.getPeer(dst), Pointer.getPeer(src), height, width, (int)pix_fmt.value(), padtop, padbottom, padleft, padright, Pointer.getPeer(color));
@@ -3226,7 +3262,7 @@ public class AvcodecLibrary {
 	protected native static int av_picture_pad(@Ptr long dst, @Ptr long src, int height, int width, int pix_fmt, int padtop, int padbottom, int padleft, int padright, @Ptr long color);
 	/**
 	 * Original signature : <code>void avcodec_get_chroma_sub_sample(AVPixelFormat, int*, int*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3735</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3784</i>
 	 */
 	public static void avcodec_get_chroma_sub_sample(IntValuedEnum<AVPixelFormat > pix_fmt, Pointer<Integer > h_shift, Pointer<Integer > v_shift) {
 		avcodec_get_chroma_sub_sample((int)pix_fmt.value(), Pointer.getPeer(h_shift), Pointer.getPeer(v_shift));
@@ -3237,7 +3273,7 @@ public class AvcodecLibrary {
 	 * pixel format pix_fmt, or 0 if no associated fourCC code can be<br>
 	 * found.<br>
 	 * Original signature : <code>int avcodec_pix_fmt_to_codec_tag(AVPixelFormat)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3742</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3791</i>
 	 */
 	public static int avcodec_pix_fmt_to_codec_tag(IntValuedEnum<AVPixelFormat > pix_fmt) {
 		return avcodec_pix_fmt_to_codec_tag((int)pix_fmt.value());
@@ -3246,7 +3282,7 @@ public class AvcodecLibrary {
 	/**
 	 * @deprecated see av_get_pix_fmt_loss()<br>
 	 * Original signature : <code>int avcodec_get_pix_fmt_loss(AVPixelFormat, AVPixelFormat, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3747</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3796</i>
 	 */
 	public static int avcodec_get_pix_fmt_loss(IntValuedEnum<AVPixelFormat > dst_pix_fmt, IntValuedEnum<AVPixelFormat > src_pix_fmt, int has_alpha) {
 		return avcodec_get_pix_fmt_loss((int)dst_pix_fmt.value(), (int)src_pix_fmt.value(), has_alpha);
@@ -3268,7 +3304,7 @@ public class AvcodecLibrary {
 	 * @param[out] loss_ptr Combination of flags informing you what kind of losses will occur.<br>
 	 * @return The best pixel format to convert to or -1 if none was found.<br>
 	 * Original signature : <code>AVPixelFormat avcodec_find_best_pix_fmt_of_list(AVPixelFormat*, AVPixelFormat, int, int*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3765</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3814</i>
 	 */
 	public static IntValuedEnum<AVPixelFormat > avcodec_find_best_pix_fmt_of_list(Pointer<IntValuedEnum<AVPixelFormat > > pix_fmt_list, IntValuedEnum<AVPixelFormat > src_pix_fmt, int has_alpha, Pointer<Integer > loss_ptr) {
 		return FlagSet.fromValue(avcodec_find_best_pix_fmt_of_list(Pointer.getPeer(pix_fmt_list), (int)src_pix_fmt.value(), has_alpha, Pointer.getPeer(loss_ptr)), AVPixelFormat.class);
@@ -3277,7 +3313,7 @@ public class AvcodecLibrary {
 	/**
 	 * @deprecated see av_find_best_pix_fmt_of_2()<br>
 	 * Original signature : <code>AVPixelFormat avcodec_find_best_pix_fmt_of_2(AVPixelFormat, AVPixelFormat, AVPixelFormat, int, int*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3770</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3819</i>
 	 */
 	public static IntValuedEnum<AVPixelFormat > avcodec_find_best_pix_fmt_of_2(IntValuedEnum<AVPixelFormat > dst_pix_fmt1, IntValuedEnum<AVPixelFormat > dst_pix_fmt2, IntValuedEnum<AVPixelFormat > src_pix_fmt, int has_alpha, Pointer<Integer > loss_ptr) {
 		return FlagSet.fromValue(avcodec_find_best_pix_fmt_of_2((int)dst_pix_fmt1.value(), (int)dst_pix_fmt2.value(), (int)src_pix_fmt.value(), has_alpha, Pointer.getPeer(loss_ptr)), AVPixelFormat.class);
@@ -3285,7 +3321,7 @@ public class AvcodecLibrary {
 	protected native static int avcodec_find_best_pix_fmt_of_2(int dst_pix_fmt1, int dst_pix_fmt2, int src_pix_fmt, int has_alpha, @Ptr long loss_ptr);
 	/**
 	 * Original signature : <code>AVPixelFormat avcodec_find_best_pix_fmt2(AVPixelFormat, AVPixelFormat, AVPixelFormat, int, int*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3772</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3821</i>
 	 */
 	public static IntValuedEnum<AVPixelFormat > avcodec_find_best_pix_fmt2(IntValuedEnum<AVPixelFormat > dst_pix_fmt1, IntValuedEnum<AVPixelFormat > dst_pix_fmt2, IntValuedEnum<AVPixelFormat > src_pix_fmt, int has_alpha, Pointer<Integer > loss_ptr) {
 		return FlagSet.fromValue(avcodec_find_best_pix_fmt2((int)dst_pix_fmt1.value(), (int)dst_pix_fmt2.value(), (int)src_pix_fmt.value(), has_alpha, Pointer.getPeer(loss_ptr)), AVPixelFormat.class);
@@ -3293,7 +3329,7 @@ public class AvcodecLibrary {
 	protected native static int avcodec_find_best_pix_fmt2(int dst_pix_fmt1, int dst_pix_fmt2, int src_pix_fmt, int has_alpha, @Ptr long loss_ptr);
 	/**
 	 * Original signature : <code>AVPixelFormat avcodec_default_get_format(AVCodecContext*, AVPixelFormat*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3774</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3823</i>
 	 */
 	public static IntValuedEnum<AVPixelFormat > avcodec_default_get_format(Pointer<AVCodecContext > s, Pointer<IntValuedEnum<AVPixelFormat > > fmt) {
 		return FlagSet.fromValue(avcodec_default_get_format(Pointer.getPeer(s), Pointer.getPeer(fmt)), AVPixelFormat.class);
@@ -3302,7 +3338,7 @@ public class AvcodecLibrary {
 	/**
 	 * @deprecated this function is not supposed to be used from outside of lavc<br>
 	 * Original signature : <code>void avcodec_set_dimensions(AVCodecContext*, int, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3779</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3828</i>
 	 */
 	public static void avcodec_set_dimensions(Pointer<AVCodecContext > s, int width, int height) {
 		avcodec_set_dimensions(Pointer.getPeer(s), width, height);
@@ -3315,8 +3351,9 @@ public class AvcodecLibrary {
 	 * @param codec_tag codec tag to assign<br>
 	 * @return the length of the string that would have been generated if<br>
 	 * enough space had been available, excluding the trailing null<br>
+	 * * @deprecated see av_fourcc_make_string() and av_fourcc2str().<br>
 	 * Original signature : <code>size_t av_get_codec_tag_string(char*, size_t, unsigned int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3789</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3839</i>
 	 */
 	@Ptr 
 	public static long av_get_codec_tag_string(Pointer<Byte > buf, @Ptr long buf_size, int codec_tag) {
@@ -3326,7 +3363,7 @@ public class AvcodecLibrary {
 	protected native static long av_get_codec_tag_string(@Ptr long buf, @Ptr long buf_size, int codec_tag);
 	/**
 	 * Original signature : <code>void avcodec_string(char*, int, AVCodecContext*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3791</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3841</i>
 	 */
 	public static void avcodec_string(Pointer<Byte > buf, int buf_size, Pointer<AVCodecContext > enc, int encode) {
 		avcodec_string(Pointer.getPeer(buf), buf_size, Pointer.getPeer(enc), encode);
@@ -3338,7 +3375,7 @@ public class AvcodecLibrary {
 	 * @param profile the profile value for which a name is requested<br>
 	 * @return A name for the profile if found, NULL otherwise.<br>
 	 * Original signature : <code>char* av_get_profile_name(const AVCodec*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3799</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3849</i>
 	 */
 	public static Pointer<Byte > av_get_profile_name(Pointer<AVCodec > codec, int profile) {
 		return Pointer.pointerToAddress(av_get_profile_name(Pointer.getPeer(codec), profile), Byte.class);
@@ -3354,7 +3391,7 @@ public class AvcodecLibrary {
 	 *       supported by a specific decoder or encoder implementation, this<br>
 	 *       function searches the list of profiles from the AVCodecDescriptor<br>
 	 * Original signature : <code>char* avcodec_profile_name(AVCodecID, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3810</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3860</i>
 	 */
 	public static Pointer<Byte > avcodec_profile_name(IntValuedEnum<AvcodecLibrary.AVCodecID > codec_id, int profile) {
 		return Pointer.pointerToAddress(avcodec_profile_name((int)codec_id.value(), profile), Byte.class);
@@ -3363,7 +3400,7 @@ public class AvcodecLibrary {
 	protected native static long avcodec_profile_name(int codec_id, int profile);
 	/**
 	 * Original signature : <code>int avcodec_default_execute(AVCodecContext*, avcodec_default_execute_func_callback*, void*, int*, int, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3812</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3862</i>
 	 */
 	public static int avcodec_default_execute(Pointer<AVCodecContext > c, Pointer<AvcodecLibrary.avcodec_default_execute_func_callback > func, Pointer<? > arg, Pointer<Integer > ret, int count, int size) {
 		return avcodec_default_execute(Pointer.getPeer(c), Pointer.getPeer(func), Pointer.getPeer(arg), Pointer.getPeer(ret), count, size);
@@ -3371,7 +3408,7 @@ public class AvcodecLibrary {
 	protected native static int avcodec_default_execute(@Ptr long c, @Ptr long func, @Ptr long arg, @Ptr long ret, int count, int size);
 	/**
 	 * Original signature : <code>int avcodec_default_execute2(AVCodecContext*, avcodec_default_execute2_func_callback*, void*, int*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3814</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3864</i>
 	 */
 	public static int avcodec_default_execute2(Pointer<AVCodecContext > c, Pointer<AvcodecLibrary.avcodec_default_execute2_func_callback > func, Pointer<? > arg, Pointer<Integer > ret, int count) {
 		return avcodec_default_execute2(Pointer.getPeer(c), Pointer.getPeer(func), Pointer.getPeer(arg), Pointer.getPeer(ret), count);
@@ -3397,7 +3434,7 @@ public class AvcodecLibrary {
 	 * @todo return the size in bytes required to store the samples in<br>
 	 * case of success, at the next libavutil bump<br>
 	 * Original signature : <code>int avcodec_fill_audio_frame(AVFrame*, int, AVSampleFormat, const uint8_t*, int, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3836</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3886</i>
 	 */
 	public static int avcodec_fill_audio_frame(Pointer<AVFrame > frame, int nb_channels, IntValuedEnum<AVSampleFormat > sample_fmt, Pointer<Byte > buf, int buf_size, int align) {
 		return avcodec_fill_audio_frame(Pointer.getPeer(frame), nb_channels, (int)sample_fmt.value(), Pointer.getPeer(buf), buf_size, align);
@@ -3411,7 +3448,7 @@ public class AvcodecLibrary {
 	 * refcounted frames are used, the decoder just releases any references it might<br>
 	 * keep internally, but the caller's reference remains valid.<br>
 	 * Original signature : <code>void avcodec_flush_buffers(AVCodecContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3846</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3896</i>
 	 */
 	public static void avcodec_flush_buffers(Pointer<AVCodecContext > avctx) {
 		avcodec_flush_buffers(Pointer.getPeer(avctx));
@@ -3422,7 +3459,7 @@ public class AvcodecLibrary {
 	 * * @param[in] codec_id the codec<br>
 	 * @return Number of bits per sample or zero if unknown for the given codec.<br>
 	 * Original signature : <code>int av_get_bits_per_sample(AVCodecID)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3853</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3903</i>
 	 */
 	public static int av_get_bits_per_sample(IntValuedEnum<AvcodecLibrary.AVCodecID > codec_id) {
 		return av_get_bits_per_sample((int)codec_id.value());
@@ -3434,7 +3471,7 @@ public class AvcodecLibrary {
 	 *            -1 (or anything else) for native<br>
 	 * @return  AV_CODEC_ID_PCM_* or AV_CODEC_ID_NONE<br>
 	 * Original signature : <code>AVCodecID av_get_pcm_codec(AVSampleFormat, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3861</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3911</i>
 	 */
 	public static IntValuedEnum<AvcodecLibrary.AVCodecID > av_get_pcm_codec(IntValuedEnum<AVSampleFormat > fmt, int be) {
 		return FlagSet.fromValue(av_get_pcm_codec((int)fmt.value(), be), AvcodecLibrary.AVCodecID.class);
@@ -3447,7 +3484,7 @@ public class AvcodecLibrary {
 	 * * @param[in] codec_id the codec<br>
 	 * @return Number of bits per sample or zero if unknown for the given codec.<br>
 	 * Original signature : <code>int av_get_exact_bits_per_sample(AVCodecID)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3870</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3920</i>
 	 */
 	public static int av_get_exact_bits_per_sample(IntValuedEnum<AvcodecLibrary.AVCodecID > codec_id) {
 		return av_get_exact_bits_per_sample((int)codec_id.value());
@@ -3460,7 +3497,7 @@ public class AvcodecLibrary {
 	 * @return             frame duration, in samples, if known. 0 if not able to<br>
 	 *                     determine.<br>
 	 * Original signature : <code>int av_get_audio_frame_duration(AVCodecContext*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3879</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3929</i>
 	 */
 	public static int av_get_audio_frame_duration(Pointer<AVCodecContext > avctx, int frame_bytes) {
 		return av_get_audio_frame_duration(Pointer.getPeer(avctx), frame_bytes);
@@ -3470,7 +3507,7 @@ public class AvcodecLibrary {
 	 * This function is the same as av_get_audio_frame_duration(), except it works<br>
 	 * with AVCodecParameters instead of an AVCodecContext.<br>
 	 * Original signature : <code>int av_get_audio_frame_duration2(AVCodecParameters*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3885</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:3935</i>
 	 */
 	public static int av_get_audio_frame_duration2(Pointer<AVCodecParameters > par, int frame_bytes) {
 		return av_get_audio_frame_duration2(Pointer.getPeer(par), frame_bytes);
@@ -3483,7 +3520,7 @@ public class AvcodecLibrary {
 	 * av_bitstream_filter_init().<br>
 	 * * @see avcodec_register_all()<br>
 	 * Original signature : <code>void av_register_bitstream_filter(AVBitStreamFilter*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3973</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4030</i>
 	 */
 	public static void av_register_bitstream_filter(Pointer<AVBitStreamFilter > bsf) {
 		av_register_bitstream_filter(Pointer.getPeer(bsf));
@@ -3497,7 +3534,7 @@ public class AvcodecLibrary {
 	 * @return a bitstream filter context if a matching filter was found<br>
 	 * and successfully initialized, NULL otherwise<br>
 	 * Original signature : <code>AVBitStreamFilterContext* av_bitstream_filter_init(const char*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:3983</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4040</i>
 	 */
 	public static Pointer<AVBitStreamFilterContext > av_bitstream_filter_init(Pointer<Byte > name) {
 		return Pointer.pointerToAddress(av_bitstream_filter_init(Pointer.getPeer(name)), AVBitStreamFilterContext.class);
@@ -3528,7 +3565,7 @@ public class AvcodecLibrary {
 	 * its starting address). A special case is if *poutbuf was set to NULL and<br>
 	 * *poutbuf_size was set to 0, which indicates the packet should be dropped.<br>
 	 * Original signature : <code>int av_bitstream_filter_filter(AVBitStreamFilterContext*, AVCodecContext*, const char*, uint8_t**, int*, const uint8_t*, int, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4009</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4066</i>
 	 */
 	public static int av_bitstream_filter_filter(Pointer<AVBitStreamFilterContext > bsfc, Pointer<AVCodecContext > avctx, Pointer<Byte > args, Pointer<Pointer<Byte > > poutbuf, Pointer<Integer > poutbuf_size, Pointer<Byte > buf, int buf_size, int keyframe) {
 		return av_bitstream_filter_filter(Pointer.getPeer(bsfc), Pointer.getPeer(avctx), Pointer.getPeer(args), Pointer.getPeer(poutbuf), Pointer.getPeer(poutbuf_size), Pointer.getPeer(buf), buf_size, keyframe);
@@ -3539,7 +3576,7 @@ public class AvcodecLibrary {
 	 * * @param bsf the bitstream filter context created with<br>
 	 * av_bitstream_filter_init(), can be NULL<br>
 	 * Original signature : <code>void av_bitstream_filter_close(AVBitStreamFilterContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4016</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4073</i>
 	 */
 	public static void av_bitstream_filter_close(Pointer<AVBitStreamFilterContext > bsf) {
 		av_bitstream_filter_close(Pointer.getPeer(bsf));
@@ -3552,7 +3589,7 @@ public class AvcodecLibrary {
 	 * * This function can be used to iterate over all registered bitstream<br>
 	 * filters.<br>
 	 * Original signature : <code>AVBitStreamFilter* av_bitstream_filter_next(const AVBitStreamFilter*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4025</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4082</i>
 	 */
 	public static Pointer<AVBitStreamFilter > av_bitstream_filter_next(Pointer<AVBitStreamFilter > f) {
 		return Pointer.pointerToAddress(av_bitstream_filter_next(Pointer.getPeer(f)), AVBitStreamFilter.class);
@@ -3563,7 +3600,7 @@ public class AvcodecLibrary {
 	 * @return a bitstream filter with the specified name or NULL if no such<br>
 	 *         bitstream filter exists.<br>
 	 * Original signature : <code>AVBitStreamFilter* av_bsf_get_by_name(const char*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4031</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4088</i>
 	 */
 	public static Pointer<AVBitStreamFilter > av_bsf_get_by_name(Pointer<Byte > name) {
 		return Pointer.pointerToAddress(av_bsf_get_by_name(Pointer.getPeer(name)), AVBitStreamFilter.class);
@@ -3577,7 +3614,7 @@ public class AvcodecLibrary {
 	 * * @return the next registered bitstream filter or NULL when the iteration is<br>
 	 *         finished<br>
 	 * Original signature : <code>AVBitStreamFilter* av_bsf_next(void**)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4040</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4097</i>
 	 */
 	public static Pointer<AVBitStreamFilter > av_bsf_next(Pointer<Pointer<? > > opaque) {
 		return Pointer.pointerToAddress(av_bsf_next(Pointer.getPeer(opaque)), AVBitStreamFilter.class);
@@ -3594,7 +3631,7 @@ public class AvcodecLibrary {
 	 *            filtering is done.<br>
 	 * * @return 0 on success, a negative AVERROR code on failure<br>
 	 * Original signature : <code>int av_bsf_alloc(const AVBitStreamFilter*, AVBSFContext**)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4052</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4109</i>
 	 */
 	public static int av_bsf_alloc(Pointer<AVBitStreamFilter > filter, Pointer<Pointer<AVBSFContext > > ctx) {
 		return av_bsf_alloc(Pointer.getPeer(filter), Pointer.getPeer(ctx));
@@ -3604,7 +3641,7 @@ public class AvcodecLibrary {
 	 * Prepare the filter for use, after all the parameters and options have been<br>
 	 * set.<br>
 	 * Original signature : <code>int av_bsf_init(AVBSFContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4058</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4115</i>
 	 */
 	public static int av_bsf_init(Pointer<AVBSFContext > ctx) {
 		return av_bsf_init(Pointer.getPeer(ctx));
@@ -3623,7 +3660,7 @@ public class AvcodecLibrary {
 	 * may have buffered internally.<br>
 	 * * @return 0 on success, a negative AVERROR on error.<br>
 	 * Original signature : <code>int av_bsf_send_packet(AVBSFContext*, AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4073</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4130</i>
 	 */
 	public static int av_bsf_send_packet(Pointer<AVBSFContext > ctx, Pointer<AVPacket > pkt) {
 		return av_bsf_send_packet(Pointer.getPeer(ctx), Pointer.getPeer(pkt));
@@ -3650,7 +3687,7 @@ public class AvcodecLibrary {
 	 * output fewer packets than were sent to it, so this function may return<br>
 	 * AVERROR(EAGAIN) immediately after a successful av_bsf_send_packet() call.<br>
 	 * Original signature : <code>int av_bsf_receive_packet(AVBSFContext*, AVPacket*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4096</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4153</i>
 	 */
 	public static int av_bsf_receive_packet(Pointer<AVBSFContext > ctx, Pointer<AVPacket > pkt) {
 		return av_bsf_receive_packet(Pointer.getPeer(ctx), Pointer.getPeer(pkt));
@@ -3660,7 +3697,7 @@ public class AvcodecLibrary {
 	 * Free a bitstream filter context and everything associated with it; write NULL<br>
 	 * into the supplied pointer.<br>
 	 * Original signature : <code>void av_bsf_free(AVBSFContext**)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4102</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4159</i>
 	 */
 	public static void av_bsf_free(Pointer<Pointer<AVBSFContext > > ctx) {
 		av_bsf_free(Pointer.getPeer(ctx));
@@ -3671,7 +3708,7 @@ public class AvcodecLibrary {
 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>
 	 * * @see av_opt_find().<br>
 	 * Original signature : <code>AVClass* av_bsf_get_class()</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4109</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4166</i>
 	 */
 	public static Pointer<AVClass > av_bsf__get_class() {
 		return Pointer.pointerToAddress(av_bsf_get_class(), AVClass.class);
@@ -3684,7 +3721,7 @@ public class AvcodecLibrary {
 	 * or finalized by av_bsf_list_finalize().<br>
 	 * * @return Pointer to @ref AVBSFList on success, NULL in case of failure<br>
 	 * Original signature : <code>AVBSFList* av_bsf_list_alloc()</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4124</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4181</i>
 	 */
 	public static Pointer<AVBSFList > av__bsf_list_alloc() {
 		return Pointer.pointerToAddress(av_bsf_list_alloc(), AVBSFList.class);
@@ -3695,7 +3732,7 @@ public class AvcodecLibrary {
 	 * Free list of bitstream filters.<br>
 	 * * @param lst Pointer to pointer returned by av_bsf_list_alloc()<br>
 	 * Original signature : <code>void av_bsf_list_free(AVBSFList**)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4130</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4187</i>
 	 */
 	public static void av_bsf_list_free(Pointer<Pointer<AVBSFList > > lst) {
 		av_bsf_list_free(Pointer.getPeer(lst));
@@ -3707,7 +3744,7 @@ public class AvcodecLibrary {
 	 * @param bsf Filter context to be appended<br>
 	 * * @return >=0 on success, negative AVERROR in case of failure<br>
 	 * Original signature : <code>int av_bsf_list_append(AVBSFList*, AVBSFContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4138</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4195</i>
 	 */
 	public static int av_bsf_list_append(Pointer<AVBSFList > lst, Pointer<AVBSFContext > bsf) {
 		return av_bsf_list_append(Pointer.getPeer(lst), Pointer.getPeer(bsf));
@@ -3721,7 +3758,7 @@ public class AvcodecLibrary {
 	 * @param options  Options for the bitstream filter, can be set to NULL<br>
 	 * * @return >=0 on success, negative AVERROR in case of failure<br>
 	 * Original signature : <code>int av_bsf_list_append2(AVBSFList*, const char*, AVDictionary**)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4148</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4205</i>
 	 */
 	public static int av_bsf_list_append2(Pointer<AVBSFList > lst, Pointer<Byte > bsf_name, Pointer<Pointer<AVDictionary > > options) {
 		return av_bsf_list_append2(Pointer.getPeer(lst), Pointer.getPeer(bsf_name), Pointer.getPeer(options));
@@ -3740,7 +3777,7 @@ public class AvcodecLibrary {
 	 *                 representing the chain of bitstream filters<br>
 	 * * @return >=0 on success, negative AVERROR in case of failure<br>
 	 * Original signature : <code>int av_bsf_list_finalize(AVBSFList**, AVBSFContext**)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4163</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4220</i>
 	 */
 	public static int av_bsf_list_finalize(Pointer<Pointer<AVBSFList > > lst, Pointer<Pointer<AVBSFContext > > bsf) {
 		return av_bsf_list_finalize(Pointer.getPeer(lst), Pointer.getPeer(bsf));
@@ -3757,7 +3794,7 @@ public class AvcodecLibrary {
 	 *                 representing the chain of bitstream filters<br>
 	 * * @return >=0 on success, negative AVERROR in case of failure<br>
 	 * Original signature : <code>int av_bsf_list_parse_str(const char*, AVBSFContext**)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4176</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4233</i>
 	 */
 	public static int av_bsf_list_parse_str(Pointer<Byte > str, Pointer<Pointer<AVBSFContext > > bsf) {
 		return av_bsf_list_parse_str(Pointer.getPeer(str), Pointer.getPeer(bsf));
@@ -3768,7 +3805,7 @@ public class AvcodecLibrary {
 	 * * @param[out] bsf Pointer to be set to new instance of pass-through bitstream filter<br>
 	 * * @return<br>
 	 * Original signature : <code>int av_bsf_get_null_filter(AVBSFContext**)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4183</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4240</i>
 	 */
 	public static int av_bsf_get_null_filter(Pointer<Pointer<AVBSFContext > > bsf) {
 		return av_bsf_get_null_filter(Pointer.getPeer(bsf));
@@ -3780,7 +3817,7 @@ public class AvcodecLibrary {
 	 * * In addition the whole buffer will initially and after resizes<br>
 	 * be 0-initialized so that no uninitialized data will ever appear.<br>
 	 * Original signature : <code>void av_fast_padded_malloc(void*, unsigned int*, size_t)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4191</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4248</i>
 	 */
 	public static void av_fast_padded_malloc(Pointer<? > ptr, Pointer<Integer > size, @Ptr long min_size) {
 		av_fast_padded_malloc(Pointer.getPeer(ptr), Pointer.getPeer(size), min_size);
@@ -3790,7 +3827,7 @@ public class AvcodecLibrary {
 	 * Same behaviour av_fast_padded_malloc except that buffer will always<br>
 	 * be 0-initialized after call.<br>
 	 * Original signature : <code>void av_fast_padded_mallocz(void*, unsigned int*, size_t)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4197</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4254</i>
 	 */
 	public static void av_fast_padded_mallocz(Pointer<? > ptr, Pointer<Integer > size, @Ptr long min_size) {
 		av_fast_padded_mallocz(Pointer.getPeer(ptr), Pointer.getPeer(size), min_size);
@@ -3802,7 +3839,7 @@ public class AvcodecLibrary {
 	 * @param v size of extradata in bytes<br>
 	 * @return number of bytes written to the buffer.<br>
 	 * Original signature : <code>int av_xiphlacing(unsigned char*, unsigned int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4205</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4262</i>
 	 */
 	public static int av_xiphlacing(Pointer<Byte > s, int v) {
 		return av_xiphlacing(Pointer.getPeer(s), v);
@@ -3821,7 +3858,7 @@ public class AvcodecLibrary {
 	 * mailing list.<br>
 	 * @deprecated Use avpriv_report_missing_feature() instead.<br>
 	 * Original signature : <code>void av_log_missing_feature(void*, const char*, int)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4220</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4277</i>
 	 */
 	public static void av_log_missing_feature(Pointer<? > avc, Pointer<Byte > feature, int want_sample) {
 		av_log_missing_feature(Pointer.getPeer(avc), Pointer.getPeer(feature), want_sample);
@@ -3836,7 +3873,7 @@ public class AvcodecLibrary {
 	 * @param[in] msg string containing an optional message, or NULL if no message<br>
 	 * @deprecated Use avpriv_request_sample() instead.<br>
 	 * Original signature : <code>void av_log_ask_for_sample(void*, const char*, null)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4231</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4288</i>
 	 */
 	public static void av_log_ask_for_sample(Pointer<? > avc, Pointer<Byte > msg, Object... varArgs1) {
 		av_log_ask_for_sample(Pointer.getPeer(avc), Pointer.getPeer(msg), varArgs1);
@@ -3845,7 +3882,7 @@ public class AvcodecLibrary {
 	/**
 	 * Register the hardware accelerator hwaccel.<br>
 	 * Original signature : <code>void av_register_hwaccel(AVHWAccel*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4236</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4293</i>
 	 */
 	public static void av_register_hwaccel(Pointer<AVHWAccel > hwaccel) {
 		av_register_hwaccel(Pointer.getPeer(hwaccel));
@@ -3856,7 +3893,7 @@ public class AvcodecLibrary {
 	 * if hwaccel is non-NULL, returns the next registered hardware accelerator<br>
 	 * after hwaccel, or NULL if hwaccel is the last one.<br>
 	 * Original signature : <code>AVHWAccel* av_hwaccel_next(const AVHWAccel*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4243</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4300</i>
 	 */
 	public static Pointer<AVHWAccel > av_hwaccel_next(Pointer<AVHWAccel > hwaccel) {
 		return Pointer.pointerToAddress(av_hwaccel_next(Pointer.getPeer(hwaccel)), AVHWAccel.class);
@@ -3866,7 +3903,7 @@ public class AvcodecLibrary {
 	/**
 	 * Get the type of the given codec.<br>
 	 * Original signature : <code>AVMediaType avcodec_get_type(AVCodecID)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4259</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4316</i>
 	 */
 	public static IntValuedEnum<AVMediaType > avcodec_get_type(IntValuedEnum<AvcodecLibrary.AVCodecID > codec_id) {
 		return FlagSet.fromValue(avcodec_get_type((int)codec_id.value()), AVMediaType.class);
@@ -3876,7 +3913,7 @@ public class AvcodecLibrary {
 	 * Get the name of a codec.<br>
 	 * @return  a static string identifying the codec; never NULL<br>
 	 * Original signature : <code>char* avcodec_get_name(AVCodecID)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4265</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4322</i>
 	 */
 	public static Pointer<Byte > avcodec_get_name(IntValuedEnum<AvcodecLibrary.AVCodecID > id) {
 		return Pointer.pointerToAddress(avcodec_get_name((int)id.value()), Byte.class);
@@ -3887,7 +3924,7 @@ public class AvcodecLibrary {
 	 * @return a positive value if s is open (i.e. avcodec_open2() was called on it<br>
 	 * with no corresponding avcodec_close()), 0 otherwise.<br>
 	 * Original signature : <code>int avcodec_is_open(AVCodecContext*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4271</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4328</i>
 	 */
 	public static int avcodec_is_open(Pointer<AVCodecContext > s) {
 		return avcodec_is_open(Pointer.getPeer(s));
@@ -3896,7 +3933,7 @@ public class AvcodecLibrary {
 	/**
 	 * @return a non-zero number if codec is an encoder, zero otherwise<br>
 	 * Original signature : <code>int av_codec_is_encoder(const AVCodec*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4276</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4333</i>
 	 */
 	public static int av_codec_is_encoder(Pointer<AVCodec > codec) {
 		return av_codec_is_encoder(Pointer.getPeer(codec));
@@ -3905,7 +3942,7 @@ public class AvcodecLibrary {
 	/**
 	 * @return a non-zero number if codec is a decoder, zero otherwise<br>
 	 * Original signature : <code>int av_codec_is_decoder(const AVCodec*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4281</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4338</i>
 	 */
 	public static int av_codec_is_decoder(Pointer<AVCodec > codec) {
 		return av_codec_is_decoder(Pointer.getPeer(codec));
@@ -3914,7 +3951,7 @@ public class AvcodecLibrary {
 	/**
 	 * @return descriptor for given codec ID or NULL if no descriptor exists.<br>
 	 * Original signature : <code>AVCodecDescriptor* avcodec_descriptor_get(AVCodecID)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4286</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4343</i>
 	 */
 	public static Pointer<AVCodecDescriptor > avcodec_descriptor_get(IntValuedEnum<AvcodecLibrary.AVCodecID > id) {
 		return Pointer.pointerToAddress(avcodec_descriptor_get((int)id.value()), AVCodecDescriptor.class);
@@ -3926,7 +3963,7 @@ public class AvcodecLibrary {
 	 * * @param prev previous descriptor. NULL to get the first descriptor.<br>
 	 * * @return next descriptor or NULL after the last descriptor<br>
 	 * Original signature : <code>AVCodecDescriptor* avcodec_descriptor_next(const AVCodecDescriptor*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4293</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4350</i>
 	 */
 	public static Pointer<AVCodecDescriptor > avcodec_descriptor_next(Pointer<AVCodecDescriptor > prev) {
 		return Pointer.pointerToAddress(avcodec_descriptor_next(Pointer.getPeer(prev)), AVCodecDescriptor.class);
@@ -3937,7 +3974,7 @@ public class AvcodecLibrary {
 	 * @return codec descriptor with the given name or NULL if no such descriptor<br>
 	 *         exists.<br>
 	 * Original signature : <code>AVCodecDescriptor* avcodec_descriptor_get_by_name(const char*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4299</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4356</i>
 	 */
 	public static Pointer<AVCodecDescriptor > avcodec_descriptor_get_by_name(Pointer<Byte > name) {
 		return Pointer.pointerToAddress(avcodec_descriptor_get_by_name(Pointer.getPeer(name)), AVCodecDescriptor.class);
@@ -3951,7 +3988,7 @@ public class AvcodecLibrary {
 	 *             here. This is useful for embedding it in side data.<br>
 	 * * @return the newly allocated struct or NULL on failure<br>
 	 * Original signature : <code>AVCPBProperties* av_cpb_properties_alloc(size_t*)</code><br>
-	 * <i>native declaration : ./libavcodec/avcodec.h:4308</i>
+	 * <i>native declaration : ./libavcodec/avcodec.h:4365</i>
 	 */
 	public static Pointer<AVCPBProperties > av_cpb_properties_alloc(Pointer<SizeT > size) {
 		return Pointer.pointerToAddress(av_cpb_properties_alloc(Pointer.getPeer(size)), AVCPBProperties.class);

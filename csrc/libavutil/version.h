@@ -79,7 +79,7 @@
  */
 
 #define LIBAVUTIL_VERSION_MAJOR  55
-#define LIBAVUTIL_VERSION_MINOR  34
+#define LIBAVUTIL_VERSION_MINOR  58
 #define LIBAVUTIL_VERSION_MICRO 100
 
 #define LIBAVUTIL_VERSION_INT   AV_VERSION_INT(LIBAVUTIL_VERSION_MAJOR, \
@@ -90,7 +90,7 @@
                                            LIBAVUTIL_VERSION_MICRO)
 #define LIBAVUTIL_BUILD         LIBAVUTIL_VERSION_INT
 
-#define LIBAVUTIL_IDENT         "Lavu55.34.100"
+#define LIBAVUTIL_IDENT         "Lavu55.58.100"
 
 /**
  * @defgroup lavu_depr_guards Deprecation Guards
