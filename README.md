@@ -1,6 +1,6 @@
-ffmpeg-3.3
+ffmpeg-3.4
 ==========
-a java library interface to access ffmpeg 3.3 c library.
+a java library interface to access ffmpeg 3.4 c library.
 
 example demuxing.c -> demuxing.java compiles
 
@@ -11,7 +11,7 @@ to the dist/ directory.
 
 usage
 =====
-You need ffmpeg-3.3.jar, bridj-0.7-SNAPSHOT.jar installed in /usr/share/java/ffmpeg,
+You need ffmpeg-3.4.jar, bridj-0.7-SNAPSHOT.jar installed in /usr/share/java/ffmpeg,
 which are in the dist directory.
 Set the environment variable f.e. FFMPEG_HOME=/usr/share/java/ffmpeg
 for use with tracker.
@@ -28,10 +28,10 @@ libpostproc54,
 libswresample2,
 libswscale4,
 
-which all belong to ffmpeg 3.3.
+which all belong to ffmpeg 3.4.
 
 Copyright
 =========
-The jar ffmpeg-3.3.jar is copyright 2014-2017 Frank Schütte.
+The jar ffmpeg-3.4.jar is copyright 2014-2018 Frank Schütte.
 
 the homepage of the bridj project is http://code.google.com/p/bridj/wiki/FAQ.

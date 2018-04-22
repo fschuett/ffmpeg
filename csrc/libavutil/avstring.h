@@ -217,15 +217,6 @@ static inline av_const int av_isgraph(int c)
 }
 
 /**
- * Locale-independent conversion of ASCII isspace.
- */
-static inline av_const int av_isspace(int c)
-{
-    return c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t' ||
-           c == '\v';
-}
-
-/**
  * Locale-independent conversion of ASCII characters to uppercase.
  */
 static inline av_const int av_toupper(int c)
@@ -266,6 +257,11 @@ int av_strcasecmp(const char *a, const char *b);
  */
 int av_strncasecmp(const char *a, const char *b, size_t n);
 
+/**
+ * Locale-independent strings replace.
+ * @note This means only ASCII-range characters are replace
+ */
+char *av_strireplace(const char *str, const char *from, const char *to);
 
 /**
  * Thread safe basename.

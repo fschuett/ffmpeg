@@ -18,11 +18,11 @@ import org.ffmpeg.avcodec.AVCodecParserContext;
 import org.ffmpeg.avcodec.AVPacket;
 import org.ffmpeg.avcodec.AvcodecLibrary.AVCodecID;
 import org.ffmpeg.avcodec.AvcodecLibrary.AVPacketSideDataType;
+import org.ffmpeg.avutil.AVBPrint;
 import org.ffmpeg.avutil.AVClass;
 import org.ffmpeg.avutil.AVDictionary;
 import org.ffmpeg.avutil.AVFrame;
 import org.ffmpeg.avutil.AVRational;
-import org.ffmpeg.avutil.AvutilLibrary.AVBPrint;
 import org.ffmpeg.avutil.AvutilLibrary.AVMediaType;
 /**
  * Wrapper for library <b>avformat</b><br>
@@ -71,7 +71,7 @@ public class AvformatLibrary {
 	 * Different data types that can be returned via the AVIO<br>
 	 * write_data_type callback.<br>
 	 * enum values<br>
-	 * <i>native declaration : libavformat/avio.h:85</i>
+	 * <i>native declaration : libavformat/avio.h:91</i>
 	 */
 	public enum AVIODataMarkerType implements IntValuedEnum<AVIODataMarkerType > {
 		/** Header data; this needs to be present for the stream to be decodeable. */
@@ -100,7 +100,13 @@ public class AvformatLibrary {
 		 * Trailer data, which doesn't contain actual content, but only for<br>
 		 * finalizing the output file.
 		 */
-		AVIO_DATA_MARKER_TRAILER(4);
+		AVIO_DATA_MARKER_TRAILER(4),
+		/**
+		 * A point in the output bytestream where the underlying AVIOContext might<br>
+		 * flush the buffer depending on latency or buffering requirements. Typically<br>
+		 * means the end of a packet.
+		 */
+		AVIO_DATA_MARKER_FLUSH_POINT(5);
 		AVIODataMarkerType(long value) {
 			this.value = value;
 		}
@@ -178,7 +184,7 @@ public class AvformatLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : libavformat/avformat.h:1979</i>
+	 * <i>native declaration : libavformat/avformat.h:1989</i>
 	 */
 	public enum AVTimebaseSource implements IntValuedEnum<AVTimebaseSource > {
 		AVFMT_TBCF_AUTO(-1),
@@ -282,9 +288,9 @@ public class AvformatLibrary {
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_NEEDNUMBER = (int)0x0002;
 	/** <i>native declaration : ./libavformat/version.h</i> */
-	public static final int LIBAVFORMAT_BUILD = (int)((57) << 16 | (71) << 8 | (100));
+	public static final int LIBAVFORMAT_BUILD = (int)((57) << 16 | (83) << 8 | (100));
 	/** <i>native declaration : ./libavformat/version.h</i> */
-	public static final String LIBAVFORMAT_IDENT = (String)"Lavf57.71.100";
+	public static final String LIBAVFORMAT_IDENT = (String)"Lavf57.83.100";
 	/** <i>native declaration : libavformat/avio.h</i> */
 	public static final int AVIO_SEEKABLE_TIME = (int)(1 << 1);
 	/** <i>native declaration : libavformat/avformat.h</i> */
@@ -304,7 +310,7 @@ public class AvformatLibrary {
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_NO_BYTE_SEEK = (int)0x8000;
 	/** <i>native declaration : ./libavformat/version.h</i> */
-	public static final int LIBAVFORMAT_VERSION_MINOR = (int)71;
+	public static final int LIBAVFORMAT_VERSION_MINOR = (int)83;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int MAX_REORDER_DELAY = (int)16;
 	/** <i>native declaration : ./libavformat/version.h</i> */
@@ -320,7 +326,7 @@ public class AvformatLibrary {
 	/** <i>native declaration : libavformat/avio.h</i> */
 	public static final int AVIO_FLAG_DIRECT = (int)0x8000;
 	/** <i>native declaration : ./libavformat/version.h</i> */
-	public static final int LIBAVFORMAT_VERSION_INT = (int)((57) << 16 | (71) << 8 | (100));
+	public static final int LIBAVFORMAT_VERSION_INT = (int)((57) << 16 | (83) << 8 | (100));
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVSTREAM_INIT_IN_WRITE_HEADER = (int)0;
 	/** <i>native declaration : libavformat/avformat.h</i> */
@@ -357,10 +363,10 @@ public class AvformatLibrary {
 	public static final int AVFMT_FLAG_SHORTEST = (int)0x100000;
 	/**
 	 * define<br>
-	 * Conversion Error : 57.71.<br>
+	 * Conversion Error : 57.83.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libavformat/version.h:0</i><br>
-	 * 57.71.
+	 * 57.83.
 	 */
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_GENERIC_INDEX = (int)0x0100;
@@ -430,7 +436,7 @@ public class AvformatLibrary {
 	public static final boolean FF_API_LAVF_AVCTX = (boolean)(57 < 58);
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int FF_FDEBUG_TS = (int)0x0001;
-	/** <i>native declaration : libavformat/avio.h:657</i> */
+	/** <i>native declaration : libavformat/avio.h:691</i> */
 	public static abstract class avio_alloc_context_read_packet_callback extends Callback<avio_alloc_context_read_packet_callback > {
 		public int apply(Pointer<? > opaque, Pointer<Byte > buf, int buf_size) {
 			return apply(Pointer.getPeer(opaque), Pointer.getPeer(buf), buf_size);
@@ -439,7 +445,7 @@ public class AvformatLibrary {
 			return apply(Pointer.pointerToAddress(opaque), Pointer.pointerToAddress(buf, Byte.class), buf_size);
 		}
 	};
-	/** <i>native declaration : libavformat/avio.h:658</i> */
+	/** <i>native declaration : libavformat/avio.h:692</i> */
 	public static abstract class avio_alloc_context_write_packet_callback extends Callback<avio_alloc_context_write_packet_callback > {
 		public int apply(Pointer<? > opaque, Pointer<Byte > buf, int buf_size) {
 			return apply(Pointer.getPeer(opaque), Pointer.getPeer(buf), buf_size);
@@ -448,7 +454,7 @@ public class AvformatLibrary {
 			return apply(Pointer.pointerToAddress(opaque), Pointer.pointerToAddress(buf, Byte.class), buf_size);
 		}
 	};
-	/** <i>native declaration : libavformat/avio.h:659</i> */
+	/** <i>native declaration : libavformat/avio.h:693</i> */
 	public static abstract class avio_alloc_context_seek_callback extends Callback<avio_alloc_context_seek_callback > {
 		public long apply(Pointer<? > opaque, long offset, int whence) {
 			return apply(Pointer.getPeer(opaque), offset, whence);
@@ -480,7 +486,7 @@ public class AvformatLibrary {
 	 * * NULL is returned if no protocol could be found for the given URL.<br>
 	 * * @return Name of the protocol or NULL.<br>
 	 * Original signature : <code>char* avio_find_protocol_name(const char*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:252</i>
+	 * <i>native declaration : libavformat/avio.h:270</i>
 	 */
 	public static Pointer<Byte > avio_find_protocol_name(Pointer<Byte > url) {
 		return Pointer.pointerToAddress(avio_find_protocol_name(Pointer.getPeer(url)), Byte.class);
@@ -498,7 +504,7 @@ public class AvformatLibrary {
 	 * unless you are sure that no other processes are accessing the<br>
 	 * checked resource.<br>
 	 * Original signature : <code>int avio_check(const char*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:265</i>
+	 * <i>native declaration : libavformat/avio.h:283</i>
 	 */
 	public static int avio_check(Pointer<Byte > url, int flags) {
 		return avio_check(Pointer.getPeer(url), flags);
@@ -511,7 +517,7 @@ public class AvformatLibrary {
 	 * @param url_dst new url to resource if the operation succeeded<br>
 	 * @return >=0 on success or negative on error.<br>
 	 * Original signature : <code>int avpriv_io_move(const char*, const char*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:274</i>
+	 * <i>native declaration : libavformat/avio.h:292</i>
 	 */
 	public static int avpriv_io_move(Pointer<Byte > url_src, Pointer<Byte > url_dst) {
 		return avpriv_io_move(Pointer.getPeer(url_src), Pointer.getPeer(url_dst));
@@ -522,7 +528,7 @@ public class AvformatLibrary {
 	 * * @param url resource to be deleted.<br>
 	 * @return >=0 on success or negative on error.<br>
 	 * Original signature : <code>int avpriv_io_delete(const char*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:281</i>
+	 * <i>native declaration : libavformat/avio.h:299</i>
 	 */
 	public static int avpriv_io_delete(Pointer<Byte > url) {
 		return avpriv_io_delete(Pointer.getPeer(url));
@@ -537,7 +543,7 @@ public class AvformatLibrary {
 	 *                containing options that were not found. May be NULL.<br>
 	 * @return >=0 on success or negative on error.<br>
 	 * Original signature : <code>int avio_open_dir(AVIODirContext**, const char*, AVDictionary**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:292</i>
+	 * <i>native declaration : libavformat/avio.h:310</i>
 	 */
 	public static int avio_open_dir(Pointer<Pointer<AVIODirContext > > s, Pointer<Byte > url, Pointer<Pointer<AVDictionary > > options) {
 		return avio_open_dir(Pointer.getPeer(s), Pointer.getPeer(url), Pointer.getPeer(options));
@@ -552,7 +558,7 @@ public class AvformatLibrary {
 	 * @return >=0 on success or negative on error. End of list is not considered an<br>
 	 *             error.<br>
 	 * Original signature : <code>int avio_read_dir(AVIODirContext*, AVIODirEntry**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:303</i>
+	 * <i>native declaration : libavformat/avio.h:321</i>
 	 */
 	public static int avio_read_dir(Pointer<AVIODirContext > s, Pointer<Pointer<AVIODirEntry > > next) {
 		return avio_read_dir(Pointer.getPeer(s), Pointer.getPeer(next));
@@ -565,7 +571,7 @@ public class AvformatLibrary {
 	 * * @param s         directory read context.<br>
 	 * @return >=0 on success or negative on error.<br>
 	 * Original signature : <code>int avio_close_dir(AVIODirContext**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:312</i>
+	 * <i>native declaration : libavformat/avio.h:330</i>
 	 */
 	public static int avio_close_dir(Pointer<Pointer<AVIODirContext > > s) {
 		return avio_close_dir(Pointer.getPeer(s));
@@ -575,7 +581,7 @@ public class AvformatLibrary {
 	 * Free entry allocated by avio_read_dir().<br>
 	 * * @param entry entry to be freed.<br>
 	 * Original signature : <code>void avio_free_directory_entry(AVIODirEntry**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:318</i>
+	 * <i>native declaration : libavformat/avio.h:336</i>
 	 */
 	public static void avio_free_directory_entry(Pointer<Pointer<AVIODirEntry > > entry) {
 		avio_free_directory_entry(Pointer.getPeer(entry));
@@ -583,7 +589,7 @@ public class AvformatLibrary {
 	protected native static void avio_free_directory_entry(@Ptr long entry);
 	/**
 	 * Allocate and initialize an AVIOContext for buffered I/O. It must be later<br>
-	 * freed with av_free().<br>
+	 * freed with avio_context_free().<br>
 	 * * @param buffer Memory block for input/output operations via AVIOContext.<br>
 	 *        The buffer must be allocated with av_malloc() and friends.<br>
 	 *        It may be freed and replaced with a new buffer by libavformat.<br>
@@ -600,7 +606,7 @@ public class AvformatLibrary {
 	 * @param seek A function for seeking to specified byte position, may be NULL.<br>
 	 * * @return Allocated AVIOContext or NULL on failure.<br>
 	 * Original signature : <code>AVIOContext* avio_alloc_context(unsigned char*, int, int, void*, avio_alloc_context_read_packet_callback*, avio_alloc_context_write_packet_callback*, avio_alloc_context_seek_callback*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:339</i>
+	 * <i>native declaration : libavformat/avio.h:357</i>
 	 */
 	public static Pointer<AVIOContext > avio_alloc_context(Pointer<Byte > buffer, int buffer_size, int write_flag, Pointer<? > opaque, Pointer<AvformatLibrary.avio_alloc_context_read_packet_callback > read_packet, Pointer<AvformatLibrary.avio_alloc_context_write_packet_callback > write_packet, Pointer<AvformatLibrary.avio_alloc_context_seek_callback > seek) {
 		return Pointer.pointerToAddress(avio_alloc_context(Pointer.getPeer(buffer), buffer_size, write_flag, Pointer.getPeer(opaque), Pointer.getPeer(read_packet), Pointer.getPeer(write_packet), Pointer.getPeer(seek)), AVIOContext.class);
@@ -608,8 +614,19 @@ public class AvformatLibrary {
 	@Ptr 
 	protected native static long avio_alloc_context(@Ptr long buffer, int buffer_size, int write_flag, @Ptr long opaque, @Ptr long read_packet, @Ptr long write_packet, @Ptr long seek);
 	/**
+	 * Free the supplied IO context and everything associated with it.<br>
+	 * * @param s Double pointer to the IO context. This function will write NULL<br>
+	 * into s.<br>
+	 * Original signature : <code>void avio_context_free(AVIOContext**)</code><br>
+	 * <i>native declaration : libavformat/avio.h:364</i>
+	 */
+	public static void avio_context_free(Pointer<Pointer<AVIOContext > > s) {
+		avio_context_free(Pointer.getPeer(s));
+	}
+	protected native static void avio_context_free(@Ptr long s);
+	/**
 	 * Original signature : <code>void avio_w8(AVIOContext*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:341</i>
+	 * <i>native declaration : libavformat/avio.h:366</i>
 	 */
 	public static void avio_w8(Pointer<AVIOContext > s, int b) {
 		avio_w8(Pointer.getPeer(s), b);
@@ -617,7 +634,7 @@ public class AvformatLibrary {
 	protected native static void avio_w8(@Ptr long s, int b);
 	/**
 	 * Original signature : <code>void avio_write(AVIOContext*, const unsigned char*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:343</i>
+	 * <i>native declaration : libavformat/avio.h:368</i>
 	 */
 	public static void avio_write(Pointer<AVIOContext > s, Pointer<Byte > buf, int size) {
 		avio_write(Pointer.getPeer(s), Pointer.getPeer(buf), size);
@@ -625,7 +642,7 @@ public class AvformatLibrary {
 	protected native static void avio_write(@Ptr long s, @Ptr long buf, int size);
 	/**
 	 * Original signature : <code>void avio_wl64(AVIOContext*, uint64_t)</code><br>
-	 * <i>native declaration : libavformat/avio.h:345</i>
+	 * <i>native declaration : libavformat/avio.h:370</i>
 	 */
 	public static void avio_wl64(Pointer<AVIOContext > s, long val) {
 		avio_wl64(Pointer.getPeer(s), val);
@@ -633,7 +650,7 @@ public class AvformatLibrary {
 	protected native static void avio_wl64(@Ptr long s, long val);
 	/**
 	 * Original signature : <code>void avio_wb64(AVIOContext*, uint64_t)</code><br>
-	 * <i>native declaration : libavformat/avio.h:347</i>
+	 * <i>native declaration : libavformat/avio.h:372</i>
 	 */
 	public static void avio_wb64(Pointer<AVIOContext > s, long val) {
 		avio_wb64(Pointer.getPeer(s), val);
@@ -641,7 +658,7 @@ public class AvformatLibrary {
 	protected native static void avio_wb64(@Ptr long s, long val);
 	/**
 	 * Original signature : <code>void avio_wl32(AVIOContext*, unsigned int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:349</i>
+	 * <i>native declaration : libavformat/avio.h:374</i>
 	 */
 	public static void avio_wl32(Pointer<AVIOContext > s, int val) {
 		avio_wl32(Pointer.getPeer(s), val);
@@ -649,7 +666,7 @@ public class AvformatLibrary {
 	protected native static void avio_wl32(@Ptr long s, int val);
 	/**
 	 * Original signature : <code>void avio_wb32(AVIOContext*, unsigned int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:351</i>
+	 * <i>native declaration : libavformat/avio.h:376</i>
 	 */
 	public static void avio_wb32(Pointer<AVIOContext > s, int val) {
 		avio_wb32(Pointer.getPeer(s), val);
@@ -657,7 +674,7 @@ public class AvformatLibrary {
 	protected native static void avio_wb32(@Ptr long s, int val);
 	/**
 	 * Original signature : <code>void avio_wl24(AVIOContext*, unsigned int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:353</i>
+	 * <i>native declaration : libavformat/avio.h:378</i>
 	 */
 	public static void avio_wl24(Pointer<AVIOContext > s, int val) {
 		avio_wl24(Pointer.getPeer(s), val);
@@ -665,7 +682,7 @@ public class AvformatLibrary {
 	protected native static void avio_wl24(@Ptr long s, int val);
 	/**
 	 * Original signature : <code>void avio_wb24(AVIOContext*, unsigned int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:355</i>
+	 * <i>native declaration : libavformat/avio.h:380</i>
 	 */
 	public static void avio_wb24(Pointer<AVIOContext > s, int val) {
 		avio_wb24(Pointer.getPeer(s), val);
@@ -673,7 +690,7 @@ public class AvformatLibrary {
 	protected native static void avio_wb24(@Ptr long s, int val);
 	/**
 	 * Original signature : <code>void avio_wl16(AVIOContext*, unsigned int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:357</i>
+	 * <i>native declaration : libavformat/avio.h:382</i>
 	 */
 	public static void avio_wl16(Pointer<AVIOContext > s, int val) {
 		avio_wl16(Pointer.getPeer(s), val);
@@ -681,7 +698,7 @@ public class AvformatLibrary {
 	protected native static void avio_wl16(@Ptr long s, int val);
 	/**
 	 * Original signature : <code>void avio_wb16(AVIOContext*, unsigned int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:359</i>
+	 * <i>native declaration : libavformat/avio.h:384</i>
 	 */
 	public static void avio_wb16(Pointer<AVIOContext > s, int val) {
 		avio_wb16(Pointer.getPeer(s), val);
@@ -691,7 +708,7 @@ public class AvformatLibrary {
 	 * Write a NULL-terminated string.<br>
 	 * @return number of bytes written.<br>
 	 * Original signature : <code>int avio_put_str(AVIOContext*, const char*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:365</i>
+	 * <i>native declaration : libavformat/avio.h:390</i>
 	 */
 	public static int avio_put_str(Pointer<AVIOContext > s, Pointer<Byte > str) {
 		return avio_put_str(Pointer.getPeer(s), Pointer.getPeer(str));
@@ -703,7 +720,7 @@ public class AvformatLibrary {
 	 * @param str NULL-terminated UTF-8 string<br>
 	 * * @return number of bytes written.<br>
 	 * Original signature : <code>int avio_put_str16le(AVIOContext*, const char*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:373</i>
+	 * <i>native declaration : libavformat/avio.h:398</i>
 	 */
 	public static int avio_put_str16le(Pointer<AVIOContext > s, Pointer<Byte > str) {
 		return avio_put_str16le(Pointer.getPeer(s), Pointer.getPeer(str));
@@ -715,7 +732,7 @@ public class AvformatLibrary {
 	 * @param str NULL-terminated UTF-8 string<br>
 	 * * @return number of bytes written.<br>
 	 * Original signature : <code>int avio_put_str16be(AVIOContext*, const char*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:381</i>
+	 * <i>native declaration : libavformat/avio.h:406</i>
 	 */
 	public static int avio_put_str16be(Pointer<AVIOContext > s, Pointer<Byte > str) {
 		return avio_put_str16be(Pointer.getPeer(s), Pointer.getPeer(str));
@@ -729,7 +746,7 @@ public class AvformatLibrary {
 	 *             applicable<br>
 	 * @param type the kind of data written starting at the current pos<br>
 	 * Original signature : <code>void avio_write_marker(AVIOContext*, int64_t, AVIODataMarkerType)</code><br>
-	 * <i>native declaration : libavformat/avio.h:391</i>
+	 * <i>native declaration : libavformat/avio.h:416</i>
 	 */
 	public static void avio_write_marker(Pointer<AVIOContext > s, long time, IntValuedEnum<AvformatLibrary.AVIODataMarkerType > type) {
 		avio_write_marker(Pointer.getPeer(s), time, (int)type.value());
@@ -739,7 +756,7 @@ public class AvformatLibrary {
 	 * fseek() equivalent for AVIOContext.<br>
 	 * @return new position or AVERROR.<br>
 	 * Original signature : <code>int64_t avio_seek(AVIOContext*, int64_t, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:397</i>
+	 * <i>native declaration : libavformat/avio.h:422</i>
 	 */
 	public static long avio_seek(Pointer<AVIOContext > s, long offset, int whence) {
 		return avio_seek(Pointer.getPeer(s), offset, whence);
@@ -749,7 +766,7 @@ public class AvformatLibrary {
 	 * Skip given number of bytes forward<br>
 	 * @return new position or AVERROR.<br>
 	 * Original signature : <code>int64_t avio_skip(AVIOContext*, int64_t)</code><br>
-	 * <i>native declaration : libavformat/avio.h:403</i>
+	 * <i>native declaration : libavformat/avio.h:428</i>
 	 */
 	public static long avio_skip(Pointer<AVIOContext > s, long offset) {
 		return avio_skip(Pointer.getPeer(s), offset);
@@ -759,7 +776,7 @@ public class AvformatLibrary {
 	 * Get the filesize.<br>
 	 * @return filesize or AVERROR<br>
 	 * Original signature : <code>int64_t avio_size(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:417</i>
+	 * <i>native declaration : libavformat/avio.h:442</i>
 	 */
 	public static long avio_size(Pointer<AVIOContext > s) {
 		return avio_size(Pointer.getPeer(s));
@@ -769,7 +786,7 @@ public class AvformatLibrary {
 	 * feof() equivalent for AVIOContext.<br>
 	 * @return non zero if and only if end of file<br>
 	 * Original signature : <code>int avio_feof(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:423</i>
+	 * <i>native declaration : libavformat/avio.h:448</i>
 	 */
 	public static int avio_feof(Pointer<AVIOContext > s) {
 		return avio_feof(Pointer.getPeer(s));
@@ -778,7 +795,7 @@ public class AvformatLibrary {
 	/**
 	 * @deprecated use avio_feof()<br>
 	 * Original signature : <code>int url_feof(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:428</i>
+	 * <i>native declaration : libavformat/avio.h:453</i>
 	 */
 	public static int url_feof(Pointer<AVIOContext > s) {
 		return url_feof(Pointer.getPeer(s));
@@ -787,7 +804,7 @@ public class AvformatLibrary {
 	/**
 	 * @warning Writes up to 4 KiB per call<br>
 	 * Original signature : <code>int avio_printf(AVIOContext*, const char*, null)</code><br>
-	 * <i>native declaration : libavformat/avio.h:433</i>
+	 * <i>native declaration : libavformat/avio.h:458</i>
 	 */
 	public static int avio_printf(Pointer<AVIOContext > s, Pointer<Byte > fmt, Object... varArgs1) {
 		return avio_printf(Pointer.getPeer(s), Pointer.getPeer(fmt), varArgs1);
@@ -801,7 +818,7 @@ public class AvformatLibrary {
 	 * reported file position to that of the underlying stream. This does not<br>
 	 * read new data, and does not perform any seeks.<br>
 	 * Original signature : <code>void avio_flush(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:443</i>
+	 * <i>native declaration : libavformat/avio.h:468</i>
 	 */
 	public static void avio_flush(Pointer<AVIOContext > s) {
 		avio_flush(Pointer.getPeer(s));
@@ -811,19 +828,32 @@ public class AvformatLibrary {
 	 * Read size bytes from AVIOContext into buf.<br>
 	 * @return number of bytes read or AVERROR<br>
 	 * Original signature : <code>int avio_read(AVIOContext*, unsigned char*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:449</i>
+	 * <i>native declaration : libavformat/avio.h:474</i>
 	 */
 	public static int avio_read(Pointer<AVIOContext > s, Pointer<Byte > buf, int size) {
 		return avio_read(Pointer.getPeer(s), Pointer.getPeer(buf), size);
 	}
 	protected native static int avio_read(@Ptr long s, @Ptr long buf, int size);
 	/**
+	 * Read size bytes from AVIOContext into buf. Unlike avio_read(), this is allowed<br>
+	 * to read fewer bytes than requested. The missing bytes can be read in the next<br>
+	 * call. This always tries to read at least 1 byte.<br>
+	 * Useful to reduce latency in certain cases.<br>
+	 * @return number of bytes read or AVERROR<br>
+	 * Original signature : <code>int avio_read_partial(AVIOContext*, unsigned char*, int)</code><br>
+	 * <i>native declaration : libavformat/avio.h:483</i>
+	 */
+	public static int avio_read_partial(Pointer<AVIOContext > s, Pointer<Byte > buf, int size) {
+		return avio_read_partial(Pointer.getPeer(s), Pointer.getPeer(buf), size);
+	}
+	protected native static int avio_read_partial(@Ptr long s, @Ptr long buf, int size);
+	/**
 	 * @name Functions for reading from AVIOContext<br>
 	 * @{<br>
 	 * * @note return 0 if EOF, so you cannot use it if EOF handling is<br>
 	 *       necessary<br>
 	 * Original signature : <code>int avio_r8(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:457</i>
+	 * <i>native declaration : libavformat/avio.h:491</i>
 	 */
 	public static int avio_r8(Pointer<AVIOContext > s) {
 		return avio_r8(Pointer.getPeer(s));
@@ -831,7 +861,7 @@ public class AvformatLibrary {
 	protected native static int avio_r8(@Ptr long s);
 	/**
 	 * Original signature : <code>int avio_rl16(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:459</i>
+	 * <i>native declaration : libavformat/avio.h:493</i>
 	 */
 	public static int avio_rl16(Pointer<AVIOContext > s) {
 		return avio_rl16(Pointer.getPeer(s));
@@ -839,7 +869,7 @@ public class AvformatLibrary {
 	protected native static int avio_rl16(@Ptr long s);
 	/**
 	 * Original signature : <code>int avio_rl24(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:461</i>
+	 * <i>native declaration : libavformat/avio.h:495</i>
 	 */
 	public static int avio_rl24(Pointer<AVIOContext > s) {
 		return avio_rl24(Pointer.getPeer(s));
@@ -847,7 +877,7 @@ public class AvformatLibrary {
 	protected native static int avio_rl24(@Ptr long s);
 	/**
 	 * Original signature : <code>int avio_rl32(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:463</i>
+	 * <i>native declaration : libavformat/avio.h:497</i>
 	 */
 	public static int avio_rl32(Pointer<AVIOContext > s) {
 		return avio_rl32(Pointer.getPeer(s));
@@ -855,7 +885,7 @@ public class AvformatLibrary {
 	protected native static int avio_rl32(@Ptr long s);
 	/**
 	 * Original signature : <code>uint64_t avio_rl64(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:465</i>
+	 * <i>native declaration : libavformat/avio.h:499</i>
 	 */
 	public static long avio_rl64(Pointer<AVIOContext > s) {
 		return avio_rl64(Pointer.getPeer(s));
@@ -863,7 +893,7 @@ public class AvformatLibrary {
 	protected native static long avio_rl64(@Ptr long s);
 	/**
 	 * Original signature : <code>int avio_rb16(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:467</i>
+	 * <i>native declaration : libavformat/avio.h:501</i>
 	 */
 	public static int avio_rb16(Pointer<AVIOContext > s) {
 		return avio_rb16(Pointer.getPeer(s));
@@ -871,7 +901,7 @@ public class AvformatLibrary {
 	protected native static int avio_rb16(@Ptr long s);
 	/**
 	 * Original signature : <code>int avio_rb24(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:469</i>
+	 * <i>native declaration : libavformat/avio.h:503</i>
 	 */
 	public static int avio_rb24(Pointer<AVIOContext > s) {
 		return avio_rb24(Pointer.getPeer(s));
@@ -879,7 +909,7 @@ public class AvformatLibrary {
 	protected native static int avio_rb24(@Ptr long s);
 	/**
 	 * Original signature : <code>int avio_rb32(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:471</i>
+	 * <i>native declaration : libavformat/avio.h:505</i>
 	 */
 	public static int avio_rb32(Pointer<AVIOContext > s) {
 		return avio_rb32(Pointer.getPeer(s));
@@ -887,7 +917,7 @@ public class AvformatLibrary {
 	protected native static int avio_rb32(@Ptr long s);
 	/**
 	 * Original signature : <code>uint64_t avio_rb64(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:473</i>
+	 * <i>native declaration : libavformat/avio.h:507</i>
 	 */
 	public static long avio_rb64(Pointer<AVIOContext > s) {
 		return avio_rb64(Pointer.getPeer(s));
@@ -904,7 +934,7 @@ public class AvformatLibrary {
 	 * If reading ends on EOF or error, the return value will be one more than<br>
 	 * bytes actually read.<br>
 	 * Original signature : <code>int avio_get_str(AVIOContext*, int, char*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:486</i>
+	 * <i>native declaration : libavformat/avio.h:520</i>
 	 */
 	public static int avio_get_str(Pointer<AVIOContext > pb, int maxlen, Pointer<Byte > buf, int buflen) {
 		return avio_get_str(Pointer.getPeer(pb), maxlen, Pointer.getPeer(buf), buflen);
@@ -916,7 +946,7 @@ public class AvformatLibrary {
 	 * encountered or maxlen bytes have been read.<br>
 	 * @return number of bytes read (is always <= maxlen)<br>
 	 * Original signature : <code>int avio_get_str16le(AVIOContext*, int, char*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:494</i>
+	 * <i>native declaration : libavformat/avio.h:528</i>
 	 */
 	public static int avio_get_str16le(Pointer<AVIOContext > pb, int maxlen, Pointer<Byte > buf, int buflen) {
 		return avio_get_str16le(Pointer.getPeer(pb), maxlen, Pointer.getPeer(buf), buflen);
@@ -924,7 +954,7 @@ public class AvformatLibrary {
 	protected native static int avio_get_str16le(@Ptr long pb, int maxlen, @Ptr long buf, int buflen);
 	/**
 	 * Original signature : <code>int avio_get_str16be(AVIOContext*, int, char*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:496</i>
+	 * <i>native declaration : libavformat/avio.h:530</i>
 	 */
 	public static int avio_get_str16be(Pointer<AVIOContext > pb, int maxlen, Pointer<Byte > buf, int buflen) {
 		return avio_get_str16be(Pointer.getPeer(pb), maxlen, Pointer.getPeer(buf), buflen);
@@ -943,7 +973,7 @@ public class AvformatLibrary {
 	 * @return >= 0 in case of success, a negative value corresponding to an<br>
 	 * AVERROR code in case of failure<br>
 	 * Original signature : <code>int avio_open(AVIOContext**, const char*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:511</i>
+	 * <i>native declaration : libavformat/avio.h:545</i>
 	 */
 	public static int avio_open(Pointer<Pointer<AVIOContext > > s, Pointer<Byte > url, int flags) {
 		return avio_open(Pointer.getPeer(s), Pointer.getPeer(url), flags);
@@ -966,7 +996,7 @@ public class AvformatLibrary {
 	 * @return >= 0 in case of success, a negative value corresponding to an<br>
 	 * AVERROR code in case of failure<br>
 	 * Original signature : <code>int avio_open2(AVIOContext**, const char*, int, const AVIOInterruptCB*, AVDictionary**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:530</i>
+	 * <i>native declaration : libavformat/avio.h:564</i>
 	 */
 	public static int avio_open2(Pointer<Pointer<AVIOContext > > s, Pointer<Byte > url, int flags, Pointer<AVIOInterruptCB > int_cb, Pointer<Pointer<AVDictionary > > options) {
 		return avio_open2(Pointer.getPeer(s), Pointer.getPeer(url), flags, Pointer.getPeer(int_cb), Pointer.getPeer(options));
@@ -980,7 +1010,7 @@ public class AvformatLibrary {
 	 * * @return 0 on success, an AVERROR < 0 on error.<br>
 	 * @see avio_closep<br>
 	 * Original signature : <code>int avio_close(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:540</i>
+	 * <i>native declaration : libavformat/avio.h:574</i>
 	 */
 	public static int avio_close(Pointer<AVIOContext > s) {
 		return avio_close(Pointer.getPeer(s));
@@ -995,7 +1025,7 @@ public class AvformatLibrary {
 	 * * @return 0 on success, an AVERROR < 0 on error.<br>
 	 * @see avio_close<br>
 	 * Original signature : <code>int avio_closep(AVIOContext**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:551</i>
+	 * <i>native declaration : libavformat/avio.h:585</i>
 	 */
 	public static int avio_closep(Pointer<Pointer<AVIOContext > > s) {
 		return avio_closep(Pointer.getPeer(s));
@@ -1006,7 +1036,7 @@ public class AvformatLibrary {
 	 * * @param s new IO context<br>
 	 * @return zero if no error.<br>
 	 * Original signature : <code>int avio_open_dyn_buf(AVIOContext**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:558</i>
+	 * <i>native declaration : libavformat/avio.h:592</i>
 	 */
 	public static int avio_open_dyn_buf(Pointer<Pointer<AVIOContext > > s) {
 		return avio_open_dyn_buf(Pointer.getPeer(s));
@@ -1021,7 +1051,7 @@ public class AvformatLibrary {
 	 * @param pbuffer pointer to a byte buffer<br>
 	 * @return the length of the byte buffer<br>
 	 * Original signature : <code>int avio_get_dyn_buf(AVIOContext*, uint8_t**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:569</i>
+	 * <i>native declaration : libavformat/avio.h:603</i>
 	 */
 	public static int avio_get_dyn_buf(Pointer<AVIOContext > s, Pointer<Pointer<Byte > > pbuffer) {
 		return avio_get_dyn_buf(Pointer.getPeer(s), Pointer.getPeer(pbuffer));
@@ -1035,7 +1065,7 @@ public class AvformatLibrary {
 	 * @param pbuffer pointer to a byte buffer<br>
 	 * @return the length of the byte buffer<br>
 	 * Original signature : <code>int avio_close_dyn_buf(AVIOContext*, uint8_t**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:579</i>
+	 * <i>native declaration : libavformat/avio.h:613</i>
 	 */
 	public static int avio_close_dyn_buf(Pointer<AVIOContext > s, Pointer<Pointer<Byte > > pbuffer) {
 		return avio_close_dyn_buf(Pointer.getPeer(s), Pointer.getPeer(pbuffer));
@@ -1050,7 +1080,7 @@ public class AvformatLibrary {
 	 *               otherwise over input protocols.<br>
 	 * * @return A static string containing the name of current protocol or NULL<br>
 	 * Original signature : <code>char* avio_enum_protocols(void**, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:590</i>
+	 * <i>native declaration : libavformat/avio.h:624</i>
 	 */
 	public static Pointer<Byte > avio_enum_protocols(Pointer<Pointer<? > > opaque, int output) {
 		return Pointer.pointerToAddress(avio_enum_protocols(Pointer.getPeer(opaque), output), Byte.class);
@@ -1063,7 +1093,7 @@ public class AvformatLibrary {
 	 * * @param h     IO context from which to call the read_pause function pointer<br>
 	 * @param pause 1 for pause, 0 for resume<br>
 	 * Original signature : <code>int avio_pause(AVIOContext*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:598</i>
+	 * <i>native declaration : libavformat/avio.h:632</i>
 	 */
 	public static int avio_pause(Pointer<AVIOContext > h, int pause) {
 		return avio_pause(Pointer.getPeer(h), pause);
@@ -1087,7 +1117,7 @@ public class AvformatLibrary {
 	 * @return >= 0 on success<br>
 	 * @see AVInputFormat::read_seek<br>
 	 * Original signature : <code>int64_t avio_seek_time(AVIOContext*, int, int64_t, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:618</i>
+	 * <i>native declaration : libavformat/avio.h:652</i>
 	 */
 	public static long avio_seek_time(Pointer<AVIOContext > h, int stream_index, long timestamp, int flags) {
 		return avio_seek_time(Pointer.getPeer(h), stream_index, timestamp, flags);
@@ -1098,7 +1128,7 @@ public class AvformatLibrary {
 	 * * @return 0 for success (max_size bytes read or EOF reached), negative error<br>
 	 * code otherwise<br>
 	 * Original signature : <code>int avio_read_to_bprint(AVIOContext*, AVBPrint*, size_t)</code><br>
-	 * <i>native declaration : libavformat/avio.h:627</i>
+	 * <i>native declaration : libavformat/avio.h:661</i>
 	 */
 	public static int avio_read_to_bprint(Pointer<AVIOContext > h, Pointer<AVBPrint > pb, @Ptr long max_size) {
 		return avio_read_to_bprint(Pointer.getPeer(h), Pointer.getPeer(pb), max_size);
@@ -1111,7 +1141,7 @@ public class AvformatLibrary {
 	 * @return   >= 0 on success or a negative value corresponding<br>
 	 *           to an AVERROR on failure<br>
 	 * Original signature : <code>int avio_accept(AVIOContext*, AVIOContext**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:636</i>
+	 * <i>native declaration : libavformat/avio.h:670</i>
 	 */
 	public static int avio_accept(Pointer<AVIOContext > s, Pointer<Pointer<AVIOContext > > c) {
 		return avio_accept(Pointer.getPeer(s), Pointer.getPeer(c));
@@ -1135,7 +1165,7 @@ public class AvformatLibrary {
 	 *           > 0 if the handshake progressed, but is not complete<br>
 	 *           < 0 for an AVERROR code<br>
 	 * Original signature : <code>int avio_handshake(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:656</i>
+	 * <i>native declaration : libavformat/avio.h:690</i>
 	 */
 	public static int avio_handshake(Pointer<AVIOContext > c) {
 		return avio_handshake(Pointer.getPeer(c));
@@ -2478,8 +2508,16 @@ public class AvformatLibrary {
 	}
 	protected native static int avformat_queue_attached_pictures(@Ptr long s);
 	/**
+	 * Apply a list of bitstream filters to a packet.<br>
+	 * * @param codec AVCodecContext, usually from an AVStream<br>
+	 * @param pkt the packet to apply filters to. If, on success, the returned<br>
+	 *        packet has size == 0 and side_data_elems == 0, it indicates that<br>
+	 *        the packet should be dropped<br>
+	 * @param bsfc a NULL-terminated list of filters to apply<br>
+	 * @return  >=0 on success;<br>
+	 *          AVERROR code on failure<br>
 	 * Original signature : <code>int av_apply_bitstream_filters(AVCodecContext*, AVPacket*, AVBitStreamFilterContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1973</i>
+	 * <i>native declaration : libavformat/avformat.h:1983</i>
 	 */
 	public static int av_apply_bitstream_filters(Pointer<AVCodecContext > codec, Pointer<AVPacket > pkt, Pointer<AVBitStreamFilterContext > bsfc) {
 		return av_apply_bitstream_filters(Pointer.getPeer(codec), Pointer.getPeer(pkt), Pointer.getPeer(bsfc));
@@ -2493,7 +2531,7 @@ public class AvformatLibrary {
 	 * @param ist      reference input stream to copy timings from<br>
 	 * @param copy_tb  define from where the stream codec timebase needs to be imported<br>
 	 * Original signature : <code>int avformat_transfer_internal_stream_timing_info(const AVOutputFormat*, AVStream*, const AVStream*, AVTimebaseSource)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1989</i>
+	 * <i>native declaration : libavformat/avformat.h:1999</i>
 	 */
 	public static int avformat_transfer_internal_stream_timing_info(Pointer<AVOutputFormat > ofmt, Pointer<AVStream > ost, Pointer<AVStream > ist, IntValuedEnum<AvformatLibrary.AVTimebaseSource > copy_tb) {
 		return avformat_transfer_internal_stream_timing_info(Pointer.getPeer(ofmt), Pointer.getPeer(ost), Pointer.getPeer(ist), (int)copy_tb.value());
@@ -2503,7 +2541,7 @@ public class AvformatLibrary {
 	 * Get the internal codec timebase from a stream.<br>
 	 * * @param st  input stream to extract the timebase from<br>
 	 * Original signature : <code>AVRational av_stream_get_codec_timebase(const AVStream*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1995</i>
+	 * <i>native declaration : libavformat/avformat.h:2005</i>
 	 */
 	public static AVRational av_stream_get_codec_timebase(Pointer<AVStream > st) {
 		return av_stream_get_codec_timebase(Pointer.getPeer(st));

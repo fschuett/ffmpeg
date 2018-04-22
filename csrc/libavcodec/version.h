@@ -28,7 +28,7 @@
 #include "libavutil/version.h"
 
 #define LIBAVCODEC_VERSION_MAJOR  57
-#define LIBAVCODEC_VERSION_MINOR  89
+#define LIBAVCODEC_VERSION_MINOR 107
 #define LIBAVCODEC_VERSION_MICRO 100
 
 #define LIBAVCODEC_VERSION_INT  AV_VERSION_INT(LIBAVCODEC_VERSION_MAJOR, \
@@ -39,7 +39,7 @@
                                            LIBAVCODEC_VERSION_MICRO)
 #define LIBAVCODEC_BUILD        LIBAVCODEC_VERSION_INT
 
-#define LIBAVCODEC_IDENT        "Lavc57.89.100"
+#define LIBAVCODEC_IDENT        "Lavc57.107.100"
 
 /**
  * FF_API_* defines may be placed below to indicate public API that will be
@@ -59,9 +59,6 @@
 #endif
 #ifndef FF_API_AVCODEC_RESAMPLE
 #define FF_API_AVCODEC_RESAMPLE  FF_API_AUDIO_CONVERT
-#endif
-#ifndef FF_API_GETCHROMA
-#define FF_API_GETCHROMA         (LIBAVCODEC_VERSION_MAJOR < 58)
 #endif
 #ifndef FF_API_MISSING_SAMPLE
 #define FF_API_MISSING_SAMPLE    (LIBAVCODEC_VERSION_MAJOR < 58)
@@ -237,6 +234,9 @@
 #endif
 #ifndef FF_API_TAG_STRING
 #define FF_API_TAG_STRING        (LIBAVCODEC_VERSION_MAJOR < 59)
+#endif
+#ifndef FF_API_GETCHROMA
+#define FF_API_GETCHROMA         (LIBAVCODEC_VERSION_MAJOR < 59)
 #endif
 
 

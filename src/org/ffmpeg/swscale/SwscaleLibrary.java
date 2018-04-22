@@ -31,13 +31,13 @@ public class SwscaleLibrary {
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_SINC = (int)0x100;
 	/** <i>native declaration : libswscale/version.h</i> */
-	public static final int LIBSWSCALE_BUILD = (int)((4) << 16 | (6) << 8 | (100));
+	public static final int LIBSWSCALE_BUILD = (int)((4) << 16 | (8) << 8 | (100));
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_SPLINE = (int)0x400;
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_CS_FCC = (int)4;
 	/** <i>native declaration : libswscale/version.h</i> */
-	public static final int LIBSWSCALE_VERSION_MINOR = (int)6;
+	public static final int LIBSWSCALE_VERSION_MINOR = (int)8;
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final double SWS_MAX_REDUCE_CUTOFF = (double)0.002;
 	/** <i>native declaration : libswscale/swscale.h</i> */
@@ -53,22 +53,22 @@ public class SwscaleLibrary {
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_PARAM_DEFAULT = (int)123456;
 	/** <i>native declaration : libswscale/version.h</i> */
-	public static final String LIBSWSCALE_IDENT = (String)"SwS4.6.100";
+	public static final String LIBSWSCALE_IDENT = (String)"SwS4.8.100";
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_ACCURATE_RND = (int)0x40000;
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_AREA = (int)0x20;
 	/**
 	 * define<br>
-	 * Conversion Error : 4.6.<br>
+	 * Conversion Error : 4.8.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : libswscale/version.h:0</i><br>
-	 * 4.6.
+	 * 4.8.
 	 */
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_DIRECT_BGR = (int)0x8000;
 	/** <i>native declaration : libswscale/version.h</i> */
-	public static final int LIBSWSCALE_VERSION_INT = (int)((4) << 16 | (6) << 8 | (100));
+	public static final int LIBSWSCALE_VERSION_INT = (int)((4) << 16 | (8) << 8 | (100));
 	/** <i>native declaration : libswscale/swscale.h</i> */
 	public static final int SWS_CS_BT2020 = (int)9;
 	/** <i>native declaration : libswscale/swscale.h</i> */

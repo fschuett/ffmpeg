@@ -194,24 +194,24 @@ public class AvdeviceLibrary {
 	 * const int64_t tmp = a.num * (int64_t)b.den - b.num * (int64_t)a.den;
 	 */
 	/** <i>native declaration : libavdevice/version.h</i> */
-	public static final int LIBAVDEVICE_VERSION_INT = (int)((57) << 16 | (6) << 8 | (100));
+	public static final int LIBAVDEVICE_VERSION_INT = (int)((57) << 16 | (10) << 8 | (100));
 	/** <i>native declaration : libavdevice/version.h</i> */
 	public static final int LIBAVDEVICE_VERSION_MICRO = (int)100;
 	/** <i>native declaration : libavdevice/version.h</i> */
-	public static final int LIBAVDEVICE_BUILD = (int)((57) << 16 | (6) << 8 | (100));
+	public static final int LIBAVDEVICE_BUILD = (int)((57) << 16 | (10) << 8 | (100));
 	/** <i>native declaration : libavdevice/version.h</i> */
-	public static final int LIBAVDEVICE_VERSION_MINOR = (int)6;
+	public static final int LIBAVDEVICE_VERSION_MINOR = (int)10;
 	/**
 	 * define<br>
-	 * Conversion Error : 57.6.<br>
+	 * Conversion Error : 57.10.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : libavdevice/version.h:0</i><br>
-	 * 57.6.
+	 * 57.10.
 	 */
 	/** <i>native declaration : libavdevice/version.h</i> */
 	public static final int LIBAVDEVICE_VERSION_MAJOR = (int)57;
 	/** <i>native declaration : libavdevice/version.h</i> */
-	public static final String LIBAVDEVICE_IDENT = (String)"Lavd57.6.100";
+	public static final String LIBAVDEVICE_IDENT = (String)"Lavd57.10.100";
 	/**
 	 * Return the LIBAVDEVICE_VERSION_INT constant.<br>
 	 * Original signature : <code>int avdevice_version()</code><br>

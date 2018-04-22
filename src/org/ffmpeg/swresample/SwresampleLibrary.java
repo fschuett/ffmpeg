@@ -119,15 +119,15 @@ public class SwresampleLibrary {
 	 * const int64_t tmp = a.num * (int64_t)b.den - b.num * (int64_t)a.den;
 	 */
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final int LIBSWRESAMPLE_VERSION_INT = (int)((2) << 16 | (7) << 8 | (100));
+	public static final int LIBSWRESAMPLE_VERSION_INT = (int)((2) << 16 | (9) << 8 | (100));
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final int LIBSWRESAMPLE_BUILD = (int)((2) << 16 | (7) << 8 | (100));
+	public static final int LIBSWRESAMPLE_BUILD = (int)((2) << 16 | (9) << 8 | (100));
 	/**
 	 * define<br>
-	 * Conversion Error : 2.7.<br>
+	 * Conversion Error : 2.9.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libswresample/version.h:0</i><br>
-	 * 2.7.
+	 * 2.9.
 	 */
 	/** <i>native declaration : ./libswresample/version.h</i> */
 	public static final int LIBSWRESAMPLE_VERSION_MICRO = (int)100;
@@ -136,9 +136,9 @@ public class SwresampleLibrary {
 	/** <i>native declaration : ./libswresample/version.h</i> */
 	public static final int LIBSWRESAMPLE_VERSION_MAJOR = (int)2;
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final int LIBSWRESAMPLE_VERSION_MINOR = (int)7;
+	public static final int LIBSWRESAMPLE_VERSION_MINOR = (int)9;
 	/** <i>native declaration : ./libswresample/version.h</i> */
-	public static final String LIBSWRESAMPLE_IDENT = (String)"SwR2.7.100";
+	public static final String LIBSWRESAMPLE_IDENT = (String)"SwR2.9.100";
 	/**
 	 * Get the AVClass for SwrContext. It can be used in combination with<br>
 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>

@@ -118,23 +118,23 @@ public class AvresampleLibrary {
 	/** <i>native declaration : ./libavresample/version.h</i> */
 	public static final int LIBAVRESAMPLE_VERSION_MICRO = (int)0;
 	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_VERSION_INT = (int)((3) << 16 | (5) << 8 | (0));
+	public static final int LIBAVRESAMPLE_VERSION_INT = (int)((3) << 16 | (7) << 8 | (0));
 	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final String LIBAVRESAMPLE_IDENT = (String)"Lavr3.5.0";
+	public static final String LIBAVRESAMPLE_IDENT = (String)"Lavr3.7.0";
 	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_BUILD = (int)((3) << 16 | (5) << 8 | (0));
+	public static final int LIBAVRESAMPLE_BUILD = (int)((3) << 16 | (7) << 8 | (0));
 	/** <i>native declaration : ./libavresample/version.h</i> */
-	public static final int LIBAVRESAMPLE_VERSION_MINOR = (int)5;
+	public static final int LIBAVRESAMPLE_VERSION_MINOR = (int)7;
 	/** <i>native declaration : ./libavresample/version.h</i> */
 	public static final int LIBAVRESAMPLE_VERSION_MAJOR = (int)3;
 	/** <i>native declaration : libavresample/avresample.h</i> */
 	public static final int AVRESAMPLE_MAX_CHANNELS = (int)32;
 	/**
 	 * define<br>
-	 * Conversion Error : 3.5.<br>
+	 * Conversion Error : 3.7.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libavresample/version.h:0</i><br>
-	 * 3.5.
+	 * 3.7.
 	 */
 	/**
 	 * Return the LIBAVRESAMPLE_VERSION_INT constant.<br>
@@ -502,8 +502,8 @@ public class AvresampleLibrary {
 	 * * @see avresample_open();<br>
 	 * @see avresample_close();<br>
 	 * * @param avr             audio resample context<br>
-	 * @param output          output AVFrame<br>
-	 * @param input           input AVFrame<br>
+	 * @param out             output AVFrame<br>
+	 * @param in              input AVFrame<br>
 	 * @return                0 on success, AVERROR on failure.<br>
 	 * Original signature : <code>int avresample_config(AVAudioResampleContext*, AVFrame*, AVFrame*)</code><br>
 	 * <i>native declaration : libavresample/avresample.h:312</i>

@@ -27,7 +27,7 @@
 #include "libavutil/version.h"
 
 #define LIBSWSCALE_VERSION_MAJOR   4
-#define LIBSWSCALE_VERSION_MINOR   6
+#define LIBSWSCALE_VERSION_MINOR   8
 #define LIBSWSCALE_VERSION_MICRO 100
 
 #define LIBSWSCALE_VERSION_INT  AV_VERSION_INT(LIBSWSCALE_VERSION_MAJOR, \
@@ -38,7 +38,7 @@
                                            LIBSWSCALE_VERSION_MICRO)
 #define LIBSWSCALE_BUILD        LIBSWSCALE_VERSION_INT
 
-#define LIBSWSCALE_IDENT        "SwS4.6.100"
+#define LIBSWSCALE_IDENT        "SwS4.8.100"
 
 /**
  * FF_API_* defines may be placed below to indicate public API that will be

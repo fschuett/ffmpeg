@@ -36,7 +36,7 @@ Create new src
  - Copy generated -> src
  - Patch with: patch -p0 <ffmpeg-src.patch
  - Compare src.old, src to check for differences.
- - Update ffmpeg-src.patch: diff -pruN generated src
+ - Update ffmpeg-src.patch: diff -pruN generated src >ffmpeg-src.patch
 
 Build new lib
  - Change version in build-jar.xml, README.md
