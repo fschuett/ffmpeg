@@ -1,7 +1,7 @@
 diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
---- csrc.orig/libavcodec/avcodec.h	2018-04-19 21:09:41.000000000 +0200
-+++ csrc/libavcodec/avcodec.h	2018-04-19 21:24:36.858294670 +0200
-@@ -1733,7 +1733,9 @@ enum AVSideDataParamChangeFlags {
+--- csrc.orig/libavcodec/avcodec.h	2018-10-03 08:33:18.486159990 +0200
++++ csrc/libavcodec/avcodec.h	2018-10-03 08:37:59.060749570 +0200
+@@ -1490,7 +1490,9 @@ enum AVSideDataParamChangeFlags {
   * @}
   */
  
@@ -12,9 +12,9 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  
  enum AVFieldOrder {
      AV_FIELD_UNKNOWN,
-@@ -3682,7 +3684,9 @@ typedef struct AVProfile {
-     const char *name; ///< short name for the profile
- } AVProfile;
+@@ -3369,7 +3371,9 @@ typedef struct AVCodecHWConfig {
+     enum AVHWDeviceType device_type;
+ } AVCodecHWConfig;
  
 -typedef struct AVCodecDefault AVCodecDefault;
 +typedef struct AVCodecDefault {
@@ -23,18 +23,7 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  
  struct AVSubtitle;
  
-@@ -5466,7 +5470,9 @@ int avcodec_encode_subtitle(AVCodecConte
- struct ReSampleContext;
- struct AVResampleContext;
- 
--typedef struct ReSampleContext ReSampleContext;
-+typedef struct ReSampleContext {
-+    int dummy;
-+} ReSampleContext;
- 
- /**
-  *  Initialize audio resampling context.
-@@ -5820,7 +5826,9 @@ typedef struct AVBitStreamFilterContext
+@@ -5622,7 +5626,9 @@ typedef struct AVBitStreamFilterContext
  } AVBitStreamFilterContext;
  #endif
  
@@ -45,7 +34,7 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  
  /**
   * The bitstream filter state.
-@@ -6091,7 +6099,9 @@ const AVClass *av_bsf_get_class(void);
+@@ -5856,7 +5862,9 @@ const AVClass *av_bsf_get_class(void);
   * Structure for chain/list of bitstream filters.
   * Empty list can be allocated by av_bsf_list_alloc().
   */
@@ -56,9 +45,26 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  
  /**
   * Allocate empty list of bitstream filters.
+diff -pruN csrc.orig/libavcodec/avcodec.h.rej csrc/libavcodec/avcodec.h.rej
+--- csrc.orig/libavcodec/avcodec.h.rej	1970-01-01 01:00:00.000000000 +0100
++++ csrc/libavcodec/avcodec.h.rej	2018-10-03 08:37:59.060749570 +0200
+@@ -0,0 +1,13 @@
++--- csrc.orig/libavcodec/avcodec.h	2018-04-19 21:09:41.000000000 +0200
+++++ csrc/libavcodec/avcodec.h	2018-04-19 21:24:36.858294670 +0200
++@@ -5470,7 +5474,9 @@ int avcodec_encode_subtitle(AVCodecConte
++ struct ReSampleContext;
++ struct AVResampleContext;
++ 
++-typedef struct ReSampleContext ReSampleContext;
+++typedef struct ReSampleContext {
+++    int dummy;
+++} ReSampleContext;
++ 
++ /**
++  *  Initialize audio resampling context.
 diff -pruN csrc.orig/libavcodec/avfft.h csrc/libavcodec/avfft.h
---- csrc.orig/libavcodec/avfft.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavcodec/avfft.h	2018-04-19 21:24:36.858294670 +0200
+--- csrc.orig/libavcodec/avfft.h	2018-10-03 08:33:18.470160071 +0200
++++ csrc/libavcodec/avfft.h	2018-10-03 08:37:59.060749570 +0200
 @@ -38,7 +38,9 @@ typedef struct FFTComplex {
      FFTSample re, im;
  } FFTComplex;
@@ -93,8 +99,8 @@ diff -pruN csrc.orig/libavcodec/avfft.h csrc/libavcodec/avfft.h
  enum DCTTransformType {
      DCT_II = 0,
 diff -pruN csrc.orig/libavcodec/mediacodec.h csrc/libavcodec/mediacodec.h
---- csrc.orig/libavcodec/mediacodec.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavcodec/mediacodec.h	2018-04-19 21:24:36.858294670 +0200
+--- csrc.orig/libavcodec/mediacodec.h	2018-10-03 08:33:18.466160091 +0200
++++ csrc/libavcodec/mediacodec.h	2018-10-03 08:37:59.060749570 +0200
 @@ -70,7 +70,9 @@ void av_mediacodec_default_free(AVCodecC
  /**
   * Opaque structure representing a MediaCodec buffer to render.
@@ -107,8 +113,8 @@ diff -pruN csrc.orig/libavcodec/mediacodec.h csrc/libavcodec/mediacodec.h
  /**
   * Release a MediaCodec buffer and render it to the surface that is associated
 diff -pruN csrc.orig/libavcodec/vorbis_parser.h csrc/libavcodec/vorbis_parser.h
---- csrc.orig/libavcodec/vorbis_parser.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavcodec/vorbis_parser.h	2018-04-19 21:24:36.862294686 +0200
+--- csrc.orig/libavcodec/vorbis_parser.h	2018-10-03 08:33:18.486159990 +0200
++++ csrc/libavcodec/vorbis_parser.h	2018-10-03 08:37:59.060749570 +0200
 @@ -28,7 +28,9 @@
  
  #include <stdint.h>
@@ -121,8 +127,8 @@ diff -pruN csrc.orig/libavcodec/vorbis_parser.h csrc/libavcodec/vorbis_parser.h
  /**
   * Allocate and initialize the Vorbis parser using headers in the extradata.
 diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
---- csrc.orig/libavfilter/avfilter.h	2018-04-19 21:09:41.000000000 +0200
-+++ csrc/libavfilter/avfilter.h	2018-04-19 21:24:36.862294686 +0200
+--- csrc.orig/libavfilter/avfilter.h	2018-10-03 08:33:18.462160111 +0200
++++ csrc/libavfilter/avfilter.h	2018-10-03 08:37:59.060749570 +0200
 @@ -64,10 +64,19 @@ const char *avfilter_configuration(void)
   */
  const char *avfilter_license(void);
@@ -162,7 +168,7 @@ diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
  
  /** An instance of a filter */
  struct AVFilterContext {
-@@ -420,6 +435,10 @@ struct AVFilterContext {
+@@ -436,6 +451,10 @@ struct AVFilterContext {
   * In the future, access to the header may be reserved for filters
   * implementation.
   */
@@ -173,7 +179,7 @@ diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
  struct AVFilterLink {
      AVFilterContext *src;       ///< source filter
      AVFilterPad *srcpad;        ///< output pad on the source filter
-@@ -816,7 +835,9 @@ int avfilter_insert_filter(AVFilterLink
+@@ -805,7 +824,9 @@ int avfilter_insert_filter(AVFilterLink
   */
  const AVClass *avfilter_get_class(void);
  
@@ -185,8 +191,8 @@ diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
  /**
   * A function pointer passed to the @ref AVFilterGraph.execute callback to be
 diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
---- csrc.orig/libavformat/avformat.h	2018-04-19 21:09:41.000000000 +0200
-+++ csrc/libavformat/avformat.h	2018-04-19 21:24:36.862294686 +0200
+--- csrc.orig/libavformat/avformat.h	2018-10-03 08:33:18.446160192 +0200
++++ csrc/libavformat/avformat.h	2018-10-03 08:37:59.060749570 +0200
 @@ -328,6 +328,10 @@ struct AVFormatContext;
  struct AVDeviceInfoList;
  struct AVDeviceCapabilitiesQuery;
@@ -198,7 +204,7 @@ diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
  /**
   * @defgroup metadata_api Public Metadata API
   * @{
-@@ -453,7 +457,9 @@ typedef struct AVFrac {
+@@ -440,7 +444,9 @@ int av_append_packet(AVIOContext *s, AVP
  /*************************************************/
  /* input/output formats */
  
@@ -209,7 +215,7 @@ diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
  
  /**
   * This structure contains the data a format has to probe a file.
-@@ -854,7 +860,9 @@ typedef struct AVIndexEntry {
+@@ -837,7 +843,9 @@ typedef struct AVIndexEntry {
   */
  #define AV_DISPOSITION_TIMED_THUMBNAILS  0x0800
  
@@ -220,7 +226,7 @@ diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
  
  /**
   * To specify text track kind (different from subtitles default).
-@@ -1318,7 +1326,9 @@ enum AVDurationEstimationMethod {
+@@ -1308,7 +1316,9 @@ enum AVDurationEstimationMethod {
      AVFMT_DURATION_FROM_BITRATE ///< Duration estimated from bitrate (less accurate)
  };
  
@@ -232,8 +238,8 @@ diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
  /**
   * Format I/O context.
 diff -pruN csrc.orig/libavresample/avresample.h csrc/libavresample/avresample.h
---- csrc.orig/libavresample/avresample.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavresample/avresample.h	2018-04-19 21:24:36.862294686 +0200
+--- csrc.orig/libavresample/avresample.h	2018-10-03 08:33:18.502159910 +0200
++++ csrc/libavresample/avresample.h	2018-10-03 08:37:59.064749549 +0200
 @@ -103,7 +103,9 @@
  
  #define AVRESAMPLE_MAX_CHANNELS 32
@@ -243,11 +249,11 @@ diff -pruN csrc.orig/libavresample/avresample.h csrc/libavresample/avresample.h
 +    int dummy;
 +} AVAudioResampleContext;
  
- /** Mixing Coefficient Types */
- enum AVMixCoeffType {
+ /**
+  * @deprecated use libswresample
 diff -pruN csrc.orig/libavutil/audio_fifo.h csrc/libavutil/audio_fifo.h
---- csrc.orig/libavutil/audio_fifo.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavutil/audio_fifo.h	2018-04-19 21:24:36.862294686 +0200
+--- csrc.orig/libavutil/audio_fifo.h	2018-10-03 08:33:18.398160433 +0200
++++ csrc/libavutil/audio_fifo.h	2018-10-03 08:37:59.064749549 +0200
 @@ -46,7 +46,9 @@
   * - Supports multiple channels with either planar or packed sample format.
   * - Automatic reallocation when writing to a full buffer.
@@ -260,8 +266,8 @@ diff -pruN csrc.orig/libavutil/audio_fifo.h csrc/libavutil/audio_fifo.h
  /**
   * Free an AVAudioFifo.
 diff -pruN csrc.orig/libavutil/buffer.h csrc/libavutil/buffer.h
---- csrc.orig/libavutil/buffer.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavutil/buffer.h	2018-04-19 21:24:36.866294703 +0200
+--- csrc.orig/libavutil/buffer.h	2018-10-03 08:33:18.354160653 +0200
++++ csrc/libavutil/buffer.h	2018-10-03 08:37:59.064749549 +0200
 @@ -70,7 +70,9 @@
   * A reference counted buffer type. It is opaque and is meant to be used through
   * references (AVBufferRef).
@@ -285,8 +291,8 @@ diff -pruN csrc.orig/libavutil/buffer.h csrc/libavutil/buffer.h
  /**
   * Allocate and initialize a buffer pool.
 diff -pruN csrc.orig/libavutil/dict.h csrc/libavutil/dict.h
---- csrc.orig/libavutil/dict.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavutil/dict.h	2018-04-19 21:24:36.866294703 +0200
+--- csrc.orig/libavutil/dict.h	2018-10-03 08:33:18.430160272 +0200
++++ csrc/libavutil/dict.h	2018-10-03 08:37:59.064749549 +0200
 @@ -83,7 +83,9 @@ typedef struct AVDictionaryEntry {
      char *value;
  } AVDictionaryEntry;
@@ -299,8 +305,8 @@ diff -pruN csrc.orig/libavutil/dict.h csrc/libavutil/dict.h
  /**
   * Get a dictionary entry with matching key.
 diff -pruN csrc.orig/libavutil/eval.h csrc/libavutil/eval.h
---- csrc.orig/libavutil/eval.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavutil/eval.h	2018-04-19 21:24:36.866294703 +0200
+--- csrc.orig/libavutil/eval.h	2018-10-03 08:33:18.318160834 +0200
++++ csrc/libavutil/eval.h	2018-10-03 08:37:59.064749549 +0200
 @@ -28,7 +28,9 @@
  
  #include "avutil.h"
@@ -313,8 +319,8 @@ diff -pruN csrc.orig/libavutil/eval.h csrc/libavutil/eval.h
  /**
   * Parse and evaluate an expression.
 diff -pruN csrc.orig/libavutil/hmac.h csrc/libavutil/hmac.h
---- csrc.orig/libavutil/hmac.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavutil/hmac.h	2018-04-19 21:24:36.866294703 +0200
+--- csrc.orig/libavutil/hmac.h	2018-10-03 08:33:18.386160492 +0200
++++ csrc/libavutil/hmac.h	2018-10-03 08:37:59.064749549 +0200
 @@ -39,7 +39,9 @@ enum AVHMACType {
      AV_HMAC_SHA512,
  };
@@ -326,11 +332,25 @@ diff -pruN csrc.orig/libavutil/hmac.h csrc/libavutil/hmac.h
  
  /**
   * Allocate an AVHMAC context.
+diff -pruN csrc.orig/libavutil/hwcontext_cuda.h csrc/libavutil/hwcontext_cuda.h
+--- csrc.orig/libavutil/hwcontext_cuda.h	2018-10-03 08:33:18.342160713 +0200
++++ csrc/libavutil/hwcontext_cuda.h	2018-10-03 08:48:36.513593827 +0200
+@@ -34,7 +34,9 @@
+  * AVBufferRefs whose data pointer is a CUdeviceptr.
+  */
+ 
+-typedef struct AVCUDADeviceContextInternal AVCUDADeviceContextInternal;
++typedef struct AVCUDADeviceContextInternal {
++int dummy;
++} AVCUDADeviceContextInternal;
+ 
+ /**
+  * This struct is allocated as AVHWDeviceContext.hwctx
 diff -pruN csrc.orig/libavutil/hwcontext.h csrc/libavutil/hwcontext.h
---- csrc.orig/libavutil/hwcontext.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavutil/hwcontext.h	2018-04-19 21:24:36.866294703 +0200
-@@ -36,7 +36,9 @@ enum AVHWDeviceType {
-     AV_HWDEVICE_TYPE_DRM,
+--- csrc.orig/libavutil/hwcontext.h	2018-10-03 08:33:18.314160854 +0200
++++ csrc/libavutil/hwcontext.h	2018-10-03 08:37:59.064749549 +0200
+@@ -38,7 +38,9 @@ enum AVHWDeviceType {
+     AV_HWDEVICE_TYPE_MEDIACODEC,
  };
  
 -typedef struct AVHWDeviceInternal AVHWDeviceInternal;
@@ -340,7 +360,7 @@ diff -pruN csrc.orig/libavutil/hwcontext.h csrc/libavutil/hwcontext.h
  
  /**
   * This struct aggregates all the (hardware/vendor-specific) "high-level" state,
-@@ -106,7 +108,9 @@ typedef struct AVHWDeviceContext {
+@@ -108,7 +110,9 @@ typedef struct AVHWDeviceContext {
      void *user_opaque;
  } AVHWDeviceContext;
  
@@ -352,8 +372,8 @@ diff -pruN csrc.orig/libavutil/hwcontext.h csrc/libavutil/hwcontext.h
  /**
   * This struct describes a set or pool of "hardware" frames (i.e. those with
 diff -pruN csrc.orig/libavutil/threadmessage.h csrc/libavutil/threadmessage.h
---- csrc.orig/libavutil/threadmessage.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavutil/threadmessage.h	2018-04-19 21:24:36.866294703 +0200
+--- csrc.orig/libavutil/threadmessage.h	2018-10-03 08:33:18.410160372 +0200
++++ csrc/libavutil/threadmessage.h	2018-10-03 08:37:59.064749549 +0200
 @@ -19,7 +19,9 @@
  #ifndef AVUTIL_THREADMESSAGE_H
  #define AVUTIL_THREADMESSAGE_H
@@ -366,8 +386,8 @@ diff -pruN csrc.orig/libavutil/threadmessage.h csrc/libavutil/threadmessage.h
  typedef enum AVThreadMessageFlags {
  
 diff -pruN csrc.orig/libswresample/swresample.h csrc/libswresample/swresample.h
---- csrc.orig/libswresample/swresample.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libswresample/swresample.h	2018-04-19 21:24:36.866294703 +0200
+--- csrc.orig/libswresample/swresample.h	2018-10-03 08:33:18.494159950 +0200
++++ csrc/libswresample/swresample.h	2018-10-03 08:37:59.064749549 +0200
 @@ -179,7 +179,9 @@ enum SwrFilterType {
   * the @ref avoptions API and cannot directly set values to members of the
   * structure.

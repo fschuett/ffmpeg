@@ -29,8 +29,8 @@
 
 #include "libavutil/version.h"
 
-#define LIBAVFILTER_VERSION_MAJOR   6
-#define LIBAVFILTER_VERSION_MINOR 107
+#define LIBAVFILTER_VERSION_MAJOR   7
+#define LIBAVFILTER_VERSION_MINOR  16
 #define LIBAVFILTER_VERSION_MICRO 100
 
 #define LIBAVFILTER_VERSION_INT AV_VERSION_INT(LIBAVFILTER_VERSION_MAJOR, \
@@ -41,7 +41,7 @@
                                            LIBAVFILTER_VERSION_MICRO)
 #define LIBAVFILTER_BUILD       LIBAVFILTER_VERSION_INT
 
-#define LIBAVFILTER_IDENT       "Lavfi6.107.100"
+#define LIBAVFILTER_IDENT       "Lavfi7.16.100"
 
 /**
  * FF_API_* defines may be placed below to indicate public API that will be
@@ -49,26 +49,17 @@
  * the public API and may change, break or disappear at any time.
  */
 
-#ifndef FF_API_OLD_FILTER_OPTS
-#define FF_API_OLD_FILTER_OPTS              (LIBAVFILTER_VERSION_MAJOR < 7)
-#endif
 #ifndef FF_API_OLD_FILTER_OPTS_ERROR
-#define FF_API_OLD_FILTER_OPTS_ERROR        (LIBAVFILTER_VERSION_MAJOR < 7)
-#endif
-#ifndef FF_API_AVFILTER_OPEN
-#define FF_API_AVFILTER_OPEN                (LIBAVFILTER_VERSION_MAJOR < 7)
-#endif
-#ifndef FF_API_AVFILTER_INIT_FILTER
-#define FF_API_AVFILTER_INIT_FILTER         (LIBAVFILTER_VERSION_MAJOR < 7)
-#endif
-#ifndef FF_API_OLD_FILTER_REGISTER
-#define FF_API_OLD_FILTER_REGISTER          (LIBAVFILTER_VERSION_MAJOR < 7)
-#endif
-#ifndef FF_API_NOCONST_GET_NAME
-#define FF_API_NOCONST_GET_NAME             (LIBAVFILTER_VERSION_MAJOR < 7)
+#define FF_API_OLD_FILTER_OPTS_ERROR        (LIBAVFILTER_VERSION_MAJOR < 8)
 #endif
 #ifndef FF_API_LAVR_OPTS
-#define FF_API_LAVR_OPTS                    (LIBAVFILTER_VERSION_MAJOR < 7)
+#define FF_API_LAVR_OPTS                    (LIBAVFILTER_VERSION_MAJOR < 8)
+#endif
+#ifndef FF_API_FILTER_GET_SET
+#define FF_API_FILTER_GET_SET               (LIBAVFILTER_VERSION_MAJOR < 8)
+#endif
+#ifndef FF_API_NEXT
+#define FF_API_NEXT                         (LIBAVFILTER_VERSION_MAJOR < 8)
 #endif
 
 #endif /* AVFILTER_VERSION_H */

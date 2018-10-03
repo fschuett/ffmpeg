@@ -78,9 +78,8 @@
  * @{
  */
 
-
-#define LIBAVUTIL_VERSION_MAJOR  55
-#define LIBAVUTIL_VERSION_MINOR  78
+#define LIBAVUTIL_VERSION_MAJOR  56
+#define LIBAVUTIL_VERSION_MINOR  14
 #define LIBAVUTIL_VERSION_MICRO 100
 
 #define LIBAVUTIL_VERSION_INT   AV_VERSION_INT(LIBAVUTIL_VERSION_MAJOR, \
@@ -91,7 +90,7 @@
                                            LIBAVUTIL_VERSION_MICRO)
 #define LIBAVUTIL_BUILD         LIBAVUTIL_VERSION_INT
 
-#define LIBAVUTIL_IDENT         "Lavu55.78.100"
+#define LIBAVUTIL_IDENT         "Lavu56.14.100"
 
 /**
  * @defgroup lavu_depr_guards Deprecation Guards
@@ -106,38 +105,29 @@
  * @{
  */
 
-#ifndef FF_API_VDPAU
-#define FF_API_VDPAU                    (LIBAVUTIL_VERSION_MAJOR < 56)
-#endif
-#ifndef FF_API_XVMC
-#define FF_API_XVMC                     (LIBAVUTIL_VERSION_MAJOR < 56)
-#endif
-#ifndef FF_API_OPT_TYPE_METADATA
-#define FF_API_OPT_TYPE_METADATA        (LIBAVUTIL_VERSION_MAJOR < 56)
-#endif
-#ifndef FF_API_DLOG
-#define FF_API_DLOG                     (LIBAVUTIL_VERSION_MAJOR < 56)
-#endif
 #ifndef FF_API_VAAPI
-#define FF_API_VAAPI                    (LIBAVUTIL_VERSION_MAJOR < 56)
+#define FF_API_VAAPI                    (LIBAVUTIL_VERSION_MAJOR < 57)
 #endif
 #ifndef FF_API_FRAME_QP
-#define FF_API_FRAME_QP                 (LIBAVUTIL_VERSION_MAJOR < 56)
+#define FF_API_FRAME_QP                 (LIBAVUTIL_VERSION_MAJOR < 57)
 #endif
 #ifndef FF_API_PLUS1_MINUS1
-#define FF_API_PLUS1_MINUS1             (LIBAVUTIL_VERSION_MAJOR < 56)
+#define FF_API_PLUS1_MINUS1             (LIBAVUTIL_VERSION_MAJOR < 57)
 #endif
 #ifndef FF_API_ERROR_FRAME
-#define FF_API_ERROR_FRAME              (LIBAVUTIL_VERSION_MAJOR < 56)
-#endif
-#ifndef FF_API_CRC_BIG_TABLE
-#define FF_API_CRC_BIG_TABLE            (LIBAVUTIL_VERSION_MAJOR < 56)
+#define FF_API_ERROR_FRAME              (LIBAVUTIL_VERSION_MAJOR < 57)
 #endif
 #ifndef FF_API_PKT_PTS
-#define FF_API_PKT_PTS                  (LIBAVUTIL_VERSION_MAJOR < 56)
+#define FF_API_PKT_PTS                  (LIBAVUTIL_VERSION_MAJOR < 57)
 #endif
 #ifndef FF_API_CRYPTO_SIZE_T
-#define FF_API_CRYPTO_SIZE_T            (LIBAVUTIL_VERSION_MAJOR < 56)
+#define FF_API_CRYPTO_SIZE_T            (LIBAVUTIL_VERSION_MAJOR < 57)
+#endif
+#ifndef FF_API_FRAME_GET_SET
+#define FF_API_FRAME_GET_SET            (LIBAVUTIL_VERSION_MAJOR < 57)
+#endif
+#ifndef FF_API_PSEUDOPAL
+#define FF_API_PSEUDOPAL                (LIBAVUTIL_VERSION_MAJOR < 57)
 #endif
 
 

@@ -107,7 +107,10 @@ typedef struct AVAudioResampleContext {
     int dummy;
 } AVAudioResampleContext;
 
-/** Mixing Coefficient Types */
+/**
+ * @deprecated use libswresample
+ *
+ * Mixing Coefficient Types */
 enum AVMixCoeffType {
     AV_MIX_COEFF_TYPE_Q8,   /** 16-bit 8.8 fixed-point                      */
     AV_MIX_COEFF_TYPE_Q15,  /** 32-bit 17.15 fixed-point                    */
@@ -115,13 +118,19 @@ enum AVMixCoeffType {
     AV_MIX_COEFF_TYPE_NB,   /** Number of coeff types. Not part of ABI      */
 };
 
-/** Resampling Filter Types */
+/**
+ * @deprecated use libswresample
+ *
+ * Resampling Filter Types */
 enum AVResampleFilterType {
     AV_RESAMPLE_FILTER_TYPE_CUBIC,              /**< Cubic */
     AV_RESAMPLE_FILTER_TYPE_BLACKMAN_NUTTALL,   /**< Blackman Nuttall Windowed Sinc */
     AV_RESAMPLE_FILTER_TYPE_KAISER,             /**< Kaiser Windowed Sinc */
 };
 
+/**
+ * @deprecated use libswresample
+ */
 enum AVResampleDitherMethod {
     AV_RESAMPLE_DITHER_NONE,            /**< Do not use dithering */
     AV_RESAMPLE_DITHER_RECTANGULAR,     /**< Rectangular Dither */
@@ -132,22 +141,37 @@ enum AVResampleDitherMethod {
 };
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Return the LIBAVRESAMPLE_VERSION_INT constant.
  */
+
 unsigned avresample_version(void);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Return the libavresample build-time configuration.
  * @return  configure string
  */
+
 const char *avresample_configuration(void);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Return the libavresample license.
  */
+
 const char *avresample_license(void);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Get the AVClass for AVAudioResampleContext.
  *
  * Can be used in combination with AV_OPT_SEARCH_FAKE_OBJ for examining options
@@ -157,16 +181,24 @@ const char *avresample_license(void);
  *
  * @return AVClass for AVAudioResampleContext
  */
+
 const AVClass *avresample_get_class(void);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Allocate AVAudioResampleContext and set options.
  *
  * @return  allocated audio resample context, or NULL on failure
  */
+
 AVAudioResampleContext *avresample_alloc_context(void);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Initialize AVAudioResampleContext.
  * @note The context must be configured using the AVOption API.
  * @note The fields "in_channel_layout", "out_channel_layout",
@@ -180,17 +212,25 @@ AVAudioResampleContext *avresample_alloc_context(void);
  * @param avr  audio resample context
  * @return     0 on success, negative AVERROR code on failure
  */
+
 int avresample_open(AVAudioResampleContext *avr);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Check whether an AVAudioResampleContext is open or closed.
  *
  * @param avr AVAudioResampleContext to check
  * @return 1 if avr is open, 0 if avr is closed.
  */
+
 int avresample_is_open(AVAudioResampleContext *avr);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Close AVAudioResampleContext.
  *
  * This closes the context, but it does not change the parameters. The context
@@ -203,18 +243,26 @@ int avresample_is_open(AVAudioResampleContext *avr);
  *
  * @param avr  audio resample context
  */
+
 void avresample_close(AVAudioResampleContext *avr);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Free AVAudioResampleContext and associated AVOption values.
  *
  * This also calls avresample_close() before freeing.
  *
  * @param avr  audio resample context
  */
+
 void avresample_free(AVAudioResampleContext **avr);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Generate a channel mixing matrix.
  *
  * This function is the one used internally by libavresample for building the
@@ -236,12 +284,16 @@ void avresample_free(AVAudioResampleContext **avr);
  * @param matrix_encoding     matrixed stereo downmix mode (e.g. dplii)
  * @return                    0 on success, negative AVERROR code on failure
  */
+
 int avresample_build_matrix(uint64_t in_layout, uint64_t out_layout,
                             double center_mix_level, double surround_mix_level,
                             double lfe_mix_level, int normalize, double *matrix,
                             int stride, enum AVMatrixEncoding matrix_encoding);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Get the current channel mixing matrix.
  *
  * If no custom matrix has been previously set or the AVAudioResampleContext is
@@ -253,10 +305,14 @@ int avresample_build_matrix(uint64_t in_layout, uint64_t out_layout,
  * @param stride  distance between adjacent input channels in the matrix array
  * @return        0 on success, negative AVERROR code on failure
  */
+
 int avresample_get_matrix(AVAudioResampleContext *avr, double *matrix,
                           int stride);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Set channel mixing matrix.
  *
  * Allows for setting a custom mixing matrix, overriding the default matrix
@@ -274,10 +330,14 @@ int avresample_get_matrix(AVAudioResampleContext *avr, double *matrix,
  * @param stride  distance between adjacent input channels in the matrix array
  * @return        0 on success, negative AVERROR code on failure
  */
+
 int avresample_set_matrix(AVAudioResampleContext *avr, const double *matrix,
                           int stride);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Set a customized input channel mapping.
  *
  * This function can only be called when the allocated context is not open.
@@ -304,10 +364,14 @@ int avresample_set_matrix(AVAudioResampleContext *avr, const double *matrix,
  * @param channel_map customized input channel mapping
  * @return            0 on success, negative AVERROR code on failure
  */
+
 int avresample_set_channel_mapping(AVAudioResampleContext *avr,
                                    const int *channel_map);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Set compensation for resampling.
  *
  * This can be called anytime after avresample_open(). If resampling is not
@@ -320,10 +384,14 @@ int avresample_set_channel_mapping(AVAudioResampleContext *avr,
  * @param compensation_distance  compensation distance, in samples
  * @return                       0 on success, negative AVERROR code on failure
  */
+
 int avresample_set_compensation(AVAudioResampleContext *avr, int sample_delta,
                                 int compensation_distance);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Provide the upper bound on the number of samples the configured
  * conversion would output.
  *
@@ -337,6 +405,9 @@ int avresample_set_compensation(AVAudioResampleContext *avr, int sample_delta,
 int avresample_get_out_samples(AVAudioResampleContext *avr, int in_nb_samples);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Convert input samples and write them to the output FIFO.
  *
  * The upper bound on the number of output samples can be obtained through
@@ -378,12 +449,16 @@ int avresample_get_out_samples(AVAudioResampleContext *avr, int in_nb_samples);
  *                        not including converted samples added to the internal
  *                        output FIFO
  */
+
 int avresample_convert(AVAudioResampleContext *avr, uint8_t **output,
                        int out_plane_size, int out_samples,
                        uint8_t * const *input, int in_plane_size,
                        int in_samples);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Return the number of samples currently in the resampling delay buffer.
  *
  * When resampling, there may be a delay between the input and output. Any
@@ -396,9 +471,13 @@ int avresample_convert(AVAudioResampleContext *avr, uint8_t **output,
  * @param avr  audio resample context
  * @return     number of samples currently in the resampling delay buffer
  */
+
 int avresample_get_delay(AVAudioResampleContext *avr);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Return the number of available samples in the output FIFO.
  *
  * During conversion, if the user does not specify an output buffer or
@@ -413,9 +492,13 @@ int avresample_get_delay(AVAudioResampleContext *avr);
  * @param avr  audio resample context
  * @return     number of samples available for reading
  */
+
 int avresample_available(AVAudioResampleContext *avr);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Read samples from the output FIFO.
  *
  * During conversion, if the user does not specify an output buffer or
@@ -432,9 +515,13 @@ int avresample_available(AVAudioResampleContext *avr);
  * @param nb_samples  number of samples to read from the FIFO
  * @return            the number of samples written to output
  */
+
 int avresample_read(AVAudioResampleContext *avr, uint8_t **output, int nb_samples);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Convert the samples in the input AVFrame and write them to the output AVFrame.
  *
  * Input and output AVFrames must have channel_layout, sample_rate and format set.
@@ -478,10 +565,14 @@ int avresample_read(AVAudioResampleContext *avr, uint8_t **output, int nb_sample
  * @return                0 on success, AVERROR on failure or nonmatching
  *                        configuration.
  */
+
 int avresample_convert_frame(AVAudioResampleContext *avr,
                              AVFrame *output, AVFrame *input);
 
 /**
+ *
+ * @deprecated use libswresample
+ *
  * Configure or reconfigure the AVAudioResampleContext using the information
  * provided by the AVFrames.
  *
@@ -496,6 +587,7 @@ int avresample_convert_frame(AVAudioResampleContext *avr,
  * @param in              input AVFrame
  * @return                0 on success, AVERROR on failure.
  */
+
 int avresample_config(AVAudioResampleContext *avr, AVFrame *out, AVFrame *in);
 
 /**

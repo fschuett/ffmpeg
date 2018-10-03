@@ -1,107 +1,106 @@
 diff -pruN csrc.orig/libavcodec/version.h csrc/libavcodec/version.h
---- csrc.orig/libavcodec/version.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavcodec/version.h	2018-04-19 21:19:45.729103535 +0200
+--- csrc.orig/libavcodec/version.h	2018-10-03 08:33:18.470160071 +0200
++++ csrc/libavcodec/version.h	2018-10-03 08:58:15.598729999 +0200
 @@ -39,7 +39,7 @@
                                             LIBAVCODEC_VERSION_MICRO)
  #define LIBAVCODEC_BUILD        LIBAVCODEC_VERSION_INT
  
 -#define LIBAVCODEC_IDENT        "Lavc" AV_STRINGIFY(LIBAVCODEC_VERSION)
-+#define LIBAVCODEC_IDENT        "Lavc57.107.100"
++#define LIBAVCODEC_IDENT        "Lavc58.18.100"
  
  /**
   * FF_API_* defines may be placed below to indicate public API that will be
 diff -pruN csrc.orig/libavdevice/version.h csrc/libavdevice/version.h
---- csrc.orig/libavdevice/version.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavdevice/version.h	2018-04-19 21:20:16.137227948 +0200
+--- csrc.orig/libavdevice/version.h	2018-10-03 08:33:18.306160894 +0200
++++ csrc/libavdevice/version.h	2018-10-03 08:59:34.294339142 +0200
 @@ -39,7 +39,7 @@
                                             LIBAVDEVICE_VERSION_MICRO)
  #define LIBAVDEVICE_BUILD       LIBAVDEVICE_VERSION_INT
  
 -#define LIBAVDEVICE_IDENT       "Lavd" AV_STRINGIFY(LIBAVDEVICE_VERSION)
-+#define LIBAVDEVICE_IDENT       "Lavd57.10.100"
++#define LIBAVDEVICE_IDENT       "Lavd58.3.100"
  
  /**
   * FF_API_* defines may be placed below to indicate public API that will be
 diff -pruN csrc.orig/libavfilter/version.h csrc/libavfilter/version.h
---- csrc.orig/libavfilter/version.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavfilter/version.h	2018-04-19 21:20:35.801308402 +0200
+--- csrc.orig/libavfilter/version.h	2018-10-03 08:33:18.454160151 +0200
++++ csrc/libavfilter/version.h	2018-10-03 08:58:32.658645300 +0200
 @@ -41,7 +41,7 @@
                                             LIBAVFILTER_VERSION_MICRO)
  #define LIBAVFILTER_BUILD       LIBAVFILTER_VERSION_INT
  
 -#define LIBAVFILTER_IDENT       "Lavfi" AV_STRINGIFY(LIBAVFILTER_VERSION)
-+#define LIBAVFILTER_IDENT       "Lavfi6.107.100"
++#define LIBAVFILTER_IDENT       "Lavfi7.16.100"
  
  /**
   * FF_API_* defines may be placed below to indicate public API that will be
 diff -pruN csrc.orig/libavformat/version.h csrc/libavformat/version.h
---- csrc.orig/libavformat/version.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavformat/version.h	2018-04-19 21:20:58.073399527 +0200
+--- csrc.orig/libavformat/version.h	2018-10-03 08:33:18.446160192 +0200
++++ csrc/libavformat/version.h	2018-10-03 08:59:03.310493074 +0200
 @@ -43,7 +43,7 @@
                                             LIBAVFORMAT_VERSION_MICRO)
  #define LIBAVFORMAT_BUILD       LIBAVFORMAT_VERSION_INT
  
 -#define LIBAVFORMAT_IDENT       "Lavf" AV_STRINGIFY(LIBAVFORMAT_VERSION)
-+#define LIBAVFORMAT_IDENT       "Lavf57.83.100"
++#define LIBAVFORMAT_IDENT       "Lavf58.12.100"
  
  /**
   * FF_API_* defines may be placed below to indicate public API that will be
 diff -pruN csrc.orig/libavresample/version.h csrc/libavresample/version.h
---- csrc.orig/libavresample/version.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavresample/version.h	2018-04-19 21:21:23.617504038 +0200
+--- csrc.orig/libavresample/version.h	2018-10-03 08:33:18.502159910 +0200
++++ csrc/libavresample/version.h	2018-10-03 08:57:33.562938621 +0200
 @@ -39,7 +39,7 @@
                                                    LIBAVRESAMPLE_VERSION_MICRO)
  #define LIBAVRESAMPLE_BUILD        LIBAVRESAMPLE_VERSION_INT
  
 -#define LIBAVRESAMPLE_IDENT        "Lavr" AV_STRINGIFY(LIBAVRESAMPLE_VERSION)
-+#define LIBAVRESAMPLE_IDENT        "Lavr3.7.0"
++#define LIBAVRESAMPLE_IDENT        "Lavr4.0.0"
  
  /**
   * FF_API_* defines may be placed below to indicate public API that will be
 diff -pruN csrc.orig/libavutil/version.h csrc/libavutil/version.h
---- csrc.orig/libavutil/version.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavutil/version.h	2018-04-19 21:21:49.321609205 +0200
-@@ -91,7 +91,7 @@
+--- csrc.orig/libavutil/version.h	2018-10-03 08:33:18.386160492 +0200
++++ csrc/libavutil/version.h	2018-10-03 08:59:21.034405026 +0200
+@@ -90,7 +90,7 @@
                                             LIBAVUTIL_VERSION_MICRO)
  #define LIBAVUTIL_BUILD         LIBAVUTIL_VERSION_INT
  
 -#define LIBAVUTIL_IDENT         "Lavu" AV_STRINGIFY(LIBAVUTIL_VERSION)
-+#define LIBAVUTIL_IDENT         "Lavu55.78.100"
++#define LIBAVUTIL_IDENT         "Lavu56.14.100"
  
  /**
   * @defgroup lavu_depr_guards Deprecation Guards
 diff -pruN csrc.orig/libpostproc/version.h csrc/libpostproc/version.h
---- csrc.orig/libpostproc/version.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libpostproc/version.h	2018-04-19 21:22:09.677692490 +0200
-@@ -40,7 +40,7 @@
+--- csrc.orig/libpostproc/version.h	2018-10-03 08:33:18.498159931 +0200
++++ csrc/libpostproc/version.h	2018-10-03 08:57:46.342875206 +0200
+@@ -40,6 +40,6 @@
                                             LIBPOSTPROC_VERSION_MICRO)
  #define LIBPOSTPROC_BUILD       LIBPOSTPROC_VERSION_INT
  
 -#define LIBPOSTPROC_IDENT       "postproc" AV_STRINGIFY(LIBPOSTPROC_VERSION)
-+#define LIBPOSTPROC_IDENT       "postproc54.7.100"
++#define LIBPOSTPROC_IDENT       "postproc55.1.100"
  
- #ifndef FF_API_QP_TYPE
- #define FF_API_QP_TYPE     (LIBPOSTPROC_VERSION_MAJOR < 55)
+ #endif /* POSTPROC_VERSION_H */
 diff -pruN csrc.orig/libswresample/version.h csrc/libswresample/version.h
---- csrc.orig/libswresample/version.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libswresample/version.h	2018-04-19 21:22:31.317781030 +0200
+--- csrc.orig/libswresample/version.h	2018-10-03 08:33:18.498159931 +0200
++++ csrc/libswresample/version.h	2018-10-03 08:57:57.478819940 +0200
 @@ -40,6 +40,6 @@
                                                LIBSWRESAMPLE_VERSION_MICRO)
  #define LIBSWRESAMPLE_BUILD        LIBSWRESAMPLE_VERSION_INT
  
 -#define LIBSWRESAMPLE_IDENT        "SwR" AV_STRINGIFY(LIBSWRESAMPLE_VERSION)
-+#define LIBSWRESAMPLE_IDENT        "SwR2.9.100"
++#define LIBSWRESAMPLE_IDENT        "SwR3.1.100"
  
  #endif /* SWRESAMPLE_VERSION_H */
 diff -pruN csrc.orig/libswscale/version.h csrc/libswscale/version.h
---- csrc.orig/libswscale/version.h	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libswscale/version.h	2018-04-19 21:22:48.629851860 +0200
+--- csrc.orig/libswscale/version.h	2018-10-03 08:33:18.454160151 +0200
++++ csrc/libswscale/version.h	2018-10-03 08:58:43.010593895 +0200
 @@ -38,7 +38,7 @@
                                             LIBSWSCALE_VERSION_MICRO)
  #define LIBSWSCALE_BUILD        LIBSWSCALE_VERSION_INT
  
 -#define LIBSWSCALE_IDENT        "SwS" AV_STRINGIFY(LIBSWSCALE_VERSION)
-+#define LIBSWSCALE_IDENT        "SwS4.8.100"
++#define LIBSWSCALE_IDENT        "SwS5.1.100"
  
  /**
   * FF_API_* defines may be placed below to indicate public API that will be

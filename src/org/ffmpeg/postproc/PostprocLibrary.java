@@ -28,31 +28,29 @@ public class PostprocLibrary {
 	public static final int PP_CPU_CAPS_ALTIVEC = (int)0x10000000;
 	/**
 	 * define<br>
-	 * Conversion Error : 54.7.<br>
+	 * Conversion Error : 55.1.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libpostproc/version.h:0</i><br>
-	 * 54.7.
+	 * 55.1.
 	 */
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_VERSION_MINOR = (int)7;
+	public static final int LIBPOSTPROC_VERSION_MINOR = (int)1;
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final String LIBPOSTPROC_IDENT = (String)"postproc54.7.100";
+	public static final String LIBPOSTPROC_IDENT = (String)"postproc55.1.100";
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_BUILD = (int)((54) << 16 | (7) << 8 | (100));
+	public static final int LIBPOSTPROC_BUILD = (int)((55) << 16 | (1) << 8 | (100));
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
 	public static final int PP_CPU_CAPS_AUTO = (int)0x00080000;
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_VERSION_MAJOR = (int)54;
+	public static final int LIBPOSTPROC_VERSION_MAJOR = (int)55;
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
 	public static final int PP_FORMAT = (int)0x00000008;
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
 	public static final int PP_CPU_CAPS_3DNOW = (int)0x40000000;
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final boolean FF_API_QP_TYPE = (boolean)(54 < 55);
-	/** <i>native declaration : ./libpostproc/version.h</i> */
 	public static final int LIBPOSTPROC_VERSION_MICRO = (int)100;
 	/** <i>native declaration : ./libpostproc/version.h</i> */
-	public static final int LIBPOSTPROC_VERSION_INT = (int)((54) << 16 | (7) << 8 | (100));
+	public static final int LIBPOSTPROC_VERSION_INT = (int)((55) << 16 | (1) << 8 | (100));
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
 	public static final int PP_FORMAT_444 = (int)(0x00000000 | 0x00000008);
 	/** <i>native declaration : libpostproc/postprocess.h</i> */
