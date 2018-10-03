@@ -9,6 +9,7 @@ import org.bridj.ann.CLong;
 import org.bridj.ann.Field;
 import org.bridj.ann.Library;
 import org.bridj.ann.Ptr;
+import org.bridj.ann.Struct;
 import org.ffmpeg.avcodec.AvcodecLibrary.AVAudioServiceType;
 import org.ffmpeg.avcodec.AvcodecLibrary.AVCodecID;
 import org.ffmpeg.avcodec.AvcodecLibrary.AVDiscard;
