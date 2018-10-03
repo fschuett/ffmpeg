@@ -1528,7 +1528,7 @@ public class AVFormatContext extends StructObject {
 	};
 	/** <i>native declaration : libavformat/avformat.h:1149</i> */
 	public static abstract class io_open_callback extends Callback<io_open_callback > {
-		public int apply(Pointer<AVFormatContext > s, Pointer< > pb, Pointer<Byte > url, int flags, Pointer< > > options) {
+		public int apply(Pointer<AVFormatContext > s, Pointer<Pointer > pb, Pointer<Byte > url, int flags, Pointer<Pointer > options) {
 			return apply(Pointer.getPeer(s), Pointer.getPeer(pb), Pointer.getPeer(url), flags, Pointer.getPeer(options));
 		}
 		public int apply(@Ptr long s, @Ptr long pb, @Ptr long url, int flags, @Ptr long options) {
