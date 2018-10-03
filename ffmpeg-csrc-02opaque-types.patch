@@ -45,23 +45,6 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  
  /**
   * Allocate empty list of bitstream filters.
-diff -pruN csrc.orig/libavcodec/avcodec.h.rej csrc/libavcodec/avcodec.h.rej
---- csrc.orig/libavcodec/avcodec.h.rej	1970-01-01 01:00:00.000000000 +0100
-+++ csrc/libavcodec/avcodec.h.rej	2018-10-03 08:37:59.060749570 +0200
-@@ -0,0 +1,13 @@
-+--- csrc.orig/libavcodec/avcodec.h	2018-04-19 21:09:41.000000000 +0200
-++++ csrc/libavcodec/avcodec.h	2018-04-19 21:24:36.858294670 +0200
-+@@ -5470,7 +5474,9 @@ int avcodec_encode_subtitle(AVCodecConte
-+ struct ReSampleContext;
-+ struct AVResampleContext;
-+ 
-+-typedef struct ReSampleContext ReSampleContext;
-++typedef struct ReSampleContext {
-++    int dummy;
-++} ReSampleContext;
-+ 
-+ /**
-+  *  Initialize audio resampling context.
 diff -pruN csrc.orig/libavcodec/avfft.h csrc/libavcodec/avfft.h
 --- csrc.orig/libavcodec/avfft.h	2018-10-03 08:33:18.470160071 +0200
 +++ csrc/libavcodec/avfft.h	2018-10-03 08:37:59.060749570 +0200
