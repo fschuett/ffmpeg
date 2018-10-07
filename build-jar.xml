@@ -26,7 +26,14 @@
 	<target name="docs-jar" depends="build-jar">
 		<delete dir="dist/docs"/>
 		<mkdir dir="dist/docs"/>
-		<javadoc packagenames="org.ffmpeg.*" sourcepath="src/" destdir="dist/docs" encoding="utf8" additionalparam="-Xold">
+		<javadoc destdir="dist/docs" encoding="utf8">
+		  <fileset dir="src">
+			<include name="**/*.java"/>
+			<exclude name="test/*.java"/>
+		  </fileset>
+		  <classpath>
+			<path refid="ffmpeg.classpath"/>
+		  </classpath>
 		</javadoc>
 	</target>
 </project>
