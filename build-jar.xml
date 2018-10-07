@@ -26,7 +26,7 @@
 	<target name="docs-jar" depends="build-jar">
 		<delete dir="dist/docs"/>
 		<mkdir dir="dist/docs"/>
-		<javadoc packagenames="org.ffmpeg.*" sourcepath="src/" destdir="dist/docs" encoding="utf8">
+		<javadoc packagenames="org.ffmpeg.*" sourcepath="src/" destdir="dist/docs" encoding="utf8" additionalparam="-Xdoclint:none">
 		</javadoc>
 	</target>
 </project>
