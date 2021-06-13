@@ -28,6 +28,7 @@
 #ifndef AVUTIL_RIPEMD_H
 #define AVUTIL_RIPEMD_H
 
+#include <stddef.h>
 #include <stdint.h>
 
 #include "attributes.h"
@@ -43,7 +44,7 @@
 
 extern const int av_ripemd_size;
 
-struct AVRIPEMD;
+struct AVRIPEMD { int dummy; }
 
 /**
  * Allocate an AVRIPEMD context.

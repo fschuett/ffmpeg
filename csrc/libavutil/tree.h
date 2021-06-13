@@ -42,7 +42,7 @@
  */
 
 
-struct AVTreeNode;
+struct AVTreeNode { int dummy; }
 extern const int av_tree_node_size;
 
 /**

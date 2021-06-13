@@ -34,6 +34,12 @@
 #    define AV_GCC_VERSION_AT_MOST(x,y)  0
 #endif
 
+#ifdef __has_builtin
+#    define AV_HAS_BUILTIN(x) __has_builtin(x)
+#else
+#    define AV_HAS_BUILTIN(x) 0
+#endif
+
 #ifndef av_always_inline
 #if AV_GCC_VERSION_AT_LEAST(3,1)
 #    define av_always_inline __attribute__((always_inline)) inline
@@ -88,6 +94,14 @@
 #    define av_flatten __attribute__((flatten))
 #else
 #    define av_flatten
+#endif
+
+#if AV_GCC_VERSION_AT_LEAST(3,1)
+#    define  __attribute__((deprecated))
+#elif defined(_MSC_VER)
+#    define  __declspec(deprecated)
+#else
+#    define 
 #endif
 
 /**

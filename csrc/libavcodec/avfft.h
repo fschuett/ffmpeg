@@ -38,9 +38,7 @@ typedef struct FFTComplex {
     FFTSample re, im;
 } FFTComplex;
 
-typedef struct FFTContext {
-    int dummy;
-} FFTContext;
+typedef struct FFTContext FFTContext { int dummy; }
 
 /**
  * Set up a complex FFT.
@@ -77,9 +75,7 @@ enum RDFTransformType {
     DFT_C2R,
 };
 
-typedef struct RDFTContext {
-    int dummy;
-} RDFTContext;
+typedef struct RDFTContext RDFTContext { int dummy; }
 
 /**
  * Set up a real FFT.
@@ -92,9 +88,7 @@ void av_rdft_end(RDFTContext *s);
 
 /* Discrete Cosine Transform */
 
-typedef struct DCTContext {
-  int dummy;
-} DCTContext;
+typedef struct DCTContext DCTContext { int dummy; }
 
 enum DCTTransformType {
     DCT_II = 0,

@@ -103,15 +103,13 @@
 
 #define AVRESAMPLE_MAX_CHANNELS 32
 
-typedef struct AVAudioResampleContext {
-    int dummy;
-} AVAudioResampleContext;
+typedef struct AVAudioResampleContext AVAudioResampleContext { int dummy; }
 
 /**
  * @deprecated use libswresample
  *
  * Mixing Coefficient Types */
-enum AVMixCoeffType {
+enum  AVMixCoeffType {
     AV_MIX_COEFF_TYPE_Q8,   /** 16-bit 8.8 fixed-point                      */
     AV_MIX_COEFF_TYPE_Q15,  /** 32-bit 17.15 fixed-point                    */
     AV_MIX_COEFF_TYPE_FLT,  /** floating-point                              */
@@ -122,7 +120,7 @@ enum AVMixCoeffType {
  * @deprecated use libswresample
  *
  * Resampling Filter Types */
-enum AVResampleFilterType {
+enum  AVResampleFilterType {
     AV_RESAMPLE_FILTER_TYPE_CUBIC,              /**< Cubic */
     AV_RESAMPLE_FILTER_TYPE_BLACKMAN_NUTTALL,   /**< Blackman Nuttall Windowed Sinc */
     AV_RESAMPLE_FILTER_TYPE_KAISER,             /**< Kaiser Windowed Sinc */
@@ -131,7 +129,7 @@ enum AVResampleFilterType {
 /**
  * @deprecated use libswresample
  */
-enum AVResampleDitherMethod {
+enum  AVResampleDitherMethod {
     AV_RESAMPLE_DITHER_NONE,            /**< Do not use dithering */
     AV_RESAMPLE_DITHER_RECTANGULAR,     /**< Rectangular Dither */
     AV_RESAMPLE_DITHER_TRIANGULAR,      /**< Triangular Dither*/

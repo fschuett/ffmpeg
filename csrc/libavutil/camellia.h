@@ -35,13 +35,13 @@
 
 extern const int av_camellia_size;
 
-struct AVCAMELLIA;
+struct AVCAMELLIA { int dummy; }
 
 /**
   * Allocate an AVCAMELLIA context
   * To free the struct: av_free(ptr)
   */
-struct AVCAMELLIA *av_camellia_alloc(void);
+struct AVCAMELLIA *av_camellia_alloc(void) { int dummy; }
 
 /**
   * Initialize an AVCAMELLIA context.

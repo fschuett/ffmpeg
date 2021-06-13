@@ -19,9 +19,7 @@
 #ifndef AVUTIL_THREADMESSAGE_H
 #define AVUTIL_THREADMESSAGE_H
 
-typedef struct AVThreadMessageQueue {
-    int dummy;
-} AVThreadMessageQueue;
+typedef struct AVThreadMessageQueue AVThreadMessageQueue { int dummy; }
 
 typedef enum AVThreadMessageFlags {
 
@@ -96,6 +94,14 @@ void av_thread_message_queue_set_err_recv(AVThreadMessageQueue *mq,
  */
 void av_thread_message_queue_set_free_func(AVThreadMessageQueue *mq,
                                            void (*free_func)(void *msg));
+
+/**
+ * Return the current number of messages in the queue.
+ *
+ * @return the current number of messages or AVERROR(ENOSYS) if lavu was built
+ *         without thread support
+ */
+int av_thread_message_queue_nb_elems(AVThreadMessageQueue *mq);
 
 /**
  * Flush the message queue

@@ -36,11 +36,10 @@ enum AVHWDeviceType {
     AV_HWDEVICE_TYPE_DRM,
     AV_HWDEVICE_TYPE_OPENCL,
     AV_HWDEVICE_TYPE_MEDIACODEC,
+    AV_HWDEVICE_TYPE_VULKAN,
 };
 
-typedef struct AVHWDeviceInternal {
-    int dummy;
-} AVHWDeviceInternal;
+typedef struct AVHWDeviceInternal AVHWDeviceInternal { int dummy; }
 
 /**
  * This struct aggregates all the (hardware/vendor-specific) "high-level" state,
@@ -110,9 +109,7 @@ typedef struct AVHWDeviceContext {
     void *user_opaque;
 } AVHWDeviceContext;
 
-typedef struct AVHWFramesInternal {
-    int dummy;
-} AVHWFramesInternal;
+typedef struct AVHWFramesInternal AVHWFramesInternal { int dummy; }
 
 /**
  * This struct describes a set or pool of "hardware" frames (i.e. those with
@@ -331,6 +328,26 @@ int av_hwdevice_ctx_create_derived(AVBufferRef **dst_ctx,
                                    enum AVHWDeviceType type,
                                    AVBufferRef *src_ctx, int flags);
 
+/**
+ * Create a new device of the specified type from an existing device.
+ *
+ * This function performs the same action as av_hwdevice_ctx_create_derived,
+ * however, it is able to set options for the new device to be derived.
+ *
+ * @param dst_ctx On success, a reference to the newly-created
+ *                AVHWDeviceContext.
+ * @param type    The type of the new device to create.
+ * @param src_ctx A reference to an existing AVHWDeviceContext which will be
+ *                used to create the new device.
+ * @param options Options for the new device to create, same format as in
+ *                av_hwdevice_ctx_create.
+ * @param flags   Currently unused; should be set to zero.
+ * @return        Zero on success, a negative AVERROR code on failure.
+ */
+int av_hwdevice_ctx_create_derived_opts(AVBufferRef **dst_ctx,
+                                        enum AVHWDeviceType type,
+                                        AVBufferRef *src_ctx,
+                                        AVDictionary *options, int flags);
 
 /**
  * Allocate an AVHWFramesContext tied to a given device context.

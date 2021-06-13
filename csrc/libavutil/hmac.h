@@ -39,9 +39,7 @@ enum AVHMACType {
     AV_HMAC_SHA512,
 };
 
-typedef struct AVHMAC {
-    int dummy;
-} AVHMAC;
+typedef struct AVHMAC AVHMAC { int dummy; }
 
 /**
  * Allocate an AVHMAC context.

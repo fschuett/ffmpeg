@@ -35,7 +35,7 @@
 
 extern const int av_cast5_size;
 
-struct AVCAST5;
+struct AVCAST5 { int dummy; }
 
 /**
   * Allocate an AVCAST5 context

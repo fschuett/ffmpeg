@@ -71,6 +71,9 @@
 #define AV_CPU_FLAG_VFP_VM       (1 << 7) ///< VFPv2 vector mode, deprecated in ARMv7-A and unavailable in various CPUs implementations
 #define AV_CPU_FLAG_SETEND       (1 <<16)
 
+#define AV_CPU_FLAG_MMI          (1 << 0)
+#define AV_CPU_FLAG_MSA          (1 << 1)
+
 /**
  * Return the flags which specify extensions supported by the CPU.
  * The returned value is affected by av_force_cpu_flags() if that was used
@@ -90,7 +93,7 @@ void av_force_cpu_flags(int flags);
  * This function is mainly useful for testing.
  * Please use av_force_cpu_flags() and av_get_cpu_flags() instead which are more flexible
  */
-void av_set_cpu_flags_mask(int mask);
+ void av_set_cpu_flags_mask(int mask);
 
 /**
  * Parse CPU flags from a string.
@@ -101,6 +104,7 @@ void av_set_cpu_flags_mask(int mask);
  * Please use av_parse_cpu_caps() when possible.
  * @return a combination of AV_CPU_* flags, negative on error.
  */
+
 int av_parse_cpu_flags(const char *s);
 
 /**

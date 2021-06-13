@@ -27,6 +27,7 @@
 #ifndef AVUTIL_HASH_H
 #define AVUTIL_HASH_H
 
+#include <stddef.h>
 #include <stdint.h>
 
 #include "version.h"
@@ -113,7 +114,7 @@
  * initialization, updating, and finalizing.
  */
 
-struct AVHashContext;
+struct AVHashContext { int dummy; }
 
 /**
  * Allocate a hash context for the algorithm specified by name.

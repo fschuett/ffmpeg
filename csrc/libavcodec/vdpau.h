@@ -57,8 +57,8 @@
 #include "avcodec.h"
 #include "version.h"
 
-struct AVCodecContext;
-struct AVFrame;
+struct AVCodecContext { int dummy; }
+struct AVFrame { int dummy; }
 
 typedef int (*AVVDPAU_Render2)(struct AVCodecContext *, struct AVFrame *,
                                const VdpPictureInfo *, uint32_t,
@@ -167,6 +167,7 @@ AVVDPAUContext *av_vdpau_alloc_context(void);
  *
  * @return 0 on success (non-negative), a negative AVERROR on failure.
  */
+
 int av_vdpau_get_profile(AVCodecContext *avctx, VdpDecoderProfile *profile);
 #endif
 

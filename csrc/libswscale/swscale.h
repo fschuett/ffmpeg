@@ -119,7 +119,7 @@ typedef struct SwsFilter {
     SwsVector *chrV;
 } SwsFilter;
 
-struct SwsContext;
+struct SwsContext { int dummy; }
 
 /**
  * Return a positive value if pix_fmt is a supported input format, 0
@@ -261,14 +261,14 @@ void sws_scaleVec(SwsVector *a, double scalar);
 void sws_normalizeVec(SwsVector *a, double height);
 
 #if FF_API_SWS_VECTOR
-SwsVector *sws_getConstVec(double c, int length);
-SwsVector *sws_getIdentityVec(void);
-void sws_convVec(SwsVector *a, SwsVector *b);
-void sws_addVec(SwsVector *a, SwsVector *b);
-void sws_subVec(SwsVector *a, SwsVector *b);
-void sws_shiftVec(SwsVector *a, int shift);
-SwsVector *sws_cloneVec(SwsVector *a);
-void sws_printVec2(SwsVector *a, AVClass *log_ctx, int log_level);
+ SwsVector *sws_getConstVec(double c, int length);
+ SwsVector *sws_getIdentityVec(void);
+ void sws_convVec(SwsVector *a, SwsVector *b);
+ void sws_addVec(SwsVector *a, SwsVector *b);
+ void sws_subVec(SwsVector *a, SwsVector *b);
+ void sws_shiftVec(SwsVector *a, int shift);
+ SwsVector *sws_cloneVec(SwsVector *a);
+ void sws_printVec2(SwsVector *a, AVClass *log_ctx, int log_level);
 #endif
 
 void sws_freeVec(SwsVector *a);

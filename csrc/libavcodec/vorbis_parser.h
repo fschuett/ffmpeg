@@ -28,9 +28,7 @@
 
 #include <stdint.h>
 
-typedef struct AVVorbisParseContext {
-    int dummy;
-} AVVorbisParseContext;
+typedef struct AVVorbisParseContext AVVorbisParseContext { int dummy; }
 
 /**
  * Allocate and initialize the Vorbis parser using headers in the extradata.

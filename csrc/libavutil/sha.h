@@ -51,7 +51,7 @@
 
 extern const int av_sha_size;
 
-struct AVSHA;
+struct AVSHA { int dummy; }
 
 /**
  * Allocate an AVSHA context.

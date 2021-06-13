@@ -30,7 +30,7 @@
 #define AES_CTR_KEY_SIZE (16)
 #define AES_CTR_IV_SIZE (8)
 
-struct AVAESCTR;
+struct AVAESCTR { int dummy; }
 
 /**
  * Allocate an AVAESCTR context.
