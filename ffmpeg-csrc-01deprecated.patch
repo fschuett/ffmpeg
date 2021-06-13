@@ -1,15 +1,7 @@
 diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
---- csrc.orig/libavcodec/avcodec.h	2018-09-15 10:41:10.000000000 +0200
-+++ csrc/libavcodec/avcodec.h	2018-10-03 08:33:18.486159990 +0200
-@@ -1455,7 +1455,6 @@ typedef struct AVPacket {
-      * for Matroska subtitles, whose duration values could overflow when the
-      * duration field was still an int.
-      */
--    attribute_deprecated
-     int64_t convergence_duration;
- #endif
- } AVPacket;
-@@ -1787,7 +1786,7 @@ typedef struct AVCodecContext {
+--- csrc.orig/libavcodec/avcodec.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libavcodec/avcodec.h	2021-06-13 21:34:04.722769353 +0200
+@@ -806,7 +806,7 @@ typedef struct AVCodecContext {
  
  #if FF_API_PRIVATE_OPT
      /** @deprecated use encoder private options instead */
@@ -18,93 +10,105 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
      int b_frame_strategy;
  #endif
  
-@@ -1808,7 +1807,6 @@ typedef struct AVCodecContext {
+@@ -827,7 +827,7 @@ typedef struct AVCodecContext {
  
  #if FF_API_PRIVATE_OPT
      /** @deprecated use encoder private options instead */
 -    attribute_deprecated
++    
      int mpeg_quant;
  #endif
  
-@@ -1872,7 +1870,6 @@ typedef struct AVCodecContext {
+@@ -891,7 +891,7 @@ typedef struct AVCodecContext {
  
  #if FF_API_PRIVATE_OPT
      /** @deprecated use encoder private options instead */
 -    attribute_deprecated
++    
       int prediction_method;
  #define FF_PRED_LEFT   0
  #define FF_PRED_PLANE  1
-@@ -1953,7 +1950,6 @@ typedef struct AVCodecContext {
+@@ -972,7 +972,7 @@ typedef struct AVCodecContext {
  
  #if FF_API_PRIVATE_OPT
      /** @deprecated use encoder private options instead */
 -    attribute_deprecated
++    
      int pre_me;
  #endif
  
-@@ -2023,11 +2019,9 @@ typedef struct AVCodecContext {
+@@ -1046,11 +1046,11 @@ typedef struct AVCodecContext {
  
  #if FF_API_PRIVATE_OPT
      /** @deprecated use encoder private options instead */
 -    attribute_deprecated
++    
      int scenechange_threshold;
  
      /** @deprecated use encoder private options instead */
 -    attribute_deprecated
++    
      int noise_reduction;
  #endif
  
-@@ -2070,7 +2064,6 @@ typedef struct AVCodecContext {
+@@ -1093,7 +1093,7 @@ typedef struct AVCodecContext {
      /**
       * @deprecated use encoder private options instead
       */
 -    attribute_deprecated
++    
      int me_penalty_compensation;
  #endif
  
-@@ -2082,7 +2075,6 @@ typedef struct AVCodecContext {
+@@ -1105,7 +1105,7 @@ typedef struct AVCodecContext {
  
  #if FF_API_PRIVATE_OPT
      /** @deprecated use encoder private options instead */
 -    attribute_deprecated
++    
      int brd_scale;
  #endif
  
-@@ -2102,7 +2094,6 @@ typedef struct AVCodecContext {
+@@ -1125,7 +1125,7 @@ typedef struct AVCodecContext {
  
  #if FF_API_PRIVATE_OPT
      /** @deprecated use encoder private options instead */
 -    attribute_deprecated
++    
      int chromaoffset;
  #endif
  
-@@ -2115,7 +2106,6 @@ typedef struct AVCodecContext {
+@@ -1138,7 +1138,7 @@ typedef struct AVCodecContext {
  
  #if FF_API_PRIVATE_OPT
      /** @deprecated use encoder private options instead */
 -    attribute_deprecated
++    
      int b_sensitivity;
  #endif
  
-@@ -2340,7 +2330,6 @@ typedef struct AVCodecContext {
+@@ -1364,7 +1364,7 @@ typedef struct AVCodecContext {
       * - encoding: unused
       * - decoding: set by the caller before avcodec_open2().
       */
 -    attribute_deprecated
++    
      int refcounted_frames;
+ #endif
  
-     /* - encoding parameters */
-@@ -2426,31 +2415,29 @@ typedef struct AVCodecContext {
+@@ -1451,31 +1451,31 @@ typedef struct AVCodecContext {
      /**
       * @deprecated use encoder private options instead
       */
 -    attribute_deprecated
++    
      int coder_type;
  #endif /* FF_API_CODER_TYPE */
  
  #if FF_API_PRIVATE_OPT
      /** @deprecated use encoder private options instead */
 -    attribute_deprecated
++    
      int context_model;
  #endif
  
@@ -130,88 +134,122 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
      int frame_skip_cmp;
  #endif /* FF_API_PRIVATE_OPT */
  
-@@ -2463,15 +2450,12 @@ typedef struct AVCodecContext {
+@@ -1488,15 +1488,15 @@ typedef struct AVCodecContext {
  
  #if FF_API_PRIVATE_OPT
      /** @deprecated use encoder private options instead */
 -    attribute_deprecated
++    
      int min_prediction_order;
  
      /** @deprecated use encoder private options instead */
 -    attribute_deprecated
++    
      int max_prediction_order;
  
      /** @deprecated use encoder private options instead */
 -    attribute_deprecated
++    
      int64_t timecode_frame_start;
  #endif
  
-@@ -2485,13 +2469,11 @@ typedef struct AVCodecContext {
+@@ -1510,13 +1510,13 @@ typedef struct AVCodecContext {
      /* with a Start Code (it should). H.263 does.   */
      /* mb_nb contains the number of macroblocks     */
      /* encoded in the RTP payload.                  */
 -    attribute_deprecated
++    
      void (*rtp_callback)(struct AVCodecContext *avctx, void *data, int size, int mb_nb);
  #endif
  
  #if FF_API_PRIVATE_OPT
      /** @deprecated use encoder private options instead */
 -    attribute_deprecated
++    
      int rtp_payload_size;   /* The size of the RTP payload: the coder will  */
                              /* do its best to deliver a chunk with size     */
                              /* below rtp_payload_size, the chunk will start */
-@@ -2502,25 +2484,16 @@ typedef struct AVCodecContext {
+@@ -1527,25 +1527,25 @@ typedef struct AVCodecContext {
  
  #if FF_API_STAT_BITS
      /* statistics, used for 2-pass encoding */
 -    attribute_deprecated
++    
      int mv_bits;
 -    attribute_deprecated
++    
      int header_bits;
 -    attribute_deprecated
++    
      int i_tex_bits;
 -    attribute_deprecated
++    
      int p_tex_bits;
 -    attribute_deprecated
++    
      int i_count;
 -    attribute_deprecated
++    
      int p_count;
 -    attribute_deprecated
++    
      int skip_count;
 -    attribute_deprecated
++    
      int misc_bits;
  
      /** @deprecated this field is unused */
 -    attribute_deprecated
++    
      int frame_bits;
  #endif
  
-@@ -2757,7 +2730,7 @@ typedef struct AVCodecContext {
+@@ -1761,7 +1761,7 @@ typedef struct AVCodecContext {
       *
       * @deprecated use the quality factor packet side data instead
       */
 -    attribute_deprecated AVFrame *coded_frame;
-+    AVFrame *coded_frame;
++     AVFrame *coded_frame;
  #endif
  
      /**
-@@ -2994,7 +2967,6 @@ typedef struct AVCodecContext {
+@@ -1808,7 +1808,7 @@ typedef struct AVCodecContext {
+      *   versions should wrap access to this field in
+      *     #if LIBAVCODEC_VERSION_MAJOR < 60
+      */
+-    attribute_deprecated
++    
+     int thread_safe_callbacks;
+ #endif
+ 
+@@ -2025,7 +2025,7 @@ typedef struct AVCodecContext {
       * @deprecated this value is now exported as a part of
       * AV_PKT_DATA_CPB_PROPERTIES packet side data
       */
 -    attribute_deprecated
++    
      uint64_t vbv_delay;
  #endif
  
-@@ -3009,7 +2981,6 @@ typedef struct AVCodecContext {
+@@ -2040,7 +2040,7 @@ typedef struct AVCodecContext {
       * @deprecated this field disables the default behaviour and
       *             it is kept only for compatibility.
       */
 -    attribute_deprecated
++    
      int side_data_only_packets;
  #endif
  
-@@ -3304,34 +3275,34 @@ typedef struct AVCodecContext {
+@@ -2145,7 +2145,7 @@ typedef struct AVCodecContext {
+     /**
+      * @deprecated unused
+      */
+-    attribute_deprecated
++    
+     int debug_mv;
+ #define FF_DEBUG_VIS_MV_P_FOR  0x00000001 //visualize forward predicted MVs of P frames
+ #define FF_DEBUG_VIS_MV_B_FOR  0x00000002 //visualize forward predicted MVs of B frames
+@@ -2389,39 +2389,39 @@ typedef struct AVCodecContext {
   * Accessors for some AVCodecContext fields. These used to be provided for ABI
   * compatibility, and do not need to be used anymore.
   */
@@ -233,14 +271,12 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
 +
  unsigned av_codec_get_codec_properties(const AVCodecContext *avctx);
  
- #if FF_API_LOWRES
 -attribute_deprecated
 +
  int  av_codec_get_lowres(const AVCodecContext *avctx);
 -attribute_deprecated
 +
  void av_codec_set_lowres(AVCodecContext *avctx, int val);
- #endif
  
 -attribute_deprecated
 +
@@ -257,8 +293,7 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  void av_codec_set_chroma_intra_matrix(AVCodecContext *avctx, uint16_t *val);
  #endif
  
-@@ -3550,7 +3521,7 @@ typedef struct AVCodec {
- } AVCodec;
+ struct AVSubtitle;
  
  #if FF_API_CODEC_GET_SET
 -attribute_deprecated
@@ -266,25 +301,28 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  int av_codec_get_max_lowres(const AVCodec *codec);
  #endif
  
-@@ -3791,9 +3762,7 @@ typedef struct AVHWAccel {
+@@ -2653,9 +2653,9 @@ typedef struct AVHWAccel {
   * @deprecated use AVFrame or imgutils functions instead
   */
  typedef struct AVPicture {
 -    attribute_deprecated
++    
      uint8_t *data[AV_NUM_DATA_POINTERS];    ///< pointers to the image data planes
 -    attribute_deprecated
++    
      int linesize[AV_NUM_DATA_POINTERS];     ///< number of bytes per line
  } AVPicture;
  
-@@ -3833,7 +3802,6 @@ typedef struct AVSubtitleRect {
+@@ -2695,7 +2695,7 @@ typedef struct AVSubtitleRect {
      /**
       * @deprecated unused
       */
 -    attribute_deprecated
++    
      AVPicture pict;
  #endif
      /**
-@@ -4041,7 +4009,7 @@ const AVCodec *av_codec_iterate(void **o
+@@ -2734,7 +2734,7 @@ typedef struct AVSubtitle {
   * if c is non-NULL, returns the next registered codec after c,
   * or NULL if c is the last one.
   */
@@ -293,104 +331,80 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  AVCodec *av_codec_next(const AVCodec *c);
  #endif
  
-@@ -4069,7 +4037,7 @@ const char *avcodec_license(void);
-  *
-  * @see avcodec_register_all()
+@@ -2757,13 +2757,13 @@ const char *avcodec_license(void);
+ /**
+  * @deprecated Calling this function is unnecessary.
   */
 -attribute_deprecated
 +
  void avcodec_register(AVCodec *codec);
  
  /**
-@@ -4082,7 +4050,7 @@ void avcodec_register(AVCodec *codec);
-  * @see av_register_codec_parser
-  * @see av_register_bitstream_filter
+  * @deprecated Calling this function is unnecessary.
   */
 -attribute_deprecated
 +
  void avcodec_register_all(void);
  #endif
  
-@@ -4158,7 +4126,6 @@ const AVClass *avcodec_get_subtitle_rect
+@@ -2809,7 +2809,7 @@ const AVClass *avcodec_get_class(void);
+ /**
+  * @deprecated This function should not be used.
+  */
+-attribute_deprecated
++
+ const AVClass *avcodec_get_frame_class(void);
+ #endif
+ 
+@@ -2839,7 +2839,7 @@ const AVClass *avcodec_get_subtitle_rect
   * avcodec_parameters_from_context() / avcodec_parameters_to_context()
   * functions.
   */
 -attribute_deprecated
++
  int avcodec_copy_context(AVCodecContext *dest, const AVCodecContext *src);
  #endif
  
-@@ -4367,7 +4334,7 @@ int av_packet_from_data(AVPacket *pkt, u
-  *
-  * @deprecated Use av_packet_ref or av_packet_make_refcounted
-  */
--attribute_deprecated
-+
- int av_dup_packet(AVPacket *pkt);
- /**
-  * Copy packet, including contents
-@@ -4376,7 +4343,6 @@ int av_dup_packet(AVPacket *pkt);
-  *
-  * @deprecated Use av_packet_ref
-  */
--attribute_deprecated
- int av_copy_packet(AVPacket *dst, const AVPacket *src);
- 
- /**
-@@ -4386,7 +4352,6 @@ int av_copy_packet(AVPacket *dst, const
-  *
-  * @deprecated Use av_packet_copy_props
-  */
--attribute_deprecated
- int av_copy_packet_side_data(AVPacket *dst, const AVPacket *src);
- 
- /**
-@@ -4396,7 +4361,6 @@ int av_copy_packet_side_data(AVPacket *d
-  *
-  * @param pkt packet to free
-  */
--attribute_deprecated
- void av_free_packet(AVPacket *pkt);
- #endif
- /**
-@@ -4449,10 +4413,8 @@ uint8_t* av_packet_get_side_data(const A
-                                  int *size);
- 
- #if FF_API_MERGE_SD_API
--attribute_deprecated
- int av_packet_merge_side_data(AVPacket *pkt);
- 
--attribute_deprecated
- int av_packet_split_side_data(AVPacket *pkt);
- #endif
- 
-@@ -4702,7 +4664,6 @@ enum AVChromaLocation avcodec_chroma_pos
+@@ -3043,7 +3043,7 @@ enum AVChromaLocation avcodec_chroma_pos
   *
  * @deprecated Use avcodec_send_packet() and avcodec_receive_frame().
   */
 -attribute_deprecated
++
  int avcodec_decode_audio4(AVCodecContext *avctx, AVFrame *frame,
                            int *got_frame_ptr, const AVPacket *avpkt);
  
-@@ -4751,7 +4712,6 @@ int avcodec_decode_audio4(AVCodecContext
+@@ -3092,7 +3092,7 @@ int avcodec_decode_audio4(AVCodecContext
   *
   * @deprecated Use avcodec_send_packet() and avcodec_receive_frame().
   */
 -attribute_deprecated
++
  int avcodec_decode_video2(AVCodecContext *avctx, AVFrame *picture,
                           int *got_picture_ptr,
                           const AVPacket *avpkt);
-@@ -5084,7 +5044,6 @@ typedef struct AVCodecParserContext {
+@@ -3429,7 +3429,7 @@ typedef struct AVCodecParserContext {
      /**
       * @deprecated unused
       */
 -    attribute_deprecated
++    
      int64_t convergence_duration;
  #endif
  
-@@ -5222,10 +5181,10 @@ typedef struct AVCodecParser {
-  */
+@@ -3554,7 +3554,7 @@ typedef struct AVCodecParser {
+     void (*parser_close)(AVCodecParserContext *s);
+     int (*split)(AVCodecContext *avctx, const uint8_t *buf, int buf_size);
+ #if FF_API_NEXT
+-    attribute_deprecated
++    
+     struct AVCodecParser *next;
+ #endif
+ } AVCodecParser;
+@@ -3571,10 +3571,10 @@ typedef struct AVCodecParser {
  const AVCodecParser *av_parser_iterate(void **opaque);
  
+ #if FF_API_NEXT
 -attribute_deprecated
 +
  AVCodecParser *av_parser_next(const AVCodecParser *c);
@@ -398,41 +412,55 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
 -attribute_deprecated
 +
  void av_register_codec_parser(AVCodecParser *parser);
+ #endif
  AVCodecParserContext *av_parser_init(int codec_id);
- 
-@@ -5343,7 +5302,6 @@ AVCodec *avcodec_find_encoder_by_name(co
-  *
-  * @deprecated use avcodec_send_frame()/avcodec_receive_packet() instead
+@@ -3623,7 +3623,7 @@ int av_parser_parse2(AVCodecParserContex
+  * @deprecated Use dump_extradata, remove_extra or extract_extradata
+  *             bitstream filters instead.
   */
 -attribute_deprecated
++
+ int av_parser_change(AVCodecParserContext *s,
+                      AVCodecContext *avctx,
+                      uint8_t **poutbuf, int *poutbuf_size,
+@@ -3684,7 +3684,7 @@ void av_parser_close(AVCodecParserContex
+  *             If allowed and required, set AVCodecContext.get_encode_buffer to
+  *             a custom function to pass user supplied output buffers.
+  */
+-attribute_deprecated
++
  int avcodec_encode_audio2(AVCodecContext *avctx, AVPacket *avpkt,
                            const AVFrame *frame, int *got_packet_ptr);
  
-@@ -5382,7 +5340,6 @@ int avcodec_encode_audio2(AVCodecContext
-  *
-  * @deprecated use avcodec_send_frame()/avcodec_receive_packet() instead
+@@ -3725,7 +3725,7 @@ int avcodec_encode_audio2(AVCodecContext
+  *             If allowed and required, set AVCodecContext.get_encode_buffer to
+  *             a custom function to pass user supplied output buffers.
   */
 -attribute_deprecated
++
  int avcodec_encode_video2(AVCodecContext *avctx, AVPacket *avpkt,
                            const AVFrame *frame, int *got_packet_ptr);
- 
-@@ -5403,26 +5360,22 @@ int avcodec_encode_subtitle(AVCodecConte
+ #endif
+@@ -3747,26 +3747,26 @@ int avcodec_encode_subtitle(AVCodecConte
  /**
   * @deprecated unused
   */
 -attribute_deprecated
++
  int avpicture_alloc(AVPicture *picture, enum AVPixelFormat pix_fmt, int width, int height);
  
  /**
   * @deprecated unused
   */
 -attribute_deprecated
++
  void avpicture_free(AVPicture *picture);
  
  /**
   * @deprecated use av_image_fill_arrays() instead.
   */
 -attribute_deprecated
++
  int avpicture_fill(AVPicture *picture, const uint8_t *ptr,
                     enum AVPixelFormat pix_fmt, int width, int height);
  
@@ -440,10 +468,11 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
   * @deprecated use av_image_copy_to_buffer() instead.
   */
 -attribute_deprecated
++
  int avpicture_layout(const AVPicture *src, enum AVPixelFormat pix_fmt,
                       int width, int height,
                       unsigned char *dest, int dest_size);
-@@ -5430,27 +5383,27 @@ int avpicture_layout(const AVPicture *sr
+@@ -3774,27 +3774,27 @@ int avpicture_layout(const AVPicture *sr
  /**
   * @deprecated use av_image_get_buffer_size() instead.
   */
@@ -475,35 +504,51 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  int av_picture_pad(AVPicture *dst, const AVPicture *src, int height, int width, enum AVPixelFormat pix_fmt,
              int padtop, int padbottom, int padleft, int padright, int *color);
  
-@@ -5480,7 +5433,6 @@ int av_picture_pad(AVPicture *dst, const
+@@ -3824,7 +3824,7 @@ int av_picture_pad(AVPicture *dst, const
   * @deprecated Use av_pix_fmt_get_chroma_sub_sample
   */
  
 -attribute_deprecated
++
  void avcodec_get_chroma_sub_sample(enum AVPixelFormat pix_fmt, int *h_shift, int *v_shift);
  #endif
  
-@@ -5524,7 +5476,6 @@ enum AVPixelFormat avcodec_find_best_pix
+@@ -3860,17 +3860,17 @@ enum AVPixelFormat avcodec_find_best_pix
+ /**
+  * @deprecated see av_get_pix_fmt_loss()
+  */
+-attribute_deprecated
++
+ int avcodec_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt, enum AVPixelFormat src_pix_fmt,
+                              int has_alpha);
+ /**
+  * @deprecated see av_find_best_pix_fmt_of_2()
+  */
+-attribute_deprecated
++
  enum AVPixelFormat avcodec_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2,
                                              enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr);
  
 -attribute_deprecated
++
  enum AVPixelFormat avcodec_find_best_pix_fmt2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2,
                                              enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr);
- 
-@@ -5546,7 +5497,6 @@ enum AVPixelFormat avcodec_default_get_f
+ #endif
+@@ -3893,7 +3893,7 @@ enum AVPixelFormat avcodec_default_get_f
   *
   * @deprecated see av_fourcc_make_string() and av_fourcc2str().
   */
 -attribute_deprecated
++
  size_t av_get_codec_tag_string(char *buf, size_t buf_size, unsigned int codec_tag);
  #endif
  
-@@ -5773,21 +5723,18 @@ typedef struct AVBitStreamFilter {
+@@ -4030,21 +4030,21 @@ typedef struct AVBitStreamFilterContext
   * @deprecated the old bitstream filtering API (using AVBitStreamFilterContext)
   * is deprecated. Use the new bitstream filtering API (using AVBSFContext).
   */
 -attribute_deprecated
++
  void av_register_bitstream_filter(AVBitStreamFilter *bsf);
  /**
   * @deprecated the old bitstream filtering API (using AVBitStreamFilterContext)
@@ -511,6 +556,7 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
   * from the new bitstream filtering API (using AVBSFContext).
   */
 -attribute_deprecated
++
  AVBitStreamFilterContext *av_bitstream_filter_init(const char *name);
  /**
   * @deprecated the old bitstream filtering API (using AVBitStreamFilterContext)
@@ -518,14 +564,16 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
   * new bitstream filtering API (using AVBSFContext).
   */
 -attribute_deprecated
++
  int av_bitstream_filter_filter(AVBitStreamFilterContext *bsfc,
                                 AVCodecContext *avctx, const char *args,
                                 uint8_t **poutbuf, int *poutbuf_size,
-@@ -5797,14 +5744,13 @@ int av_bitstream_filter_filter(AVBitStre
+@@ -4054,19 +4054,19 @@ int av_bitstream_filter_filter(AVBitStre
   * is deprecated. Use av_bsf_free() from the new bitstream filtering API (using
   * AVBSFContext).
   */
 -attribute_deprecated
++
  void av_bitstream_filter_close(AVBitStreamFilterContext *bsf);
  /**
   * @deprecated the old bitstream filtering API (using AVBitStreamFilterContext)
@@ -537,16 +585,13 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  const AVBitStreamFilter *av_bitstream_filter_next(const AVBitStreamFilter *f);
  #endif
  
-@@ -5825,7 +5771,7 @@ const AVBitStreamFilter *av_bsf_get_by_n
-  */
- const AVBitStreamFilter *av_bsf_iterate(void **opaque);
  #if FF_API_NEXT
 -attribute_deprecated
 +
  const AVBitStreamFilter *av_bsf_next(void **opaque);
  #endif
  
-@@ -6023,7 +5969,7 @@ unsigned int av_xiphlacing(unsigned char
+@@ -4102,7 +4102,7 @@ unsigned int av_xiphlacing(unsigned char
   *
   * @deprecated  This function doesn't do anything.
   */
@@ -555,7 +600,7 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  void av_register_hwaccel(AVHWAccel *hwaccel);
  
  /**
-@@ -6034,7 +5980,7 @@ void av_register_hwaccel(AVHWAccel *hwac
+@@ -4113,7 +4113,7 @@ void av_register_hwaccel(AVHWAccel *hwac
   * @deprecated  AVHWaccel structures contain no user-serviceable parts, so
   *              this function should not be used.
   */
@@ -564,7 +609,7 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  AVHWAccel *av_hwaccel_next(const AVHWAccel *hwaccel);
  #endif
  
-@@ -6077,7 +6023,7 @@ enum AVLockOp {
+@@ -4156,7 +4156,7 @@ enum AVLockOp {
   * @deprecated This function does nothing, and always returns 0. Be sure to
   *             build with thread support to get basic thread safety.
   */
@@ -573,45 +618,153 @@ diff -pruN csrc.orig/libavcodec/avcodec.h csrc/libavcodec/avcodec.h
  int av_lockmgr_register(int (*cb)(void **mutex, enum AVLockOp op));
  #endif
  
+diff -pruN csrc.orig/libavcodec/packet.h csrc/libavcodec/packet.h
+--- csrc.orig/libavcodec/packet.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libavcodec/packet.h	2021-06-13 21:34:04.706769454 +0200
+@@ -394,13 +394,13 @@ typedef struct AVPacket {
+      * for Matroska subtitles, whose duration values could overflow when the
+      * duration field was still an int.
+      */
+-    attribute_deprecated
++    
+     int64_t convergence_duration;
+ #endif
+ } AVPacket;
+ 
+ #if FF_API_INIT_PACKET
+-attribute_deprecated
++
+ typedef struct AVPacketList {
+     AVPacket pkt;
+     struct AVPacketList *next;
+@@ -484,7 +484,7 @@ void av_packet_free(AVPacket **pkt);
+  * @deprecated This function is deprecated. Once it's removed,
+                sizeof(AVPacket) will not be a part of the ABI anymore.
+  */
+-attribute_deprecated
++
+ void av_init_packet(AVPacket *pkt);
+ #endif
+ 
+@@ -536,7 +536,7 @@ int av_packet_from_data(AVPacket *pkt, u
+  *
+  * @deprecated Use av_packet_ref or av_packet_make_refcounted
+  */
+-attribute_deprecated
++
+ int av_dup_packet(AVPacket *pkt);
+ /**
+  * Copy packet, including contents
+@@ -545,7 +545,7 @@ int av_dup_packet(AVPacket *pkt);
+  *
+  * @deprecated Use av_packet_ref
+  */
+-attribute_deprecated
++
+ int av_copy_packet(AVPacket *dst, const AVPacket *src);
+ 
+ /**
+@@ -555,7 +555,7 @@ int av_copy_packet(AVPacket *dst, const
+  *
+  * @deprecated Use av_packet_copy_props
+  */
+-attribute_deprecated
++
+ int av_copy_packet_side_data(AVPacket *dst, const AVPacket *src);
+ 
+ /**
+@@ -565,7 +565,7 @@ int av_copy_packet_side_data(AVPacket *d
+  *
+  * @param pkt packet to free
+  */
+-attribute_deprecated
++
+ void av_free_packet(AVPacket *pkt);
+ #endif
+ /**
+@@ -631,10 +631,10 @@ uint8_t* av_packet_get_side_data(const A
+ #endif
+ 
+ #if FF_API_MERGE_SD_API
+-attribute_deprecated
++
+ int av_packet_merge_side_data(AVPacket *pkt);
+ 
+-attribute_deprecated
++
+ int av_packet_split_side_data(AVPacket *pkt);
+ #endif
+ 
 diff -pruN csrc.orig/libavcodec/vaapi.h csrc/libavcodec/vaapi.h
---- csrc.orig/libavcodec/vaapi.h	2018-09-15 10:41:10.000000000 +0200
-+++ csrc/libavcodec/vaapi.h	2018-10-03 08:33:18.470160071 +0200
+--- csrc.orig/libavcodec/vaapi.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libavcodec/vaapi.h	2021-06-13 21:34:04.714769403 +0200
 @@ -53,7 +53,7 @@
   *
   * Deprecated: use AVCodecContext.hw_frames_ctx instead.
   */
 -struct attribute_deprecated vaapi_context {
-+struct vaapi_context {
++struct  vaapi_context {
      /**
       * Window system dependent data
       *
 diff -pruN csrc.orig/libavcodec/vdpau.h csrc/libavcodec/vdpau.h
---- csrc.orig/libavcodec/vdpau.h	2018-09-15 10:41:10.000000000 +0200
-+++ csrc/libavcodec/vdpau.h	2018-10-03 08:33:18.490159970 +0200
-@@ -167,7 +167,6 @@ AVVDPAUContext *av_vdpau_alloc_context(v
+--- csrc.orig/libavcodec/vdpau.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libavcodec/vdpau.h	2021-06-13 21:34:04.730769302 +0200
+@@ -167,7 +167,7 @@ AVVDPAUContext *av_vdpau_alloc_context(v
   *
   * @return 0 on success (non-negative), a negative AVERROR on failure.
   */
 -attribute_deprecated
++
  int av_vdpau_get_profile(AVCodecContext *avctx, VdpDecoderProfile *profile);
  #endif
  
 diff -pruN csrc.orig/libavcodec/xvmc.h csrc/libavcodec/xvmc.h
---- csrc.orig/libavcodec/xvmc.h	2018-09-15 10:41:10.000000000 +0200
-+++ csrc/libavcodec/xvmc.h	2018-10-03 08:33:18.486159990 +0200
+--- csrc.orig/libavcodec/xvmc.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libavcodec/xvmc.h	2021-06-13 21:34:04.726769328 +0200
 @@ -43,7 +43,7 @@
  #define AV_XVMC_ID                    0x1DC711C0  /**< special value to ensure that regular pixel routines haven't corrupted the struct
                                                         the number is 1337 speak for the letters IDCT MCo (motion compensation) */
  
 -struct attribute_deprecated xvmc_pix_fmt {
-+struct xvmc_pix_fmt {
++struct  xvmc_pix_fmt {
      /** The field contains the special constant value AV_XVMC_ID.
          It is used as a test that the application correctly uses the API,
          and that there is no corruption caused by pixel routines.
+diff -pruN csrc.orig/libavdevice/avdevice.h csrc/libavdevice/avdevice.h
+--- csrc.orig/libavdevice/avdevice.h	2021-05-19 15:41:59.000000000 +0200
++++ csrc/libavdevice/avdevice.h	2021-06-13 21:34:04.410771315 +0200
+@@ -417,7 +417,7 @@ typedef struct AVDeviceCapabilitiesQuery
+ /**
+  * AVOption table used by devices to implement device capabilities API. Should not be used by a user.
+  */
+-attribute_deprecated
++
+ extern const AVOption av_device_capabilities[];
+ 
+ /**
+@@ -437,7 +437,7 @@ extern const AVOption av_device_capabili
+  *
+  * @return >= 0 on success, negative otherwise.
+  */
+-attribute_deprecated
++
+ int avdevice_capabilities_create(AVDeviceCapabilitiesQuery **caps, AVFormatContext *s,
+                                  AVDictionary **device_options);
+ 
+@@ -447,7 +447,7 @@ int avdevice_capabilities_create(AVDevic
+  * @param caps Device capabilities data to be freed.
+  * @param s    Context of the device.
+  */
+-attribute_deprecated
++
+ void avdevice_capabilities_free(AVDeviceCapabilitiesQuery **caps, AVFormatContext *s);
+ #endif
+ 
 diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
---- csrc.orig/libavfilter/avfilter.h	2018-09-15 10:41:10.000000000 +0200
-+++ csrc/libavfilter/avfilter.h	2018-10-03 08:33:18.462160111 +0200
-@@ -668,7 +668,7 @@ void avfilter_link_free(AVFilterLink **l
+--- csrc.orig/libavfilter/avfilter.h	2021-05-19 15:41:59.000000000 +0200
++++ csrc/libavfilter/avfilter.h	2021-06-13 21:34:04.690769554 +0200
+@@ -678,7 +678,7 @@ void avfilter_link_free(AVFilterLink **l
   * Get the number of channels of a link.
   * @deprecated Use av_buffersink_get_channels()
   */
@@ -619,16 +772,17 @@ diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
 +
  int avfilter_link_get_channels(AVFilterLink *link);
  #endif
- 
-@@ -677,7 +677,6 @@ int avfilter_link_get_channels(AVFilterL
+ #if FF_API_FILTER_LINK_SET_CLOSED
+@@ -687,7 +687,7 @@ int avfilter_link_get_channels(AVFilterL
   * @deprecated applications are not supposed to mess with links, they should
   * close the sinks.
   */
 -attribute_deprecated
++
  void avfilter_link_set_closed(AVFilterLink *link, int closed);
- 
+ #endif
  /**
-@@ -710,7 +709,7 @@ const AVFilter *av_filter_iterate(void *
+@@ -720,7 +720,7 @@ const AVFilter *av_filter_iterate(void *
  
  #if FF_API_NEXT
  /** Initialize the filter system. Register all builtin filters. */
@@ -637,7 +791,7 @@ diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
  void avfilter_register_all(void);
  
  /**
-@@ -723,7 +722,7 @@ void avfilter_register_all(void);
+@@ -733,7 +733,7 @@ void avfilter_register_all(void);
   * @return 0 if the registration was successful, a negative value
   * otherwise
   */
@@ -646,7 +800,7 @@ diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
  int avfilter_register(AVFilter *filter);
  
  /**
-@@ -731,7 +730,7 @@ int avfilter_register(AVFilter *filter);
+@@ -741,7 +741,7 @@ int avfilter_register(AVFilter *filter);
   * @return If prev is non-NULL, next registered filter after prev or NULL if
   * prev is the last filter. If prev is NULL, return the first registered filter.
   */
@@ -655,27 +809,49 @@ diff -pruN csrc.orig/libavfilter/avfilter.h csrc/libavfilter/avfilter.h
  const AVFilter *avfilter_next(const AVFilter *prev);
  #endif
  
-@@ -844,7 +843,7 @@ typedef struct AVFilterGraph {
+@@ -854,7 +854,7 @@ typedef struct AVFilterGraph {
  
      char *scale_sws_opts; ///< sws options to use for the auto-inserted scale filters
  #if FF_API_LAVR_OPTS
 -    attribute_deprecated char *resample_lavr_opts;   ///< libavresample options to use for the auto-inserted resample filters
-+    char *resample_lavr_opts;   ///< libavresample options to use for the auto-inserted resample filters
++     char *resample_lavr_opts;   ///< libavresample options to use for the auto-inserted resample filters
  #endif
  
      /**
+diff -pruN csrc.orig/libavfilter/buffersink.h csrc/libavfilter/buffersink.h
+--- csrc.orig/libavfilter/buffersink.h	2021-05-19 15:41:59.000000000 +0200
++++ csrc/libavfilter/buffersink.h	2021-06-13 21:34:04.686769579 +0200
+@@ -108,7 +108,7 @@ typedef struct AVBufferSinkParams {
+  *
+  * Must be freed with av_free().
+  */
+-attribute_deprecated
++
+ AVBufferSinkParams *av_buffersink_params_alloc(void);
+ 
+ /**
+@@ -127,7 +127,7 @@ typedef struct AVABufferSinkParams {
+  *
+  * Must be freed with av_free().
+  */
+-attribute_deprecated
++
+ AVABufferSinkParams *av_abuffersink_params_alloc(void);
+ #endif
+ 
 diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
---- csrc.orig/libavformat/avformat.h	2018-09-15 10:41:10.000000000 +0200
-+++ csrc/libavformat/avformat.h	2018-10-03 08:33:18.446160192 +0200
-@@ -873,7 +873,6 @@ typedef struct AVStream {
+--- csrc.orig/libavformat/avformat.h	2021-05-19 15:41:59.000000000 +0200
++++ csrc/libavformat/avformat.h	2021-06-13 21:34:04.674769655 +0200
+@@ -884,7 +884,7 @@ typedef struct AVStream {
      /**
       * @deprecated use the codecpar struct instead
       */
 -    attribute_deprecated
++    
      AVCodecContext *codec;
  #endif
      void *priv_data;
-@@ -995,7 +994,7 @@ typedef struct AVStream {
+@@ -1024,7 +1024,7 @@ typedef struct AVStream {
       *
       * @deprecated unused
       */
@@ -684,7 +860,7 @@ diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
      char *recommended_encoder_configuration;
  #endif
  
-@@ -1219,14 +1218,14 @@ typedef struct AVStream {
+@@ -1120,14 +1120,14 @@ typedef struct AVStream {
   * Accessors for some AVStream fields. These used to be provided for ABI
   * compatibility, and do not need to be used anymore.
   */
@@ -703,7 +879,7 @@ diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
  void  av_stream_set_recommended_encoder_configuration(AVStream *s, char *configuration);
  #endif
  #endif
-@@ -1404,7 +1403,7 @@ typedef struct AVFormatContext {
+@@ -1310,7 +1310,7 @@ typedef struct AVFormatContext {
       *
       * @deprecated Use url instead.
       */
@@ -712,15 +888,16 @@ diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
      char filename[1024];
  #endif
  
-@@ -1874,7 +1873,6 @@ typedef struct AVFormatContext {
+@@ -1796,7 +1796,7 @@ typedef struct AVFormatContext {
       *
       * @deprecated Use io_open and io_close.
       */
 -    attribute_deprecated
++    
      int (*open_cb)(struct AVFormatContext *s, AVIOContext **p, const char *url, int flags, const AVIOInterruptCB *int_cb, AVDictionary **options);
  #endif
  
-@@ -1933,39 +1931,39 @@ typedef struct AVFormatContext {
+@@ -1869,39 +1869,39 @@ typedef struct AVFormatContext {
   * Accessors for some AVFormatContext fields. These used to be provided for ABI
   * compatibility, and do not need to be used anymore.
   */
@@ -772,12 +949,12 @@ diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
  #if FF_API_OLD_OPEN_CALLBACKS
 -attribute_deprecated AVOpenCallback av_format_get_open_cb(const AVFormatContext *s);
 -attribute_deprecated void av_format_set_open_cb(AVFormatContext *s, AVOpenCallback callback);
-+AVOpenCallback av_format_get_open_cb(const AVFormatContext *s);
-+void av_format_set_open_cb(AVFormatContext *s, AVOpenCallback callback);
++ AVOpenCallback av_format_get_open_cb(const AVFormatContext *s);
++ void av_format_set_open_cb(AVFormatContext *s, AVOpenCallback callback);
  #endif
  #endif
  
-@@ -2021,12 +2019,12 @@ const char *avformat_license(void);
+@@ -1951,12 +1951,12 @@ const char *avformat_license(void);
   * @see av_register_input_format()
   * @see av_register_output_format()
   */
@@ -793,7 +970,7 @@ diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
  void av_register_output_format(AVOutputFormat *format);
  #endif
  
-@@ -2058,7 +2056,7 @@ int avformat_network_deinit(void);
+@@ -1988,7 +1988,7 @@ int avformat_network_deinit(void);
   * if f is non-NULL, returns the next registered input format after f
   * or NULL if f is the last one.
   */
@@ -802,7 +979,7 @@ diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
  AVInputFormat  *av_iformat_next(const AVInputFormat  *f);
  
  /**
-@@ -2066,7 +2064,7 @@ AVInputFormat  *av_iformat_next(const AV
+@@ -1996,7 +1996,7 @@ AVInputFormat  *av_iformat_next(const AV
   * if f is non-NULL, returns the next registered output format after f
   * or NULL if f is the last one.
   */
@@ -811,31 +988,33 @@ diff -pruN csrc.orig/libavformat/avformat.h csrc/libavformat/avformat.h
  AVOutputFormat *av_oformat_next(const AVOutputFormat *f);
  #endif
  
-@@ -2286,7 +2284,6 @@ int av_probe_input_buffer(AVIOContext *p
-  */
- int avformat_open_input(AVFormatContext **ps, const char *url, AVInputFormat *fmt, AVDictionary **options);
- 
--attribute_deprecated
- int av_demuxer_open(AVFormatContext *ic);
- 
+@@ -2229,7 +2229,7 @@ int avformat_open_input(AVFormatContext
  /**
-@@ -3025,7 +3022,6 @@ int avformat_queue_attached_pictures(AVF
+  * @deprecated Use an AVDictionary to pass options to a demuxer.
+  */
+-attribute_deprecated
++
+ int av_demuxer_open(AVFormatContext *ic);
+ #endif
+ 
+@@ -2970,7 +2970,7 @@ int avformat_queue_attached_pictures(AVF
   * @return  >=0 on success;
   *          AVERROR code on failure
   */
 -attribute_deprecated
++
  int av_apply_bitstream_filters(AVCodecContext *codec, AVPacket *pkt,
                                 AVBitStreamFilterContext *bsfc);
  #endif
 diff -pruN csrc.orig/libavresample/avresample.h csrc/libavresample/avresample.h
---- csrc.orig/libavresample/avresample.h	2018-09-15 10:41:10.000000000 +0200
-+++ csrc/libavresample/avresample.h	2018-10-03 08:33:18.502159910 +0200
+--- csrc.orig/libavresample/avresample.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libavresample/avresample.h	2021-06-13 21:34:04.746769202 +0200
 @@ -109,7 +109,7 @@ typedef struct AVAudioResampleContext AV
   * @deprecated use libswresample
   *
   * Mixing Coefficient Types */
 -enum attribute_deprecated AVMixCoeffType {
-+enum AVMixCoeffType {
++enum  AVMixCoeffType {
      AV_MIX_COEFF_TYPE_Q8,   /** 16-bit 8.8 fixed-point                      */
      AV_MIX_COEFF_TYPE_Q15,  /** 32-bit 17.15 fixed-point                    */
      AV_MIX_COEFF_TYPE_FLT,  /** floating-point                              */
@@ -844,7 +1023,7 @@ diff -pruN csrc.orig/libavresample/avresample.h csrc/libavresample/avresample.h
   *
   * Resampling Filter Types */
 -enum attribute_deprecated AVResampleFilterType {
-+enum AVResampleFilterType {
++enum  AVResampleFilterType {
      AV_RESAMPLE_FILTER_TYPE_CUBIC,              /**< Cubic */
      AV_RESAMPLE_FILTER_TYPE_BLACKMAN_NUTTALL,   /**< Blackman Nuttall Windowed Sinc */
      AV_RESAMPLE_FILTER_TYPE_KAISER,             /**< Kaiser Windowed Sinc */
@@ -853,7 +1032,7 @@ diff -pruN csrc.orig/libavresample/avresample.h csrc/libavresample/avresample.h
   * @deprecated use libswresample
   */
 -enum attribute_deprecated AVResampleDitherMethod {
-+enum AVResampleDitherMethod {
++enum  AVResampleDitherMethod {
      AV_RESAMPLE_DITHER_NONE,            /**< Do not use dithering */
      AV_RESAMPLE_DITHER_RECTANGULAR,     /**< Rectangular Dither */
      AV_RESAMPLE_DITHER_TRIANGULAR,      /**< Triangular Dither*/
@@ -1047,75 +1226,93 @@ diff -pruN csrc.orig/libavresample/avresample.h csrc/libavresample/avresample.h
  
  /**
 diff -pruN csrc.orig/libavutil/attributes.h csrc/libavutil/attributes.h
---- csrc.orig/libavutil/attributes.h	2018-09-15 10:41:10.000000000 +0200
-+++ csrc/libavutil/attributes.h	2018-10-03 08:33:18.358160633 +0200
-@@ -90,14 +90,6 @@
- #    define av_flatten
+--- csrc.orig/libavutil/attributes.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libavutil/attributes.h	2021-06-13 21:34:04.502770737 +0200
+@@ -97,11 +97,11 @@
  #endif
  
--#if AV_GCC_VERSION_AT_LEAST(3,1)
+ #if AV_GCC_VERSION_AT_LEAST(3,1)
 -#    define attribute_deprecated __attribute__((deprecated))
--#elif defined(_MSC_VER)
++#    define  __attribute__((deprecated))
+ #elif defined(_MSC_VER)
 -#    define attribute_deprecated __declspec(deprecated)
--#else
++#    define  __declspec(deprecated)
+ #else
 -#    define attribute_deprecated
--#endif
--
++#    define 
+ #endif
+ 
  /**
-  * Disable warnings about deprecated features
-  * This is useful for sections of code kept for backward compatibility and
+diff -pruN csrc.orig/libavutil/avstring.h csrc/libavutil/avstring.h
+--- csrc.orig/libavutil/avstring.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libavutil/avstring.h	2021-06-13 21:34:04.586770208 +0200
+@@ -161,7 +161,7 @@ char *av_asprintf(const char *fmt, ...)
+  * Convert a number to an av_malloced string.
+  * @deprecated  use av_asprintf() with "%f" or a more specific format
+  */
+-attribute_deprecated
++
+ char *av_d2str(double d);
+ #endif
+ 
 diff -pruN csrc.orig/libavutil/cpu.h csrc/libavutil/cpu.h
---- csrc.orig/libavutil/cpu.h	2018-09-15 10:41:10.000000000 +0200
-+++ csrc/libavutil/cpu.h	2018-10-03 08:33:18.418160332 +0200
-@@ -90,7 +90,7 @@ void av_force_cpu_flags(int flags);
+--- csrc.orig/libavutil/cpu.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libavutil/cpu.h	2021-06-13 21:34:04.638769881 +0200
+@@ -93,7 +93,7 @@ void av_force_cpu_flags(int flags);
   * This function is mainly useful for testing.
   * Please use av_force_cpu_flags() and av_get_cpu_flags() instead which are more flexible
   */
 -attribute_deprecated void av_set_cpu_flags_mask(int mask);
-+void av_set_cpu_flags_mask(int mask);
++ void av_set_cpu_flags_mask(int mask);
  
  /**
   * Parse CPU flags from a string.
-@@ -101,7 +101,6 @@ attribute_deprecated void av_set_cpu_fla
+@@ -104,7 +104,7 @@ attribute_deprecated void av_set_cpu_fla
   * Please use av_parse_cpu_caps() when possible.
   * @return a combination of AV_CPU_* flags, negative on error.
   */
 -attribute_deprecated
++
  int av_parse_cpu_flags(const char *s);
  
  /**
 diff -pruN csrc.orig/libavutil/frame.h csrc/libavutil/frame.h
---- csrc.orig/libavutil/frame.h	2018-09-15 10:41:10.000000000 +0200
-+++ csrc/libavutil/frame.h	2018-10-03 08:33:18.414160352 +0200
-@@ -315,7 +315,6 @@ typedef struct AVFrame {
+--- csrc.orig/libavutil/frame.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libavutil/frame.h	2021-06-13 21:34:04.634769907 +0200
+@@ -415,7 +415,7 @@ typedef struct AVFrame {
       * PTS copied from the AVPacket that was decoded to produce this frame.
       * @deprecated use the pts field instead
       */
 -    attribute_deprecated
++    
      int64_t pkt_pts;
  #endif
  
-@@ -349,7 +348,6 @@ typedef struct AVFrame {
+@@ -449,7 +449,7 @@ typedef struct AVFrame {
      /**
       * @deprecated unused
       */
 -    attribute_deprecated
++    
      uint64_t error[AV_NUM_DATA_POINTERS];
  #endif
  
-@@ -535,18 +533,15 @@ typedef struct AVFrame {
+@@ -636,18 +636,18 @@ typedef struct AVFrame {
      /**
       * QP table
       */
 -    attribute_deprecated
++    
      int8_t *qscale_table;
      /**
       * QP store stride
       */
 -    attribute_deprecated
++    
      int qstride;
  
 -    attribute_deprecated
++    
      int qscale_type;
  
 -    attribute_deprecated
@@ -1123,7 +1320,7 @@ diff -pruN csrc.orig/libavutil/frame.h csrc/libavutil/frame.h
      AVBufferRef *qp_table_buf;
  #endif
      /**
-@@ -601,55 +596,55 @@ typedef struct AVFrame {
+@@ -702,55 +702,55 @@ typedef struct AVFrame {
   * Accessors for some AVFrame fields. These used to be provided for ABI
   * compatibility, and do not need to be used anymore.
   */
@@ -1203,29 +1400,53 @@ diff -pruN csrc.orig/libavutil/frame.h csrc/libavutil/frame.h
  void    av_frame_set_color_range(AVFrame *frame, enum AVColorRange val);
  #endif
  
+diff -pruN csrc.orig/libavutil/log.h csrc/libavutil/log.h
+--- csrc.orig/libavutil/log.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libavutil/log.h	2021-06-13 21:34:04.622769982 +0200
+@@ -121,7 +121,7 @@ typedef struct AVClass {
+      * child_next iterates over _already existing_ objects, while
+      * child_class_next iterates over _all possible_ children.
+      */
+-    attribute_deprecated
++    
+     const struct AVClass* (*child_class_next)(const struct AVClass *prev);
+ #endif
+ 
+diff -pruN csrc.orig/libavutil/opt.h csrc/libavutil/opt.h
+--- csrc.orig/libavutil/opt.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libavutil/opt.h	2021-06-13 21:34:04.582770233 +0200
+@@ -657,7 +657,7 @@ void *av_opt_child_next(void *obj, void
+  *
+  * @deprecated use av_opt_child_class_iterate
+  */
+-attribute_deprecated
++
+ const AVClass *av_opt_child_class_next(const AVClass *parent, const AVClass *prev);
+ #endif
+ 
 diff -pruN csrc.orig/libavutil/pixdesc.h csrc/libavutil/pixdesc.h
---- csrc.orig/libavutil/pixdesc.h	2018-09-15 10:41:10.000000000 +0200
-+++ csrc/libavutil/pixdesc.h	2018-10-03 08:33:18.326160794 +0200
+--- csrc.orig/libavutil/pixdesc.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libavutil/pixdesc.h	2021-06-13 21:34:04.438771139 +0200
 @@ -59,13 +59,13 @@ typedef struct AVComponentDescriptor {
  
  #if FF_API_PLUS1_MINUS1
      /** deprecated, use step instead */
 -    attribute_deprecated int step_minus1;
-+    int step_minus1;
++     int step_minus1;
  
      /** deprecated, use depth instead */
 -    attribute_deprecated int depth_minus1;
-+    int depth_minus1;
++     int depth_minus1;
  
      /** deprecated, use offset instead */
 -    attribute_deprecated int offset_plus1;
-+    int offset_plus1;
++     int offset_plus1;
  #endif
  } AVComponentDescriptor;
  
 diff -pruN csrc.orig/libswscale/swscale.h csrc/libswscale/swscale.h
---- csrc.orig/libswscale/swscale.h	2018-09-15 10:41:10.000000000 +0200
-+++ csrc/libswscale/swscale.h	2018-10-03 08:33:18.454160151 +0200
+--- csrc.orig/libswscale/swscale.h	2021-05-19 15:42:00.000000000 +0200
++++ csrc/libswscale/swscale.h	2021-06-13 21:34:04.682769604 +0200
 @@ -261,14 +261,14 @@ void sws_scaleVec(SwsVector *a, double s
  void sws_normalizeVec(SwsVector *a, double height);
  
@@ -1238,14 +1459,14 @@ diff -pruN csrc.orig/libswscale/swscale.h csrc/libswscale/swscale.h
 -attribute_deprecated void sws_shiftVec(SwsVector *a, int shift);
 -attribute_deprecated SwsVector *sws_cloneVec(SwsVector *a);
 -attribute_deprecated void sws_printVec2(SwsVector *a, AVClass *log_ctx, int log_level);
-+SwsVector *sws_getConstVec(double c, int length);
-+SwsVector *sws_getIdentityVec(void);
-+void sws_convVec(SwsVector *a, SwsVector *b);
-+void sws_addVec(SwsVector *a, SwsVector *b);
-+void sws_subVec(SwsVector *a, SwsVector *b);
-+void sws_shiftVec(SwsVector *a, int shift);
-+SwsVector *sws_cloneVec(SwsVector *a);
-+void sws_printVec2(SwsVector *a, AVClass *log_ctx, int log_level);
++ SwsVector *sws_getConstVec(double c, int length);
++ SwsVector *sws_getIdentityVec(void);
++ void sws_convVec(SwsVector *a, SwsVector *b);
++ void sws_addVec(SwsVector *a, SwsVector *b);
++ void sws_subVec(SwsVector *a, SwsVector *b);
++ void sws_shiftVec(SwsVector *a, int shift);
++ SwsVector *sws_cloneVec(SwsVector *a);
++ void sws_printVec2(SwsVector *a, AVClass *log_ctx, int log_level);
  #endif
  
  void sws_freeVec(SwsVector *a);
