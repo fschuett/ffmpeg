@@ -1,7 +1,7 @@
-diff -up csrc/libavutil/avstring.h.orig csrc/libavutil/avstring.h
---- csrc/libavutil/avstring.h.orig	2018-02-19 10:29:18.000000000 +0100
-+++ csrc/libavutil/avstring.h	2018-04-22 09:44:02.136022586 +0200
-@@ -217,15 +217,6 @@ static inline av_const int av_isgraph(in
+diff -pruN csrc.orig/libavutil/avstring.h csrc/libavutil/avstring.h
+--- csrc.orig/libavutil/avstring.h	2021-06-13 22:30:13.421065529 +0200
++++ csrc/libavutil/avstring.h	2021-06-13 22:44:48.865443337 +0200
+@@ -222,15 +222,6 @@ static inline av_const int av_isgraph(in
  }
  
  /**
