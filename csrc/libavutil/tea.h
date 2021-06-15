@@ -34,7 +34,7 @@
 
 extern const int av_tea_size;
 
-struct AVTEA { int dummy; }
+struct AVTEA;
 
 /**
   * Allocate an AVTEA context

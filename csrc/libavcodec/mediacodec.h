@@ -70,7 +70,9 @@ void av_mediacodec_default_free(AVCodecContext *avctx);
 /**
  * Opaque structure representing a MediaCodec buffer to render.
  */
-typedef struct MediaCodecBuffer AVMediaCodecBuffer { int dummy; }
+typedef struct MediaCodecBuffer {
+  int dummy;
+} AVMediaCodecBuffer;
 
 /**
  * Release a MediaCodec buffer and render it to the surface that is associated

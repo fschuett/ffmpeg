@@ -34,7 +34,9 @@
  * AVBufferRefs whose data pointer is a CUdeviceptr.
  */
 
-typedef struct AVCUDADeviceContextInternal AVCUDADeviceContextInternal { int dummy; }
+typedef struct AVCUDADeviceContextInternal {
+int dummy;
+} AVCUDADeviceContextInternal;
 
 /**
  * This struct is allocated as AVHWDeviceContext.hwctx

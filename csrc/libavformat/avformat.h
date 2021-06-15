@@ -316,10 +316,14 @@
 #include "avio.h"
 #include "libavformat/version.h"
 
-struct AVFormatContext { int dummy; }
+struct AVFormatContext;
 
-struct AVDeviceInfoList { int dummy; }
-struct AVDeviceCapabilitiesQuery { int dummy; }
+struct AVDeviceInfoList;
+struct AVDeviceCapabilitiesQuery;
+
+typedef struct FFFrac {
+  int dummy;
+} FFFrac;
 
 /**
  * @defgroup metadata_api Public Metadata API
@@ -433,7 +437,9 @@ int av_append_packet(AVIOContext *s, AVPacket *pkt, int size);
 /*************************************************/
 /* input/output formats */
 
-struct AVCodecTag { int dummy; }
+struct AVCodecTag {
+    int dummy;
+};
 
 /**
  * This structure contains the data a format has to probe a file.
@@ -847,7 +853,9 @@ typedef struct AVIndexEntry {
  */
 #define AV_DISPOSITION_TIMED_THUMBNAILS  0x0800
 
-typedef struct AVStreamInternal AVStreamInternal { int dummy; }
+typedef struct AVStreamInternal {
+  int dummy;
+} AVStreamInternal;
 
 /**
  * To specify text track kind (different from subtitles default).
@@ -1215,7 +1223,9 @@ enum AVDurationEstimationMethod {
     AVFMT_DURATION_FROM_BITRATE ///< Duration estimated from bitrate (less accurate)
 };
 
-typedef struct AVFormatInternal AVFormatInternal { int dummy; }
+typedef struct AVFormatInternal {
+    int dummy;
+} AVFormatInternal;
 
 /**
  * Format I/O context.

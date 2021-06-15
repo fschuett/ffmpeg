@@ -39,7 +39,7 @@
                                                   LIBAVRESAMPLE_VERSION_MICRO)
 #define LIBAVRESAMPLE_BUILD        LIBAVRESAMPLE_VERSION_INT
 
-#define LIBAVRESAMPLE_IDENT        "Lavr" 4.0.0
+#define LIBAVRESAMPLE_IDENT        "Lavr4.0.0"
 
 /**
  * FF_API_* defines may be placed below to indicate public API that will be

@@ -114,7 +114,7 @@
  * initialization, updating, and finalizing.
  */
 
-struct AVHashContext { int dummy; }
+struct AVHashContext;
 
 /**
  * Allocate a hash context for the algorithm specified by name.

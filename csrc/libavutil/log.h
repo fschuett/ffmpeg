@@ -57,7 +57,7 @@ typedef enum {
      ((category) == AV_CLASS_CATEGORY_DEVICE_AUDIO_OUTPUT) || \
      ((category) == AV_CLASS_CATEGORY_DEVICE_OUTPUT))
 
-struct AVOptionRanges { int dummy; }
+struct AVOptionRanges;
 
 /**
  * Describe the class of an AVClass context structure. That is an

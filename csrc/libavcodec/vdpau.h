@@ -57,8 +57,8 @@
 #include "avcodec.h"
 #include "version.h"
 
-struct AVCodecContext { int dummy; }
-struct AVFrame { int dummy; }
+struct AVCodecContext;
+struct AVFrame;
 
 typedef int (*AVVDPAU_Render2)(struct AVCodecContext *, struct AVFrame *,
                                const VdpPictureInfo *, uint32_t,

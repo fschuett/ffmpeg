@@ -35,7 +35,7 @@
 
 extern const int av_twofish_size;
 
-struct AVTWOFISH { int dummy; }
+struct AVTWOFISH;
 
 /**
   * Allocate an AVTWOFISH context

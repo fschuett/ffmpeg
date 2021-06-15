@@ -83,7 +83,9 @@ typedef struct AVDictionaryEntry {
     char *value;
 } AVDictionaryEntry;
 
-typedef struct AVDictionary AVDictionary { int dummy; }
+typedef struct AVDictionary {
+    int dummy;
+} AVDictionary;
 
 /**
  * Get a dictionary entry with matching key.

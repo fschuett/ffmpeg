@@ -39,7 +39,9 @@ enum AVHWDeviceType {
     AV_HWDEVICE_TYPE_VULKAN,
 };
 
-typedef struct AVHWDeviceInternal AVHWDeviceInternal { int dummy; }
+typedef struct AVHWDeviceInternal {
+    int dummy;
+} AVHWDeviceInternal;
 
 /**
  * This struct aggregates all the (hardware/vendor-specific) "high-level" state,
@@ -109,7 +111,9 @@ typedef struct AVHWDeviceContext {
     void *user_opaque;
 } AVHWDeviceContext;
 
-typedef struct AVHWFramesInternal AVHWFramesInternal { int dummy; }
+typedef struct AVHWFramesInternal {
+    int dummy;
+} AVHWFramesInternal;
 
 /**
  * This struct describes a set or pool of "hardware" frames (i.e. those with

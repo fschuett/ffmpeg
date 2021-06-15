@@ -43,7 +43,7 @@
 
 extern const int av_md5_size;
 
-struct AVMD5 { int dummy; }
+struct AVMD5;
 
 /**
  * Allocate an AVMD5 context.

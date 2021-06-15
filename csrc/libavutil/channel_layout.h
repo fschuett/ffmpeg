@@ -170,7 +170,7 @@ int av_get_extended_channel_layout(const char *name, uint64_t* channel_layout, i
  */
 void av_get_channel_layout_string(char *buf, int buf_size, int nb_channels, uint64_t channel_layout);
 
-struct AVBPrint { int dummy; }
+struct AVBPrint;
 /**
  * Append a description of a channel layout to a bprint buffer.
  */

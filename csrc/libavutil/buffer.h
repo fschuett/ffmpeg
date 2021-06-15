@@ -73,7 +73,9 @@
  * A reference counted buffer type. It is opaque and is meant to be used through
  * references (AVBufferRef).
  */
-typedef struct AVBuffer AVBuffer { int dummy; }
+typedef struct AVBuffer {
+    int dummy;
+} AVBuffer;
 
 /**
  * A reference to a data buffer.
@@ -274,7 +276,9 @@ int av_buffer_replace(AVBufferRef **dst, AVBufferRef *src);
  * directly. It is allocated with av_buffer_pool_init() and freed with
  * av_buffer_pool_uninit().
  */
-typedef struct AVBufferPool AVBufferPool { int dummy; }
+typedef struct AVBufferPool {
+    int dummy;
+} AVBufferPool;
 
 /**
  * Allocate and initialize a buffer pool.

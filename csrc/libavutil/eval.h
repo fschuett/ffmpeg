@@ -28,7 +28,9 @@
 
 #include "avutil.h"
 
-typedef struct AVExpr AVExpr { int dummy; }
+typedef struct AVExpr {
+    int dummy;
+} AVExpr;
 
 /**
  * Parse and evaluate an expression.

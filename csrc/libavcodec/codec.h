@@ -185,11 +185,11 @@ typedef struct AVProfile {
     const char *name; ///< short name for the profile
 } AVProfile;
 
-typedef struct AVCodecDefault AVCodecDefault { int dummy; }
+typedef struct AVCodecDefault AVCodecDefault;
 
-struct AVCodecContext { int dummy; }
-struct AVSubtitle { int dummy; }
-struct AVPacket { int dummy; }
+struct AVCodecContext;
+struct AVSubtitle;
+struct AVPacket;
 
 /**
  * AVCodec.

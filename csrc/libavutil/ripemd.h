@@ -44,7 +44,7 @@
 
 extern const int av_ripemd_size;
 
-struct AVRIPEMD { int dummy; }
+struct AVRIPEMD;
 
 /**
  * Allocate an AVRIPEMD context.

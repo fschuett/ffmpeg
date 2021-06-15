@@ -34,7 +34,7 @@
 
 extern const int av_aes_size;
 
-struct AVAES { int dummy; }
+struct AVAES;
 
 /**
  * Allocate an AVAES context.

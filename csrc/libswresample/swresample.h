@@ -179,7 +179,9 @@ enum SwrFilterType {
  * the @ref avoptions API and cannot directly set values to members of the
  * structure.
  */
-typedef struct SwrContext SwrContext { int dummy; }
+typedef struct SwrContext {
+    int dummy;
+} SwrContext;
 
 /**
  * Get the AVClass for SwrContext. It can be used in combination with

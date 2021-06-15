@@ -119,7 +119,7 @@ typedef struct SwsFilter {
     SwsVector *chrV;
 } SwsFilter;
 
-struct SwsContext { int dummy; }
+struct SwsContext;
 
 /**
  * Return a positive value if pix_fmt is a supported input format, 0

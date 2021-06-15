@@ -22,7 +22,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
-typedef struct AVTXContext AVTXContext { int dummy; }
+typedef struct AVTXContext AVTXContext;
 
 typedef struct AVComplexFloat {
     float re, im;

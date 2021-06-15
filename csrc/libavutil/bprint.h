@@ -146,7 +146,7 @@ void av_bprint_chars(AVBPrint *buf, char c, unsigned n);
  */
 void av_bprint_append_data(AVBPrint *buf, const char *data, unsigned size);
 
-struct tm { int dummy; }
+struct tm;
 /**
  * Append a formatted date and time to a print buffer.
  *

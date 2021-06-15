@@ -518,7 +518,9 @@ typedef struct AVProducerReferenceTime {
  */
 #define AV_GET_ENCODE_BUFFER_FLAG_REF (1 << 0)
 
-struct AVCodecInternal { int dummy; }
+struct AVCodecInternal {
+    int dummy;
+};
 
 /**
  * main external API structure.
@@ -2418,14 +2420,14 @@ uint16_t *av_codec_get_chroma_intra_matrix(const AVCodecContext *avctx);
 void av_codec_set_chroma_intra_matrix(AVCodecContext *avctx, uint16_t *val);
 #endif
 
-struct AVSubtitle { int dummy; }
+struct AVSubtitle;
 
 #if FF_API_CODEC_GET_SET
 
 int av_codec_get_max_lowres(const AVCodec *codec);
 #endif
 
-struct MpegEncContext { int dummy; }
+struct MpegEncContext;
 
 /**
  * @defgroup lavc_hwaccel AVHWAccel

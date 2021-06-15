@@ -34,7 +34,7 @@
  * @{
  */
 
-typedef struct AVBSFInternal AVBSFInternal { int dummy; }
+typedef struct AVBSFInternal AVBSFInternal;
 
 /**
  * The bitstream filter state.
@@ -237,7 +237,7 @@ const AVClass *av_bsf_get_class(void);
  * Structure for chain/list of bitstream filters.
  * Empty list can be allocated by av_bsf_list_alloc().
  */
-typedef struct AVBSFList AVBSFList { int dummy; }
+typedef struct AVBSFList AVBSFList;
 
 /**
  * Allocate empty list of bitstream filters.

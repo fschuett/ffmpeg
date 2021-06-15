@@ -64,11 +64,21 @@ const char *avfilter_configuration(void);
  */
 const char *avfilter_license(void);
 
-typedef struct AVFilterContext AVFilterContext { int dummy; }
-typedef struct AVFilterLink    AVFilterLink { int dummy; }
-typedef struct AVFilterPad     AVFilterPad { int dummy; }
-typedef struct AVFilterFormats AVFilterFormats { int dummy; }
-typedef struct AVFilterChannelLayouts AVFilterChannelLayouts { int dummy; }
+typedef struct AVFilterContext {
+    int dummy;
+} AVFilterContext;
+typedef struct AVFilterLink {
+    int dummy;
+} AVFilterLink;
+typedef struct AVFilterPad {
+  int dummy;
+} AVFilterPad;
+typedef struct AVFilterFormats {
+  int dummy;
+} AVFilterFormats;
+typedef struct AVFilterChannelLayouts {
+  int dummy;
+} AVFilterChannelLayouts;
 
 /**
  * Get the number of elements in a NULL-terminated array of AVFilterPads (e.g.
@@ -335,7 +345,13 @@ typedef struct AVFilter {
  */
 #define AVFILTER_THREAD_SLICE (1 << 0)
 
-typedef struct AVFilterInternal AVFilterInternal { int dummy; }
+typedef struct AVFilterInternal {
+  int dummy;
+} AVFilterInternal;
+
+typedef struct AVFilterCommand {
+  int dummy;
+} AVFilterCommand;
 
 /** An instance of a filter */
 struct AVFilterContext {
@@ -468,6 +484,10 @@ typedef struct AVFilterFormatsConfig {
  * In the future, access to the header may be reserved for filters
  * implementation.
  */
+typedef AVFilterChannelLayouts {
+  int dummy;
+} AVFilterChannelLayouts;
+
 struct AVFilterLink {
     AVFilterContext *src;       ///< source filter
     AVFilterPad *srcpad;        ///< output pad on the source filter
@@ -816,7 +836,9 @@ int avfilter_insert_filter(AVFilterLink *link, AVFilterContext *filt,
  */
 const AVClass *avfilter_get_class(void);
 
-typedef struct AVFilterGraphInternal AVFilterGraphInternal { int dummy; }
+typedef struct AVFilterGraphInternal {
+  int dummy;
+} AVFilterGraphInternal;
 
 /**
  * A function pointer passed to the @ref AVFilterGraph.execute callback to be
