@@ -132,12 +132,12 @@ public class AVBufferSrcParameters extends StructObject {
 		this.io.setPointerField(this, 6, hw_frames_ctx);
 		return this;
 	}
-	/** Audio only, the audio sampling rate in samples per secon. */
+	/** Audio only, the audio sampling rate in samples per second. */
 	@Field(7) 
 	public int sample_rate() {
 		return this.io.getIntField(this, 7);
 	}
-	/** Audio only, the audio sampling rate in samples per secon. */
+	/** Audio only, the audio sampling rate in samples per second. */
 	@Field(7) 
 	public AVBufferSrcParameters sample_rate(int sample_rate) {
 		this.io.setIntField(this, 7, sample_rate);

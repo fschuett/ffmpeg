@@ -123,7 +123,7 @@ public class AvformatLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : libavformat/avformat.h:318</i>
+	 * <i>native declaration : libavformat/avformat.h:306</i>
 	 */
 	public enum AVStreamParseType implements IntValuedEnum<AVStreamParseType > {
 		AVSTREAM_PARSE_NONE(0),
@@ -159,7 +159,7 @@ public class AvformatLibrary {
 	 * The duration of a video can be estimated through various ways, and this enum can be used<br>
 	 * to know how the duration was estimated.<br>
 	 * enum values<br>
-	 * <i>native declaration : libavformat/avformat.h:666</i>
+	 * <i>native declaration : libavformat/avformat.h:565</i>
 	 */
 	public enum AVDurationEstimationMethod implements IntValuedEnum<AVDurationEstimationMethod > {
 		/** < Duration accurately estimated from PTSes */
@@ -184,7 +184,7 @@ public class AvformatLibrary {
 	};
 	/**
 	 * enum values<br>
-	 * <i>native declaration : libavformat/avformat.h:1989</i>
+	 * <i>native declaration : libavformat/avformat.h:1880</i>
 	 */
 	public enum AVTimebaseSource implements IntValuedEnum<AVTimebaseSource > {
 		AVFMT_TBCF_AUTO(-1),
@@ -239,8 +239,14 @@ public class AvformatLibrary {
 	public static final int AVFMT_FLAG_NONBLOCK = (int)0x0004;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVSEEK_FLAG_BYTE = (int)2;
+	/** <i>native declaration : ./libavformat/version.h</i> */
+	public static final boolean FF_API_LAVF_MP4A_LATM = (boolean)(58 < 59);
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVPROBE_SCORE_RETRY = (int)(100 / 4);
+	/** <i>native declaration : ./libavformat/version.h</i> */
+	public static final boolean FF_API_HLS_USE_LOCALTIME = (boolean)(58 < 59);
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AVSTREAM_EVENT_FLAG_NEW_PACKETS = (int)(1 << 1);
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_FLAG_BITEXACT = (int)0x0400;
 	/** <i>native declaration : libavformat/avformat.h</i> */
@@ -265,14 +271,14 @@ public class AvformatLibrary {
 	public static final int AVSEEK_FORCE = (int)0x20000;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVPROBE_SCORE_STREAM_RETRY = (int)(100 / 4 - 1);
+	/** <i>native declaration : ./libavformat/version.h</i> */
+	public static final boolean FF_API_DEMUXER_OPEN = (boolean)(58 < 59);
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_GLOBALHEADER = (int)0x0040;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVSEEK_FLAG_FRAME = (int)8;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AV_PTS_WRAP_SUB_OFFSET = (int)-1;
-	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int MAX_STD_TIMEBASES = (int)(30 * 12 + 30 + 3 + 6);
 	/** <i>native declaration : ./libavformat/version.h</i> */
 	public static final int LIBAVFORMAT_VERSION_MAJOR = (int)58;
 	/** <i>native declaration : libavformat/avformat.h</i> */
@@ -286,11 +292,15 @@ public class AvformatLibrary {
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_NEEDNUMBER = (int)0x0002;
 	/** <i>native declaration : ./libavformat/version.h</i> */
-	public static final int LIBAVFORMAT_BUILD = (int)((58) << 16 | (12) << 8 | (100));
+	public static final int LIBAVFORMAT_BUILD = (int)((58) << 16 | (76) << 8 | (100));
 	/** <i>native declaration : ./libavformat/version.h</i> */
-	public static final String LIBAVFORMAT_IDENT = (String)"Lavf58.12.100";
+	public static final String LIBAVFORMAT_IDENT = (String)"Lavf58.76.100";
 	/** <i>native declaration : libavformat/avio.h</i> */
 	public static final int AVIO_SEEKABLE_TIME = (int)(1 << 1);
+	/** <i>native declaration : ./libavformat/version.h</i> */
+	public static final boolean FF_API_AVIOFORMAT = (boolean)(58 < 59);
+	/** <i>native declaration : ./libavformat/version.h</i> */
+	public static final boolean FF_API_DASH_MIN_SEG_DURATION = (boolean)(58 < 59);
 	/** <i>native declaration : ./libavformat/version.h</i> */
 	public static final boolean FF_API_FORMAT_FILENAME = (boolean)(58 < 59);
 	/** <i>native declaration : libavformat/avformat.h</i> */
@@ -310,9 +320,7 @@ public class AvformatLibrary {
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_NO_BYTE_SEEK = (int)0x8000;
 	/** <i>native declaration : ./libavformat/version.h</i> */
-	public static final int LIBAVFORMAT_VERSION_MINOR = (int)12;
-	/** <i>native declaration : libavformat/avformat.h</i> */
-	public static final int MAX_REORDER_DELAY = (int)16;
+	public static final int LIBAVFORMAT_VERSION_MINOR = (int)76;
 	/** <i>native declaration : ./libavformat/version.h</i> */
 	public static final boolean FF_API_LAVF_KEEPSIDE_FLAG = (boolean)(58 < 59);
 	/** <i>native declaration : libavformat/avformat.h</i> */
@@ -328,7 +336,7 @@ public class AvformatLibrary {
 	/** <i>native declaration : libavformat/avio.h</i> */
 	public static final int AVIO_FLAG_DIRECT = (int)0x8000;
 	/** <i>native declaration : ./libavformat/version.h</i> */
-	public static final int LIBAVFORMAT_VERSION_INT = (int)((58) << 16 | (12) << 8 | (100));
+	public static final int LIBAVFORMAT_VERSION_INT = (int)((58) << 16 | (76) << 8 | (100));
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVSTREAM_INIT_IN_WRITE_HEADER = (int)0;
 	/** <i>native declaration : libavformat/avformat.h</i> */
@@ -339,6 +347,8 @@ public class AvformatLibrary {
 	public static final int AV_DISPOSITION_TIMED_THUMBNAILS = (int)0x0800;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AV_PTS_WRAP_ADD_OFFSET = (int)1;
+	/** <i>native declaration : ./libavformat/version.h</i> */
+	public static final boolean FF_API_LAVF_PRIV_OPT = (boolean)(58 < 60);
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_AVOID_NEG_TS_MAKE_ZERO = (int)2;
 	/** <i>native declaration : libavformat/avformat.h</i> */
@@ -361,11 +371,13 @@ public class AvformatLibrary {
 	public static final int AVFMT_FLAG_SHORTEST = (int)0x100000;
 	/**
 	 * define<br>
-	 * Conversion Error : 58.12.<br>
+	 * Conversion Error : 58.76.<br>
 	 * SKIPPED:<br>
 	 * <i>native declaration : ./libavformat/version.h:0</i><br>
-	 * 58.12.
+	 * 58.76.
 	 */
+	/** <i>native declaration : libavformat/avformat.h</i> */
+	public static final int AV_DISPOSITION_STILL_IMAGE = (int)0x100000;
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_GENERIC_INDEX = (int)0x0100;
 	/** <i>native declaration : libavformat/avformat.h</i> */
@@ -404,6 +416,8 @@ public class AvformatLibrary {
 	public static final int AV_DISPOSITION_HEARING_IMPAIRED = (int)0x0080;
 	/** <i>native declaration : libavformat/avio.h</i> */
 	public static final int AVIO_SEEKABLE_NORMAL = (int)(1 << 0);
+	/** <i>native declaration : ./libavformat/version.h</i> */
+	public static final boolean FF_API_CHAPTER_ID_INT = (boolean)(58 < 59);
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int AVFMT_NOFILE = (int)0x0001;
 	/** <i>native declaration : libavformat/avformat.h</i> */
@@ -434,7 +448,7 @@ public class AvformatLibrary {
 	public static final boolean FF_API_LAVF_AVCTX = (boolean)(58 < 59);
 	/** <i>native declaration : libavformat/avformat.h</i> */
 	public static final int FF_FDEBUG_TS = (int)0x0001;
-	/** <i>native declaration : libavformat/avio.h:687</i> */
+	/** <i>native declaration : libavformat/avio.h:701</i> */
 	public static abstract class avio_alloc_context_read_packet_callback extends Callback<avio_alloc_context_read_packet_callback > {
 		public int apply(Pointer<? > opaque, Pointer<Byte > buf, int buf_size) {
 			return apply(Pointer.getPeer(opaque), Pointer.getPeer(buf), buf_size);
@@ -443,7 +457,7 @@ public class AvformatLibrary {
 			return apply(Pointer.pointerToAddress(opaque), Pointer.pointerToAddress(buf, Byte.class), buf_size);
 		}
 	};
-	/** <i>native declaration : libavformat/avio.h:688</i> */
+	/** <i>native declaration : libavformat/avio.h:702</i> */
 	public static abstract class avio_alloc_context_write_packet_callback extends Callback<avio_alloc_context_write_packet_callback > {
 		public int apply(Pointer<? > opaque, Pointer<Byte > buf, int buf_size) {
 			return apply(Pointer.getPeer(opaque), Pointer.getPeer(buf), buf_size);
@@ -452,7 +466,7 @@ public class AvformatLibrary {
 			return apply(Pointer.pointerToAddress(opaque), Pointer.pointerToAddress(buf, Byte.class), buf_size);
 		}
 	};
-	/** <i>native declaration : libavformat/avio.h:689</i> */
+	/** <i>native declaration : libavformat/avio.h:703</i> */
 	public static abstract class avio_alloc_context_seek_callback extends Callback<avio_alloc_context_seek_callback > {
 		public long apply(Pointer<? > opaque, long offset, int whence) {
 			return apply(Pointer.getPeer(opaque), offset, whence);
@@ -461,7 +475,7 @@ public class AvformatLibrary {
 			return apply(Pointer.pointerToAddress(opaque), offset, whence);
 		}
 	};
-	/** <i>native declaration : libavformat/avformat.h:653</i> */
+	/** <i>native declaration : libavformat/avformat.h:552</i> */
 	public static abstract class av_format_control_message extends Callback<av_format_control_message > {
 		public int apply(Pointer<AVFormatContext > s, int type, Pointer<? > data, @Ptr long data_size) {
 			return apply(Pointer.getPeer(s), type, Pointer.getPeer(data), data_size);
@@ -470,7 +484,7 @@ public class AvformatLibrary {
 			return apply(Pointer.pointerToAddress(s, AVFormatContext.class), type, Pointer.pointerToAddress(data), data_size);
 		}
 	};
-	/** <i>native declaration : libavformat/avformat.h:654</i> */
+	/** <i>native declaration : libavformat/avformat.h:553</i> */
 	public static abstract class AVOpenCallback extends Callback<AVOpenCallback > {
 		public int apply(Pointer<AVFormatContext > s, Pointer<Pointer> pb, Pointer<Byte > url, int flags, Pointer<AVIOInterruptCB > int_cb, Pointer<Pointer> options) {
 			return apply(Pointer.getPeer(s), Pointer.getPeer(pb), Pointer.getPeer(url), flags, Pointer.getPeer(int_cb), Pointer.getPeer(options));
@@ -783,8 +797,8 @@ public class AvformatLibrary {
 	}
 	protected native static long avio_size(@Ptr long s);
 	/**
-	 * feof() equivalent for AVIOContext.<br>
-	 * @return non zero if and only if end of file<br>
+	 * Similar to feof() but also returns nonzero on read errors.<br>
+	 * @return non zero if and only if at end of file or a read error happened when reading.<br>
 	 * Original signature : <code>int avio_feof(AVIOContext*)</code><br>
 	 * <i>native declaration : libavformat/avio.h:449</i>
 	 */
@@ -793,14 +807,26 @@ public class AvformatLibrary {
 	}
 	protected native static int avio_feof(@Ptr long s);
 	/**
-	 * @warning Writes up to 4 KiB per call<br>
+	 * Writes a formatted string to the context.<br>
+	 * @return number of bytes written, < 0 on error.<br>
 	 * Original signature : <code>int avio_printf(AVIOContext*, const char*, null)</code><br>
-	 * <i>native declaration : libavformat/avio.h:454</i>
+	 * <i>native declaration : libavformat/avio.h:455</i>
 	 */
 	public static int avio_printf(Pointer<AVIOContext > s, Pointer<Byte > fmt, Object... varArgs1) {
 		return avio_printf(Pointer.getPeer(s), Pointer.getPeer(fmt), varArgs1);
 	}
 	protected native static int avio_printf(@Ptr long s, @Ptr long fmt, Object... varArgs1);
+	/**
+	 * Write a NULL terminated array of strings to the context.<br>
+	 * Usually you don't need to use this function directly but its macro wrapper,<br>
+	 * avio_print.<br>
+	 * Original signature : <code>void avio_print_string_array(AVIOContext*, const char*[])</code><br>
+	 * <i>native declaration : libavformat/avio.h:462</i>
+	 */
+	public static void avio_print_string_array(Pointer<AVIOContext > s, Pointer<Pointer<Byte > > strings) {
+		avio_print_string_array(Pointer.getPeer(s), Pointer.getPeer(strings));
+	}
+	protected native static void avio_print_string_array(@Ptr long s, @Ptr long strings);
 	/**
 	 * Force flushing of buffered data.<br>
 	 * * For write streams, force the buffered data to be immediately written to the output,<br>
@@ -809,7 +835,7 @@ public class AvformatLibrary {
 	 * reported file position to that of the underlying stream. This does not<br>
 	 * read new data, and does not perform any seeks.<br>
 	 * Original signature : <code>void avio_flush(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:464</i>
+	 * <i>native declaration : libavformat/avio.h:472</i>
 	 */
 	public static void avio_flush(Pointer<AVIOContext > s) {
 		avio_flush(Pointer.getPeer(s));
@@ -819,7 +845,7 @@ public class AvformatLibrary {
 	 * Read size bytes from AVIOContext into buf.<br>
 	 * @return number of bytes read or AVERROR<br>
 	 * Original signature : <code>int avio_read(AVIOContext*, unsigned char*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:470</i>
+	 * <i>native declaration : libavformat/avio.h:478</i>
 	 */
 	public static int avio_read(Pointer<AVIOContext > s, Pointer<Byte > buf, int size) {
 		return avio_read(Pointer.getPeer(s), Pointer.getPeer(buf), size);
@@ -832,7 +858,7 @@ public class AvformatLibrary {
 	 * Useful to reduce latency in certain cases.<br>
 	 * @return number of bytes read or AVERROR<br>
 	 * Original signature : <code>int avio_read_partial(AVIOContext*, unsigned char*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:479</i>
+	 * <i>native declaration : libavformat/avio.h:487</i>
 	 */
 	public static int avio_read_partial(Pointer<AVIOContext > s, Pointer<Byte > buf, int size) {
 		return avio_read_partial(Pointer.getPeer(s), Pointer.getPeer(buf), size);
@@ -844,7 +870,7 @@ public class AvformatLibrary {
 	 * * @note return 0 if EOF, so you cannot use it if EOF handling is<br>
 	 *       necessary<br>
 	 * Original signature : <code>int avio_r8(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:487</i>
+	 * <i>native declaration : libavformat/avio.h:495</i>
 	 */
 	public static int avio_r8(Pointer<AVIOContext > s) {
 		return avio_r8(Pointer.getPeer(s));
@@ -852,7 +878,7 @@ public class AvformatLibrary {
 	protected native static int avio_r8(@Ptr long s);
 	/**
 	 * Original signature : <code>int avio_rl16(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:489</i>
+	 * <i>native declaration : libavformat/avio.h:497</i>
 	 */
 	public static int avio_rl16(Pointer<AVIOContext > s) {
 		return avio_rl16(Pointer.getPeer(s));
@@ -860,7 +886,7 @@ public class AvformatLibrary {
 	protected native static int avio_rl16(@Ptr long s);
 	/**
 	 * Original signature : <code>int avio_rl24(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:491</i>
+	 * <i>native declaration : libavformat/avio.h:499</i>
 	 */
 	public static int avio_rl24(Pointer<AVIOContext > s) {
 		return avio_rl24(Pointer.getPeer(s));
@@ -868,7 +894,7 @@ public class AvformatLibrary {
 	protected native static int avio_rl24(@Ptr long s);
 	/**
 	 * Original signature : <code>int avio_rl32(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:493</i>
+	 * <i>native declaration : libavformat/avio.h:501</i>
 	 */
 	public static int avio_rl32(Pointer<AVIOContext > s) {
 		return avio_rl32(Pointer.getPeer(s));
@@ -876,7 +902,7 @@ public class AvformatLibrary {
 	protected native static int avio_rl32(@Ptr long s);
 	/**
 	 * Original signature : <code>uint64_t avio_rl64(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:495</i>
+	 * <i>native declaration : libavformat/avio.h:503</i>
 	 */
 	public static long avio_rl64(Pointer<AVIOContext > s) {
 		return avio_rl64(Pointer.getPeer(s));
@@ -884,7 +910,7 @@ public class AvformatLibrary {
 	protected native static long avio_rl64(@Ptr long s);
 	/**
 	 * Original signature : <code>int avio_rb16(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:497</i>
+	 * <i>native declaration : libavformat/avio.h:505</i>
 	 */
 	public static int avio_rb16(Pointer<AVIOContext > s) {
 		return avio_rb16(Pointer.getPeer(s));
@@ -892,7 +918,7 @@ public class AvformatLibrary {
 	protected native static int avio_rb16(@Ptr long s);
 	/**
 	 * Original signature : <code>int avio_rb24(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:499</i>
+	 * <i>native declaration : libavformat/avio.h:507</i>
 	 */
 	public static int avio_rb24(Pointer<AVIOContext > s) {
 		return avio_rb24(Pointer.getPeer(s));
@@ -900,7 +926,7 @@ public class AvformatLibrary {
 	protected native static int avio_rb24(@Ptr long s);
 	/**
 	 * Original signature : <code>int avio_rb32(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:501</i>
+	 * <i>native declaration : libavformat/avio.h:509</i>
 	 */
 	public static int avio_rb32(Pointer<AVIOContext > s) {
 		return avio_rb32(Pointer.getPeer(s));
@@ -908,7 +934,7 @@ public class AvformatLibrary {
 	protected native static int avio_rb32(@Ptr long s);
 	/**
 	 * Original signature : <code>uint64_t avio_rb64(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:503</i>
+	 * <i>native declaration : libavformat/avio.h:511</i>
 	 */
 	public static long avio_rb64(Pointer<AVIOContext > s) {
 		return avio_rb64(Pointer.getPeer(s));
@@ -925,7 +951,7 @@ public class AvformatLibrary {
 	 * If reading ends on EOF or error, the return value will be one more than<br>
 	 * bytes actually read.<br>
 	 * Original signature : <code>int avio_get_str(AVIOContext*, int, char*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:516</i>
+	 * <i>native declaration : libavformat/avio.h:524</i>
 	 */
 	public static int avio_get_str(Pointer<AVIOContext > pb, int maxlen, Pointer<Byte > buf, int buflen) {
 		return avio_get_str(Pointer.getPeer(pb), maxlen, Pointer.getPeer(buf), buflen);
@@ -937,7 +963,7 @@ public class AvformatLibrary {
 	 * encountered or maxlen bytes have been read.<br>
 	 * @return number of bytes read (is always <= maxlen)<br>
 	 * Original signature : <code>int avio_get_str16le(AVIOContext*, int, char*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:524</i>
+	 * <i>native declaration : libavformat/avio.h:532</i>
 	 */
 	public static int avio_get_str16le(Pointer<AVIOContext > pb, int maxlen, Pointer<Byte > buf, int buflen) {
 		return avio_get_str16le(Pointer.getPeer(pb), maxlen, Pointer.getPeer(buf), buflen);
@@ -945,7 +971,7 @@ public class AvformatLibrary {
 	protected native static int avio_get_str16le(@Ptr long pb, int maxlen, @Ptr long buf, int buflen);
 	/**
 	 * Original signature : <code>int avio_get_str16be(AVIOContext*, int, char*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:526</i>
+	 * <i>native declaration : libavformat/avio.h:534</i>
 	 */
 	public static int avio_get_str16be(Pointer<AVIOContext > pb, int maxlen, Pointer<Byte > buf, int buflen) {
 		return avio_get_str16be(Pointer.getPeer(pb), maxlen, Pointer.getPeer(buf), buflen);
@@ -964,7 +990,7 @@ public class AvformatLibrary {
 	 * @return >= 0 in case of success, a negative value corresponding to an<br>
 	 * AVERROR code in case of failure<br>
 	 * Original signature : <code>int avio_open(AVIOContext**, const char*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:541</i>
+	 * <i>native declaration : libavformat/avio.h:549</i>
 	 */
 	public static int avio_open(Pointer<Pointer<AVIOContext > > s, Pointer<Byte > url, int flags) {
 		return avio_open(Pointer.getPeer(s), Pointer.getPeer(url), flags);
@@ -987,7 +1013,7 @@ public class AvformatLibrary {
 	 * @return >= 0 in case of success, a negative value corresponding to an<br>
 	 * AVERROR code in case of failure<br>
 	 * Original signature : <code>int avio_open2(AVIOContext**, const char*, int, const AVIOInterruptCB*, AVDictionary**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:560</i>
+	 * <i>native declaration : libavformat/avio.h:568</i>
 	 */
 	public static int avio_open2(Pointer<Pointer<AVIOContext > > s, Pointer<Byte > url, int flags, Pointer<AVIOInterruptCB > int_cb, Pointer<Pointer<AVDictionary > > options) {
 		return avio_open2(Pointer.getPeer(s), Pointer.getPeer(url), flags, Pointer.getPeer(int_cb), Pointer.getPeer(options));
@@ -1001,7 +1027,7 @@ public class AvformatLibrary {
 	 * * @return 0 on success, an AVERROR < 0 on error.<br>
 	 * @see avio_closep<br>
 	 * Original signature : <code>int avio_close(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:570</i>
+	 * <i>native declaration : libavformat/avio.h:578</i>
 	 */
 	public static int avio_close(Pointer<AVIOContext > s) {
 		return avio_close(Pointer.getPeer(s));
@@ -1016,7 +1042,7 @@ public class AvformatLibrary {
 	 * * @return 0 on success, an AVERROR < 0 on error.<br>
 	 * @see avio_close<br>
 	 * Original signature : <code>int avio_closep(AVIOContext**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:581</i>
+	 * <i>native declaration : libavformat/avio.h:589</i>
 	 */
 	public static int avio_closep(Pointer<Pointer<AVIOContext > > s) {
 		return avio_closep(Pointer.getPeer(s));
@@ -1027,7 +1053,7 @@ public class AvformatLibrary {
 	 * * @param s new IO context<br>
 	 * @return zero if no error.<br>
 	 * Original signature : <code>int avio_open_dyn_buf(AVIOContext**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:588</i>
+	 * <i>native declaration : libavformat/avio.h:596</i>
 	 */
 	public static int avio_open_dyn_buf(Pointer<Pointer<AVIOContext > > s) {
 		return avio_open_dyn_buf(Pointer.getPeer(s));
@@ -1042,7 +1068,7 @@ public class AvformatLibrary {
 	 * @param pbuffer pointer to a byte buffer<br>
 	 * @return the length of the byte buffer<br>
 	 * Original signature : <code>int avio_get_dyn_buf(AVIOContext*, uint8_t**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:599</i>
+	 * <i>native declaration : libavformat/avio.h:607</i>
 	 */
 	public static int avio_get_dyn_buf(Pointer<AVIOContext > s, Pointer<Pointer<Byte > > pbuffer) {
 		return avio_get_dyn_buf(Pointer.getPeer(s), Pointer.getPeer(pbuffer));
@@ -1056,7 +1082,7 @@ public class AvformatLibrary {
 	 * @param pbuffer pointer to a byte buffer<br>
 	 * @return the length of the byte buffer<br>
 	 * Original signature : <code>int avio_close_dyn_buf(AVIOContext*, uint8_t**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:609</i>
+	 * <i>native declaration : libavformat/avio.h:617</i>
 	 */
 	public static int avio_close_dyn_buf(Pointer<AVIOContext > s, Pointer<Pointer<Byte > > pbuffer) {
 		return avio_close_dyn_buf(Pointer.getPeer(s), Pointer.getPeer(pbuffer));
@@ -1071,7 +1097,7 @@ public class AvformatLibrary {
 	 *               otherwise over input protocols.<br>
 	 * * @return A static string containing the name of current protocol or NULL<br>
 	 * Original signature : <code>char* avio_enum_protocols(void**, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:620</i>
+	 * <i>native declaration : libavformat/avio.h:628</i>
 	 */
 	public static Pointer<Byte > avio_enum_protocols(Pointer<Pointer<? > > opaque, int output) {
 		return Pointer.pointerToAddress(avio_enum_protocols(Pointer.getPeer(opaque), output), Byte.class);
@@ -1079,12 +1105,23 @@ public class AvformatLibrary {
 	@Ptr 
 	protected native static long avio_enum_protocols(@Ptr long opaque, int output);
 	/**
+	 * Get AVClass by names of available protocols.<br>
+	 * * @return A AVClass of input protocol name or NULL<br>
+	 * Original signature : <code>AVClass* avio_protocol_get_class(const char*)</code><br>
+	 * <i>native declaration : libavformat/avio.h:634</i>
+	 */
+	public static Pointer<AVClass > avio_protocol_get_class(Pointer<Byte > name) {
+		return Pointer.pointerToAddress(avio_protocol_get_class(Pointer.getPeer(name)), AVClass.class);
+	}
+	@Ptr 
+	protected native static long avio_protocol_get_class(@Ptr long name);
+	/**
 	 * Pause and resume playing - only meaningful if using a network streaming<br>
 	 * protocol (e.g. MMS).<br>
 	 * * @param h     IO context from which to call the read_pause function pointer<br>
 	 * @param pause 1 for pause, 0 for resume<br>
 	 * Original signature : <code>int avio_pause(AVIOContext*, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:628</i>
+	 * <i>native declaration : libavformat/avio.h:642</i>
 	 */
 	public static int avio_pause(Pointer<AVIOContext > h, int pause) {
 		return avio_pause(Pointer.getPeer(h), pause);
@@ -1108,7 +1145,7 @@ public class AvformatLibrary {
 	 * @return >= 0 on success<br>
 	 * @see AVInputFormat::read_seek<br>
 	 * Original signature : <code>int64_t avio_seek_time(AVIOContext*, int, int64_t, int)</code><br>
-	 * <i>native declaration : libavformat/avio.h:648</i>
+	 * <i>native declaration : libavformat/avio.h:662</i>
 	 */
 	public static long avio_seek_time(Pointer<AVIOContext > h, int stream_index, long timestamp, int flags) {
 		return avio_seek_time(Pointer.getPeer(h), stream_index, timestamp, flags);
@@ -1119,7 +1156,7 @@ public class AvformatLibrary {
 	 * * @return 0 for success (max_size bytes read or EOF reached), negative error<br>
 	 * code otherwise<br>
 	 * Original signature : <code>int avio_read_to_bprint(AVIOContext*, AVBPrint*, size_t)</code><br>
-	 * <i>native declaration : libavformat/avio.h:657</i>
+	 * <i>native declaration : libavformat/avio.h:671</i>
 	 */
 	public static int avio_read_to_bprint(Pointer<AVIOContext > h, Pointer<AVBPrint > pb, @Ptr long max_size) {
 		return avio_read_to_bprint(Pointer.getPeer(h), Pointer.getPeer(pb), max_size);
@@ -1132,7 +1169,7 @@ public class AvformatLibrary {
 	 * @return   >= 0 on success or a negative value corresponding<br>
 	 *           to an AVERROR on failure<br>
 	 * Original signature : <code>int avio_accept(AVIOContext*, AVIOContext**)</code><br>
-	 * <i>native declaration : libavformat/avio.h:666</i>
+	 * <i>native declaration : libavformat/avio.h:680</i>
 	 */
 	public static int avio_accept(Pointer<AVIOContext > s, Pointer<Pointer<AVIOContext > > c) {
 		return avio_accept(Pointer.getPeer(s), Pointer.getPeer(c));
@@ -1156,7 +1193,7 @@ public class AvformatLibrary {
 	 *           > 0 if the handshake progressed, but is not complete<br>
 	 *           < 0 for an AVERROR code<br>
 	 * Original signature : <code>int avio_handshake(AVIOContext*)</code><br>
-	 * <i>native declaration : libavformat/avio.h:686</i>
+	 * <i>native declaration : libavformat/avio.h:700</i>
 	 */
 	public static int avio_handshake(Pointer<AVIOContext > c) {
 		return avio_handshake(Pointer.getPeer(c));
@@ -1197,7 +1234,7 @@ public class AvformatLibrary {
 	protected native static int av_append_packet(@Ptr long s, @Ptr long pkt, int size);
 	/**
 	 * Original signature : <code>AVRational av_stream_get_r_frame_rate(const AVStream*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:593</i>
+	 * <i>native declaration : libavformat/avformat.h:491</i>
 	 */
 	public static AVRational av_stream_get_r_frame_rate(Pointer<AVStream > s) {
 		return av_stream_get_r_frame_rate(Pointer.getPeer(s));
@@ -1205,7 +1242,7 @@ public class AvformatLibrary {
 	protected native static AVRational av_stream_get_r_frame_rate(@Ptr long s);
 	/**
 	 * Original signature : <code>void av_stream_set_r_frame_rate(AVStream*, AVRational)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:595</i>
+	 * <i>native declaration : libavformat/avformat.h:493</i>
 	 */
 	public static void av_stream_set_r_frame_rate(Pointer<AVStream > s, AVRational r) {
 		av_stream_set_r_frame_rate(Pointer.getPeer(s), r);
@@ -1213,7 +1250,7 @@ public class AvformatLibrary {
 	protected native static void av_stream_set_r_frame_rate(@Ptr long s, AVRational r);
 	/**
 	 * Original signature : <code>char* av_stream_get_recommended_encoder_configuration(const AVStream*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:597</i>
+	 * <i>native declaration : libavformat/avformat.h:495</i>
 	 */
 	public static Pointer<Byte > av_stream_get_recommended_encoder_configuration(Pointer<AVStream > s) {
 		return Pointer.pointerToAddress(av_stream_get_recommended_encoder_configuration(Pointer.getPeer(s)), Byte.class);
@@ -1222,7 +1259,7 @@ public class AvformatLibrary {
 	protected native static long av_stream_get_recommended_encoder_configuration(@Ptr long s);
 	/**
 	 * Original signature : <code>void av_stream_set_recommended_encoder_configuration(AVStream*, char*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:599</i>
+	 * <i>native declaration : libavformat/avformat.h:497</i>
 	 */
 	public static void av_stream_set_recommended_encoder_configuration(Pointer<AVStream > s, Pointer<Byte > configuration) {
 		av_stream_set_recommended_encoder_configuration(Pointer.getPeer(s), Pointer.getPeer(configuration));
@@ -1230,7 +1267,7 @@ public class AvformatLibrary {
 	protected native static void av_stream_set_recommended_encoder_configuration(@Ptr long s, @Ptr long configuration);
 	/**
 	 * Original signature : <code>AVCodecParserContext* av_stream_get_parser(const AVStream*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:601</i>
+	 * <i>native declaration : libavformat/avformat.h:499</i>
 	 */
 	public static Pointer<AVCodecParserContext > av_stream_get_parser(Pointer<AVStream > s) {
 		return Pointer.pointerToAddress(av_stream_get_parser(Pointer.getPeer(s)), AVCodecParserContext.class);
@@ -1241,7 +1278,7 @@ public class AvformatLibrary {
 	 * Returns the pts of the last muxed packet + its duration<br>
 	 * * the retuned value is undefined when used with a demuxer.<br>
 	 * Original signature : <code>int64_t av_stream_get_end_pts(const AVStream*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:607</i>
+	 * <i>native declaration : libavformat/avformat.h:505</i>
 	 */
 	public static long av_stream_get_end_pts(Pointer<AVStream > st) {
 		return av_stream_get_end_pts(Pointer.getPeer(st));
@@ -1249,7 +1286,7 @@ public class AvformatLibrary {
 	protected native static long av_stream_get_end_pts(@Ptr long st);
 	/**
 	 * Original signature : <code>int av_format_get_probe_score(const AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1153</i>
+	 * <i>native declaration : libavformat/avformat.h:1057</i>
 	 */
 	public static int av_format_get_probe_score(Pointer<AVFormatContext > s) {
 		return av_format_get_probe_score(Pointer.getPeer(s));
@@ -1257,7 +1294,7 @@ public class AvformatLibrary {
 	protected native static int av_format_get_probe_score(@Ptr long s);
 	/**
 	 * Original signature : <code>AVCodec* av_format_get_video_codec(const AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1155</i>
+	 * <i>native declaration : libavformat/avformat.h:1059</i>
 	 */
 	public static Pointer<AVCodec > av_format_get_video_codec(Pointer<AVFormatContext > s) {
 		return Pointer.pointerToAddress(av_format_get_video_codec(Pointer.getPeer(s)), AVCodec.class);
@@ -1266,7 +1303,7 @@ public class AvformatLibrary {
 	protected native static long av_format_get_video_codec(@Ptr long s);
 	/**
 	 * Original signature : <code>void av_format_set_video_codec(AVFormatContext*, AVCodec*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1157</i>
+	 * <i>native declaration : libavformat/avformat.h:1061</i>
 	 */
 	public static void av_format_set_video_codec(Pointer<AVFormatContext > s, Pointer<AVCodec > c) {
 		av_format_set_video_codec(Pointer.getPeer(s), Pointer.getPeer(c));
@@ -1274,7 +1311,7 @@ public class AvformatLibrary {
 	protected native static void av_format_set_video_codec(@Ptr long s, @Ptr long c);
 	/**
 	 * Original signature : <code>AVCodec* av_format_get_audio_codec(const AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1159</i>
+	 * <i>native declaration : libavformat/avformat.h:1063</i>
 	 */
 	public static Pointer<AVCodec > av_format_get_audio_codec(Pointer<AVFormatContext > s) {
 		return Pointer.pointerToAddress(av_format_get_audio_codec(Pointer.getPeer(s)), AVCodec.class);
@@ -1283,7 +1320,7 @@ public class AvformatLibrary {
 	protected native static long av_format_get_audio_codec(@Ptr long s);
 	/**
 	 * Original signature : <code>void av_format_set_audio_codec(AVFormatContext*, AVCodec*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1161</i>
+	 * <i>native declaration : libavformat/avformat.h:1065</i>
 	 */
 	public static void av_format_set_audio_codec(Pointer<AVFormatContext > s, Pointer<AVCodec > c) {
 		av_format_set_audio_codec(Pointer.getPeer(s), Pointer.getPeer(c));
@@ -1291,7 +1328,7 @@ public class AvformatLibrary {
 	protected native static void av_format_set_audio_codec(@Ptr long s, @Ptr long c);
 	/**
 	 * Original signature : <code>AVCodec* av_format_get_subtitle_codec(const AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1163</i>
+	 * <i>native declaration : libavformat/avformat.h:1067</i>
 	 */
 	public static Pointer<AVCodec > av_format_get_subtitle_codec(Pointer<AVFormatContext > s) {
 		return Pointer.pointerToAddress(av_format_get_subtitle_codec(Pointer.getPeer(s)), AVCodec.class);
@@ -1300,7 +1337,7 @@ public class AvformatLibrary {
 	protected native static long av_format_get_subtitle_codec(@Ptr long s);
 	/**
 	 * Original signature : <code>void av_format_set_subtitle_codec(AVFormatContext*, AVCodec*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1165</i>
+	 * <i>native declaration : libavformat/avformat.h:1069</i>
 	 */
 	public static void av_format_set_subtitle_codec(Pointer<AVFormatContext > s, Pointer<AVCodec > c) {
 		av_format_set_subtitle_codec(Pointer.getPeer(s), Pointer.getPeer(c));
@@ -1308,7 +1345,7 @@ public class AvformatLibrary {
 	protected native static void av_format_set_subtitle_codec(@Ptr long s, @Ptr long c);
 	/**
 	 * Original signature : <code>AVCodec* av_format_get_data_codec(const AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1167</i>
+	 * <i>native declaration : libavformat/avformat.h:1071</i>
 	 */
 	public static Pointer<AVCodec > av_format_get_data_codec(Pointer<AVFormatContext > s) {
 		return Pointer.pointerToAddress(av_format_get_data_codec(Pointer.getPeer(s)), AVCodec.class);
@@ -1317,7 +1354,7 @@ public class AvformatLibrary {
 	protected native static long av_format_get_data_codec(@Ptr long s);
 	/**
 	 * Original signature : <code>void av_format_set_data_codec(AVFormatContext*, AVCodec*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1169</i>
+	 * <i>native declaration : libavformat/avformat.h:1073</i>
 	 */
 	public static void av_format_set_data_codec(Pointer<AVFormatContext > s, Pointer<AVCodec > c) {
 		av_format_set_data_codec(Pointer.getPeer(s), Pointer.getPeer(c));
@@ -1325,7 +1362,7 @@ public class AvformatLibrary {
 	protected native static void av_format_set_data_codec(@Ptr long s, @Ptr long c);
 	/**
 	 * Original signature : <code>int av_format_get_metadata_header_padding(const AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1171</i>
+	 * <i>native declaration : libavformat/avformat.h:1075</i>
 	 */
 	public static int av_format_get_metadata_header_padding(Pointer<AVFormatContext > s) {
 		return av_format_get_metadata_header_padding(Pointer.getPeer(s));
@@ -1333,7 +1370,7 @@ public class AvformatLibrary {
 	protected native static int av_format_get_metadata_header_padding(@Ptr long s);
 	/**
 	 * Original signature : <code>void av_format_set_metadata_header_padding(AVFormatContext*, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1173</i>
+	 * <i>native declaration : libavformat/avformat.h:1077</i>
 	 */
 	public static void av_format_set_metadata_header_padding(Pointer<AVFormatContext > s, int c) {
 		av_format_set_metadata_header_padding(Pointer.getPeer(s), c);
@@ -1341,7 +1378,7 @@ public class AvformatLibrary {
 	protected native static void av_format_set_metadata_header_padding(@Ptr long s, int c);
 	/**
 	 * Original signature : <code>void* av_format_get_opaque(const AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1175</i>
+	 * <i>native declaration : libavformat/avformat.h:1079</i>
 	 */
 	public static Pointer<? > av_format_get_opaque(Pointer<AVFormatContext > s) {
 		return Pointer.pointerToAddress(av_format_get_opaque(Pointer.getPeer(s)));
@@ -1350,7 +1387,7 @@ public class AvformatLibrary {
 	protected native static long av_format_get_opaque(@Ptr long s);
 	/**
 	 * Original signature : <code>void av_format_set_opaque(AVFormatContext*, void*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1177</i>
+	 * <i>native declaration : libavformat/avformat.h:1081</i>
 	 */
 	public static void av_format_set_opaque(Pointer<AVFormatContext > s, Pointer<? > opaque) {
 		av_format_set_opaque(Pointer.getPeer(s), Pointer.getPeer(opaque));
@@ -1358,7 +1395,7 @@ public class AvformatLibrary {
 	protected native static void av_format_set_opaque(@Ptr long s, @Ptr long opaque);
 	/**
 	 * Original signature : <code>av_format_control_message av_format_get_control_message_cb(const AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1179</i>
+	 * <i>native declaration : libavformat/avformat.h:1083</i>
 	 */
 	public static Pointer<AvformatLibrary.av_format_control_message > av_format_get_control_message_cb(Pointer<AVFormatContext > s) {
 		return Pointer.pointerToAddress(av_format_get_control_message_cb(Pointer.getPeer(s)), AvformatLibrary.av_format_control_message.class);
@@ -1367,7 +1404,7 @@ public class AvformatLibrary {
 	protected native static long av_format_get_control_message_cb(@Ptr long s);
 	/**
 	 * Original signature : <code>void av_format_set_control_message_cb(AVFormatContext*, av_format_control_message)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1181</i>
+	 * <i>native declaration : libavformat/avformat.h:1085</i>
 	 */
 	public static void av_format_set_control_message_cb(Pointer<AVFormatContext > s, Pointer<AvformatLibrary.av_format_control_message > callback) {
 		av_format_set_control_message_cb(Pointer.getPeer(s), Pointer.getPeer(callback));
@@ -1375,7 +1412,7 @@ public class AvformatLibrary {
 	protected native static void av_format_set_control_message_cb(@Ptr long s, @Ptr long callback);
 	/**
 	 * Original signature : <code>AVOpenCallback av_format_get_open_cb(const AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1183</i>
+	 * <i>native declaration : libavformat/avformat.h:1087</i>
 	 */
 	public static Pointer<AvformatLibrary.AVOpenCallback > av_format_get_open_cb(Pointer<AVFormatContext > s) {
 		return Pointer.pointerToAddress(av_format_get_open_cb(Pointer.getPeer(s)), AvformatLibrary.AVOpenCallback.class);
@@ -1384,7 +1421,7 @@ public class AvformatLibrary {
 	protected native static long av_format_get_open_cb(@Ptr long s);
 	/**
 	 * Original signature : <code>void av_format_set_open_cb(AVFormatContext*, AVOpenCallback)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1185</i>
+	 * <i>native declaration : libavformat/avformat.h:1089</i>
 	 */
 	public static void av_format_set_open_cb(Pointer<AVFormatContext > s, Pointer<AvformatLibrary.AVOpenCallback > callback) {
 		av_format_set_open_cb(Pointer.getPeer(s), Pointer.getPeer(callback));
@@ -1394,7 +1431,7 @@ public class AvformatLibrary {
 	 * This function will cause global side data to be injected in the next packet<br>
 	 * of each stream as well as after any subsequent seek.<br>
 	 * Original signature : <code>void av_format_inject_global_side_data(AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1191</i>
+	 * <i>native declaration : libavformat/avformat.h:1095</i>
 	 */
 	public static void av_format_inject_global_side_data(Pointer<AVFormatContext > s) {
 		av_format_inject_global_side_data(Pointer.getPeer(s));
@@ -1404,7 +1441,7 @@ public class AvformatLibrary {
 	 * Returns the method used to set ctx->duration.<br>
 	 * * @return AVFMT_DURATION_FROM_PTS, AVFMT_DURATION_FROM_STREAM, or AVFMT_DURATION_FROM_BITRATE.<br>
 	 * Original signature : <code>AVDurationEstimationMethod av_fmt_ctx_get_duration_estimation_method(const AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1197</i>
+	 * <i>native declaration : libavformat/avformat.h:1101</i>
 	 */
 	public static IntValuedEnum<AvformatLibrary.AVDurationEstimationMethod > av_fmt_ctx_get_duration_estimation_method(Pointer<AVFormatContext > ctx) {
 		return FlagSet.fromValue(av_fmt_ctx_get_duration_estimation_method(Pointer.getPeer(ctx)), AvformatLibrary.AVDurationEstimationMethod.class);
@@ -1413,13 +1450,13 @@ public class AvformatLibrary {
 	/**
 	 * Return the LIBAVFORMAT_VERSION_INT constant.<br>
 	 * Original signature : <code>int avformat_version()</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1206</i>
+	 * <i>native declaration : libavformat/avformat.h:1106</i>
 	 */
 	public static native int avformat_version();
 	/**
 	 * Return the libavformat build-time configuration.<br>
 	 * Original signature : <code>char* avformat_configuration()</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1211</i>
+	 * <i>native declaration : libavformat/avformat.h:1111</i>
 	 */
 	public static Pointer<Byte > avformat__configuration() {
 		return Pointer.pointerToAddress(avformat_configuration(), Byte.class);
@@ -1429,7 +1466,7 @@ public class AvformatLibrary {
 	/**
 	 * Return the libavformat license.<br>
 	 * Original signature : <code>char* avformat_license()</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1216</i>
+	 * <i>native declaration : libavformat/avformat.h:1116</i>
 	 */
 	public static Pointer<Byte > avformat__license() {
 		return Pointer.pointerToAddress(avformat_license(), Byte.class);
@@ -1438,12 +1475,12 @@ public class AvformatLibrary {
 	protected native static long avformat_license();
 	/**
 	 * Original signature : <code>void av_register_all()</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1218</i>
+	 * <i>native declaration : libavformat/avformat.h:1118</i>
 	 */
 	public static native void av_register_all();
 	/**
 	 * Original signature : <code>void av_register_input_format(AVInputFormat*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1220</i>
+	 * <i>native declaration : libavformat/avformat.h:1120</i>
 	 */
 	public static void av_register_input_format(Pointer<AVInputFormat > format) {
 		av_register_input_format(Pointer.getPeer(format));
@@ -1451,7 +1488,7 @@ public class AvformatLibrary {
 	protected native static void av_register_input_format(@Ptr long format);
 	/**
 	 * Original signature : <code>void av_register_output_format(AVOutputFormat*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1222</i>
+	 * <i>native declaration : libavformat/avformat.h:1122</i>
 	 */
 	public static void av_register_output_format(Pointer<AVOutputFormat > format) {
 		av_register_output_format(Pointer.getPeer(format));
@@ -1469,19 +1506,19 @@ public class AvformatLibrary {
 	 * OpenSSL libraries is removed, and this function has no purpose<br>
 	 * anymore.<br>
 	 * Original signature : <code>int avformat_network_init()</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1236</i>
+	 * <i>native declaration : libavformat/avformat.h:1136</i>
 	 */
 	public static native int avformat_network_init();
 	/**
 	 * Undo the initialization done by avformat_network_init. Call it only<br>
 	 * once for each time you called avformat_network_init.<br>
 	 * Original signature : <code>int avformat_network_deinit()</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1242</i>
+	 * <i>native declaration : libavformat/avformat.h:1142</i>
 	 */
 	public static native int avformat_network_deinit();
 	/**
 	 * Original signature : <code>AVInputFormat* av_iformat_next(const AVInputFormat*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1244</i>
+	 * <i>native declaration : libavformat/avformat.h:1144</i>
 	 */
 	public static Pointer<AVInputFormat > av_iformat_next(Pointer<AVInputFormat > f) {
 		return Pointer.pointerToAddress(av_iformat_next(Pointer.getPeer(f)), AVInputFormat.class);
@@ -1490,7 +1527,7 @@ public class AvformatLibrary {
 	protected native static long av_iformat_next(@Ptr long f);
 	/**
 	 * Original signature : <code>AVOutputFormat* av_oformat_next(const AVOutputFormat*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1246</i>
+	 * <i>native declaration : libavformat/avformat.h:1146</i>
 	 */
 	public static Pointer<AVOutputFormat > av_oformat_next(Pointer<AVOutputFormat > f) {
 		return Pointer.pointerToAddress(av_oformat_next(Pointer.getPeer(f)), AVOutputFormat.class);
@@ -1504,7 +1541,7 @@ public class AvformatLibrary {
 	 * * @return the next registered muxer or NULL when the iteration is<br>
 	 *         finished<br>
 	 * Original signature : <code>AVOutputFormat* av_muxer_iterate(void**)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1255</i>
+	 * <i>native declaration : libavformat/avformat.h:1155</i>
 	 */
 	public static Pointer<AVOutputFormat > av_muxer_iterate(Pointer<Pointer<? > > opaque) {
 		return Pointer.pointerToAddress(av_muxer_iterate(Pointer.getPeer(opaque)), AVOutputFormat.class);
@@ -1518,7 +1555,7 @@ public class AvformatLibrary {
 	 * * @return the next registered demuxer or NULL when the iteration is<br>
 	 *         finished<br>
 	 * Original signature : <code>AVInputFormat* av_demuxer_iterate(void**)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1264</i>
+	 * <i>native declaration : libavformat/avformat.h:1164</i>
 	 */
 	public static Pointer<AVInputFormat > av_demuxer_iterate(Pointer<Pointer<? > > opaque) {
 		return Pointer.pointerToAddress(av_demuxer_iterate(Pointer.getPeer(opaque)), AVInputFormat.class);
@@ -1530,7 +1567,7 @@ public class AvformatLibrary {
 	 * avformat_free_context() can be used to free the context and everything<br>
 	 * allocated by the framework within it.<br>
 	 * Original signature : <code>AVFormatContext* avformat_alloc_context()</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1271</i>
+	 * <i>native declaration : libavformat/avformat.h:1171</i>
 	 */
 	public static Pointer<AVFormatContext > alloc_context() {
 		return Pointer.pointerToAddress(avformat_alloc_context(), AVFormatContext.class);
@@ -1541,7 +1578,7 @@ public class AvformatLibrary {
 	 * Free an AVFormatContext and all its streams.<br>
 	 * @param s context to free<br>
 	 * Original signature : <code>void avformat_free_context(AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1277</i>
+	 * <i>native declaration : libavformat/avformat.h:1177</i>
 	 */
 	public static void avformat_free_context(Pointer<AVFormatContext > s) {
 		avformat_free_context(Pointer.getPeer(s));
@@ -1552,7 +1589,7 @@ public class AvformatLibrary {
 	 * AV_OPT_SEARCH_FAKE_OBJ for examining options.<br>
 	 * * @see av_opt_find().<br>
 	 * Original signature : <code>AVClass* avformat_get_class()</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1284</i>
+	 * <i>native declaration : libavformat/avformat.h:1184</i>
 	 */
 	public static Pointer<AVClass > avformat__get_class() {
 		return Pointer.pointerToAddress(avformat_get_class(), AVClass.class);
@@ -1573,7 +1610,7 @@ public class AvformatLibrary {
 	 * defaults to be set, so codec should be provided if it is known.<br>
 	 * * @return newly created stream or NULL on error.<br>
 	 * Original signature : <code>AVStream* avformat_new_stream(AVFormatContext*, const AVCodec*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1300</i>
+	 * <i>native declaration : libavformat/avformat.h:1200</i>
 	 */
 	public static Pointer<AVStream > avformat_new_stream(Pointer<AVFormatContext > s, Pointer<AVCodec > c) {
 		return Pointer.pointerToAddress(avformat_new_stream(Pointer.getPeer(s), Pointer.getPeer(c)), AVStream.class);
@@ -1591,7 +1628,7 @@ public class AvformatLibrary {
 	 * @return zero on success, a negative AVERROR code on failure. On failure,<br>
 	 *         the stream is unchanged and the data remains owned by the caller.<br>
 	 * Original signature : <code>int av_stream_add_side_data(AVStream*, AVPacketSideDataType, uint8_t*, size_t)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1313</i>
+	 * <i>native declaration : libavformat/avformat.h:1213</i>
 	 */
 	public static int av_stream_add_side_data(Pointer<AVStream > st, IntValuedEnum<AVPacketSideDataType > type, Pointer<Byte > data, @Ptr long size) {
 		return av_stream_add_side_data(Pointer.getPeer(st), (int)type.value(), Pointer.getPeer(data), size);
@@ -1604,7 +1641,7 @@ public class AvformatLibrary {
 	 * @param size side information size<br>
 	 * @return pointer to fresh allocated data or NULL otherwise<br>
 	 * Original signature : <code>uint8_t* av_stream_new_side_data(AVStream*, AVPacketSideDataType, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1322</i>
+	 * <i>native declaration : libavformat/avformat.h:1222</i>
 	 */
 	public static Pointer<Byte > av_stream_new_side_data(Pointer<AVStream > stream, IntValuedEnum<AVPacketSideDataType > type, int size) {
 		return Pointer.pointerToAddress(av_stream_new_side_data(Pointer.getPeer(stream), (int)type.value(), size), Byte.class);
@@ -1615,10 +1652,11 @@ public class AvformatLibrary {
 	 * Get side information from stream.<br>
 	 * * @param stream stream<br>
 	 * @param type desired side information type<br>
-	 * @param size pointer for side information size to store (optional)<br>
+	 * @param size If supplied, *size will be set to the size of the side data<br>
+	 *             or to zero if the desired side data is not present.<br>
 	 * @return pointer to data if present or NULL otherwise<br>
 	 * Original signature : <code>uint8_t* av_stream_get_side_data(const AVStream*, AVPacketSideDataType, int*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1331</i>
+	 * <i>native declaration : libavformat/avformat.h:1232</i>
 	 */
 	public static Pointer<Byte > av_stream_get_side_data(Pointer<AVStream > stream, IntValuedEnum<AVPacketSideDataType > type, Pointer<Integer > size) {
 		return Pointer.pointerToAddress(av_stream_get_side_data(Pointer.getPeer(stream), (int)type.value(), Pointer.getPeer(size)), Byte.class);
@@ -1627,7 +1665,7 @@ public class AvformatLibrary {
 	protected native static long av_stream_get_side_data(@Ptr long stream, int type, @Ptr long size);
 	/**
 	 * Original signature : <code>AVProgram* av_new_program(AVFormatContext*, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1333</i>
+	 * <i>native declaration : libavformat/avformat.h:1234</i>
 	 */
 	public static Pointer<AVProgram > av_new_program(Pointer<AVFormatContext > s, int id) {
 		return Pointer.pointerToAddress(av_new_program(Pointer.getPeer(s), id), AVProgram.class);
@@ -1649,7 +1687,7 @@ public class AvformatLibrary {
 	 * @return >= 0 in case of success, a negative AVERROR code in case of<br>
 	 * failure<br>
 	 * Original signature : <code>int avformat_alloc_output_context2(AVFormatContext**, AVOutputFormat*, const char*, const char*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1350</i>
+	 * <i>native declaration : libavformat/avformat.h:1251</i>
 	 */
 	public static int avformat_alloc_output_context2(Pointer<Pointer<AVFormatContext > > ctx, Pointer<AVOutputFormat > oformat, Pointer<Byte > format_name, Pointer<Byte > filename) {
 		return avformat_alloc_output_context2(Pointer.getPeer(ctx), Pointer.getPeer(oformat), Pointer.getPeer(format_name), Pointer.getPeer(filename));
@@ -1658,7 +1696,7 @@ public class AvformatLibrary {
 	/**
 	 * Find AVInputFormat based on the short name of the input format.<br>
 	 * Original signature : <code>AVInputFormat* av_find_input_format(const char*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1355</i>
+	 * <i>native declaration : libavformat/avformat.h:1256</i>
 	 */
 	public static Pointer<AVInputFormat > av_find_input_format(Pointer<Byte > short_name) {
 		return Pointer.pointerToAddress(av_find_input_format(Pointer.getPeer(short_name)), AVInputFormat.class);
@@ -1671,7 +1709,7 @@ public class AvformatLibrary {
 	 * @param is_opened Whether the file is already opened; determines whether<br>
 	 *                  demuxers with or without AVFMT_NOFILE are probed.<br>
 	 * Original signature : <code>AVInputFormat* av_probe_input_format(AVProbeData*, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1363</i>
+	 * <i>native declaration : libavformat/avformat.h:1264</i>
 	 */
 	public static Pointer<AVInputFormat > av_probe_input_format(Pointer<AVProbeData > pd, int is_opened) {
 		return Pointer.pointerToAddress(av_probe_input_format(Pointer.getPeer(pd), is_opened), AVInputFormat.class);
@@ -1689,7 +1727,7 @@ public class AvformatLibrary {
 	 *                  If the score is <= AVPROBE_SCORE_MAX / 4 it is recommended<br>
 	 *                  to retry with a larger probe buffer.<br>
 	 * Original signature : <code>AVInputFormat* av_probe_input_format2(AVProbeData*, int, int*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1376</i>
+	 * <i>native declaration : libavformat/avformat.h:1277</i>
 	 */
 	public static Pointer<AVInputFormat > av_probe_input_format2(Pointer<AVProbeData > pd, int is_opened, Pointer<Integer > score_max) {
 		return Pointer.pointerToAddress(av_probe_input_format2(Pointer.getPeer(pd), is_opened, Pointer.getPeer(score_max)), AVInputFormat.class);
@@ -1702,7 +1740,7 @@ public class AvformatLibrary {
 	 *                  demuxers with or without AVFMT_NOFILE are probed.<br>
 	 * @param score_ret The score of the best detection.<br>
 	 * Original signature : <code>AVInputFormat* av_probe_input_format3(AVProbeData*, int, int*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1384</i>
+	 * <i>native declaration : libavformat/avformat.h:1285</i>
 	 */
 	public static Pointer<AVInputFormat > av_probe_input_format3(Pointer<AVProbeData > pd, int is_opened, Pointer<Integer > score_ret) {
 		return Pointer.pointerToAddress(av_probe_input_format3(Pointer.getPeer(pd), is_opened, Pointer.getPeer(score_ret)), AVInputFormat.class);
@@ -1724,7 +1762,7 @@ public class AvformatLibrary {
 	 *         the maximal score is AVPROBE_SCORE_MAX<br>
 	 * AVERROR code otherwise<br>
 	 * Original signature : <code>int av_probe_input_buffer2(AVIOContext*, AVInputFormat**, const char*, void*, unsigned int, unsigned int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1401</i>
+	 * <i>native declaration : libavformat/avformat.h:1302</i>
 	 */
 	public static int av_probe_input_buffer2(Pointer<AVIOContext > pb, Pointer<Pointer<AVInputFormat > > fmt, Pointer<Byte > url, Pointer<? > logctx, int offset, int max_probe_size) {
 		return av_probe_input_buffer2(Pointer.getPeer(pb), Pointer.getPeer(fmt), Pointer.getPeer(url), Pointer.getPeer(logctx), offset, max_probe_size);
@@ -1733,7 +1771,7 @@ public class AvformatLibrary {
 	/**
 	 * Like av_probe_input_buffer2() but returns 0 on success<br>
 	 * Original signature : <code>int av_probe_input_buffer(AVIOContext*, AVInputFormat**, const char*, void*, unsigned int, unsigned int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1406</i>
+	 * <i>native declaration : libavformat/avformat.h:1307</i>
 	 */
 	public static int av_probe_input_buffer(Pointer<AVIOContext > pb, Pointer<Pointer<AVInputFormat > > fmt, Pointer<Byte > url, Pointer<? > logctx, int offset, int max_probe_size) {
 		return av_probe_input_buffer(Pointer.getPeer(pb), Pointer.getPeer(fmt), Pointer.getPeer(url), Pointer.getPeer(logctx), offset, max_probe_size);
@@ -1755,7 +1793,7 @@ public class AvformatLibrary {
 	 * * @return 0 on success, a negative AVERROR on failure.<br>
 	 * * @note If you want to use custom IO, preallocate the format context and set its pb field.<br>
 	 * Original signature : <code>int avformat_open_input(AVFormatContext**, const char*, AVInputFormat*, AVDictionary**)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1424</i>
+	 * <i>native declaration : libavformat/avformat.h:1325</i>
 	 */
 	public static int avformat_open_input(Pointer<Pointer<AVFormatContext > > ps, Pointer<Byte > url, Pointer<AVInputFormat > fmt, Pointer<Pointer<AVDictionary > > options) {
 		return avformat_open_input(Pointer.getPeer(ps), Pointer.getPeer(url), Pointer.getPeer(fmt), Pointer.getPeer(options));
@@ -1763,7 +1801,7 @@ public class AvformatLibrary {
 	protected native static int avformat_open_input(@Ptr long ps, @Ptr long url, @Ptr long fmt, @Ptr long options);
 	/**
 	 * Original signature : <code>int av_demuxer_open(AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1426</i>
+	 * <i>native declaration : libavformat/avformat.h:1327</i>
 	 */
 	public static int av_demuxer_open(Pointer<AVFormatContext > ic) {
 		return av_demuxer_open(Pointer.getPeer(ic));
@@ -1787,7 +1825,7 @@ public class AvformatLibrary {
 	 * * @todo Let the user decide somehow what information is needed so that<br>
 	 *       we do not waste time getting stuff the user does not need.<br>
 	 * Original signature : <code>int avformat_find_stream_info(AVFormatContext*, AVDictionary**)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1446</i>
+	 * <i>native declaration : libavformat/avformat.h:1347</i>
 	 */
 	public static int avformat_find_stream_info(Pointer<AVFormatContext > ic, Pointer<Pointer<AVDictionary > > options) {
 		return avformat_find_stream_info(Pointer.getPeer(ic), Pointer.getPeer(options));
@@ -1802,7 +1840,7 @@ public class AvformatLibrary {
 	 * @return the next program which belongs to s, NULL if no program is found or<br>
 	 *         the last program is not among the programs of ic.<br>
 	 * Original signature : <code>AVProgram* av_find_program_from_stream(AVFormatContext*, AVProgram*, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1457</i>
+	 * <i>native declaration : libavformat/avformat.h:1358</i>
 	 */
 	public static Pointer<AVProgram > av_find_program_from_stream(Pointer<AVFormatContext > ic, Pointer<AVProgram > last, int s) {
 		return Pointer.pointerToAddress(av_find_program_from_stream(Pointer.getPeer(ic), Pointer.getPeer(last), s), AVProgram.class);
@@ -1811,7 +1849,7 @@ public class AvformatLibrary {
 	protected native static long av_find_program_from_stream(@Ptr long ic, @Ptr long last, int s);
 	/**
 	 * Original signature : <code>void av_program_add_stream_index(AVFormatContext*, int, unsigned int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1459</i>
+	 * <i>native declaration : libavformat/avformat.h:1360</i>
 	 */
 	public static void av_program_add_stream_index(Pointer<AVFormatContext > ac, int progid, int idx) {
 		av_program_add_stream_index(Pointer.getPeer(ac), progid, idx);
@@ -1840,7 +1878,7 @@ public class AvformatLibrary {
 	 * @note  If av_find_best_stream returns successfully and decoder_ret is not<br>
 	 *        NULL, then *decoder_ret is guaranteed to be set to a valid AVCodec.<br>
 	 * Original signature : <code>int av_find_best_stream(AVFormatContext*, AVMediaType, int, int, AVCodec**, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1484</i>
+	 * <i>native declaration : libavformat/avformat.h:1385</i>
 	 */
 	public static int av_find_best_stream(Pointer<AVFormatContext > ic, IntValuedEnum<AVMediaType > type, int wanted_stream_nb, int related_stream, Pointer<Pointer<AVCodec > > decoder_ret, int flags) {
 		return av_find_best_stream(Pointer.getPeer(ic), (int)type.value(), wanted_stream_nb, related_stream, Pointer.getPeer(decoder_ret), flags);
@@ -1853,21 +1891,23 @@ public class AvformatLibrary {
 	 * stored in the file into frames and return one for each call. It will not<br>
 	 * omit invalid data between valid frames so as to give the decoder the maximum<br>
 	 * information possible for decoding.<br>
-	 * * If pkt->buf is NULL, then the packet is valid until the next<br>
-	 * av_read_frame() or until avformat_close_input(). Otherwise the packet<br>
-	 * is valid indefinitely. In both cases the packet must be freed with<br>
-	 * av_packet_unref when it is no longer needed. For video, the packet contains<br>
-	 * exactly one frame. For audio, it contains an integer number of frames if each<br>
-	 * frame has a known fixed size (e.g. PCM or ADPCM data). If the audio frames<br>
-	 * have a variable size (e.g. MPEG audio), then it contains one frame.<br>
+	 * * On success, the returned packet is reference-counted (pkt->buf is set) and<br>
+	 * valid indefinitely. The packet must be freed with av_packet_unref() when<br>
+	 * it is no longer needed. For video, the packet contains exactly one frame.<br>
+	 * For audio, it contains an integer number of frames if each frame has<br>
+	 * a known fixed size (e.g. PCM or ADPCM data). If the audio frames have<br>
+	 * a variable size (e.g. MPEG audio), then it contains one frame.<br>
 	 * * pkt->pts, pkt->dts and pkt->duration are always set to correct<br>
 	 * values in AVStream.time_base units (and guessed if the format cannot<br>
 	 * provide them). pkt->pts can be AV_NOPTS_VALUE if the video format<br>
 	 * has B-frames, so it is better to rely on pkt->dts if you do not<br>
 	 * decompress the payload.<br>
-	 * * @return 0 if OK, < 0 on error or end of file<br>
+	 * * @return 0 if OK, < 0 on error or end of file. On error, pkt will be blank<br>
+	 *         (as if it came from av_packet_alloc()).<br>
+	 * * @note pkt will be initialized, so it may be uninitialized, but it must not<br>
+	 *       contain data that needs to be freed.<br>
 	 * Original signature : <code>int av_read_frame(AVFormatContext*, AVPacket*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1507</i>
+	 * <i>native declaration : libavformat/avformat.h:1410</i>
 	 */
 	public static int av_read_frame(Pointer<AVFormatContext > s, Pointer<AVPacket > pkt) {
 		return av_read_frame(Pointer.getPeer(s), Pointer.getPeer(pkt));
@@ -1885,7 +1925,7 @@ public class AvformatLibrary {
 	 * @param flags flags which select direction and seeking mode<br>
 	 * @return >= 0 on success<br>
 	 * Original signature : <code>int av_seek_frame(AVFormatContext*, int, int64_t, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1521</i>
+	 * <i>native declaration : libavformat/avformat.h:1424</i>
 	 */
 	public static int av_seek_frame(Pointer<AVFormatContext > s, int stream_index, long timestamp, int flags) {
 		return av_seek_frame(Pointer.getPeer(s), stream_index, timestamp, flags);
@@ -1913,10 +1953,8 @@ public class AvformatLibrary {
 	 * @param flags flags<br>
 	 * @return >=0 on success, error code otherwise<br>
 	 * * @note This is part of the new seek API which is still under construction.<br>
-	 *       Thus do not use this yet. It may change at any time, do not expect<br>
-	 *       ABI compatibility yet!<br>
 	 * Original signature : <code>int avformat_seek_file(AVFormatContext*, int, int64_t, int64_t, int64_t, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1548</i>
+	 * <i>native declaration : libavformat/avformat.h:1449</i>
 	 */
 	public static int avformat_seek_file(Pointer<AVFormatContext > s, int stream_index, long min_ts, long ts, long max_ts, int flags) {
 		return avformat_seek_file(Pointer.getPeer(s), stream_index, min_ts, ts, max_ts, flags);
@@ -1935,7 +1973,7 @@ public class AvformatLibrary {
 	 * * @param s media file handle<br>
 	 * @return >=0 on success, error code otherwise<br>
 	 * Original signature : <code>int avformat_flush(AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1563</i>
+	 * <i>native declaration : libavformat/avformat.h:1464</i>
 	 */
 	public static int avformat_flush(Pointer<AVFormatContext > s) {
 		return avformat_flush(Pointer.getPeer(s));
@@ -1945,7 +1983,7 @@ public class AvformatLibrary {
 	 * Start playing a network-based stream (e.g. RTSP stream) at the<br>
 	 * current position.<br>
 	 * Original signature : <code>int av_read_play(AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1569</i>
+	 * <i>native declaration : libavformat/avformat.h:1470</i>
 	 */
 	public static int av_read_play(Pointer<AVFormatContext > s) {
 		return av_read_play(Pointer.getPeer(s));
@@ -1955,7 +1993,7 @@ public class AvformatLibrary {
 	 * Pause a network-based stream (e.g. RTSP stream).<br>
 	 * * Use av_read_play() to resume it.<br>
 	 * Original signature : <code>int av_read_pause(AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1575</i>
+	 * <i>native declaration : libavformat/avformat.h:1476</i>
 	 */
 	public static int av_read_pause(Pointer<AVFormatContext > s) {
 		return av_read_pause(Pointer.getPeer(s));
@@ -1965,7 +2003,7 @@ public class AvformatLibrary {
 	 * Close an opened input AVFormatContext. Free it and all its contents<br>
 	 * and set *s to NULL.<br>
 	 * Original signature : <code>void avformat_close_input(AVFormatContext**)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1581</i>
+	 * <i>native declaration : libavformat/avformat.h:1482</i>
 	 */
 	public static void avformat_close_input(Pointer<Pointer<AVFormatContext > > s) {
 		avformat_close_input(Pointer.getPeer(s));
@@ -1973,7 +2011,7 @@ public class AvformatLibrary {
 	protected native static void avformat_close_input(@Ptr long s);
 	/**
 	 * Original signature : <code>int avformat_write_header(AVFormatContext*, AVDictionary**)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1583</i>
+	 * <i>native declaration : libavformat/avformat.h:1484</i>
 	 */
 	public static int avformat_write_header(Pointer<AVFormatContext > s, Pointer<Pointer<AVDictionary > > options) {
 		return avformat_write_header(Pointer.getPeer(s), Pointer.getPeer(options));
@@ -1981,7 +2019,7 @@ public class AvformatLibrary {
 	protected native static int avformat_write_header(@Ptr long s, @Ptr long options);
 	/**
 	 * Original signature : <code>int avformat_init_output(AVFormatContext*, AVDictionary**)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1585</i>
+	 * <i>native declaration : libavformat/avformat.h:1486</i>
 	 */
 	public static int avformat_init_output(Pointer<AVFormatContext > s, Pointer<Pointer<AVDictionary > > options) {
 		return avformat_init_output(Pointer.getPeer(s), Pointer.getPeer(options));
@@ -2021,7 +2059,7 @@ public class AvformatLibrary {
 	 * @return < 0 on error, = 0 if OK, 1 if flushed and there is no more data to flush<br>
 	 * * @see av_interleaved_write_frame()<br>
 	 * Original signature : <code>int av_write_frame(AVFormatContext*, AVPacket*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1621</i>
+	 * <i>native declaration : libavformat/avformat.h:1522</i>
 	 */
 	public static int av_write_frame(Pointer<AVFormatContext > s, Pointer<AVPacket > pkt) {
 		return av_write_frame(Pointer.getPeer(s), Pointer.getPeer(pkt));
@@ -2065,7 +2103,7 @@ public class AvformatLibrary {
 	 *         take care of freeing the packet, even if this function fails.<br>
 	 * * @see av_write_frame(), AVFormatContext.max_interleave_delta<br>
 	 * Original signature : <code>int av_interleaved_write_frame(AVFormatContext*, AVPacket*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1661</i>
+	 * <i>native declaration : libavformat/avformat.h:1562</i>
 	 */
 	public static int av_interleaved_write_frame(Pointer<AVFormatContext > s, Pointer<AVPacket > pkt) {
 		return av_interleaved_write_frame(Pointer.getPeer(s), Pointer.getPeer(pkt));
@@ -2074,10 +2112,10 @@ public class AvformatLibrary {
 	/**
 	 * Write an uncoded frame to an output media file.<br>
 	 * * The frame must be correctly interleaved according to the container<br>
-	 * specification; if not, then av_interleaved_write_frame() must be used.<br>
-	 * * See av_interleaved_write_frame() for details.<br>
+	 * specification; if not, av_interleaved_write_uncoded_frame() must be used.<br>
+	 * * See av_interleaved_write_uncoded_frame() for details.<br>
 	 * Original signature : <code>int av_write_uncoded_frame(AVFormatContext*, int, AVFrame*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1669</i>
+	 * <i>native declaration : libavformat/avformat.h:1570</i>
 	 */
 	public static int av_write_uncoded_frame(Pointer<AVFormatContext > s, int stream_index, Pointer<AVFrame > frame) {
 		return av_write_uncoded_frame(Pointer.getPeer(s), stream_index, Pointer.getPeer(frame));
@@ -2095,7 +2133,7 @@ public class AvformatLibrary {
 	 * afterwards.<br>
 	 * * @return  >=0 for success, a negative code on error<br>
 	 * Original signature : <code>int av_interleaved_write_uncoded_frame(AVFormatContext*, int, AVFrame*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1683</i>
+	 * <i>native declaration : libavformat/avformat.h:1584</i>
 	 */
 	public static int av_interleaved_write_uncoded_frame(Pointer<AVFormatContext > s, int stream_index, Pointer<AVFrame > frame) {
 		return av_interleaved_write_uncoded_frame(Pointer.getPeer(s), stream_index, Pointer.getPeer(frame));
@@ -2106,7 +2144,7 @@ public class AvformatLibrary {
 	 * * @return  >=0 if an uncoded frame can be written to that muxer and stream,<br>
 	 *          <0 if not<br>
 	 * Original signature : <code>int av_write_uncoded_frame_query(AVFormatContext*, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1690</i>
+	 * <i>native declaration : libavformat/avformat.h:1591</i>
 	 */
 	public static int av_write_uncoded_frame_query(Pointer<AVFormatContext > s, int stream_index) {
 		return av_write_uncoded_frame_query(Pointer.getPeer(s), stream_index);
@@ -2119,7 +2157,7 @@ public class AvformatLibrary {
 	 * * @param s media file handle<br>
 	 * @return 0 if OK, AVERROR_xxx on error<br>
 	 * Original signature : <code>int av_write_trailer(AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1699</i>
+	 * <i>native declaration : libavformat/avformat.h:1600</i>
 	 */
 	public static int av_write_trailer(Pointer<AVFormatContext > s) {
 		return av_write_trailer(Pointer.getPeer(s));
@@ -2136,7 +2174,7 @@ public class AvformatLibrary {
 	 * @param mime_type if non-NULL checks if mime_type matches with the<br>
 	 * MIME type of the registered formats<br>
 	 * Original signature : <code>AVOutputFormat* av_guess_format(const char*, const char*, const char*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1712</i>
+	 * <i>native declaration : libavformat/avformat.h:1613</i>
 	 */
 	public static Pointer<AVOutputFormat > av_guess_format(Pointer<Byte > short_name, Pointer<Byte > filename, Pointer<Byte > mime_type) {
 		return Pointer.pointerToAddress(av_guess_format(Pointer.getPeer(short_name), Pointer.getPeer(filename), Pointer.getPeer(mime_type)), AVOutputFormat.class);
@@ -2146,7 +2184,7 @@ public class AvformatLibrary {
 	/**
 	 * Guess the codec ID based upon muxer and filename.<br>
 	 * Original signature : <code>AVCodecID av_guess_codec(AVOutputFormat*, const char*, const char*, const char*, AVMediaType)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1717</i>
+	 * <i>native declaration : libavformat/avformat.h:1618</i>
 	 */
 	public static IntValuedEnum<AVCodecID > av_guess_codec(Pointer<AVOutputFormat > fmt, Pointer<Byte > short_name, Pointer<Byte > filename, Pointer<Byte > mime_type, IntValuedEnum<AVMediaType > type) {
 		return FlagSet.fromValue(av_guess_codec(Pointer.getPeer(fmt), Pointer.getPeer(short_name), Pointer.getPeer(filename), Pointer.getPeer(mime_type), (int)type.value()), AVCodecID.class);
@@ -2167,7 +2205,7 @@ public class AvformatLibrary {
 	 * Note: some formats or devices may not allow to measure dts and wall<br>
 	 * atomically.<br>
 	 * Original signature : <code>int av_get_output_timestamp(AVFormatContext*, int, int64_t*, int64_t*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1734</i>
+	 * <i>native declaration : libavformat/avformat.h:1635</i>
 	 */
 	public static int av_get_output_timestamp(Pointer<AVFormatContext > s, int stream, Pointer<Long > dts, Pointer<Long > wall) {
 		return av_get_output_timestamp(Pointer.getPeer(s), stream, Pointer.getPeer(dts), Pointer.getPeer(wall));
@@ -2180,7 +2218,7 @@ public class AvformatLibrary {
 	 * @param size buffer size<br>
 	 * * @see av_hex_dump_log, av_pkt_dump2, av_pkt_dump_log2<br>
 	 * Original signature : <code>void av_hex_dump(FILE*, const uint8_t*, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1743</i>
+	 * <i>native declaration : libavformat/avformat.h:1644</i>
 	 */
 	public static void av_hex_dump(Pointer f, Pointer<Byte > buf, int size) {
 		av_hex_dump(Pointer.getPeer(f), Pointer.getPeer(buf), size);
@@ -2196,7 +2234,7 @@ public class AvformatLibrary {
 	 * @param size buffer size<br>
 	 * * @see av_hex_dump, av_pkt_dump2, av_pkt_dump_log2<br>
 	 * Original signature : <code>void av_hex_dump_log(void*, int, const uint8_t*, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1755</i>
+	 * <i>native declaration : libavformat/avformat.h:1656</i>
 	 */
 	public static void av_hex_dump_log(Pointer<? > avcl, int level, Pointer<Byte > buf, int size) {
 		av_hex_dump_log(Pointer.getPeer(avcl), level, Pointer.getPeer(buf), size);
@@ -2209,7 +2247,7 @@ public class AvformatLibrary {
 	 * @param dump_payload True if the payload must be displayed, too.<br>
 	 * @param st AVStream that the packet belongs to<br>
 	 * Original signature : <code>void av_pkt_dump2(FILE*, const AVPacket*, int, const AVStream*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1764</i>
+	 * <i>native declaration : libavformat/avformat.h:1665</i>
 	 */
 	public static void av_pkt_dump2(Pointer f, Pointer<AVPacket > pkt, int dump_payload, Pointer<AVStream > st) {
 		av_pkt_dump2(Pointer.getPeer(f), Pointer.getPeer(pkt), dump_payload, Pointer.getPeer(st));
@@ -2225,7 +2263,7 @@ public class AvformatLibrary {
 	 * @param dump_payload True if the payload must be displayed, too.<br>
 	 * @param st AVStream that the packet belongs to<br>
 	 * Original signature : <code>void av_pkt_dump_log2(void*, int, const AVPacket*, int, const AVStream*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1776</i>
+	 * <i>native declaration : libavformat/avformat.h:1677</i>
 	 */
 	public static void av_pkt_dump_log2(Pointer<? > avcl, int level, Pointer<AVPacket > pkt, int dump_payload, Pointer<AVStream > st) {
 		av_pkt_dump_log2(Pointer.getPeer(avcl), level, Pointer.getPeer(pkt), dump_payload, Pointer.getPeer(st));
@@ -2238,7 +2276,7 @@ public class AvformatLibrary {
 	 * in AVInputFormat.codec_tag and AVOutputFormat.codec_tag<br>
 	 * @param tag  codec tag to match to a codec ID<br>
 	 * Original signature : <code>AVCodecID av_codec_get_id(const AVCodecTag**, unsigned int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1785</i>
+	 * <i>native declaration : libavformat/avformat.h:1686</i>
 	 */
 	public static IntValuedEnum<AVCodecID > av_codec_get_id(Pointer<Pointer<AVCodecTag > > tags, int tag) {
 		return FlagSet.fromValue(av_codec_get_id(Pointer.getPeer(tags), tag), AVCodecID.class);
@@ -2251,7 +2289,7 @@ public class AvformatLibrary {
 	 * in AVInputFormat.codec_tag and AVOutputFormat.codec_tag<br>
 	 * @param id   codec ID to match to a codec tag<br>
 	 * Original signature : <code>int av_codec_get_tag(const AVCodecTag**, AVCodecID)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1794</i>
+	 * <i>native declaration : libavformat/avformat.h:1695</i>
 	 */
 	public static int av_codec_get_tag(Pointer<Pointer<AVCodecTag > > tags, IntValuedEnum<AVCodecID > id) {
 		return av_codec_get_tag(Pointer.getPeer(tags), (int)id.value());
@@ -2265,7 +2303,7 @@ public class AvformatLibrary {
 	 * @param tag A pointer to the found tag<br>
 	 * @return 0 if id was not found in tags, > 0 if it was found<br>
 	 * Original signature : <code>int av_codec_get_tag2(const AVCodecTag**, AVCodecID, unsigned int*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1804</i>
+	 * <i>native declaration : libavformat/avformat.h:1705</i>
 	 */
 	public static int av_codec_get_tag2(Pointer<Pointer<AVCodecTag > > tags, IntValuedEnum<AVCodecID > id, Pointer<Integer > tag) {
 		return av_codec_get_tag2(Pointer.getPeer(tags), (int)id.value(), Pointer.getPeer(tag));
@@ -2273,7 +2311,7 @@ public class AvformatLibrary {
 	protected native static int av_codec_get_tag2(@Ptr long tags, int id, @Ptr long tag);
 	/**
 	 * Original signature : <code>int av_find_default_stream_index(AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1806</i>
+	 * <i>native declaration : libavformat/avformat.h:1707</i>
 	 */
 	public static int av_find_default_stream_index(Pointer<AVFormatContext > s) {
 		return av_find_default_stream_index(Pointer.getPeer(s));
@@ -2289,7 +2327,7 @@ public class AvformatLibrary {
 	 *              if AVSEEK_FLAG_ANY seek to any frame, only keyframes otherwise<br>
 	 * @return < 0 if no such timestamp could be found<br>
 	 * Original signature : <code>int av_index_search_timestamp(AVStream*, int64_t, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1818</i>
+	 * <i>native declaration : libavformat/avformat.h:1719</i>
 	 */
 	public static int av_index_search_timestamp(Pointer<AVStream > st, long timestamp, int flags) {
 		return av_index_search_timestamp(Pointer.getPeer(st), timestamp, flags);
@@ -2300,7 +2338,7 @@ public class AvformatLibrary {
 	 * already contains it.<br>
 	 * * @param timestamp timestamp in the time base of the given stream<br>
 	 * Original signature : <code>int av_add_index_entry(AVStream*, int64_t, int64_t, int, int, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1825</i>
+	 * <i>native declaration : libavformat/avformat.h:1726</i>
 	 */
 	public static int av_add_index_entry(Pointer<AVStream > st, long pos, long timestamp, int size, int distance, int flags) {
 		return av_add_index_entry(Pointer.getPeer(st), pos, timestamp, size, distance, flags);
@@ -2323,7 +2361,7 @@ public class AvformatLibrary {
 	 * @param path_size the size of the path buffer<br>
 	 * @param url the URL to split<br>
 	 * Original signature : <code>void av_url_split(char*, int, char*, int, char*, int, int*, char*, int, const char*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1844</i>
+	 * <i>native declaration : libavformat/avformat.h:1745</i>
 	 */
 	public static void av_url_split(Pointer<Byte > proto, int proto_size, Pointer<Byte > authorization, int authorization_size, Pointer<Byte > hostname, int hostname_size, Pointer<Integer > port_ptr, Pointer<Byte > path, int path_size, Pointer<Byte > url) {
 		av_url_split(Pointer.getPeer(proto), proto_size, Pointer.getPeer(authorization), authorization_size, Pointer.getPeer(hostname), hostname_size, Pointer.getPeer(port_ptr), Pointer.getPeer(path), path_size, Pointer.getPeer(url));
@@ -2338,7 +2376,7 @@ public class AvformatLibrary {
 	 * @param url       the URL to print, such as source or destination file<br>
 	 * @param is_output Select whether the specified context is an input(0) or output(1)<br>
 	 * Original signature : <code>void av_dump_format(AVFormatContext*, int, const char*, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1855</i>
+	 * <i>native declaration : libavformat/avformat.h:1756</i>
 	 */
 	public static void av_dump_format(Pointer<AVFormatContext > ic, int index, Pointer<Byte > url, int is_output) {
 		av_dump_format(Pointer.getPeer(ic), index, Pointer.getPeer(url), is_output);
@@ -2355,7 +2393,7 @@ public class AvformatLibrary {
 	 * @param flags AV_FRAME_FILENAME_FLAGS_*<br>
 	 * @return 0 if OK, -1 on format error<br>
 	 * Original signature : <code>int av_get_frame_filename2(char*, int, const char*, int, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1868</i>
+	 * <i>native declaration : libavformat/avformat.h:1769</i>
 	 */
 	public static int av_get_frame_filename2(Pointer<Byte > buf, int buf_size, Pointer<Byte > path, int number, int flags) {
 		return av_get_frame_filename2(Pointer.getPeer(buf), buf_size, Pointer.getPeer(path), number, flags);
@@ -2363,7 +2401,7 @@ public class AvformatLibrary {
 	protected native static int av_get_frame_filename2(@Ptr long buf, int buf_size, @Ptr long path, int number, int flags);
 	/**
 	 * Original signature : <code>int av_get_frame_filename(char*, int, const char*, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1870</i>
+	 * <i>native declaration : libavformat/avformat.h:1771</i>
 	 */
 	public static int av_get_frame_filename(Pointer<Byte > buf, int buf_size, Pointer<Byte > path, int number) {
 		return av_get_frame_filename(Pointer.getPeer(buf), buf_size, Pointer.getPeer(path), number);
@@ -2374,7 +2412,7 @@ public class AvformatLibrary {
 	 * * @param filename possible numbered sequence string<br>
 	 * @return 1 if a valid numbered sequence string, 0 otherwise<br>
 	 * Original signature : <code>int av_filename_number_test(const char*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1877</i>
+	 * <i>native declaration : libavformat/avformat.h:1778</i>
 	 */
 	public static int av_filename_number_test(Pointer<Byte > filename) {
 		return av_filename_number_test(Pointer.getPeer(filename));
@@ -2395,7 +2433,7 @@ public class AvformatLibrary {
 	 * @param size the size of the buffer<br>
 	 * @return 0 if OK, AVERROR_xxx on error<br>
 	 * Original signature : <code>int av_sdp_create(AVFormatContext*[], int, char*, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1894</i>
+	 * <i>native declaration : libavformat/avformat.h:1795</i>
 	 */
 	public static int av_sdp_create(Pointer<Pointer<AVFormatContext > > ac, int n_files, Pointer<Byte > buf, int size) {
 		return av_sdp_create(Pointer.getPeer(ac), n_files, Pointer.getPeer(buf), size);
@@ -2407,7 +2445,7 @@ public class AvformatLibrary {
 	 * * @param filename   file name to check against the given extensions<br>
 	 * @param extensions a comma-separated list of filename extensions<br>
 	 * Original signature : <code>int av_match_ext(const char*, const char*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1902</i>
+	 * <i>native declaration : libavformat/avformat.h:1803</i>
 	 */
 	public static int av_match_ext(Pointer<Byte > filename, Pointer<Byte > extensions) {
 		return av_match_ext(Pointer.getPeer(filename), Pointer.getPeer(extensions));
@@ -2421,7 +2459,7 @@ public class AvformatLibrary {
 	 * * @return 1 if codec with ID codec_id can be stored in ofmt, 0 if it cannot.<br>
 	 *         A negative number if this information is not available.<br>
 	 * Original signature : <code>int avformat_query_codec(const AVOutputFormat*, AVCodecID, int)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1912</i>
+	 * <i>native declaration : libavformat/avformat.h:1813</i>
 	 */
 	public static int avformat_query_codec(Pointer<AVOutputFormat > ofmt, IntValuedEnum<AVCodecID > codec_id, int std_compliance) {
 		return avformat_query_codec(Pointer.getPeer(ofmt), (int)codec_id.value(), std_compliance);
@@ -2430,7 +2468,7 @@ public class AvformatLibrary {
 	/**
 	 * @return the table mapping RIFF FourCCs for video to libavcodec AVCodecID.<br>
 	 * Original signature : <code>AVCodecTag* avformat_get_riff_video_tags()</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1917</i>
+	 * <i>native declaration : libavformat/avformat.h:1818</i>
 	 */
 	public static Pointer<AVCodecTag > avformat__get_riff_video_tags() {
 		return Pointer.pointerToAddress(avformat_get_riff_video_tags(), AVCodecTag.class);
@@ -2440,7 +2478,7 @@ public class AvformatLibrary {
 	/**
 	 * @return the table mapping RIFF FourCCs for audio to AVCodecID.<br>
 	 * Original signature : <code>AVCodecTag* avformat_get_riff_audio_tags()</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1922</i>
+	 * <i>native declaration : libavformat/avformat.h:1823</i>
 	 */
 	public static Pointer<AVCodecTag > avformat__get_riff_audio_tags() {
 		return Pointer.pointerToAddress(avformat_get_riff_audio_tags(), AVCodecTag.class);
@@ -2450,7 +2488,7 @@ public class AvformatLibrary {
 	/**
 	 * @return the table mapping MOV FourCCs for video to libavcodec AVCodecID.<br>
 	 * Original signature : <code>AVCodecTag* avformat_get_mov_video_tags()</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1927</i>
+	 * <i>native declaration : libavformat/avformat.h:1828</i>
 	 */
 	public static Pointer<AVCodecTag > avformat__get_mov_video_tags() {
 		return Pointer.pointerToAddress(avformat_get_mov_video_tags(), AVCodecTag.class);
@@ -2460,7 +2498,7 @@ public class AvformatLibrary {
 	/**
 	 * @return the table mapping MOV FourCCs for audio to AVCodecID.<br>
 	 * Original signature : <code>AVCodecTag* avformat_get_mov_audio_tags()</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1932</i>
+	 * <i>native declaration : libavformat/avformat.h:1833</i>
 	 */
 	public static Pointer<AVCodecTag > avformat__get_mov_audio_tags() {
 		return Pointer.pointerToAddress(avformat_get_mov_audio_tags(), AVCodecTag.class);
@@ -2481,7 +2519,7 @@ public class AvformatLibrary {
 	 * @param frame the frame with the aspect ratio to be determined<br>
 	 * @return the guessed (valid) sample_aspect_ratio, 0/1 if no idea<br>
 	 * Original signature : <code>AVRational av_guess_sample_aspect_ratio(AVFormatContext*, AVStream*, AVFrame*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1948</i>
+	 * <i>native declaration : libavformat/avformat.h:1849</i>
 	 */
 	public static AVRational av_guess_sample_aspect_ratio(Pointer<AVFormatContext > format, Pointer<AVStream > stream, Pointer<AVFrame > frame) {
 		return av_guess_sample_aspect_ratio(Pointer.getPeer(format), Pointer.getPeer(stream), Pointer.getPeer(frame));
@@ -2494,7 +2532,7 @@ public class AvformatLibrary {
 	 * @param frame the frame for which the frame rate should be determined, may be NULL<br>
 	 * @return the guessed (valid) frame rate, 0/1 if no idea<br>
 	 * Original signature : <code>AVRational av_guess_frame_rate(AVFormatContext*, AVStream*, AVFrame*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1957</i>
+	 * <i>native declaration : libavformat/avformat.h:1858</i>
 	 */
 	public static AVRational av_guess_frame_rate(Pointer<AVFormatContext > ctx, Pointer<AVStream > stream, Pointer<AVFrame > frame) {
 		return av_guess_frame_rate(Pointer.getPeer(ctx), Pointer.getPeer(stream), Pointer.getPeer(frame));
@@ -2510,7 +2548,7 @@ public class AvformatLibrary {
 	 *          AVERROR code if spec is invalid<br>
 	 * * @note  A stream specifier can match several streams in the format.<br>
 	 * Original signature : <code>int avformat_match_stream_specifier(AVFormatContext*, AVStream*, const char*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1969</i>
+	 * <i>native declaration : libavformat/avformat.h:1870</i>
 	 */
 	public static int avformat_match_stream_specifier(Pointer<AVFormatContext > s, Pointer<AVStream > st, Pointer<Byte > spec) {
 		return avformat_match_stream_specifier(Pointer.getPeer(s), Pointer.getPeer(st), Pointer.getPeer(spec));
@@ -2518,23 +2556,15 @@ public class AvformatLibrary {
 	protected native static int avformat_match_stream_specifier(@Ptr long s, @Ptr long st, @Ptr long spec);
 	/**
 	 * Original signature : <code>int avformat_queue_attached_pictures(AVFormatContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1971</i>
+	 * <i>native declaration : libavformat/avformat.h:1872</i>
 	 */
 	public static int avformat_queue_attached_pictures(Pointer<AVFormatContext > s) {
 		return avformat_queue_attached_pictures(Pointer.getPeer(s));
 	}
 	protected native static int avformat_queue_attached_pictures(@Ptr long s);
 	/**
-	 * Apply a list of bitstream filters to a packet.<br>
-	 * * @param codec AVCodecContext, usually from an AVStream<br>
-	 * @param pkt the packet to apply filters to. If, on success, the returned<br>
-	 *        packet has size == 0 and side_data_elems == 0, it indicates that<br>
-	 *        the packet should be dropped<br>
-	 * @param bsfc a NULL-terminated list of filters to apply<br>
-	 * @return  >=0 on success;<br>
-	 *          AVERROR code on failure<br>
 	 * Original signature : <code>int av_apply_bitstream_filters(AVCodecContext*, AVPacket*, AVBitStreamFilterContext*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1983</i>
+	 * <i>native declaration : libavformat/avformat.h:1874</i>
 	 */
 	public static int av_apply_bitstream_filters(Pointer<AVCodecContext > codec, Pointer<AVPacket > pkt, Pointer<AVBitStreamFilterContext > bsfc) {
 		return av_apply_bitstream_filters(Pointer.getPeer(codec), Pointer.getPeer(pkt), Pointer.getPeer(bsfc));
@@ -2548,7 +2578,7 @@ public class AvformatLibrary {
 	 * @param ist      reference input stream to copy timings from<br>
 	 * @param copy_tb  define from where the stream codec timebase needs to be imported<br>
 	 * Original signature : <code>int avformat_transfer_internal_stream_timing_info(const AVOutputFormat*, AVStream*, const AVStream*, AVTimebaseSource)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:1999</i>
+	 * <i>native declaration : libavformat/avformat.h:1890</i>
 	 */
 	public static int avformat_transfer_internal_stream_timing_info(Pointer<AVOutputFormat > ofmt, Pointer<AVStream > ost, Pointer<AVStream > ist, IntValuedEnum<AvformatLibrary.AVTimebaseSource > copy_tb) {
 		return avformat_transfer_internal_stream_timing_info(Pointer.getPeer(ofmt), Pointer.getPeer(ost), Pointer.getPeer(ist), (int)copy_tb.value());
@@ -2558,7 +2588,7 @@ public class AvformatLibrary {
 	 * Get the internal codec timebase from a stream.<br>
 	 * * @param st  input stream to extract the timebase from<br>
 	 * Original signature : <code>AVRational av_stream_get_codec_timebase(const AVStream*)</code><br>
-	 * <i>native declaration : libavformat/avformat.h:2005</i>
+	 * <i>native declaration : libavformat/avformat.h:1896</i>
 	 */
 	public static AVRational av_stream_get_codec_timebase(Pointer<AVStream > st) {
 		return av_stream_get_codec_timebase(Pointer.getPeer(st));

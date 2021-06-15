@@ -260,12 +260,12 @@ public class AVIOContext extends StructObject {
 		this.io.setLongField(this, 9, pos);
 		return this;
 	}
-	/** < true if eof reached */
+	/** < true if was unable to read due to error or eof */
 	@Field(10) 
 	public int eof_reached() {
 		return this.io.getIntField(this, 10);
 	}
-	/** < true if eof reached */
+	/** < true if was unable to read due to error or eof */
 	@Field(10) 
 	public AVIOContext eof_reached(int eof_reached) {
 		this.io.setIntField(this, 10, eof_reached);
