@@ -297,12 +297,12 @@ public class AVClass extends StructObject {
 	};
 	/** <i>native declaration : libavutil/log.h:93</i> */
 	public static abstract class child_class_iterate_callback extends Callback<child_class_iterate_callback > {
-		public Pointer<AVClass > apply(Pointer<Pointer<? > > iter) {
+		public Pointer<AVClass > apply(Pointer<Pointer > iter) {
 			return Pointer.pointerToAddress(apply(Pointer.getPeer(iter)), AVClass.class);
 		}
 		@Ptr 
 		public long apply(@Ptr long iter) {
-			return Pointer.getPeer(apply(Pointer.pointerToAddress(iter, DefaultParameterizedType.paramType(Pointer.class, null))));
+			return Pointer.getPeer(apply(Pointer.pointerToAddress(iter, Pointer.class)));
 		}
 	};
 	public AVClass() {

@@ -727,8 +727,8 @@ diff -pruN generated/org/ffmpeg/avresample/AvresampleLibrary.java src/org/ffmpeg
  	 * <i>native declaration : libavresample/avresample.h:42</i>
 diff -pruN generated/org/ffmpeg/avutil/AVClass.java src/org/ffmpeg/avutil/AVClass.java
 --- generated/org/ffmpeg/avutil/AVClass.java	2021-06-15 09:23:35.783206430 +0200
-+++ src/org/ffmpeg/avutil/AVClass.java	2021-06-15 09:24:07.403078662 +0200
-@@ -288,11 +288,11 @@ public class AVClass extends StructObjec
++++ src/org/ffmpeg/avutil/AVClass.java	2021-06-15 14:16:33.070104476 +0200
+@@ -288,21 +288,21 @@ public class AVClass extends StructObjec
  	};
  	/** <i>native declaration : libavutil/log.h:92</i> */
  	public static abstract class query_ranges_callback extends Callback<query_ranges_callback > {
@@ -742,6 +742,18 @@ diff -pruN generated/org/ffmpeg/avutil/AVClass.java src/org/ffmpeg/avutil/AVClas
  		}
  	};
  	/** <i>native declaration : libavutil/log.h:93</i> */
+ 	public static abstract class child_class_iterate_callback extends Callback<child_class_iterate_callback > {
+-		public Pointer<AVClass > apply(Pointer<Pointer<? > > iter) {
++		public Pointer<AVClass > apply(Pointer<Pointer > iter) {
+ 			return Pointer.pointerToAddress(apply(Pointer.getPeer(iter)), AVClass.class);
+ 		}
+ 		@Ptr 
+ 		public long apply(@Ptr long iter) {
+-			return Pointer.getPeer(apply(Pointer.pointerToAddress(iter, DefaultParameterizedType.paramType(Pointer.class, null))));
++			return Pointer.getPeer(apply(Pointer.pointerToAddress(iter, Pointer.class)));
+ 		}
+ 	};
+ 	public AVClass() {
 diff -pruN generated/org/ffmpeg/avutil/AVFrame.java src/org/ffmpeg/avutil/AVFrame.java
 --- generated/org/ffmpeg/avutil/AVFrame.java	2021-06-15 09:23:35.819206285 +0200
 +++ src/org/ffmpeg/avutil/AVFrame.java	2021-06-15 14:07:17.455402874 +0200
